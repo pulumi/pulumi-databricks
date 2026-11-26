@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetPostgresDataApi
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -47,7 +47,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresDataApiResult>("databricks:index/getPostgresDataApi:getPostgresDataApi", args ?? new GetPostgresDataApiArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -82,7 +82,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresDataApiResult>("databricks:index/getPostgresDataApi:getPostgresDataApi", args ?? new GetPostgresDataApiInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 

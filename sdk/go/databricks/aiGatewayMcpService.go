@@ -65,24 +65,27 @@ type AiGatewayMcpService struct {
 	Config AiGatewayMcpServiceConfigPtrOutput `pulumi:"config"`
 	// (string) - Time the MCP service was created
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// (string) - Creator identity
+	// (string) - Username or service principal application ID of the principal that created the MCP service
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
-	// (string) - Owner of the MCP service
+	// (string) - Username, group name, or service principal application ID of the MCP service owner
 	EffectiveOwner pulumi.StringOutput `pulumi:"effectiveOwner"`
 	// (string) - Optimistic concurrency token returned on every read. To make an Update or
 	// Delete conditional, pass the last-read value in that request's `etag`
 	// field. In REST responses, this value is a base64 string; URL-encode it when
 	// setting the `etag` query parameter
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// Name for the MCP service, e.g. "myMcpService"
+	// Name of the MCP service within the parent schema. The name must not
+	// contain periods, spaces, forward slashes, percent signs, or control characters,
+	// and it is stored in lowercase
 	McpServiceId pulumi.StringOutput `pulumi:"mcpServiceId"`
-	// (string) - Metastore hosting the MCP service
+	// (string) - Unique identifier of the metastore that contains the MCP service
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
 	// (string) - Resource name of the MCP service.
 	// Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
 	// Each `{...}` component is capped at 255 characters individually.
-	// Server-derived on Create from `parent` +
-	// `mcpServiceId`; required and immutable on Update/Get/Delete
+	// The server derives the name on Create from
+	// `parent` and `mcpServiceId`; it is required and immutable on Update,
+	// Get, and Delete
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
@@ -92,7 +95,8 @@ type AiGatewayMcpService struct {
 	ProviderConfig AiGatewayMcpServiceProviderConfigOutput `pulumi:"providerConfig"`
 	// (string) - Time the MCP service was last modified
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// (string) - Identity of the last updater
+	// (string) - Username or service principal application ID of the principal that last updated the MCP
+	// service
 	UpdatedBy pulumi.StringOutput `pulumi:"updatedBy"`
 }
 
@@ -140,24 +144,27 @@ type aiGatewayMcpServiceState struct {
 	Config *AiGatewayMcpServiceConfig `pulumi:"config"`
 	// (string) - Time the MCP service was created
 	CreateTime *string `pulumi:"createTime"`
-	// (string) - Creator identity
+	// (string) - Username or service principal application ID of the principal that created the MCP service
 	CreatedBy *string `pulumi:"createdBy"`
-	// (string) - Owner of the MCP service
+	// (string) - Username, group name, or service principal application ID of the MCP service owner
 	EffectiveOwner *string `pulumi:"effectiveOwner"`
 	// (string) - Optimistic concurrency token returned on every read. To make an Update or
 	// Delete conditional, pass the last-read value in that request's `etag`
 	// field. In REST responses, this value is a base64 string; URL-encode it when
 	// setting the `etag` query parameter
 	Etag *string `pulumi:"etag"`
-	// Name for the MCP service, e.g. "myMcpService"
+	// Name of the MCP service within the parent schema. The name must not
+	// contain periods, spaces, forward slashes, percent signs, or control characters,
+	// and it is stored in lowercase
 	McpServiceId *string `pulumi:"mcpServiceId"`
-	// (string) - Metastore hosting the MCP service
+	// (string) - Unique identifier of the metastore that contains the MCP service
 	MetastoreId *string `pulumi:"metastoreId"`
 	// (string) - Resource name of the MCP service.
 	// Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
 	// Each `{...}` component is capped at 255 characters individually.
-	// Server-derived on Create from `parent` +
-	// `mcpServiceId`; required and immutable on Update/Get/Delete
+	// The server derives the name on Create from
+	// `parent` and `mcpServiceId`; it is required and immutable on Update,
+	// Get, and Delete
 	Name *string `pulumi:"name"`
 	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
@@ -167,7 +174,8 @@ type aiGatewayMcpServiceState struct {
 	ProviderConfig *AiGatewayMcpServiceProviderConfig `pulumi:"providerConfig"`
 	// (string) - Time the MCP service was last modified
 	UpdateTime *string `pulumi:"updateTime"`
-	// (string) - Identity of the last updater
+	// (string) - Username or service principal application ID of the principal that last updated the MCP
+	// service
 	UpdatedBy *string `pulumi:"updatedBy"`
 }
 
@@ -180,24 +188,27 @@ type AiGatewayMcpServiceState struct {
 	Config AiGatewayMcpServiceConfigPtrInput
 	// (string) - Time the MCP service was created
 	CreateTime pulumi.StringPtrInput
-	// (string) - Creator identity
+	// (string) - Username or service principal application ID of the principal that created the MCP service
 	CreatedBy pulumi.StringPtrInput
-	// (string) - Owner of the MCP service
+	// (string) - Username, group name, or service principal application ID of the MCP service owner
 	EffectiveOwner pulumi.StringPtrInput
 	// (string) - Optimistic concurrency token returned on every read. To make an Update or
 	// Delete conditional, pass the last-read value in that request's `etag`
 	// field. In REST responses, this value is a base64 string; URL-encode it when
 	// setting the `etag` query parameter
 	Etag pulumi.StringPtrInput
-	// Name for the MCP service, e.g. "myMcpService"
+	// Name of the MCP service within the parent schema. The name must not
+	// contain periods, spaces, forward slashes, percent signs, or control characters,
+	// and it is stored in lowercase
 	McpServiceId pulumi.StringPtrInput
-	// (string) - Metastore hosting the MCP service
+	// (string) - Unique identifier of the metastore that contains the MCP service
 	MetastoreId pulumi.StringPtrInput
 	// (string) - Resource name of the MCP service.
 	// Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
 	// Each `{...}` component is capped at 255 characters individually.
-	// Server-derived on Create from `parent` +
-	// `mcpServiceId`; required and immutable on Update/Get/Delete
+	// The server derives the name on Create from
+	// `parent` and `mcpServiceId`; it is required and immutable on Update,
+	// Get, and Delete
 	Name pulumi.StringPtrInput
 	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
@@ -207,7 +218,8 @@ type AiGatewayMcpServiceState struct {
 	ProviderConfig AiGatewayMcpServiceProviderConfigPtrInput
 	// (string) - Time the MCP service was last modified
 	UpdateTime pulumi.StringPtrInput
-	// (string) - Identity of the last updater
+	// (string) - Username or service principal application ID of the principal that last updated the MCP
+	// service
 	UpdatedBy pulumi.StringPtrInput
 }
 
@@ -228,7 +240,9 @@ type aiGatewayMcpServiceArgs struct {
 	// provide this field when `updateMask` contains `config` or one of its
 	// subpaths
 	Config *AiGatewayMcpServiceConfig `pulumi:"config"`
-	// Name for the MCP service, e.g. "myMcpService"
+	// Name of the MCP service within the parent schema. The name must not
+	// contain periods, spaces, forward slashes, percent signs, or control characters,
+	// and it is stored in lowercase
 	McpServiceId string `pulumi:"mcpServiceId"`
 	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
@@ -246,7 +260,9 @@ type AiGatewayMcpServiceArgs struct {
 	// provide this field when `updateMask` contains `config` or one of its
 	// subpaths
 	Config AiGatewayMcpServiceConfigPtrInput
-	// Name for the MCP service, e.g. "myMcpService"
+	// Name of the MCP service within the parent schema. The name must not
+	// contain periods, spaces, forward slashes, percent signs, or control characters,
+	// and it is stored in lowercase
 	McpServiceId pulumi.StringInput
 	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
@@ -360,12 +376,12 @@ func (o AiGatewayMcpServiceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayMcpService) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// (string) - Creator identity
+// (string) - Username or service principal application ID of the principal that created the MCP service
 func (o AiGatewayMcpServiceOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayMcpService) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
-// (string) - Owner of the MCP service
+// (string) - Username, group name, or service principal application ID of the MCP service owner
 func (o AiGatewayMcpServiceOutput) EffectiveOwner() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayMcpService) pulumi.StringOutput { return v.EffectiveOwner }).(pulumi.StringOutput)
 }
@@ -378,12 +394,14 @@ func (o AiGatewayMcpServiceOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayMcpService) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Name for the MCP service, e.g. "myMcpService"
+// Name of the MCP service within the parent schema. The name must not
+// contain periods, spaces, forward slashes, percent signs, or control characters,
+// and it is stored in lowercase
 func (o AiGatewayMcpServiceOutput) McpServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayMcpService) pulumi.StringOutput { return v.McpServiceId }).(pulumi.StringOutput)
 }
 
-// (string) - Metastore hosting the MCP service
+// (string) - Unique identifier of the metastore that contains the MCP service
 func (o AiGatewayMcpServiceOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayMcpService) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }
@@ -391,8 +409,9 @@ func (o AiGatewayMcpServiceOutput) MetastoreId() pulumi.StringOutput {
 // (string) - Resource name of the MCP service.
 // Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
 // Each `{...}` component is capped at 255 characters individually.
-// Server-derived on Create from `parent` +
-// `mcpServiceId`; required and immutable on Update/Get/Delete
+// The server derives the name on Create from
+// `parent` and `mcpServiceId`; it is required and immutable on Update,
+// Get, and Delete
 func (o AiGatewayMcpServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayMcpService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -414,7 +433,8 @@ func (o AiGatewayMcpServiceOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayMcpService) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// (string) - Identity of the last updater
+// (string) - Username or service principal application ID of the principal that last updated the MCP
+// service
 func (o AiGatewayMcpServiceOutput) UpdatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayMcpService) pulumi.StringOutput { return v.UpdatedBy }).(pulumi.StringOutput)
 }

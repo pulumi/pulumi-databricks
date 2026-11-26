@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 //
@@ -22,7 +22,7 @@ import (
 //
 // A read-write endpoint named `primary` is implicitly created for every branch. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi represent the implicitly created endpoint in Pulumi state and immediately apply the provided configuration to it. Support for providing a custom `endpointId` will be available in later versions.
 //
-// Pulumi uses this resource exclusively for managing updates. It does not control creation or deletion of the endpoint itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual endpoint is unaffected, because its lifecycle is controlled by the parent branch. The only way to remove the actual endpoint is to delete the branch it belongs to. If you don't want to delete the parent branch and are concerned about the cost, use the `disabled` or `suspendTimeoutDuration` fields in `spec`.
+// For this implicitly created read-write Endpoint, Pulumi manages updates only. It does not control creation or deletion of the endpoint itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual endpoint is unaffected, because its lifecycle is controlled by the parent branch. The only way to remove the actual endpoint is to delete the branch it belongs to. If you don't want to delete the parent branch and are concerned about the cost, use the `disabled` or `suspendTimeoutDuration` fields in `spec`.
 //
 // ```go
 // package main
@@ -162,6 +162,7 @@ import (
 //					EndpointType: pulumi.String("ENDPOINT_TYPE_READ_WRITE"),
 //					Disabled:     pulumi.Bool(true),
 //				},
+//				ReplaceExisting: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -187,12 +188,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.NewPostgresEndpoint(ctx, "always_on", &databricks.PostgresEndpointArgs{
-//				EndpointId: pulumi.String("always-on"),
+//				EndpointId: pulumi.String("primary"),
 //				Parent:     pulumi.Any(dev.Name),
 //				Spec: &databricks.PostgresEndpointSpecArgs{
 //					EndpointType: pulumi.String("ENDPOINT_TYPE_READ_WRITE"),
 //					NoSuspension: pulumi.Bool(true),
 //				},
+//				ReplaceExisting: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -373,7 +375,7 @@ type PostgresEndpoint struct {
 
 	// (string) - A timestamp indicating when the compute endpoint was created
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The part of the name, chosen by the user when the resource was created
+	// The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
 	EndpointId pulumi.StringOutput `pulumi:"endpointId"`
 	// (string) - Output only. The full resource path of the endpoint.
 	// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
@@ -383,13 +385,22 @@ type PostgresEndpoint struct {
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresEndpointProviderConfigOutput `pulumi:"providerConfig"`
-	// If true, update the endpoint if it already exists instead of returning an error
+	// If true, update the endpoint if it already exists instead of returning an error. The request's
+	// `spec.endpoint_type` must match the existing endpoint's type, and the other `spec` fields are applied
+	// as an update. Use this to configure the read-write endpoint that was created together with the branch
 	ReplaceExisting pulumi.BoolPtrOutput `pulumi:"replaceExisting"`
-	// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
-	Spec PostgresEndpointSpecOutput `pulumi:"spec"`
-	// (EndpointStatus) - Current operational status of the compute endpoint
+	// The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+	// changed after creation. See `status` for the configuration that is currently in effect.
+	//
+	// Read the resource's current values from `status`, rather than `spec`.
+	// `spec` tracks field ownership for infrastructure-as-code tools and may omit
+	// unmanaged fields
+	Spec PostgresEndpointSpecPtrOutput `pulumi:"spec"`
+	// (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+	// system, including the hostnames to connect to
 	Status PostgresEndpointStatusOutput `pulumi:"status"`
-	// (string) - System-generated unique ID for the endpoint
+	// (string) - A system-generated ID that identifies the endpoint. Unlike `name`, it is not derived from the
+	// user-chosen endpoint ID. The endpoint's connection hostnames are based on this ID
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// (string) - A timestamp indicating when the compute endpoint was last updated
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -433,7 +444,7 @@ func GetPostgresEndpoint(ctx *pulumi.Context,
 type postgresEndpointState struct {
 	// (string) - A timestamp indicating when the compute endpoint was created
 	CreateTime *string `pulumi:"createTime"`
-	// The part of the name, chosen by the user when the resource was created
+	// The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
 	EndpointId *string `pulumi:"endpointId"`
 	// (string) - Output only. The full resource path of the endpoint.
 	// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
@@ -443,13 +454,22 @@ type postgresEndpointState struct {
 	Parent *string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresEndpointProviderConfig `pulumi:"providerConfig"`
-	// If true, update the endpoint if it already exists instead of returning an error
+	// If true, update the endpoint if it already exists instead of returning an error. The request's
+	// `spec.endpoint_type` must match the existing endpoint's type, and the other `spec` fields are applied
+	// as an update. Use this to configure the read-write endpoint that was created together with the branch
 	ReplaceExisting *bool `pulumi:"replaceExisting"`
-	// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+	// The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+	// changed after creation. See `status` for the configuration that is currently in effect.
+	//
+	// Read the resource's current values from `status`, rather than `spec`.
+	// `spec` tracks field ownership for infrastructure-as-code tools and may omit
+	// unmanaged fields
 	Spec *PostgresEndpointSpec `pulumi:"spec"`
-	// (EndpointStatus) - Current operational status of the compute endpoint
+	// (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+	// system, including the hostnames to connect to
 	Status *PostgresEndpointStatus `pulumi:"status"`
-	// (string) - System-generated unique ID for the endpoint
+	// (string) - A system-generated ID that identifies the endpoint. Unlike `name`, it is not derived from the
+	// user-chosen endpoint ID. The endpoint's connection hostnames are based on this ID
 	Uid *string `pulumi:"uid"`
 	// (string) - A timestamp indicating when the compute endpoint was last updated
 	UpdateTime *string `pulumi:"updateTime"`
@@ -458,7 +478,7 @@ type postgresEndpointState struct {
 type PostgresEndpointState struct {
 	// (string) - A timestamp indicating when the compute endpoint was created
 	CreateTime pulumi.StringPtrInput
-	// The part of the name, chosen by the user when the resource was created
+	// The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
 	EndpointId pulumi.StringPtrInput
 	// (string) - Output only. The full resource path of the endpoint.
 	// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
@@ -468,13 +488,22 @@ type PostgresEndpointState struct {
 	Parent pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresEndpointProviderConfigPtrInput
-	// If true, update the endpoint if it already exists instead of returning an error
+	// If true, update the endpoint if it already exists instead of returning an error. The request's
+	// `spec.endpoint_type` must match the existing endpoint's type, and the other `spec` fields are applied
+	// as an update. Use this to configure the read-write endpoint that was created together with the branch
 	ReplaceExisting pulumi.BoolPtrInput
-	// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+	// The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+	// changed after creation. See `status` for the configuration that is currently in effect.
+	//
+	// Read the resource's current values from `status`, rather than `spec`.
+	// `spec` tracks field ownership for infrastructure-as-code tools and may omit
+	// unmanaged fields
 	Spec PostgresEndpointSpecPtrInput
-	// (EndpointStatus) - Current operational status of the compute endpoint
+	// (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+	// system, including the hostnames to connect to
 	Status PostgresEndpointStatusPtrInput
-	// (string) - System-generated unique ID for the endpoint
+	// (string) - A system-generated ID that identifies the endpoint. Unlike `name`, it is not derived from the
+	// user-chosen endpoint ID. The endpoint's connection hostnames are based on this ID
 	Uid pulumi.StringPtrInput
 	// (string) - A timestamp indicating when the compute endpoint was last updated
 	UpdateTime pulumi.StringPtrInput
@@ -491,31 +520,45 @@ func PostgresEndpointExists(ctx *pulumi.Context,
 }
 
 type postgresEndpointArgs struct {
-	// The part of the name, chosen by the user when the resource was created
+	// The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
 	EndpointId string `pulumi:"endpointId"`
 	// The branch containing this endpoint (API resource hierarchy).
 	// Format: projects/{project_id}/branches/{branch_id}
 	Parent string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *PostgresEndpointProviderConfig `pulumi:"providerConfig"`
-	// If true, update the endpoint if it already exists instead of returning an error
+	// If true, update the endpoint if it already exists instead of returning an error. The request's
+	// `spec.endpoint_type` must match the existing endpoint's type, and the other `spec` fields are applied
+	// as an update. Use this to configure the read-write endpoint that was created together with the branch
 	ReplaceExisting *bool `pulumi:"replaceExisting"`
-	// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+	// The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+	// changed after creation. See `status` for the configuration that is currently in effect.
+	//
+	// Read the resource's current values from `status`, rather than `spec`.
+	// `spec` tracks field ownership for infrastructure-as-code tools and may omit
+	// unmanaged fields
 	Spec *PostgresEndpointSpec `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a PostgresEndpoint resource.
 type PostgresEndpointArgs struct {
-	// The part of the name, chosen by the user when the resource was created
+	// The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
 	EndpointId pulumi.StringInput
 	// The branch containing this endpoint (API resource hierarchy).
 	// Format: projects/{project_id}/branches/{branch_id}
 	Parent pulumi.StringInput
 	// Configure the provider for management through account provider.
 	ProviderConfig PostgresEndpointProviderConfigPtrInput
-	// If true, update the endpoint if it already exists instead of returning an error
+	// If true, update the endpoint if it already exists instead of returning an error. The request's
+	// `spec.endpoint_type` must match the existing endpoint's type, and the other `spec` fields are applied
+	// as an update. Use this to configure the read-write endpoint that was created together with the branch
 	ReplaceExisting pulumi.BoolPtrInput
-	// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+	// The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+	// changed after creation. See `status` for the configuration that is currently in effect.
+	//
+	// Read the resource's current values from `status`, rather than `spec`.
+	// `spec` tracks field ownership for infrastructure-as-code tools and may omit
+	// unmanaged fields
 	Spec PostgresEndpointSpecPtrInput
 }
 
@@ -611,7 +654,7 @@ func (o PostgresEndpointOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresEndpoint) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The part of the name, chosen by the user when the resource was created
+// The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
 func (o PostgresEndpointOutput) EndpointId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresEndpoint) pulumi.StringOutput { return v.EndpointId }).(pulumi.StringOutput)
 }
@@ -633,22 +676,31 @@ func (o PostgresEndpointOutput) ProviderConfig() PostgresEndpointProviderConfigO
 	return o.ApplyT(func(v *PostgresEndpoint) PostgresEndpointProviderConfigOutput { return v.ProviderConfig }).(PostgresEndpointProviderConfigOutput)
 }
 
-// If true, update the endpoint if it already exists instead of returning an error
+// If true, update the endpoint if it already exists instead of returning an error. The request's
+// `spec.endpoint_type` must match the existing endpoint's type, and the other `spec` fields are applied
+// as an update. Use this to configure the read-write endpoint that was created together with the branch
 func (o PostgresEndpointOutput) ReplaceExisting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PostgresEndpoint) pulumi.BoolPtrOutput { return v.ReplaceExisting }).(pulumi.BoolPtrOutput)
 }
 
-// The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
-func (o PostgresEndpointOutput) Spec() PostgresEndpointSpecOutput {
-	return o.ApplyT(func(v *PostgresEndpoint) PostgresEndpointSpecOutput { return v.Spec }).(PostgresEndpointSpecOutput)
+// The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+// changed after creation. See `status` for the configuration that is currently in effect.
+//
+// Read the resource's current values from `status`, rather than `spec`.
+// `spec` tracks field ownership for infrastructure-as-code tools and may omit
+// unmanaged fields
+func (o PostgresEndpointOutput) Spec() PostgresEndpointSpecPtrOutput {
+	return o.ApplyT(func(v *PostgresEndpoint) PostgresEndpointSpecPtrOutput { return v.Spec }).(PostgresEndpointSpecPtrOutput)
 }
 
-// (EndpointStatus) - Current operational status of the compute endpoint
+// (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+// system, including the hostnames to connect to
 func (o PostgresEndpointOutput) Status() PostgresEndpointStatusOutput {
 	return o.ApplyT(func(v *PostgresEndpoint) PostgresEndpointStatusOutput { return v.Status }).(PostgresEndpointStatusOutput)
 }
 
-// (string) - System-generated unique ID for the endpoint
+// (string) - A system-generated ID that identifies the endpoint. Unlike `name`, it is not derived from the
+// user-chosen endpoint ID. The endpoint's connection hostnames are based on this ID
 func (o PostgresEndpointOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresEndpoint) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }

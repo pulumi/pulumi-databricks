@@ -60,8 +60,9 @@ type LookupAiGatewayModelServiceArgs struct {
 	// Resource name of the model service.
 	// Format: `model-services/{catalog}.{schema}.{model_service}`.
 	// Each `{...}` component is capped at 255 characters individually.
-	// Server-derived on Create from `parent` +
-	// `modelServiceId`; required and immutable on Update/Get/Delete
+	// The server derives the name on Create from
+	// `parent` and `modelServiceId`; it is required and immutable on Update,
+	// Get, and Delete
 	Name string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetAiGatewayModelServiceProviderConfig `pulumi:"providerConfig"`
@@ -77,18 +78,20 @@ type LookupAiGatewayModelServiceResult struct {
 	Config GetAiGatewayModelServiceConfig `pulumi:"config"`
 	// (string) - Time the model service was created
 	CreateTime string `pulumi:"createTime"`
-	// (string) - Creator identity
+	// (string) - Username of the user who created the model service
 	CreatedBy string `pulumi:"createdBy"`
-	// (string) - Owner of the model service
+	// (string) - Username or group name of the model service owner
 	EffectiveOwner string `pulumi:"effectiveOwner"`
 	// (string) - Optimistic concurrency token returned on every read. To make an Update or
 	// Delete conditional, pass the last-read value in that request's `etag`
 	// field. In REST responses, this value is a base64 string; URL-encode it when
 	// setting the `etag` query parameter
 	Etag string `pulumi:"etag"`
-	// (string) - Metastore hosting the model service
+	// (string) - Unique identifier of the metastore that contains the model service
 	MetastoreId string `pulumi:"metastoreId"`
-	// (string) - User-facing label for this destination, used in routing references
+	// (string) - Label that identifies this destination. Names are compared
+	// case-insensitively and must be unique within the primary destinations and
+	// within the fallback destinations
 	Name           string                                  `pulumi:"name"`
 	ProviderConfig *GetAiGatewayModelServiceProviderConfig `pulumi:"providerConfig"`
 	// (list of string) - API types supported across this service's destinations, such as
@@ -98,7 +101,7 @@ type LookupAiGatewayModelServiceResult struct {
 	SupportedApiTypes []string `pulumi:"supportedApiTypes"`
 	// (string) - Time the model service was last modified
 	UpdateTime string `pulumi:"updateTime"`
-	// (string) - Identity of the last updater
+	// (string) - Username of the user who last updated the model service
 	UpdatedBy string `pulumi:"updatedBy"`
 }
 
@@ -112,8 +115,9 @@ type LookupAiGatewayModelServiceOutputArgs struct {
 	// Resource name of the model service.
 	// Format: `model-services/{catalog}.{schema}.{model_service}`.
 	// Each `{...}` component is capped at 255 characters individually.
-	// Server-derived on Create from `parent` +
-	// `modelServiceId`; required and immutable on Update/Get/Delete
+	// The server derives the name on Create from
+	// `parent` and `modelServiceId`; it is required and immutable on Update,
+	// Get, and Delete
 	Name pulumi.StringInput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetAiGatewayModelServiceProviderConfigPtrInput `pulumi:"providerConfig"`
@@ -155,12 +159,12 @@ func (o LookupAiGatewayModelServiceResultOutput) CreateTime() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupAiGatewayModelServiceResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// (string) - Creator identity
+// (string) - Username of the user who created the model service
 func (o LookupAiGatewayModelServiceResultOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelServiceResult) string { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
-// (string) - Owner of the model service
+// (string) - Username or group name of the model service owner
 func (o LookupAiGatewayModelServiceResultOutput) EffectiveOwner() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelServiceResult) string { return v.EffectiveOwner }).(pulumi.StringOutput)
 }
@@ -173,12 +177,14 @@ func (o LookupAiGatewayModelServiceResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelServiceResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// (string) - Metastore hosting the model service
+// (string) - Unique identifier of the metastore that contains the model service
 func (o LookupAiGatewayModelServiceResultOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelServiceResult) string { return v.MetastoreId }).(pulumi.StringOutput)
 }
 
-// (string) - User-facing label for this destination, used in routing references
+// (string) - Label that identifies this destination. Names are compared
+// case-insensitively and must be unique within the primary destinations and
+// within the fallback destinations
 func (o LookupAiGatewayModelServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -202,7 +208,7 @@ func (o LookupAiGatewayModelServiceResultOutput) UpdateTime() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupAiGatewayModelServiceResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// (string) - Identity of the last updater
+// (string) - Username of the user who last updated the model service
 func (o LookupAiGatewayModelServiceResultOutput) UpdatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelServiceResult) string { return v.UpdatedBy }).(pulumi.StringOutput)
 }

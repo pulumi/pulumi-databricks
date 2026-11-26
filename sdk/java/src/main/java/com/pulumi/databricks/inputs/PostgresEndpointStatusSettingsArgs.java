@@ -17,14 +17,16 @@ public final class PostgresEndpointStatusSettingsArgs extends com.pulumi.resourc
     public static final PostgresEndpointStatusSettingsArgs Empty = new PostgresEndpointStatusSettingsArgs();
 
     /**
-     * A raw representation of Postgres settings
+     * Postgres server parameters to set on the compute endpoint, keyed by parameter name. Each value is
+     * given as a string
      * 
      */
     @Import(name="pgSettings")
     private @Nullable Output<Map<String,String>> pgSettings;
 
     /**
-     * @return A raw representation of Postgres settings
+     * @return Postgres server parameters to set on the compute endpoint, keyed by parameter name. Each value is
+     * given as a string
      * 
      */
     public Optional<Output<Map<String,String>>> pgSettings() {
@@ -56,7 +58,8 @@ public final class PostgresEndpointStatusSettingsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param pgSettings A raw representation of Postgres settings
+         * @param pgSettings Postgres server parameters to set on the compute endpoint, keyed by parameter name. Each value is
+         * given as a string
          * 
          * @return builder
          * 
@@ -67,7 +70,8 @@ public final class PostgresEndpointStatusSettingsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param pgSettings A raw representation of Postgres settings
+         * @param pgSettings Postgres server parameters to set on the compute endpoint, keyed by parameter name. Each value is
+         * given as a string
          * 
          * @return builder
          * 

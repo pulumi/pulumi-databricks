@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.databricks.outputs.VectorSearchIndexStatusFailedStatus;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -13,6 +14,8 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class VectorSearchIndexStatus {
+    private @Nullable String detailedState;
+    private @Nullable VectorSearchIndexStatusFailedStatus failedStatus;
     /**
      * @return Index API Url to be used to perform operations on the index
      * 
@@ -35,6 +38,12 @@ public final class VectorSearchIndexStatus {
     private @Nullable Boolean ready;
 
     private VectorSearchIndexStatus() {}
+    public Optional<String> detailedState() {
+        return Optional.ofNullable(this.detailedState);
+    }
+    public Optional<VectorSearchIndexStatusFailedStatus> failedStatus() {
+        return Optional.ofNullable(this.failedStatus);
+    }
     /**
      * @return Index API Url to be used to perform operations on the index
      * 
@@ -73,6 +82,8 @@ public final class VectorSearchIndexStatus {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String detailedState;
+        private @Nullable VectorSearchIndexStatusFailedStatus failedStatus;
         private @Nullable String indexUrl;
         private @Nullable Integer indexedRowCount;
         private @Nullable String message;
@@ -80,12 +91,26 @@ public final class VectorSearchIndexStatus {
         public Builder() {}
         public Builder(VectorSearchIndexStatus defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.detailedState = defaults.detailedState;
+    	      this.failedStatus = defaults.failedStatus;
     	      this.indexUrl = defaults.indexUrl;
     	      this.indexedRowCount = defaults.indexedRowCount;
     	      this.message = defaults.message;
     	      this.ready = defaults.ready;
         }
 
+        @CustomType.Setter
+        public Builder detailedState(@Nullable String detailedState) {
+
+            this.detailedState = detailedState;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder failedStatus(@Nullable VectorSearchIndexStatusFailedStatus failedStatus) {
+
+            this.failedStatus = failedStatus;
+            return this;
+        }
         @CustomType.Setter
         public Builder indexUrl(@Nullable String indexUrl) {
 
@@ -112,6 +137,8 @@ public final class VectorSearchIndexStatus {
         }
         public VectorSearchIndexStatus build() {
             final var _resultValue = new VectorSearchIndexStatus();
+            _resultValue.detailedState = detailedState;
+            _resultValue.failedStatus = failedStatus;
             _resultValue.indexUrl = indexUrl;
             _resultValue.indexedRowCount = indexedRowCount;
             _resultValue.message = message;

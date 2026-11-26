@@ -9,6 +9,7 @@ import com.pulumi.databricks.inputs.AppActiveDeploymentArgs;
 import com.pulumi.databricks.inputs.AppAppStatusArgs;
 import com.pulumi.databricks.inputs.AppComputeStatusArgs;
 import com.pulumi.databricks.inputs.AppDefaultGitSourceArgs;
+import com.pulumi.databricks.inputs.AppEffectiveResourceArgs;
 import com.pulumi.databricks.inputs.AppGitRepositoryArgs;
 import com.pulumi.databricks.inputs.AppGitSourceArgs;
 import com.pulumi.databricks.inputs.AppPendingDeploymentArgs;
@@ -73,29 +74,45 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.budgetPolicyId);
     }
 
+    /**
+     * Maximum number of app instances the app is configured to run. Must be set together with `computeMinInstances`. Omitting both disables horizontal scaling.
+     * 
+     */
     @Import(name="computeMaxInstances")
     private @Nullable Output<Integer> computeMaxInstances;
 
+    /**
+     * @return Maximum number of app instances the app is configured to run. Must be set together with `computeMinInstances`. Omitting both disables horizontal scaling.
+     * 
+     */
     public Optional<Output<Integer>> computeMaxInstances() {
         return Optional.ofNullable(this.computeMaxInstances);
     }
 
+    /**
+     * Minimum number of app instances the app is configured to run. Must be set together with `computeMaxInstances`.
+     * 
+     */
     @Import(name="computeMinInstances")
     private @Nullable Output<Integer> computeMinInstances;
 
+    /**
+     * @return Minimum number of app instances the app is configured to run. Must be set together with `computeMaxInstances`.
+     * 
+     */
     public Optional<Output<Integer>> computeMinInstances() {
         return Optional.ofNullable(this.computeMinInstances);
     }
 
     /**
-     * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
+     * A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`. If omitted, the app uses `MEDIUM`.
      * 
      */
     @Import(name="computeSize")
     private @Nullable Output<String> computeSize;
 
     /**
-     * @return A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
+     * @return A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`. If omitted, the app uses `MEDIUM`.
      * 
      */
     public Optional<Output<String>> computeSize() {
@@ -197,6 +214,13 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> effectiveBudgetPolicyId() {
         return Optional.ofNullable(this.effectiveBudgetPolicyId);
+    }
+
+    @Import(name="effectiveResources")
+    private @Nullable Output<List<AppEffectiveResourceArgs>> effectiveResources;
+
+    public Optional<Output<List<AppEffectiveResourceArgs>>> effectiveResources() {
+        return Optional.ofNullable(this.effectiveResources);
     }
 
     /**
@@ -438,6 +462,40 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The MD5 hash of the file in `thumbnailPath` that was last uploaded as the app&#39;s thumbnail.
+     * 
+     */
+    @Import(name="thumbnailMd5")
+    private @Nullable Output<String> thumbnailMd5;
+
+    /**
+     * @return The MD5 hash of the file in `thumbnailPath` that was last uploaded as the app&#39;s thumbnail.
+     * 
+     */
+    public Optional<Output<String>> thumbnailMd5() {
+        return Optional.ofNullable(this.thumbnailMd5);
+    }
+
+    /**
+     * Path to a local PNG or JPEG file of at most 250 KB to show as the app&#39;s thumbnail in the Apps UI. The provider checks the file the way the Apps UI does and rejects other files at plan time, or at apply time if the file doesn&#39;t exist yet when Pulumi plans, for example because another resource writes it. The image can&#39;t be read back from the service, so the provider keeps the file&#39;s MD5 hash in `thumbnailMd5` and uploads the file again when its content changes; changes made to the thumbnail outside of Pulumi aren&#39;t detected. Removing the argument deletes the thumbnail.
+     * 
+     * &gt; Updates apply the whole configuration: an argument removed from the configuration is cleared or reset to its default, even if it was set outside Pulumi. Enabling or disabling horizontal scaling (`computeMinInstances`/`computeMaxInstances`) cannot be combined with a change to `computeSize` or `gitRepository` in the same apply.
+     * 
+     */
+    @Import(name="thumbnailPath")
+    private @Nullable Output<String> thumbnailPath;
+
+    /**
+     * @return Path to a local PNG or JPEG file of at most 250 KB to show as the app&#39;s thumbnail in the Apps UI. The provider checks the file the way the Apps UI does and rejects other files at plan time, or at apply time if the file doesn&#39;t exist yet when Pulumi plans, for example because another resource writes it. The image can&#39;t be read back from the service, so the provider keeps the file&#39;s MD5 hash in `thumbnailMd5` and uploads the file again when its content changes; changes made to the thumbnail outside of Pulumi aren&#39;t detected. Removing the argument deletes the thumbnail.
+     * 
+     * &gt; Updates apply the whole configuration: an argument removed from the configuration is cleared or reset to its default, even if it was set outside Pulumi. Enabling or disabling horizontal scaling (`computeMinInstances`/`computeMaxInstances`) cannot be combined with a change to `computeSize` or `gitRepository` in the same apply.
+     * 
+     */
+    public Optional<Output<String>> thumbnailPath() {
+        return Optional.ofNullable(this.thumbnailPath);
+    }
+
+    /**
      * The URL of the thumbnail image for the app.
      * 
      */
@@ -543,6 +601,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         this.defaultSourceCodePath = $.defaultSourceCodePath;
         this.description = $.description;
         this.effectiveBudgetPolicyId = $.effectiveBudgetPolicyId;
+        this.effectiveResources = $.effectiveResources;
         this.effectiveUsagePolicyId = $.effectiveUsagePolicyId;
         this.effectiveUserApiScopes = $.effectiveUserApiScopes;
         this.forwardUserAccessToken = $.forwardUserAccessToken;
@@ -561,6 +620,8 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         this.sourceCodePath = $.sourceCodePath;
         this.space = $.space;
         this.telemetryExportDestinations = $.telemetryExportDestinations;
+        this.thumbnailMd5 = $.thumbnailMd5;
+        this.thumbnailPath = $.thumbnailPath;
         this.thumbnailUrl = $.thumbnailUrl;
         this.updateTime = $.updateTime;
         this.updater = $.updater;
@@ -650,26 +711,50 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
             return budgetPolicyId(Output.of(budgetPolicyId));
         }
 
+        /**
+         * @param computeMaxInstances Maximum number of app instances the app is configured to run. Must be set together with `computeMinInstances`. Omitting both disables horizontal scaling.
+         * 
+         * @return builder
+         * 
+         */
         public Builder computeMaxInstances(@Nullable Output<Integer> computeMaxInstances) {
             $.computeMaxInstances = computeMaxInstances;
             return this;
         }
 
+        /**
+         * @param computeMaxInstances Maximum number of app instances the app is configured to run. Must be set together with `computeMinInstances`. Omitting both disables horizontal scaling.
+         * 
+         * @return builder
+         * 
+         */
         public Builder computeMaxInstances(Integer computeMaxInstances) {
             return computeMaxInstances(Output.of(computeMaxInstances));
         }
 
+        /**
+         * @param computeMinInstances Minimum number of app instances the app is configured to run. Must be set together with `computeMaxInstances`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder computeMinInstances(@Nullable Output<Integer> computeMinInstances) {
             $.computeMinInstances = computeMinInstances;
             return this;
         }
 
+        /**
+         * @param computeMinInstances Minimum number of app instances the app is configured to run. Must be set together with `computeMaxInstances`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder computeMinInstances(Integer computeMinInstances) {
             return computeMinInstances(Output.of(computeMinInstances));
         }
 
         /**
-         * @param computeSize A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
+         * @param computeSize A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`. If omitted, the app uses `MEDIUM`.
          * 
          * @return builder
          * 
@@ -680,7 +765,7 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param computeSize A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
+         * @param computeSize A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`. If omitted, the app uses `MEDIUM`.
          * 
          * @return builder
          * 
@@ -822,6 +907,19 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder effectiveBudgetPolicyId(String effectiveBudgetPolicyId) {
             return effectiveBudgetPolicyId(Output.of(effectiveBudgetPolicyId));
+        }
+
+        public Builder effectiveResources(@Nullable Output<List<AppEffectiveResourceArgs>> effectiveResources) {
+            $.effectiveResources = effectiveResources;
+            return this;
+        }
+
+        public Builder effectiveResources(List<AppEffectiveResourceArgs> effectiveResources) {
+            return effectiveResources(Output.of(effectiveResources));
+        }
+
+        public Builder effectiveResources(AppEffectiveResourceArgs... effectiveResources) {
+            return effectiveResources(List.of(effectiveResources));
         }
 
         /**
@@ -1182,6 +1280,52 @@ public final class AppState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder telemetryExportDestinations(AppTelemetryExportDestinationArgs... telemetryExportDestinations) {
             return telemetryExportDestinations(List.of(telemetryExportDestinations));
+        }
+
+        /**
+         * @param thumbnailMd5 The MD5 hash of the file in `thumbnailPath` that was last uploaded as the app&#39;s thumbnail.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder thumbnailMd5(@Nullable Output<String> thumbnailMd5) {
+            $.thumbnailMd5 = thumbnailMd5;
+            return this;
+        }
+
+        /**
+         * @param thumbnailMd5 The MD5 hash of the file in `thumbnailPath` that was last uploaded as the app&#39;s thumbnail.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder thumbnailMd5(String thumbnailMd5) {
+            return thumbnailMd5(Output.of(thumbnailMd5));
+        }
+
+        /**
+         * @param thumbnailPath Path to a local PNG or JPEG file of at most 250 KB to show as the app&#39;s thumbnail in the Apps UI. The provider checks the file the way the Apps UI does and rejects other files at plan time, or at apply time if the file doesn&#39;t exist yet when Pulumi plans, for example because another resource writes it. The image can&#39;t be read back from the service, so the provider keeps the file&#39;s MD5 hash in `thumbnailMd5` and uploads the file again when its content changes; changes made to the thumbnail outside of Pulumi aren&#39;t detected. Removing the argument deletes the thumbnail.
+         * 
+         * &gt; Updates apply the whole configuration: an argument removed from the configuration is cleared or reset to its default, even if it was set outside Pulumi. Enabling or disabling horizontal scaling (`computeMinInstances`/`computeMaxInstances`) cannot be combined with a change to `computeSize` or `gitRepository` in the same apply.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder thumbnailPath(@Nullable Output<String> thumbnailPath) {
+            $.thumbnailPath = thumbnailPath;
+            return this;
+        }
+
+        /**
+         * @param thumbnailPath Path to a local PNG or JPEG file of at most 250 KB to show as the app&#39;s thumbnail in the Apps UI. The provider checks the file the way the Apps UI does and rejects other files at plan time, or at apply time if the file doesn&#39;t exist yet when Pulumi plans, for example because another resource writes it. The image can&#39;t be read back from the service, so the provider keeps the file&#39;s MD5 hash in `thumbnailMd5` and uploads the file again when its content changes; changes made to the thumbnail outside of Pulumi aren&#39;t detected. Removing the argument deletes the thumbnail.
+         * 
+         * &gt; Updates apply the whole configuration: an argument removed from the configuration is cleared or reset to its default, even if it was set outside Pulumi. Enabling or disabling horizontal scaling (`computeMinInstances`/`computeMaxInstances`) cannot be combined with a change to `computeSize` or `gitRepository` in the same apply.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder thumbnailPath(String thumbnailPath) {
+            return thumbnailPath(Output.of(thumbnailPath));
         }
 
         /**

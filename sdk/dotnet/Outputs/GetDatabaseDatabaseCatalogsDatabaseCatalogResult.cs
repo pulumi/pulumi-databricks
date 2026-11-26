@@ -14,7 +14,8 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetDatabaseDatabaseCatalogsDatabaseCatalogResult
     {
         /// <summary>
-        /// (boolean)
+        /// (boolean) - If true, the database named in DatabaseName is created in the instance when it does not already
+        /// exist, with the calling user as its owner. Defaults to false
         /// </summary>
         public readonly bool CreateDatabaseIfNotExists;
         /// <summary>
@@ -22,11 +23,13 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string DatabaseInstanceName;
         /// <summary>
-        /// (string) - The name of the database (in an instance) associated with the catalog
+        /// (string) - The name of the Postgres database in the instance that the catalog registers. The database must
+        /// already exist unless CreateDatabaseIfNotExists is true. The system databases postgres,
+        /// databricks_system, template0 and template1 cannot be registered
         /// </summary>
         public readonly string DatabaseName;
         /// <summary>
-        /// (string) - The name of the catalog in UC
+        /// (string) - The name of the catalog in Unity Catalog
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -34,7 +37,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetDatabaseDatabaseCatalogsDatabaseCatalogProviderConfigResult? ProviderConfig;
         /// <summary>
-        /// (string)
+        /// (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
         /// </summary>
         public readonly string Uid;
 

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  *
@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  *
  * A root branch named `production` is implicitly created for every project. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi represent the implicitly created branch in Pulumi state and immediately apply the provided configuration to it. Support for providing a custom `branchId` will be available in later versions.
  *
- * Pulumi uses this resource exclusively for managing updates. It does not control creation or deletion of the branch itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual branch is unaffected, because its lifecycle is currently controlled by the parent project. The only way to remove the actual branch is to delete the project it belongs to.
+ * For this implicitly created root Branch, Pulumi manages updates only. It does not control creation or deletion of the branch itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual branch is unaffected, because its lifecycle is currently controlled by the parent project. The only way to remove the actual branch is to delete the project it belongs to.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -73,7 +73,9 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * ### Branch with Expiration (TTL)
+ * ### <a id="branch-with-expiration-ttl"></a>Branch with an Absolute Expiration
+ *
+ * Prefer to use a fixed future `expireTime` instead of relative `ttl`. Reapplying a relative TTL recalculates the deadline from the update time and can extend the branch's lifetime. Replace the example timestamp with your intended deadline.
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -83,7 +85,7 @@ import * as utilities from "./utilities";
  *     branchId: "temp-feature-test",
  *     parent: _this.name,
  *     spec: {
- *         ttl: "604800s",
+ *         expireTime: "2030-01-01T00:00:00Z",
  *     },
  * });
  * ```
@@ -179,9 +181,13 @@ export class PostgresBranch extends pulumi.CustomResource {
      */
     declare public readonly replaceExisting: pulumi.Output<boolean | undefined>;
     /**
-     * The spec contains the branch configuration
+     * The spec contains the branch configuration.
+     *
+     * Read the resource's current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      */
-    declare public readonly spec: pulumi.Output<outputs.PostgresBranchSpec>;
+    declare public readonly spec: pulumi.Output<outputs.PostgresBranchSpec | undefined>;
     /**
      * (BranchStatus) - The current status of a Branch
      */
@@ -282,7 +288,11 @@ export interface PostgresBranchState {
      */
     replaceExisting?: pulumi.Input<boolean | undefined>;
     /**
-     * The spec contains the branch configuration
+     * The spec contains the branch configuration.
+     *
+     * Read the resource's current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      */
     spec?: pulumi.Input<inputs.PostgresBranchSpec | undefined>;
     /**
@@ -328,7 +338,11 @@ export interface PostgresBranchArgs {
      */
     replaceExisting?: pulumi.Input<boolean | undefined>;
     /**
-     * The spec contains the branch configuration
+     * The spec contains the branch configuration.
+     *
+     * Read the resource's current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      */
     spec?: pulumi.Input<inputs.PostgresBranchSpec | undefined>;
 }

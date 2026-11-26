@@ -36,7 +36,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetPostgresDatabasesDatabaseProviderConfigResult? ProviderConfig;
         /// <summary>
-        /// (DatabaseDatabaseSpec) - The desired state of the Database
+        /// (DatabaseDatabaseSpec) - The desired state of the Database.
         /// </summary>
         public readonly Outputs.GetPostgresDatabasesDatabaseSpecResult Spec;
         /// <summary>

@@ -59,6 +59,7 @@ func GetAlertsV2(ctx *pulumi.Context, args *GetAlertsV2Args, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getAlertsV2.
 type GetAlertsV2Args struct {
+	// Maximum number of alerts to return per page. Values above 100 are coerced to 100
 	PageSize *int `pulumi:"pageSize"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetAlertsV2ProviderConfig `pulumi:"providerConfig"`
@@ -78,6 +79,7 @@ func GetAlertsV2Output(ctx *pulumi.Context, args GetAlertsV2OutputArgs, opts ...
 
 // A collection of arguments for invoking getAlertsV2.
 type GetAlertsV2OutputArgs struct {
+	// Maximum number of alerts to return per page. Values above 100 are coerced to 100
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetAlertsV2ProviderConfigPtrInput `pulumi:"providerConfig"`

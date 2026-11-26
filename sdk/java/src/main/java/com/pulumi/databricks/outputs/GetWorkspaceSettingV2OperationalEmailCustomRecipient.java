@@ -12,14 +12,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkspaceSettingV2OperationalEmailCustomRecipient {
     /**
-     * @return (string)
+     * @return (string) - Email address that receives this workspace&#39;s operational emails in addition to the workspace
+     * admins. Use a distribution list address to reach several people. An empty string clears the
+     * additional recipient
      * 
      */
     private @Nullable String email;
 
     private GetWorkspaceSettingV2OperationalEmailCustomRecipient() {}
     /**
-     * @return (string)
+     * @return (string) - Email address that receives this workspace&#39;s operational emails in addition to the workspace
+     * admins. Use a distribution list address to reach several people. An empty string clears the
+     * additional recipient
      * 
      */
     public Optional<String> email() {

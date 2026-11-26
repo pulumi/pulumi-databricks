@@ -16,11 +16,11 @@ public final class JobScheduleSqlConditionArgs extends com.pulumi.resources.Reso
 
     public static final JobScheduleSqlConditionArgs Empty = new JobScheduleSqlConditionArgs();
 
-    @Import(name="sqlQueryId", required=true)
-    private Output<String> sqlQueryId;
+    @Import(name="sqlQueryId")
+    private @Nullable Output<String> sqlQueryId;
 
-    public Output<String> sqlQueryId() {
-        return this.sqlQueryId;
+    public Optional<Output<String>> sqlQueryId() {
+        return Optional.ofNullable(this.sqlQueryId);
     }
 
     @Import(name="triggerMode")
@@ -63,7 +63,7 @@ public final class JobScheduleSqlConditionArgs extends com.pulumi.resources.Reso
             $ = new JobScheduleSqlConditionArgs(Objects.requireNonNull(defaults));
         }
 
-        public Builder sqlQueryId(Output<String> sqlQueryId) {
+        public Builder sqlQueryId(@Nullable Output<String> sqlQueryId) {
             $.sqlQueryId = sqlQueryId;
             return this;
         }
@@ -91,9 +91,6 @@ public final class JobScheduleSqlConditionArgs extends com.pulumi.resources.Reso
         }
 
         public JobScheduleSqlConditionArgs build() {
-            if ($.sqlQueryId == null) {
-                throw new MissingRequiredPropertyException("JobScheduleSqlConditionArgs", "sqlQueryId");
-            }
             if ($.warehouseId == null) {
                 throw new MissingRequiredPropertyException("JobScheduleSqlConditionArgs", "warehouseId");
             }

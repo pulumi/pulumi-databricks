@@ -38,7 +38,7 @@ public final class DisasterRecoveryFailoverGroupArgs extends com.pulumi.resource
 
     /**
      * Initial primary region. Used only in Create requests to set the starting
-     * primary region. Not returned in responses
+     * primary region, and must be one of the regions in `regions`. Not returned in responses
      * 
      */
     @Import(name="initialPrimaryRegion", required=true)
@@ -46,7 +46,7 @@ public final class DisasterRecoveryFailoverGroupArgs extends com.pulumi.resource
 
     /**
      * @return Initial primary region. Used only in Create requests to set the starting
-     * primary region. Not returned in responses
+     * primary region, and must be one of the regions in `regions`. Not returned in responses
      * 
      */
     public Output<String> initialPrimaryRegion() {
@@ -69,14 +69,16 @@ public final class DisasterRecoveryFailoverGroupArgs extends com.pulumi.resource
     }
 
     /**
-     * List of all regions participating in this failover group
+     * The two cloud regions that participate in this failover group, the primary and the
+     * secondary. Each workspace set contains one workspace in each region
      * 
      */
     @Import(name="regions", required=true)
     private Output<List<String>> regions;
 
     /**
-     * @return List of all regions participating in this failover group
+     * @return The two cloud regions that participate in this failover group, the primary and the
+     * secondary. Each workspace set contains one workspace in each region
      * 
      */
     public Output<List<String>> regions() {
@@ -84,14 +86,16 @@ public final class DisasterRecoveryFailoverGroupArgs extends com.pulumi.resource
     }
 
     /**
-     * Unity Catalog replication configuration
+     * Unity Catalog replication configuration: the catalogs to replicate and the storage
+     * location mappings for their data. Omit it to replicate workspace assets only
      * 
      */
     @Import(name="unityCatalogAssets")
     private @Nullable Output<DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs> unityCatalogAssets;
 
     /**
-     * @return Unity Catalog replication configuration
+     * @return Unity Catalog replication configuration: the catalogs to replicate and the storage
+     * location mappings for their data. Omit it to replicate workspace assets only
      * 
      */
     public Optional<Output<DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs>> unityCatalogAssets() {
@@ -99,14 +103,16 @@ public final class DisasterRecoveryFailoverGroupArgs extends com.pulumi.resource
     }
 
     /**
-     * Workspace sets, each containing workspaces that replicate to each other
+     * Workspace sets, each containing workspaces that replicate to each other. A failover group
+     * currently supports exactly one workspace set
      * 
      */
     @Import(name="workspaceSets", required=true)
     private Output<List<DisasterRecoveryFailoverGroupWorkspaceSetArgs>> workspaceSets;
 
     /**
-     * @return Workspace sets, each containing workspaces that replicate to each other
+     * @return Workspace sets, each containing workspaces that replicate to each other. A failover group
+     * currently supports exactly one workspace set
      * 
      */
     public Output<List<DisasterRecoveryFailoverGroupWorkspaceSetArgs>> workspaceSets() {
@@ -167,7 +173,7 @@ public final class DisasterRecoveryFailoverGroupArgs extends com.pulumi.resource
 
         /**
          * @param initialPrimaryRegion Initial primary region. Used only in Create requests to set the starting
-         * primary region. Not returned in responses
+         * primary region, and must be one of the regions in `regions`. Not returned in responses
          * 
          * @return builder
          * 
@@ -179,7 +185,7 @@ public final class DisasterRecoveryFailoverGroupArgs extends com.pulumi.resource
 
         /**
          * @param initialPrimaryRegion Initial primary region. Used only in Create requests to set the starting
-         * primary region. Not returned in responses
+         * primary region, and must be one of the regions in `regions`. Not returned in responses
          * 
          * @return builder
          * 
@@ -210,7 +216,8 @@ public final class DisasterRecoveryFailoverGroupArgs extends com.pulumi.resource
         }
 
         /**
-         * @param regions List of all regions participating in this failover group
+         * @param regions The two cloud regions that participate in this failover group, the primary and the
+         * secondary. Each workspace set contains one workspace in each region
          * 
          * @return builder
          * 
@@ -221,7 +228,8 @@ public final class DisasterRecoveryFailoverGroupArgs extends com.pulumi.resource
         }
 
         /**
-         * @param regions List of all regions participating in this failover group
+         * @param regions The two cloud regions that participate in this failover group, the primary and the
+         * secondary. Each workspace set contains one workspace in each region
          * 
          * @return builder
          * 
@@ -231,7 +239,8 @@ public final class DisasterRecoveryFailoverGroupArgs extends com.pulumi.resource
         }
 
         /**
-         * @param regions List of all regions participating in this failover group
+         * @param regions The two cloud regions that participate in this failover group, the primary and the
+         * secondary. Each workspace set contains one workspace in each region
          * 
          * @return builder
          * 
@@ -241,7 +250,8 @@ public final class DisasterRecoveryFailoverGroupArgs extends com.pulumi.resource
         }
 
         /**
-         * @param unityCatalogAssets Unity Catalog replication configuration
+         * @param unityCatalogAssets Unity Catalog replication configuration: the catalogs to replicate and the storage
+         * location mappings for their data. Omit it to replicate workspace assets only
          * 
          * @return builder
          * 
@@ -252,7 +262,8 @@ public final class DisasterRecoveryFailoverGroupArgs extends com.pulumi.resource
         }
 
         /**
-         * @param unityCatalogAssets Unity Catalog replication configuration
+         * @param unityCatalogAssets Unity Catalog replication configuration: the catalogs to replicate and the storage
+         * location mappings for their data. Omit it to replicate workspace assets only
          * 
          * @return builder
          * 
@@ -262,7 +273,8 @@ public final class DisasterRecoveryFailoverGroupArgs extends com.pulumi.resource
         }
 
         /**
-         * @param workspaceSets Workspace sets, each containing workspaces that replicate to each other
+         * @param workspaceSets Workspace sets, each containing workspaces that replicate to each other. A failover group
+         * currently supports exactly one workspace set
          * 
          * @return builder
          * 
@@ -273,7 +285,8 @@ public final class DisasterRecoveryFailoverGroupArgs extends com.pulumi.resource
         }
 
         /**
-         * @param workspaceSets Workspace sets, each containing workspaces that replicate to each other
+         * @param workspaceSets Workspace sets, each containing workspaces that replicate to each other. A failover group
+         * currently supports exactly one workspace set
          * 
          * @return builder
          * 
@@ -283,7 +296,8 @@ public final class DisasterRecoveryFailoverGroupArgs extends com.pulumi.resource
         }
 
         /**
-         * @param workspaceSets Workspace sets, each containing workspaces that replicate to each other
+         * @param workspaceSets Workspace sets, each containing workspaces that replicate to each other. A failover group
+         * currently supports exactly one workspace set
          * 
          * @return builder
          * 

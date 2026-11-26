@@ -14,16 +14,32 @@ public final class AppSpaceResourceDatabaseArgs extends com.pulumi.resources.Res
 
     public static final AppSpaceResourceDatabaseArgs Empty = new AppSpaceResourceDatabaseArgs();
 
+    /**
+     * Name of the database within the instance
+     * 
+     */
     @Import(name="databaseName", required=true)
     private Output<String> databaseName;
 
+    /**
+     * @return Name of the database within the instance
+     * 
+     */
     public Output<String> databaseName() {
         return this.databaseName;
     }
 
+    /**
+     * Name of the Lakebase database instance
+     * 
+     */
     @Import(name="instanceName", required=true)
     private Output<String> instanceName;
 
+    /**
+     * @return Name of the Lakebase database instance
+     * 
+     */
     public Output<String> instanceName() {
         return this.instanceName;
     }
@@ -61,20 +77,44 @@ public final class AppSpaceResourceDatabaseArgs extends com.pulumi.resources.Res
             $ = new AppSpaceResourceDatabaseArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param databaseName Name of the database within the instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder databaseName(Output<String> databaseName) {
             $.databaseName = databaseName;
             return this;
         }
 
+        /**
+         * @param databaseName Name of the database within the instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder databaseName(String databaseName) {
             return databaseName(Output.of(databaseName));
         }
 
+        /**
+         * @param instanceName Name of the Lakebase database instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceName(Output<String> instanceName) {
             $.instanceName = instanceName;
             return this;
         }
 
+        /**
+         * @param instanceName Name of the Lakebase database instance
+         * 
+         * @return builder
+         * 
+         */
         public Builder instanceName(String instanceName) {
             return instanceName(Output.of(instanceName));
         }

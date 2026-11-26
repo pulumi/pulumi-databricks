@@ -12,12 +12,21 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AlertV2EvaluationThresholdValueArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Boolean threshold, for boolean columns
+        /// </summary>
         [Input("boolValue")]
         public Input<bool>? BoolValue { get; set; }
 
+        /// <summary>
+        /// Numeric threshold, for numeric columns
+        /// </summary>
         [Input("doubleValue")]
         public Input<double>? DoubleValue { get; set; }
 
+        /// <summary>
+        /// String threshold, for string or timestamp columns
+        /// </summary>
         [Input("stringValue")]
         public Input<string>? StringValue { get; set; }
 

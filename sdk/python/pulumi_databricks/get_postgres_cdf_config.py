@@ -28,7 +28,7 @@ class GetPostgresCdfConfigResult:
     """
     A collection of values returned by getPostgresCdfConfig.
     """
-    def __init__(__self__, catalog=None, cdf_config_id=None, create_time=None, name=None, postgres_schema=None, provider_config=None, schema=None):
+    def __init__(__self__, catalog=None, cdf_config_id=None, create_time=None, name=None, postgres_schema=None, provider_config=None, schema=None, service_principal=None):
         if catalog and not isinstance(catalog, str):
             raise TypeError("Expected argument 'catalog' to be a str")
         pulumi.set(__self__, "catalog", catalog)
@@ -50,6 +50,9 @@ class GetPostgresCdfConfigResult:
         if schema and not isinstance(schema, str):
             raise TypeError("Expected argument 'schema' to be a str")
         pulumi.set(__self__, "schema", schema)
+        if service_principal and not isinstance(service_principal, str):
+            raise TypeError("Expected argument 'service_principal' to be a str")
+        pulumi.set(__self__, "service_principal", service_principal)
 
     @_builtins.property
     @pulumi.getter
@@ -109,6 +112,17 @@ class GetPostgresCdfConfigResult:
         """
         return pulumi.get(self, "schema")
 
+    @_builtins.property
+    @pulumi.getter(name="servicePrincipal")
+    def service_principal(self) -> _builtins.str:
+        """
+        (string) - The service principal (application id) whose identity authorizes this
+        change data feed's ongoing writes to Unity Catalog. When unset, writes are
+        authorized as the creating identity. Changing it requires a new CdfConfig,
+        which writes to new Delta tables
+        """
+        return pulumi.get(self, "service_principal")
+
 
 class AwaitableGetPostgresCdfConfigResult(GetPostgresCdfConfigResult):
     # pylint: disable=using-constant-test
@@ -122,7 +136,8 @@ class AwaitableGetPostgresCdfConfigResult(GetPostgresCdfConfigResult):
             name=self.name,
             postgres_schema=self.postgres_schema,
             provider_config=self.provider_config,
-            schema=self.schema)
+            schema=self.schema,
+            service_principal=self.service_principal)
 
 
 def get_postgres_cdf_config(name: Optional[_builtins.str] = None,
@@ -165,7 +180,8 @@ def get_postgres_cdf_config(name: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         postgres_schema=pulumi.get(__ret__, 'postgres_schema'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
-        schema=pulumi.get(__ret__, 'schema'))
+        schema=pulumi.get(__ret__, 'schema'),
+        service_principal=pulumi.get(__ret__, 'service_principal'))
 def get_postgres_cdf_config_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                    provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresCdfConfigProviderConfigArgs', 'GetPostgresCdfConfigProviderConfigArgsDict', 'outputs.GetPostgresCdfConfigProviderConfigResult']]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresCdfConfigResult]:
@@ -205,4 +221,5 @@ def get_postgres_cdf_config_output(name: pulumi.Input[Optional[_builtins.str]] =
         name=pulumi.get(__response__, 'name'),
         postgres_schema=pulumi.get(__response__, 'postgres_schema'),
         provider_config=pulumi.get(__response__, 'provider_config'),
-        schema=pulumi.get(__response__, 'schema')))
+        schema=pulumi.get(__response__, 'schema'),
+        service_principal=pulumi.get(__response__, 'service_principal')))

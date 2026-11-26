@@ -17,14 +17,16 @@ public final class GetAccountIamServicePrincipalsV2PlainArgs extends com.pulumi.
     public static final GetAccountIamServicePrincipalsV2PlainArgs Empty = new GetAccountIamServicePrincipalsV2PlainArgs();
 
     /**
-     * Optional. Allows filtering service principals by application id or external id
+     * Filters service principals by `applicationId` or `externalId`, for example
+     * `applicationId eq &#34;&lt;application-id&gt;&#34;`. Put the value in quotes
      * 
      */
     @Import(name="filter")
     private @Nullable String filter;
 
     /**
-     * @return Optional. Allows filtering service principals by application id or external id
+     * @return Filters service principals by `applicationId` or `externalId`, for example
+     * `applicationId eq &#34;&lt;application-id&gt;&#34;`. Put the value in quotes
      * 
      */
     public Optional<String> filter() {
@@ -32,16 +34,16 @@ public final class GetAccountIamServicePrincipalsV2PlainArgs extends com.pulumi.
     }
 
     /**
-     * The maximum number of service principals to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * The maximum number of service principals to return, up to 1000. The default is 1000. A page
+     * can contain fewer service principals
      * 
      */
     @Import(name="pageSize")
     private @Nullable Integer pageSize;
 
     /**
-     * @return The maximum number of service principals to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * @return The maximum number of service principals to return, up to 1000. The default is 1000. A page
+     * can contain fewer service principals
      * 
      */
     public Optional<Integer> pageSize() {
@@ -49,16 +51,16 @@ public final class GetAccountIamServicePrincipalsV2PlainArgs extends com.pulumi.
     }
 
     /**
-     * The parent resource name of the account whose service principals to list.
-     * Format: accounts/{account_id}
+     * The resource name of the account to list service principals in, in the format
+     * `accounts/{account_id}`
      * 
      */
     @Import(name="parent", required=true)
     private String parent;
 
     /**
-     * @return The parent resource name of the account whose service principals to list.
-     * Format: accounts/{account_id}
+     * @return The resource name of the account to list service principals in, in the format
+     * `accounts/{account_id}`
      * 
      */
     public String parent() {
@@ -92,7 +94,8 @@ public final class GetAccountIamServicePrincipalsV2PlainArgs extends com.pulumi.
         }
 
         /**
-         * @param filter Optional. Allows filtering service principals by application id or external id
+         * @param filter Filters service principals by `applicationId` or `externalId`, for example
+         * `applicationId eq &#34;&lt;application-id&gt;&#34;`. Put the value in quotes
          * 
          * @return builder
          * 
@@ -103,8 +106,8 @@ public final class GetAccountIamServicePrincipalsV2PlainArgs extends com.pulumi.
         }
 
         /**
-         * @param pageSize The maximum number of service principals to return. The service may return fewer than this value.
-         * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+         * @param pageSize The maximum number of service principals to return, up to 1000. The default is 1000. A page
+         * can contain fewer service principals
          * 
          * @return builder
          * 
@@ -115,8 +118,8 @@ public final class GetAccountIamServicePrincipalsV2PlainArgs extends com.pulumi.
         }
 
         /**
-         * @param parent The parent resource name of the account whose service principals to list.
-         * Format: accounts/{account_id}
+         * @param parent The resource name of the account to list service principals in, in the format
+         * `accounts/{account_id}`
          * 
          * @return builder
          * 

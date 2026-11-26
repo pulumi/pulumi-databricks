@@ -103,7 +103,7 @@ class GetRfaAccessRequestDestinationsResult:
     @pulumi.getter(name="securableType")
     def securable_type(self) -> _builtins.str:
         """
-        (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+        (string) - The type of the securable, repeated from **securable** as a plain string
         """
         return pulumi.get(self, "securable_type")
 
@@ -147,9 +147,9 @@ def get_rfa_access_request_destinations(full_name: Optional[_builtins.str] = Non
     ```
 
 
-    :param _builtins.str full_name: The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+    :param _builtins.str full_name: The full name of the securable, repeated from **securable**
     :param Union['GetRfaAccessRequestDestinationsProviderConfigArgs', 'GetRfaAccessRequestDestinationsProviderConfigArgsDict', 'outputs.GetRfaAccessRequestDestinationsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
-    :param _builtins.str securable_type: The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+    :param _builtins.str securable_type: The type of the securable, repeated from **securable** as a plain string
     """
     __args__ = dict()
     __args__['fullName'] = full_name
@@ -190,9 +190,9 @@ def get_rfa_access_request_destinations_output(full_name: pulumi.Input[Optional[
     ```
 
 
-    :param _builtins.str full_name: The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+    :param _builtins.str full_name: The full name of the securable, repeated from **securable**
     :param Union['GetRfaAccessRequestDestinationsProviderConfigArgs', 'GetRfaAccessRequestDestinationsProviderConfigArgsDict', 'outputs.GetRfaAccessRequestDestinationsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
-    :param _builtins.str securable_type: The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+    :param _builtins.str securable_type: The type of the securable, repeated from **securable** as a plain string
     """
     __args__ = dict()
     __args__['fullName'] = full_name

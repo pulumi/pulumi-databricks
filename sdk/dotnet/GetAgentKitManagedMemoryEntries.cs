@@ -72,8 +72,9 @@ namespace Pulumi.Databricks
         public Inputs.GetAgentKitManagedMemoryEntriesProviderConfigArgs? ProviderConfig { get; set; }
 
         /// <summary>
-        /// Optional session identifier. When set, only entries with this exact `SessionId` are
-        /// returned. Omitted-session (cross-session) entries are not included. Ignored when path is set
+        /// Deprecated: the service will ignore this filter. Until then, when set, only entries with
+        /// this exact `SessionId` are returned, and omitted-session (cross-session) entries
+        /// are not included. Ignored when path is set
         /// </summary>
         [Input("sessionId")]
         public string? SessionId { get; set; }
@@ -125,8 +126,9 @@ namespace Pulumi.Databricks
         public Input<Inputs.GetAgentKitManagedMemoryEntriesProviderConfigInputArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// Optional session identifier. When set, only entries with this exact `SessionId` are
-        /// returned. Omitted-session (cross-session) entries are not included. Ignored when path is set
+        /// Deprecated: the service will ignore this filter. Until then, when set, only entries with
+        /// this exact `SessionId` are returned, and omitted-session (cross-session) entries
+        /// are not included. Ignored when path is set
         /// </summary>
         [Input("sessionId")]
         public Input<string>? SessionId { get; set; }
@@ -157,7 +159,8 @@ namespace Pulumi.Databricks
         public readonly string? PathPrefix;
         public readonly Outputs.GetAgentKitManagedMemoryEntriesProviderConfigResult? ProviderConfig;
         /// <summary>
-        /// (string) - Optional identifier for the session associated with this memory entry. When omitted, the
+        /// (string, deprecated) - Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+        /// ignore this field on writes and omit it from responses. Until then, an omitted value means the
         /// entry applies across the actor's sessions
         /// </summary>
         public readonly string? SessionId;

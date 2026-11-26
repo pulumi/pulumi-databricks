@@ -102,12 +102,13 @@ export class DataQualityMonitor extends pulumi.CustomResource {
     }
 
     /**
-     * Anomaly Detection Configuration, applicable to `schema` object types
+     * Anomaly detection settings. Required when `objectType` is `schema`. When reading a `table` monitor, this holds
+     * the settings of the parent schema's monitor if the schema has one
      */
     declare public readonly anomalyDetectionConfig: pulumi.Output<outputs.DataQualityMonitorAnomalyDetectionConfig | undefined>;
     /**
-     * Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-     * must be present
+     * Data profiling settings. Required when `objectType` is `table`. Exactly one of `inferenceLog`, `timeSeries`
+     * or `snapshot` must be set
      */
     declare public readonly dataProfilingConfig: pulumi.Output<outputs.DataQualityMonitorDataProfilingConfig | undefined>;
     /**
@@ -173,12 +174,13 @@ export class DataQualityMonitor extends pulumi.CustomResource {
  */
 export interface DataQualityMonitorState {
     /**
-     * Anomaly Detection Configuration, applicable to `schema` object types
+     * Anomaly detection settings. Required when `objectType` is `schema`. When reading a `table` monitor, this holds
+     * the settings of the parent schema's monitor if the schema has one
      */
     anomalyDetectionConfig?: pulumi.Input<inputs.DataQualityMonitorAnomalyDetectionConfig | undefined>;
     /**
-     * Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-     * must be present
+     * Data profiling settings. Required when `objectType` is `table`. Exactly one of `inferenceLog`, `timeSeries`
+     * or `snapshot` must be set
      */
     dataProfilingConfig?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfig | undefined>;
     /**
@@ -208,12 +210,13 @@ export interface DataQualityMonitorState {
  */
 export interface DataQualityMonitorArgs {
     /**
-     * Anomaly Detection Configuration, applicable to `schema` object types
+     * Anomaly detection settings. Required when `objectType` is `schema`. When reading a `table` monitor, this holds
+     * the settings of the parent schema's monitor if the schema has one
      */
     anomalyDetectionConfig?: pulumi.Input<inputs.DataQualityMonitorAnomalyDetectionConfig | undefined>;
     /**
-     * Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-     * must be present
+     * Data profiling settings. Required when `objectType` is `table`. Exactly one of `inferenceLog`, `timeSeries`
+     * or `snapshot` must be set
      */
     dataProfilingConfig?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfig | undefined>;
     /**

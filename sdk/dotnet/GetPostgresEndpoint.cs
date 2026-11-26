@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetPostgresEndpoint
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresEndpointResult>("databricks:index/getPostgresEndpoint:getPostgresEndpoint", args ?? new GetPostgresEndpointArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -80,7 +80,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresEndpointResult>("databricks:index/getPostgresEndpoint:getPostgresEndpoint", args ?? new GetPostgresEndpointInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -166,7 +166,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// (string) - Part of the resource name
+        /// (string) - The endpoint ID, which is the final segment of the endpoint's resource name
         /// </summary>
         public readonly string EndpointId;
         /// <summary>
@@ -181,15 +181,18 @@ namespace Pulumi.Databricks
         public readonly string Parent;
         public readonly Outputs.GetPostgresEndpointProviderConfigResult? ProviderConfig;
         /// <summary>
-        /// (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+        /// (EndpointSpec) - The desired configuration of the endpoint. Every field under `Spec` except `EndpointType` can be
+        /// changed after creation. See `Status` for the configuration that is currently in effect.
         /// </summary>
         public readonly Outputs.GetPostgresEndpointSpecResult Spec;
         /// <summary>
-        /// (EndpointStatus) - Current operational status of the compute endpoint
+        /// (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+        /// system, including the hostnames to connect to
         /// </summary>
         public readonly Outputs.GetPostgresEndpointStatusResult Status;
         /// <summary>
-        /// (string) - System-generated unique ID for the endpoint
+        /// (string) - A system-generated ID that identifies the endpoint. Unlike `Name`, it is not derived from the
+        /// user-chosen endpoint ID. The endpoint's connection hostnames are based on this ID
         /// </summary>
         public readonly string Uid;
         /// <summary>

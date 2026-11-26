@@ -12,8 +12,8 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class JobScheduleSqlConditionGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("sqlQueryId", required: true)]
-        public Input<string> SqlQueryId { get; set; } = null!;
+        [Input("sqlQueryId")]
+        public Input<string>? SqlQueryId { get; set; }
 
         [Input("triggerMode")]
         public Input<string>? TriggerMode { get; set; }

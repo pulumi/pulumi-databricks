@@ -58,7 +58,9 @@ func LookupDatabaseInstance(ctx *pulumi.Context, args *LookupDatabaseInstanceArg
 
 // A collection of arguments for invoking getDatabaseInstance.
 type LookupDatabaseInstanceArgs struct {
-	// The name of the instance. This is the unique identifier for the instance
+	// The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+	// characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+	// consecutive hyphens
 	Name string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetDatabaseInstanceProviderConfig `pulumi:"providerConfig"`
@@ -66,7 +68,8 @@ type LookupDatabaseInstanceArgs struct {
 
 // A collection of values returned by getDatabaseInstance.
 type LookupDatabaseInstanceResult struct {
-	// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+	// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8". Must be set when
+	// creating an instance
 	Capacity string `pulumi:"capacity"`
 	// (list of DatabaseInstanceRef) - The refs of the child instances. This is only available if the instance is
 	// parent instance
@@ -75,9 +78,10 @@ type LookupDatabaseInstanceResult struct {
 	CreationTime string `pulumi:"creationTime"`
 	// (string) - The email of the creator of the instance
 	Creator string `pulumi:"creator"`
-	// (list of CustomTag) - Custom tags associated with the instance. This field is only included on create and update responses
+	// (list of CustomTag) - Custom tags associated with the instance. This field is only included on create and update responses.
+	// An instance can have at most 10 tags; keys must be unique ignoring case
 	CustomTags []GetDatabaseInstanceCustomTag `pulumi:"customTags"`
-	// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+	// (string, deprecated) - Deprecated: this field always matches the value of capacity; read capacity instead.
 	// This is an output only field that contains the value computed from the input field combined with
 	// server side defaults. Use the field without the effective_ prefix to set the value
 	EffectiveCapacity string `pulumi:"effectiveCapacity"`
@@ -113,15 +117,17 @@ type LookupDatabaseInstanceResult struct {
 	EffectiveUsagePolicyId string `pulumi:"effectiveUsagePolicyId"`
 	// (boolean) - Whether to enable PG native password login on the instance. Defaults to false
 	EnablePgNativeLogin bool `pulumi:"enablePgNativeLogin"`
-	// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+	// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+	// nodeCount greater than 1
 	EnableReadableSecondaries bool `pulumi:"enableReadableSecondaries"`
 	// (string) - Name of the ref database instance
 	Name string `pulumi:"name"`
 	// (integer) - The number of nodes in the instance, composed of 1 primary and 0 or more secondaries. Defaults to
 	// 1 primary and 0 secondaries. This field is input only, see effectiveNodeCount for the output
 	NodeCount int `pulumi:"nodeCount"`
-	// (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
-	// child instance.
+	// (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is a
+	// child instance. A child instance inherits customTags and usagePolicyId from
+	// its parent and cannot set them.
 	// Input: For specifying the parent instance to create a child instance. Optional.
 	// Output: Only populated if provided as input to create a child instance
 	ParentInstanceRef GetDatabaseInstanceParentInstanceRef `pulumi:"parentInstanceRef"`
@@ -139,7 +145,9 @@ type LookupDatabaseInstanceResult struct {
 	RetentionWindowInDays int `pulumi:"retentionWindowInDays"`
 	// (string) - The current state of the instance. Possible values are: `AVAILABLE`, `DELETING`, `FAILING_OVER`, `STARTING`, `STOPPED`, `UPDATING`
 	State string `pulumi:"state"`
-	// (boolean) - Whether to stop the instance. An input only param, see effectiveStopped for the output
+	// (boolean) - Whether to stop the instance. An input only param, see effectiveStopped for the output. An
+	// instance cannot be created in the stopped state; set this field on update to stop or start
+	// the instance
 	Stopped bool `pulumi:"stopped"`
 	// (string) - Id of the ref database instance
 	Uid string `pulumi:"uid"`
@@ -154,7 +162,9 @@ func LookupDatabaseInstanceOutput(ctx *pulumi.Context, args LookupDatabaseInstan
 
 // A collection of arguments for invoking getDatabaseInstance.
 type LookupDatabaseInstanceOutputArgs struct {
-	// The name of the instance. This is the unique identifier for the instance
+	// The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+	// characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+	// consecutive hyphens
 	Name pulumi.StringInput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetDatabaseInstanceProviderConfigPtrInput `pulumi:"providerConfig"`
@@ -179,7 +189,8 @@ func (o LookupDatabaseInstanceResultOutput) ToLookupDatabaseInstanceResultOutput
 	return o
 }
 
-// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8". Must be set when
+// creating an instance
 func (o LookupDatabaseInstanceResultOutput) Capacity() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.Capacity }).(pulumi.StringOutput)
 }
@@ -200,12 +211,13 @@ func (o LookupDatabaseInstanceResultOutput) Creator() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.Creator }).(pulumi.StringOutput)
 }
 
-// (list of CustomTag) - Custom tags associated with the instance. This field is only included on create and update responses
+// (list of CustomTag) - Custom tags associated with the instance. This field is only included on create and update responses.
+// An instance can have at most 10 tags; keys must be unique ignoring case
 func (o LookupDatabaseInstanceResultOutput) CustomTags() GetDatabaseInstanceCustomTagArrayOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) []GetDatabaseInstanceCustomTag { return v.CustomTags }).(GetDatabaseInstanceCustomTagArrayOutput)
 }
 
-// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+// (string, deprecated) - Deprecated: this field always matches the value of capacity; read capacity instead.
 // This is an output only field that contains the value computed from the input field combined with
 // server side defaults. Use the field without the effective_ prefix to set the value
 func (o LookupDatabaseInstanceResultOutput) EffectiveCapacity() pulumi.StringOutput {
@@ -270,7 +282,8 @@ func (o LookupDatabaseInstanceResultOutput) EnablePgNativeLogin() pulumi.BoolOut
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) bool { return v.EnablePgNativeLogin }).(pulumi.BoolOutput)
 }
 
-// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+// nodeCount greater than 1
 func (o LookupDatabaseInstanceResultOutput) EnableReadableSecondaries() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) bool { return v.EnableReadableSecondaries }).(pulumi.BoolOutput)
 }
@@ -286,8 +299,9 @@ func (o LookupDatabaseInstanceResultOutput) NodeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) int { return v.NodeCount }).(pulumi.IntOutput)
 }
 
-// (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
-// child instance.
+// (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is a
+// child instance. A child instance inherits customTags and usagePolicyId from
+// its parent and cannot set them.
 // Input: For specifying the parent instance to create a child instance. Optional.
 // Output: Only populated if provided as input to create a child instance
 func (o LookupDatabaseInstanceResultOutput) ParentInstanceRef() GetDatabaseInstanceParentInstanceRefOutput {
@@ -326,7 +340,9 @@ func (o LookupDatabaseInstanceResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// (boolean) - Whether to stop the instance. An input only param, see effectiveStopped for the output
+// (boolean) - Whether to stop the instance. An input only param, see effectiveStopped for the output. An
+// instance cannot be created in the stopped state; set this field on update to stop or start
+// the instance
 func (o LookupDatabaseInstanceResultOutput) Stopped() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) bool { return v.Stopped }).(pulumi.BoolOutput)
 }

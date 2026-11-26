@@ -51,8 +51,9 @@ export interface GetAgentKitManagedMemoryEntriesArgs {
      */
     providerConfig?: inputs.GetAgentKitManagedMemoryEntriesProviderConfig;
     /**
-     * Optional session identifier. When set, only entries with this exact `sessionId` are
-     * returned. Omitted-session (cross-session) entries are not included. Ignored when path is set
+     * Deprecated: the service will ignore this filter. Until then, when set, only entries with
+     * this exact `sessionId` are returned, and omitted-session (cross-session) entries
+     * are not included. Ignored when path is set
      */
     sessionId?: string;
     /**
@@ -75,7 +76,8 @@ export interface GetAgentKitManagedMemoryEntriesResult {
     readonly pathPrefix?: string;
     readonly providerConfig?: outputs.GetAgentKitManagedMemoryEntriesProviderConfig;
     /**
-     * (string) - Optional identifier for the session associated with this memory entry. When omitted, the
+     * (string, deprecated) - Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+     * ignore this field on writes and omit it from responses. Until then, an omitted value means the
      * entry applies across the actor's sessions
      */
     readonly sessionId?: string;
@@ -126,8 +128,9 @@ export interface GetAgentKitManagedMemoryEntriesOutputArgs {
      */
     providerConfig?: pulumi.Input<inputs.GetAgentKitManagedMemoryEntriesProviderConfigArgs | undefined>;
     /**
-     * Optional session identifier. When set, only entries with this exact `sessionId` are
-     * returned. Omitted-session (cross-session) entries are not included. Ignored when path is set
+     * Deprecated: the service will ignore this filter. Until then, when set, only entries with
+     * this exact `sessionId` are returned, and omitted-session (cross-session) entries
+     * are not included. Ignored when path is set
      */
     sessionId?: pulumi.Input<string | undefined>;
     /**

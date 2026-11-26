@@ -16,7 +16,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetExternalMetadatasExternalMetadata {
     /**
-     * @return (list of string) - List of columns associated with the external metadata object
+     * @return (list of string) - Names of the columns of the object, used for column-level mappings in external lineage relationships.
+     * Column names must be unique within the list, and the combined size of all column names is limited
      * 
      */
     private List<String> columns;
@@ -31,17 +32,18 @@ public final class GetExternalMetadatasExternalMetadata {
      */
     private String createdBy;
     /**
-     * @return (string) - User-provided free-form text description
+     * @return (string) - User-provided free-form text description of the object. The description must not exceed 5000 characters
      * 
      */
     private String description;
     /**
-     * @return (string) - Type of entity within the external system
+     * @return (string) - Type of the object within the external system, such as a table, a report, or a dashboard. The value is
+     * free-form text of at most 255 characters
      * 
      */
     private String entityType;
     /**
-     * @return (string) - Unique identifier of the external metadata object
+     * @return (string) - Unique identifier of the external metadata object. The ID is a UUID that the system assigns on creation
      * 
      */
     private String id;
@@ -51,17 +53,22 @@ public final class GetExternalMetadatasExternalMetadata {
      */
     private String metastoreId;
     /**
-     * @return (string) - Name of the external metadata object
+     * @return (string) - Name of the external metadata object. The name is unique within the metastore, must follow the
+     * [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+     * and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+     * refer to the object by this name
      * 
      */
     private String name;
     /**
-     * @return (string) - Owner of the external metadata object
+     * @return (string) - Owner of the external metadata object. Defaults to the creator. To change the owner, send an update whose
+     * update mask includes `owner`
      * 
      */
     private String owner;
     /**
-     * @return (object) - A map of key-value properties attached to the external metadata object
+     * @return (object) - Key-value properties attached to the object. Keys and values must be non-empty, and the combined length
+     * of all keys and values must not exceed 5000 characters
      * 
      */
     private Map<String,String> properties;
@@ -71,7 +78,7 @@ public final class GetExternalMetadatasExternalMetadata {
      */
     private @Nullable GetExternalMetadatasExternalMetadataProviderConfig providerConfig;
     /**
-     * @return (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+     * @return (string) - Type of the external system that holds the object. Use `OTHER` for a system that is not in the list. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
      * 
      */
     private String systemType;
@@ -86,14 +93,16 @@ public final class GetExternalMetadatasExternalMetadata {
      */
     private String updatedBy;
     /**
-     * @return (string) - URL associated with the external metadata object
+     * @return (string) - URL of the object in the external system. When set, lineage graph viewers can follow it to the external
+     * asset. The URL must not exceed 2048 characters
      * 
      */
     private String url;
 
     private GetExternalMetadatasExternalMetadata() {}
     /**
-     * @return (list of string) - List of columns associated with the external metadata object
+     * @return (list of string) - Names of the columns of the object, used for column-level mappings in external lineage relationships.
+     * Column names must be unique within the list, and the combined size of all column names is limited
      * 
      */
     public List<String> columns() {
@@ -114,21 +123,22 @@ public final class GetExternalMetadatasExternalMetadata {
         return this.createdBy;
     }
     /**
-     * @return (string) - User-provided free-form text description
+     * @return (string) - User-provided free-form text description of the object. The description must not exceed 5000 characters
      * 
      */
     public String description() {
         return this.description;
     }
     /**
-     * @return (string) - Type of entity within the external system
+     * @return (string) - Type of the object within the external system, such as a table, a report, or a dashboard. The value is
+     * free-form text of at most 255 characters
      * 
      */
     public String entityType() {
         return this.entityType;
     }
     /**
-     * @return (string) - Unique identifier of the external metadata object
+     * @return (string) - Unique identifier of the external metadata object. The ID is a UUID that the system assigns on creation
      * 
      */
     public String id() {
@@ -142,21 +152,26 @@ public final class GetExternalMetadatasExternalMetadata {
         return this.metastoreId;
     }
     /**
-     * @return (string) - Name of the external metadata object
+     * @return (string) - Name of the external metadata object. The name is unique within the metastore, must follow the
+     * [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+     * and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+     * refer to the object by this name
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return (string) - Owner of the external metadata object
+     * @return (string) - Owner of the external metadata object. Defaults to the creator. To change the owner, send an update whose
+     * update mask includes `owner`
      * 
      */
     public String owner() {
         return this.owner;
     }
     /**
-     * @return (object) - A map of key-value properties attached to the external metadata object
+     * @return (object) - Key-value properties attached to the object. Keys and values must be non-empty, and the combined length
+     * of all keys and values must not exceed 5000 characters
      * 
      */
     public Map<String,String> properties() {
@@ -170,7 +185,7 @@ public final class GetExternalMetadatasExternalMetadata {
         return Optional.ofNullable(this.providerConfig);
     }
     /**
-     * @return (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+     * @return (string) - Type of the external system that holds the object. Use `OTHER` for a system that is not in the list. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
      * 
      */
     public String systemType() {
@@ -191,7 +206,8 @@ public final class GetExternalMetadatasExternalMetadata {
         return this.updatedBy;
     }
     /**
-     * @return (string) - URL associated with the external metadata object
+     * @return (string) - URL of the object in the external system. When set, lineage graph viewers can follow it to the external
+     * asset. The URL must not exceed 2048 characters
      * 
      */
     public String url() {

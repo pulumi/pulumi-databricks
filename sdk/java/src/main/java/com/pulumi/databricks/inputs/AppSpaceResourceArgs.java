@@ -26,9 +26,17 @@ public final class AppSpaceResourceArgs extends com.pulumi.resources.ResourceArg
 
     public static final AppSpaceResourceArgs Empty = new AppSpaceResourceArgs();
 
+    /**
+     * Another app in the workspace that this app is granted access to
+     * 
+     */
     @Import(name="app")
     private @Nullable Output<AppSpaceResourceAppArgs> app;
 
+    /**
+     * @return Another app in the workspace that this app is granted access to
+     * 
+     */
     public Optional<Output<AppSpaceResourceAppArgs>> app() {
         return Optional.ofNullable(this.app);
     }
@@ -55,23 +63,47 @@ public final class AppSpaceResourceArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.description);
     }
 
+    /**
+     * MLflow experiment the app is granted access to
+     * 
+     */
     @Import(name="experiment")
     private @Nullable Output<AppSpaceResourceExperimentArgs> experiment;
 
+    /**
+     * @return MLflow experiment the app is granted access to
+     * 
+     */
     public Optional<Output<AppSpaceResourceExperimentArgs>> experiment() {
         return Optional.ofNullable(this.experiment);
     }
 
+    /**
+     * Genie space the app is granted access to
+     * 
+     */
     @Import(name="genieSpace")
     private @Nullable Output<AppSpaceResourceGenieSpaceArgs> genieSpace;
 
+    /**
+     * @return Genie space the app is granted access to
+     * 
+     */
     public Optional<Output<AppSpaceResourceGenieSpaceArgs>> genieSpace() {
         return Optional.ofNullable(this.genieSpace);
     }
 
+    /**
+     * Lakeflow job the app is granted access to
+     * 
+     */
     @Import(name="job")
     private @Nullable Output<AppSpaceResourceJobArgs> job;
 
+    /**
+     * @return Lakeflow job the app is granted access to
+     * 
+     */
     public Optional<Output<AppSpaceResourceJobArgs>> job() {
         return Optional.ofNullable(this.job);
     }
@@ -93,37 +125,79 @@ public final class AppSpaceResourceArgs extends com.pulumi.resources.ResourceArg
         return this.name;
     }
 
+    /**
+     * Lakebase Autoscaling Postgres database the app is granted access to
+     * 
+     */
     @Import(name="postgres")
     private @Nullable Output<AppSpaceResourcePostgresArgs> postgres;
 
+    /**
+     * @return Lakebase Autoscaling Postgres database the app is granted access to
+     * 
+     */
     public Optional<Output<AppSpaceResourcePostgresArgs>> postgres() {
         return Optional.ofNullable(this.postgres);
     }
 
+    /**
+     * Secret the app is granted access to
+     * 
+     */
     @Import(name="secret")
     private @Nullable Output<AppSpaceResourceSecretArgs> secret;
 
+    /**
+     * @return Secret the app is granted access to
+     * 
+     */
     public Optional<Output<AppSpaceResourceSecretArgs>> secret() {
         return Optional.ofNullable(this.secret);
     }
 
+    /**
+     * Model serving endpoint the app is granted access to
+     * 
+     */
     @Import(name="servingEndpoint")
     private @Nullable Output<AppSpaceResourceServingEndpointArgs> servingEndpoint;
 
+    /**
+     * @return Model serving endpoint the app is granted access to
+     * 
+     */
     public Optional<Output<AppSpaceResourceServingEndpointArgs>> servingEndpoint() {
         return Optional.ofNullable(this.servingEndpoint);
     }
 
+    /**
+     * SQL warehouse the app is granted access to
+     * 
+     */
     @Import(name="sqlWarehouse")
     private @Nullable Output<AppSpaceResourceSqlWarehouseArgs> sqlWarehouse;
 
+    /**
+     * @return SQL warehouse the app is granted access to
+     * 
+     */
     public Optional<Output<AppSpaceResourceSqlWarehouseArgs>> sqlWarehouse() {
         return Optional.ofNullable(this.sqlWarehouse);
     }
 
+    /**
+     * Unity Catalog securable (volume, table, function, connection or model service) the app is
+     * granted a privilege on
+     * 
+     */
     @Import(name="ucSecurable")
     private @Nullable Output<AppSpaceResourceUcSecurableArgs> ucSecurable;
 
+    /**
+     * @return Unity Catalog securable (volume, table, function, connection or model service) the app is
+     * granted a privilege on
+     * 
+     */
     public Optional<Output<AppSpaceResourceUcSecurableArgs>> ucSecurable() {
         return Optional.ofNullable(this.ucSecurable);
     }
@@ -163,11 +237,23 @@ public final class AppSpaceResourceArgs extends com.pulumi.resources.ResourceArg
             $ = new AppSpaceResourceArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param app Another app in the workspace that this app is granted access to
+         * 
+         * @return builder
+         * 
+         */
         public Builder app(@Nullable Output<AppSpaceResourceAppArgs> app) {
             $.app = app;
             return this;
         }
 
+        /**
+         * @param app Another app in the workspace that this app is granted access to
+         * 
+         * @return builder
+         * 
+         */
         public Builder app(AppSpaceResourceAppArgs app) {
             return app(Output.of(app));
         }
@@ -202,29 +288,65 @@ public final class AppSpaceResourceArgs extends com.pulumi.resources.ResourceArg
             return description(Output.of(description));
         }
 
+        /**
+         * @param experiment MLflow experiment the app is granted access to
+         * 
+         * @return builder
+         * 
+         */
         public Builder experiment(@Nullable Output<AppSpaceResourceExperimentArgs> experiment) {
             $.experiment = experiment;
             return this;
         }
 
+        /**
+         * @param experiment MLflow experiment the app is granted access to
+         * 
+         * @return builder
+         * 
+         */
         public Builder experiment(AppSpaceResourceExperimentArgs experiment) {
             return experiment(Output.of(experiment));
         }
 
+        /**
+         * @param genieSpace Genie space the app is granted access to
+         * 
+         * @return builder
+         * 
+         */
         public Builder genieSpace(@Nullable Output<AppSpaceResourceGenieSpaceArgs> genieSpace) {
             $.genieSpace = genieSpace;
             return this;
         }
 
+        /**
+         * @param genieSpace Genie space the app is granted access to
+         * 
+         * @return builder
+         * 
+         */
         public Builder genieSpace(AppSpaceResourceGenieSpaceArgs genieSpace) {
             return genieSpace(Output.of(genieSpace));
         }
 
+        /**
+         * @param job Lakeflow job the app is granted access to
+         * 
+         * @return builder
+         * 
+         */
         public Builder job(@Nullable Output<AppSpaceResourceJobArgs> job) {
             $.job = job;
             return this;
         }
 
+        /**
+         * @param job Lakeflow job the app is granted access to
+         * 
+         * @return builder
+         * 
+         */
         public Builder job(AppSpaceResourceJobArgs job) {
             return job(Output.of(job));
         }
@@ -252,47 +374,109 @@ public final class AppSpaceResourceArgs extends com.pulumi.resources.ResourceArg
             return name(Output.of(name));
         }
 
+        /**
+         * @param postgres Lakebase Autoscaling Postgres database the app is granted access to
+         * 
+         * @return builder
+         * 
+         */
         public Builder postgres(@Nullable Output<AppSpaceResourcePostgresArgs> postgres) {
             $.postgres = postgres;
             return this;
         }
 
+        /**
+         * @param postgres Lakebase Autoscaling Postgres database the app is granted access to
+         * 
+         * @return builder
+         * 
+         */
         public Builder postgres(AppSpaceResourcePostgresArgs postgres) {
             return postgres(Output.of(postgres));
         }
 
+        /**
+         * @param secret Secret the app is granted access to
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(@Nullable Output<AppSpaceResourceSecretArgs> secret) {
             $.secret = secret;
             return this;
         }
 
+        /**
+         * @param secret Secret the app is granted access to
+         * 
+         * @return builder
+         * 
+         */
         public Builder secret(AppSpaceResourceSecretArgs secret) {
             return secret(Output.of(secret));
         }
 
+        /**
+         * @param servingEndpoint Model serving endpoint the app is granted access to
+         * 
+         * @return builder
+         * 
+         */
         public Builder servingEndpoint(@Nullable Output<AppSpaceResourceServingEndpointArgs> servingEndpoint) {
             $.servingEndpoint = servingEndpoint;
             return this;
         }
 
+        /**
+         * @param servingEndpoint Model serving endpoint the app is granted access to
+         * 
+         * @return builder
+         * 
+         */
         public Builder servingEndpoint(AppSpaceResourceServingEndpointArgs servingEndpoint) {
             return servingEndpoint(Output.of(servingEndpoint));
         }
 
+        /**
+         * @param sqlWarehouse SQL warehouse the app is granted access to
+         * 
+         * @return builder
+         * 
+         */
         public Builder sqlWarehouse(@Nullable Output<AppSpaceResourceSqlWarehouseArgs> sqlWarehouse) {
             $.sqlWarehouse = sqlWarehouse;
             return this;
         }
 
+        /**
+         * @param sqlWarehouse SQL warehouse the app is granted access to
+         * 
+         * @return builder
+         * 
+         */
         public Builder sqlWarehouse(AppSpaceResourceSqlWarehouseArgs sqlWarehouse) {
             return sqlWarehouse(Output.of(sqlWarehouse));
         }
 
+        /**
+         * @param ucSecurable Unity Catalog securable (volume, table, function, connection or model service) the app is
+         * granted a privilege on
+         * 
+         * @return builder
+         * 
+         */
         public Builder ucSecurable(@Nullable Output<AppSpaceResourceUcSecurableArgs> ucSecurable) {
             $.ucSecurable = ucSecurable;
             return this;
         }
 
+        /**
+         * @param ucSecurable Unity Catalog securable (volume, table, function, connection or model service) the app is
+         * granted a privilege on
+         * 
+         * @return builder
+         * 
+         */
         public Builder ucSecurable(AppSpaceResourceUcSecurableArgs ucSecurable) {
             return ucSecurable(Output.of(ucSecurable));
         }

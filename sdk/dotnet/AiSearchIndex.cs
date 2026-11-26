@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
     /// 
@@ -71,22 +71,25 @@ namespace Pulumi.Databricks
         public Output<string> Endpoint { get; private set; } = null!;
 
         /// <summary>
-        /// The user-supplied Unity Catalog table name for the Index, per AIP-133. The server
-        /// composes the full `Index.name` as `{parent}/indexes/{index_id}`. AIP-133 does not
-        /// list `IndexId` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-        /// wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
+        /// Three-level Unity Catalog table name for the new index, in the form `catalog.schema.name`.
+        /// The server composes the full `Index.name` as `{parent}/indexes/{index_id}` and rejects an
+        /// empty value
         /// </summary>
         [Output("indexId")]
         public Output<string> IndexId { get; private set; } = null!;
 
         /// <summary>
-        /// The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+        /// Subtype of the index. Use `HYBRID` for vector and hybrid search, or `FULL_TEXT` for
+        /// keyword-only search without embeddings; `VECTOR` is not a supported create value. Set on
+        /// create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
         /// </summary>
         [Output("indexSubtype")]
         public Output<string?> IndexSubtype { get; private set; } = null!;
 
         /// <summary>
-        /// Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+        /// Type of index. A `DELTA_SYNC` index is kept in sync with a source Delta table; a
+        /// `DIRECT_ACCESS` index holds rows that you write through UpsertData and RemoveData. Set on
+        /// create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
         /// </summary>
         [Output("indexType")]
         public Output<string> IndexType { get; private set; } = null!;
@@ -109,7 +112,9 @@ namespace Pulumi.Databricks
         public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
-        /// Primary key of the index. Set on create and immutable thereafter
+        /// Name of the column that uniquely identifies each row. It must exist in the source table
+        /// (Delta Sync) or in `SchemaJson` (Direct Access) and cannot be the embedding source or vector
+        /// column. Set on create and immutable thereafter
         /// </summary>
         [Output("primaryKey")]
         public Output<string> PrimaryKey { get; private set; } = null!;
@@ -185,22 +190,25 @@ namespace Pulumi.Databricks
         public Input<Inputs.AiSearchIndexDirectAccessIndexSpecArgs>? DirectAccessIndexSpec { get; set; }
 
         /// <summary>
-        /// The user-supplied Unity Catalog table name for the Index, per AIP-133. The server
-        /// composes the full `Index.name` as `{parent}/indexes/{index_id}`. AIP-133 does not
-        /// list `IndexId` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-        /// wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
+        /// Three-level Unity Catalog table name for the new index, in the form `catalog.schema.name`.
+        /// The server composes the full `Index.name` as `{parent}/indexes/{index_id}` and rejects an
+        /// empty value
         /// </summary>
         [Input("indexId")]
         public Input<string>? IndexId { get; set; }
 
         /// <summary>
-        /// The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+        /// Subtype of the index. Use `HYBRID` for vector and hybrid search, or `FULL_TEXT` for
+        /// keyword-only search without embeddings; `VECTOR` is not a supported create value. Set on
+        /// create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
         /// </summary>
         [Input("indexSubtype")]
         public Input<string>? IndexSubtype { get; set; }
 
         /// <summary>
-        /// Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+        /// Type of index. A `DELTA_SYNC` index is kept in sync with a source Delta table; a
+        /// `DIRECT_ACCESS` index holds rows that you write through UpsertData and RemoveData. Set on
+        /// create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
         /// </summary>
         [Input("indexType", required: true)]
         public Input<string> IndexType { get; set; } = null!;
@@ -213,7 +221,9 @@ namespace Pulumi.Databricks
         public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
-        /// Primary key of the index. Set on create and immutable thereafter
+        /// Name of the column that uniquely identifies each row. It must exist in the source table
+        /// (Delta Sync) or in `SchemaJson` (Direct Access) and cannot be the embedding source or vector
+        /// column. Set on create and immutable thereafter
         /// </summary>
         [Input("primaryKey", required: true)]
         public Input<string> PrimaryKey { get; set; } = null!;
@@ -258,22 +268,25 @@ namespace Pulumi.Databricks
         public Input<string>? Endpoint { get; set; }
 
         /// <summary>
-        /// The user-supplied Unity Catalog table name for the Index, per AIP-133. The server
-        /// composes the full `Index.name` as `{parent}/indexes/{index_id}`. AIP-133 does not
-        /// list `IndexId` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-        /// wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
+        /// Three-level Unity Catalog table name for the new index, in the form `catalog.schema.name`.
+        /// The server composes the full `Index.name` as `{parent}/indexes/{index_id}` and rejects an
+        /// empty value
         /// </summary>
         [Input("indexId")]
         public Input<string>? IndexId { get; set; }
 
         /// <summary>
-        /// The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+        /// Subtype of the index. Use `HYBRID` for vector and hybrid search, or `FULL_TEXT` for
+        /// keyword-only search without embeddings; `VECTOR` is not a supported create value. Set on
+        /// create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
         /// </summary>
         [Input("indexSubtype")]
         public Input<string>? IndexSubtype { get; set; }
 
         /// <summary>
-        /// Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+        /// Type of index. A `DELTA_SYNC` index is kept in sync with a source Delta table; a
+        /// `DIRECT_ACCESS` index holds rows that you write through UpsertData and RemoveData. Set on
+        /// create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
         /// </summary>
         [Input("indexType")]
         public Input<string>? IndexType { get; set; }
@@ -296,7 +309,9 @@ namespace Pulumi.Databricks
         public Input<string>? Parent { get; set; }
 
         /// <summary>
-        /// Primary key of the index. Set on create and immutable thereafter
+        /// Name of the column that uniquely identifies each row. It must exist in the source table
+        /// (Delta Sync) or in `SchemaJson` (Direct Access) and cannot be the embedding source or vector
+        /// column. Set on create and immutable thereafter
         /// </summary>
         [Input("primaryKey")]
         public Input<string>? PrimaryKey { get; set; }

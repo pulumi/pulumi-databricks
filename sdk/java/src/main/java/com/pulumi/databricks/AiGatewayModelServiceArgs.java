@@ -53,14 +53,18 @@ public final class AiGatewayModelServiceArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Name for the model service, e.g. &#34;myModelService&#34;
+     * Name of the model service within the parent schema. The name must not
+     * contain periods, spaces, forward slashes, percent signs, or control characters,
+     * and it is stored in lowercase
      * 
      */
     @Import(name="modelServiceId", required=true)
     private Output<String> modelServiceId;
 
     /**
-     * @return Name for the model service, e.g. &#34;myModelService&#34;
+     * @return Name of the model service within the parent schema. The name must not
+     * contain periods, spaces, forward slashes, percent signs, or control characters,
+     * and it is stored in lowercase
      * 
      */
     public Output<String> modelServiceId() {
@@ -176,7 +180,9 @@ public final class AiGatewayModelServiceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param modelServiceId Name for the model service, e.g. &#34;myModelService&#34;
+         * @param modelServiceId Name of the model service within the parent schema. The name must not
+         * contain periods, spaces, forward slashes, percent signs, or control characters,
+         * and it is stored in lowercase
          * 
          * @return builder
          * 
@@ -187,7 +193,9 @@ public final class AiGatewayModelServiceArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param modelServiceId Name for the model service, e.g. &#34;myModelService&#34;
+         * @param modelServiceId Name of the model service within the parent schema. The name must not
+         * contain periods, spaces, forward slashes, percent signs, or control characters,
+         * and it is stored in lowercase
          * 
          * @return builder
          * 

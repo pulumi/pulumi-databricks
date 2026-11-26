@@ -60,7 +60,8 @@ namespace Pulumi.Databricks
     public partial class ExternalMetadata : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of columns associated with the external metadata object
+        /// Names of the columns of the object, used for column-level mappings in external lineage relationships.
+        /// Column names must be unique within the list, and the combined size of all column names is limited
         /// </summary>
         [Output("columns")]
         public Output<ImmutableArray<string>> Columns { get; private set; } = null!;
@@ -78,13 +79,14 @@ namespace Pulumi.Databricks
         public Output<string> CreatedBy { get; private set; } = null!;
 
         /// <summary>
-        /// User-provided free-form text description
+        /// User-provided free-form text description of the object. The description must not exceed 5000 characters
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Type of entity within the external system
+        /// Type of the object within the external system, such as a table, a report, or a dashboard. The value is
+        /// free-form text of at most 255 characters
         /// </summary>
         [Output("entityType")]
         public Output<string> EntityType { get; private set; } = null!;
@@ -96,19 +98,24 @@ namespace Pulumi.Databricks
         public Output<string> MetastoreId { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the external metadata object
+        /// Name of the external metadata object. The name is unique within the metastore, must follow the
+        /// [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+        /// and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+        /// refer to the object by this name
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Owner of the external metadata object
+        /// Owner of the external metadata object. Defaults to the creator. To change the owner, send an update whose
+        /// update mask includes `Owner`
         /// </summary>
         [Output("owner")]
         public Output<string?> Owner { get; private set; } = null!;
 
         /// <summary>
-        /// A map of key-value properties attached to the external metadata object
+        /// Key-value properties attached to the object. Keys and values must be non-empty, and the combined length
+        /// of all keys and values must not exceed 5000 characters
         /// </summary>
         [Output("properties")]
         public Output<ImmutableDictionary<string, string>?> Properties { get; private set; } = null!;
@@ -120,7 +127,7 @@ namespace Pulumi.Databricks
         public Output<Outputs.ExternalMetadataProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        /// Type of the external system that holds the object. Use `OTHER` for a system that is not in the list. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         /// </summary>
         [Output("systemType")]
         public Output<string> SystemType { get; private set; } = null!;
@@ -138,7 +145,8 @@ namespace Pulumi.Databricks
         public Output<string> UpdatedBy { get; private set; } = null!;
 
         /// <summary>
-        /// URL associated with the external metadata object
+        /// URL of the object in the external system. When set, lineage graph viewers can follow it to the external
+        /// asset. The URL must not exceed 2048 characters
         /// </summary>
         [Output("url")]
         public Output<string?> Url { get; private set; } = null!;
@@ -193,7 +201,8 @@ namespace Pulumi.Databricks
         private InputList<string>? _columns;
 
         /// <summary>
-        /// List of columns associated with the external metadata object
+        /// Names of the columns of the object, used for column-level mappings in external lineage relationships.
+        /// Column names must be unique within the list, and the combined size of all column names is limited
         /// </summary>
         public InputList<string> Columns
         {
@@ -202,25 +211,30 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// User-provided free-form text description
+        /// User-provided free-form text description of the object. The description must not exceed 5000 characters
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Type of entity within the external system
+        /// Type of the object within the external system, such as a table, a report, or a dashboard. The value is
+        /// free-form text of at most 255 characters
         /// </summary>
         [Input("entityType", required: true)]
         public Input<string> EntityType { get; set; } = null!;
 
         /// <summary>
-        /// Name of the external metadata object
+        /// Name of the external metadata object. The name is unique within the metastore, must follow the
+        /// [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+        /// and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+        /// refer to the object by this name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Owner of the external metadata object
+        /// Owner of the external metadata object. Defaults to the creator. To change the owner, send an update whose
+        /// update mask includes `Owner`
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -229,7 +243,8 @@ namespace Pulumi.Databricks
         private InputMap<string>? _properties;
 
         /// <summary>
-        /// A map of key-value properties attached to the external metadata object
+        /// Key-value properties attached to the object. Keys and values must be non-empty, and the combined length
+        /// of all keys and values must not exceed 5000 characters
         /// </summary>
         public InputMap<string> Properties
         {
@@ -244,13 +259,14 @@ namespace Pulumi.Databricks
         public Input<Inputs.ExternalMetadataProviderConfigArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        /// Type of the external system that holds the object. Use `OTHER` for a system that is not in the list. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         /// </summary>
         [Input("systemType", required: true)]
         public Input<string> SystemType { get; set; } = null!;
 
         /// <summary>
-        /// URL associated with the external metadata object
+        /// URL of the object in the external system. When set, lineage graph viewers can follow it to the external
+        /// asset. The URL must not exceed 2048 characters
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }
@@ -267,7 +283,8 @@ namespace Pulumi.Databricks
         private InputList<string>? _columns;
 
         /// <summary>
-        /// List of columns associated with the external metadata object
+        /// Names of the columns of the object, used for column-level mappings in external lineage relationships.
+        /// Column names must be unique within the list, and the combined size of all column names is limited
         /// </summary>
         public InputList<string> Columns
         {
@@ -288,13 +305,14 @@ namespace Pulumi.Databricks
         public Input<string>? CreatedBy { get; set; }
 
         /// <summary>
-        /// User-provided free-form text description
+        /// User-provided free-form text description of the object. The description must not exceed 5000 characters
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Type of entity within the external system
+        /// Type of the object within the external system, such as a table, a report, or a dashboard. The value is
+        /// free-form text of at most 255 characters
         /// </summary>
         [Input("entityType")]
         public Input<string>? EntityType { get; set; }
@@ -306,13 +324,17 @@ namespace Pulumi.Databricks
         public Input<string>? MetastoreId { get; set; }
 
         /// <summary>
-        /// Name of the external metadata object
+        /// Name of the external metadata object. The name is unique within the metastore, must follow the
+        /// [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+        /// and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+        /// refer to the object by this name
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Owner of the external metadata object
+        /// Owner of the external metadata object. Defaults to the creator. To change the owner, send an update whose
+        /// update mask includes `Owner`
         /// </summary>
         [Input("owner")]
         public Input<string>? Owner { get; set; }
@@ -321,7 +343,8 @@ namespace Pulumi.Databricks
         private InputMap<string>? _properties;
 
         /// <summary>
-        /// A map of key-value properties attached to the external metadata object
+        /// Key-value properties attached to the object. Keys and values must be non-empty, and the combined length
+        /// of all keys and values must not exceed 5000 characters
         /// </summary>
         public InputMap<string> Properties
         {
@@ -336,7 +359,7 @@ namespace Pulumi.Databricks
         public Input<Inputs.ExternalMetadataProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        /// Type of the external system that holds the object. Use `OTHER` for a system that is not in the list. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         /// </summary>
         [Input("systemType")]
         public Input<string>? SystemType { get; set; }
@@ -354,7 +377,8 @@ namespace Pulumi.Databricks
         public Input<string>? UpdatedBy { get; set; }
 
         /// <summary>
-        /// URL associated with the external metadata object
+        /// URL of the object in the external system. When set, lineage graph viewers can follow it to the external
+        /// asset. The URL must not exceed 2048 characters
         /// </summary>
         [Input("url")]
         public Input<string>? Url { get; set; }

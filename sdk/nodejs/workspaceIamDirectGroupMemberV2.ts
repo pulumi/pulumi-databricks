@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
@@ -72,40 +72,39 @@ export class WorkspaceIamDirectGroupMemberV2 extends pulumi.CustomResource {
     }
 
     /**
-     * (string) - Display name of the principal
+     * (string) - The member's display name
      */
     declare public /*out*/ readonly displayName: pulumi.Output<string>;
     /**
-     * (string) - The external ID of the principal in the customer's IdP
+     * (string) - The ID of the member in your identity provider (IdP)
      */
     declare public /*out*/ readonly externalId: pulumi.Output<string>;
     /**
-     * (integer) - The internal ID of the group this member belongs to
+     * (integer) - The Databricks ID of the group
      */
     declare public readonly groupId: pulumi.Output<number>;
     /**
-     * (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+     * (string) - Where the membership comes from. Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
      */
     declare public /*out*/ readonly membershipSource: pulumi.Output<string>;
     /**
-     * (string) - The resource name of the group membership. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+     * (string) - The resource name of the membership, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+     * - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
-     * The resource name of the group that contains the membership. The format depends on the API
-     * that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      */
     declare public readonly parent: pulumi.Output<string>;
     /**
-     * Internal ID of the principal in Databricks
+     * The Databricks ID of the member
      */
     declare public readonly principalId: pulumi.Output<string>;
     /**
-     * (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * (string) - Whether the member is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      */
     declare public /*out*/ readonly principalType: pulumi.Output<string>;
     /**
@@ -163,40 +162,39 @@ export class WorkspaceIamDirectGroupMemberV2 extends pulumi.CustomResource {
  */
 export interface WorkspaceIamDirectGroupMemberV2State {
     /**
-     * (string) - Display name of the principal
+     * (string) - The member's display name
      */
     displayName?: pulumi.Input<string | undefined>;
     /**
-     * (string) - The external ID of the principal in the customer's IdP
+     * (string) - The ID of the member in your identity provider (IdP)
      */
     externalId?: pulumi.Input<string | undefined>;
     /**
-     * (integer) - The internal ID of the group this member belongs to
+     * (integer) - The Databricks ID of the group
      */
     groupId?: pulumi.Input<number | undefined>;
     /**
-     * (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+     * (string) - Where the membership comes from. Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
      */
     membershipSource?: pulumi.Input<string | undefined>;
     /**
-     * (string) - The resource name of the group membership. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+     * (string) - The resource name of the membership, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+     * - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The resource name of the group that contains the membership. The format depends on the API
-     * that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      */
     parent?: pulumi.Input<string | undefined>;
     /**
-     * Internal ID of the principal in Databricks
+     * The Databricks ID of the member
      */
     principalId?: pulumi.Input<string | undefined>;
     /**
-     * (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * (string) - Whether the member is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      */
     principalType?: pulumi.Input<string | undefined>;
     /**
@@ -210,18 +208,17 @@ export interface WorkspaceIamDirectGroupMemberV2State {
  */
 export interface WorkspaceIamDirectGroupMemberV2Args {
     /**
-     * (integer) - The internal ID of the group this member belongs to
+     * (integer) - The Databricks ID of the group
      */
     groupId?: pulumi.Input<number | undefined>;
     /**
-     * The resource name of the group that contains the membership. The format depends on the API
-     * that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      */
     parent: pulumi.Input<string>;
     /**
-     * Internal ID of the principal in Databricks
+     * The Databricks ID of the member
      */
     principalId: pulumi.Input<string>;
     /**

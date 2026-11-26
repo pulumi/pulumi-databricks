@@ -55,11 +55,9 @@ import javax.annotation.Nullable;
  *         var example = new SecretUc("example", SecretUcArgs.builder()
  *             .catalogName("my_catalog")
  *             .schemaName("my_schema")
- *             .secret(Arrays.asList(Map.ofEntries(
- *                 Map.entry("name", "my_secret"),
- *                 Map.entry("value", "secret_value"),
- *                 Map.entry("comment", "My secret for external service authentication")
- *             )))
+ *             .name("my_secret")
+ *             .value("secret_value")
+ *             .comment("My secret for external service authentication")
  *             .build());
  * 
  *     }

@@ -16,6 +16,34 @@ public final class VectorSearchEndpointScalingInfoArgs extends com.pulumi.resour
 
     public static final VectorSearchEndpointScalingInfoArgs Empty = new VectorSearchEndpointScalingInfoArgs();
 
+    @Import(name="delayedReason")
+    private @Nullable Output<String> delayedReason;
+
+    public Optional<Output<String>> delayedReason() {
+        return Optional.ofNullable(this.delayedReason);
+    }
+
+    @Import(name="estimatedCompletionTimestamp")
+    private @Nullable Output<Integer> estimatedCompletionTimestamp;
+
+    public Optional<Output<Integer>> estimatedCompletionTimestamp() {
+        return Optional.ofNullable(this.estimatedCompletionTimestamp);
+    }
+
+    @Import(name="indexInitializationPercentage")
+    private @Nullable Output<Integer> indexInitializationPercentage;
+
+    public Optional<Output<Integer>> indexInitializationPercentage() {
+        return Optional.ofNullable(this.indexInitializationPercentage);
+    }
+
+    @Import(name="phase")
+    private @Nullable Output<String> phase;
+
+    public Optional<Output<String>> phase() {
+        return Optional.ofNullable(this.phase);
+    }
+
     @Import(name="requestedTargetQps")
     private @Nullable Output<Integer> requestedTargetQps;
 
@@ -38,11 +66,23 @@ public final class VectorSearchEndpointScalingInfoArgs extends com.pulumi.resour
         return Optional.ofNullable(this.state);
     }
 
+    @Import(name="targetQpsChangeAllowedAfterTimestamp")
+    private @Nullable Output<Integer> targetQpsChangeAllowedAfterTimestamp;
+
+    public Optional<Output<Integer>> targetQpsChangeAllowedAfterTimestamp() {
+        return Optional.ofNullable(this.targetQpsChangeAllowedAfterTimestamp);
+    }
+
     private VectorSearchEndpointScalingInfoArgs() {}
 
     private VectorSearchEndpointScalingInfoArgs(VectorSearchEndpointScalingInfoArgs $) {
+        this.delayedReason = $.delayedReason;
+        this.estimatedCompletionTimestamp = $.estimatedCompletionTimestamp;
+        this.indexInitializationPercentage = $.indexInitializationPercentage;
+        this.phase = $.phase;
         this.requestedTargetQps = $.requestedTargetQps;
         this.state = $.state;
+        this.targetQpsChangeAllowedAfterTimestamp = $.targetQpsChangeAllowedAfterTimestamp;
     }
 
     public static Builder builder() {
@@ -61,6 +101,42 @@ public final class VectorSearchEndpointScalingInfoArgs extends com.pulumi.resour
 
         public Builder(VectorSearchEndpointScalingInfoArgs defaults) {
             $ = new VectorSearchEndpointScalingInfoArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder delayedReason(@Nullable Output<String> delayedReason) {
+            $.delayedReason = delayedReason;
+            return this;
+        }
+
+        public Builder delayedReason(String delayedReason) {
+            return delayedReason(Output.of(delayedReason));
+        }
+
+        public Builder estimatedCompletionTimestamp(@Nullable Output<Integer> estimatedCompletionTimestamp) {
+            $.estimatedCompletionTimestamp = estimatedCompletionTimestamp;
+            return this;
+        }
+
+        public Builder estimatedCompletionTimestamp(Integer estimatedCompletionTimestamp) {
+            return estimatedCompletionTimestamp(Output.of(estimatedCompletionTimestamp));
+        }
+
+        public Builder indexInitializationPercentage(@Nullable Output<Integer> indexInitializationPercentage) {
+            $.indexInitializationPercentage = indexInitializationPercentage;
+            return this;
+        }
+
+        public Builder indexInitializationPercentage(Integer indexInitializationPercentage) {
+            return indexInitializationPercentage(Output.of(indexInitializationPercentage));
+        }
+
+        public Builder phase(@Nullable Output<String> phase) {
+            $.phase = phase;
+            return this;
+        }
+
+        public Builder phase(String phase) {
+            return phase(Output.of(phase));
         }
 
         public Builder requestedTargetQps(@Nullable Output<Integer> requestedTargetQps) {
@@ -91,6 +167,15 @@ public final class VectorSearchEndpointScalingInfoArgs extends com.pulumi.resour
          */
         public Builder state(String state) {
             return state(Output.of(state));
+        }
+
+        public Builder targetQpsChangeAllowedAfterTimestamp(@Nullable Output<Integer> targetQpsChangeAllowedAfterTimestamp) {
+            $.targetQpsChangeAllowedAfterTimestamp = targetQpsChangeAllowedAfterTimestamp;
+            return this;
+        }
+
+        public Builder targetQpsChangeAllowedAfterTimestamp(Integer targetQpsChangeAllowedAfterTimestamp) {
+            return targetQpsChangeAllowedAfterTimestamp(Output.of(targetQpsChangeAllowedAfterTimestamp));
         }
 
         public VectorSearchEndpointScalingInfoArgs build() {

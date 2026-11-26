@@ -12,18 +12,39 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether the workspace can change the enabled state. Databricks computes this value: it is false
+        /// when the compliance security profile forces the feature on or when the workspace lacks the
+        /// Enhanced Security and Compliance entitlement. A value sent in an update request has no effect
+        /// </summary>
         [Input("canToggle")]
         public Input<bool>? CanToggle { get; set; }
 
+        /// <summary>
+        /// Whether automatic cluster update is enabled for the workspace. The effective value is always
+        /// true while the compliance security profile is enabled on the workspace
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// Why the feature is forced on or unavailable. Databricks sets these details for information only;
+        /// they do not determine whether the feature is enabled
+        /// </summary>
         [Input("enablementDetails")]
         public Input<Inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetailsGetArgs>? EnablementDetails { get; set; }
 
+        /// <summary>
+        /// When the maintenance window runs. When unset, it defaults to the first Sunday of every month at
+        /// 01:00 UTC
+        /// </summary>
         [Input("maintenanceWindow")]
         public Input<Inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowGetArgs>? MaintenanceWindow { get; set; }
 
+        /// <summary>
+        /// Whether compute resources restart during every maintenance window even when no update is
+        /// available. When false, they restart only when an update is available
+        /// </summary>
         [Input("restartEvenIfNoUpdatesAvailable")]
         public Input<bool>? RestartEvenIfNoUpdatesAvailable { get; set; }
 

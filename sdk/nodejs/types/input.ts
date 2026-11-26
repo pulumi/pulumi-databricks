@@ -85,7 +85,13 @@ export interface AccountFederationPolicyOidcPolicy {
 }
 
 export interface AccountIamUserV2FullName {
+    /**
+     * The user's family (last) name
+     */
     familyName?: pulumi.Input<string | undefined>;
+    /**
+     * The user's given (first) name
+     */
     givenName?: pulumi.Input<string | undefined>;
 }
 
@@ -1576,24 +1582,57 @@ export interface AccountSettingUserPreferenceV2StringVal {
 
 export interface AccountSettingV2AibiDashboardEmbeddingAccessPolicy {
     /**
-     * Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * Where AI/BI dashboards can be embedded: in any domain (ALLOW_ALL_DOMAINS), only in the approved
+     * domains configured for the workspace (ALLOW_APPROVED_DOMAINS), or nowhere (DENY_ALL_DOMAINS).
+     * Defaults to ALLOW_APPROVED_DOMAINS. Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      */
     accessPolicyType: pulumi.Input<string>;
 }
 
 export interface AccountSettingV2AibiDashboardEmbeddingApprovedDomains {
+    /**
+     * Domains allowed to host embedded AI/BI dashboards. A leading wildcard allows every subdomain of a
+     * domain. The list applies, and can only be changed, while the embedding access policy is
+     * ALLOW_APPROVED_DOMAINS
+     */
     approvedDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AccountSettingV2AllowedAppsUserApiScopes {
+    /**
+     * OAuth scopes that app developers can request when an app acts on behalf of a user. A list with
+     * the single entry * allows every supported scope and cannot be combined with other scopes. An
+     * empty list disables user authorization for apps
+     */
     allowedScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AccountSettingV2AutomaticClusterUpdateWorkspace {
+    /**
+     * Whether the workspace can change the enabled state. Databricks computes this value: it is false
+     * when the compliance security profile forces the feature on or when the workspace lacks the
+     * Enhanced Security and Compliance entitlement. A value sent in an update request has no effect
+     */
     canToggle?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether automatic cluster update is enabled for the workspace. The effective value is always
+     * true while the compliance security profile is enabled on the workspace
+     */
     enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Why the feature is forced on or unavailable. Databricks sets these details for information only;
+     * they do not determine whether the feature is enabled
+     */
     enablementDetails?: pulumi.Input<inputs.AccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails | undefined>;
+    /**
+     * When the maintenance window runs. When unset, it defaults to the first Sunday of every month at
+     * 01:00 UTC
+     */
     maintenanceWindow?: pulumi.Input<inputs.AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow | undefined>;
+    /**
+     * Whether compute resources restart during every maintenance window even when no update is
+     * available. When false, they restart only when an update is available
+     */
     restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean | undefined>;
 }
 
@@ -1603,7 +1642,8 @@ export interface AccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetail
      */
     forcedForComplianceMode?: pulumi.Input<boolean | undefined>;
     /**
-     * The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     * The feature is unavailable because the workspace does not have the Enhanced Security and
+     * Compliance entitlement
      */
     unavailableForDisabledEntitlement?: pulumi.Input<boolean | undefined>;
     /**
@@ -1613,23 +1653,36 @@ export interface AccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetail
 }
 
 export interface AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    /**
+     * Schedule anchored to a day of the week, either every week or on given weeks of the month
+     */
     weekDayBasedSchedule?: pulumi.Input<inputs.AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule | undefined>;
 }
 
 export interface AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * Day of the week on which the maintenance window starts. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
     dayOfWeek?: pulumi.Input<string | undefined>;
     /**
-     * Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * How often the maintenance window occurs: every week, or only on the listed occurrences of
+     * the day of the week within each month. Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
     frequency?: pulumi.Input<string | undefined>;
+    /**
+     * Time of day, in UTC, at which the maintenance window starts
+     */
     windowStartTime?: pulumi.Input<inputs.AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime | undefined>;
 }
 
 export interface AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    /**
+     * Hour of the day on a 24-hour clock
+     */
     hours?: pulumi.Input<number | undefined>;
+    /**
+     * Minute of the hour
+     */
     minutes?: pulumi.Input<number | undefined>;
 }
 
@@ -1646,24 +1699,57 @@ export interface AccountSettingV2CollaborationPlatformConnectivity {
 
 export interface AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
     /**
-     * Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * Where AI/BI dashboards can be embedded: in any domain (ALLOW_ALL_DOMAINS), only in the approved
+     * domains configured for the workspace (ALLOW_APPROVED_DOMAINS), or nowhere (DENY_ALL_DOMAINS).
+     * Defaults to ALLOW_APPROVED_DOMAINS. Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      */
     accessPolicyType: pulumi.Input<string>;
 }
 
 export interface AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains {
+    /**
+     * Domains allowed to host embedded AI/BI dashboards. A leading wildcard allows every subdomain of a
+     * domain. The list applies, and can only be changed, while the embedding access policy is
+     * ALLOW_APPROVED_DOMAINS
+     */
     approvedDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AccountSettingV2EffectiveAllowedAppsUserApiScopes {
+    /**
+     * OAuth scopes that app developers can request when an app acts on behalf of a user. A list with
+     * the single entry * allows every supported scope and cannot be combined with other scopes. An
+     * empty list disables user authorization for apps
+     */
     allowedScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspace {
+    /**
+     * Whether the workspace can change the enabled state. Databricks computes this value: it is false
+     * when the compliance security profile forces the feature on or when the workspace lacks the
+     * Enhanced Security and Compliance entitlement. A value sent in an update request has no effect
+     */
     canToggle?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether automatic cluster update is enabled for the workspace. The effective value is always
+     * true while the compliance security profile is enabled on the workspace
+     */
     enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Why the feature is forced on or unavailable. Databricks sets these details for information only;
+     * they do not determine whether the feature is enabled
+     */
     enablementDetails?: pulumi.Input<inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails | undefined>;
+    /**
+     * When the maintenance window runs. When unset, it defaults to the first Sunday of every month at
+     * 01:00 UTC
+     */
     maintenanceWindow?: pulumi.Input<inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow | undefined>;
+    /**
+     * Whether compute resources restart during every maintenance window even when no update is
+     * available. When false, they restart only when an update is available
+     */
     restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean | undefined>;
 }
 
@@ -1673,7 +1759,8 @@ export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablem
      */
     forcedForComplianceMode?: pulumi.Input<boolean | undefined>;
     /**
-     * The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     * The feature is unavailable because the workspace does not have the Enhanced Security and
+     * Compliance entitlement
      */
     unavailableForDisabledEntitlement?: pulumi.Input<boolean | undefined>;
     /**
@@ -1683,23 +1770,36 @@ export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablem
 }
 
 export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    /**
+     * Schedule anchored to a day of the week, either every week or on given weeks of the month
+     */
     weekDayBasedSchedule?: pulumi.Input<inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule | undefined>;
 }
 
 export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * Day of the week on which the maintenance window starts. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
     dayOfWeek?: pulumi.Input<string | undefined>;
     /**
-     * Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * How often the maintenance window occurs: every week, or only on the listed occurrences of
+     * the day of the week within each month. Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
     frequency?: pulumi.Input<string | undefined>;
+    /**
+     * Time of day, in UTC, at which the maintenance window starts
+     */
     windowStartTime?: pulumi.Input<inputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime | undefined>;
 }
 
 export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    /**
+     * Hour of the day on a 24-hour clock
+     */
     hours?: pulumi.Input<number | undefined>;
+    /**
+     * Minute of the hour
+     */
     minutes?: pulumi.Input<number | undefined>;
 }
 
@@ -1719,6 +1819,11 @@ export interface AccountSettingV2EffectiveIntegerVal {
 }
 
 export interface AccountSettingV2EffectiveOperationalEmailCustomRecipient {
+    /**
+     * Email address that receives this workspace's operational emails in addition to the workspace
+     * admins. Use a distribution list address to reach several people. An empty string clears the
+     * additional recipient
+     */
     email?: pulumi.Input<string | undefined>;
 }
 
@@ -1733,7 +1838,13 @@ export interface AccountSettingV2EffectiveRestrictWorkspaceAdmins {
      */
     disableGovTagCreation?: pulumi.Input<boolean | undefined>;
     /**
-     * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     * Controls what workspace admins can do with service principal tokens and job identities. With
+     * ALLOW_ALL, workspace admins can create personal access tokens on behalf of any service principal
+     * in the workspace, change a job owner to any workspace user, and set a job's runAs identity to
+     * any workspace user or to a service principal they have the Service Principal User role on. With
+     * RESTRICT_TOKENS_AND_JOB_RUN_AS, they can only create tokens for service principals they have the
+     * Service Principal User role on, change a job owner to themselves, and set runAs to themselves
+     * or to a service principal they have that role on. Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
     status: pulumi.Input<string>;
 }
@@ -1742,8 +1853,682 @@ export interface AccountSettingV2EffectiveStringVal {
     value?: pulumi.Input<string | undefined>;
 }
 
+export interface AccountSettingV2EffectiveWorkspaceDashboardTheme {
+    /**
+     * Color of the zero-value grid line, making it visually distinct from other grid lines
+     */
+    axisLineColor?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeAxisLineColor | undefined>;
+    /**
+     * The background color of the dashboard canvas
+     */
+    canvasBackgroundColor?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeCanvasBackgroundColor | undefined>;
+    /**
+     * The continuous gradient configuration for the dashboard
+     */
+    continuousGradient?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradient | undefined>;
+    fontColor?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeFontColor | undefined>;
+    fontFamily?: pulumi.Input<string | undefined>;
+    /**
+     * The per-category typography overrides for the dashboard
+     */
+    fontSettings?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettings | undefined>;
+    /**
+     * Color of chart grid lines in visualizations (horizontal and vertical guide lines)
+     */
+    gridLineColor?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeGridLineColor | undefined>;
+    /**
+     * The corner radius in pixels for rectangular marks in visualizations (bars, columns, histogram bins, etc.)
+     */
+    markCornerRadius?: pulumi.Input<number | undefined>;
+    /**
+     * The highlight color for selected elements in widgets
+     */
+    selectionColor?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeSelectionColor | undefined>;
+    /**
+     * The sentiment color palette for the dashboard
+     */
+    sentimentColors?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeSentimentColors | undefined>;
+    /**
+     * The default vertical alignment for all text box widgets in the dashboard.
+     * Individual text box widgets can override this. Possible values are: `VERTICAL_ALIGN_BOTTOM`, `VERTICAL_ALIGN_CENTER`, `VERTICAL_ALIGN_TOP`
+     */
+    textBoxVerticalAlign?: pulumi.Input<string | undefined>;
+    /**
+     * Color palette for visualizations. Colors are applied in order (visualization_color_01, visualization_color_02, etc.).
+     * Invalid color values are preserved but ignored during rendering
+     */
+    visualizationColor01?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 2 in the visualization color palette
+     */
+    visualizationColor02?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 3 in the visualization color palette
+     */
+    visualizationColor03?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 4 in the visualization color palette
+     */
+    visualizationColor04?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 5 in the visualization color palette
+     */
+    visualizationColor05?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 6 in the visualization color palette
+     */
+    visualizationColor06?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 7 in the visualization color palette
+     */
+    visualizationColor07?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 8 in the visualization color palette
+     */
+    visualizationColor08?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 9 in the visualization color palette
+     */
+    visualizationColor09?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 10 in the visualization color palette
+     */
+    visualizationColor10?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 11 in the visualization color palette
+     */
+    visualizationColor11?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 12 in the visualization color palette
+     */
+    visualizationColor12?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 13 in the visualization color palette
+     */
+    visualizationColor13?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 14 in the visualization color palette
+     */
+    visualizationColor14?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 15 in the visualization color palette
+     */
+    visualizationColor15?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 16 in the visualization color palette
+     */
+    visualizationColor16?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 17 in the visualization color palette
+     */
+    visualizationColor17?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 18 in the visualization color palette
+     */
+    visualizationColor18?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 19 in the visualization color palette
+     */
+    visualizationColor19?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 20 in the visualization color palette
+     */
+    visualizationColor20?: pulumi.Input<string | undefined>;
+    /**
+     * The background color of widgets
+     */
+    widgetBackgroundColor?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeWidgetBackgroundColor | undefined>;
+    /**
+     * The border color of widgets
+     */
+    widgetBorderColor?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeWidgetBorderColor | undefined>;
+    /**
+     * The widget border radius in pixels
+     */
+    widgetCornerRadius?: pulumi.Input<number | undefined>;
+    /**
+     * Alignment setting for all widget titles and descriptions at the dashboard level. Possible values are: `CENTER`, `LEFT`, `RIGHT`
+     */
+    widgetHeaderAlignment?: pulumi.Input<string | undefined>;
+    /**
+     * The gap between widgets in pixels
+     */
+    widgetMargin?: pulumi.Input<number | undefined>;
+    /**
+     * The content padding inside each widget in pixels
+     */
+    widgetPadding?: pulumi.Input<number | undefined>;
+    /**
+     * The shadow intensity level applied to widgets (0 = no shadow, 100 = maximum).
+     * The actual CSS box-shadow is computed at render time from this value, factoring in
+     * background colors and color mode
+     */
+    widgetShadow?: pulumi.Input<number | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeAxisLineColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeCanvasBackgroundColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradient {
+    /**
+     * Gradient value used when the dashboard is rendered in dark mode
+     */
+    darkMode?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkMode | undefined>;
+    /**
+     * Gradient value used when the dashboard is rendered in light mode
+     */
+    lightMode?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightMode | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkMode {
+    color?: pulumi.Input<string | undefined>;
+    /**
+     * A named color scheme (for example, 'blues', 'viridis', 'spectral')
+     */
+    colorScheme?: pulumi.Input<string | undefined>;
+    /**
+     * A custom three-stop diverging gradient
+     */
+    customDiverging?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDiverging | undefined>;
+    /**
+     * A custom two-stop sequential gradient
+     */
+    customSequential?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequential | undefined>;
+    /**
+     * A 0-based index into the visualization color palette, where 0 is visualization_color_01. Valid values are 0 to 19
+     */
+    fromCategoricalIndex?: pulumi.Input<number | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDiverging {
+    end?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingEnd | undefined>;
+    /**
+     * The color at the midpoint of the gradient
+     */
+    mid?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingMid | undefined>;
+    start?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingStart | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingMid {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequential {
+    end?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialEnd | undefined>;
+    start?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialStart | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightMode {
+    color?: pulumi.Input<string | undefined>;
+    /**
+     * A named color scheme (for example, 'blues', 'viridis', 'spectral')
+     */
+    colorScheme?: pulumi.Input<string | undefined>;
+    /**
+     * A custom three-stop diverging gradient
+     */
+    customDiverging?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDiverging | undefined>;
+    /**
+     * A custom two-stop sequential gradient
+     */
+    customSequential?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequential | undefined>;
+    /**
+     * A 0-based index into the visualization color palette, where 0 is visualization_color_01. Valid values are 0 to 19
+     */
+    fromCategoricalIndex?: pulumi.Input<number | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDiverging {
+    end?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingEnd | undefined>;
+    /**
+     * The color at the midpoint of the gradient
+     */
+    mid?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingMid | undefined>;
+    start?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingStart | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingMid {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequential {
+    end?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialEnd | undefined>;
+    start?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialStart | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettings {
+    /**
+     * The default font config applied to all text unless overridden by a more specific category
+     */
+    base?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsBase | undefined>;
+    /**
+     * The font config applied to field titles (for example, axis titles, table heading titles)
+     */
+    fieldTitle?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldTitle | undefined>;
+    /**
+     * The font config applied to field values (for example, axis tick labels, table cell values, tooltip values)
+     */
+    fieldValue?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldValue | undefined>;
+    /**
+     * The font config applied to widget descriptions
+     */
+    widgetDescription?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetDescription | undefined>;
+    /**
+     * The font config applied to widget titles
+     */
+    widgetTitle?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetTitle | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsBase {
+    fontColor?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsBaseFontColor | undefined>;
+    fontFamily?: pulumi.Input<string | undefined>;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: pulumi.Input<number | undefined>;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: pulumi.Input<string | undefined>;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: pulumi.Input<number | undefined>;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: pulumi.Input<string | undefined>;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsBaseFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldTitle {
+    fontColor?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldTitleFontColor | undefined>;
+    fontFamily?: pulumi.Input<string | undefined>;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: pulumi.Input<number | undefined>;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: pulumi.Input<string | undefined>;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: pulumi.Input<number | undefined>;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: pulumi.Input<string | undefined>;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldTitleFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldValue {
+    fontColor?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldValueFontColor | undefined>;
+    fontFamily?: pulumi.Input<string | undefined>;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: pulumi.Input<number | undefined>;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: pulumi.Input<string | undefined>;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: pulumi.Input<number | undefined>;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: pulumi.Input<string | undefined>;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldValueFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetDescription {
+    fontColor?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetDescriptionFontColor | undefined>;
+    fontFamily?: pulumi.Input<string | undefined>;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: pulumi.Input<number | undefined>;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: pulumi.Input<string | undefined>;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: pulumi.Input<number | undefined>;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: pulumi.Input<string | undefined>;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetDescriptionFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetTitle {
+    fontColor?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetTitleFontColor | undefined>;
+    fontFamily?: pulumi.Input<string | undefined>;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: pulumi.Input<number | undefined>;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: pulumi.Input<string | undefined>;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: pulumi.Input<number | undefined>;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: pulumi.Input<string | undefined>;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetTitleFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeGridLineColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeSelectionColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeSentimentColors {
+    /**
+     * The color applied to negative sentiment values
+     */
+    negative?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsNegative | undefined>;
+    /**
+     * The color applied to neutral sentiment values
+     */
+    neutral?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsNeutral | undefined>;
+    /**
+     * The color applied to positive sentiment values
+     */
+    positive?: pulumi.Input<inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsPositive | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsNegative {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsNeutral {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsPositive {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeWidgetBackgroundColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeWidgetBorderColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
 export interface AccountSettingV2EffectiveWorkspaceLabel {
     color?: pulumi.Input<string | undefined>;
+    /**
+     * Text of the label shown next to the workspace name in the top navigation bar. An empty string
+     * means no label is set
+     */
     label?: pulumi.Input<string | undefined>;
 }
 
@@ -1752,6 +2537,11 @@ export interface AccountSettingV2IntegerVal {
 }
 
 export interface AccountSettingV2OperationalEmailCustomRecipient {
+    /**
+     * Email address that receives this workspace's operational emails in addition to the workspace
+     * admins. Use a distribution list address to reach several people. An empty string clears the
+     * additional recipient
+     */
     email?: pulumi.Input<string | undefined>;
 }
 
@@ -1766,7 +2556,13 @@ export interface AccountSettingV2RestrictWorkspaceAdmins {
      */
     disableGovTagCreation?: pulumi.Input<boolean | undefined>;
     /**
-     * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     * Controls what workspace admins can do with service principal tokens and job identities. With
+     * ALLOW_ALL, workspace admins can create personal access tokens on behalf of any service principal
+     * in the workspace, change a job owner to any workspace user, and set a job's runAs identity to
+     * any workspace user or to a service principal they have the Service Principal User role on. With
+     * RESTRICT_TOKENS_AND_JOB_RUN_AS, they can only create tokens for service principals they have the
+     * Service Principal User role on, change a job owner to themselves, and set runAs to themselves
+     * or to a service principal they have that role on. Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
     status: pulumi.Input<string>;
 }
@@ -1775,8 +2571,682 @@ export interface AccountSettingV2StringVal {
     value?: pulumi.Input<string | undefined>;
 }
 
+export interface AccountSettingV2WorkspaceDashboardTheme {
+    /**
+     * Color of the zero-value grid line, making it visually distinct from other grid lines
+     */
+    axisLineColor?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeAxisLineColor | undefined>;
+    /**
+     * The background color of the dashboard canvas
+     */
+    canvasBackgroundColor?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeCanvasBackgroundColor | undefined>;
+    /**
+     * The continuous gradient configuration for the dashboard
+     */
+    continuousGradient?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradient | undefined>;
+    fontColor?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeFontColor | undefined>;
+    fontFamily?: pulumi.Input<string | undefined>;
+    /**
+     * The per-category typography overrides for the dashboard
+     */
+    fontSettings?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeFontSettings | undefined>;
+    /**
+     * Color of chart grid lines in visualizations (horizontal and vertical guide lines)
+     */
+    gridLineColor?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeGridLineColor | undefined>;
+    /**
+     * The corner radius in pixels for rectangular marks in visualizations (bars, columns, histogram bins, etc.)
+     */
+    markCornerRadius?: pulumi.Input<number | undefined>;
+    /**
+     * The highlight color for selected elements in widgets
+     */
+    selectionColor?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeSelectionColor | undefined>;
+    /**
+     * The sentiment color palette for the dashboard
+     */
+    sentimentColors?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeSentimentColors | undefined>;
+    /**
+     * The default vertical alignment for all text box widgets in the dashboard.
+     * Individual text box widgets can override this. Possible values are: `VERTICAL_ALIGN_BOTTOM`, `VERTICAL_ALIGN_CENTER`, `VERTICAL_ALIGN_TOP`
+     */
+    textBoxVerticalAlign?: pulumi.Input<string | undefined>;
+    /**
+     * Color palette for visualizations. Colors are applied in order (visualization_color_01, visualization_color_02, etc.).
+     * Invalid color values are preserved but ignored during rendering
+     */
+    visualizationColor01?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 2 in the visualization color palette
+     */
+    visualizationColor02?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 3 in the visualization color palette
+     */
+    visualizationColor03?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 4 in the visualization color palette
+     */
+    visualizationColor04?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 5 in the visualization color palette
+     */
+    visualizationColor05?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 6 in the visualization color palette
+     */
+    visualizationColor06?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 7 in the visualization color palette
+     */
+    visualizationColor07?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 8 in the visualization color palette
+     */
+    visualizationColor08?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 9 in the visualization color palette
+     */
+    visualizationColor09?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 10 in the visualization color palette
+     */
+    visualizationColor10?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 11 in the visualization color palette
+     */
+    visualizationColor11?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 12 in the visualization color palette
+     */
+    visualizationColor12?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 13 in the visualization color palette
+     */
+    visualizationColor13?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 14 in the visualization color palette
+     */
+    visualizationColor14?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 15 in the visualization color palette
+     */
+    visualizationColor15?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 16 in the visualization color palette
+     */
+    visualizationColor16?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 17 in the visualization color palette
+     */
+    visualizationColor17?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 18 in the visualization color palette
+     */
+    visualizationColor18?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 19 in the visualization color palette
+     */
+    visualizationColor19?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 20 in the visualization color palette
+     */
+    visualizationColor20?: pulumi.Input<string | undefined>;
+    /**
+     * The background color of widgets
+     */
+    widgetBackgroundColor?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeWidgetBackgroundColor | undefined>;
+    /**
+     * The border color of widgets
+     */
+    widgetBorderColor?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeWidgetBorderColor | undefined>;
+    /**
+     * The widget border radius in pixels
+     */
+    widgetCornerRadius?: pulumi.Input<number | undefined>;
+    /**
+     * Alignment setting for all widget titles and descriptions at the dashboard level. Possible values are: `CENTER`, `LEFT`, `RIGHT`
+     */
+    widgetHeaderAlignment?: pulumi.Input<string | undefined>;
+    /**
+     * The gap between widgets in pixels
+     */
+    widgetMargin?: pulumi.Input<number | undefined>;
+    /**
+     * The content padding inside each widget in pixels
+     */
+    widgetPadding?: pulumi.Input<number | undefined>;
+    /**
+     * The shadow intensity level applied to widgets (0 = no shadow, 100 = maximum).
+     * The actual CSS box-shadow is computed at render time from this value, factoring in
+     * background colors and color mode
+     */
+    widgetShadow?: pulumi.Input<number | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeAxisLineColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeCanvasBackgroundColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradient {
+    /**
+     * Gradient value used when the dashboard is rendered in dark mode
+     */
+    darkMode?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkMode | undefined>;
+    /**
+     * Gradient value used when the dashboard is rendered in light mode
+     */
+    lightMode?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightMode | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkMode {
+    color?: pulumi.Input<string | undefined>;
+    /**
+     * A named color scheme (for example, 'blues', 'viridis', 'spectral')
+     */
+    colorScheme?: pulumi.Input<string | undefined>;
+    /**
+     * A custom three-stop diverging gradient
+     */
+    customDiverging?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDiverging | undefined>;
+    /**
+     * A custom two-stop sequential gradient
+     */
+    customSequential?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequential | undefined>;
+    /**
+     * A 0-based index into the visualization color palette, where 0 is visualization_color_01. Valid values are 0 to 19
+     */
+    fromCategoricalIndex?: pulumi.Input<number | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDiverging {
+    end?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingEnd | undefined>;
+    /**
+     * The color at the midpoint of the gradient
+     */
+    mid?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingMid | undefined>;
+    start?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingStart | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingMid {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequential {
+    end?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialEnd | undefined>;
+    start?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialStart | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightMode {
+    color?: pulumi.Input<string | undefined>;
+    /**
+     * A named color scheme (for example, 'blues', 'viridis', 'spectral')
+     */
+    colorScheme?: pulumi.Input<string | undefined>;
+    /**
+     * A custom three-stop diverging gradient
+     */
+    customDiverging?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDiverging | undefined>;
+    /**
+     * A custom two-stop sequential gradient
+     */
+    customSequential?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequential | undefined>;
+    /**
+     * A 0-based index into the visualization color palette, where 0 is visualization_color_01. Valid values are 0 to 19
+     */
+    fromCategoricalIndex?: pulumi.Input<number | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDiverging {
+    end?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingEnd | undefined>;
+    /**
+     * The color at the midpoint of the gradient
+     */
+    mid?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingMid | undefined>;
+    start?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingStart | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingMid {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequential {
+    end?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialEnd | undefined>;
+    start?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialStart | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeFontSettings {
+    /**
+     * The default font config applied to all text unless overridden by a more specific category
+     */
+    base?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeFontSettingsBase | undefined>;
+    /**
+     * The font config applied to field titles (for example, axis titles, table heading titles)
+     */
+    fieldTitle?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeFontSettingsFieldTitle | undefined>;
+    /**
+     * The font config applied to field values (for example, axis tick labels, table cell values, tooltip values)
+     */
+    fieldValue?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeFontSettingsFieldValue | undefined>;
+    /**
+     * The font config applied to widget descriptions
+     */
+    widgetDescription?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeFontSettingsWidgetDescription | undefined>;
+    /**
+     * The font config applied to widget titles
+     */
+    widgetTitle?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeFontSettingsWidgetTitle | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeFontSettingsBase {
+    fontColor?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeFontSettingsBaseFontColor | undefined>;
+    fontFamily?: pulumi.Input<string | undefined>;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: pulumi.Input<number | undefined>;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: pulumi.Input<string | undefined>;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: pulumi.Input<number | undefined>;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: pulumi.Input<string | undefined>;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeFontSettingsBaseFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeFontSettingsFieldTitle {
+    fontColor?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeFontSettingsFieldTitleFontColor | undefined>;
+    fontFamily?: pulumi.Input<string | undefined>;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: pulumi.Input<number | undefined>;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: pulumi.Input<string | undefined>;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: pulumi.Input<number | undefined>;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: pulumi.Input<string | undefined>;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeFontSettingsFieldTitleFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeFontSettingsFieldValue {
+    fontColor?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeFontSettingsFieldValueFontColor | undefined>;
+    fontFamily?: pulumi.Input<string | undefined>;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: pulumi.Input<number | undefined>;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: pulumi.Input<string | undefined>;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: pulumi.Input<number | undefined>;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: pulumi.Input<string | undefined>;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeFontSettingsFieldValueFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeFontSettingsWidgetDescription {
+    fontColor?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeFontSettingsWidgetDescriptionFontColor | undefined>;
+    fontFamily?: pulumi.Input<string | undefined>;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: pulumi.Input<number | undefined>;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: pulumi.Input<string | undefined>;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: pulumi.Input<number | undefined>;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: pulumi.Input<string | undefined>;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeFontSettingsWidgetDescriptionFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeFontSettingsWidgetTitle {
+    fontColor?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeFontSettingsWidgetTitleFontColor | undefined>;
+    fontFamily?: pulumi.Input<string | undefined>;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: pulumi.Input<number | undefined>;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: pulumi.Input<string | undefined>;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: pulumi.Input<number | undefined>;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: pulumi.Input<string | undefined>;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeFontSettingsWidgetTitleFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeGridLineColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeSelectionColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeSentimentColors {
+    /**
+     * The color applied to negative sentiment values
+     */
+    negative?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeSentimentColorsNegative | undefined>;
+    /**
+     * The color applied to neutral sentiment values
+     */
+    neutral?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeSentimentColorsNeutral | undefined>;
+    /**
+     * The color applied to positive sentiment values
+     */
+    positive?: pulumi.Input<inputs.AccountSettingV2WorkspaceDashboardThemeSentimentColorsPositive | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeSentimentColorsNegative {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeSentimentColorsNeutral {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeSentimentColorsPositive {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeWidgetBackgroundColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeWidgetBorderColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
 export interface AccountSettingV2WorkspaceLabel {
     color?: pulumi.Input<string | undefined>;
+    /**
+     * Text of the label shown next to the workspace name in the top navigation bar. An empty string
+     * means no label is set
+     */
     label?: pulumi.Input<string | undefined>;
 }
 
@@ -1796,7 +3266,9 @@ export interface AgentKitManagedMemoryStoreProviderConfig {
 
 export interface AgentKitManagedMemoryStoreStorageBackend {
     /**
-     * (string) - Backend-specific identifier. For Lakebase, this is the project ID
+     * (string) - Backend-specific identifier. For Lakebase, this is the resource name of the database that
+     * holds the store's entries, in the form
+     * `projects/{project_id}/branches/{branch_id}/databases/{database_id}`
      */
     backendId?: pulumi.Input<string | undefined>;
     /**
@@ -1852,7 +3324,7 @@ export interface AiGatewayMcpServiceConfigRateLimit {
      */
     principal?: pulumi.Input<string | undefined>;
     /**
-     * Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     * Interval after which the request and token counters reset. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
      */
     renewalPeriod: pulumi.Input<string>;
     /**
@@ -1878,8 +3350,9 @@ export interface AiGatewayMcpServiceConfigSourceConnection {
      * (string) - Resource name of the MCP service.
      * Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `mcpServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `mcpServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      */
     name: pulumi.Input<string>;
     /**
@@ -1906,10 +3379,31 @@ export interface AiGatewayModelProviderServiceConfig {
      * catalog and must leave this false and list their models in `targets`
      */
     allowAllTargets?: pulumi.Input<boolean | undefined>;
+    /**
+     * Configuration for Amazon Bedrock. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`
+     */
     amazonBedrock?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAmazonBedrock | undefined>;
+    /**
+     * Configuration for Anthropic. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`
+     */
     anthropic?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAnthropic | undefined>;
+    /**
+     * Configuration for Azure OpenAI. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`
+     */
     azureOpenai?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigAzureOpenai | undefined>;
+    /**
+     * Configuration for Amazon Bedrock Mantle, with the same fields as
+     * `amazonBedrock`. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`
+     */
     bedrockMantle?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigBedrockMantle | undefined>;
+    /**
+     * Configuration for a custom OpenAI-compatible provider. Set this field when
+     * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`
+     */
     custom?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigCustom | undefined>;
     /**
      * Whether to forward incoming HTTP headers to the upstream provider. Defaults
@@ -1934,6 +3428,10 @@ export interface AiGatewayModelProviderServiceConfig {
      * rejected whenever Service Policies are attached to this securable
      */
     forwardUnmanagedPaths?: pulumi.Input<boolean | undefined>;
+    /**
+     * Configuration for Google Gemini Enterprise. Set this field when
+     * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`
+     */
     geminiEnterprise?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigGeminiEnterprise | undefined>;
     /**
      * Payload logging configuration for requests sent directly to this provider
@@ -1941,7 +3439,15 @@ export interface AiGatewayModelProviderServiceConfig {
      * service's inference table instead
      */
     inferenceTable?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigInferenceTable | undefined>;
+    /**
+     * Configuration for Microsoft Foundry. Set this field when
+     * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`
+     */
     microsoftFoundry?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigMicrosoftFoundry | undefined>;
+    /**
+     * Configuration for OpenAI. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+     */
     openai?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigOpenai | undefined>;
     /**
      * Pricing configuration for this provider service. An explicitly empty
@@ -2003,9 +3509,10 @@ export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccess
 
 export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey {
     /**
-     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext?: pulumi.Input<string | undefined>;
     /**
@@ -2024,8 +3531,9 @@ export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccess
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: pulumi.Input<string>;
 }
@@ -2035,8 +3543,9 @@ export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCr
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: pulumi.Input<string>;
 }
@@ -2057,9 +3566,10 @@ export interface AiGatewayModelProviderServiceConfigAnthropicDirect {
 
 export interface AiGatewayModelProviderServiceConfigAnthropicDirectApiKey {
     /**
-     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext?: pulumi.Input<string | undefined>;
     /**
@@ -2078,8 +3588,9 @@ export interface AiGatewayModelProviderServiceConfigAnthropicDirectApiKeySecretR
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: pulumi.Input<string>;
 }
@@ -2100,9 +3611,10 @@ export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirect {
 
 export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey {
     /**
-     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext?: pulumi.Input<string | undefined>;
     /**
@@ -2121,8 +3633,9 @@ export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeySecre
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: pulumi.Input<string>;
 }
@@ -2144,9 +3657,10 @@ export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServic
 
 export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret {
     /**
-     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext?: pulumi.Input<string | undefined>;
     /**
@@ -2165,8 +3679,9 @@ export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServic
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: pulumi.Input<string>;
 }
@@ -2176,8 +3691,9 @@ export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCred
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: pulumi.Input<string>;
 }
@@ -2214,9 +3730,10 @@ export interface AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccess
 
 export interface AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey {
     /**
-     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext?: pulumi.Input<string | undefined>;
     /**
@@ -2235,8 +3752,9 @@ export interface AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccess
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: pulumi.Input<string>;
 }
@@ -2246,8 +3764,9 @@ export interface AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCr
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: pulumi.Input<string>;
 }
@@ -2269,9 +3788,10 @@ export interface AiGatewayModelProviderServiceConfigCustomDirect {
 
 export interface AiGatewayModelProviderServiceConfigCustomDirectApiKey {
     /**
-     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext?: pulumi.Input<string | undefined>;
     /**
@@ -2290,8 +3810,9 @@ export interface AiGatewayModelProviderServiceConfigCustomDirectApiKeySecretRefe
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: pulumi.Input<string>;
 }
@@ -2305,16 +3826,17 @@ export interface AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth {
     apiKeyName?: pulumi.Input<string | undefined>;
     /**
      * Secret value forwarded under the `apiKeyName` header on outbound
-     * requests. Supplied as inline plaintext via `ProviderSecret.plaintext`
+     * requests. Supply the value in `api_key_value.plaintext`
      */
     apiKeyValue?: pulumi.Input<inputs.AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue | undefined>;
 }
 
 export interface AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue {
     /**
-     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext?: pulumi.Input<string | undefined>;
     /**
@@ -2333,8 +3855,9 @@ export interface AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKey
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: pulumi.Input<string>;
 }
@@ -2355,9 +3878,10 @@ export interface AiGatewayModelProviderServiceConfigGeminiEnterpriseDirect {
 
 export interface AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey {
     /**
-     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext?: pulumi.Input<string | undefined>;
     /**
@@ -2376,8 +3900,9 @@ export interface AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: pulumi.Input<string>;
 }
@@ -2387,8 +3912,9 @@ export interface AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServic
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: pulumi.Input<string>;
 }
@@ -2407,7 +3933,7 @@ export interface AiGatewayModelProviderServiceConfigInferenceTable {
      */
     parent: pulumi.Input<string>;
     /**
-     * (string) - Resolved UC table for payload logs.
+     * (string) - Resource name of the Unity Catalog table that receives the payload logs.
      * Format: `tables/{catalog}.{schema}.{table}`
      */
     table?: pulumi.Input<string | undefined>;
@@ -2434,9 +3960,10 @@ export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirect {
 
 export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey {
     /**
-     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext?: pulumi.Input<string | undefined>;
     /**
@@ -2455,8 +3982,9 @@ export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: pulumi.Input<string>;
 }
@@ -2478,9 +4006,10 @@ export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraS
 
 export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret {
     /**
-     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext?: pulumi.Input<string | undefined>;
     /**
@@ -2499,8 +4028,9 @@ export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraS
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: pulumi.Input<string>;
 }
@@ -2510,8 +4040,9 @@ export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectServic
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: pulumi.Input<string>;
 }
@@ -2532,9 +4063,10 @@ export interface AiGatewayModelProviderServiceConfigOpenaiDirect {
 
 export interface AiGatewayModelProviderServiceConfigOpenaiDirectApiKey {
     /**
-     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext?: pulumi.Input<string | undefined>;
     /**
@@ -2553,8 +4085,9 @@ export interface AiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretRefe
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: pulumi.Input<string>;
 }
@@ -2582,7 +4115,7 @@ export interface AiGatewayModelProviderServiceConfigRateLimit {
      */
     principal?: pulumi.Input<string | undefined>;
     /**
-     * Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     * Interval after which the request and token counters reset. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
      */
     renewalPeriod: pulumi.Input<string>;
     /**
@@ -2632,7 +4165,8 @@ export interface AiGatewayModelProviderServiceProviderConfig {
 
 export interface AiGatewayModelServiceConfig {
     /**
-     * Inference table configuration for payload logging
+     * Configuration for logging request and response payloads to a Unity
+     * Catalog inference table. Omit this field to leave payload logging off
      */
     inferenceTable?: pulumi.Input<inputs.AiGatewayModelServiceConfigInferenceTable | undefined>;
     /**
@@ -2640,7 +4174,8 @@ export interface AiGatewayModelServiceConfig {
      */
     rateLimits?: pulumi.Input<pulumi.Input<inputs.AiGatewayModelServiceConfigRateLimit>[] | undefined>;
     /**
-     * Routing configuration: destinations and fallback
+     * Routing configuration: the primary destinations that receive traffic and
+     * the fallback destinations tried when a primary destination fails
      */
     routing?: pulumi.Input<inputs.AiGatewayModelServiceConfigRouting | undefined>;
 }
@@ -2660,7 +4195,7 @@ export interface AiGatewayModelServiceConfigInferenceTable {
      */
     parent: pulumi.Input<string>;
     /**
-     * (string) - Resolved UC table for payload logs.
+     * (string) - Resource name of the Unity Catalog table that receives the payload logs.
      * Format: `tables/{catalog}.{schema}.{table}`
      */
     table?: pulumi.Input<string | undefined>;
@@ -2687,7 +4222,7 @@ export interface AiGatewayModelServiceConfigRateLimit {
      */
     principal?: pulumi.Input<string | undefined>;
     /**
-     * Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     * Interval after which the request and token counters reset. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
      */
     renewalPeriod: pulumi.Input<string>;
     /**
@@ -2732,8 +4267,9 @@ export interface AiGatewayModelServiceConfigRoutingDestination {
      * (string) - Resource name of the model service.
      * Format: `model-services/{catalog}.{schema}.{model_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      */
     name: pulumi.Input<string>;
     /**
@@ -2756,9 +4292,7 @@ export interface AiGatewayModelServiceConfigRoutingDestination {
 export interface AiGatewayModelServiceConfigRoutingDestinationExternalModelConfig {
     /**
      * Resource name of the governed ModelProviderService that owns provider
-     * auth and provider-specific configuration. The referenced
-     * ModelProviderService also carries the provider type, so this message
-     * does not surface it directly.
+     * auth and provider-specific configuration.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually
      */
@@ -2781,9 +4315,9 @@ export interface AiGatewayModelServiceConfigRoutingDestinationExternalModelConfi
      */
     endpointRoute?: pulumi.Input<string | undefined>;
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      */
     model: pulumi.Input<string>;
     /**
@@ -2799,18 +4333,18 @@ export interface AiGatewayModelServiceConfigRoutingDestinationExternalModelConfi
 
 export interface AiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfig {
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      */
     model: pulumi.Input<string>;
 }
 
 export interface AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfig {
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      */
     model?: pulumi.Input<string | undefined>;
     /**
@@ -2849,8 +4383,9 @@ export interface AiGatewayModelServiceConfigRoutingFallbackDestination {
      * (string) - Resource name of the model service.
      * Format: `model-services/{catalog}.{schema}.{model_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      */
     name: pulumi.Input<string>;
     /**
@@ -2873,9 +4408,7 @@ export interface AiGatewayModelServiceConfigRoutingFallbackDestination {
 export interface AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfig {
     /**
      * Resource name of the governed ModelProviderService that owns provider
-     * auth and provider-specific configuration. The referenced
-     * ModelProviderService also carries the provider type, so this message
-     * does not surface it directly.
+     * auth and provider-specific configuration.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually
      */
@@ -2898,9 +4431,9 @@ export interface AiGatewayModelServiceConfigRoutingFallbackDestinationExternalMo
      */
     endpointRoute?: pulumi.Input<string | undefined>;
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      */
     model: pulumi.Input<string>;
     /**
@@ -2916,18 +4449,18 @@ export interface AiGatewayModelServiceConfigRoutingFallbackDestinationExternalMo
 
 export interface AiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfig {
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      */
     model: pulumi.Input<string>;
 }
 
 export interface AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfig {
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      */
     model?: pulumi.Input<string | undefined>;
     /**
@@ -2979,6 +4512,27 @@ export interface AiSearchEndpointProviderConfig {
 
 export interface AiSearchEndpointScalingInfo {
     /**
+     * (string) - Reason the in-progress scaling change is delayed. When set, `estimatedCompletionTime` is
+     * unset. Unset when the change is not delayed or no scaling change is in progress. Possible values are: `CAPACITY_UNAVAILABLE`, `SCALE_DOWN_BLOCKED`, `TAKING_LONGER_THAN_EXPECTED`
+     */
+    delayedReason?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Estimated time at which the in-progress scaling change will complete. The estimate may
+     * change as the scaling change progresses. Unset when no scaling change is in progress,
+     * when no estimate is available, or when the change is delayed (see `delayedReason`)
+     */
+    estimatedCompletionTime?: pulumi.Input<string | undefined>;
+    /**
+     * (integer) - Percentage of index initialization completed, from 0 to 100. Set only during the
+     * `INITIALIZING_INDEX` phase; unset in other phases or when progress is not available
+     */
+    indexInitializationPercentage?: pulumi.Input<number | undefined>;
+    /**
+     * (string) - Current phase of the in-progress scaling change. Unset when no scaling change is in
+     * progress or the phase is not available. Possible values are: `ADJUSTING_CAPACITY`, `ESTIMATING`, `INITIALIZING_INDEX`
+     */
+    phase?: pulumi.Input<string | undefined>;
+    /**
      * The requested QPS target for the endpoint. Best-effort; the system does not
      * guarantee this QPS will be achieved
      */
@@ -2987,6 +4541,12 @@ export interface AiSearchEndpointScalingInfo {
      * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
      */
     state?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Earliest time a new Target QPS change is accepted. Set only while a scaling change is in
+     * progress, the change lock is on, and the endpoint has a recorded last throughput change; may
+     * be in the past once the lock has expired
+     */
+    targetQpsChangeAllowedAfterTime?: pulumi.Input<string | undefined>;
 }
 
 export interface AiSearchEndpointThroughputInfo {
@@ -3030,15 +4590,17 @@ export interface AiSearchEndpointThroughputInfo {
 
 export interface AiSearchIndexDeltaSyncIndexSpec {
     /**
-     * [Optional] Select the columns to sync with the index. If left blank, all columns
-     * from the source table are synced. The primary key column and embedding source or
-     * vector column are always synced
+     * Columns of the source table to include in the index. When empty, all columns are synced. The
+     * primary key and the embedding source or vector column are always synced. Only synced columns
+     * can be returned in query results or used in filters
      */
     columnsToSyncs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     embeddingSourceColumns?: pulumi.Input<pulumi.Input<inputs.AiSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn>[] | undefined>;
     embeddingVectorColumns?: pulumi.Input<pulumi.Input<inputs.AiSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn>[] | undefined>;
     /**
-     * [Optional] Name of the Delta table to sync the index contents and computed embeddings to
+     * Three-level name of a Delta table to write the synced rows and computed embeddings to. It
+     * applies only when embeddings are computed from `embeddingSourceColumns`, and the table must
+     * not already exist
      */
     embeddingWritebackTable?: pulumi.Input<string | undefined>;
     /**
@@ -3046,15 +4608,13 @@ export interface AiSearchIndexDeltaSyncIndexSpec {
      */
     pipelineId?: pulumi.Input<string | undefined>;
     /**
-     * Pipeline execution mode. Required on create — the backend rejects an unset value.
-     * Storage Optimized endpoints accept only `TRIGGERED`; Standard endpoints accept both.
-     * No explicit `stage` — a REQUIRED field staged below its service would be dropped from
-     * combined specs while remaining in `required`, tripping the OpenAPI required-vs-properties
-     * consistency check. The field inherits the service's launch stage. Possible values are: `CONTINUOUS`, `TRIGGERED`
+     * Sync mode of the pipeline that keeps the index up to date. `TRIGGERED` syncs at creation and
+     * then each time SyncIndex is called; `CONTINUOUS` processes source changes as they arrive.
+     * Storage Optimized endpoints accept only `TRIGGERED`, and an unset value is rejected. Possible values are: `CONTINUOUS`, `TRIGGERED`
      */
     pipelineType: pulumi.Input<string>;
     /**
-     * The full name of the source Delta table
+     * Three-level Unity Catalog name of the source Delta table, in the form `catalog.schema.table`
      */
     sourceTable?: pulumi.Input<string | undefined>;
 }
@@ -3080,7 +4640,7 @@ export interface AiSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
 
 export interface AiSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
     /**
-     * Dimension of the embedding vector
+     * Number of elements in each embedding vector. It must be positive
      */
     embeddingDimension?: pulumi.Input<number | undefined>;
     /**
@@ -3097,9 +4657,10 @@ export interface AiSearchIndexDirectAccessIndexSpec {
     embeddingSourceColumns?: pulumi.Input<pulumi.Input<inputs.AiSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn>[] | undefined>;
     embeddingVectorColumns?: pulumi.Input<pulumi.Input<inputs.AiSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn>[] | undefined>;
     /**
-     * The schema of the index in JSON format. Supported types are `integer`, `long`,
-     * `float`, `double`, `boolean`, `string`, `date`, `timestamp`. Supported types for
-     * vector columns: `array<float>`, `array<double>`
+     * The schema of the index in JSON format, mapping each column name to its type. Supported
+     * types are `integer`, `long`, `float`, `double`, `boolean`, `string`, `date`, `timestamp`.
+     * Supported types for vector columns: `array<float>`, `array<double>`. The schema must include
+     * the primary key column and the embedding vector column
      */
     schemaJson?: pulumi.Input<string | undefined>;
 }
@@ -3125,7 +4686,7 @@ export interface AiSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
 
 export interface AiSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
     /**
-     * Dimension of the embedding vector
+     * Number of elements in each embedding vector. It must be positive
      */
     embeddingDimension?: pulumi.Input<number | undefined>;
     /**
@@ -3147,6 +4708,10 @@ export interface AiSearchIndexProviderConfig {
 
 export interface AiSearchIndexStatus {
     /**
+     * (string) - Lifecycle and ingestion state. An online index can still have a failed update. Possible values are: `DOWNLOADING`, `OFFLINE`, `OFFLINE_FAILED`, `ONLINE`, `ONLINE_CONTINUOUS_UPDATE`, `ONLINE_DIRECT_ACCESS`, `ONLINE_NO_PENDING_UPDATE`, `ONLINE_PIPELINE_FAILED`, `ONLINE_TRIGGERED_UPDATE`, `ONLINE_UPDATING_PIPELINE_RESOURCES`, `PROVISIONING`, `PROVISIONING_ENDPOINT`, `PROVISIONING_INDEX`, `PROVISIONING_INITIAL_SNAPSHOT`, `PROVISIONING_PIPELINE_RESOURCES`
+     */
+    detailedState?: pulumi.Input<string | undefined>;
+    /**
      * (string) - Index API URL used to perform operations on the index
      */
     indexUrl?: pulumi.Input<string | undefined>;
@@ -3159,7 +4724,8 @@ export interface AiSearchIndexStatus {
      */
     message?: pulumi.Input<string | undefined>;
     /**
-     * (boolean) - Whether the index is ready for search
+     * (boolean) - Whether the index can serve queries. After CreateIndex, poll GetIndex until true; message describes progress.
+     * This does not guarantee freshness or update success; check detailedState for update failures
      */
     ready?: pulumi.Input<boolean | undefined>;
 }
@@ -3267,11 +4833,11 @@ export interface AlertV2EffectiveRunAs {
 
 export interface AlertV2Evaluation {
     /**
-     * Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
+     * Operator used for comparison in alert evaluation. The alert is triggered when the comparison of the source value with the threshold is true. `IS_NULL` and `IS_NOT_NULL` take no threshold. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      */
     comparisonOperator: pulumi.Input<string>;
     /**
-     * Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+     * Alert state if result is empty. If not set, an empty result sets the state to `ERROR`. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
     emptyResultState?: pulumi.Input<string | undefined>;
     /**
@@ -3287,11 +4853,11 @@ export interface AlertV2Evaluation {
      */
     source: pulumi.Input<inputs.AlertV2EvaluationSource>;
     /**
-     * (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+     * (string) - Latest state of alert evaluation: `TRIGGERED` when the condition was met, `OK` when it was not, and `ERROR` when the evaluation failed. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
     state?: pulumi.Input<string | undefined>;
     /**
-     * Threshold to user for alert evaluation, can be a column or a value
+     * Threshold to compare the source column against, either another column or a fixed value. Not needed when `comparisonOperator` is `IS_NULL` or `IS_NOT_NULL`
      */
     threshold?: pulumi.Input<inputs.AlertV2EvaluationThreshold | undefined>;
 }
@@ -3309,40 +4875,69 @@ export interface AlertV2EvaluationNotification {
      * Setting this value to 1 allows the alert to send a notification on every evaluation where the condition is met, effectively making it always retrigger for notification purposes
      */
     retriggerSeconds?: pulumi.Input<number | undefined>;
+    /**
+     * Users and notification destinations that receive notifications
+     */
     subscriptions?: pulumi.Input<pulumi.Input<inputs.AlertV2EvaluationNotificationSubscription>[] | undefined>;
 }
 
 export interface AlertV2EvaluationNotificationSubscription {
+    /**
+     * ID of the notification destination to notify, as returned by the Notification Destinations API
+     */
     destinationId?: pulumi.Input<string | undefined>;
+    /**
+     * Email address of the workspace user to notify
+     */
     userEmail?: pulumi.Input<string | undefined>;
 }
 
 export interface AlertV2EvaluationSource {
     /**
-     * If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * Aggregation applied to the column across all rows of the query result: `SUM`, `COUNT`, `COUNT_DISTINCT`, `AVG`, `MEDIAN`, `MIN`, `MAX` or `STDDEV`.
+     * If not set, the value in the first row is used, which is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: pulumi.Input<string | undefined>;
+    /**
+     * Label for the column in notifications. Defaults to `name`
+     */
     display?: pulumi.Input<string | undefined>;
     name: pulumi.Input<string>;
 }
 
 export interface AlertV2EvaluationThreshold {
+    /**
+     * Compare the source against another column of the query result
+     */
     column?: pulumi.Input<inputs.AlertV2EvaluationThresholdColumn | undefined>;
     value?: pulumi.Input<inputs.AlertV2EvaluationThresholdValue | undefined>;
 }
 
 export interface AlertV2EvaluationThresholdColumn {
     /**
-     * If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * Aggregation applied to the column across all rows of the query result: `SUM`, `COUNT`, `COUNT_DISTINCT`, `AVG`, `MEDIAN`, `MIN`, `MAX` or `STDDEV`.
+     * If not set, the value in the first row is used, which is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: pulumi.Input<string | undefined>;
+    /**
+     * Label for the column in notifications. Defaults to `name`
+     */
     display?: pulumi.Input<string | undefined>;
     name: pulumi.Input<string>;
 }
 
 export interface AlertV2EvaluationThresholdValue {
+    /**
+     * Boolean threshold, for boolean columns
+     */
     boolValue?: pulumi.Input<boolean | undefined>;
+    /**
+     * Numeric threshold, for numeric columns
+     */
     doubleValue?: pulumi.Input<number | undefined>;
+    /**
+     * String threshold, for string or timestamp columns
+     */
     stringValue?: pulumi.Input<string | undefined>;
 }
 
@@ -3376,11 +4971,11 @@ export interface AlertV2RunAs {
 
 export interface AlertV2Schedule {
     /**
-     * Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
+     * Indicates whether this schedule is paused. While paused, the alert is not evaluated. Possible values are: `PAUSED`, `UNPAUSED`
      */
     pauseStatus?: pulumi.Input<string | undefined>;
     /**
-     * A cron expression using quartz syntax that specifies the schedule for this pipeline.
+     * A cron expression using quartz syntax that specifies the schedule for this alert.
      * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
      */
     quartzCronSchedule: pulumi.Input<string>;
@@ -3420,6 +5015,9 @@ export interface AppActiveDeployment {
      * The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
      */
     mode?: pulumi.Input<string | undefined>;
+    scanOmittedCountIsLowerBound?: pulumi.Input<boolean | undefined>;
+    scanOmittedFindingsCount?: pulumi.Input<number | undefined>;
+    scanStatus?: pulumi.Input<string | undefined>;
     /**
      * Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
      */
@@ -3573,6 +5171,149 @@ export interface AppDefaultGitSourceGitRepository {
     url: pulumi.Input<string>;
 }
 
+export interface AppEffectiveResource {
+    /**
+     * attribute - reference to another Databricks App.
+     */
+    app?: pulumi.Input<inputs.AppEffectiveResourceApp | undefined>;
+    database?: pulumi.Input<inputs.AppEffectiveResourceDatabase | undefined>;
+    /**
+     * The description of the app.
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * attribute
+     */
+    experiment?: pulumi.Input<inputs.AppEffectiveResourceExperiment | undefined>;
+    /**
+     * attribute
+     */
+    genieSpace?: pulumi.Input<inputs.AppEffectiveResourceGenieSpace | undefined>;
+    /**
+     * attribute
+     */
+    job?: pulumi.Input<inputs.AppEffectiveResourceJob | undefined>;
+    /**
+     * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * attribute
+     */
+    postgres?: pulumi.Input<inputs.AppEffectiveResourcePostgres | undefined>;
+    /**
+     * attribute
+     */
+    secret?: pulumi.Input<inputs.AppEffectiveResourceSecret | undefined>;
+    /**
+     * attribute
+     */
+    servingEndpoint?: pulumi.Input<inputs.AppEffectiveResourceServingEndpoint | undefined>;
+    /**
+     * attribute
+     */
+    sqlWarehouse?: pulumi.Input<inputs.AppEffectiveResourceSqlWarehouse | undefined>;
+    /**
+     * attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
+     */
+    ucSecurable?: pulumi.Input<inputs.AppEffectiveResourceUcSecurable | undefined>;
+}
+
+export interface AppEffectiveResourceApp {
+    /**
+     * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+     */
+    name?: pulumi.Input<string | undefined>;
+    permission?: pulumi.Input<string | undefined>;
+}
+
+export interface AppEffectiveResourceDatabase {
+    /**
+     * The name of database.
+     */
+    databaseName: pulumi.Input<string>;
+    /**
+     * The name of database instance.
+     */
+    instanceName: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+}
+
+export interface AppEffectiveResourceExperiment {
+    /**
+     * The ID of the MLflow experiment to grant permission on.
+     */
+    experimentId: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+}
+
+export interface AppEffectiveResourceGenieSpace {
+    /**
+     * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+     */
+    name: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+    /**
+     * The unique ID of Genie Space.
+     */
+    spaceId: pulumi.Input<string>;
+}
+
+export interface AppEffectiveResourceJob {
+    /**
+     * The unique identifier of the app.
+     */
+    id: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+}
+
+export interface AppEffectiveResourcePostgres {
+    branch?: pulumi.Input<string | undefined>;
+    database?: pulumi.Input<string | undefined>;
+    permission?: pulumi.Input<string | undefined>;
+}
+
+export interface AppEffectiveResourceSecret {
+    /**
+     * Key of the secret to grant permission on.
+     */
+    key: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+    /**
+     * Scope of the secret to grant permission on.
+     */
+    scope: pulumi.Input<string>;
+}
+
+export interface AppEffectiveResourceServingEndpoint {
+    /**
+     * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+     */
+    name: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+}
+
+export interface AppEffectiveResourceSqlWarehouse {
+    /**
+     * The unique identifier of the app.
+     */
+    id: pulumi.Input<string>;
+    permission: pulumi.Input<string>;
+}
+
+export interface AppEffectiveResourceUcSecurable {
+    permission: pulumi.Input<string>;
+    /**
+     * The full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+     */
+    securableFullName: pulumi.Input<string>;
+    securableKind?: pulumi.Input<string | undefined>;
+    /**
+     * The type of UC securable. Supported values are `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`.
+     */
+    securableType: pulumi.Input<string>;
+}
+
 export interface AppGitRepository {
     /**
      * When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
@@ -3663,6 +5404,9 @@ export interface AppPendingDeployment {
      * The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
      */
     mode?: pulumi.Input<string | undefined>;
+    scanOmittedCountIsLowerBound?: pulumi.Input<boolean | undefined>;
+    scanOmittedFindingsCount?: pulumi.Input<number | undefined>;
+    scanStatus?: pulumi.Input<string | undefined>;
     /**
      * Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
      */
@@ -3948,24 +5692,52 @@ export interface AppSpaceProviderConfig {
 }
 
 export interface AppSpaceResource {
+    /**
+     * Another app in the workspace that this app is granted access to
+     */
     app?: pulumi.Input<inputs.AppSpaceResourceApp | undefined>;
     database?: pulumi.Input<inputs.AppSpaceResourceDatabase | undefined>;
     /**
      * The description of the app space
      */
     description?: pulumi.Input<string | undefined>;
+    /**
+     * MLflow experiment the app is granted access to
+     */
     experiment?: pulumi.Input<inputs.AppSpaceResourceExperiment | undefined>;
+    /**
+     * Genie space the app is granted access to
+     */
     genieSpace?: pulumi.Input<inputs.AppSpaceResourceGenieSpace | undefined>;
+    /**
+     * Lakeflow job the app is granted access to
+     */
     job?: pulumi.Input<inputs.AppSpaceResourceJob | undefined>;
     /**
      * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
      * It must be unique within the workspace
      */
     name: pulumi.Input<string>;
+    /**
+     * Lakebase Autoscaling Postgres database the app is granted access to
+     */
     postgres?: pulumi.Input<inputs.AppSpaceResourcePostgres | undefined>;
+    /**
+     * Secret the app is granted access to
+     */
     secret?: pulumi.Input<inputs.AppSpaceResourceSecret | undefined>;
+    /**
+     * Model serving endpoint the app is granted access to
+     */
     servingEndpoint?: pulumi.Input<inputs.AppSpaceResourceServingEndpoint | undefined>;
+    /**
+     * SQL warehouse the app is granted access to
+     */
     sqlWarehouse?: pulumi.Input<inputs.AppSpaceResourceSqlWarehouse | undefined>;
+    /**
+     * Unity Catalog securable (volume, table, function, connection or model service) the app is
+     * granted a privilege on
+     */
     ucSecurable?: pulumi.Input<inputs.AppSpaceResourceUcSecurable | undefined>;
 }
 
@@ -3979,12 +5751,21 @@ export interface AppSpaceResourceApp {
 }
 
 export interface AppSpaceResourceDatabase {
+    /**
+     * Name of the database within the instance
+     */
     databaseName: pulumi.Input<string>;
+    /**
+     * Name of the Lakebase database instance
+     */
     instanceName: pulumi.Input<string>;
     permission: pulumi.Input<string>;
 }
 
 export interface AppSpaceResourceExperiment {
+    /**
+     * ID of the MLflow experiment
+     */
     experimentId: pulumi.Input<string>;
     permission: pulumi.Input<string>;
 }
@@ -3996,6 +5777,9 @@ export interface AppSpaceResourceGenieSpace {
      */
     name: pulumi.Input<string>;
     permission: pulumi.Input<string>;
+    /**
+     * ID of the Genie space
+     */
     spaceId: pulumi.Input<string>;
 }
 
@@ -4008,6 +5792,10 @@ export interface AppSpaceResourceJob {
 }
 
 export interface AppSpaceResourcePostgres {
+    /**
+     * Resource name of the Lakebase Autoscaling branch, in the form
+     * `projects/{project}/branches/{branch}`
+     */
     branch?: pulumi.Input<string | undefined>;
     database?: pulumi.Input<string | undefined>;
     permission?: pulumi.Input<string | undefined>;
@@ -4044,6 +5832,10 @@ export interface AppSpaceResourceSqlWarehouse {
 
 export interface AppSpaceResourceUcSecurable {
     permission: pulumi.Input<string>;
+    /**
+     * Full name of the Unity Catalog securable. For volumes, tables and functions this is the
+     * three-level catalog.schema.object name
+     */
     securableFullName: pulumi.Input<string>;
     /**
      * (string) - The securable kind from Unity Catalog.
@@ -4051,7 +5843,7 @@ export interface AppSpaceResourceUcSecurable {
      */
     securableKind?: pulumi.Input<string | undefined>;
     /**
-     * Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
+     * Kind of Unity Catalog securable that `securableFullName` refers to. Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      */
     securableType: pulumi.Input<string>;
 }
@@ -4171,6 +5963,13 @@ export interface ArtifactAllowlistArtifactMatcher {
 }
 
 export interface ArtifactAllowlistProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface AssumeGroupRestrictedSharingGroupProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
@@ -4989,7 +6788,9 @@ export interface DataClassificationCatalogConfigAutoTagConfig {
     autoTaggingMode: pulumi.Input<string>;
     /**
      * The Classification Tag. For built-in classes this is a system tag (e.g., "class.name",
-     * "class.location"); for custom classes it is a user-defined governance tag key
+     * "class.location"); for custom classes it is a user-defined governance tag key. The built-in
+     * tags are listed at
+     * https://docs.databricks.com/aws/en/data-governance/unity-catalog/data-classification-tags
      */
     classificationTag: pulumi.Input<string>;
 }
@@ -5017,7 +6818,7 @@ export interface DataClassificationCatalogConfigProviderConfig {
 
 export interface DataQualityMonitorAnomalyDetectionConfig {
     /**
-     * List of fully qualified table names to exclude from anomaly detection
+     * List of fully qualified table names to exclude from anomaly detection. Format: `catalog.schema.table_name`
      */
     excludedTableFullNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     notificationSettings?: pulumi.Input<inputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettings | undefined>;
@@ -5025,7 +6826,8 @@ export interface DataQualityMonitorAnomalyDetectionConfig {
 
 export interface DataQualityMonitorAnomalyDetectionConfigNotificationSettings {
     /**
-     * Destinations to send notifications on failure/timeout
+     * Recipients to notify when a refresh of the monitor fails or times out. Only supported on table
+     * monitors, via `dataProfilingConfig`, and only `emailAddresses` is accepted there
      */
     onFailure?: pulumi.Input<inputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure | undefined>;
     /**
@@ -5038,9 +6840,9 @@ export interface DataQualityMonitorAnomalyDetectionConfigNotificationSettings {
 
 export interface DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure {
     /**
-     * The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
-     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
-     * 25 destination IDs is supported.
+     * The notification-destination IDs (Slack / Teams / webhook / Asana / ServiceNow / AWS
+     * EventBridge) to send the notification to. The destinations must already exist in the
+     * workspace; a workspace admin creates them. A maximum of 25 destination IDs is supported.
      * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
      */
     destinationIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -5050,16 +6852,17 @@ export interface DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnF
      */
     destinationUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
-     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported.
+     * Only supported on table monitors, via `dataProfilingConfig`; rejected on schema monitors
      */
     emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable {
     /**
-     * The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
-     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
-     * 25 destination IDs is supported.
+     * The notification-destination IDs (Slack / Teams / webhook / Asana / ServiceNow / AWS
+     * EventBridge) to send the notification to. The destinations must already exist in the
+     * workspace; a workspace admin creates them. A maximum of 25 destination IDs is supported.
      * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
      */
     destinationIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -5069,32 +6872,35 @@ export interface DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnU
      */
     destinationUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
-     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported.
+     * Only supported on table monitors, via `dataProfilingConfig`; rejected on schema monitors
      */
     emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface DataQualityMonitorDataProfilingConfig {
     /**
-     * Field for specifying the absolute path to a custom directory to store data-monitoring
-     * assets. Normally prepopulated to a default user location via UI and Python APIs
+     * The absolute workspace path of the directory where the monitor's assets, such as
+     * the dashboard, are stored. The UI and the Python APIs normally prepopulate a default user location
      */
     assetsDir?: pulumi.Input<string | undefined>;
     /**
-     * Baseline table name.
-     * Baseline data is used to compute drift from the data in the monitored `tableName`.
-     * The baseline table and the monitored table shall have the same schema
+     * The fully qualified name of a baseline table. Format: `catalog.schema.table_name`.
+     * Drift metrics compare the monitored table against the baseline data, so the two tables must have the same
+     * schema
      */
     baselineTableName?: pulumi.Input<string | undefined>;
     /**
-     * Custom metrics
+     * Custom metrics to compute in addition to the built-in ones. See
+     * [custom metrics](https://docs.databricks.com/aws/en/data-governance/unity-catalog/data-quality-monitoring/data-profiling/custom-metrics)
      */
     customMetrics?: pulumi.Input<pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigCustomMetric>[] | undefined>;
     dashboardId?: pulumi.Input<string | undefined>;
     driftMetricsTableName?: pulumi.Input<string | undefined>;
     effectiveWarehouseId?: pulumi.Input<string | undefined>;
     /**
-     * `Analysis Configuration` for monitoring inference log tables
+     * Profiles an inference log table, which stores the requests and predictions of a model. Metrics are
+     * computed per time window and include model quality metrics
      */
     inferenceLog?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigInferenceLog | undefined>;
     latestMonitorFailureMessage?: pulumi.Input<string | undefined>;
@@ -5102,12 +6908,14 @@ export interface DataQualityMonitorDataProfilingConfig {
     monitoredTableName?: pulumi.Input<string | undefined>;
     notificationSettings?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigNotificationSettings | undefined>;
     /**
-     * ID of the schema where output tables are created
+     * The UUID of the Unity Catalog schema where the profile and drift metrics tables
+     * are created
      */
     outputSchemaId: pulumi.Input<string>;
     profileMetricsTableName?: pulumi.Input<string | undefined>;
     /**
-     * The cron schedule
+     * The schedule on which the monitor refreshes its metrics. Refreshes can also be
+     * triggered on demand through the Refresh resource
      */
     schedule?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigSchedule | undefined>;
     /**
@@ -5117,24 +6925,25 @@ export interface DataQualityMonitorDataProfilingConfig {
     /**
      * List of column expressions to slice data with for targeted analysis. The data is grouped by
      * each expression independently, resulting in a separate slice for each predicate and its
-     * complements. For example `slicing_exprs=[“col_1”, “col_2 > 10”]` will generate the following
+     * complements. For example `slicing_exprs=["col1", "col2 " pulumi-lang-dotnet="> 10"]` will generate the following
      * slices: two slices for `col2 > 10` (True and False), and one slice per unique value in
      * `col1`. For high-cardinality columns, only the top 100 unique values by frequency will
      * generate slices
      */
     slicingExprs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * `Analysis Configuration` for monitoring snapshot tables
+     * Profiles the full contents of the table. Metrics are computed over all rows at each refresh
      */
     snapshot?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigSnapshot | undefined>;
     status?: pulumi.Input<string | undefined>;
     /**
-     * `Analysis Configuration` for monitoring time series tables
+     * Profiles a time series table. Metrics are computed per time window, as defined by `timestampColumn`
+     * and `granularities`
      */
     timeSeries?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigTimeSeries | undefined>;
     /**
-     * Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
-     * warehouse will be used
+     * The ID of the SQL warehouse used to create the dashboard. If not specified, the first running warehouse the
+     * caller can access is used
      */
     warehouseId?: pulumi.Input<string | undefined>;
 }
@@ -5146,7 +6955,7 @@ export interface DataQualityMonitorDataProfilingConfigCustomMetric {
     definition: pulumi.Input<string>;
     /**
      * A list of column names in the input table the metric should be computed for.
-     * Can use ``":table"`` to indicate that the metric needs information from multiple columns
+     * Can use `":table"` to indicate that the metric needs information from multiple columns
      */
     inputColumns: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -5154,11 +6963,15 @@ export interface DataQualityMonitorDataProfilingConfigCustomMetric {
      */
     name: pulumi.Input<string>;
     /**
-     * The output type of the custom metric
+     * Specifies the Spark SQL data type of the metric value, either as a plain type name or as a JSON-encoded
+     * StructField
      */
     outputDataType: pulumi.Input<string>;
     /**
-     * The type of the custom metric. Possible values are: `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT`
+     * The type of the custom metric. `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE` metrics depend only on the
+     * columns of the input table, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED` metrics depend only on previously
+     * computed aggregate metrics, and `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT` metrics depend on previously computed
+     * aggregate or derived metrics. Possible values are: `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT`
      */
     type: pulumi.Input<string>;
 }
@@ -5166,19 +6979,20 @@ export interface DataQualityMonitorDataProfilingConfigCustomMetric {
 export interface DataQualityMonitorDataProfilingConfigInferenceLog {
     granularities: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Column for the label
+     * Column containing the ground truth for the model's predictions
      */
     labelColumn?: pulumi.Input<string | undefined>;
     /**
-     * Column for the model identifier
+     * Column containing the ID of the model that produced each prediction. A slice is created automatically for
+     * each distinct model ID
      */
     modelIdColumn: pulumi.Input<string>;
     /**
-     * Column for the prediction
+     * Column containing the model's predicted values
      */
     predictionColumn: pulumi.Input<string>;
     /**
-     * Problem type the model aims to solve. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
+     * The type of problem the model solves. It determines which model quality metrics are computed. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
      */
     problemType: pulumi.Input<string>;
     timestampColumn: pulumi.Input<string>;
@@ -5186,7 +7000,8 @@ export interface DataQualityMonitorDataProfilingConfigInferenceLog {
 
 export interface DataQualityMonitorDataProfilingConfigNotificationSettings {
     /**
-     * Destinations to send notifications on failure/timeout
+     * Recipients to notify when a refresh of the monitor fails or times out. Only supported on table
+     * monitors, via `dataProfilingConfig`, and only `emailAddresses` is accepted there
      */
     onFailure?: pulumi.Input<inputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure | undefined>;
     /**
@@ -5199,9 +7014,9 @@ export interface DataQualityMonitorDataProfilingConfigNotificationSettings {
 
 export interface DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure {
     /**
-     * The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
-     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
-     * 25 destination IDs is supported.
+     * The notification-destination IDs (Slack / Teams / webhook / Asana / ServiceNow / AWS
+     * EventBridge) to send the notification to. The destinations must already exist in the
+     * workspace; a workspace admin creates them. A maximum of 25 destination IDs is supported.
      * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
      */
     destinationIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -5211,16 +7026,17 @@ export interface DataQualityMonitorDataProfilingConfigNotificationSettingsOnFail
      */
     destinationUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
-     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported.
+     * Only supported on table monitors, via `dataProfilingConfig`; rejected on schema monitors
      */
     emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable {
     /**
-     * The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
-     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
-     * 25 destination IDs is supported.
+     * The notification-destination IDs (Slack / Teams / webhook / Asana / ServiceNow / AWS
+     * EventBridge) to send the notification to. The destinations must already exist in the
+     * workspace; a workspace admin creates them. A maximum of 25 destination IDs is supported.
      * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
      */
     destinationIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
@@ -5230,7 +7046,8 @@ export interface DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhe
      */
     destinationUserIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
-     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported.
+     * Only supported on table monitors, via `dataProfilingConfig`; rejected on schema monitors
      */
     emailAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
@@ -5242,9 +7059,8 @@ export interface DataQualityMonitorDataProfilingConfigSchedule {
      */
     quartzCronExpression: pulumi.Input<string>;
     /**
-     * A Java timezone id. The schedule for a job will be resolved with respect to this timezone.
-     * See `Java TimeZone <http://docs.oracle.com/javase/7/docs/api/java/util/TimeZone.html>`_ for details.
-     * The timezone id (e.g., ``America/Los_Angeles``) in which to evaluate the quartz expression
+     * The Java timezone ID in which the cron expression is evaluated. See
+     * [Java TimeZone](https://docs.oracle.com/javase/8/docs/api/java/util/TimeZone.html) for the supported IDs
      */
     timezoneId: pulumi.Input<string>;
 }
@@ -5306,7 +7122,9 @@ export interface DatabaseInstanceChildInstanceRef {
      */
     lsn?: pulumi.Input<string | undefined>;
     /**
-     * The name of the instance. This is the unique identifier for the instance
+     * The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+     * characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+     * consecutive hyphens
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -5365,7 +7183,9 @@ export interface DatabaseInstanceParentInstanceRef {
      */
     lsn?: pulumi.Input<string | undefined>;
     /**
-     * The name of the instance. This is the unique identifier for the instance
+     * The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+     * characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+     * consecutive hyphens
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -5382,11 +7202,19 @@ export interface DatabaseInstanceProviderConfig {
 }
 
 export interface DatabaseSyncedDatabaseTableDataSynchronizationStatus {
+    /**
+     * Provides detailed status for an online table with the CONTINUOUS scheduling policy. It is populated when
+     * detailedState is SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE or SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES
+     */
     continuousUpdateStatus?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatus | undefined>;
     /**
      * (string) - The state of the synced table. Possible values are: `SYNCED_TABLED_OFFLINE`, `SYNCED_TABLE_OFFLINE_FAILED`, `SYNCED_TABLE_ONLINE`, `SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE`, `SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE`, `SYNCED_TABLE_ONLINE_PIPELINE_FAILED`, `SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE`, `SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES`, `SYNCED_TABLE_PROVISIONING`, `SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT`, `SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES`
      */
     detailedState?: pulumi.Input<string | undefined>;
+    /**
+     * Provides detailed status for a table whose data synchronization pipeline has failed. It is populated when
+     * detailedState is SYNCED_TABLE_OFFLINE_FAILED or SYNCED_TABLE_ONLINE_PIPELINE_FAILED
+     */
     failedStatus?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatus | undefined>;
     /**
      * (SyncedTablePosition) - Summary of the last successful synchronization from source to destination.
@@ -5401,7 +7229,16 @@ export interface DatabaseSyncedDatabaseTableDataSynchronizationStatus {
      * (in the case of bin packing), or generated by the server (when creating a new pipeline)
      */
     pipelineId?: pulumi.Input<string | undefined>;
+    /**
+     * Provides detailed status while the table is being provisioned. It is populated when detailedState is
+     * SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES or SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT
+     */
     provisioningStatus?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatus | undefined>;
+    /**
+     * Provides detailed status for an online table with the TRIGGERED or SNAPSHOT scheduling policy. It is
+     * populated when detailedState is SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE, SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE
+     * or SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES
+     */
     triggeredUpdateStatus?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatus | undefined>;
 }
 
@@ -5464,7 +7301,7 @@ export interface DatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatu
 
 export interface DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSync {
     /**
-     * (DeltaTableSyncInfo)
+     * (DeltaTableSyncInfo) - Identifies the position in the source Delta table at the time of the last successful sync
      */
     deltaTableSyncInfo?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfo | undefined>;
     /**
@@ -5589,7 +7426,8 @@ export interface DatabaseSyncedDatabaseTableSpec {
     acceleratedSync?: pulumi.Input<boolean | undefined>;
     /**
      * If true, the synced table's logical database and schema resources in PG
-     * will be created if they do not already exist
+     * will be created if they do not already exist. The request fails if this is false and the database
+     * or schema does not exist
      */
     createDatabaseObjectsIfMissing?: pulumi.Input<boolean | undefined>;
     /**
@@ -5610,11 +7448,17 @@ export interface DatabaseSyncedDatabaseTableSpec {
      */
     newPipelineSpec?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableSpecNewPipelineSpec | undefined>;
     /**
-     * Primary Key columns to be used for data insert/update in the destination
+     * The primary key columns are used to insert and update rows in the destination table. At least one
+     * column is required. Rows whose primary key columns contain null values are not synced, and the primary
+     * key cannot be changed after the table is created
      */
     primaryKeyColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+     * Specifies the scheduling policy of the underlying pipeline. With CONTINUOUS, the pipeline keeps running and
+     * applies source changes as they happen. With TRIGGERED and SNAPSHOT, the pipeline stops after the
+     * initial load and syncs again only when it is run (manually, on a schedule or from a job); TRIGGERED
+     * applies source changes incrementally, while SNAPSHOT copies the full source table on every run.
+     * CONTINUOUS and TRIGGERED require the source table to provide a change data feed. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
      */
     schedulingPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -5622,7 +7466,9 @@ export interface DatabaseSyncedDatabaseTableSpec {
      */
     sourceTableFullName?: pulumi.Input<string | undefined>;
     /**
-     * Time series key to deduplicate (tie-break) rows with the same primary key
+     * The time series key deduplicates (tie-breaks) rows with the same primary key. When primary key values
+     * can repeat in the source table, the synced table keeps only the row with the latest value of this
+     * column for each primary key. The key cannot be changed after the table is created
      */
     timeseriesKey?: pulumi.Input<string | undefined>;
     /**
@@ -5741,23 +7587,28 @@ export interface DisableLegacyFeaturesSettingProviderConfig {
 
 export interface DisasterRecoveryFailoverGroupInitialReplicationProgress {
     /**
-     * (integer) - Percent complete, 0-100
+     * (integer) - Percentage of in-scope assets replicated so far, from 0 to 100. Stays below 100 while
+     * errors block the first replication point
      */
     completed?: pulumi.Input<number | undefined>;
 }
 
 export interface DisasterRecoveryFailoverGroupUnityCatalogAssets {
     /**
-     * UC catalogs to replicate
+     * Unity Catalog catalogs to replicate, including their metadata and managed table data.
+     * Adding a catalog to an existing failover group returns the group to INITIAL_REPLICATION
+     * until the catalog has been replicated
      */
     catalogs: pulumi.Input<pulumi.Input<inputs.DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog>[]>;
     /**
-     * The workspace set whose workspaces will be used for data replication
-     * of all UC catalogs' underlying storage
+     * Name of the workspace set whose workspaces run the data replication for the catalogs'
+     * underlying storage. Must match the name of a workspace set in this failover group
      */
     dataReplicationWorkspaceSet: pulumi.Input<string>;
     /**
-     * Location mappings - storage URI per region for each location
+     * Storage location mappings. Each mapping pairs a storage path used by the replicated
+     * catalogs in one region with the corresponding path in the other region, so that
+     * replicated data is written to the matching storage in the secondary region
      */
     locationMappings?: pulumi.Input<pulumi.Input<inputs.DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping>[] | undefined>;
 }
@@ -5777,18 +7628,20 @@ export interface DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping 
      */
     name: pulumi.Input<string>;
     /**
-     * URI for each region. Each entry maps a region name to a storage URI
+     * The storage URI of this location in each region, with exactly one entry per region of the
+     * failover group
      */
     uriByRegions: pulumi.Input<pulumi.Input<inputs.DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion>[]>;
 }
 
 export interface DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion {
     /**
-     * The region name
+     * Cloud region this URI applies to. Must be one of the failover group's regions
      */
     region: pulumi.Input<string>;
     /**
-     * The storage URI for this region
+     * Cloud storage URI of the location in this region. End the URI with `/*` to map every path
+     * under it as a prefix; within one mapping, either all URIs or none carry the `/*` suffix
      */
     uri: pulumi.Input<string>;
 }
@@ -5800,19 +7653,24 @@ export interface DisasterRecoveryFailoverGroupWorkspaceSet {
      */
     name: pulumi.Input<string>;
     /**
-     * Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
-     * Defaults to false
+     * Whether to replicate workspace assets (notebooks, jobs, clusters, SQL warehouses and so
+     * on) and their ACLs for this set. Defaults to false. Can be turned on or off with
+     * UpdateFailoverGroup
      */
     replicateWorkspaceAssets?: pulumi.Input<boolean | undefined>;
     /**
      * Resource names of stable URLs associated with this workspace set.
      * Format: accounts/{account_id}/stable-urls/{stable_url_id}.
-     * The referenced stable URLs must already exist (via CreateStableUrl)
+     * The referenced stable URLs must already exist (via CreateStableUrl), and the list can only
+     * be set when replicateWorkspaceAssets is true. While workspace asset replication stays
+     * enabled, an update can attach or detach one stable URL at a time
      */
     stableUrlNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Workspace IDs in this set. The system derives and validates regions.
-     * All workspaces must be in the Mission Critical tier
+     * IDs of the two workspaces in this set, one in each of the failover group's regions. The
+     * system derives and validates each workspace's region. Both workspaces must belong to the
+     * account and have the Mission Critical add-on enabled, and they cannot be changed after
+     * creation
      */
     workspaceIds: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -6425,6 +8283,10 @@ export interface FeatureEngineeringFeatureSource {
      */
     featureViewSource?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceFeatureViewSource | undefined>;
     /**
+     * A Unity Catalog managed or foreign Iceberg table source
+     */
+    icebergTableSource?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceIcebergTableSource | undefined>;
+    /**
      * A Kafka stream data source
      */
     kafkaSource?: pulumi.Input<inputs.FeatureEngineeringFeatureSourceKafkaSource | undefined>;
@@ -6476,6 +8338,16 @@ export interface FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenc
      * The three-part full name of the upstream Feature
      */
     feature: pulumi.Input<string>;
+}
+
+export interface FeatureEngineeringFeatureSourceIcebergTableSource {
+    dataframeSchema?: pulumi.Input<string | undefined>;
+    filterCondition?: pulumi.Input<string | undefined>;
+    /**
+     * The full three-part name (catalog, schema, name) of the feature
+     */
+    fullName: pulumi.Input<string>;
+    transformationSql?: pulumi.Input<string | undefined>;
 }
 
 export interface FeatureEngineeringFeatureSourceKafkaSource {
@@ -6545,7 +8417,7 @@ export interface FeatureEngineeringFeatureSourceSdpSource {
      * The full three-part names of the tables the pipeline reads from. Required to materialize this
      * feature with a TableTrigger, which starts a run when these tables update. Each table must exist
      * when the feature is created. Feature Store doesn't confirm that the pipeline reads from these
-     * tables. At most 100 tables
+     * tables. At most 25 tables
      */
     inputTables?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -6713,11 +8585,11 @@ export interface GenieAgentDefinitionDataSources {
      */
     mcpConnections?: pulumi.Input<pulumi.Input<inputs.GenieAgentDefinitionDataSourcesMcpConnection>[] | undefined>;
     /**
-     * Unity Catalog tables, views, and metric views, in the order they were added
+     * Unity Catalog tables, views, and metric views, sorted by `identifier`
      */
     tables?: pulumi.Input<pulumi.Input<inputs.GenieAgentDefinitionDataSourcesTable>[] | undefined>;
     /**
-     * Unity Catalog volumes, in the order they were added
+     * Unity Catalog volumes, sorted by `path`
      */
     volumes?: pulumi.Input<pulumi.Input<inputs.GenieAgentDefinitionDataSourcesVolume>[] | undefined>;
 }
@@ -7342,10 +9214,37 @@ export interface GetAppsSettingsCustomTemplatesProviderConfigArgs {
     workspaceId?: pulumi.Input<string | undefined>;
 }
 
+export interface GetAssumeGroupRestrictedSharingGroupProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetAssumeGroupRestrictedSharingGroupProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetAssumeGroupRestrictedSharingGroupsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetAssumeGroupRestrictedSharingGroupsProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
 export interface GetBudgetPoliciesFilterBy {
     /**
-     * The policy creator user id to be filtered on.
-     * If unspecified, all policies will be returned
+     * Deprecated: This field is ignored. Creator filtering will be removed in a future version
      */
     creatorUserId?: number;
     /**
@@ -7366,8 +9265,7 @@ export interface GetBudgetPoliciesFilterBy {
 
 export interface GetBudgetPoliciesFilterByArgs {
     /**
-     * The policy creator user id to be filtered on.
-     * If unspecified, all policies will be returned
+     * Deprecated: This field is ignored. Creator filtering will be removed in a future version
      */
     creatorUserId?: pulumi.Input<number | undefined>;
     /**
@@ -7392,7 +9290,7 @@ export interface GetBudgetPoliciesSortSpec {
      */
     descending?: boolean;
     /**
-     * The filed to sort by. Possible values are: `POLICY_NAME`
+     * The field to sort by. If unspecified, policies are sorted by name. Possible values are: `POLICY_NAME`
      */
     field?: string;
 }
@@ -7403,7 +9301,7 @@ export interface GetBudgetPoliciesSortSpecArgs {
      */
     descending?: pulumi.Input<boolean | undefined>;
     /**
-     * The filed to sort by. Possible values are: `POLICY_NAME`
+     * The field to sort by. If unspecified, policies are sorted by name. Possible values are: `POLICY_NAME`
      */
     field?: pulumi.Input<string | undefined>;
 }
@@ -10835,6 +12733,7 @@ export interface GetJobJobSettingsSettingsEnvironmentSpec {
     client?: string;
     dependencies?: string[];
     environmentVersion?: string;
+    imageUri?: string;
     javaDependencies?: string[];
     projectEnvironment?: string;
 }
@@ -10844,6 +12743,7 @@ export interface GetJobJobSettingsSettingsEnvironmentSpecArgs {
     client?: pulumi.Input<string | undefined>;
     dependencies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     environmentVersion?: pulumi.Input<string | undefined>;
+    imageUri?: pulumi.Input<string | undefined>;
     javaDependencies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     projectEnvironment?: pulumi.Input<string | undefined>;
 }
@@ -13944,6 +15844,232 @@ export interface GetKnowledgeAssistantsProviderConfig {
 }
 
 export interface GetKnowledgeAssistantsProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetLakewatchAlertConfigProviderConfig {
+    /**
+     * (string) - Deprecated and ignored: exports always egress through the request's own
+     * workspace. Kept so configs stored by older builds still round-trip
+     */
+    workspaceId?: string;
+}
+
+export interface GetLakewatchAlertConfigProviderConfigArgs {
+    /**
+     * (string) - Deprecated and ignored: exports always egress through the request's own
+     * workspace. Kept so configs stored by older builds still round-trip
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetLakewatchBuiltinParserProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetLakewatchBuiltinParserProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetLakewatchBuiltinParserVersionProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetLakewatchBuiltinParserVersionProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetLakewatchBuiltinParserVersionsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetLakewatchBuiltinParserVersionsProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetLakewatchBuiltinParsersProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetLakewatchBuiltinParsersProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetLakewatchCommonConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetLakewatchCommonConfigProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetLakewatchDatasourceConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetLakewatchDatasourceConfigProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetLakewatchDatasourceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetLakewatchDatasourceProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetLakewatchDatasourcesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetLakewatchDatasourcesProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetLakewatchParserProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetLakewatchParserProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetLakewatchParserVersionProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetLakewatchParserVersionProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetLakewatchParserVersionsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetLakewatchParserVersionsProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetLakewatchParsersProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetLakewatchParsersProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetLakewatchRuleConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetLakewatchRuleConfigProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetLakewatchRuleProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetLakewatchRuleProviderConfigArgs {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface GetLakewatchRulesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: string;
+}
+
+export interface GetLakewatchRulesProviderConfigArgs {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
@@ -17972,28 +20098,28 @@ export interface GetWorkspaceIamUsersV2ProviderConfigArgs {
 
 export interface GetWorkspaceIamWorkspaceAssignmentV2ProviderConfig {
     /**
-     * (integer) - The workspace ID where the principal is assigned
+     * (integer) - The ID of the workspace
      */
     workspaceId?: string;
 }
 
 export interface GetWorkspaceIamWorkspaceAssignmentV2ProviderConfigArgs {
     /**
-     * (integer) - The workspace ID where the principal is assigned
+     * (integer) - The ID of the workspace
      */
     workspaceId?: pulumi.Input<string | undefined>;
 }
 
 export interface GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfig {
     /**
-     * (integer) - The workspace ID where the principal is assigned
+     * (integer) - The ID of the workspace
      */
     workspaceId?: string;
 }
 
 export interface GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfigArgs {
     /**
-     * (integer) - The workspace ID where the principal is assigned
+     * (integer) - The ID of the workspace
      */
     workspaceId?: pulumi.Input<string | undefined>;
 }
@@ -18348,6 +20474,7 @@ export interface JobEnvironmentSpec {
      * client version used by the environment. Each version comes with a specific Python version and a set of Python packages.
      */
     environmentVersion?: pulumi.Input<string | undefined>;
+    imageUri?: pulumi.Input<string | undefined>;
     javaDependencies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     projectEnvironment?: pulumi.Input<string | undefined>;
 }
@@ -19140,7 +21267,7 @@ export interface JobSchedule {
 }
 
 export interface JobScheduleSqlCondition {
-    sqlQueryId: pulumi.Input<string>;
+    sqlQueryId?: pulumi.Input<string | undefined>;
     triggerMode?: pulumi.Input<string | undefined>;
     warehouseId: pulumi.Input<string>;
 }
@@ -21722,7 +23849,7 @@ export interface JobTriggerSchedule {
 }
 
 export interface JobTriggerSqlCondition {
-    sqlQueryId: pulumi.Input<string>;
+    sqlQueryId?: pulumi.Input<string | undefined>;
     triggerMode?: pulumi.Input<string | undefined>;
     warehouseId: pulumi.Input<string>;
 }
@@ -21973,6 +24100,1104 @@ export interface LakehouseMonitorTimeSeries {
      * Column of the timestamp of predictions
      */
     timestampCol: pulumi.Input<string>;
+}
+
+export interface LakewatchAlertConfigProviderConfig {
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchAlertConfigSecurityAlertExportConfig {
+    /**
+     * Whether export is currently active
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+    jira?: pulumi.Input<inputs.LakewatchAlertConfigSecurityAlertExportConfigJira | undefined>;
+    serviceNow?: pulumi.Input<inputs.LakewatchAlertConfigSecurityAlertExportConfigServiceNow | undefined>;
+    slack?: pulumi.Input<inputs.LakewatchAlertConfigSecurityAlertExportConfigSlack | undefined>;
+    tines?: pulumi.Input<inputs.LakewatchAlertConfigSecurityAlertExportConfigTines | undefined>;
+    webhook?: pulumi.Input<inputs.LakewatchAlertConfigSecurityAlertExportConfigWebhook | undefined>;
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchAlertConfigSecurityAlertExportConfigJira {
+    /**
+     * Three-level Unity Catalog name (`catalog.schema.secret`) of the secret holding
+     * the Jira API token, paired with `userEmail` as the Jira Cloud basic-auth
+     * credential (`email:token`). Only the name is stored; the token is read when an
+     * alert is exported, so rotating the secret takes effect without editing this config
+     */
+    apiTokenUcSecret: pulumi.Input<string>;
+    /**
+     * Default issue type for created tickets (e.g. `Task`, `Incident`). Jira issue creation
+     * requires an issue type, so it is validated at config-save time rather than failing the
+     * export at Jira later
+     */
+    defaultIssueType: pulumi.Input<string>;
+    /**
+     * Jira instance URL (e.g. `https://acme.atlassian.net`)
+     */
+    instanceUrl: pulumi.Input<string>;
+    /**
+     * Jira project key the exported issues are created under
+     */
+    projectKey: pulumi.Input<string>;
+    /**
+     * User email paired with the API token for Jira Cloud basic auth
+     */
+    userEmail: pulumi.Input<string>;
+}
+
+export interface LakewatchAlertConfigSecurityAlertExportConfigServiceNow {
+    /**
+     * OAuth client ID of the registered ServiceNow application. An identifier rather
+     * than secret material — ServiceNow shows it on the application record — so it
+     * is stored and read back verbatim
+     */
+    clientId: pulumi.Input<string>;
+    /**
+     * Three-level Unity Catalog name (`catalog.schema.secret`) of the secret holding
+     * the OAuth client secret. Only the name is stored; the secret is read when an alert
+     * is exported, so rotating it takes effect without editing this config
+     */
+    clientSecretUcSecret: pulumi.Input<string>;
+    /**
+     * ServiceNow instance ID — the host label only, not the full URL. For an
+     * instance reachable at `https://acme.service-now.com`, this is `acme`
+     */
+    instanceId: pulumi.Input<string>;
+}
+
+export interface LakewatchAlertConfigSecurityAlertExportConfigSlack {
+    /**
+     * Three-level Unity Catalog name (`catalog.schema.secret`) of the secret holding
+     * the Slack bot token. Only the name is stored; the token is read when an alert is
+     * exported, so rotating the secret takes effect without editing this config
+     */
+    botTokenUcSecret: pulumi.Input<string>;
+    /**
+     * Channel the alert is posted to: a channel ID (e.g. `C0123456789`) or a channel
+     * name without the leading `#` (e.g. `soc-alerts`). The value is stored as sent, so
+     * a leading `#`, surrounding whitespace, or a value naming more than one channel is
+     * rejected. For private channels, prefer the channel ID — Slack does not guarantee
+     * name resolution for those.
+     *
+     * The Slack app must be a member of the channel and hold the `chat:write` scope
+     */
+    channel: pulumi.Input<string>;
+}
+
+export interface LakewatchAlertConfigSecurityAlertExportConfigTines {
+    exportUpdates?: pulumi.Input<boolean | undefined>;
+    /**
+     * Three-level Unity Catalog name (`catalog.schema.secret`) of the secret holding the Tines
+     * webhook secret. Only the name is stored; the secret is read when an alert is exported, so
+     * rotating it takes effect without editing this config. Required: without it the destination
+     * would be an unauthenticated endpoint
+     */
+    webhookSecretUcSecret: pulumi.Input<string>;
+    /**
+     * Tines webhook action URL, typically of the form
+     * `https://<tenant>.tines.com/webhook/<path>`. Any HTTPS host is accepted, so
+     * that a Tines tenant on a custom domain works.
+     *
+     * The secret is sent as a header, so it must not be embedded in the URL: a
+     * trailing secret path segment (`/webhook/<path>/<secret>`) and a `secret`
+     * query parameter are both rejected. API-path-prefix URLs (`/api/public/...`)
+     * are not supported
+     */
+    webhookUri: pulumi.Input<string>;
+}
+
+export interface LakewatchAlertConfigSecurityAlertExportConfigWebhook {
+    exportUpdates?: pulumi.Input<boolean | undefined>;
+    /**
+     * Webhook destination the server POSTs payloads to, in plaintext. Userinfo
+     * (`user:password@`) is sent as HTTP Basic auth
+     */
+    url?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchAlertConfigSystemAlertExportConfig {
+    /**
+     * Whether export is currently active
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+    jira?: pulumi.Input<inputs.LakewatchAlertConfigSystemAlertExportConfigJira | undefined>;
+    serviceNow?: pulumi.Input<inputs.LakewatchAlertConfigSystemAlertExportConfigServiceNow | undefined>;
+    slack?: pulumi.Input<inputs.LakewatchAlertConfigSystemAlertExportConfigSlack | undefined>;
+    tines?: pulumi.Input<inputs.LakewatchAlertConfigSystemAlertExportConfigTines | undefined>;
+    webhook?: pulumi.Input<inputs.LakewatchAlertConfigSystemAlertExportConfigWebhook | undefined>;
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchAlertConfigSystemAlertExportConfigJira {
+    /**
+     * Three-level Unity Catalog name (`catalog.schema.secret`) of the secret holding
+     * the Jira API token, paired with `userEmail` as the Jira Cloud basic-auth
+     * credential (`email:token`). Only the name is stored; the token is read when an
+     * alert is exported, so rotating the secret takes effect without editing this config
+     */
+    apiTokenUcSecret: pulumi.Input<string>;
+    /**
+     * Default issue type for created tickets (e.g. `Task`, `Incident`). Jira issue creation
+     * requires an issue type, so it is validated at config-save time rather than failing the
+     * export at Jira later
+     */
+    defaultIssueType: pulumi.Input<string>;
+    /**
+     * Jira instance URL (e.g. `https://acme.atlassian.net`)
+     */
+    instanceUrl: pulumi.Input<string>;
+    /**
+     * Jira project key the exported issues are created under
+     */
+    projectKey: pulumi.Input<string>;
+    /**
+     * User email paired with the API token for Jira Cloud basic auth
+     */
+    userEmail: pulumi.Input<string>;
+}
+
+export interface LakewatchAlertConfigSystemAlertExportConfigServiceNow {
+    /**
+     * OAuth client ID of the registered ServiceNow application. An identifier rather
+     * than secret material — ServiceNow shows it on the application record — so it
+     * is stored and read back verbatim
+     */
+    clientId: pulumi.Input<string>;
+    /**
+     * Three-level Unity Catalog name (`catalog.schema.secret`) of the secret holding
+     * the OAuth client secret. Only the name is stored; the secret is read when an alert
+     * is exported, so rotating it takes effect without editing this config
+     */
+    clientSecretUcSecret: pulumi.Input<string>;
+    /**
+     * ServiceNow instance ID — the host label only, not the full URL. For an
+     * instance reachable at `https://acme.service-now.com`, this is `acme`
+     */
+    instanceId: pulumi.Input<string>;
+}
+
+export interface LakewatchAlertConfigSystemAlertExportConfigSlack {
+    /**
+     * Three-level Unity Catalog name (`catalog.schema.secret`) of the secret holding
+     * the Slack bot token. Only the name is stored; the token is read when an alert is
+     * exported, so rotating the secret takes effect without editing this config
+     */
+    botTokenUcSecret: pulumi.Input<string>;
+    /**
+     * Channel the alert is posted to: a channel ID (e.g. `C0123456789`) or a channel
+     * name without the leading `#` (e.g. `soc-alerts`). The value is stored as sent, so
+     * a leading `#`, surrounding whitespace, or a value naming more than one channel is
+     * rejected. For private channels, prefer the channel ID — Slack does not guarantee
+     * name resolution for those.
+     *
+     * The Slack app must be a member of the channel and hold the `chat:write` scope
+     */
+    channel: pulumi.Input<string>;
+}
+
+export interface LakewatchAlertConfigSystemAlertExportConfigTines {
+    exportUpdates?: pulumi.Input<boolean | undefined>;
+    /**
+     * Three-level Unity Catalog name (`catalog.schema.secret`) of the secret holding the Tines
+     * webhook secret. Only the name is stored; the secret is read when an alert is exported, so
+     * rotating it takes effect without editing this config. Required: without it the destination
+     * would be an unauthenticated endpoint
+     */
+    webhookSecretUcSecret: pulumi.Input<string>;
+    /**
+     * Tines webhook action URL, typically of the form
+     * `https://<tenant>.tines.com/webhook/<path>`. Any HTTPS host is accepted, so
+     * that a Tines tenant on a custom domain works.
+     *
+     * The secret is sent as a header, so it must not be embedded in the URL: a
+     * trailing secret path segment (`/webhook/<path>/<secret>`) and a `secret`
+     * query parameter are both rejected. API-path-prefix URLs (`/api/public/...`)
+     * are not supported
+     */
+    webhookUri: pulumi.Input<string>;
+}
+
+export interface LakewatchAlertConfigSystemAlertExportConfigWebhook {
+    exportUpdates?: pulumi.Input<boolean | undefined>;
+    /**
+     * Webhook destination the server POSTs payloads to, in plaintext. Userinfo
+     * (`user:password@`) is sent as HTTP Basic auth
+     */
+    url?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchAlertConfigUpdatedBy {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: pulumi.Input<string | undefined>;
+    /**
+     * Email (regular users only)
+     */
+    email?: pulumi.Input<string | undefined>;
+    /**
+     * User / service-principal ID
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchCommonConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchCommonConfigUpdatedBy {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: pulumi.Input<string | undefined>;
+    /**
+     * Email (regular users only)
+     */
+    email?: pulumi.Input<string | undefined>;
+    /**
+     * User / service-principal ID
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchDatasourceAutoloader {
+    /**
+     * Name of the workspace secret scope that holds the AWS access key ID and secret access key,
+     * under the keys `awsAccessKeyId` and `awsSecretAccessKey`
+     */
+    awsSecretScope?: pulumi.Input<string | undefined>;
+    /**
+     * (boolean) - Whether ingestion started with the files already present at `location`. Populated on get,
+     * create, and update responses
+     */
+    effectiveIncludeExistingFiles?: pulumi.Input<boolean | undefined>;
+    /**
+     * (TableName) - The table that the raw data is written to: `rawTable` in the datasource's catalog and
+     * schema, under their current Unity Catalog names. Populated on get, create, and update
+     * responses
+     */
+    effectiveRawTable?: pulumi.Input<inputs.LakewatchDatasourceAutoloaderEffectiveRawTable | undefined>;
+    /**
+     * How to unwrap a transport envelope around the source records before parsing. Supported only
+     * for the JSON and JSONL formats. If unset, each source record is treated as one event
+     */
+    envelope?: pulumi.Input<inputs.LakewatchDatasourceAutoloaderEnvelope | undefined>;
+    /**
+     * File format of the source files. Required. Possible values are: `AUTOLOADER_FORMAT_CSV`, `AUTOLOADER_FORMAT_JSON`, `AUTOLOADER_FORMAT_JSONL`, `AUTOLOADER_FORMAT_PARQUET`, `AUTOLOADER_FORMAT_XML`
+     */
+    format: pulumi.Input<string>;
+    /**
+     * Format-specific parsing options, passed to Auto Loader. Supported for the CSV, JSON, JSONL,
+     * and XML formats, each of which accepts a fixed set of options. The XML format requires the
+     * `rowTag` option
+     */
+    formatOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Whether to ingest the files already present at `location` when ingestion
+     * first starts. Set true to ingest the existing files and then every new file.
+     * Set false, or leave unset, to ingest only files that arrive after the
+     * datasource starts. Defaults to false. Cannot be changed after creation.
+     * Reads return the value as supplied; the setting in effect is reported in
+     * `effectiveIncludeExistingFiles`
+     */
+    includeExistingFiles?: pulumi.Input<boolean | undefined>;
+    /**
+     * URI of the source files: a path in a Unity Catalog volume or external location, or a
+     * cloud storage URL such as an Amazon S3 path. Required, including when new files are
+     * discovered through `queueUrl`. Cannot be changed after creation
+     */
+    location: pulumi.Input<string>;
+    /**
+     * Hive-style partition columns to derive from the source file paths. If unset, no partition
+     * columns are derived
+     */
+    overridePartitionColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * URL of a customer-managed Amazon SQS queue that receives file-arrival notifications. Set it
+     * to discover new files through the queue. If unset, new files are discovered through the
+     * file events of the source's Unity Catalog external location when it has them configured,
+     * and by directory listing otherwise. Cannot be changed after creation
+     */
+    queueUrl?: pulumi.Input<string | undefined>;
+    /**
+     * Table that stores the raw data before parsers schematize it. Every Auto Loader datasource
+     * writes its raw rows to this table before any parser reads them. The table must be in the
+     * datasource's catalog and schema; an omitted `catalogName` or `schemaName` defaults to
+     * them. Cannot be changed after creation. Reads return the value as supplied; the table the
+     * data is written to is reported in `effectiveRawTable`
+     */
+    rawTable: pulumi.Input<inputs.LakewatchDatasourceAutoloaderRawTable>;
+    /**
+     * Name of the Unity Catalog service credential to use
+     */
+    serviceCredentials?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchDatasourceAutoloaderEffectiveRawTable {
+    /**
+     * Name of the Unity Catalog catalog that contains the datasource. Required on create and
+     * cannot be changed afterward. Reads return the value as supplied; the catalog's current name
+     * is reported in `effectiveCatalogName`
+     */
+    catalogName?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the Unity Catalog schema that contains the datasource. Required on create and
+     * cannot be changed afterward. Reads return the value as supplied; the schema's current name
+     * is reported in `effectiveSchemaName`
+     */
+    schemaName?: pulumi.Input<string | undefined>;
+    /**
+     * Unity Catalog table name
+     */
+    tableName: pulumi.Input<string>;
+}
+
+export interface LakewatchDatasourceAutoloaderEnvelope {
+    cloudWatchLogs?: pulumi.Input<inputs.LakewatchDatasourceAutoloaderEnvelopeCloudWatchLogs | undefined>;
+    jsonArray?: pulumi.Input<inputs.LakewatchDatasourceAutoloaderEnvelopeJsonArray | undefined>;
+}
+
+export interface LakewatchDatasourceAutoloaderEnvelopeCloudWatchLogs {
+    /**
+     * Whether to keep the envelope's `owner`, `logGroup`, and `logStream` values in
+     * the `data.lw_header` field of each unwrapped row. Must be set explicitly to
+     * `true` or `false`
+     */
+    headerRetention?: pulumi.Input<boolean | undefined>;
+}
+
+export interface LakewatchDatasourceAutoloaderEnvelopeJsonArray {
+    /**
+     * Name of the root-level key that holds the array of events, for example
+     * `Records`. Nested paths are not supported
+     */
+    path: pulumi.Input<string>;
+}
+
+export interface LakewatchDatasourceAutoloaderRawTable {
+    /**
+     * Name of the Unity Catalog catalog that contains the datasource. Required on create and
+     * cannot be changed afterward. Reads return the value as supplied; the catalog's current name
+     * is reported in `effectiveCatalogName`
+     */
+    catalogName?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the Unity Catalog schema that contains the datasource. Required on create and
+     * cannot be changed afterward. Reads return the value as supplied; the schema's current name
+     * is reported in `effectiveSchemaName`
+     */
+    schemaName?: pulumi.Input<string | undefined>;
+    /**
+     * Unity Catalog table name
+     */
+    tableName: pulumi.Input<string>;
+}
+
+export interface LakewatchDatasourceConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchDatasourceConfigUpdatedBy {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: pulumi.Input<string | undefined>;
+    /**
+     * Email (regular users only)
+     */
+    email?: pulumi.Input<string | undefined>;
+    /**
+     * User / service-principal ID
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchDatasourceCreatedBy {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: pulumi.Input<string | undefined>;
+    /**
+     * Email (regular users only)
+     */
+    email?: pulumi.Input<string | undefined>;
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchDatasourceExistingTable {
+    /**
+     * Name of the catalog the existing table lives in. Optional on create and
+     * defaults to the datasource's own catalog. Cannot be changed. Reads return
+     * the value as supplied; the catalog in use is reported in `effectiveCatalog`
+     */
+    catalog?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Current Unity Catalog catalog name of the source table, resolved from its
+     * stable table ID, so a rename of the source table is reported here without
+     * changing `catalog`
+     */
+    effectiveCatalog?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Current Unity Catalog name of the source table, resolved from its stable
+     * table ID
+     */
+    effectiveName?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Current Unity Catalog schema name of the source table, resolved from its
+     * stable table ID
+     */
+    effectiveSchema?: pulumi.Input<string | undefined>;
+    /**
+     * Whether to ingest the rows already present in the source table when
+     * ingestion first starts. Set true to ingest the existing rows and then every
+     * new commit. Set false, or leave unset, to ingest only rows written after the
+     * datasource starts. Defaults to false, and must be true for a Delta Sharing
+     * source table. Takes effect only at first start and cannot be changed. Reads
+     * return the value as supplied
+     */
+    includeExistingRows?: pulumi.Input<boolean | undefined>;
+    /**
+     * (string) - Resource name of the datasource, in the format `datasources/{datasource_id}`. Unlike the
+     * datasource's Unity Catalog location (`catalogName`, `schemaName`, and `datasourceName`),
+     * the name does not change when the datasource or its catalog or schema is renamed in Unity
+     * Catalog
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Name of the schema the existing table lives in. Optional, but required when
+     * `catalog` is set; supplying `catalog` without `schema` is rejected. Defaults
+     * to the datasource's own schema. Cannot be changed. Reads return the value as
+     * supplied; the schema in use is reported in `effectiveSchema`
+     */
+    schema?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchDatasourceOwner {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: pulumi.Input<string | undefined>;
+    /**
+     * Email (regular users only)
+     */
+    email?: pulumi.Input<string | undefined>;
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchDatasourceParser {
+    /**
+     * (TableName) - The table this parser's data is written to: `targetTable` when supplied, otherwise the
+     * table derived from the datasource's catalog and schema and the parser name. Fixed once
+     * resolved, so a later parser rename does not move it. Populated on get, create, and update
+     * responses with the resolved table
+     */
+    effectiveTargetTable?: pulumi.Input<inputs.LakewatchDatasourceParserEffectiveTargetTable | undefined>;
+    id: pulumi.Input<string>;
+    /**
+     * Table that this parser's data is written to. The table must be in the datasource's catalog
+     * and schema. If unset, the table name is derived from the parser name. Reads return the value
+     * as supplied; the table the data is written to is reported in `effectiveTargetTable`
+     */
+    targetTable?: pulumi.Input<inputs.LakewatchDatasourceParserTargetTable | undefined>;
+    /**
+     * (integer) - Version number of the datasource, incremented on each update. Informational only; use
+     * `etag` for optimistic concurrency control
+     */
+    version: pulumi.Input<string>;
+}
+
+export interface LakewatchDatasourceParserEffectiveTargetTable {
+    /**
+     * Name of the Unity Catalog catalog that contains the datasource. Required on create and
+     * cannot be changed afterward. Reads return the value as supplied; the catalog's current name
+     * is reported in `effectiveCatalogName`
+     */
+    catalogName?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the Unity Catalog schema that contains the datasource. Required on create and
+     * cannot be changed afterward. Reads return the value as supplied; the schema's current name
+     * is reported in `effectiveSchemaName`
+     */
+    schemaName?: pulumi.Input<string | undefined>;
+    /**
+     * Unity Catalog table name
+     */
+    tableName: pulumi.Input<string>;
+}
+
+export interface LakewatchDatasourceParserTargetTable {
+    /**
+     * Name of the Unity Catalog catalog that contains the datasource. Required on create and
+     * cannot be changed afterward. Reads return the value as supplied; the catalog's current name
+     * is reported in `effectiveCatalogName`
+     */
+    catalogName?: pulumi.Input<string | undefined>;
+    /**
+     * Name of the Unity Catalog schema that contains the datasource. Required on create and
+     * cannot be changed afterward. Reads return the value as supplied; the schema's current name
+     * is reported in `effectiveSchemaName`
+     */
+    schemaName?: pulumi.Input<string | undefined>;
+    /**
+     * Unity Catalog table name
+     */
+    tableName: pulumi.Input<string>;
+}
+
+export interface LakewatchDatasourceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchDatasourceSchedule {
+    /**
+     * Duration string defining the minimum cadence. May contain components
+     * for days, hours, minutes, seconds (e.g. `5d`, `5d3h`, `3d2h5m12s`,
+     * `12m16s`)
+     */
+    atLeastEvery?: pulumi.Input<string | undefined>;
+    /**
+     * `dedicated`, `inherited`, `automatic`, or a custom group name. Reads return
+     * the value as supplied. A rule whose schedule omits it runs on `dedicated`
+     */
+    computeGroup?: pulumi.Input<string | undefined>;
+    /**
+     * Run continuously (sentinel — must be `true` when set in this branch)
+     */
+    continuous?: pulumi.Input<boolean | undefined>;
+    /**
+     * Quartz cron expression
+     */
+    cronExpression?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the job is scheduled to run. Defaults to true
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+}
+
+export interface LakewatchDatasourceStatus {
+    /**
+     * (ResourceStatus) - Status of the datasource's ingestion job
+     */
+    ingestionJob?: pulumi.Input<inputs.LakewatchDatasourceStatusIngestionJob | undefined>;
+    /**
+     * (ResourceStatus) - Status of the managed ingestion pipeline. Populated only when `unityCatalogConnection`
+     * is set, with `pipelineId` identifying the pipeline
+     */
+    ingestionPipeline?: pulumi.Input<inputs.LakewatchDatasourceStatusIngestionPipeline | undefined>;
+}
+
+export interface LakewatchDatasourceStatusIngestionJob {
+    /**
+     * (string)
+     */
+    createTime?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Databricks Jobs API job ID. Unset for a pure ingestion pipeline
+     */
+    jobId?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - When the most recent run completed. Pairs with `runState = SUCCEEDED`
+     */
+    lastCompleteTime?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Most recent error message, if any. Pairs with `runState = FAILED`
+     */
+    lastErrorMessage?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - When the most recent run started. Pairs with `runState = RUNNING`
+     */
+    lastStartTime?: pulumi.Input<string | undefined>;
+    /**
+     * (string)
+     */
+    lastStatusChangeTime?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Scheduling lifecycle of the resource's underlying job/pipeline: whether it
+     * is unscheduled, scheduled, stopped, or deleted. Distinct from `runState`,
+     * which reports the outcome of the most recent run. Possible values are: `DELETED`, `SCHEDULED`, `STOPPED`, `UNSCHEDULED`
+     */
+    lifecycleState?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - DLT ingestion-pipeline ID. Set only when this status represents the
+     * datasource's ingestion pipeline (unset for job statuses)
+     */
+    pipelineId?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Possible values are: `CANCELED`, `FAILED`, `RUNNING`, `SUCCEEDED`
+     */
+    runState?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchDatasourceStatusIngestionPipeline {
+    /**
+     * (string)
+     */
+    createTime?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Databricks Jobs API job ID. Unset for a pure ingestion pipeline
+     */
+    jobId?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - When the most recent run completed. Pairs with `runState = SUCCEEDED`
+     */
+    lastCompleteTime?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Most recent error message, if any. Pairs with `runState = FAILED`
+     */
+    lastErrorMessage?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - When the most recent run started. Pairs with `runState = RUNNING`
+     */
+    lastStartTime?: pulumi.Input<string | undefined>;
+    /**
+     * (string)
+     */
+    lastStatusChangeTime?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Scheduling lifecycle of the resource's underlying job/pipeline: whether it
+     * is unscheduled, scheduled, stopped, or deleted. Distinct from `runState`,
+     * which reports the outcome of the most recent run. Possible values are: `DELETED`, `SCHEDULED`, `STOPPED`, `UNSCHEDULED`
+     */
+    lifecycleState?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - DLT ingestion-pipeline ID. Set only when this status represents the
+     * datasource's ingestion pipeline (unset for job statuses)
+     */
+    pipelineId?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Possible values are: `CANCELED`, `FAILED`, `RUNNING`, `SUCCEEDED`
+     */
+    runState?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchDatasourceUnityCatalogConnection {
+    /**
+     * Free-form key-value configuration for the managed ingestion pipeline
+     */
+    configuration?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Name of the Unity Catalog connection to ingest through
+     */
+    connectionName: pulumi.Input<string>;
+    /**
+     * (string) - Connector type of the connection, such as `SLACK_AUDIT_LOGS`. Resolved by the server from
+     * `connectionName` through Unity Catalog; not accepted as input
+     */
+    connector?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - The start time ingestion uses: the supplied `startTime`, or the creation time when it was
+     * omitted. Always populated
+     */
+    effectiveStartTime?: pulumi.Input<string | undefined>;
+    /**
+     * Earliest source event time to ingest. Leave unset to start at creation time, with no
+     * history backfilled. Rejected if in the future, beyond the connector's history window, or
+     * for a connector without start-time support. Takes effect only at first start and cannot
+     * be changed. Reads return the value as supplied; the start time ingestion uses is reported
+     * in `effectiveStartTime`
+     */
+    startTime?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchDatasourceUpdatedBy {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: pulumi.Input<string | undefined>;
+    /**
+     * Email (regular users only)
+     */
+    email?: pulumi.Input<string | undefined>;
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchParserCreatedBy {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: pulumi.Input<string | undefined>;
+    /**
+     * Email (regular users only)
+     */
+    email?: pulumi.Input<string | undefined>;
+    /**
+     * User / service-principal ID
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchParserOwner {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: pulumi.Input<string | undefined>;
+    /**
+     * Email (regular users only)
+     */
+    email?: pulumi.Input<string | undefined>;
+    /**
+     * User / service-principal ID
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchParserProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchParserVersionCreatedBy {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: pulumi.Input<string | undefined>;
+    /**
+     * Email (regular users only)
+     */
+    email?: pulumi.Input<string | undefined>;
+    /**
+     * User / service-principal ID
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchParserVersionProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchRuleBatch {
+    /**
+     * Custom-notebook user function. The output is used as input data for the
+     * rule
+     */
+    custom?: pulumi.Input<inputs.LakewatchRuleBatchCustom | undefined>;
+    /**
+     * SQL query evaluated as the rule input
+     */
+    sql?: pulumi.Input<inputs.LakewatchRuleBatchSql | undefined>;
+    /**
+     * SQL warehouse that runs this scheduled detection
+     */
+    warehouseId?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchRuleBatchCustom {
+    /**
+     * Fully-qualified notebook path, or a path relative to the configured base
+     * notebook directory
+     */
+    notebook: pulumi.Input<string>;
+    /**
+     * Optional arguments supplied when invoking the custom function
+     */
+    options?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+}
+
+export interface LakewatchRuleBatchSql {
+    /**
+     * Default catalog used to resolve unqualified identifiers in `query`. If
+     * unset, the rule's `catalogName` is used
+     */
+    defaultCatalogName?: pulumi.Input<string | undefined>;
+    /**
+     * Default schema used to resolve unqualified identifiers in `query`. If
+     * unset, the rule's `schemaName` is used
+     */
+    defaultSchemaName?: pulumi.Input<string | undefined>;
+    /**
+     * SQL query evaluated as the rule input
+     */
+    query: pulumi.Input<string>;
+}
+
+export interface LakewatchRuleConfigDefaultSchedule {
+    /**
+     * Defines the minimum cadence as a duration string. It may contain components
+     * for days, hours, minutes, and seconds (e.g. `5d`, `5d3h`, `3d2h5m12s`,
+     * `12m16s`)
+     */
+    atLeastEvery?: pulumi.Input<string | undefined>;
+    /**
+     * Defines the schedule using a Quartz cron expression
+     */
+    cronExpression?: pulumi.Input<string | undefined>;
+    /**
+     * Sets whether the job is scheduled to run. Defaults to true
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+}
+
+export interface LakewatchRuleConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchRuleConfigUpdatedBy {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: pulumi.Input<string | undefined>;
+    /**
+     * Email (regular users only)
+     */
+    email?: pulumi.Input<string | undefined>;
+    /**
+     * User / service-principal ID
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchRuleCreatedBy {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: pulumi.Input<string | undefined>;
+    /**
+     * Email (regular users only)
+     */
+    email?: pulumi.Input<string | undefined>;
+    /**
+     * User / service-principal ID
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchRuleMitre {
+    /**
+     * Human-readable MITRE sub-technique name
+     */
+    subTechnique?: pulumi.Input<string | undefined>;
+    /**
+     * MITRE sub-technique ID, such as `T1078.001`
+     */
+    subTechniqueId?: pulumi.Input<string | undefined>;
+    /**
+     * Adversary objective during this attack, such as `Command and Control`
+     */
+    tactic?: pulumi.Input<string | undefined>;
+    /**
+     * Structured framework that organizes adversary behaviors, such as
+     * `mitre-attack`
+     */
+    taxonomy?: pulumi.Input<string | undefined>;
+    /**
+     * Human-readable MITRE technique name
+     */
+    technique?: pulumi.Input<string | undefined>;
+    /**
+     * MITRE technique ID, such as `T1078`
+     */
+    techniqueId?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchRuleOriginalContentPack {
+    /**
+     * (string) - UUID of the content pack
+     */
+    uuid?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Pack version the resource was installed from
+     */
+    version?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchRuleOutput {
+    /**
+     * Key/value context to record from the input row. Values may contain SQL
+     * expressions in braces
+     */
+    context?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * If true, also record every column of the triggering input row. Custom
+     * context wins on key collision
+     */
+    defaultContext?: pulumi.Input<boolean | undefined>;
+    /**
+     * Column in the rule output that holds the event timestamp
+     */
+    eventTimeColumn?: pulumi.Input<string | undefined>;
+    /**
+     * Signal summary. May contain SQL expressions in braces that the
+     * server substitutes from the input row
+     */
+    summary?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchRuleOwner {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: pulumi.Input<string | undefined>;
+    /**
+     * Email (regular users only)
+     */
+    email?: pulumi.Input<string | undefined>;
+    /**
+     * User / service-principal ID
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchRuleProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchRuleSchedule {
+    /**
+     * Defines the minimum cadence as a duration string. It may contain components
+     * for days, hours, minutes, and seconds (e.g. `5d`, `5d3h`, `3d2h5m12s`,
+     * `12m16s`)
+     */
+    atLeastEvery?: pulumi.Input<string | undefined>;
+    /**
+     * Defines the schedule using a Quartz cron expression
+     */
+    cronExpression?: pulumi.Input<string | undefined>;
+    /**
+     * Sets whether the job is scheduled to run. Defaults to true
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+}
+
+export interface LakewatchRuleStatus {
+    /**
+     * (string)
+     */
+    createTime?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Databricks Jobs API job ID. Unset for a pure ingestion pipeline
+     */
+    jobId?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - When the most recent run completed. Pairs with `runState = SUCCEEDED`
+     */
+    lastCompleteTime?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Most recent error message, if any. Pairs with `runState = FAILED`
+     */
+    lastErrorMessage?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - When the most recent run started. Pairs with `runState = RUNNING`
+     */
+    lastStartTime?: pulumi.Input<string | undefined>;
+    /**
+     * (string)
+     */
+    lastStatusChangeTime?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Scheduling lifecycle of the resource's underlying job/pipeline: whether it
+     * is unscheduled, scheduled, stopped, or deleted. Distinct from `runState`,
+     * which reports the outcome of the most recent run. Possible values are: `DELETED`, `SCHEDULED`, `STOPPED`, `UNSCHEDULED`
+     */
+    lifecycleState?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - DLT ingestion-pipeline ID. Set only when this status represents the
+     * datasource's ingestion pipeline (unset for job statuses)
+     */
+    pipelineId?: pulumi.Input<string | undefined>;
+    /**
+     * (string) - Possible values are: `CANCELED`, `FAILED`, `RUNNING`, `SUCCEEDED`
+     */
+    runState?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchRuleTimerange {
+    /**
+     * Extends the start of the execution time range by a compact duration with integer
+     * days, hours, minutes, and seconds in that order, such as `1h30m` or `15m`.
+     * Zero duration disables extension. Unset or empty uses a fixed `15m` at execution
+     * time. Only the start moves; the end is unchanged. Has no effect on a detection
+     * query that does not use `IN_TIMERANGE`. Values must fit signed 64-bit microseconds
+     */
+    extendLookback?: pulumi.Input<string | undefined>;
+}
+
+export interface LakewatchRuleUpdatedBy {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: pulumi.Input<string | undefined>;
+    /**
+     * Email (regular users only)
+     */
+    email?: pulumi.Input<string | undefined>;
+    /**
+     * User / service-principal ID
+     */
+    id?: pulumi.Input<string | undefined>;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: pulumi.Input<string | undefined>;
 }
 
 export interface LibraryCran {
@@ -22902,6 +26127,7 @@ export interface ModelServingProvisionedThroughputConfigServedEntity {
      * The number of model units to be provisioned.
      */
     provisionedModelUnits: pulumi.Input<number>;
+    ptTerm?: pulumi.Input<string | undefined>;
 }
 
 export interface ModelServingProvisionedThroughputConfigTrafficConfig {
@@ -23196,11 +26422,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: pulumi.Input<string>;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.145.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.145.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: pulumi.Input<string | undefined>;
     /**
@@ -23267,11 +26493,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.145.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.145.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: pulumi.Input<string | undefined>;
     subnetCidr: pulumi.Input<string>;
@@ -23303,7 +26529,13 @@ export interface NotebookProviderConfig {
 }
 
 export interface NotificationDestinationConfig {
+    /**
+     * The configuration for a Slack channel reached through the Databricks app. The app must already be installed in the Slack workspace and connected to the Databricks workspace. It must contain the following:
+     */
     databricksAppSlack?: pulumi.Input<inputs.NotificationDestinationConfigDatabricksAppSlack | undefined>;
+    /**
+     * The configuration for a Microsoft Teams channel reached through the Databricks app. The app must already be installed in the Microsoft 365 tenant and connected to the Databricks workspace. It must contain the following:
+     */
     databricksAppTeams?: pulumi.Input<inputs.NotificationDestinationConfigDatabricksAppTeams | undefined>;
     /**
      * The email configuration of the Notification Destination. It must contain the following:
@@ -23329,24 +26561,30 @@ export interface NotificationDestinationConfig {
 
 export interface NotificationDestinationConfigDatabricksAppSlack {
     /**
-     * Slack channel ID for notifications.
+     * Slack channel ID notifications are posted to.
      */
     channelId?: pulumi.Input<string | undefined>;
     channelIdSet?: pulumi.Input<boolean | undefined>;
+    /**
+     * Slack workspace (team) ID the Databricks app is installed in.
+     */
     teamId?: pulumi.Input<string | undefined>;
     teamIdSet?: pulumi.Input<boolean | undefined>;
 }
 
 export interface NotificationDestinationConfigDatabricksAppTeams {
     /**
-     * Slack channel ID for notifications.
+     * Teams channel ID notifications are posted to.
      */
     channelId?: pulumi.Input<string | undefined>;
     channelIdSet?: pulumi.Input<boolean | undefined>;
+    /**
+     * Microsoft Entra group ID of the team that owns the channel.
+     */
     teamId?: pulumi.Input<string | undefined>;
     teamIdSet?: pulumi.Input<boolean | undefined>;
     /**
-     * Tenant ID for Microsoft Teams App.
+     * Microsoft Entra tenant ID of the Microsoft 365 tenant the app is installed in.
      */
     tenantId?: pulumi.Input<string | undefined>;
     tenantIdSet?: pulumi.Input<boolean | undefined>;
@@ -24940,6 +28178,53 @@ export interface PipelineRunAs {
     userName?: pulumi.Input<string | undefined>;
 }
 
+export interface PipelineTesting {
+    environment?: pulumi.Input<inputs.PipelineTestingEnvironment | undefined>;
+    sources?: pulumi.Input<pulumi.Input<inputs.PipelineTestingSource>[] | undefined>;
+}
+
+export interface PipelineTestingEnvironment {
+    /**
+     * a list of pip dependencies, as supported by the version of pip in this environment. Each dependency is a [pip requirement file line](https://pip.pypa.io/en/stable/reference/requirements-file-format/).  See [API docs](https://docs.databricks.com/api/azure/workspace/pipelines/create#environment-dependencies) for more information.
+     *
+     * Example:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     *
+     * const _this = new databricks.Pipeline("this", {
+     *     name: "Serverless demo",
+     *     serverless: true,
+     *     catalog: "main",
+     *     schema: "ldp_demo",
+     *     environment: {
+     *         dependencies: [
+     *             "foo==0.0.1",
+     *             "-r /Workspace/Users/user.name/my-pipeline/requirements.txt",
+     *             "/Volumes/main/default/libs/my_lib.whl",
+     *         ],
+     *     },
+     * });
+     * ```
+     */
+    dependencies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface PipelineTestingSource {
+    /**
+     * The unified field to include source code. Each entry should have the `include` attribute that can specify a notebook path, a file path, or a folder path that ends `/**` (to include everything from that folder). This field cannot be used together with `notebook` or `file`.
+     */
+    glob?: pulumi.Input<inputs.PipelineTestingSourceGlob | undefined>;
+}
+
+export interface PipelineTestingSourceGlob {
+    /**
+     * Paths to include.
+     */
+    include?: pulumi.Input<string | undefined>;
+}
+
 export interface PipelineTrigger {
     cron?: pulumi.Input<inputs.PipelineTriggerCron | undefined>;
     manual?: pulumi.Input<inputs.PipelineTriggerManual | undefined>;
@@ -25387,24 +28672,25 @@ export interface PostgresEndpointSpec {
     group?: pulumi.Input<inputs.PostgresEndpointSpecGroup | undefined>;
     /**
      * When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided.
+     * The value must be true when provided.
      * Mutually exclusive with `suspendTimeoutDuration`
      */
     noSuspension?: pulumi.Input<boolean | undefined>;
     /**
-     * (EndpointSettings)
+     * (EndpointSettings) - The Postgres server parameters currently set on the compute endpoint
      */
     settings?: pulumi.Input<inputs.PostgresEndpointSpecSettings | undefined>;
     /**
-     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended. Absent when
+     * automatic suspension is disabled
      */
     suspendTimeoutDuration?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresEndpointSpecGroup {
     /**
-     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
-     * by specifying size.max > 1
+     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if the endpoint has more than
+     * one compute (`max` greater than 1)
      */
     enableReadableSecondaries?: pulumi.Input<boolean | undefined>;
     max: pulumi.Input<number>;
@@ -25413,7 +28699,8 @@ export interface PostgresEndpointSpecGroup {
 
 export interface PostgresEndpointSpecSettings {
     /**
-     * A raw representation of Postgres settings
+     * Postgres server parameters to set on the compute endpoint, keyed by parameter name. Each value is
+     * given as a string
      */
     pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
@@ -25429,7 +28716,7 @@ export interface PostgresEndpointStatus {
      */
     autoscalingLimitMinCu?: pulumi.Input<number | undefined>;
     /**
-     * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+     * (string) - The state the compute endpoint is in now. Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      */
     currentState?: pulumi.Input<string | undefined>;
     /**
@@ -25440,7 +28727,7 @@ export interface PostgresEndpointStatus {
      */
     disabled?: pulumi.Input<boolean | undefined>;
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
      */
     endpointId?: pulumi.Input<string | undefined>;
     /**
@@ -25460,23 +28747,24 @@ export interface PostgresEndpointStatus {
      */
     lastActiveTime?: pulumi.Input<string | undefined>;
     /**
-     * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+     * (string) - The state the compute endpoint is transitioning to, if a transition is in progress. Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      */
     pendingState?: pulumi.Input<string | undefined>;
     /**
-     * (EndpointSettings)
+     * (EndpointSettings) - The Postgres server parameters currently set on the compute endpoint
      */
     settings?: pulumi.Input<inputs.PostgresEndpointStatusSettings | undefined>;
     /**
-     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended. Absent when
+     * automatic suspension is disabled
      */
     suspendTimeoutDuration?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresEndpointStatusGroup {
     /**
-     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
-     * by specifying size.max > 1
+     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if the endpoint has more than
+     * one compute (`max` greater than 1)
      */
     enableReadableSecondaries?: pulumi.Input<boolean | undefined>;
     max: pulumi.Input<number>;
@@ -25508,7 +28796,8 @@ export interface PostgresEndpointStatusHosts {
 
 export interface PostgresEndpointStatusSettings {
     /**
-     * A raw representation of Postgres settings
+     * Postgres server parameters to set on the compute endpoint, keyed by parameter name. Each value is
+     * given as a string
      */
     pgSettings?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
@@ -25534,7 +28823,7 @@ export interface PostgresProjectInitialEndpointSpec {
 export interface PostgresProjectInitialEndpointSpecGroup {
     /**
      * Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
-     * size.max > 1
+     * `max` is greater than 1. When enabled, the endpoint also reports a read-only host in `status.hosts`
      */
     enableReadableSecondaries?: pulumi.Input<boolean | undefined>;
     /**
@@ -25660,7 +28949,7 @@ export interface PostgresProjectStatus {
      */
     pgVersion?: pulumi.Input<number | undefined>;
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The project ID chosen when the project was created. It is the final segment of `name`
      */
     projectId?: pulumi.Input<string | undefined>;
     /**
@@ -25707,8 +28996,17 @@ export interface PostgresRoleSpec {
 }
 
 export interface PostgresRoleSpecAttributes {
+    /**
+     * Whether the role bypasses every row-level security policy (the Postgres BYPASSRLS attribute)
+     */
     bypassrls?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether the role can create databases (the Postgres CREATEDB attribute)
+     */
     createdb?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether the role can create, alter and drop other roles (the Postgres CREATEROLE attribute)
+     */
     createrole?: pulumi.Input<boolean | undefined>;
 }
 
@@ -25725,8 +29023,17 @@ export interface PostgresRoleStatus {
 }
 
 export interface PostgresRoleStatusAttributes {
+    /**
+     * Whether the role bypasses every row-level security policy (the Postgres BYPASSRLS attribute)
+     */
     bypassrls?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether the role can create databases (the Postgres CREATEDB attribute)
+     */
     createdb?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether the role can create, alter and drop other roles (the Postgres CREATEROLE attribute)
+     */
     createrole?: pulumi.Input<boolean | undefined>;
 }
 
@@ -25795,9 +29102,12 @@ export interface PostgresSyncedTableSpec {
      */
     acceleratedSync?: pulumi.Input<boolean | undefined>;
     /**
-     * The full resource name the branch associated with the table.
+     * The full resource name of the branch that contains the synced table.
      *
-     * Format: "projects/{project_id}/branches/{branch_id}"
+     * Format: "projects/{project_id}/branches/{branch_id}".
+     *
+     * A value must be specified when creating a synced table inside a standard catalog. Inside a
+     * Lakebase catalog it can be omitted, and if specified it must match the branch of that catalog
      */
     branch?: pulumi.Input<string | undefined>;
     /**
@@ -25809,10 +29119,11 @@ export interface PostgresSyncedTableSpec {
      */
     createDatabaseObjectsIfMissing?: pulumi.Input<boolean | undefined>;
     /**
-     * ID of an existing pipeline to bin-pack this synced table into.
+     * ID of an existing pipeline to bin-pack this synced table into. The pipeline must be a synced
+     * table pipeline that runs continuously if and only if schedulingPolicy is CONTINUOUS.
      * At most one of existingPipelineId and newPipelineSpec should be defined.
      *
-     * The pipeline used for the synced table is returned via the top level pipelineId attribute
+     * The pipeline used for the synced table is returned in status.pipeline_id
      */
     existingPipelineId?: pulumi.Input<string | undefined>;
     /**
@@ -25823,24 +29134,23 @@ export interface PostgresSyncedTableSpec {
      * Specification for creating a new pipeline.
      * At most one of existingPipelineId and newPipelineSpec should be defined.
      *
-     * The pipeline used for the synced table is returned via the top level pipelineId attribute
+     * The pipeline used for the synced table is returned in status.pipeline_id
      */
     newPipelineSpec?: pulumi.Input<inputs.PostgresSyncedTableSpecNewPipelineSpec | undefined>;
     /**
-     * The Postgres database name where the synced table will be created in.
-     *
-     * If this synced table is created inside a Lakebase Catalog, this attribute can be omitted on creation and is inferred
-     * from the postgresDatabase associated with the Lakebase Catalog. If specified when inside a Lakebase Catalog, the value must match.
-     *
-     * A value must be specified when creating a synced table inside a Standard Catalog
+     * The name of the Postgres database where the synced table is created. A value must be specified
+     * on creation. If the synced table is created inside a Lakebase catalog, the value must match the
+     * Postgres database of that catalog
      */
     postgresDatabase?: pulumi.Input<string | undefined>;
     /**
-     * Primary Key columns to be used for data insert/update in the destination
+     * Primary Key columns to be used for data insert/update in the destination. At least one column
+     * must be specified
      */
     primaryKeyColumns?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+     * Scheduling policy of the underlying pipeline. A value must be specified on creation. See
+     * https://docs.databricks.com/aws/en/oltp/projects/sync-tables for how to choose a sync mode. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
      */
     schedulingPolicy?: pulumi.Input<string | undefined>;
     /**
@@ -25939,7 +29249,8 @@ export interface PostgresSyncedTableStatus {
      */
     message?: pulumi.Input<string | undefined>;
     /**
-     * (SyncedTablePipelineProgress)
+     * (SyncedTablePipelineProgress) - Progress of the sync that is currently running, either the initial data load or an update of a
+     * triggered or snapshot synced table
      */
     ongoingSyncProgress?: pulumi.Input<inputs.PostgresSyncedTableStatusOngoingSyncProgress | undefined>;
     /**
@@ -25962,7 +29273,7 @@ export interface PostgresSyncedTableStatus {
 
 export interface PostgresSyncedTableStatusLastSync {
     /**
-     * (DeltaTableSyncInfo)
+     * (DeltaTableSyncInfo) - The source Delta table version that the last successful sync read
      */
     deltaTableSyncInfo?: pulumi.Input<inputs.PostgresSyncedTableStatusLastSyncDeltaTableSyncInfo | undefined>;
     /**
@@ -26527,7 +29838,7 @@ export interface RfaAccessRequestDestinationsDestination {
 
 export interface RfaAccessRequestDestinationsDestinationSourceSecurable {
     /**
-     * (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     * (string) - The full name of the securable, repeated from **securable**
      */
     fullName?: pulumi.Input<string | undefined>;
     /**
@@ -26584,34 +29895,37 @@ export interface SandboxProviderConfig {
 
 export interface SandboxSpec {
     /**
-     * Compute configuration (size, inactivity timeout) requested for the sandbox
+     * Compute settings requested for the sandbox, such as the inactivity timeout
      */
     compute?: pulumi.Input<inputs.SandboxSpecCompute | undefined>;
     /**
-     * The execution environment to use for the sandbox
+     * Software environment for the sandbox, such as the container image it runs
      */
     environment?: pulumi.Input<inputs.SandboxSpecEnvironment | undefined>;
 }
 
 export interface SandboxSpecCompute {
     /**
-     * Idle duration after which the sandbox is automatically terminated
+     * Idle time after which the sandbox is automatically stopped. Unset or 0 disables inactivity
+     * auto-stop. Negative values are rejected. Can be changed on an existing sandbox with
+     * UpdateSandbox
      */
     inactivityTimeout?: pulumi.Input<string | undefined>;
 }
 
 export interface SandboxSpecEnvironment {
     /**
-     * The Unity Catalog container image to use for the sandbox environment
-     * (for example, `catalog.schema.folder.image:tag`). See
-     * [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
+     * The Unity Catalog container image to run the sandbox from, in the form
+     * `catalog.schema.artifact:tag`, or `catalog.schema.artifact@sha256:<digest>` to pin an
+     * exact version. When omitted, the sandbox runs the default sandbox image. See
+     * [custom images](https://docs.databricks.com/en/compute/serverless/sandbox-custom-image)
      */
     imageUri?: pulumi.Input<string | undefined>;
 }
 
 export interface SandboxStatus {
     /**
-     * (string) - Lifecycle state of the sandbox. Possible values are: `SANDBOX_STATE_PENDING`, `SANDBOX_STATE_RUNNING`, `SANDBOX_STATE_STOPPED`, `SANDBOX_STATE_STOPPING`
+     * (string) - Lifecycle state of the sandbox.
      */
     state?: pulumi.Input<string | undefined>;
 }
@@ -27347,6 +30661,9 @@ export interface TagPolicyProviderConfig {
 }
 
 export interface TagPolicyValue {
+    /**
+     * The value that can be assigned to the tag key. Values are case-sensitive
+     */
     name: pulumi.Input<string>;
 }
 
@@ -27388,11 +30705,16 @@ export interface VectorSearchEndpointProviderConfig {
 }
 
 export interface VectorSearchEndpointScalingInfo {
+    delayedReason?: pulumi.Input<string | undefined>;
+    estimatedCompletionTimestamp?: pulumi.Input<number | undefined>;
+    indexInitializationPercentage?: pulumi.Input<number | undefined>;
+    phase?: pulumi.Input<string | undefined>;
     requestedTargetQps?: pulumi.Input<number | undefined>;
     /**
      * Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
      */
     state?: pulumi.Input<string | undefined>;
+    targetQpsChangeAllowedAfterTimestamp?: pulumi.Input<number | undefined>;
 }
 
 export interface VectorSearchIndexDeltaSyncIndexSpec {
@@ -27501,6 +30823,8 @@ export interface VectorSearchIndexProviderConfig {
 }
 
 export interface VectorSearchIndexStatus {
+    detailedState?: pulumi.Input<string | undefined>;
+    failedStatus?: pulumi.Input<inputs.VectorSearchIndexStatusFailedStatus | undefined>;
     /**
      * Index API Url to be used to perform operations on the index
      */
@@ -27517,6 +30841,16 @@ export interface VectorSearchIndexStatus {
      * Whether the index is ready for search
      */
     ready?: pulumi.Input<boolean | undefined>;
+}
+
+export interface VectorSearchIndexStatusFailedStatus {
+    errorCode?: pulumi.Input<string | undefined>;
+    errorMessage?: pulumi.Input<string | undefined>;
+    lastProcessedCommitTimestamp?: pulumi.Input<inputs.VectorSearchIndexStatusFailedStatusLastProcessedCommitTimestamp | undefined>;
+    lastProcessedCommitVersion?: pulumi.Input<number | undefined>;
+}
+
+export interface VectorSearchIndexStatusFailedStatusLastProcessedCommitTimestamp {
 }
 
 export interface VolumeProviderConfig {
@@ -27583,7 +30917,13 @@ export interface WorkspaceIamServicePrincipalV2ProviderConfig {
 }
 
 export interface WorkspaceIamUserV2FullName {
+    /**
+     * The user's family (last) name
+     */
     familyName?: pulumi.Input<string | undefined>;
+    /**
+     * The user's given (first) name
+     */
     givenName?: pulumi.Input<string | undefined>;
 }
 
@@ -27596,7 +30936,7 @@ export interface WorkspaceIamUserV2ProviderConfig {
 
 export interface WorkspaceIamWorkspaceAssignmentV2ProviderConfig {
     /**
-     * (integer) - The workspace ID where the principal is assigned
+     * (integer) - The ID of the workspace
      */
     workspaceId?: pulumi.Input<string | undefined>;
 }
@@ -27610,24 +30950,57 @@ export interface WorkspaceIamWorkspaceIdentityDetailV2ProviderConfig {
 
 export interface WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy {
     /**
-     * Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * Where AI/BI dashboards can be embedded: in any domain (ALLOW_ALL_DOMAINS), only in the approved
+     * domains configured for the workspace (ALLOW_APPROVED_DOMAINS), or nowhere (DENY_ALL_DOMAINS).
+     * Defaults to ALLOW_APPROVED_DOMAINS. Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      */
     accessPolicyType: pulumi.Input<string>;
 }
 
 export interface WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains {
+    /**
+     * Domains allowed to host embedded AI/BI dashboards. A leading wildcard allows every subdomain of a
+     * domain. The list applies, and can only be changed, while the embedding access policy is
+     * ALLOW_APPROVED_DOMAINS
+     */
     approvedDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface WorkspaceSettingV2AllowedAppsUserApiScopes {
+    /**
+     * OAuth scopes that app developers can request when an app acts on behalf of a user. A list with
+     * the single entry * allows every supported scope and cannot be combined with other scopes. An
+     * empty list disables user authorization for apps
+     */
     allowedScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspace {
+    /**
+     * Whether the workspace can change the enabled state. Databricks computes this value: it is false
+     * when the compliance security profile forces the feature on or when the workspace lacks the
+     * Enhanced Security and Compliance entitlement. A value sent in an update request has no effect
+     */
     canToggle?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether automatic cluster update is enabled for the workspace. The effective value is always
+     * true while the compliance security profile is enabled on the workspace
+     */
     enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Why the feature is forced on or unavailable. Databricks sets these details for information only;
+     * they do not determine whether the feature is enabled
+     */
     enablementDetails?: pulumi.Input<inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails | undefined>;
+    /**
+     * When the maintenance window runs. When unset, it defaults to the first Sunday of every month at
+     * 01:00 UTC
+     */
     maintenanceWindow?: pulumi.Input<inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow | undefined>;
+    /**
+     * Whether compute resources restart during every maintenance window even when no update is
+     * available. When false, they restart only when an update is available
+     */
     restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean | undefined>;
 }
 
@@ -27637,7 +31010,8 @@ export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDeta
      */
     forcedForComplianceMode?: pulumi.Input<boolean | undefined>;
     /**
-     * The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     * The feature is unavailable because the workspace does not have the Enhanced Security and
+     * Compliance entitlement
      */
     unavailableForDisabledEntitlement?: pulumi.Input<boolean | undefined>;
     /**
@@ -27647,23 +31021,36 @@ export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDeta
 }
 
 export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    /**
+     * Schedule anchored to a day of the week, either every week or on given weeks of the month
+     */
     weekDayBasedSchedule?: pulumi.Input<inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule | undefined>;
 }
 
 export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * Day of the week on which the maintenance window starts. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
     dayOfWeek?: pulumi.Input<string | undefined>;
     /**
-     * Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * How often the maintenance window occurs: every week, or only on the listed occurrences of
+     * the day of the week within each month. Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
     frequency?: pulumi.Input<string | undefined>;
+    /**
+     * Time of day, in UTC, at which the maintenance window starts
+     */
     windowStartTime?: pulumi.Input<inputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime | undefined>;
 }
 
 export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    /**
+     * Hour of the day on a 24-hour clock
+     */
     hours?: pulumi.Input<number | undefined>;
+    /**
+     * Minute of the hour
+     */
     minutes?: pulumi.Input<number | undefined>;
 }
 
@@ -27680,24 +31067,57 @@ export interface WorkspaceSettingV2CollaborationPlatformConnectivity {
 
 export interface WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
     /**
-     * Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * Where AI/BI dashboards can be embedded: in any domain (ALLOW_ALL_DOMAINS), only in the approved
+     * domains configured for the workspace (ALLOW_APPROVED_DOMAINS), or nowhere (DENY_ALL_DOMAINS).
+     * Defaults to ALLOW_APPROVED_DOMAINS. Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      */
     accessPolicyType: pulumi.Input<string>;
 }
 
 export interface WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains {
+    /**
+     * Domains allowed to host embedded AI/BI dashboards. A leading wildcard allows every subdomain of a
+     * domain. The list applies, and can only be changed, while the embedding access policy is
+     * ALLOW_APPROVED_DOMAINS
+     */
     approvedDomains?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface WorkspaceSettingV2EffectiveAllowedAppsUserApiScopes {
+    /**
+     * OAuth scopes that app developers can request when an app acts on behalf of a user. A list with
+     * the single entry * allows every supported scope and cannot be combined with other scopes. An
+     * empty list disables user authorization for apps
+     */
     allowedScopes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace {
+    /**
+     * Whether the workspace can change the enabled state. Databricks computes this value: it is false
+     * when the compliance security profile forces the feature on or when the workspace lacks the
+     * Enhanced Security and Compliance entitlement. A value sent in an update request has no effect
+     */
     canToggle?: pulumi.Input<boolean | undefined>;
+    /**
+     * Whether automatic cluster update is enabled for the workspace. The effective value is always
+     * true while the compliance security profile is enabled on the workspace
+     */
     enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * Why the feature is forced on or unavailable. Databricks sets these details for information only;
+     * they do not determine whether the feature is enabled
+     */
     enablementDetails?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails | undefined>;
+    /**
+     * When the maintenance window runs. When unset, it defaults to the first Sunday of every month at
+     * 01:00 UTC
+     */
     maintenanceWindow?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow | undefined>;
+    /**
+     * Whether compute resources restart during every maintenance window even when no update is
+     * available. When false, they restart only when an update is available
+     */
     restartEvenIfNoUpdatesAvailable?: pulumi.Input<boolean | undefined>;
 }
 
@@ -27707,7 +31127,8 @@ export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnabl
      */
     forcedForComplianceMode?: pulumi.Input<boolean | undefined>;
     /**
-     * The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     * The feature is unavailable because the workspace does not have the Enhanced Security and
+     * Compliance entitlement
      */
     unavailableForDisabledEntitlement?: pulumi.Input<boolean | undefined>;
     /**
@@ -27717,23 +31138,36 @@ export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnabl
 }
 
 export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    /**
+     * Schedule anchored to a day of the week, either every week or on given weeks of the month
+     */
     weekDayBasedSchedule?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule | undefined>;
 }
 
 export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * Day of the week on which the maintenance window starts. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
     dayOfWeek?: pulumi.Input<string | undefined>;
     /**
-     * Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * How often the maintenance window occurs: every week, or only on the listed occurrences of
+     * the day of the week within each month. Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
     frequency?: pulumi.Input<string | undefined>;
+    /**
+     * Time of day, in UTC, at which the maintenance window starts
+     */
     windowStartTime?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime | undefined>;
 }
 
 export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    /**
+     * Hour of the day on a 24-hour clock
+     */
     hours?: pulumi.Input<number | undefined>;
+    /**
+     * Minute of the hour
+     */
     minutes?: pulumi.Input<number | undefined>;
 }
 
@@ -27753,6 +31187,11 @@ export interface WorkspaceSettingV2EffectiveIntegerVal {
 }
 
 export interface WorkspaceSettingV2EffectiveOperationalEmailCustomRecipient {
+    /**
+     * Email address that receives this workspace's operational emails in addition to the workspace
+     * admins. Use a distribution list address to reach several people. An empty string clears the
+     * additional recipient
+     */
     email?: pulumi.Input<string | undefined>;
 }
 
@@ -27767,7 +31206,13 @@ export interface WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins {
      */
     disableGovTagCreation?: pulumi.Input<boolean | undefined>;
     /**
-     * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     * Controls what workspace admins can do with service principal tokens and job identities. With
+     * ALLOW_ALL, workspace admins can create personal access tokens on behalf of any service principal
+     * in the workspace, change a job owner to any workspace user, and set a job's runAs identity to
+     * any workspace user or to a service principal they have the Service Principal User role on. With
+     * RESTRICT_TOKENS_AND_JOB_RUN_AS, they can only create tokens for service principals they have the
+     * Service Principal User role on, change a job owner to themselves, and set runAs to themselves
+     * or to a service principal they have that role on. Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
     status: pulumi.Input<string>;
 }
@@ -27776,8 +31221,682 @@ export interface WorkspaceSettingV2EffectiveStringVal {
     value?: pulumi.Input<string | undefined>;
 }
 
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardTheme {
+    /**
+     * Color of the zero-value grid line, making it visually distinct from other grid lines
+     */
+    axisLineColor?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeAxisLineColor | undefined>;
+    /**
+     * The background color of the dashboard canvas
+     */
+    canvasBackgroundColor?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeCanvasBackgroundColor | undefined>;
+    /**
+     * The continuous gradient configuration for the dashboard
+     */
+    continuousGradient?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradient | undefined>;
+    fontColor?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontColor | undefined>;
+    fontFamily?: pulumi.Input<string | undefined>;
+    /**
+     * The per-category typography overrides for the dashboard
+     */
+    fontSettings?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettings | undefined>;
+    /**
+     * Color of chart grid lines in visualizations (horizontal and vertical guide lines)
+     */
+    gridLineColor?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeGridLineColor | undefined>;
+    /**
+     * The corner radius in pixels for rectangular marks in visualizations (bars, columns, histogram bins, etc.)
+     */
+    markCornerRadius?: pulumi.Input<number | undefined>;
+    /**
+     * The highlight color for selected elements in widgets
+     */
+    selectionColor?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeSelectionColor | undefined>;
+    /**
+     * The sentiment color palette for the dashboard
+     */
+    sentimentColors?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeSentimentColors | undefined>;
+    /**
+     * The default vertical alignment for all text box widgets in the dashboard.
+     * Individual text box widgets can override this. Possible values are: `VERTICAL_ALIGN_BOTTOM`, `VERTICAL_ALIGN_CENTER`, `VERTICAL_ALIGN_TOP`
+     */
+    textBoxVerticalAlign?: pulumi.Input<string | undefined>;
+    /**
+     * Color palette for visualizations. Colors are applied in order (visualization_color_01, visualization_color_02, etc.).
+     * Invalid color values are preserved but ignored during rendering
+     */
+    visualizationColor01?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 2 in the visualization color palette
+     */
+    visualizationColor02?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 3 in the visualization color palette
+     */
+    visualizationColor03?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 4 in the visualization color palette
+     */
+    visualizationColor04?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 5 in the visualization color palette
+     */
+    visualizationColor05?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 6 in the visualization color palette
+     */
+    visualizationColor06?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 7 in the visualization color palette
+     */
+    visualizationColor07?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 8 in the visualization color palette
+     */
+    visualizationColor08?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 9 in the visualization color palette
+     */
+    visualizationColor09?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 10 in the visualization color palette
+     */
+    visualizationColor10?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 11 in the visualization color palette
+     */
+    visualizationColor11?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 12 in the visualization color palette
+     */
+    visualizationColor12?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 13 in the visualization color palette
+     */
+    visualizationColor13?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 14 in the visualization color palette
+     */
+    visualizationColor14?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 15 in the visualization color palette
+     */
+    visualizationColor15?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 16 in the visualization color palette
+     */
+    visualizationColor16?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 17 in the visualization color palette
+     */
+    visualizationColor17?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 18 in the visualization color palette
+     */
+    visualizationColor18?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 19 in the visualization color palette
+     */
+    visualizationColor19?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 20 in the visualization color palette
+     */
+    visualizationColor20?: pulumi.Input<string | undefined>;
+    /**
+     * The background color of widgets
+     */
+    widgetBackgroundColor?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeWidgetBackgroundColor | undefined>;
+    /**
+     * The border color of widgets
+     */
+    widgetBorderColor?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeWidgetBorderColor | undefined>;
+    /**
+     * The widget border radius in pixels
+     */
+    widgetCornerRadius?: pulumi.Input<number | undefined>;
+    /**
+     * Alignment setting for all widget titles and descriptions at the dashboard level. Possible values are: `CENTER`, `LEFT`, `RIGHT`
+     */
+    widgetHeaderAlignment?: pulumi.Input<string | undefined>;
+    /**
+     * The gap between widgets in pixels
+     */
+    widgetMargin?: pulumi.Input<number | undefined>;
+    /**
+     * The content padding inside each widget in pixels
+     */
+    widgetPadding?: pulumi.Input<number | undefined>;
+    /**
+     * The shadow intensity level applied to widgets (0 = no shadow, 100 = maximum).
+     * The actual CSS box-shadow is computed at render time from this value, factoring in
+     * background colors and color mode
+     */
+    widgetShadow?: pulumi.Input<number | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeAxisLineColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeCanvasBackgroundColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradient {
+    /**
+     * Gradient value used when the dashboard is rendered in dark mode
+     */
+    darkMode?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkMode | undefined>;
+    /**
+     * Gradient value used when the dashboard is rendered in light mode
+     */
+    lightMode?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightMode | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkMode {
+    color?: pulumi.Input<string | undefined>;
+    /**
+     * A named color scheme (for example, 'blues', 'viridis', 'spectral')
+     */
+    colorScheme?: pulumi.Input<string | undefined>;
+    /**
+     * A custom three-stop diverging gradient
+     */
+    customDiverging?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDiverging | undefined>;
+    /**
+     * A custom two-stop sequential gradient
+     */
+    customSequential?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequential | undefined>;
+    /**
+     * A 0-based index into the visualization color palette, where 0 is visualization_color_01. Valid values are 0 to 19
+     */
+    fromCategoricalIndex?: pulumi.Input<number | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDiverging {
+    end?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingEnd | undefined>;
+    /**
+     * The color at the midpoint of the gradient
+     */
+    mid?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingMid | undefined>;
+    start?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingStart | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingMid {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequential {
+    end?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialEnd | undefined>;
+    start?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialStart | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightMode {
+    color?: pulumi.Input<string | undefined>;
+    /**
+     * A named color scheme (for example, 'blues', 'viridis', 'spectral')
+     */
+    colorScheme?: pulumi.Input<string | undefined>;
+    /**
+     * A custom three-stop diverging gradient
+     */
+    customDiverging?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDiverging | undefined>;
+    /**
+     * A custom two-stop sequential gradient
+     */
+    customSequential?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequential | undefined>;
+    /**
+     * A 0-based index into the visualization color palette, where 0 is visualization_color_01. Valid values are 0 to 19
+     */
+    fromCategoricalIndex?: pulumi.Input<number | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDiverging {
+    end?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingEnd | undefined>;
+    /**
+     * The color at the midpoint of the gradient
+     */
+    mid?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingMid | undefined>;
+    start?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingStart | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingMid {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequential {
+    end?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialEnd | undefined>;
+    start?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialStart | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettings {
+    /**
+     * The default font config applied to all text unless overridden by a more specific category
+     */
+    base?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsBase | undefined>;
+    /**
+     * The font config applied to field titles (for example, axis titles, table heading titles)
+     */
+    fieldTitle?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldTitle | undefined>;
+    /**
+     * The font config applied to field values (for example, axis tick labels, table cell values, tooltip values)
+     */
+    fieldValue?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldValue | undefined>;
+    /**
+     * The font config applied to widget descriptions
+     */
+    widgetDescription?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetDescription | undefined>;
+    /**
+     * The font config applied to widget titles
+     */
+    widgetTitle?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetTitle | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsBase {
+    fontColor?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsBaseFontColor | undefined>;
+    fontFamily?: pulumi.Input<string | undefined>;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: pulumi.Input<number | undefined>;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: pulumi.Input<string | undefined>;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: pulumi.Input<number | undefined>;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: pulumi.Input<string | undefined>;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsBaseFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldTitle {
+    fontColor?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldTitleFontColor | undefined>;
+    fontFamily?: pulumi.Input<string | undefined>;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: pulumi.Input<number | undefined>;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: pulumi.Input<string | undefined>;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: pulumi.Input<number | undefined>;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: pulumi.Input<string | undefined>;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldTitleFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldValue {
+    fontColor?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldValueFontColor | undefined>;
+    fontFamily?: pulumi.Input<string | undefined>;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: pulumi.Input<number | undefined>;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: pulumi.Input<string | undefined>;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: pulumi.Input<number | undefined>;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: pulumi.Input<string | undefined>;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldValueFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetDescription {
+    fontColor?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetDescriptionFontColor | undefined>;
+    fontFamily?: pulumi.Input<string | undefined>;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: pulumi.Input<number | undefined>;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: pulumi.Input<string | undefined>;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: pulumi.Input<number | undefined>;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: pulumi.Input<string | undefined>;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetDescriptionFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetTitle {
+    fontColor?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetTitleFontColor | undefined>;
+    fontFamily?: pulumi.Input<string | undefined>;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: pulumi.Input<number | undefined>;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: pulumi.Input<string | undefined>;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: pulumi.Input<number | undefined>;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: pulumi.Input<string | undefined>;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetTitleFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeGridLineColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeSelectionColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeSentimentColors {
+    /**
+     * The color applied to negative sentiment values
+     */
+    negative?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsNegative | undefined>;
+    /**
+     * The color applied to neutral sentiment values
+     */
+    neutral?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsNeutral | undefined>;
+    /**
+     * The color applied to positive sentiment values
+     */
+    positive?: pulumi.Input<inputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsPositive | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsNegative {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsNeutral {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsPositive {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeWidgetBackgroundColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeWidgetBorderColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
 export interface WorkspaceSettingV2EffectiveWorkspaceLabel {
     color?: pulumi.Input<string | undefined>;
+    /**
+     * Text of the label shown next to the workspace name in the top navigation bar. An empty string
+     * means no label is set
+     */
     label?: pulumi.Input<string | undefined>;
 }
 
@@ -27786,6 +31905,11 @@ export interface WorkspaceSettingV2IntegerVal {
 }
 
 export interface WorkspaceSettingV2OperationalEmailCustomRecipient {
+    /**
+     * Email address that receives this workspace's operational emails in addition to the workspace
+     * admins. Use a distribution list address to reach several people. An empty string clears the
+     * additional recipient
+     */
     email?: pulumi.Input<string | undefined>;
 }
 
@@ -27807,7 +31931,13 @@ export interface WorkspaceSettingV2RestrictWorkspaceAdmins {
      */
     disableGovTagCreation?: pulumi.Input<boolean | undefined>;
     /**
-     * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     * Controls what workspace admins can do with service principal tokens and job identities. With
+     * ALLOW_ALL, workspace admins can create personal access tokens on behalf of any service principal
+     * in the workspace, change a job owner to any workspace user, and set a job's runAs identity to
+     * any workspace user or to a service principal they have the Service Principal User role on. With
+     * RESTRICT_TOKENS_AND_JOB_RUN_AS, they can only create tokens for service principals they have the
+     * Service Principal User role on, change a job owner to themselves, and set runAs to themselves
+     * or to a service principal they have that role on. Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
     status: pulumi.Input<string>;
 }
@@ -27816,7 +31946,681 @@ export interface WorkspaceSettingV2StringVal {
     value?: pulumi.Input<string | undefined>;
 }
 
+export interface WorkspaceSettingV2WorkspaceDashboardTheme {
+    /**
+     * Color of the zero-value grid line, making it visually distinct from other grid lines
+     */
+    axisLineColor?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeAxisLineColor | undefined>;
+    /**
+     * The background color of the dashboard canvas
+     */
+    canvasBackgroundColor?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeCanvasBackgroundColor | undefined>;
+    /**
+     * The continuous gradient configuration for the dashboard
+     */
+    continuousGradient?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradient | undefined>;
+    fontColor?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeFontColor | undefined>;
+    fontFamily?: pulumi.Input<string | undefined>;
+    /**
+     * The per-category typography overrides for the dashboard
+     */
+    fontSettings?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeFontSettings | undefined>;
+    /**
+     * Color of chart grid lines in visualizations (horizontal and vertical guide lines)
+     */
+    gridLineColor?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeGridLineColor | undefined>;
+    /**
+     * The corner radius in pixels for rectangular marks in visualizations (bars, columns, histogram bins, etc.)
+     */
+    markCornerRadius?: pulumi.Input<number | undefined>;
+    /**
+     * The highlight color for selected elements in widgets
+     */
+    selectionColor?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeSelectionColor | undefined>;
+    /**
+     * The sentiment color palette for the dashboard
+     */
+    sentimentColors?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeSentimentColors | undefined>;
+    /**
+     * The default vertical alignment for all text box widgets in the dashboard.
+     * Individual text box widgets can override this. Possible values are: `VERTICAL_ALIGN_BOTTOM`, `VERTICAL_ALIGN_CENTER`, `VERTICAL_ALIGN_TOP`
+     */
+    textBoxVerticalAlign?: pulumi.Input<string | undefined>;
+    /**
+     * Color palette for visualizations. Colors are applied in order (visualization_color_01, visualization_color_02, etc.).
+     * Invalid color values are preserved but ignored during rendering
+     */
+    visualizationColor01?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 2 in the visualization color palette
+     */
+    visualizationColor02?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 3 in the visualization color palette
+     */
+    visualizationColor03?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 4 in the visualization color palette
+     */
+    visualizationColor04?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 5 in the visualization color palette
+     */
+    visualizationColor05?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 6 in the visualization color palette
+     */
+    visualizationColor06?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 7 in the visualization color palette
+     */
+    visualizationColor07?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 8 in the visualization color palette
+     */
+    visualizationColor08?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 9 in the visualization color palette
+     */
+    visualizationColor09?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 10 in the visualization color palette
+     */
+    visualizationColor10?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 11 in the visualization color palette
+     */
+    visualizationColor11?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 12 in the visualization color palette
+     */
+    visualizationColor12?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 13 in the visualization color palette
+     */
+    visualizationColor13?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 14 in the visualization color palette
+     */
+    visualizationColor14?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 15 in the visualization color palette
+     */
+    visualizationColor15?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 16 in the visualization color palette
+     */
+    visualizationColor16?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 17 in the visualization color palette
+     */
+    visualizationColor17?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 18 in the visualization color palette
+     */
+    visualizationColor18?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 19 in the visualization color palette
+     */
+    visualizationColor19?: pulumi.Input<string | undefined>;
+    /**
+     * The color at position 20 in the visualization color palette
+     */
+    visualizationColor20?: pulumi.Input<string | undefined>;
+    /**
+     * The background color of widgets
+     */
+    widgetBackgroundColor?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeWidgetBackgroundColor | undefined>;
+    /**
+     * The border color of widgets
+     */
+    widgetBorderColor?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeWidgetBorderColor | undefined>;
+    /**
+     * The widget border radius in pixels
+     */
+    widgetCornerRadius?: pulumi.Input<number | undefined>;
+    /**
+     * Alignment setting for all widget titles and descriptions at the dashboard level. Possible values are: `CENTER`, `LEFT`, `RIGHT`
+     */
+    widgetHeaderAlignment?: pulumi.Input<string | undefined>;
+    /**
+     * The gap between widgets in pixels
+     */
+    widgetMargin?: pulumi.Input<number | undefined>;
+    /**
+     * The content padding inside each widget in pixels
+     */
+    widgetPadding?: pulumi.Input<number | undefined>;
+    /**
+     * The shadow intensity level applied to widgets (0 = no shadow, 100 = maximum).
+     * The actual CSS box-shadow is computed at render time from this value, factoring in
+     * background colors and color mode
+     */
+    widgetShadow?: pulumi.Input<number | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeAxisLineColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeCanvasBackgroundColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradient {
+    /**
+     * Gradient value used when the dashboard is rendered in dark mode
+     */
+    darkMode?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkMode | undefined>;
+    /**
+     * Gradient value used when the dashboard is rendered in light mode
+     */
+    lightMode?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightMode | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkMode {
+    color?: pulumi.Input<string | undefined>;
+    /**
+     * A named color scheme (for example, 'blues', 'viridis', 'spectral')
+     */
+    colorScheme?: pulumi.Input<string | undefined>;
+    /**
+     * A custom three-stop diverging gradient
+     */
+    customDiverging?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDiverging | undefined>;
+    /**
+     * A custom two-stop sequential gradient
+     */
+    customSequential?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequential | undefined>;
+    /**
+     * A 0-based index into the visualization color palette, where 0 is visualization_color_01. Valid values are 0 to 19
+     */
+    fromCategoricalIndex?: pulumi.Input<number | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDiverging {
+    end?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingEnd | undefined>;
+    /**
+     * The color at the midpoint of the gradient
+     */
+    mid?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingMid | undefined>;
+    start?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingStart | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingMid {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequential {
+    end?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialEnd | undefined>;
+    start?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialStart | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightMode {
+    color?: pulumi.Input<string | undefined>;
+    /**
+     * A named color scheme (for example, 'blues', 'viridis', 'spectral')
+     */
+    colorScheme?: pulumi.Input<string | undefined>;
+    /**
+     * A custom three-stop diverging gradient
+     */
+    customDiverging?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDiverging | undefined>;
+    /**
+     * A custom two-stop sequential gradient
+     */
+    customSequential?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequential | undefined>;
+    /**
+     * A 0-based index into the visualization color palette, where 0 is visualization_color_01. Valid values are 0 to 19
+     */
+    fromCategoricalIndex?: pulumi.Input<number | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDiverging {
+    end?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingEnd | undefined>;
+    /**
+     * The color at the midpoint of the gradient
+     */
+    mid?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingMid | undefined>;
+    start?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingStart | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingMid {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequential {
+    end?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialEnd | undefined>;
+    start?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialStart | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeFontSettings {
+    /**
+     * The default font config applied to all text unless overridden by a more specific category
+     */
+    base?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsBase | undefined>;
+    /**
+     * The font config applied to field titles (for example, axis titles, table heading titles)
+     */
+    fieldTitle?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsFieldTitle | undefined>;
+    /**
+     * The font config applied to field values (for example, axis tick labels, table cell values, tooltip values)
+     */
+    fieldValue?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsFieldValue | undefined>;
+    /**
+     * The font config applied to widget descriptions
+     */
+    widgetDescription?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsWidgetDescription | undefined>;
+    /**
+     * The font config applied to widget titles
+     */
+    widgetTitle?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsWidgetTitle | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsBase {
+    fontColor?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsBaseFontColor | undefined>;
+    fontFamily?: pulumi.Input<string | undefined>;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: pulumi.Input<number | undefined>;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: pulumi.Input<string | undefined>;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: pulumi.Input<number | undefined>;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: pulumi.Input<string | undefined>;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsBaseFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsFieldTitle {
+    fontColor?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsFieldTitleFontColor | undefined>;
+    fontFamily?: pulumi.Input<string | undefined>;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: pulumi.Input<number | undefined>;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: pulumi.Input<string | undefined>;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: pulumi.Input<number | undefined>;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: pulumi.Input<string | undefined>;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsFieldTitleFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsFieldValue {
+    fontColor?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsFieldValueFontColor | undefined>;
+    fontFamily?: pulumi.Input<string | undefined>;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: pulumi.Input<number | undefined>;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: pulumi.Input<string | undefined>;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: pulumi.Input<number | undefined>;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: pulumi.Input<string | undefined>;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsFieldValueFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsWidgetDescription {
+    fontColor?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsWidgetDescriptionFontColor | undefined>;
+    fontFamily?: pulumi.Input<string | undefined>;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: pulumi.Input<number | undefined>;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: pulumi.Input<string | undefined>;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: pulumi.Input<number | undefined>;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: pulumi.Input<string | undefined>;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsWidgetDescriptionFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsWidgetTitle {
+    fontColor?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsWidgetTitleFontColor | undefined>;
+    fontFamily?: pulumi.Input<string | undefined>;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: pulumi.Input<number | undefined>;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: pulumi.Input<string | undefined>;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: pulumi.Input<number | undefined>;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: pulumi.Input<string | undefined>;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsWidgetTitleFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeGridLineColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeSelectionColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeSentimentColors {
+    /**
+     * The color applied to negative sentiment values
+     */
+    negative?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeSentimentColorsNegative | undefined>;
+    /**
+     * The color applied to neutral sentiment values
+     */
+    neutral?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeSentimentColorsNeutral | undefined>;
+    /**
+     * The color applied to positive sentiment values
+     */
+    positive?: pulumi.Input<inputs.WorkspaceSettingV2WorkspaceDashboardThemeSentimentColorsPositive | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeSentimentColorsNegative {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeSentimentColorsNeutral {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeSentimentColorsPositive {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeWidgetBackgroundColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeWidgetBorderColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: pulumi.Input<string | undefined>;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: pulumi.Input<string | undefined>;
+}
+
 export interface WorkspaceSettingV2WorkspaceLabel {
     color?: pulumi.Input<string | undefined>;
+    /**
+     * Text of the label shown next to the workspace name in the top navigation bar. An empty string
+     * means no label is set
+     */
     label?: pulumi.Input<string | undefined>;
 }

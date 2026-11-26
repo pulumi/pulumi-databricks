@@ -29,9 +29,12 @@ class SandboxArgs:
         """
         The set of arguments for constructing a Sandbox resource.
 
-        :param pulumi.Input[_builtins.str] sandbox_id: Client-supplied ID that becomes the final path segment of the resource name
+        :param pulumi.Input[_builtins.str] sandbox_id: Client-supplied ID that becomes the final path segment of the resource name. It must
+               start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+               with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+               rejected
         :param pulumi.Input[_builtins.str] display_name: Human-readable display label for the sandbox. At most 256 characters
-        :param pulumi.Input['SandboxMetadataArgs'] metadata: Metadata associated with the sandbox
+        :param pulumi.Input['SandboxMetadataArgs'] metadata: Tags and other metadata associated with the sandbox
         :param pulumi.Input['SandboxProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['SandboxSpecArgs'] spec: The desired configuration of the sandbox, supplied by the caller at creation time
         """
@@ -49,7 +52,10 @@ class SandboxArgs:
     @pulumi.getter(name="sandboxId")
     def sandbox_id(self) -> pulumi.Input[_builtins.str]:
         """
-        Client-supplied ID that becomes the final path segment of the resource name
+        Client-supplied ID that becomes the final path segment of the resource name. It must
+        start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+        with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+        rejected
         """
         return pulumi.get(self, "sandbox_id")
 
@@ -73,7 +79,7 @@ class SandboxArgs:
     @pulumi.getter
     def metadata(self) -> pulumi.Input[Optional['SandboxMetadataArgs']]:
         """
-        Metadata associated with the sandbox
+        Tags and other metadata associated with the sandbox
         """
         return pulumi.get(self, "metadata")
 
@@ -123,11 +129,14 @@ class _SandboxState:
 
         :param pulumi.Input[_builtins.str] create_time: (string) - Output only. The creation time of the sandbox
         :param pulumi.Input[_builtins.str] display_name: Human-readable display label for the sandbox. At most 256 characters
-        :param pulumi.Input['SandboxMetadataArgs'] metadata: Metadata associated with the sandbox
+        :param pulumi.Input['SandboxMetadataArgs'] metadata: Tags and other metadata associated with the sandbox
         :param pulumi.Input[_builtins.str] name: (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
                `sandbox_id`; any value supplied in a create or update request body is ignored
         :param pulumi.Input['SandboxProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] sandbox_id: Client-supplied ID that becomes the final path segment of the resource name
+        :param pulumi.Input[_builtins.str] sandbox_id: Client-supplied ID that becomes the final path segment of the resource name. It must
+               start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+               with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+               rejected
         :param pulumi.Input['SandboxSpecArgs'] spec: The desired configuration of the sandbox, supplied by the caller at creation time
         :param pulumi.Input['SandboxStatusArgs'] status: (SandboxStatus) - The observed runtime state of the sandbox, populated by the server
         :param pulumi.Input[_builtins.str] update_time: (string) - Output only. The last update time of the sandbox metadata and spec
@@ -179,7 +188,7 @@ class _SandboxState:
     @pulumi.getter
     def metadata(self) -> pulumi.Input[Optional['SandboxMetadataArgs']]:
         """
-        Metadata associated with the sandbox
+        Tags and other metadata associated with the sandbox
         """
         return pulumi.get(self, "metadata")
 
@@ -216,7 +225,10 @@ class _SandboxState:
     @pulumi.getter(name="sandboxId")
     def sandbox_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Client-supplied ID that becomes the final path segment of the resource name
+        Client-supplied ID that becomes the final path segment of the resource name. It must
+        start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+        with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+        rejected
         """
         return pulumi.get(self, "sandbox_id")
 
@@ -304,9 +316,12 @@ class Sandbox(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: Human-readable display label for the sandbox. At most 256 characters
-        :param pulumi.Input[Union['SandboxMetadataArgs', 'SandboxMetadataArgsDict', 'outputs.SandboxMetadata']] metadata: Metadata associated with the sandbox
+        :param pulumi.Input[Union['SandboxMetadataArgs', 'SandboxMetadataArgsDict', 'outputs.SandboxMetadata']] metadata: Tags and other metadata associated with the sandbox
         :param pulumi.Input[Union['SandboxProviderConfigArgs', 'SandboxProviderConfigArgsDict', 'outputs.SandboxProviderConfig']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] sandbox_id: Client-supplied ID that becomes the final path segment of the resource name
+        :param pulumi.Input[_builtins.str] sandbox_id: Client-supplied ID that becomes the final path segment of the resource name. It must
+               start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+               with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+               rejected
         :param pulumi.Input[Union['SandboxSpecArgs', 'SandboxSpecArgsDict', 'outputs.SandboxSpec']] spec: The desired configuration of the sandbox, supplied by the caller at creation time
         """
         ...
@@ -411,11 +426,14 @@ class Sandbox(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: (string) - Output only. The creation time of the sandbox
         :param pulumi.Input[_builtins.str] display_name: Human-readable display label for the sandbox. At most 256 characters
-        :param pulumi.Input[Union['SandboxMetadataArgs', 'SandboxMetadataArgsDict', 'outputs.SandboxMetadata']] metadata: Metadata associated with the sandbox
+        :param pulumi.Input[Union['SandboxMetadataArgs', 'SandboxMetadataArgsDict', 'outputs.SandboxMetadata']] metadata: Tags and other metadata associated with the sandbox
         :param pulumi.Input[_builtins.str] name: (string) - The sandbox resource name, in the form `sandboxes/{sandbox_id}`. Derived from
                `sandbox_id`; any value supplied in a create or update request body is ignored
         :param pulumi.Input[Union['SandboxProviderConfigArgs', 'SandboxProviderConfigArgsDict', 'outputs.SandboxProviderConfig']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] sandbox_id: Client-supplied ID that becomes the final path segment of the resource name
+        :param pulumi.Input[_builtins.str] sandbox_id: Client-supplied ID that becomes the final path segment of the resource name. It must
+               start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+               with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+               rejected
         :param pulumi.Input[Union['SandboxSpecArgs', 'SandboxSpecArgsDict', 'outputs.SandboxSpec']] spec: The desired configuration of the sandbox, supplied by the caller at creation time
         :param pulumi.Input[Union['SandboxStatusArgs', 'SandboxStatusArgsDict', 'outputs.SandboxStatus']] status: (SandboxStatus) - The observed runtime state of the sandbox, populated by the server
         :param pulumi.Input[_builtins.str] update_time: (string) - Output only. The last update time of the sandbox metadata and spec
@@ -479,7 +497,7 @@ class Sandbox(pulumi.CustomResource):
     @pulumi.getter
     def metadata(self) -> pulumi.Output[Optional['outputs.SandboxMetadata']]:
         """
-        Metadata associated with the sandbox
+        Tags and other metadata associated with the sandbox
         """
         return pulumi.get(self, "metadata")
 
@@ -504,7 +522,10 @@ class Sandbox(pulumi.CustomResource):
     @pulumi.getter(name="sandboxId")
     def sandbox_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Client-supplied ID that becomes the final path segment of the resource name
+        Client-supplied ID that becomes the final path segment of the resource name. It must
+        start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+        with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+        rejected
         """
         return pulumi.get(self, "sandbox_id")
 

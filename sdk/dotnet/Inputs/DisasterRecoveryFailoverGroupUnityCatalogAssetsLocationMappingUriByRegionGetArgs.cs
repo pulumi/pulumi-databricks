@@ -13,13 +13,14 @@ namespace Pulumi.Databricks.Inputs
     public sealed class DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The region name
+        /// Cloud region this URI applies to. Must be one of the failover group's regions
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// The storage URI for this region
+        /// Cloud storage URI of the location in this region. End the URI with `/*` to map every path
+        /// under it as a prefix; within one mapping, either all URIs or none carry the `/*` suffix
         /// </summary>
         [Input("uri", required: true)]
         public Input<string> Uri { get; set; } = null!;

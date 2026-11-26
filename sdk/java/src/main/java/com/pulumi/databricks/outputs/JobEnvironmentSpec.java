@@ -24,6 +24,7 @@ public final class JobEnvironmentSpec {
      * 
      */
     private @Nullable String environmentVersion;
+    private @Nullable String imageUri;
     private @Nullable List<String> javaDependencies;
     private @Nullable String projectEnvironment;
 
@@ -48,6 +49,9 @@ public final class JobEnvironmentSpec {
     public Optional<String> environmentVersion() {
         return Optional.ofNullable(this.environmentVersion);
     }
+    public Optional<String> imageUri() {
+        return Optional.ofNullable(this.imageUri);
+    }
     public List<String> javaDependencies() {
         return this.javaDependencies == null ? List.of() : this.javaDependencies;
     }
@@ -68,6 +72,7 @@ public final class JobEnvironmentSpec {
         private @Nullable String client;
         private @Nullable List<String> dependencies;
         private @Nullable String environmentVersion;
+        private @Nullable String imageUri;
         private @Nullable List<String> javaDependencies;
         private @Nullable String projectEnvironment;
         public Builder() {}
@@ -77,6 +82,7 @@ public final class JobEnvironmentSpec {
     	      this.client = defaults.client;
     	      this.dependencies = defaults.dependencies;
     	      this.environmentVersion = defaults.environmentVersion;
+    	      this.imageUri = defaults.imageUri;
     	      this.javaDependencies = defaults.javaDependencies;
     	      this.projectEnvironment = defaults.projectEnvironment;
         }
@@ -109,6 +115,12 @@ public final class JobEnvironmentSpec {
             return this;
         }
         @CustomType.Setter
+        public Builder imageUri(@Nullable String imageUri) {
+
+            this.imageUri = imageUri;
+            return this;
+        }
+        @CustomType.Setter
         public Builder javaDependencies(@Nullable List<String> javaDependencies) {
 
             this.javaDependencies = javaDependencies;
@@ -129,6 +141,7 @@ public final class JobEnvironmentSpec {
             _resultValue.client = client;
             _resultValue.dependencies = dependencies;
             _resultValue.environmentVersion = environmentVersion;
+            _resultValue.imageUri = imageUri;
             _resultValue.javaDependencies = javaDependencies;
             _resultValue.projectEnvironment = projectEnvironment;
             return _resultValue;

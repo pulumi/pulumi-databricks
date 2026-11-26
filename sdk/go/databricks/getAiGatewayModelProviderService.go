@@ -60,8 +60,9 @@ type LookupAiGatewayModelProviderServiceArgs struct {
 	// Resource name of the provider service.
 	// Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
 	// Each `{...}` component is capped at 255 characters individually.
-	// Server-derived on Create from `parent` +
-	// `modelProviderServiceId`; required and immutable on Update/Get/Delete
+	// The server derives the name on Create from
+	// `parent` and `modelProviderServiceId`; it is required and immutable on
+	// Update, Get, and Delete
 	Name string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetAiGatewayModelProviderServiceProviderConfig `pulumi:"providerConfig"`
@@ -77,16 +78,16 @@ type LookupAiGatewayModelProviderServiceResult struct {
 	Config GetAiGatewayModelProviderServiceConfig `pulumi:"config"`
 	// (string) - Time the provider service was created
 	CreateTime string `pulumi:"createTime"`
-	// (string) - Creator identity
+	// (string) - Username of the user who created the model provider service
 	CreatedBy string `pulumi:"createdBy"`
-	// (string) - Owner of the model provider service
+	// (string) - Username or group name of the model provider service owner
 	EffectiveOwner string `pulumi:"effectiveOwner"`
 	// (string) - Optimistic concurrency token returned on every read. To make an Update or
 	// Delete conditional, pass the last-read value in that request's `etag`
 	// field. In REST responses, this value is a base64 string; URL-encode it when
 	// setting the `etag` query parameter
 	Etag string `pulumi:"etag"`
-	// (string) - Metastore hosting the provider service
+	// (string) - Unique identifier of the metastore that contains the model provider service
 	MetastoreId string `pulumi:"metastoreId"`
 	// (string) - Resource name of the bound Unity Catalog service credential, in the form
 	// `credentials/{name}`. Supply this field when creating the service or
@@ -96,7 +97,7 @@ type LookupAiGatewayModelProviderServiceResult struct {
 	ProviderConfig *GetAiGatewayModelProviderServiceProviderConfig `pulumi:"providerConfig"`
 	// (string) - Time the provider service was last modified
 	UpdateTime string `pulumi:"updateTime"`
-	// (string) - Identity of the last updater
+	// (string) - Username of the user who last updated the model provider service
 	UpdatedBy string `pulumi:"updatedBy"`
 }
 
@@ -110,8 +111,9 @@ type LookupAiGatewayModelProviderServiceOutputArgs struct {
 	// Resource name of the provider service.
 	// Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
 	// Each `{...}` component is capped at 255 characters individually.
-	// Server-derived on Create from `parent` +
-	// `modelProviderServiceId`; required and immutable on Update/Get/Delete
+	// The server derives the name on Create from
+	// `parent` and `modelProviderServiceId`; it is required and immutable on
+	// Update, Get, and Delete
 	Name pulumi.StringInput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetAiGatewayModelProviderServiceProviderConfigPtrInput `pulumi:"providerConfig"`
@@ -155,12 +157,12 @@ func (o LookupAiGatewayModelProviderServiceResultOutput) CreateTime() pulumi.Str
 	return o.ApplyT(func(v LookupAiGatewayModelProviderServiceResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// (string) - Creator identity
+// (string) - Username of the user who created the model provider service
 func (o LookupAiGatewayModelProviderServiceResultOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelProviderServiceResult) string { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
-// (string) - Owner of the model provider service
+// (string) - Username or group name of the model provider service owner
 func (o LookupAiGatewayModelProviderServiceResultOutput) EffectiveOwner() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelProviderServiceResult) string { return v.EffectiveOwner }).(pulumi.StringOutput)
 }
@@ -173,7 +175,7 @@ func (o LookupAiGatewayModelProviderServiceResultOutput) Etag() pulumi.StringOut
 	return o.ApplyT(func(v LookupAiGatewayModelProviderServiceResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// (string) - Metastore hosting the provider service
+// (string) - Unique identifier of the metastore that contains the model provider service
 func (o LookupAiGatewayModelProviderServiceResultOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelProviderServiceResult) string { return v.MetastoreId }).(pulumi.StringOutput)
 }
@@ -197,7 +199,7 @@ func (o LookupAiGatewayModelProviderServiceResultOutput) UpdateTime() pulumi.Str
 	return o.ApplyT(func(v LookupAiGatewayModelProviderServiceResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// (string) - Identity of the last updater
+// (string) - Username of the user who last updated the model provider service
 func (o LookupAiGatewayModelProviderServiceResultOutput) UpdatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAiGatewayModelProviderServiceResult) string { return v.UpdatedBy }).(pulumi.StringOutput)
 }

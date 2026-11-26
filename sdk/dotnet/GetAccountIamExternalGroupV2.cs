@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetAccountIamExternalGroupV2
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
@@ -48,7 +48,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountIamExternalGroupV2Result>("databricks:index/getAccountIamExternalGroupV2:getAccountIamExternalGroupV2", args ?? new GetAccountIamExternalGroupV2Args(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountIamExternalGroupV2Result>("databricks:index/getAccountIamExternalGroupV2:getAccountIamExternalGroupV2", args ?? new GetAccountIamExternalGroupV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
@@ -124,10 +124,9 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamExternalGroupV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The resource name of the external group. The format depends on the API that
-        /// returned it:
-        /// - Account-scoped: accounts/{account_id}/external-groups/{external_group_id}
-        /// - Workspace-scoped: external-groups/{external_group_id}
+        /// The resource name of the external group, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/external-groups/{external_group_id}`
+        /// - Workspace APIs: `external-groups/{external_group_id}`
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -141,10 +140,9 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamExternalGroupV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The resource name of the external group. The format depends on the API that
-        /// returned it:
-        /// - Account-scoped: accounts/{account_id}/external-groups/{external_group_id}
-        /// - Workspace-scoped: external-groups/{external_group_id}
+        /// The resource name of the external group, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/external-groups/{external_group_id}`
+        /// - Workspace APIs: `external-groups/{external_group_id}`
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -160,26 +158,25 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamExternalGroupV2Result
     {
         /// <summary>
-        /// (string) - The parent account ID, from Databricks
+        /// (string) - The ID of the account that contains the group
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// (string) - Display name of the group from the customer's IdP
+        /// (string) - The name of the group, from your IdP. It's the same as the group's `GroupName`
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// (string) - The external ID of the group in the customer's IdP
+        /// (string) - The ID of the group in your IdP
         /// </summary>
         public readonly string ExternalGroupId;
         /// <summary>
-        /// (string) - Internal groupId of the group in Databricks
+        /// (string) - The Databricks ID of the group. Use it as the `GroupId` in the group APIs
         /// </summary>
         public readonly string InternalId;
         /// <summary>
-        /// (string) - The resource name of the external group. The format depends on the API that
-        /// returned it:
-        /// - Account-scoped: accounts/{account_id}/external-groups/{external_group_id}
-        /// - Workspace-scoped: external-groups/{external_group_id}
+        /// (string) - The resource name of the external group, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/external-groups/{external_group_id}`
+        /// - Workspace APIs: `external-groups/{external_group_id}`
         /// </summary>
         public readonly string Name;
 

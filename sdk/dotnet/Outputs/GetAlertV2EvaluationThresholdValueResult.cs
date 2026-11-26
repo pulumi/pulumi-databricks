@@ -14,15 +14,15 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAlertV2EvaluationThresholdValueResult
     {
         /// <summary>
-        /// (boolean)
+        /// (boolean) - Boolean threshold, for boolean columns
         /// </summary>
         public readonly bool? BoolValue;
         /// <summary>
-        /// (number)
+        /// (number) - Numeric threshold, for numeric columns
         /// </summary>
         public readonly double? DoubleValue;
         /// <summary>
-        /// (string)
+        /// (string) - String threshold, for string or timestamp columns
         /// </summary>
         public readonly string? StringValue;
 

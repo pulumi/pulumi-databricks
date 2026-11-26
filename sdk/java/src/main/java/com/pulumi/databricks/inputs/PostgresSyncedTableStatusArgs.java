@@ -96,14 +96,16 @@ public final class PostgresSyncedTableStatusArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * (SyncedTablePipelineProgress)
+     * (SyncedTablePipelineProgress) - Progress of the sync that is currently running, either the initial data load or an update of a
+     * triggered or snapshot synced table
      * 
      */
     @Import(name="ongoingSyncProgress")
     private @Nullable Output<PostgresSyncedTableStatusOngoingSyncProgressArgs> ongoingSyncProgress;
 
     /**
-     * @return (SyncedTablePipelineProgress)
+     * @return (SyncedTablePipelineProgress) - Progress of the sync that is currently running, either the initial data load or an update of a
+     * triggered or snapshot synced table
      * 
      */
     public Optional<Output<PostgresSyncedTableStatusOngoingSyncProgressArgs>> ongoingSyncProgress() {
@@ -311,7 +313,8 @@ public final class PostgresSyncedTableStatusArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param ongoingSyncProgress (SyncedTablePipelineProgress)
+         * @param ongoingSyncProgress (SyncedTablePipelineProgress) - Progress of the sync that is currently running, either the initial data load or an update of a
+         * triggered or snapshot synced table
          * 
          * @return builder
          * 
@@ -322,7 +325,8 @@ public final class PostgresSyncedTableStatusArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param ongoingSyncProgress (SyncedTablePipelineProgress)
+         * @param ongoingSyncProgress (SyncedTablePipelineProgress) - Progress of the sync that is currently running, either the initial data load or an update of a
+         * triggered or snapshot synced table
          * 
          * @return builder
          * 

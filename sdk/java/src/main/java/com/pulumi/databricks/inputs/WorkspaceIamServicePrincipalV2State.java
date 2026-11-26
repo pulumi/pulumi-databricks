@@ -17,14 +17,14 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
     public static final WorkspaceIamServicePrincipalV2State Empty = new WorkspaceIamServicePrincipalV2State();
 
     /**
-     * (string) - The parent account ID for the service principal in Databricks
+     * (string) - The ID of the account that contains the service principal
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return (string) - The parent account ID for the service principal in Databricks
+     * @return (string) - The ID of the account that contains the service principal
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -32,14 +32,14 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
     }
 
     /**
-     * The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     @Import(name="accountSpStatus")
     private @Nullable Output<String> accountSpStatus;
 
     /**
-     * @return The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * @return Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     public Optional<Output<String>> accountSpStatus() {
@@ -47,16 +47,18 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
     }
 
     /**
-     * (string) - Application ID of the service principal. Set at creation time and cannot be changed
-     * afterwards; when omitted, the server generates one
+     * (string) - The service principal&#39;s application ID, a UUID. If you don&#39;t set it when you create the
+     * service principal, Databricks generates one. It must be unique in the account and can&#39;t be
+     * changed
      * 
      */
     @Import(name="applicationId")
     private @Nullable Output<String> applicationId;
 
     /**
-     * @return (string) - Application ID of the service principal. Set at creation time and cannot be changed
-     * afterwards; when omitted, the server generates one
+     * @return (string) - The service principal&#39;s application ID, a UUID. If you don&#39;t set it when you create the
+     * service principal, Databricks generates one. It must be unique in the account and can&#39;t be
+     * changed
      * 
      */
     public Optional<Output<String>> applicationId() {
@@ -64,14 +66,14 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
     }
 
     /**
-     * Display name of the service principal
+     * The service principal&#39;s display name
      * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
-     * @return Display name of the service principal
+     * @return The service principal&#39;s display name
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -79,14 +81,14 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
     }
 
     /**
-     * ExternalId of the service principal in the customer&#39;s IdP
+     * The ID of the service principal in your identity provider (IdP)
      * 
      */
     @Import(name="externalId")
     private @Nullable Output<String> externalId;
 
     /**
-     * @return ExternalId of the service principal in the customer&#39;s IdP
+     * @return The ID of the service principal in your identity provider (IdP)
      * 
      */
     public Optional<Output<String>> externalId() {
@@ -94,18 +96,18 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
     }
 
     /**
-     * (string) - The resource name of the service principal. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-     * - Workspace-scoped: service-principals/{service_principal_id}
+     * (string) - The resource name of the service principal, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+     * - Workspace APIs: `service-principals/{service_principal_id}`
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return (string) - The resource name of the service principal. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-     * - Workspace-scoped: service-principals/{service_principal_id}
+     * @return (string) - The resource name of the service principal, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+     * - Workspace APIs: `service-principals/{service_principal_id}`
      * 
      */
     public Optional<Output<String>> name() {
@@ -113,16 +115,16 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
     }
 
     /**
-     * (string) - The resource name of the account that contains the service principal,
-     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     * (string) - The resource name of the account that contains the service principal, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
     /**
-     * @return (string) - The resource name of the account that contains the service principal,
-     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     * @return (string) - The resource name of the account that contains the service principal, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      * 
      */
     public Optional<Output<String>> parent() {
@@ -145,14 +147,14 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
     }
 
     /**
-     * (string) - Internal service principal ID of the service principal in Databricks
+     * (string) - The Databricks ID of the service principal
      * 
      */
     @Import(name="servicePrincipalId")
     private @Nullable Output<String> servicePrincipalId;
 
     /**
-     * @return (string) - Internal service principal ID of the service principal in Databricks
+     * @return (string) - The Databricks ID of the service principal
      * 
      */
     public Optional<Output<String>> servicePrincipalId() {
@@ -192,7 +194,7 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
         }
 
         /**
-         * @param accountId (string) - The parent account ID for the service principal in Databricks
+         * @param accountId (string) - The ID of the account that contains the service principal
          * 
          * @return builder
          * 
@@ -203,7 +205,7 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
         }
 
         /**
-         * @param accountId (string) - The parent account ID for the service principal in Databricks
+         * @param accountId (string) - The ID of the account that contains the service principal
          * 
          * @return builder
          * 
@@ -213,7 +215,7 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
         }
 
         /**
-         * @param accountSpStatus The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+         * @param accountSpStatus Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
          * 
          * @return builder
          * 
@@ -224,7 +226,7 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
         }
 
         /**
-         * @param accountSpStatus The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+         * @param accountSpStatus Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
          * 
          * @return builder
          * 
@@ -234,8 +236,9 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
         }
 
         /**
-         * @param applicationId (string) - Application ID of the service principal. Set at creation time and cannot be changed
-         * afterwards; when omitted, the server generates one
+         * @param applicationId (string) - The service principal&#39;s application ID, a UUID. If you don&#39;t set it when you create the
+         * service principal, Databricks generates one. It must be unique in the account and can&#39;t be
+         * changed
          * 
          * @return builder
          * 
@@ -246,8 +249,9 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
         }
 
         /**
-         * @param applicationId (string) - Application ID of the service principal. Set at creation time and cannot be changed
-         * afterwards; when omitted, the server generates one
+         * @param applicationId (string) - The service principal&#39;s application ID, a UUID. If you don&#39;t set it when you create the
+         * service principal, Databricks generates one. It must be unique in the account and can&#39;t be
+         * changed
          * 
          * @return builder
          * 
@@ -257,7 +261,7 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
         }
 
         /**
-         * @param displayName Display name of the service principal
+         * @param displayName The service principal&#39;s display name
          * 
          * @return builder
          * 
@@ -268,7 +272,7 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
         }
 
         /**
-         * @param displayName Display name of the service principal
+         * @param displayName The service principal&#39;s display name
          * 
          * @return builder
          * 
@@ -278,7 +282,7 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
         }
 
         /**
-         * @param externalId ExternalId of the service principal in the customer&#39;s IdP
+         * @param externalId The ID of the service principal in your identity provider (IdP)
          * 
          * @return builder
          * 
@@ -289,7 +293,7 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
         }
 
         /**
-         * @param externalId ExternalId of the service principal in the customer&#39;s IdP
+         * @param externalId The ID of the service principal in your identity provider (IdP)
          * 
          * @return builder
          * 
@@ -299,9 +303,9 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
         }
 
         /**
-         * @param name (string) - The resource name of the service principal. The format depends on the API that returned it:
-         * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-         * - Workspace-scoped: service-principals/{service_principal_id}
+         * @param name (string) - The resource name of the service principal, in one of these formats:
+         * - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+         * - Workspace APIs: `service-principals/{service_principal_id}`
          * 
          * @return builder
          * 
@@ -312,9 +316,9 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
         }
 
         /**
-         * @param name (string) - The resource name of the service principal. The format depends on the API that returned it:
-         * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-         * - Workspace-scoped: service-principals/{service_principal_id}
+         * @param name (string) - The resource name of the service principal, in one of these formats:
+         * - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+         * - Workspace APIs: `service-principals/{service_principal_id}`
          * 
          * @return builder
          * 
@@ -324,8 +328,8 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
         }
 
         /**
-         * @param parent (string) - The resource name of the account that contains the service principal,
-         * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+         * @param parent (string) - The resource name of the account that contains the service principal, in the format
+         * `accounts/{account_id}`. Workspace APIs return the same format
          * 
          * @return builder
          * 
@@ -336,8 +340,8 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
         }
 
         /**
-         * @param parent (string) - The resource name of the account that contains the service principal,
-         * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+         * @param parent (string) - The resource name of the account that contains the service principal, in the format
+         * `accounts/{account_id}`. Workspace APIs return the same format
          * 
          * @return builder
          * 
@@ -368,7 +372,7 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
         }
 
         /**
-         * @param servicePrincipalId (string) - Internal service principal ID of the service principal in Databricks
+         * @param servicePrincipalId (string) - The Databricks ID of the service principal
          * 
          * @return builder
          * 
@@ -379,7 +383,7 @@ public final class WorkspaceIamServicePrincipalV2State extends com.pulumi.resour
         }
 
         /**
-         * @param servicePrincipalId (string) - Internal service principal ID of the service principal in Databricks
+         * @param servicePrincipalId (string) - The Databricks ID of the service principal
          * 
          * @return builder
          * 

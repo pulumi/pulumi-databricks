@@ -20,7 +20,10 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAiSearchEndpointResult {
     /**
-     * @return (string) - The user-selected budget policy id for the endpoint
+     * @return (string) - ID of the serverless budget policy to apply to the endpoint. The caller must have
+     * permission to use the policy. Set either this field or `usagePolicyId`, not both.
+     * Responses do not echo this field; they report the applied policy in
+     * `effectiveBudgetPolicyId`
      * 
      */
     private String budgetPolicyId;
@@ -30,22 +33,24 @@ public final class GetAiSearchEndpointResult {
      */
     private String createTime;
     /**
-     * @return (string) - Creator of the endpoint
+     * @return (string) - User name of the principal that created the endpoint. For a user, it is the user&#39;s email
+     * address; for any other principal, it is the principal&#39;s unique name
      * 
      */
     private String creator;
     /**
-     * @return (list of CustomTag) - The custom tags assigned to the endpoint
+     * @return (list of CustomTag) - Custom tags assigned to the endpoint. On update, the list replaces all of the endpoint&#39;s
+     * existing tags
      * 
      */
     private List<GetAiSearchEndpointCustomTag> customTags;
     /**
-     * @return (string) - The budget policy id applied to the endpoint
+     * @return (string) - ID of the budget policy that is currently applied to the endpoint
      * 
      */
     private String effectiveBudgetPolicyId;
     /**
-     * @return (EndpointStatus) - Current status of the endpoint
+     * @return (EndpointStatus) - Current lifecycle state of the endpoint, with an optional message that explains it
      * 
      */
     private GetAiSearchEndpointEndpointStatus endpointStatus;
@@ -55,7 +60,7 @@ public final class GetAiSearchEndpointResult {
      */
     private String endpointType;
     /**
-     * @return (string) - Unique identifier of the endpoint
+     * @return (string) - System-generated UUID that uniquely identifies the endpoint
      * 
      */
     private String id;
@@ -65,15 +70,14 @@ public final class GetAiSearchEndpointResult {
      */
     private Integer indexCount;
     /**
-     * @return (string) - User who last updated the endpoint
+     * @return (string) - User name of the principal that last updated the endpoint, in the same format as `creator`
      * 
      */
     private String lastUpdatedUser;
     /**
-     * @return (string) - Name of the AI Search endpoint. Server-assigned full resource path
-     * (`workspaces/{workspace}/endpoints/{endpoint}`) on output. On create, the
-     * user-supplied short name is conveyed via `CreateEndpointRequest.endpoint_id`;
-     * the server composes the full `name` and returns it on the response
+     * @return (string) - Full resource name of the endpoint, in the form
+     * `workspaces/{workspace_id}/endpoints/{endpoint_id}`. On create, the server composes it
+     * from `parent` and `endpointId` and ignores any value supplied in the request body
      * 
      */
     private String name;
@@ -91,7 +95,8 @@ public final class GetAiSearchEndpointResult {
     private GetAiSearchEndpointScalingInfo scalingInfo;
     /**
      * @return (integer) - Target QPS for the endpoint. Mutually exclusive with `replicaCount`. Best-effort;
-     * the system does not guarantee this QPS will be achieved
+     * the system does not guarantee this QPS will be achieved. Responses report the requested
+     * value in `scaling_info.requested_target_qps`
      * 
      */
     private Integer targetQps;
@@ -106,14 +111,18 @@ public final class GetAiSearchEndpointResult {
      */
     private String updateTime;
     /**
-     * @return (string) - The usage policy id applied to the endpoint
+     * @return (string) - ID of the usage policy to apply to the endpoint. The server treats it as the same setting
+     * as `budgetPolicyId`, so set only one of the two
      * 
      */
     private String usagePolicyId;
 
     private GetAiSearchEndpointResult() {}
     /**
-     * @return (string) - The user-selected budget policy id for the endpoint
+     * @return (string) - ID of the serverless budget policy to apply to the endpoint. The caller must have
+     * permission to use the policy. Set either this field or `usagePolicyId`, not both.
+     * Responses do not echo this field; they report the applied policy in
+     * `effectiveBudgetPolicyId`
      * 
      */
     public String budgetPolicyId() {
@@ -127,28 +136,30 @@ public final class GetAiSearchEndpointResult {
         return this.createTime;
     }
     /**
-     * @return (string) - Creator of the endpoint
+     * @return (string) - User name of the principal that created the endpoint. For a user, it is the user&#39;s email
+     * address; for any other principal, it is the principal&#39;s unique name
      * 
      */
     public String creator() {
         return this.creator;
     }
     /**
-     * @return (list of CustomTag) - The custom tags assigned to the endpoint
+     * @return (list of CustomTag) - Custom tags assigned to the endpoint. On update, the list replaces all of the endpoint&#39;s
+     * existing tags
      * 
      */
     public List<GetAiSearchEndpointCustomTag> customTags() {
         return this.customTags;
     }
     /**
-     * @return (string) - The budget policy id applied to the endpoint
+     * @return (string) - ID of the budget policy that is currently applied to the endpoint
      * 
      */
     public String effectiveBudgetPolicyId() {
         return this.effectiveBudgetPolicyId;
     }
     /**
-     * @return (EndpointStatus) - Current status of the endpoint
+     * @return (EndpointStatus) - Current lifecycle state of the endpoint, with an optional message that explains it
      * 
      */
     public GetAiSearchEndpointEndpointStatus endpointStatus() {
@@ -162,7 +173,7 @@ public final class GetAiSearchEndpointResult {
         return this.endpointType;
     }
     /**
-     * @return (string) - Unique identifier of the endpoint
+     * @return (string) - System-generated UUID that uniquely identifies the endpoint
      * 
      */
     public String id() {
@@ -176,17 +187,16 @@ public final class GetAiSearchEndpointResult {
         return this.indexCount;
     }
     /**
-     * @return (string) - User who last updated the endpoint
+     * @return (string) - User name of the principal that last updated the endpoint, in the same format as `creator`
      * 
      */
     public String lastUpdatedUser() {
         return this.lastUpdatedUser;
     }
     /**
-     * @return (string) - Name of the AI Search endpoint. Server-assigned full resource path
-     * (`workspaces/{workspace}/endpoints/{endpoint}`) on output. On create, the
-     * user-supplied short name is conveyed via `CreateEndpointRequest.endpoint_id`;
-     * the server composes the full `name` and returns it on the response
+     * @return (string) - Full resource name of the endpoint, in the form
+     * `workspaces/{workspace_id}/endpoints/{endpoint_id}`. On create, the server composes it
+     * from `parent` and `endpointId` and ignores any value supplied in the request body
      * 
      */
     public String name() {
@@ -212,7 +222,8 @@ public final class GetAiSearchEndpointResult {
     }
     /**
      * @return (integer) - Target QPS for the endpoint. Mutually exclusive with `replicaCount`. Best-effort;
-     * the system does not guarantee this QPS will be achieved
+     * the system does not guarantee this QPS will be achieved. Responses report the requested
+     * value in `scaling_info.requested_target_qps`
      * 
      */
     public Integer targetQps() {
@@ -233,7 +244,8 @@ public final class GetAiSearchEndpointResult {
         return this.updateTime;
     }
     /**
-     * @return (string) - The usage policy id applied to the endpoint
+     * @return (string) - ID of the usage policy to apply to the endpoint. The server treats it as the same setting
+     * as `budgetPolicyId`, so set only one of the two
      * 
      */
     public String usagePolicyId() {

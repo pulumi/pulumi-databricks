@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetDomain
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/domains)
         /// 
@@ -40,7 +40,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("databricks:index/getDomain:getDomain", args ?? new GetDomainArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/domains)
         /// 
@@ -68,7 +68,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainResult>("databricks:index/getDomain:getDomain", args ?? new GetDomainInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/domains)
         /// 

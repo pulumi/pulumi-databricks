@@ -14,15 +14,18 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAppSpacesSpaceResourcePostgresResult
     {
         /// <summary>
-        /// (string)
+        /// (string) - Resource name of the Lakebase Autoscaling branch, in the form
+        /// `projects/{project}/branches/{branch}`
         /// </summary>
         public readonly string? Branch;
         /// <summary>
-        /// (string)
+        /// (string) - Resource name of the database within the branch, in the form
+        /// `projects/{project}/branches/{branch}/databases/{database}`
         /// </summary>
         public readonly string? Database;
         /// <summary>
-        /// (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+        /// (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+        /// type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
         /// </summary>
         public readonly string? Permission;
 

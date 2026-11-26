@@ -35,15 +35,9 @@ namespace Pulumi.Databricks
     ///     {
     ///         CatalogName = "my_catalog",
     ///         SchemaName = "my_schema",
-    ///         Secret = new[]
-    ///         {
-    ///             
-    ///             {
-    ///                 { "name", "my_secret" },
-    ///                 { "value", "secret_value" },
-    ///                 { "comment", "My secret for external service authentication" },
-    ///             },
-    ///         },
+    ///         Name = "my_secret",
+    ///         Value = "secret_value",
+    ///         Comment = "My secret for external service authentication",
     ///     });
     /// 
     /// });

@@ -173,11 +173,12 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// (string) - Custom description for the alert. Interpreted according to `CustomTemplateFormat`
+        /// (string) - Custom description for the alert, used as the notification body. Interpreted according to `CustomTemplateFormat`.
+        /// The available template variables are listed at https://docs.databricks.com/aws/en/sql/user/alerts/create#notification-templates
         /// </summary>
         public readonly string CustomDescription;
         /// <summary>
-        /// (string) - Custom summary for the alert. Interpreted according to `CustomTemplateFormat`
+        /// (string) - Custom summary for the alert, used as the notification subject. Interpreted according to `CustomTemplateFormat`
         /// </summary>
         public readonly string CustomSummary;
         /// <summary>
@@ -195,7 +196,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetAlertV2EffectiveRunAsResult EffectiveRunAs;
         /// <summary>
-        /// (AlertV2Evaluation)
+        /// (AlertV2Evaluation) - Condition evaluated against the query result, and who is notified when it is met
         /// </summary>
         public readonly Outputs.GetAlertV2EvaluationResult Evaluation;
         /// <summary>
@@ -203,7 +204,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
+        /// (string) - Indicates whether the alert is active (`ACTIVE`) or has been moved to the trash (`DELETED`). Possible values are: `ACTIVE`, `DELETED`
         /// </summary>
         public readonly string LifecycleState;
         /// <summary>
@@ -232,13 +233,13 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetAlertV2RunAsResult RunAs;
         /// <summary>
-        /// (string, deprecated) - The run as username or application ID of service principal.
-        /// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-        /// Deprecated: Use `RunAs` field instead. This field will be removed in a future release
+        /// (string, deprecated) - Deprecated: Use `RunAs` field instead. This field will be removed in a future release.
+        /// The run as username or application ID of service principal.
+        /// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
         /// </summary>
         public readonly string RunAsUserName;
         /// <summary>
-        /// (CronSchedule)
+        /// (CronSchedule) - Schedule on which the alert runs its query and evaluates the condition
         /// </summary>
         public readonly Outputs.GetAlertV2ScheduleResult Schedule;
         /// <summary>

@@ -13,15 +13,19 @@ import javax.annotation.Nullable;
 @CustomType
 public final class NotificationDestinationConfigDatabricksAppTeams {
     /**
-     * @return Slack channel ID for notifications.
+     * @return Teams channel ID notifications are posted to.
      * 
      */
     private @Nullable String channelId;
     private @Nullable Boolean channelIdSet;
+    /**
+     * @return Microsoft Entra group ID of the team that owns the channel.
+     * 
+     */
     private @Nullable String teamId;
     private @Nullable Boolean teamIdSet;
     /**
-     * @return Tenant ID for Microsoft Teams App.
+     * @return Microsoft Entra tenant ID of the Microsoft 365 tenant the app is installed in.
      * 
      */
     private @Nullable String tenantId;
@@ -29,7 +33,7 @@ public final class NotificationDestinationConfigDatabricksAppTeams {
 
     private NotificationDestinationConfigDatabricksAppTeams() {}
     /**
-     * @return Slack channel ID for notifications.
+     * @return Teams channel ID notifications are posted to.
      * 
      */
     public Optional<String> channelId() {
@@ -38,6 +42,10 @@ public final class NotificationDestinationConfigDatabricksAppTeams {
     public Optional<Boolean> channelIdSet() {
         return Optional.ofNullable(this.channelIdSet);
     }
+    /**
+     * @return Microsoft Entra group ID of the team that owns the channel.
+     * 
+     */
     public Optional<String> teamId() {
         return Optional.ofNullable(this.teamId);
     }
@@ -45,7 +53,7 @@ public final class NotificationDestinationConfigDatabricksAppTeams {
         return Optional.ofNullable(this.teamIdSet);
     }
     /**
-     * @return Tenant ID for Microsoft Teams App.
+     * @return Microsoft Entra tenant ID of the Microsoft 365 tenant the app is installed in.
      * 
      */
     public Optional<String> tenantId() {

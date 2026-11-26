@@ -35,14 +35,14 @@ public final class SandboxArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Metadata associated with the sandbox
+     * Tags and other metadata associated with the sandbox
      * 
      */
     @Import(name="metadata")
     private @Nullable Output<SandboxMetadataArgs> metadata;
 
     /**
-     * @return Metadata associated with the sandbox
+     * @return Tags and other metadata associated with the sandbox
      * 
      */
     public Optional<Output<SandboxMetadataArgs>> metadata() {
@@ -65,14 +65,20 @@ public final class SandboxArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Client-supplied ID that becomes the final path segment of the resource name
+     * Client-supplied ID that becomes the final path segment of the resource name. It must
+     * start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+     * with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+     * rejected
      * 
      */
     @Import(name="sandboxId", required=true)
     private Output<String> sandboxId;
 
     /**
-     * @return Client-supplied ID that becomes the final path segment of the resource name
+     * @return Client-supplied ID that becomes the final path segment of the resource name. It must
+     * start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+     * with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+     * rejected
      * 
      */
     public Output<String> sandboxId() {
@@ -144,7 +150,7 @@ public final class SandboxArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metadata Metadata associated with the sandbox
+         * @param metadata Tags and other metadata associated with the sandbox
          * 
          * @return builder
          * 
@@ -155,7 +161,7 @@ public final class SandboxArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param metadata Metadata associated with the sandbox
+         * @param metadata Tags and other metadata associated with the sandbox
          * 
          * @return builder
          * 
@@ -186,7 +192,10 @@ public final class SandboxArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sandboxId Client-supplied ID that becomes the final path segment of the resource name
+         * @param sandboxId Client-supplied ID that becomes the final path segment of the resource name. It must
+         * start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+         * with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+         * rejected
          * 
          * @return builder
          * 
@@ -197,7 +206,10 @@ public final class SandboxArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sandboxId Client-supplied ID that becomes the final path segment of the resource name
+         * @param sandboxId Client-supplied ID that becomes the final path segment of the resource name. It must
+         * start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+         * with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+         * rejected
          * 
          * @return builder
          * 

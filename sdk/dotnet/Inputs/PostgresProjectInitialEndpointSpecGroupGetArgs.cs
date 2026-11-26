@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Inputs
     {
         /// <summary>
         /// Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
-        /// size.max &gt; 1
+        /// `Max` is greater than 1. When enabled, the endpoint also reports a read-only host in `status.hosts`
         /// </summary>
         [Input("enableReadableSecondaries")]
         public Input<bool>? EnableReadableSecondaries { get; set; }

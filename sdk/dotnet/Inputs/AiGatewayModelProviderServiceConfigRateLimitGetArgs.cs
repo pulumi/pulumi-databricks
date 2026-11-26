@@ -28,7 +28,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Principal { get; set; }
 
         /// <summary>
-        /// Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+        /// Interval after which the request and token counters reset. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
         /// </summary>
         [Input("renewalPeriod", required: true)]
         public Input<string> RenewalPeriod { get; set; } = null!;

@@ -21,14 +21,20 @@ public final class AiSearchEndpointArgs extends com.pulumi.resources.ResourceArg
     public static final AiSearchEndpointArgs Empty = new AiSearchEndpointArgs();
 
     /**
-     * The user-selected budget policy id for the endpoint
+     * ID of the serverless budget policy to apply to the endpoint. The caller must have
+     * permission to use the policy. Set either this field or `usagePolicyId`, not both.
+     * Responses do not echo this field; they report the applied policy in
+     * `effectiveBudgetPolicyId`
      * 
      */
     @Import(name="budgetPolicyId")
     private @Nullable Output<String> budgetPolicyId;
 
     /**
-     * @return The user-selected budget policy id for the endpoint
+     * @return ID of the serverless budget policy to apply to the endpoint. The caller must have
+     * permission to use the policy. Set either this field or `usagePolicyId`, not both.
+     * Responses do not echo this field; they report the applied policy in
+     * `effectiveBudgetPolicyId`
      * 
      */
     public Optional<Output<String>> budgetPolicyId() {
@@ -36,14 +42,16 @@ public final class AiSearchEndpointArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The custom tags assigned to the endpoint
+     * Custom tags assigned to the endpoint. On update, the list replaces all of the endpoint&#39;s
+     * existing tags
      * 
      */
     @Import(name="customTags")
     private @Nullable Output<List<AiSearchEndpointCustomTagArgs>> customTags;
 
     /**
-     * @return The custom tags assigned to the endpoint
+     * @return Custom tags assigned to the endpoint. On update, the list replaces all of the endpoint&#39;s
+     * existing tags
      * 
      */
     public Optional<Output<List<AiSearchEndpointCustomTagArgs>>> customTags() {
@@ -51,20 +59,20 @@ public final class AiSearchEndpointArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The user-supplied short name for the Endpoint, per AIP-133. The server composes the
-     * full `Endpoint.name` as `{parent}/endpoints/{endpoint_id}`. AIP-133 does not list
-     * `endpointId` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-     * wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
+     * Short name of the endpoint, which becomes the last segment of `name`. The server rejects
+     * a request without it. The name can have at most 50 characters, can contain only lowercase
+     * letters, digits, hyphens, periods, and underscores, and must start and end with a letter
+     * or digit
      * 
      */
     @Import(name="endpointId")
     private @Nullable Output<String> endpointId;
 
     /**
-     * @return The user-supplied short name for the Endpoint, per AIP-133. The server composes the
-     * full `Endpoint.name` as `{parent}/endpoints/{endpoint_id}`. AIP-133 does not list
-     * `endpointId` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-     * wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
+     * @return Short name of the endpoint, which becomes the last segment of `name`. The server rejects
+     * a request without it. The name can have at most 50 characters, can contain only lowercase
+     * letters, digits, hyphens, periods, and underscores, and must start and end with a letter
+     * or digit
      * 
      */
     public Optional<Output<String>> endpointId() {
@@ -137,7 +145,8 @@ public final class AiSearchEndpointArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * Target QPS for the endpoint. Mutually exclusive with `replicaCount`. Best-effort;
-     * the system does not guarantee this QPS will be achieved
+     * the system does not guarantee this QPS will be achieved. Responses report the requested
+     * value in `scaling_info.requested_target_qps`
      * 
      */
     @Import(name="targetQps")
@@ -145,7 +154,8 @@ public final class AiSearchEndpointArgs extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Target QPS for the endpoint. Mutually exclusive with `replicaCount`. Best-effort;
-     * the system does not guarantee this QPS will be achieved
+     * the system does not guarantee this QPS will be achieved. Responses report the requested
+     * value in `scaling_info.requested_target_qps`
      * 
      */
     public Optional<Output<Integer>> targetQps() {
@@ -153,14 +163,16 @@ public final class AiSearchEndpointArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The usage policy id applied to the endpoint
+     * ID of the usage policy to apply to the endpoint. The server treats it as the same setting
+     * as `budgetPolicyId`, so set only one of the two
      * 
      */
     @Import(name="usagePolicyId")
     private @Nullable Output<String> usagePolicyId;
 
     /**
-     * @return The usage policy id applied to the endpoint
+     * @return ID of the usage policy to apply to the endpoint. The server treats it as the same setting
+     * as `budgetPolicyId`, so set only one of the two
      * 
      */
     public Optional<Output<String>> usagePolicyId() {
@@ -200,7 +212,10 @@ public final class AiSearchEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param budgetPolicyId The user-selected budget policy id for the endpoint
+         * @param budgetPolicyId ID of the serverless budget policy to apply to the endpoint. The caller must have
+         * permission to use the policy. Set either this field or `usagePolicyId`, not both.
+         * Responses do not echo this field; they report the applied policy in
+         * `effectiveBudgetPolicyId`
          * 
          * @return builder
          * 
@@ -211,7 +226,10 @@ public final class AiSearchEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param budgetPolicyId The user-selected budget policy id for the endpoint
+         * @param budgetPolicyId ID of the serverless budget policy to apply to the endpoint. The caller must have
+         * permission to use the policy. Set either this field or `usagePolicyId`, not both.
+         * Responses do not echo this field; they report the applied policy in
+         * `effectiveBudgetPolicyId`
          * 
          * @return builder
          * 
@@ -221,7 +239,8 @@ public final class AiSearchEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param customTags The custom tags assigned to the endpoint
+         * @param customTags Custom tags assigned to the endpoint. On update, the list replaces all of the endpoint&#39;s
+         * existing tags
          * 
          * @return builder
          * 
@@ -232,7 +251,8 @@ public final class AiSearchEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param customTags The custom tags assigned to the endpoint
+         * @param customTags Custom tags assigned to the endpoint. On update, the list replaces all of the endpoint&#39;s
+         * existing tags
          * 
          * @return builder
          * 
@@ -242,7 +262,8 @@ public final class AiSearchEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param customTags The custom tags assigned to the endpoint
+         * @param customTags Custom tags assigned to the endpoint. On update, the list replaces all of the endpoint&#39;s
+         * existing tags
          * 
          * @return builder
          * 
@@ -252,10 +273,10 @@ public final class AiSearchEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param endpointId The user-supplied short name for the Endpoint, per AIP-133. The server composes the
-         * full `Endpoint.name` as `{parent}/endpoints/{endpoint_id}`. AIP-133 does not list
-         * `endpointId` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-         * wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
+         * @param endpointId Short name of the endpoint, which becomes the last segment of `name`. The server rejects
+         * a request without it. The name can have at most 50 characters, can contain only lowercase
+         * letters, digits, hyphens, periods, and underscores, and must start and end with a letter
+         * or digit
          * 
          * @return builder
          * 
@@ -266,10 +287,10 @@ public final class AiSearchEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param endpointId The user-supplied short name for the Endpoint, per AIP-133. The server composes the
-         * full `Endpoint.name` as `{parent}/endpoints/{endpoint_id}`. AIP-133 does not list
-         * `endpointId` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-         * wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
+         * @param endpointId Short name of the endpoint, which becomes the last segment of `name`. The server rejects
+         * a request without it. The name can have at most 50 characters, can contain only lowercase
+         * letters, digits, hyphens, periods, and underscores, and must start and end with a letter
+         * or digit
          * 
          * @return builder
          * 
@@ -368,7 +389,8 @@ public final class AiSearchEndpointArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param targetQps Target QPS for the endpoint. Mutually exclusive with `replicaCount`. Best-effort;
-         * the system does not guarantee this QPS will be achieved
+         * the system does not guarantee this QPS will be achieved. Responses report the requested
+         * value in `scaling_info.requested_target_qps`
          * 
          * @return builder
          * 
@@ -380,7 +402,8 @@ public final class AiSearchEndpointArgs extends com.pulumi.resources.ResourceArg
 
         /**
          * @param targetQps Target QPS for the endpoint. Mutually exclusive with `replicaCount`. Best-effort;
-         * the system does not guarantee this QPS will be achieved
+         * the system does not guarantee this QPS will be achieved. Responses report the requested
+         * value in `scaling_info.requested_target_qps`
          * 
          * @return builder
          * 
@@ -390,7 +413,8 @@ public final class AiSearchEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param usagePolicyId The usage policy id applied to the endpoint
+         * @param usagePolicyId ID of the usage policy to apply to the endpoint. The server treats it as the same setting
+         * as `budgetPolicyId`, so set only one of the two
          * 
          * @return builder
          * 
@@ -401,7 +425,8 @@ public final class AiSearchEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param usagePolicyId The usage policy id applied to the endpoint
+         * @param usagePolicyId ID of the usage policy to apply to the endpoint. The server treats it as the same setting
+         * as `budgetPolicyId`, so set only one of the two
          * 
          * @return builder
          * 

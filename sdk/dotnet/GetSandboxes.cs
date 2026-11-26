@@ -93,6 +93,10 @@ namespace Pulumi.Databricks
 
     public sealed class GetSandboxesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Maximum number of sandboxes to return in one page. When unset or 0 the server returns
+        /// up to 1000 sandboxes; values above 5000 are reduced to 5000
+        /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
@@ -110,6 +114,10 @@ namespace Pulumi.Databricks
 
     public sealed class GetSandboxesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Maximum number of sandboxes to return in one page. When unset or 0 the server returns
+        /// up to 1000 sandboxes; values above 5000 are reduced to 5000
+        /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
 

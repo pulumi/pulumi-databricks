@@ -26,7 +26,8 @@ class PostgresCdfConfigArgs:
                  postgres_schema: pulumi.Input[_builtins.str],
                  schema: pulumi.Input[_builtins.str],
                  cdf_config_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 provider_config: pulumi.Input[Optional['PostgresCdfConfigProviderConfigArgs']] = None):
+                 provider_config: pulumi.Input[Optional['PostgresCdfConfigProviderConfigArgs']] = None,
+                 service_principal: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a PostgresCdfConfig resource.
 
@@ -41,6 +42,10 @@ class PostgresCdfConfigArgs:
         :param pulumi.Input[_builtins.str] cdf_config_id: (string) - The user-specified id; equals the final segment of `name`. Defaults to the
                Postgres schema name for configs without an explicit id
         :param pulumi.Input['PostgresCdfConfigProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.str] service_principal: The service principal (application id) whose identity authorizes this
+               change data feed's ongoing writes to Unity Catalog. When unset, writes are
+               authorized as the creating identity. Changing it requires a new CdfConfig,
+               which writes to new Delta tables
         """
         pulumi.set(__self__, "catalog", catalog)
         pulumi.set(__self__, "parent", parent)
@@ -50,6 +55,8 @@ class PostgresCdfConfigArgs:
             pulumi.set(__self__, "cdf_config_id", cdf_config_id)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
+        if service_principal is not None:
+            pulumi.set(__self__, "service_principal", service_principal)
 
     @_builtins.property
     @pulumi.getter
@@ -128,6 +135,21 @@ class PostgresCdfConfigArgs:
     def provider_config(self, value: pulumi.Input[Optional['PostgresCdfConfigProviderConfigArgs']]):
         pulumi.set(self, "provider_config", value)
 
+    @_builtins.property
+    @pulumi.getter(name="servicePrincipal")
+    def service_principal(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The service principal (application id) whose identity authorizes this
+        change data feed's ongoing writes to Unity Catalog. When unset, writes are
+        authorized as the creating identity. Changing it requires a new CdfConfig,
+        which writes to new Delta tables
+        """
+        return pulumi.get(self, "service_principal")
+
+    @service_principal.setter
+    def service_principal(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_principal", value)
+
 
 @pulumi.input_type
 class _PostgresCdfConfigState:
@@ -139,7 +161,8 @@ class _PostgresCdfConfigState:
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  postgres_schema: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['PostgresCdfConfigProviderConfigArgs']] = None,
-                 schema: pulumi.Input[Optional[_builtins.str]] = None):
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_principal: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PostgresCdfConfig resources.
 
@@ -157,6 +180,10 @@ class _PostgresCdfConfigState:
         :param pulumi.Input['PostgresCdfConfigProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] schema: The Unity Catalog schema that replicated tables are written into.
                Set at creation; the CdfConfig is immutable
+        :param pulumi.Input[_builtins.str] service_principal: The service principal (application id) whose identity authorizes this
+               change data feed's ongoing writes to Unity Catalog. When unset, writes are
+               authorized as the creating identity. Changing it requires a new CdfConfig,
+               which writes to new Delta tables
         """
         if catalog is not None:
             pulumi.set(__self__, "catalog", catalog)
@@ -174,6 +201,8 @@ class _PostgresCdfConfigState:
             pulumi.set(__self__, "provider_config", provider_config)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
+        if service_principal is not None:
+            pulumi.set(__self__, "service_principal", service_principal)
 
     @_builtins.property
     @pulumi.getter
@@ -277,6 +306,21 @@ class _PostgresCdfConfigState:
     def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema", value)
 
+    @_builtins.property
+    @pulumi.getter(name="servicePrincipal")
+    def service_principal(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The service principal (application id) whose identity authorizes this
+        change data feed's ongoing writes to Unity Catalog. When unset, writes are
+        authorized as the creating identity. Changing it requires a new CdfConfig,
+        which writes to new Delta tables
+        """
+        return pulumi.get(self, "service_principal")
+
+    @service_principal.setter
+    def service_principal(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_principal", value)
+
 
 @pulumi.type_token("databricks:index/postgresCdfConfig:PostgresCdfConfig")
 class PostgresCdfConfig(pulumi.CustomResource):
@@ -290,6 +334,7 @@ class PostgresCdfConfig(pulumi.CustomResource):
                  postgres_schema: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['PostgresCdfConfigProviderConfigArgs', 'PostgresCdfConfigProviderConfigArgsDict', 'outputs.PostgresCdfConfigProviderConfig']]] = None,
                  schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_principal: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
@@ -345,6 +390,10 @@ class PostgresCdfConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['PostgresCdfConfigProviderConfigArgs', 'PostgresCdfConfigProviderConfigArgsDict', 'outputs.PostgresCdfConfigProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] schema: The Unity Catalog schema that replicated tables are written into.
                Set at creation; the CdfConfig is immutable
+        :param pulumi.Input[_builtins.str] service_principal: The service principal (application id) whose identity authorizes this
+               change data feed's ongoing writes to Unity Catalog. When unset, writes are
+               authorized as the creating identity. Changing it requires a new CdfConfig,
+               which writes to new Delta tables
         """
         ...
     @overload
@@ -414,6 +463,7 @@ class PostgresCdfConfig(pulumi.CustomResource):
                  postgres_schema: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional[Union['PostgresCdfConfigProviderConfigArgs', 'PostgresCdfConfigProviderConfigArgsDict', 'outputs.PostgresCdfConfigProviderConfig']]] = None,
                  schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_principal: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -437,6 +487,7 @@ class PostgresCdfConfig(pulumi.CustomResource):
             if schema is None and not opts.urn:
                 raise TypeError("Missing required property 'schema'")
             __props__.__dict__["schema"] = schema
+            __props__.__dict__["service_principal"] = service_principal
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
         super(PostgresCdfConfig, __self__).__init__(
@@ -456,7 +507,8 @@ class PostgresCdfConfig(pulumi.CustomResource):
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             postgres_schema: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['PostgresCdfConfigProviderConfigArgs', 'PostgresCdfConfigProviderConfigArgsDict', 'outputs.PostgresCdfConfigProviderConfig']]] = None,
-            schema: pulumi.Input[Optional[_builtins.str]] = None) -> 'PostgresCdfConfig':
+            schema: pulumi.Input[Optional[_builtins.str]] = None,
+            service_principal: pulumi.Input[Optional[_builtins.str]] = None) -> 'PostgresCdfConfig':
         """
         Get an existing PostgresCdfConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -478,6 +530,10 @@ class PostgresCdfConfig(pulumi.CustomResource):
         :param pulumi.Input[Union['PostgresCdfConfigProviderConfigArgs', 'PostgresCdfConfigProviderConfigArgsDict', 'outputs.PostgresCdfConfigProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] schema: The Unity Catalog schema that replicated tables are written into.
                Set at creation; the CdfConfig is immutable
+        :param pulumi.Input[_builtins.str] service_principal: The service principal (application id) whose identity authorizes this
+               change data feed's ongoing writes to Unity Catalog. When unset, writes are
+               authorized as the creating identity. Changing it requires a new CdfConfig,
+               which writes to new Delta tables
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -491,6 +547,7 @@ class PostgresCdfConfig(pulumi.CustomResource):
         __props__.__dict__["postgres_schema"] = postgres_schema
         __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["schema"] = schema
+        __props__.__dict__["service_principal"] = service_principal
         return PostgresCdfConfig(resource_name, opts=opts, __props__=__props__)
 
     @staticmethod
@@ -503,7 +560,8 @@ class PostgresCdfConfig(pulumi.CustomResource):
             parent: pulumi.Input[Optional[_builtins.str]] = None,
             postgres_schema: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['PostgresCdfConfigProviderConfigArgs', 'PostgresCdfConfigProviderConfigArgsDict', 'outputs.PostgresCdfConfigProviderConfig']]] = None,
-            schema: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+            schema: pulumi.Input[Optional[_builtins.str]] = None,
+            service_principal: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["catalog"] = catalog
         __props__["cdfConfigId"] = cdf_config_id
@@ -513,6 +571,7 @@ class PostgresCdfConfig(pulumi.CustomResource):
         __props__["postgresSchema"] = postgres_schema
         __props__["providerConfig"] = provider_config
         __props__["schema"] = schema
+        __props__["servicePrincipal"] = service_principal
         return pulumi.runtime.exists_resource(None, 'databricks:index/postgresCdfConfig:PostgresCdfConfig', id, __props__, opts or pulumi.ResourceOptions())
 
     @_builtins.property
@@ -584,4 +643,15 @@ class PostgresCdfConfig(pulumi.CustomResource):
         Set at creation; the CdfConfig is immutable
         """
         return pulumi.get(self, "schema")
+
+    @_builtins.property
+    @pulumi.getter(name="servicePrincipal")
+    def service_principal(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The service principal (application id) whose identity authorizes this
+        change data feed's ongoing writes to Unity Catalog. When unset, writes are
+        authorized as the creating identity. Changing it requires a new CdfConfig,
+        which writes to new Delta tables
+        """
+        return pulumi.get(self, "service_principal")
 

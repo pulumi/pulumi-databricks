@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
 //
@@ -56,9 +56,7 @@ func GetAiSearchIndexes(ctx *pulumi.Context, args *GetAiSearchIndexesArgs, opts 
 
 // A collection of arguments for invoking getAiSearchIndexes.
 type GetAiSearchIndexesArgs struct {
-	// Best-effort upper bound on the number of results to return. Honored as an upper
-	// bound by the shim: `pageSize` only narrows the legacy backend's response, never
-	// widens it, so the practical cap is `min(page_size, legacy_fixed_page_size)`
+	// Maximum number of indexes to return. When unset, every index on the endpoint is returned
 	PageSize *int `pulumi:"pageSize"`
 	// The Endpoint that owns this collection of indexes.
 	// Format: `workspaces/{workspace_id}/endpoints/{endpoint_id}`
@@ -82,9 +80,7 @@ func GetAiSearchIndexesOutput(ctx *pulumi.Context, args GetAiSearchIndexesOutput
 
 // A collection of arguments for invoking getAiSearchIndexes.
 type GetAiSearchIndexesOutputArgs struct {
-	// Best-effort upper bound on the number of results to return. Honored as an upper
-	// bound by the shim: `pageSize` only narrows the legacy backend's response, never
-	// widens it, so the practical cap is `min(page_size, legacy_fixed_page_size)`
+	// Maximum number of indexes to return. When unset, every index on the endpoint is returned
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// The Endpoint that owns this collection of indexes.
 	// Format: `workspaces/{workspace_id}/endpoints/{endpoint_id}`

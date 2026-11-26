@@ -18,7 +18,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Granularities;
         /// <summary>
-        /// (string) - Column for the timestamp
+        /// (string) - Column containing the timestamp of each row. Its type must be TIMESTAMP or convertible to a timestamp
         /// </summary>
         public readonly string TimestampColumn;
 

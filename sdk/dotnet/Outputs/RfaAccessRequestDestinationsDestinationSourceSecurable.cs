@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class RfaAccessRequestDestinationsDestinationSourceSecurable
     {
         /// <summary>
-        /// (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+        /// (string) - The full name of the securable, repeated from **securable**
         /// </summary>
         public readonly string? FullName;
         /// <summary>

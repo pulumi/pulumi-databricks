@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
@@ -76,12 +76,12 @@ export class WorkspaceIamWorkspaceIdentityDetailV2 extends pulumi.CustomResource
     }
 
     /**
-     * (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
+     * (string) - Whether the principal is assigned to the workspace directly or has access through a group. Possible values are: `DIRECT`, `INDIRECT`
      */
     declare public /*out*/ readonly assignmentType: pulumi.Output<string>;
     /**
-     * (string) - The resource name of the workspace identity detail.
-     * Format: principals/{principal_id}/workspace-identity-detail
+     * (string) - The resource name of the workspace identity detail, in the format
+     * `principals/{principal_id}/workspace-identity-detail`
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -89,11 +89,11 @@ export class WorkspaceIamWorkspaceIdentityDetailV2 extends pulumi.CustomResource
      */
     declare public readonly parent: pulumi.Output<string>;
     /**
-     * (integer) - The internal ID of the principal (user/sp/group) in Databricks
+     * (integer) - The Databricks ID of the user, service principal, or group
      */
     declare public /*out*/ readonly principalId: pulumi.Output<string>;
     /**
-     * (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * (string) - Whether the principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      */
     declare public /*out*/ readonly principalType: pulumi.Output<string>;
     /**
@@ -101,7 +101,7 @@ export class WorkspaceIamWorkspaceIdentityDetailV2 extends pulumi.CustomResource
      */
     declare public readonly providerConfig: pulumi.Output<outputs.WorkspaceIamWorkspaceIdentityDetailV2ProviderConfig>;
     /**
-     * The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
+     * Whether the principal is active in the workspace. Groups are always `ACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      */
     declare public readonly workspaceIdentityStatus: pulumi.Output<string | undefined>;
 
@@ -148,12 +148,12 @@ export class WorkspaceIamWorkspaceIdentityDetailV2 extends pulumi.CustomResource
  */
 export interface WorkspaceIamWorkspaceIdentityDetailV2State {
     /**
-     * (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
+     * (string) - Whether the principal is assigned to the workspace directly or has access through a group. Possible values are: `DIRECT`, `INDIRECT`
      */
     assignmentType?: pulumi.Input<string | undefined>;
     /**
-     * (string) - The resource name of the workspace identity detail.
-     * Format: principals/{principal_id}/workspace-identity-detail
+     * (string) - The resource name of the workspace identity detail, in the format
+     * `principals/{principal_id}/workspace-identity-detail`
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -161,11 +161,11 @@ export interface WorkspaceIamWorkspaceIdentityDetailV2State {
      */
     parent?: pulumi.Input<string | undefined>;
     /**
-     * (integer) - The internal ID of the principal (user/sp/group) in Databricks
+     * (integer) - The Databricks ID of the user, service principal, or group
      */
     principalId?: pulumi.Input<string | undefined>;
     /**
-     * (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * (string) - Whether the principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      */
     principalType?: pulumi.Input<string | undefined>;
     /**
@@ -173,7 +173,7 @@ export interface WorkspaceIamWorkspaceIdentityDetailV2State {
      */
     providerConfig?: pulumi.Input<inputs.WorkspaceIamWorkspaceIdentityDetailV2ProviderConfig | undefined>;
     /**
-     * The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
+     * Whether the principal is active in the workspace. Groups are always `ACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      */
     workspaceIdentityStatus?: pulumi.Input<string | undefined>;
 }
@@ -191,7 +191,7 @@ export interface WorkspaceIamWorkspaceIdentityDetailV2Args {
      */
     providerConfig?: pulumi.Input<inputs.WorkspaceIamWorkspaceIdentityDetailV2ProviderConfig | undefined>;
     /**
-     * The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
+     * Whether the principal is active in the workspace. Groups are always `ACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      */
     workspaceIdentityStatus?: pulumi.Input<string | undefined>;
 }

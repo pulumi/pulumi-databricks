@@ -13,32 +13,42 @@ import javax.annotation.Nullable;
 @CustomType
 public final class WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * @return Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * @return Day of the week on which the maintenance window starts. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      * 
      */
     private @Nullable String dayOfWeek;
     /**
-     * @return Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * @return How often the maintenance window occurs: every week, or only on the listed occurrences of
+     * the day of the week within each month. Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      * 
      */
     private @Nullable String frequency;
+    /**
+     * @return Time of day, in UTC, at which the maintenance window starts
+     * 
+     */
     private @Nullable WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime windowStartTime;
 
     private WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule() {}
     /**
-     * @return Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * @return Day of the week on which the maintenance window starts. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      * 
      */
     public Optional<String> dayOfWeek() {
         return Optional.ofNullable(this.dayOfWeek);
     }
     /**
-     * @return Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * @return How often the maintenance window occurs: every week, or only on the listed occurrences of
+     * the day of the week within each month. Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      * 
      */
     public Optional<String> frequency() {
         return Optional.ofNullable(this.frequency);
     }
+    /**
+     * @return Time of day, in UTC, at which the maintenance window starts
+     * 
+     */
     public Optional<WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime> windowStartTime() {
         return Optional.ofNullable(this.windowStartTime);
     }

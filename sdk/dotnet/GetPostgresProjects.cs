@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetPostgresProjects
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresProjectsResult>("databricks:index/getPostgresProjects:getPostgresProjects", args ?? new GetPostgresProjectsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -80,7 +80,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresProjectsResult>("databricks:index/getPostgresProjects:getPostgresProjects", args ?? new GetPostgresProjectsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -118,7 +118,8 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresProjectsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Upper bound for items returned. Cannot be negative. The maximum value is 100
+        /// Upper bound for the number of projects returned. Cannot be negative. Values above the maximum
+        /// page size are reduced to that maximum
         /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
@@ -146,7 +147,8 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresProjectsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Upper bound for items returned. Cannot be negative. The maximum value is 100
+        /// Upper bound for the number of projects returned. Cannot be negative. Values above the maximum
+        /// page size are reduced to that maximum
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }

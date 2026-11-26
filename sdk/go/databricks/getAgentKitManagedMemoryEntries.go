@@ -38,8 +38,9 @@ type GetAgentKitManagedMemoryEntriesArgs struct {
 	PathPrefix *string `pulumi:"pathPrefix"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetAgentKitManagedMemoryEntriesProviderConfig `pulumi:"providerConfig"`
-	// Optional session identifier. When set, only entries with this exact `sessionId` are
-	// returned. Omitted-session (cross-session) entries are not included. Ignored when path is set
+	// Deprecated: the service will ignore this filter. Until then, when set, only entries with
+	// this exact `sessionId` are returned, and omitted-session (cross-session) entries
+	// are not included. Ignored when path is set
 	SessionId *string `pulumi:"sessionId"`
 	// Controls whether each returned entry includes memory content. Defaults to `FULL`. Possible values are: `MANAGED_MEMORY_ENTRY_VIEW_BASIC`, `MANAGED_MEMORY_ENTRY_VIEW_FULL`
 	View *string `pulumi:"view"`
@@ -54,7 +55,8 @@ type GetAgentKitManagedMemoryEntriesResult struct {
 	Parent               string                                              `pulumi:"parent"`
 	PathPrefix           *string                                             `pulumi:"pathPrefix"`
 	ProviderConfig       *GetAgentKitManagedMemoryEntriesProviderConfig      `pulumi:"providerConfig"`
-	// (string) - Optional identifier for the session associated with this memory entry. When omitted, the
+	// (string, deprecated) - Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+	// ignore this field on writes and omit it from responses. Until then, an omitted value means the
 	// entry applies across the actor's sessions
 	SessionId *string `pulumi:"sessionId"`
 	View      *string `pulumi:"view"`
@@ -79,8 +81,9 @@ type GetAgentKitManagedMemoryEntriesOutputArgs struct {
 	PathPrefix pulumi.StringPtrInput `pulumi:"pathPrefix"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetAgentKitManagedMemoryEntriesProviderConfigPtrInput `pulumi:"providerConfig"`
-	// Optional session identifier. When set, only entries with this exact `sessionId` are
-	// returned. Omitted-session (cross-session) entries are not included. Ignored when path is set
+	// Deprecated: the service will ignore this filter. Until then, when set, only entries with
+	// this exact `sessionId` are returned, and omitted-session (cross-session) entries
+	// are not included. Ignored when path is set
 	SessionId pulumi.StringPtrInput `pulumi:"sessionId"`
 	// Controls whether each returned entry includes memory content. Defaults to `FULL`. Possible values are: `MANAGED_MEMORY_ENTRY_VIEW_BASIC`, `MANAGED_MEMORY_ENTRY_VIEW_FULL`
 	View pulumi.StringPtrInput `pulumi:"view"`
@@ -134,7 +137,8 @@ func (o GetAgentKitManagedMemoryEntriesResultOutput) ProviderConfig() GetAgentKi
 	}).(GetAgentKitManagedMemoryEntriesProviderConfigPtrOutput)
 }
 
-// (string) - Optional identifier for the session associated with this memory entry. When omitted, the
+// (string, deprecated) - Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+// ignore this field on writes and omit it from responses. Until then, an omitted value means the
 // entry applies across the actor's sessions
 func (o GetAgentKitManagedMemoryEntriesResultOutput) SessionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAgentKitManagedMemoryEntriesResult) *string { return v.SessionId }).(pulumi.StringPtrOutput)

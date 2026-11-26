@@ -17,7 +17,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  * 
@@ -128,14 +128,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/postgresCatalog:PostgresCatalog")
 public class PostgresCatalog extends com.pulumi.resources.CustomResource {
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+     * last segment of the name field
      * 
      */
     @Export(name="catalogId", refs={String.class}, tree="[0]")
     private Output<String> catalogId;
 
     /**
-     * @return The part of the name, chosen by the user when the resource was created
+     * @return The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+     * last segment of the name field
      * 
      */
     public Output<String> catalogId() {
@@ -184,14 +186,16 @@ public class PostgresCatalog extends com.pulumi.resources.CustomResource {
         return this.providerConfig;
     }
     /**
-     * The desired state of the Catalog
+     * The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+     * the catalog is created
      * 
      */
     @Export(name="spec", refs={PostgresCatalogSpec.class}, tree="[0]")
     private Output<PostgresCatalogSpec> spec;
 
     /**
-     * @return The desired state of the Catalog
+     * @return The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+     * the catalog is created
      * 
      */
     public Output<PostgresCatalogSpec> spec() {
@@ -212,14 +216,14 @@ public class PostgresCatalog extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * (string) - System-generated unique identifier for the catalog
+     * (string) - The immutable UUID that identifies the catalog, assigned when the catalog is created
      * 
      */
     @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
-     * @return (string) - System-generated unique identifier for the catalog
+     * @return (string) - The immutable UUID that identifies the catalog, assigned when the catalog is created
      * 
      */
     public Output<String> uid() {

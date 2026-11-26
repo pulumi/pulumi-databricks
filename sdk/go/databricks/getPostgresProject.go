@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 //
@@ -85,17 +85,21 @@ type LookupPostgresProjectResult struct {
 	// (string) - Output only. The full resource path of the project.
 	// Format: projects/{project_id}
 	Name string `pulumi:"name"`
-	// (string) - Part of the resource name
+	// (string) - The project ID, which is the final segment of the project's resource name
 	ProjectId      string                            `pulumi:"projectId"`
 	ProviderConfig *GetPostgresProjectProviderConfig `pulumi:"providerConfig"`
 	// (string) - A timestamp indicating when the project is scheduled for permanent deletion.
 	// Empty if the project is not deleted, otherwise set to a timestamp in the future
 	PurgeTime string `pulumi:"purgeTime"`
-	// (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
+	// (ProjectSpec) - The desired configuration of the project. The fields under `spec` are the ones that can be
+	// changed after creation, except `pgVersion`, which is fixed when the project is created. See
+	// `status` for the configuration that is currently in effect.
 	Spec GetPostgresProjectSpec `pulumi:"spec"`
-	// (ProjectStatus) - The current status of a Project
+	// (ProjectStatus) - The configuration and state of the project that are currently in effect, as reported by the
+	// system
 	Status GetPostgresProjectStatus `pulumi:"status"`
-	// (string) - System-generated unique ID for the project
+	// (string) - A system-generated UUID that identifies the project. Unlike `name`, it is not derived from the
+	// user-chosen project ID
 	Uid string `pulumi:"uid"`
 	// (string) - A timestamp indicating when the project was last updated
 	UpdateTime string `pulumi:"updateTime"`
@@ -168,7 +172,7 @@ func (o LookupPostgresProjectResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresProjectResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (string) - Part of the resource name
+// (string) - The project ID, which is the final segment of the project's resource name
 func (o LookupPostgresProjectResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresProjectResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
@@ -183,17 +187,21 @@ func (o LookupPostgresProjectResultOutput) PurgeTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresProjectResult) string { return v.PurgeTime }).(pulumi.StringOutput)
 }
 
-// (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
+// (ProjectSpec) - The desired configuration of the project. The fields under `spec` are the ones that can be
+// changed after creation, except `pgVersion`, which is fixed when the project is created. See
+// `status` for the configuration that is currently in effect.
 func (o LookupPostgresProjectResultOutput) Spec() GetPostgresProjectSpecOutput {
 	return o.ApplyT(func(v LookupPostgresProjectResult) GetPostgresProjectSpec { return v.Spec }).(GetPostgresProjectSpecOutput)
 }
 
-// (ProjectStatus) - The current status of a Project
+// (ProjectStatus) - The configuration and state of the project that are currently in effect, as reported by the
+// system
 func (o LookupPostgresProjectResultOutput) Status() GetPostgresProjectStatusOutput {
 	return o.ApplyT(func(v LookupPostgresProjectResult) GetPostgresProjectStatus { return v.Status }).(GetPostgresProjectStatusOutput)
 }
 
-// (string) - System-generated unique ID for the project
+// (string) - A system-generated UUID that identifies the project. Unlike `name`, it is not derived from the
+// user-chosen project ID
 func (o LookupPostgresProjectResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresProjectResult) string { return v.Uid }).(pulumi.StringOutput)
 }

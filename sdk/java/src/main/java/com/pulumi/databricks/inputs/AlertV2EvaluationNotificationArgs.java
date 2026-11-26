@@ -66,9 +66,17 @@ public final class AlertV2EvaluationNotificationArgs extends com.pulumi.resource
         return Optional.ofNullable(this.retriggerSeconds);
     }
 
+    /**
+     * Users and notification destinations that receive notifications
+     * 
+     */
     @Import(name="subscriptions")
     private @Nullable Output<List<AlertV2EvaluationNotificationSubscriptionArgs>> subscriptions;
 
+    /**
+     * @return Users and notification destinations that receive notifications
+     * 
+     */
     public Optional<Output<List<AlertV2EvaluationNotificationSubscriptionArgs>>> subscriptions() {
         return Optional.ofNullable(this.subscriptions);
     }
@@ -165,15 +173,33 @@ public final class AlertV2EvaluationNotificationArgs extends com.pulumi.resource
             return retriggerSeconds(Output.of(retriggerSeconds));
         }
 
+        /**
+         * @param subscriptions Users and notification destinations that receive notifications
+         * 
+         * @return builder
+         * 
+         */
         public Builder subscriptions(@Nullable Output<List<AlertV2EvaluationNotificationSubscriptionArgs>> subscriptions) {
             $.subscriptions = subscriptions;
             return this;
         }
 
+        /**
+         * @param subscriptions Users and notification destinations that receive notifications
+         * 
+         * @return builder
+         * 
+         */
         public Builder subscriptions(List<AlertV2EvaluationNotificationSubscriptionArgs> subscriptions) {
             return subscriptions(Output.of(subscriptions));
         }
 
+        /**
+         * @param subscriptions Users and notification destinations that receive notifications
+         * 
+         * @return builder
+         * 
+         */
         public Builder subscriptions(AlertV2EvaluationNotificationSubscriptionArgs... subscriptions) {
             return subscriptions(List.of(subscriptions));
         }

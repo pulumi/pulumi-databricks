@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
@@ -41,9 +41,9 @@ export function getWorkspaceIamUserV2(args: GetWorkspaceIamUserV2Args, opts?: pu
  */
 export interface GetWorkspaceIamUserV2Args {
     /**
-     * The resource name of the user. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/users/{user_id}
-     * - Workspace-scoped: users/{user_id}
+     * The resource name of the user, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/users/{user_id}`
+     * - Workspace APIs: `users/{user_id}`
      */
     name: string;
     /**
@@ -57,44 +57,46 @@ export interface GetWorkspaceIamUserV2Args {
  */
 export interface GetWorkspaceIamUserV2Result {
     /**
-     * (string) - The accountId parent of the user in Databricks
+     * (string) - The ID of the account that contains the user
      */
     readonly accountId: string;
     /**
-     * (string) - The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * (string) - Whether the user is active in the account. New users are active unless you set this to
+     * `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      */
     readonly accountUserStatus: string;
     /**
-     * (string) - ExternalId of the user in the customer's IdP
+     * (string) - The ID of the user in your identity provider (IdP)
      */
     readonly externalId: string;
     /**
-     * (UserFullName)
+     * (UserFullName) - The user's name
      */
     readonly fullName: outputs.GetWorkspaceIamUserV2FullName;
     /**
-     * (string) - The resource name of the user. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/users/{user_id}
-     * - Workspace-scoped: users/{user_id}
+     * (string) - The resource name of the user, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/users/{user_id}`
+     * - Workspace APIs: `users/{user_id}`
      */
     readonly name: string;
     /**
-     * (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * (string) - The resource name of the account that contains the user, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      */
     readonly parent: string;
     readonly providerConfig?: outputs.GetWorkspaceIamUserV2ProviderConfig;
     /**
-     * (string) - Internal userId of the user in Databricks
+     * (string) - The Databricks ID of the user
      */
     readonly userId: string;
     /**
-     * (string) - Username/email of the user
+     * (string) - The user's username, which is their email address. It can't be changed after the user is
+     * created
      */
     readonly username: string;
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
@@ -128,9 +130,9 @@ export function getWorkspaceIamUserV2Output(args: GetWorkspaceIamUserV2OutputArg
  */
 export interface GetWorkspaceIamUserV2OutputArgs {
     /**
-     * The resource name of the user. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/users/{user_id}
-     * - Workspace-scoped: users/{user_id}
+     * The resource name of the user, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/users/{user_id}`
+     * - Workspace APIs: `users/{user_id}`
      */
     name: pulumi.Input<string>;
     /**

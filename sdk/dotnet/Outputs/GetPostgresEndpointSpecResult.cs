@@ -39,16 +39,17 @@ namespace Pulumi.Databricks.Outputs
         public readonly Outputs.GetPostgresEndpointSpecGroupResult? Group;
         /// <summary>
         /// (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
-        /// Should be set to true when provided.
+        /// The value must be true when provided.
         /// Mutually exclusive with `SuspendTimeoutDuration`
         /// </summary>
         public readonly bool? NoSuspension;
         /// <summary>
-        /// (EndpointSettings)
+        /// (EndpointSettings) - The Postgres server parameters currently set on the compute endpoint
         /// </summary>
         public readonly Outputs.GetPostgresEndpointSpecSettingsResult? Settings;
         /// <summary>
-        /// (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+        /// (string) - Duration of inactivity after which the compute endpoint is automatically suspended. Absent when
+        /// automatic suspension is disabled
         /// </summary>
         public readonly string? SuspendTimeoutDuration;
 

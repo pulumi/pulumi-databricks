@@ -18,8 +18,8 @@ public final class GetAccountIamUsersV2Result {
     private @Nullable String filter;
     private @Nullable Integer pageSize;
     /**
-     * @return (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * @return (string) - The resource name of the account that contains the user, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      * 
      */
     private String parent;
@@ -33,8 +33,8 @@ public final class GetAccountIamUsersV2Result {
         return Optional.ofNullable(this.pageSize);
     }
     /**
-     * @return (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * @return (string) - The resource name of the account that contains the user, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      * 
      */
     public String parent() {

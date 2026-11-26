@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 //
@@ -68,7 +68,7 @@ type LookupPostgresEndpointArgs struct {
 type LookupPostgresEndpointResult struct {
 	// (string) - A timestamp indicating when the compute endpoint was created
 	CreateTime string `pulumi:"createTime"`
-	// (string) - Part of the resource name
+	// (string) - The endpoint ID, which is the final segment of the endpoint's resource name
 	EndpointId string `pulumi:"endpointId"`
 	// (string) - Output only. The full resource path of the endpoint.
 	// Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
@@ -77,11 +77,14 @@ type LookupPostgresEndpointResult struct {
 	// Format: projects/{project_id}/branches/{branch_id}
 	Parent         string                             `pulumi:"parent"`
 	ProviderConfig *GetPostgresEndpointProviderConfig `pulumi:"providerConfig"`
-	// (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+	// (EndpointSpec) - The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+	// changed after creation. See `status` for the configuration that is currently in effect.
 	Spec GetPostgresEndpointSpec `pulumi:"spec"`
-	// (EndpointStatus) - Current operational status of the compute endpoint
+	// (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+	// system, including the hostnames to connect to
 	Status GetPostgresEndpointStatus `pulumi:"status"`
-	// (string) - System-generated unique ID for the endpoint
+	// (string) - A system-generated ID that identifies the endpoint. Unlike `name`, it is not derived from the
+	// user-chosen endpoint ID. The endpoint's connection hostnames are based on this ID
 	Uid string `pulumi:"uid"`
 	// (string) - A timestamp indicating when the compute endpoint was last updated
 	UpdateTime string `pulumi:"updateTime"`
@@ -125,7 +128,7 @@ func (o LookupPostgresEndpointResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresEndpointResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// (string) - Part of the resource name
+// (string) - The endpoint ID, which is the final segment of the endpoint's resource name
 func (o LookupPostgresEndpointResultOutput) EndpointId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresEndpointResult) string { return v.EndpointId }).(pulumi.StringOutput)
 }
@@ -146,17 +149,20 @@ func (o LookupPostgresEndpointResultOutput) ProviderConfig() GetPostgresEndpoint
 	return o.ApplyT(func(v LookupPostgresEndpointResult) *GetPostgresEndpointProviderConfig { return v.ProviderConfig }).(GetPostgresEndpointProviderConfigPtrOutput)
 }
 
-// (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+// (EndpointSpec) - The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+// changed after creation. See `status` for the configuration that is currently in effect.
 func (o LookupPostgresEndpointResultOutput) Spec() GetPostgresEndpointSpecOutput {
 	return o.ApplyT(func(v LookupPostgresEndpointResult) GetPostgresEndpointSpec { return v.Spec }).(GetPostgresEndpointSpecOutput)
 }
 
-// (EndpointStatus) - Current operational status of the compute endpoint
+// (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+// system, including the hostnames to connect to
 func (o LookupPostgresEndpointResultOutput) Status() GetPostgresEndpointStatusOutput {
 	return o.ApplyT(func(v LookupPostgresEndpointResult) GetPostgresEndpointStatus { return v.Status }).(GetPostgresEndpointStatusOutput)
 }
 
-// (string) - System-generated unique ID for the endpoint
+// (string) - A system-generated ID that identifies the endpoint. Unlike `name`, it is not derived from the
+// user-chosen endpoint ID. The endpoint's connection hostnames are based on this ID
 func (o LookupPostgresEndpointResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresEndpointResult) string { return v.Uid }).(pulumi.StringOutput)
 }

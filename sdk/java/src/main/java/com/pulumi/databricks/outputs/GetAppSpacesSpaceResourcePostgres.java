@@ -12,38 +12,44 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAppSpacesSpaceResourcePostgres {
     /**
-     * @return (string)
+     * @return (string) - Resource name of the Lakebase Autoscaling branch, in the form
+     * `projects/{project}/branches/{branch}`
      * 
      */
     private @Nullable String branch;
     /**
-     * @return (string)
+     * @return (string) - Resource name of the database within the branch, in the form
+     * `projects/{project}/branches/{branch}/databases/{database}`
      * 
      */
     private @Nullable String database;
     /**
-     * @return (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * @return (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      * 
      */
     private @Nullable String permission;
 
     private GetAppSpacesSpaceResourcePostgres() {}
     /**
-     * @return (string)
+     * @return (string) - Resource name of the Lakebase Autoscaling branch, in the form
+     * `projects/{project}/branches/{branch}`
      * 
      */
     public Optional<String> branch() {
         return Optional.ofNullable(this.branch);
     }
     /**
-     * @return (string)
+     * @return (string) - Resource name of the database within the branch, in the form
+     * `projects/{project}/branches/{branch}/databases/{database}`
      * 
      */
     public Optional<String> database() {
         return Optional.ofNullable(this.database);
     }
     /**
-     * @return (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * @return (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      * 
      */
     public Optional<String> permission() {

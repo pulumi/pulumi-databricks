@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetPostgresProjectsProjectSpecCustomTag;
 import com.pulumi.databricks.outputs.GetPostgresProjectsProjectSpecDefaultEndpointSettings;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -55,7 +56,7 @@ public final class GetPostgresProjectsProjectSpec {
      * @return (integer) - The effective major Postgres version number
      * 
      */
-    private @Nullable Integer pgVersion;
+    private Integer pgVersion;
 
     private GetPostgresProjectsProjectSpec() {}
     /**
@@ -111,8 +112,8 @@ public final class GetPostgresProjectsProjectSpec {
      * @return (integer) - The effective major Postgres version number
      * 
      */
-    public Optional<Integer> pgVersion() {
-        return Optional.ofNullable(this.pgVersion);
+    public Integer pgVersion() {
+        return this.pgVersion;
     }
 
     public static Builder builder() {
@@ -131,7 +132,7 @@ public final class GetPostgresProjectsProjectSpec {
         private @Nullable String displayName;
         private @Nullable Boolean enablePgNativeLogin;
         private @Nullable String historyRetentionDuration;
-        private @Nullable Integer pgVersion;
+        private Integer pgVersion;
         public Builder() {}
         public Builder(GetPostgresProjectsProjectSpec defaults) {
     	      Objects.requireNonNull(defaults);
@@ -191,8 +192,10 @@ public final class GetPostgresProjectsProjectSpec {
             return this;
         }
         @CustomType.Setter
-        public Builder pgVersion(@Nullable Integer pgVersion) {
-
+        public Builder pgVersion(Integer pgVersion) {
+            if (pgVersion == null) {
+              throw new MissingRequiredPropertyException("GetPostgresProjectsProjectSpec", "pgVersion");
+            }
             this.pgVersion = pgVersion;
             return this;
         }

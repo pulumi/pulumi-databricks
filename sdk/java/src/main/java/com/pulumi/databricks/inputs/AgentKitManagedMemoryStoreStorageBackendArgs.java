@@ -16,14 +16,18 @@ public final class AgentKitManagedMemoryStoreStorageBackendArgs extends com.pulu
     public static final AgentKitManagedMemoryStoreStorageBackendArgs Empty = new AgentKitManagedMemoryStoreStorageBackendArgs();
 
     /**
-     * (string) - Backend-specific identifier. For Lakebase, this is the project ID
+     * (string) - Backend-specific identifier. For Lakebase, this is the resource name of the database that
+     * holds the store&#39;s entries, in the form
+     * `projects/{project_id}/branches/{branch_id}/databases/{database_id}`
      * 
      */
     @Import(name="backendId")
     private @Nullable Output<String> backendId;
 
     /**
-     * @return (string) - Backend-specific identifier. For Lakebase, this is the project ID
+     * @return (string) - Backend-specific identifier. For Lakebase, this is the resource name of the database that
+     * holds the store&#39;s entries, in the form
+     * `projects/{project_id}/branches/{branch_id}/databases/{database_id}`
      * 
      */
     public Optional<Output<String>> backendId() {
@@ -71,7 +75,9 @@ public final class AgentKitManagedMemoryStoreStorageBackendArgs extends com.pulu
         }
 
         /**
-         * @param backendId (string) - Backend-specific identifier. For Lakebase, this is the project ID
+         * @param backendId (string) - Backend-specific identifier. For Lakebase, this is the resource name of the database that
+         * holds the store&#39;s entries, in the form
+         * `projects/{project_id}/branches/{branch_id}/databases/{database_id}`
          * 
          * @return builder
          * 
@@ -82,7 +88,9 @@ public final class AgentKitManagedMemoryStoreStorageBackendArgs extends com.pulu
         }
 
         /**
-         * @param backendId (string) - Backend-specific identifier. For Lakebase, this is the project ID
+         * @param backendId (string) - Backend-specific identifier. For Lakebase, this is the resource name of the database that
+         * holds the store&#39;s entries, in the form
+         * `projects/{project_id}/branches/{branch_id}/databases/{database_id}`
          * 
          * @return builder
          * 

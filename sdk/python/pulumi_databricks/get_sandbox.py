@@ -74,7 +74,7 @@ class GetSandboxResult:
     @pulumi.getter
     def metadata(self) -> 'outputs.GetSandboxMetadataResult':
         """
-        (SandboxMetadata) - Metadata associated with the sandbox
+        (SandboxMetadata) - Tags and other metadata associated with the sandbox
         """
         return pulumi.get(self, "metadata")
 

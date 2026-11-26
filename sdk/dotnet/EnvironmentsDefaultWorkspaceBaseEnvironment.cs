@@ -90,6 +90,7 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// The default workspace base environment for CPU compute.
+        /// If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
         /// Format: workspace-base-environments/{workspace_base_environment}
         /// </summary>
         [Output("cpuWorkspaceBaseEnvironment")]
@@ -97,6 +98,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The default workspace base environment for GPU compute.
+        /// If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
         /// Format: workspace-base-environments/{workspace_base_environment}
         /// </summary>
         [Output("gpuWorkspaceBaseEnvironment")]
@@ -163,6 +165,7 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// The default workspace base environment for CPU compute.
+        /// If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
         /// Format: workspace-base-environments/{workspace_base_environment}
         /// </summary>
         [Input("cpuWorkspaceBaseEnvironment")]
@@ -170,6 +173,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The default workspace base environment for GPU compute.
+        /// If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
         /// Format: workspace-base-environments/{workspace_base_environment}
         /// </summary>
         [Input("gpuWorkspaceBaseEnvironment")]
@@ -191,6 +195,7 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// The default workspace base environment for CPU compute.
+        /// If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
         /// Format: workspace-base-environments/{workspace_base_environment}
         /// </summary>
         [Input("cpuWorkspaceBaseEnvironment")]
@@ -198,6 +203,7 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// The default workspace base environment for GPU compute.
+        /// If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
         /// Format: workspace-base-environments/{workspace_base_environment}
         /// </summary>
         [Input("gpuWorkspaceBaseEnvironment")]

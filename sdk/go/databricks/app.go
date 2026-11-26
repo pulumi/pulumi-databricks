@@ -66,15 +66,6 @@ import (
 //	}
 //
 // ```
-//
-// ## Related Resources
-//
-// The following resources are used in the same context:
-//
-// * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
-// * ModelServing to serve this model on a Databricks serving endpoint.
-// * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
-// * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
 type App struct {
 	pulumi.CustomResourceState
 
@@ -83,10 +74,12 @@ type App struct {
 	// attribute
 	AppStatus AppAppStatusOutput `pulumi:"appStatus"`
 	// The Budget Policy ID set for this resource.
-	BudgetPolicyId      pulumi.StringPtrOutput `pulumi:"budgetPolicyId"`
-	ComputeMaxInstances pulumi.IntPtrOutput    `pulumi:"computeMaxInstances"`
-	ComputeMinInstances pulumi.IntPtrOutput    `pulumi:"computeMinInstances"`
-	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
+	BudgetPolicyId pulumi.StringPtrOutput `pulumi:"budgetPolicyId"`
+	// Maximum number of app instances the app is configured to run. Must be set together with `computeMinInstances`. Omitting both disables horizontal scaling.
+	ComputeMaxInstances pulumi.IntPtrOutput `pulumi:"computeMaxInstances"`
+	// Minimum number of app instances the app is configured to run. Must be set together with `computeMaxInstances`.
+	ComputeMinInstances pulumi.IntPtrOutput `pulumi:"computeMinInstances"`
+	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`. If omitted, the app uses `MEDIUM`.
 	ComputeSize pulumi.StringOutput `pulumi:"computeSize"`
 	// attribute
 	ComputeStatus AppComputeStatusOutput `pulumi:"computeStatus"`
@@ -100,7 +93,8 @@ type App struct {
 	// The description of the app.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The effective budget policy ID.
-	EffectiveBudgetPolicyId pulumi.StringOutput `pulumi:"effectiveBudgetPolicyId"`
+	EffectiveBudgetPolicyId pulumi.StringOutput             `pulumi:"effectiveBudgetPolicyId"`
+	EffectiveResources      AppEffectiveResourceArrayOutput `pulumi:"effectiveResources"`
 	// The effective usage policy ID.
 	EffectiveUsagePolicyId pulumi.StringOutput `pulumi:"effectiveUsagePolicyId"`
 	// A list of effective api scopes granted to the user access token.
@@ -133,6 +127,12 @@ type App struct {
 	Space          pulumi.StringPtrOutput `pulumi:"space"`
 	// A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
 	TelemetryExportDestinations AppTelemetryExportDestinationArrayOutput `pulumi:"telemetryExportDestinations"`
+	// The MD5 hash of the file in `thumbnailPath` that was last uploaded as the app's thumbnail.
+	ThumbnailMd5 pulumi.StringOutput `pulumi:"thumbnailMd5"`
+	// Path to a local PNG or JPEG file of at most 250 KB to show as the app's thumbnail in the Apps UI. The provider checks the file the way the Apps UI does and rejects other files at plan time, or at apply time if the file doesn't exist yet when Pulumi plans, for example because another resource writes it. The image can't be read back from the service, so the provider keeps the file's MD5 hash in `thumbnailMd5` and uploads the file again when its content changes; changes made to the thumbnail outside of Pulumi aren't detected. Removing the argument deletes the thumbnail.
+	//
+	// > Updates apply the whole configuration: an argument removed from the configuration is cleared or reset to its default, even if it was set outside Pulumi. Enabling or disabling horizontal scaling (`computeMinInstances`/`computeMaxInstances`) cannot be combined with a change to `computeSize` or `gitRepository` in the same apply.
+	ThumbnailPath pulumi.StringPtrOutput `pulumi:"thumbnailPath"`
 	// The URL of the thumbnail image for the app.
 	ThumbnailUrl pulumi.StringOutput `pulumi:"thumbnailUrl"`
 	// The update time of the deployment.
@@ -182,10 +182,12 @@ type appState struct {
 	// attribute
 	AppStatus *AppAppStatus `pulumi:"appStatus"`
 	// The Budget Policy ID set for this resource.
-	BudgetPolicyId      *string `pulumi:"budgetPolicyId"`
-	ComputeMaxInstances *int    `pulumi:"computeMaxInstances"`
-	ComputeMinInstances *int    `pulumi:"computeMinInstances"`
-	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
+	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
+	// Maximum number of app instances the app is configured to run. Must be set together with `computeMinInstances`. Omitting both disables horizontal scaling.
+	ComputeMaxInstances *int `pulumi:"computeMaxInstances"`
+	// Minimum number of app instances the app is configured to run. Must be set together with `computeMaxInstances`.
+	ComputeMinInstances *int `pulumi:"computeMinInstances"`
+	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`. If omitted, the app uses `MEDIUM`.
 	ComputeSize *string `pulumi:"computeSize"`
 	// attribute
 	ComputeStatus *AppComputeStatus `pulumi:"computeStatus"`
@@ -199,7 +201,8 @@ type appState struct {
 	// The description of the app.
 	Description *string `pulumi:"description"`
 	// The effective budget policy ID.
-	EffectiveBudgetPolicyId *string `pulumi:"effectiveBudgetPolicyId"`
+	EffectiveBudgetPolicyId *string                `pulumi:"effectiveBudgetPolicyId"`
+	EffectiveResources      []AppEffectiveResource `pulumi:"effectiveResources"`
 	// The effective usage policy ID.
 	EffectiveUsagePolicyId *string `pulumi:"effectiveUsagePolicyId"`
 	// A list of effective api scopes granted to the user access token.
@@ -232,6 +235,12 @@ type appState struct {
 	Space          *string `pulumi:"space"`
 	// A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
 	TelemetryExportDestinations []AppTelemetryExportDestination `pulumi:"telemetryExportDestinations"`
+	// The MD5 hash of the file in `thumbnailPath` that was last uploaded as the app's thumbnail.
+	ThumbnailMd5 *string `pulumi:"thumbnailMd5"`
+	// Path to a local PNG or JPEG file of at most 250 KB to show as the app's thumbnail in the Apps UI. The provider checks the file the way the Apps UI does and rejects other files at plan time, or at apply time if the file doesn't exist yet when Pulumi plans, for example because another resource writes it. The image can't be read back from the service, so the provider keeps the file's MD5 hash in `thumbnailMd5` and uploads the file again when its content changes; changes made to the thumbnail outside of Pulumi aren't detected. Removing the argument deletes the thumbnail.
+	//
+	// > Updates apply the whole configuration: an argument removed from the configuration is cleared or reset to its default, even if it was set outside Pulumi. Enabling or disabling horizontal scaling (`computeMinInstances`/`computeMaxInstances`) cannot be combined with a change to `computeSize` or `gitRepository` in the same apply.
+	ThumbnailPath *string `pulumi:"thumbnailPath"`
 	// The URL of the thumbnail image for the app.
 	ThumbnailUrl *string `pulumi:"thumbnailUrl"`
 	// The update time of the deployment.
@@ -252,10 +261,12 @@ type AppState struct {
 	// attribute
 	AppStatus AppAppStatusPtrInput
 	// The Budget Policy ID set for this resource.
-	BudgetPolicyId      pulumi.StringPtrInput
+	BudgetPolicyId pulumi.StringPtrInput
+	// Maximum number of app instances the app is configured to run. Must be set together with `computeMinInstances`. Omitting both disables horizontal scaling.
 	ComputeMaxInstances pulumi.IntPtrInput
+	// Minimum number of app instances the app is configured to run. Must be set together with `computeMaxInstances`.
 	ComputeMinInstances pulumi.IntPtrInput
-	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
+	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`. If omitted, the app uses `MEDIUM`.
 	ComputeSize pulumi.StringPtrInput
 	// attribute
 	ComputeStatus AppComputeStatusPtrInput
@@ -270,6 +281,7 @@ type AppState struct {
 	Description pulumi.StringPtrInput
 	// The effective budget policy ID.
 	EffectiveBudgetPolicyId pulumi.StringPtrInput
+	EffectiveResources      AppEffectiveResourceArrayInput
 	// The effective usage policy ID.
 	EffectiveUsagePolicyId pulumi.StringPtrInput
 	// A list of effective api scopes granted to the user access token.
@@ -302,6 +314,12 @@ type AppState struct {
 	Space          pulumi.StringPtrInput
 	// A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
 	TelemetryExportDestinations AppTelemetryExportDestinationArrayInput
+	// The MD5 hash of the file in `thumbnailPath` that was last uploaded as the app's thumbnail.
+	ThumbnailMd5 pulumi.StringPtrInput
+	// Path to a local PNG or JPEG file of at most 250 KB to show as the app's thumbnail in the Apps UI. The provider checks the file the way the Apps UI does and rejects other files at plan time, or at apply time if the file doesn't exist yet when Pulumi plans, for example because another resource writes it. The image can't be read back from the service, so the provider keeps the file's MD5 hash in `thumbnailMd5` and uploads the file again when its content changes; changes made to the thumbnail outside of Pulumi aren't detected. Removing the argument deletes the thumbnail.
+	//
+	// > Updates apply the whole configuration: an argument removed from the configuration is cleared or reset to its default, even if it was set outside Pulumi. Enabling or disabling horizontal scaling (`computeMinInstances`/`computeMaxInstances`) cannot be combined with a change to `computeSize` or `gitRepository` in the same apply.
+	ThumbnailPath pulumi.StringPtrInput
 	// The URL of the thumbnail image for the app.
 	ThumbnailUrl pulumi.StringPtrInput
 	// The update time of the deployment.
@@ -328,10 +346,12 @@ func AppExists(ctx *pulumi.Context,
 
 type appArgs struct {
 	// The Budget Policy ID set for this resource.
-	BudgetPolicyId      *string `pulumi:"budgetPolicyId"`
-	ComputeMaxInstances *int    `pulumi:"computeMaxInstances"`
-	ComputeMinInstances *int    `pulumi:"computeMinInstances"`
-	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
+	BudgetPolicyId *string `pulumi:"budgetPolicyId"`
+	// Maximum number of app instances the app is configured to run. Must be set together with `computeMinInstances`. Omitting both disables horizontal scaling.
+	ComputeMaxInstances *int `pulumi:"computeMaxInstances"`
+	// Minimum number of app instances the app is configured to run. Must be set together with `computeMaxInstances`.
+	ComputeMinInstances *int `pulumi:"computeMinInstances"`
+	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`. If omitted, the app uses `MEDIUM`.
 	ComputeSize *string `pulumi:"computeSize"`
 	// The description of the app.
 	Description            *string `pulumi:"description"`
@@ -351,6 +371,10 @@ type appArgs struct {
 	Space          *string `pulumi:"space"`
 	// A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
 	TelemetryExportDestinations []AppTelemetryExportDestination `pulumi:"telemetryExportDestinations"`
+	// Path to a local PNG or JPEG file of at most 250 KB to show as the app's thumbnail in the Apps UI. The provider checks the file the way the Apps UI does and rejects other files at plan time, or at apply time if the file doesn't exist yet when Pulumi plans, for example because another resource writes it. The image can't be read back from the service, so the provider keeps the file's MD5 hash in `thumbnailMd5` and uploads the file again when its content changes; changes made to the thumbnail outside of Pulumi aren't detected. Removing the argument deletes the thumbnail.
+	//
+	// > Updates apply the whole configuration: an argument removed from the configuration is cleared or reset to its default, even if it was set outside Pulumi. Enabling or disabling horizontal scaling (`computeMinInstances`/`computeMaxInstances`) cannot be combined with a change to `computeSize` or `gitRepository` in the same apply.
+	ThumbnailPath *string `pulumi:"thumbnailPath"`
 	// The Usage Policy ID set for this resource.
 	UsagePolicyId *string `pulumi:"usagePolicyId"`
 	// A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
@@ -360,10 +384,12 @@ type appArgs struct {
 // The set of arguments for constructing a App resource.
 type AppArgs struct {
 	// The Budget Policy ID set for this resource.
-	BudgetPolicyId      pulumi.StringPtrInput
+	BudgetPolicyId pulumi.StringPtrInput
+	// Maximum number of app instances the app is configured to run. Must be set together with `computeMinInstances`. Omitting both disables horizontal scaling.
 	ComputeMaxInstances pulumi.IntPtrInput
+	// Minimum number of app instances the app is configured to run. Must be set together with `computeMaxInstances`.
 	ComputeMinInstances pulumi.IntPtrInput
-	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
+	// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`. If omitted, the app uses `MEDIUM`.
 	ComputeSize pulumi.StringPtrInput
 	// The description of the app.
 	Description            pulumi.StringPtrInput
@@ -383,6 +409,10 @@ type AppArgs struct {
 	Space          pulumi.StringPtrInput
 	// A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
 	TelemetryExportDestinations AppTelemetryExportDestinationArrayInput
+	// Path to a local PNG or JPEG file of at most 250 KB to show as the app's thumbnail in the Apps UI. The provider checks the file the way the Apps UI does and rejects other files at plan time, or at apply time if the file doesn't exist yet when Pulumi plans, for example because another resource writes it. The image can't be read back from the service, so the provider keeps the file's MD5 hash in `thumbnailMd5` and uploads the file again when its content changes; changes made to the thumbnail outside of Pulumi aren't detected. Removing the argument deletes the thumbnail.
+	//
+	// > Updates apply the whole configuration: an argument removed from the configuration is cleared or reset to its default, even if it was set outside Pulumi. Enabling or disabling horizontal scaling (`computeMinInstances`/`computeMaxInstances`) cannot be combined with a change to `computeSize` or `gitRepository` in the same apply.
+	ThumbnailPath pulumi.StringPtrInput
 	// The Usage Policy ID set for this resource.
 	UsagePolicyId pulumi.StringPtrInput
 	// A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
@@ -491,15 +521,17 @@ func (o AppOutput) BudgetPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.BudgetPolicyId }).(pulumi.StringPtrOutput)
 }
 
+// Maximum number of app instances the app is configured to run. Must be set together with `computeMinInstances`. Omitting both disables horizontal scaling.
 func (o AppOutput) ComputeMaxInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.IntPtrOutput { return v.ComputeMaxInstances }).(pulumi.IntPtrOutput)
 }
 
+// Minimum number of app instances the app is configured to run. Must be set together with `computeMaxInstances`.
 func (o AppOutput) ComputeMinInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *App) pulumi.IntPtrOutput { return v.ComputeMinInstances }).(pulumi.IntPtrOutput)
 }
 
-// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
+// A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`. If omitted, the app uses `MEDIUM`.
 func (o AppOutput) ComputeSize() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.ComputeSize }).(pulumi.StringOutput)
 }
@@ -536,6 +568,10 @@ func (o AppOutput) Description() pulumi.StringPtrOutput {
 // The effective budget policy ID.
 func (o AppOutput) EffectiveBudgetPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.EffectiveBudgetPolicyId }).(pulumi.StringOutput)
+}
+
+func (o AppOutput) EffectiveResources() AppEffectiveResourceArrayOutput {
+	return o.ApplyT(func(v *App) AppEffectiveResourceArrayOutput { return v.EffectiveResources }).(AppEffectiveResourceArrayOutput)
 }
 
 // The effective usage policy ID.
@@ -622,6 +658,18 @@ func (o AppOutput) Space() pulumi.StringPtrOutput {
 // A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
 func (o AppOutput) TelemetryExportDestinations() AppTelemetryExportDestinationArrayOutput {
 	return o.ApplyT(func(v *App) AppTelemetryExportDestinationArrayOutput { return v.TelemetryExportDestinations }).(AppTelemetryExportDestinationArrayOutput)
+}
+
+// The MD5 hash of the file in `thumbnailPath` that was last uploaded as the app's thumbnail.
+func (o AppOutput) ThumbnailMd5() pulumi.StringOutput {
+	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.ThumbnailMd5 }).(pulumi.StringOutput)
+}
+
+// Path to a local PNG or JPEG file of at most 250 KB to show as the app's thumbnail in the Apps UI. The provider checks the file the way the Apps UI does and rejects other files at plan time, or at apply time if the file doesn't exist yet when Pulumi plans, for example because another resource writes it. The image can't be read back from the service, so the provider keeps the file's MD5 hash in `thumbnailMd5` and uploads the file again when its content changes; changes made to the thumbnail outside of Pulumi aren't detected. Removing the argument deletes the thumbnail.
+//
+// > Updates apply the whole configuration: an argument removed from the configuration is cleared or reset to its default, even if it was set outside Pulumi. Enabling or disabling horizontal scaling (`computeMinInstances`/`computeMaxInstances`) cannot be combined with a change to `computeSize` or `gitRepository` in the same apply.
+func (o AppOutput) ThumbnailPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.StringPtrOutput { return v.ThumbnailPath }).(pulumi.StringPtrOutput)
 }
 
 // The URL of the thumbnail image for the app.

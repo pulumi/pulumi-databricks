@@ -14,14 +14,14 @@ public final class GetAccountSettingV2PlainArgs extends com.pulumi.resources.Inv
     public static final GetAccountSettingV2PlainArgs Empty = new GetAccountSettingV2PlainArgs();
 
     /**
-     * Name of the setting
+     * Name of the setting. The settings metadata endpoint lists the names available at each scope
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return Name of the setting
+     * @return Name of the setting. The settings metadata endpoint lists the names available at each scope
      * 
      */
     public String name() {
@@ -53,7 +53,7 @@ public final class GetAccountSettingV2PlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param name Name of the setting
+         * @param name Name of the setting. The settings metadata endpoint lists the names available at each scope
          * 
          * @return builder
          * 

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
@@ -41,9 +41,9 @@ export function getWorkspaceIamServicePrincipalV2(args: GetWorkspaceIamServicePr
  */
 export interface GetWorkspaceIamServicePrincipalV2Args {
     /**
-     * The resource name of the service principal. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-     * - Workspace-scoped: service-principals/{service_principal_id}
+     * The resource name of the service principal, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+     * - Workspace APIs: `service-principals/{service_principal_id}`
      */
     name: string;
     /**
@@ -57,45 +57,46 @@ export interface GetWorkspaceIamServicePrincipalV2Args {
  */
 export interface GetWorkspaceIamServicePrincipalV2Result {
     /**
-     * (string) - The parent account ID for the service principal in Databricks
+     * (string) - The ID of the account that contains the service principal
      */
     readonly accountId: string;
     /**
-     * (string) - The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * (string) - Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
      */
     readonly accountSpStatus: string;
     /**
-     * (string) - Application ID of the service principal. Set at creation time and cannot be changed
-     * afterwards; when omitted, the server generates one
+     * (string) - The service principal's application ID, a UUID. If you don't set it when you create the
+     * service principal, Databricks generates one. It must be unique in the account and can't be
+     * changed
      */
     readonly applicationId: string;
     /**
-     * (string) - Display name of the service principal
+     * (string) - The service principal's display name
      */
     readonly displayName: string;
     /**
-     * (string) - ExternalId of the service principal in the customer's IdP
+     * (string) - The ID of the service principal in your identity provider (IdP)
      */
     readonly externalId: string;
     /**
-     * (string) - The resource name of the service principal. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-     * - Workspace-scoped: service-principals/{service_principal_id}
+     * (string) - The resource name of the service principal, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+     * - Workspace APIs: `service-principals/{service_principal_id}`
      */
     readonly name: string;
     /**
-     * (string) - The resource name of the account that contains the service principal,
-     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     * (string) - The resource name of the account that contains the service principal, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      */
     readonly parent: string;
     readonly providerConfig?: outputs.GetWorkspaceIamServicePrincipalV2ProviderConfig;
     /**
-     * (string) - Internal service principal ID of the service principal in Databricks
+     * (string) - The Databricks ID of the service principal
      */
     readonly servicePrincipalId: string;
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
@@ -129,9 +130,9 @@ export function getWorkspaceIamServicePrincipalV2Output(args: GetWorkspaceIamSer
  */
 export interface GetWorkspaceIamServicePrincipalV2OutputArgs {
     /**
-     * The resource name of the service principal. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-     * - Workspace-scoped: service-principals/{service_principal_id}
+     * The resource name of the service principal, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+     * - Workspace APIs: `service-principals/{service_principal_id}`
      */
     name: pulumi.Input<string>;
     /**

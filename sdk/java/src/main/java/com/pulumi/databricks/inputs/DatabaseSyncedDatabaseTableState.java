@@ -19,14 +19,16 @@ public final class DatabaseSyncedDatabaseTableState extends com.pulumi.resources
     public static final DatabaseSyncedDatabaseTableState Empty = new DatabaseSyncedDatabaseTableState();
 
     /**
-     * (SyncedTableStatus) - Synced Table data synchronization status
+     * (SyncedTableStatus) - Reports the status of the data synchronization pipeline that keeps this table in sync with its
+     * source, including the pipeline ID and the position of the last successful sync
      * 
      */
     @Import(name="dataSynchronizationStatus")
     private @Nullable Output<DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs> dataSynchronizationStatus;
 
     /**
-     * @return (SyncedTableStatus) - Synced Table data synchronization status
+     * @return (SyncedTableStatus) - Reports the status of the data synchronization pipeline that keeps this table in sync with its
+     * source, including the pipeline ID and the position of the last successful sync
      * 
      */
     public Optional<Output<DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs>> dataSynchronizationStatus() {
@@ -55,8 +57,8 @@ public final class DatabaseSyncedDatabaseTableState extends com.pulumi.resources
     }
 
     /**
-     * (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-     * tables inside database catalogs is inferred database instance associated with the catalog.
+     * (string) - The name of the database instance that this table is registered to. This field is always returned; for
+     * tables inside database catalogs it is the database instance associated with the catalog.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      * 
@@ -65,8 +67,8 @@ public final class DatabaseSyncedDatabaseTableState extends com.pulumi.resources
     private @Nullable Output<String> effectiveDatabaseInstanceName;
 
     /**
-     * @return (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-     * tables inside database catalogs is inferred database instance associated with the catalog.
+     * @return (string) - The name of the database instance that this table is registered to. This field is always returned; for
+     * tables inside database catalogs it is the database instance associated with the catalog.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      * 
@@ -104,7 +106,7 @@ public final class DatabaseSyncedDatabaseTableState extends com.pulumi.resources
      * 
      * When creating a synced table in a standard catalog, this field is required.
      * In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-     * Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
+     * If this database does not exist yet, it is created when `createDatabaseObjectsIfMissing` in `spec` is true
      * 
      */
     @Import(name="logicalDatabaseName")
@@ -120,7 +122,7 @@ public final class DatabaseSyncedDatabaseTableState extends com.pulumi.resources
      * 
      * When creating a synced table in a standard catalog, this field is required.
      * In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-     * Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
+     * If this database does not exist yet, it is created when `createDatabaseObjectsIfMissing` in `spec` is true
      * 
      */
     public Optional<Output<String>> logicalDatabaseName() {
@@ -157,9 +159,17 @@ public final class DatabaseSyncedDatabaseTableState extends com.pulumi.resources
         return Optional.ofNullable(this.providerConfig);
     }
 
+    /**
+     * Specifies the source table, the key columns and how the data synchronization pipeline runs
+     * 
+     */
     @Import(name="spec")
     private @Nullable Output<DatabaseSyncedDatabaseTableSpecArgs> spec;
 
+    /**
+     * @return Specifies the source table, the key columns and how the data synchronization pipeline runs
+     * 
+     */
     public Optional<Output<DatabaseSyncedDatabaseTableSpecArgs>> spec() {
         return Optional.ofNullable(this.spec);
     }
@@ -216,7 +226,8 @@ public final class DatabaseSyncedDatabaseTableState extends com.pulumi.resources
         }
 
         /**
-         * @param dataSynchronizationStatus (SyncedTableStatus) - Synced Table data synchronization status
+         * @param dataSynchronizationStatus (SyncedTableStatus) - Reports the status of the data synchronization pipeline that keeps this table in sync with its
+         * source, including the pipeline ID and the position of the last successful sync
          * 
          * @return builder
          * 
@@ -227,7 +238,8 @@ public final class DatabaseSyncedDatabaseTableState extends com.pulumi.resources
         }
 
         /**
-         * @param dataSynchronizationStatus (SyncedTableStatus) - Synced Table data synchronization status
+         * @param dataSynchronizationStatus (SyncedTableStatus) - Reports the status of the data synchronization pipeline that keeps this table in sync with its
+         * source, including the pipeline ID and the position of the last successful sync
          * 
          * @return builder
          * 
@@ -264,8 +276,8 @@ public final class DatabaseSyncedDatabaseTableState extends com.pulumi.resources
         }
 
         /**
-         * @param effectiveDatabaseInstanceName (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-         * tables inside database catalogs is inferred database instance associated with the catalog.
+         * @param effectiveDatabaseInstanceName (string) - The name of the database instance that this table is registered to. This field is always returned; for
+         * tables inside database catalogs it is the database instance associated with the catalog.
          * This is an output only field that contains the value computed from the input field combined with
          * server side defaults. Use the field without the effective_ prefix to set the value
          * 
@@ -278,8 +290,8 @@ public final class DatabaseSyncedDatabaseTableState extends com.pulumi.resources
         }
 
         /**
-         * @param effectiveDatabaseInstanceName (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-         * tables inside database catalogs is inferred database instance associated with the catalog.
+         * @param effectiveDatabaseInstanceName (string) - The name of the database instance that this table is registered to. This field is always returned; for
+         * tables inside database catalogs it is the database instance associated with the catalog.
          * This is an output only field that contains the value computed from the input field combined with
          * server side defaults. Use the field without the effective_ prefix to set the value
          * 
@@ -325,7 +337,7 @@ public final class DatabaseSyncedDatabaseTableState extends com.pulumi.resources
          * 
          * When creating a synced table in a standard catalog, this field is required.
          * In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-         * Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
+         * If this database does not exist yet, it is created when `createDatabaseObjectsIfMissing` in `spec` is true
          * 
          * @return builder
          * 
@@ -345,7 +357,7 @@ public final class DatabaseSyncedDatabaseTableState extends com.pulumi.resources
          * 
          * When creating a synced table in a standard catalog, this field is required.
          * In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-         * Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
+         * If this database does not exist yet, it is created when `createDatabaseObjectsIfMissing` in `spec` is true
          * 
          * @return builder
          * 
@@ -396,11 +408,23 @@ public final class DatabaseSyncedDatabaseTableState extends com.pulumi.resources
             return providerConfig(Output.of(providerConfig));
         }
 
+        /**
+         * @param spec Specifies the source table, the key columns and how the data synchronization pipeline runs
+         * 
+         * @return builder
+         * 
+         */
         public Builder spec(@Nullable Output<DatabaseSyncedDatabaseTableSpecArgs> spec) {
             $.spec = spec;
             return this;
         }
 
+        /**
+         * @param spec Specifies the source table, the key columns and how the data synchronization pipeline runs
+         * 
+         * @return builder
+         * 
+         */
         public Builder spec(DatabaseSyncedDatabaseTableSpecArgs spec) {
             return spec(Output.of(spec));
         }

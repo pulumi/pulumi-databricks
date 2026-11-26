@@ -82,24 +82,28 @@ type AiGatewayModelProviderService struct {
 	Config AiGatewayModelProviderServiceConfigPtrOutput `pulumi:"config"`
 	// (string) - Time the provider service was created
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// (string) - Creator identity
+	// (string) - Username of the user who created the model provider service
 	CreatedBy pulumi.StringOutput `pulumi:"createdBy"`
-	// (string) - Owner of the model provider service
+	// (string) - Username or group name of the model provider service owner
 	EffectiveOwner pulumi.StringOutput `pulumi:"effectiveOwner"`
 	// (string) - Optimistic concurrency token returned on every read. To make an Update or
 	// Delete conditional, pass the last-read value in that request's `etag`
 	// field. In REST responses, this value is a base64 string; URL-encode it when
 	// setting the `etag` query parameter
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// (string) - Metastore hosting the provider service
+	// (string) - Unique identifier of the metastore that contains the model provider service
 	MetastoreId pulumi.StringOutput `pulumi:"metastoreId"`
-	// Name for the model provider service, e.g. "openaiProd"
+	// Name of the model provider service within the parent schema. The name must
+	// not contain periods, spaces, forward slashes, percent signs, or control
+	// characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+	// characters. It is stored in lowercase
 	ModelProviderServiceId pulumi.StringOutput `pulumi:"modelProviderServiceId"`
 	// (string) - Resource name of the provider service.
 	// Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
 	// Each `{...}` component is capped at 255 characters individually.
-	// Server-derived on Create from `parent` +
-	// `modelProviderServiceId`; required and immutable on Update/Get/Delete
+	// The server derives the name on Create from
+	// `parent` and `modelProviderServiceId`; it is required and immutable on
+	// Update, Get, and Delete
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
@@ -109,7 +113,7 @@ type AiGatewayModelProviderService struct {
 	ProviderConfig AiGatewayModelProviderServiceProviderConfigOutput `pulumi:"providerConfig"`
 	// (string) - Time the provider service was last modified
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// (string) - Identity of the last updater
+	// (string) - Username of the user who last updated the model provider service
 	UpdatedBy pulumi.StringOutput `pulumi:"updatedBy"`
 }
 
@@ -157,24 +161,28 @@ type aiGatewayModelProviderServiceState struct {
 	Config *AiGatewayModelProviderServiceConfig `pulumi:"config"`
 	// (string) - Time the provider service was created
 	CreateTime *string `pulumi:"createTime"`
-	// (string) - Creator identity
+	// (string) - Username of the user who created the model provider service
 	CreatedBy *string `pulumi:"createdBy"`
-	// (string) - Owner of the model provider service
+	// (string) - Username or group name of the model provider service owner
 	EffectiveOwner *string `pulumi:"effectiveOwner"`
 	// (string) - Optimistic concurrency token returned on every read. To make an Update or
 	// Delete conditional, pass the last-read value in that request's `etag`
 	// field. In REST responses, this value is a base64 string; URL-encode it when
 	// setting the `etag` query parameter
 	Etag *string `pulumi:"etag"`
-	// (string) - Metastore hosting the provider service
+	// (string) - Unique identifier of the metastore that contains the model provider service
 	MetastoreId *string `pulumi:"metastoreId"`
-	// Name for the model provider service, e.g. "openaiProd"
+	// Name of the model provider service within the parent schema. The name must
+	// not contain periods, spaces, forward slashes, percent signs, or control
+	// characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+	// characters. It is stored in lowercase
 	ModelProviderServiceId *string `pulumi:"modelProviderServiceId"`
 	// (string) - Resource name of the provider service.
 	// Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
 	// Each `{...}` component is capped at 255 characters individually.
-	// Server-derived on Create from `parent` +
-	// `modelProviderServiceId`; required and immutable on Update/Get/Delete
+	// The server derives the name on Create from
+	// `parent` and `modelProviderServiceId`; it is required and immutable on
+	// Update, Get, and Delete
 	Name *string `pulumi:"name"`
 	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
@@ -184,7 +192,7 @@ type aiGatewayModelProviderServiceState struct {
 	ProviderConfig *AiGatewayModelProviderServiceProviderConfig `pulumi:"providerConfig"`
 	// (string) - Time the provider service was last modified
 	UpdateTime *string `pulumi:"updateTime"`
-	// (string) - Identity of the last updater
+	// (string) - Username of the user who last updated the model provider service
 	UpdatedBy *string `pulumi:"updatedBy"`
 }
 
@@ -197,24 +205,28 @@ type AiGatewayModelProviderServiceState struct {
 	Config AiGatewayModelProviderServiceConfigPtrInput
 	// (string) - Time the provider service was created
 	CreateTime pulumi.StringPtrInput
-	// (string) - Creator identity
+	// (string) - Username of the user who created the model provider service
 	CreatedBy pulumi.StringPtrInput
-	// (string) - Owner of the model provider service
+	// (string) - Username or group name of the model provider service owner
 	EffectiveOwner pulumi.StringPtrInput
 	// (string) - Optimistic concurrency token returned on every read. To make an Update or
 	// Delete conditional, pass the last-read value in that request's `etag`
 	// field. In REST responses, this value is a base64 string; URL-encode it when
 	// setting the `etag` query parameter
 	Etag pulumi.StringPtrInput
-	// (string) - Metastore hosting the provider service
+	// (string) - Unique identifier of the metastore that contains the model provider service
 	MetastoreId pulumi.StringPtrInput
-	// Name for the model provider service, e.g. "openaiProd"
+	// Name of the model provider service within the parent schema. The name must
+	// not contain periods, spaces, forward slashes, percent signs, or control
+	// characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+	// characters. It is stored in lowercase
 	ModelProviderServiceId pulumi.StringPtrInput
 	// (string) - Resource name of the provider service.
 	// Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
 	// Each `{...}` component is capped at 255 characters individually.
-	// Server-derived on Create from `parent` +
-	// `modelProviderServiceId`; required and immutable on Update/Get/Delete
+	// The server derives the name on Create from
+	// `parent` and `modelProviderServiceId`; it is required and immutable on
+	// Update, Get, and Delete
 	Name pulumi.StringPtrInput
 	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
@@ -224,7 +236,7 @@ type AiGatewayModelProviderServiceState struct {
 	ProviderConfig AiGatewayModelProviderServiceProviderConfigPtrInput
 	// (string) - Time the provider service was last modified
 	UpdateTime pulumi.StringPtrInput
-	// (string) - Identity of the last updater
+	// (string) - Username of the user who last updated the model provider service
 	UpdatedBy pulumi.StringPtrInput
 }
 
@@ -245,7 +257,10 @@ type aiGatewayModelProviderServiceArgs struct {
 	// limits, and payload logging. Required on Create. On Update, it is required
 	// only when `config` or one of its subpaths appears in `updateMask`
 	Config *AiGatewayModelProviderServiceConfig `pulumi:"config"`
-	// Name for the model provider service, e.g. "openaiProd"
+	// Name of the model provider service within the parent schema. The name must
+	// not contain periods, spaces, forward slashes, percent signs, or control
+	// characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+	// characters. It is stored in lowercase
 	ModelProviderServiceId string `pulumi:"modelProviderServiceId"`
 	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
@@ -263,7 +278,10 @@ type AiGatewayModelProviderServiceArgs struct {
 	// limits, and payload logging. Required on Create. On Update, it is required
 	// only when `config` or one of its subpaths appears in `updateMask`
 	Config AiGatewayModelProviderServiceConfigPtrInput
-	// Name for the model provider service, e.g. "openaiProd"
+	// Name of the model provider service within the parent schema. The name must
+	// not contain periods, spaces, forward slashes, percent signs, or control
+	// characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+	// characters. It is stored in lowercase
 	ModelProviderServiceId pulumi.StringInput
 	// Name of the parent schema.
 	// Format: `schemas/{catalog}.{schema}`.
@@ -377,12 +395,12 @@ func (o AiGatewayModelProviderServiceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderService) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// (string) - Creator identity
+// (string) - Username of the user who created the model provider service
 func (o AiGatewayModelProviderServiceOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderService) pulumi.StringOutput { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
-// (string) - Owner of the model provider service
+// (string) - Username or group name of the model provider service owner
 func (o AiGatewayModelProviderServiceOutput) EffectiveOwner() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderService) pulumi.StringOutput { return v.EffectiveOwner }).(pulumi.StringOutput)
 }
@@ -395,12 +413,15 @@ func (o AiGatewayModelProviderServiceOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderService) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// (string) - Metastore hosting the provider service
+// (string) - Unique identifier of the metastore that contains the model provider service
 func (o AiGatewayModelProviderServiceOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderService) pulumi.StringOutput { return v.MetastoreId }).(pulumi.StringOutput)
 }
 
-// Name for the model provider service, e.g. "openaiProd"
+// Name of the model provider service within the parent schema. The name must
+// not contain periods, spaces, forward slashes, percent signs, or control
+// characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+// characters. It is stored in lowercase
 func (o AiGatewayModelProviderServiceOutput) ModelProviderServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderService) pulumi.StringOutput { return v.ModelProviderServiceId }).(pulumi.StringOutput)
 }
@@ -408,8 +429,9 @@ func (o AiGatewayModelProviderServiceOutput) ModelProviderServiceId() pulumi.Str
 // (string) - Resource name of the provider service.
 // Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
 // Each `{...}` component is capped at 255 characters individually.
-// Server-derived on Create from `parent` +
-// `modelProviderServiceId`; required and immutable on Update/Get/Delete
+// The server derives the name on Create from
+// `parent` and `modelProviderServiceId`; it is required and immutable on
+// Update, Get, and Delete
 func (o AiGatewayModelProviderServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderService) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -433,7 +455,7 @@ func (o AiGatewayModelProviderServiceOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderService) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// (string) - Identity of the last updater
+// (string) - Username of the user who last updated the model provider service
 func (o AiGatewayModelProviderServiceOutput) UpdatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiGatewayModelProviderService) pulumi.StringOutput { return v.UpdatedBy }).(pulumi.StringOutput)
 }

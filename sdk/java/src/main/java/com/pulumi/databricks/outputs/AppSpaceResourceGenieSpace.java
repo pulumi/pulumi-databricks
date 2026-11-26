@@ -17,6 +17,10 @@ public final class AppSpaceResourceGenieSpace {
      */
     private String name;
     private String permission;
+    /**
+     * @return ID of the Genie space
+     * 
+     */
     private String spaceId;
 
     private AppSpaceResourceGenieSpace() {}
@@ -31,6 +35,10 @@ public final class AppSpaceResourceGenieSpace {
     public String permission() {
         return this.permission;
     }
+    /**
+     * @return ID of the Genie space
+     * 
+     */
     public String spaceId() {
         return this.spaceId;
     }

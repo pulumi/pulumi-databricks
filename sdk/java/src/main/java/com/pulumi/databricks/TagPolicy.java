@@ -95,9 +95,17 @@ public class TagPolicy extends com.pulumi.resources.CustomResource {
     public Output<String> createTime() {
         return this.createTime;
     }
+    /**
+     * A description of the governed tag, such as its purpose or the meaning of its values
+     * 
+     */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
+    /**
+     * @return A description of the governed tag, such as its purpose or the meaning of its values
+     * 
+     */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
@@ -115,9 +123,17 @@ public class TagPolicy extends com.pulumi.resources.CustomResource {
     public Output<TagPolicyProviderConfig> providerConfig() {
         return this.providerConfig;
     }
+    /**
+     * The tag key that this policy governs. Tag keys are case-sensitive
+     * 
+     */
     @Export(name="tagKey", refs={String.class}, tree="[0]")
     private Output<String> tagKey;
 
+    /**
+     * @return The tag key that this policy governs. Tag keys are case-sensitive
+     * 
+     */
     public Output<String> tagKey() {
         return this.tagKey;
     }
@@ -135,9 +151,19 @@ public class TagPolicy extends com.pulumi.resources.CustomResource {
     public Output<String> updateTime() {
         return this.updateTime;
     }
+    /**
+     * The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+     * value must be unique. A policy without values defines a key-only governed tag
+     * 
+     */
     @Export(name="values", refs={List.class,TagPolicyValue.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TagPolicyValue>> values;
 
+    /**
+     * @return The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+     * value must be unique. A policy without values defines a key-only governed tag
+     * 
+     */
     public Output<Optional<List<TagPolicyValue>>> values() {
         return Codegen.optional(this.values);
     }

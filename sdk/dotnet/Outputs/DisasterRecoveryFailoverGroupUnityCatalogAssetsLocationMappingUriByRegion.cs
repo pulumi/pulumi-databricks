@@ -14,11 +14,12 @@ namespace Pulumi.Databricks.Outputs
     public sealed class DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion
     {
         /// <summary>
-        /// The region name
+        /// Cloud region this URI applies to. Must be one of the failover group's regions
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// The storage URI for this region
+        /// Cloud storage URI of the location in this region. End the URI with `/*` to map every path
+        /// under it as a prefix; within one mapping, either all URIs or none carry the `/*` suffix
         /// </summary>
         public readonly string Uri;
 

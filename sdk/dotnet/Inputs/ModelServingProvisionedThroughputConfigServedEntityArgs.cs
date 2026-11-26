@@ -39,6 +39,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("provisionedModelUnits", required: true)]
         public Input<int> ProvisionedModelUnits { get; set; } = null!;
 
+        [Input("ptTerm")]
+        public Input<string>? PtTerm { get; set; }
+
         public ModelServingProvisionedThroughputConfigServedEntityArgs()
         {
         }

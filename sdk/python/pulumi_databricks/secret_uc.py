@@ -481,11 +481,9 @@ class SecretUc(pulumi.CustomResource):
         example = databricks.SecretUc("example",
             catalog_name="my_catalog",
             schema_name="my_schema",
-            secret=[{
-                "name": "my_secret",
-                "value": "secret_value",
-                "comment": "My secret for external service authentication",
-            }])
+            name="my_secret",
+            value="secret_value",
+            comment="My secret for external service authentication")
         ```
 
 
@@ -533,11 +531,9 @@ class SecretUc(pulumi.CustomResource):
         example = databricks.SecretUc("example",
             catalog_name="my_catalog",
             schema_name="my_schema",
-            secret=[{
-                "name": "my_secret",
-                "value": "secret_value",
-                "comment": "My secret for external service authentication",
-            }])
+            name="my_secret",
+            value="secret_value",
+            comment="My secret for external service authentication")
         ```
 
 

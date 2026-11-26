@@ -10,9 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class TagPolicyValue {
+    /**
+     * @return The value that can be assigned to the tag key. Values are case-sensitive
+     * 
+     */
     private String name;
 
     private TagPolicyValue() {}
+    /**
+     * @return The value that can be assigned to the tag key. Values are case-sensitive
+     * 
+     */
     public String name() {
         return this.name;
     }

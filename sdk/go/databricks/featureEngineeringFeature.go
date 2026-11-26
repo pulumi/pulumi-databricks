@@ -157,6 +157,8 @@ type FeatureEngineeringFeature struct {
 	LineageContext FeatureEngineeringFeatureLineageContextOutput `pulumi:"lineageContext"`
 	// (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
 	Name pulumi.StringOutput `pulumi:"name"`
+	// (string) - Output type in Databricks SQL DDL (e.g., "BIGINT", "DECIMAL(10,2)", "ARRAY<STRING>", "STRUCT<name:STRING>")
+	OutputTypeText pulumi.StringOutput `pulumi:"outputTypeText"`
 	// Configure the provider for management through account provider.
 	ProviderConfig FeatureEngineeringFeatureProviderConfigOutput `pulumi:"providerConfig"`
 	// (string) - Name of parent schema relative to its parent catalog
@@ -234,6 +236,8 @@ type featureEngineeringFeatureState struct {
 	LineageContext *FeatureEngineeringFeatureLineageContext `pulumi:"lineageContext"`
 	// (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
 	Name *string `pulumi:"name"`
+	// (string) - Output type in Databricks SQL DDL (e.g., "BIGINT", "DECIMAL(10,2)", "ARRAY<STRING>", "STRUCT<name:STRING>")
+	OutputTypeText *string `pulumi:"outputTypeText"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *FeatureEngineeringFeatureProviderConfig `pulumi:"providerConfig"`
 	// (string) - Name of parent schema relative to its parent catalog
@@ -273,6 +277,8 @@ type FeatureEngineeringFeatureState struct {
 	LineageContext FeatureEngineeringFeatureLineageContextPtrInput
 	// (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
 	Name pulumi.StringPtrInput
+	// (string) - Output type in Databricks SQL DDL (e.g., "BIGINT", "DECIMAL(10,2)", "ARRAY<STRING>", "STRUCT<name:STRING>")
+	OutputTypeText pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig FeatureEngineeringFeatureProviderConfigPtrInput
 	// (string) - Name of parent schema relative to its parent catalog
@@ -500,6 +506,11 @@ func (o FeatureEngineeringFeatureOutput) LineageContext() FeatureEngineeringFeat
 // (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
 func (o FeatureEngineeringFeatureOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FeatureEngineeringFeature) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// (string) - Output type in Databricks SQL DDL (e.g., "BIGINT", "DECIMAL(10,2)", "ARRAY<STRING>", "STRUCT<name:STRING>")
+func (o FeatureEngineeringFeatureOutput) OutputTypeText() pulumi.StringOutput {
+	return o.ApplyT(func(v *FeatureEngineeringFeature) pulumi.StringOutput { return v.OutputTypeText }).(pulumi.StringOutput)
 }
 
 // Configure the provider for management through account provider.

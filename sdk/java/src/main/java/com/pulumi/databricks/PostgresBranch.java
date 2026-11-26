@@ -19,7 +19,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  * 
@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
  * 
  * A root branch named `production` is implicitly created for every project. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi represent the implicitly created branch in Pulumi state and immediately apply the provided configuration to it. Support for providing a custom `branchId` will be available in later versions.
  * 
- * Pulumi uses this resource exclusively for managing updates. It does not control creation or deletion of the branch itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual branch is unaffected, because its lifecycle is currently controlled by the parent project. The only way to remove the actual branch is to delete the project it belongs to.
+ * For this implicitly created root Branch, Pulumi manages updates only. It does not control creation or deletion of the branch itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual branch is unaffected, because its lifecycle is currently controlled by the parent project. The only way to remove the actual branch is to delete the project it belongs to.
  * 
  * <pre>
  * {@code
@@ -158,7 +158,9 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Branch with Expiration (TTL)
+ * ### &lt;a id=&#34;branch-with-expiration-ttl&#34;&gt;&lt;/a&gt;Branch with an Absolute Expiration
+ * 
+ * Prefer to use a fixed future `expireTime` instead of relative `ttl`. Reapplying a relative TTL recalculates the deadline from the update time and can extend the branch&#39;s lifetime. Replace the example timestamp with your intended deadline.
  * 
  * <pre>
  * {@code
@@ -187,7 +189,7 @@ import javax.annotation.Nullable;
  *             .branchId("temp-feature-test")
  *             .parent(this_.get("name"))
  *             .spec(PostgresBranchSpecArgs.builder()
- *                 .ttl("604800s")
+ *                 .expireTime("2030-01-01T00:00:00Z")
  *                 .build())
  *             .build());
  * 
@@ -349,18 +351,26 @@ public class PostgresBranch extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.replaceExisting);
     }
     /**
-     * The spec contains the branch configuration
+     * The spec contains the branch configuration.
+     * 
+     * Read the resource&#39;s current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      * 
      */
     @Export(name="spec", refs={PostgresBranchSpec.class}, tree="[0]")
-    private Output<PostgresBranchSpec> spec;
+    private Output</* @Nullable */ PostgresBranchSpec> spec;
 
     /**
-     * @return The spec contains the branch configuration
+     * @return The spec contains the branch configuration.
+     * 
+     * Read the resource&#39;s current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      * 
      */
-    public Output<PostgresBranchSpec> spec() {
-        return this.spec;
+    public Output<Optional<PostgresBranchSpec>> spec() {
+        return Codegen.optional(this.spec);
     }
     /**
      * (BranchStatus) - The current status of a Branch

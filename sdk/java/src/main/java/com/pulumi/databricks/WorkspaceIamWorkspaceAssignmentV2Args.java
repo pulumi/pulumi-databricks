@@ -19,20 +19,18 @@ public final class WorkspaceIamWorkspaceAssignmentV2Args extends com.pulumi.reso
     public static final WorkspaceIamWorkspaceAssignmentV2Args Empty = new WorkspaceIamWorkspaceAssignmentV2Args();
 
     /**
-     * Entitlements granted directly to the principal on this workspace. This is the only
-     * client-settable field. Create and update manage exactly this set, including entitlements the
-     * principal also holds through a group.
-     * List responses leave this field empty. Get a single principal to read its entitlements
+     * The entitlements granted directly by this assignment. Create and update set exactly this list,
+     * even if the principal also gets some of these entitlements through a group. List responses
+     * leave it empty
      * 
      */
     @Import(name="entitlements")
     private @Nullable Output<List<String>> entitlements;
 
     /**
-     * @return Entitlements granted directly to the principal on this workspace. This is the only
-     * client-settable field. Create and update manage exactly this set, including entitlements the
-     * principal also holds through a group.
-     * List responses leave this field empty. Get a single principal to read its entitlements
+     * @return The entitlements granted directly by this assignment. Create and update set exactly this list,
+     * even if the principal also gets some of these entitlements through a group. List responses
+     * leave it empty
      * 
      */
     public Optional<Output<List<String>>> entitlements() {
@@ -40,18 +38,16 @@ public final class WorkspaceIamWorkspaceAssignmentV2Args extends com.pulumi.reso
     }
 
     /**
-     * The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
-     * created and cannot be changed afterwards; to assign a different principal, create a new
-     * assignment
+     * The Databricks ID of the assigned user, service principal, or group. It can&#39;t be changed after
+     * the assignment is created
      * 
      */
     @Import(name="principalId", required=true)
     private Output<String> principalId;
 
     /**
-     * @return The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
-     * created and cannot be changed afterwards; to assign a different principal, create a new
-     * assignment
+     * @return The Databricks ID of the assigned user, service principal, or group. It can&#39;t be changed after
+     * the assignment is created
      * 
      */
     public Output<String> principalId() {
@@ -74,14 +70,14 @@ public final class WorkspaceIamWorkspaceAssignmentV2Args extends com.pulumi.reso
     }
 
     /**
-     * (integer) - The workspace ID where the principal is assigned
+     * (integer) - The ID of the workspace
      * 
      */
     @Import(name="workspaceId")
     private @Nullable Output<String> workspaceId;
 
     /**
-     * @return (integer) - The workspace ID where the principal is assigned
+     * @return (integer) - The ID of the workspace
      * 
      */
     public Optional<Output<String>> workspaceId() {
@@ -116,10 +112,9 @@ public final class WorkspaceIamWorkspaceAssignmentV2Args extends com.pulumi.reso
         }
 
         /**
-         * @param entitlements Entitlements granted directly to the principal on this workspace. This is the only
-         * client-settable field. Create and update manage exactly this set, including entitlements the
-         * principal also holds through a group.
-         * List responses leave this field empty. Get a single principal to read its entitlements
+         * @param entitlements The entitlements granted directly by this assignment. Create and update set exactly this list,
+         * even if the principal also gets some of these entitlements through a group. List responses
+         * leave it empty
          * 
          * @return builder
          * 
@@ -130,10 +125,9 @@ public final class WorkspaceIamWorkspaceAssignmentV2Args extends com.pulumi.reso
         }
 
         /**
-         * @param entitlements Entitlements granted directly to the principal on this workspace. This is the only
-         * client-settable field. Create and update manage exactly this set, including entitlements the
-         * principal also holds through a group.
-         * List responses leave this field empty. Get a single principal to read its entitlements
+         * @param entitlements The entitlements granted directly by this assignment. Create and update set exactly this list,
+         * even if the principal also gets some of these entitlements through a group. List responses
+         * leave it empty
          * 
          * @return builder
          * 
@@ -143,10 +137,9 @@ public final class WorkspaceIamWorkspaceAssignmentV2Args extends com.pulumi.reso
         }
 
         /**
-         * @param entitlements Entitlements granted directly to the principal on this workspace. This is the only
-         * client-settable field. Create and update manage exactly this set, including entitlements the
-         * principal also holds through a group.
-         * List responses leave this field empty. Get a single principal to read its entitlements
+         * @param entitlements The entitlements granted directly by this assignment. Create and update set exactly this list,
+         * even if the principal also gets some of these entitlements through a group. List responses
+         * leave it empty
          * 
          * @return builder
          * 
@@ -156,9 +149,8 @@ public final class WorkspaceIamWorkspaceAssignmentV2Args extends com.pulumi.reso
         }
 
         /**
-         * @param principalId The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
-         * created and cannot be changed afterwards; to assign a different principal, create a new
-         * assignment
+         * @param principalId The Databricks ID of the assigned user, service principal, or group. It can&#39;t be changed after
+         * the assignment is created
          * 
          * @return builder
          * 
@@ -169,9 +161,8 @@ public final class WorkspaceIamWorkspaceAssignmentV2Args extends com.pulumi.reso
         }
 
         /**
-         * @param principalId The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
-         * created and cannot be changed afterwards; to assign a different principal, create a new
-         * assignment
+         * @param principalId The Databricks ID of the assigned user, service principal, or group. It can&#39;t be changed after
+         * the assignment is created
          * 
          * @return builder
          * 
@@ -202,7 +193,7 @@ public final class WorkspaceIamWorkspaceAssignmentV2Args extends com.pulumi.reso
         }
 
         /**
-         * @param workspaceId (integer) - The workspace ID where the principal is assigned
+         * @param workspaceId (integer) - The ID of the workspace
          * 
          * @return builder
          * 
@@ -213,7 +204,7 @@ public final class WorkspaceIamWorkspaceAssignmentV2Args extends com.pulumi.reso
         }
 
         /**
-         * @param workspaceId (integer) - The workspace ID where the principal is assigned
+         * @param workspaceId (integer) - The ID of the workspace
          * 
          * @return builder
          * 

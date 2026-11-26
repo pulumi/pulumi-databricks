@@ -19,14 +19,16 @@ public final class DataQualityMonitorState extends com.pulumi.resources.Resource
     public static final DataQualityMonitorState Empty = new DataQualityMonitorState();
 
     /**
-     * Anomaly Detection Configuration, applicable to `schema` object types
+     * Anomaly detection settings. Required when `objectType` is `schema`. When reading a `table` monitor, this holds
+     * the settings of the parent schema&#39;s monitor if the schema has one
      * 
      */
     @Import(name="anomalyDetectionConfig")
     private @Nullable Output<DataQualityMonitorAnomalyDetectionConfigArgs> anomalyDetectionConfig;
 
     /**
-     * @return Anomaly Detection Configuration, applicable to `schema` object types
+     * @return Anomaly detection settings. Required when `objectType` is `schema`. When reading a `table` monitor, this holds
+     * the settings of the parent schema&#39;s monitor if the schema has one
      * 
      */
     public Optional<Output<DataQualityMonitorAnomalyDetectionConfigArgs>> anomalyDetectionConfig() {
@@ -34,16 +36,16 @@ public final class DataQualityMonitorState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-     * must be present
+     * Data profiling settings. Required when `objectType` is `table`. Exactly one of `inferenceLog`, `timeSeries`
+     * or `snapshot` must be set
      * 
      */
     @Import(name="dataProfilingConfig")
     private @Nullable Output<DataQualityMonitorDataProfilingConfigArgs> dataProfilingConfig;
 
     /**
-     * @return Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-     * must be present
+     * @return Data profiling settings. Required when `objectType` is `table`. Exactly one of `inferenceLog`, `timeSeries`
+     * or `snapshot` must be set
      * 
      */
     public Optional<Output<DataQualityMonitorDataProfilingConfigArgs>> dataProfilingConfig() {
@@ -140,7 +142,8 @@ public final class DataQualityMonitorState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param anomalyDetectionConfig Anomaly Detection Configuration, applicable to `schema` object types
+         * @param anomalyDetectionConfig Anomaly detection settings. Required when `objectType` is `schema`. When reading a `table` monitor, this holds
+         * the settings of the parent schema&#39;s monitor if the schema has one
          * 
          * @return builder
          * 
@@ -151,7 +154,8 @@ public final class DataQualityMonitorState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param anomalyDetectionConfig Anomaly Detection Configuration, applicable to `schema` object types
+         * @param anomalyDetectionConfig Anomaly detection settings. Required when `objectType` is `schema`. When reading a `table` monitor, this holds
+         * the settings of the parent schema&#39;s monitor if the schema has one
          * 
          * @return builder
          * 
@@ -161,8 +165,8 @@ public final class DataQualityMonitorState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param dataProfilingConfig Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-         * must be present
+         * @param dataProfilingConfig Data profiling settings. Required when `objectType` is `table`. Exactly one of `inferenceLog`, `timeSeries`
+         * or `snapshot` must be set
          * 
          * @return builder
          * 
@@ -173,8 +177,8 @@ public final class DataQualityMonitorState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param dataProfilingConfig Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-         * must be present
+         * @param dataProfilingConfig Data profiling settings. Required when `objectType` is `table`. Exactly one of `inferenceLog`, `timeSeries`
+         * or `snapshot` must be set
          * 
          * @return builder
          * 

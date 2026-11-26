@@ -88,16 +88,26 @@ export class TagPolicy extends pulumi.CustomResource {
      * (string) - Timestamp when the tag policy was created
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
+     * A description of the governed tag, such as its purpose or the meaning of its values
+     */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
     declare public readonly providerConfig: pulumi.Output<outputs.TagPolicyProviderConfig>;
+    /**
+     * The tag key that this policy governs. Tag keys are case-sensitive
+     */
     declare public readonly tagKey: pulumi.Output<string>;
     /**
      * (string) - Timestamp when the tag policy was last updated
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
+    /**
+     * The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+     * value must be unique. A policy without values defines a key-only governed tag
+     */
     declare public readonly values: pulumi.Output<outputs.TagPolicyValue[] | undefined>;
 
     /**
@@ -144,16 +154,26 @@ export interface TagPolicyState {
      * (string) - Timestamp when the tag policy was created
      */
     createTime?: pulumi.Input<string | undefined>;
+    /**
+     * A description of the governed tag, such as its purpose or the meaning of its values
+     */
     description?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
     providerConfig?: pulumi.Input<inputs.TagPolicyProviderConfig | undefined>;
+    /**
+     * The tag key that this policy governs. Tag keys are case-sensitive
+     */
     tagKey?: pulumi.Input<string | undefined>;
     /**
      * (string) - Timestamp when the tag policy was last updated
      */
     updateTime?: pulumi.Input<string | undefined>;
+    /**
+     * The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+     * value must be unique. A policy without values defines a key-only governed tag
+     */
     values?: pulumi.Input<pulumi.Input<inputs.TagPolicyValue>[] | undefined>;
 }
 
@@ -161,11 +181,21 @@ export interface TagPolicyState {
  * The set of arguments for constructing a TagPolicy resource.
  */
 export interface TagPolicyArgs {
+    /**
+     * A description of the governed tag, such as its purpose or the meaning of its values
+     */
     description?: pulumi.Input<string | undefined>;
     /**
      * Configure the provider for management through account provider.
      */
     providerConfig?: pulumi.Input<inputs.TagPolicyProviderConfig | undefined>;
+    /**
+     * The tag key that this policy governs. Tag keys are case-sensitive
+     */
     tagKey: pulumi.Input<string>;
+    /**
+     * The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+     * value must be unique. A policy without values defines a key-only governed tag
+     */
     values?: pulumi.Input<pulumi.Input<inputs.TagPolicyValue>[] | undefined>;
 }

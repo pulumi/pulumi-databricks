@@ -28,7 +28,7 @@ class GetFeatureEngineeringFeatureResult:
     """
     A collection of values returned by getFeatureEngineeringFeature.
     """
-    def __init__(__self__, catalog_name=None, created_at=None, created_by=None, description=None, entities=None, filter_condition=None, full_name=None, function=None, inputs=None, lineage_context=None, name=None, provider_config=None, schema_name=None, source=None, time_window=None, timeseries_column=None):
+    def __init__(__self__, catalog_name=None, created_at=None, created_by=None, description=None, entities=None, filter_condition=None, full_name=None, function=None, inputs=None, lineage_context=None, name=None, output_type_text=None, provider_config=None, schema_name=None, source=None, time_window=None, timeseries_column=None):
         if catalog_name and not isinstance(catalog_name, str):
             raise TypeError("Expected argument 'catalog_name' to be a str")
         pulumi.set(__self__, "catalog_name", catalog_name)
@@ -62,6 +62,9 @@ class GetFeatureEngineeringFeatureResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if output_type_text and not isinstance(output_type_text, str):
+            raise TypeError("Expected argument 'output_type_text' to be a str")
+        pulumi.set(__self__, "output_type_text", output_type_text)
         if provider_config and not isinstance(provider_config, dict):
             raise TypeError("Expected argument 'provider_config' to be a dict")
         pulumi.set(__self__, "provider_config", provider_config)
@@ -177,6 +180,14 @@ class GetFeatureEngineeringFeatureResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="outputTypeText")
+    def output_type_text(self) -> _builtins.str:
+        """
+        (string) - Output type in Databricks SQL DDL (e.g., "BIGINT", "DECIMAL(10,2)", "ARRAY<STRING>", "STRUCT<name:STRING>")
+        """
+        return pulumi.get(self, "output_type_text")
+
+    @_builtins.property
     @pulumi.getter(name="providerConfig")
     def provider_config(self) -> Optional['outputs.GetFeatureEngineeringFeatureProviderConfigResult']:
         return pulumi.get(self, "provider_config")
@@ -231,6 +242,7 @@ class AwaitableGetFeatureEngineeringFeatureResult(GetFeatureEngineeringFeatureRe
             inputs=self.inputs,
             lineage_context=self.lineage_context,
             name=self.name,
+            output_type_text=self.output_type_text,
             provider_config=self.provider_config,
             schema_name=self.schema_name,
             source=self.source,
@@ -281,6 +293,7 @@ def get_feature_engineering_feature(full_name: Optional[_builtins.str] = None,
         inputs=pulumi.get(__ret__, 'inputs'),
         lineage_context=pulumi.get(__ret__, 'lineage_context'),
         name=pulumi.get(__ret__, 'name'),
+        output_type_text=pulumi.get(__ret__, 'output_type_text'),
         provider_config=pulumi.get(__ret__, 'provider_config'),
         schema_name=pulumi.get(__ret__, 'schema_name'),
         source=pulumi.get(__ret__, 'source'),
@@ -328,6 +341,7 @@ def get_feature_engineering_feature_output(full_name: pulumi.Input[Optional[_bui
         inputs=pulumi.get(__response__, 'inputs'),
         lineage_context=pulumi.get(__response__, 'lineage_context'),
         name=pulumi.get(__response__, 'name'),
+        output_type_text=pulumi.get(__response__, 'output_type_text'),
         provider_config=pulumi.get(__response__, 'provider_config'),
         schema_name=pulumi.get(__response__, 'schema_name'),
         source=pulumi.get(__response__, 'source'),

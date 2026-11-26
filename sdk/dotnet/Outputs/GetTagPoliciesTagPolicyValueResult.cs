@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetTagPoliciesTagPolicyValueResult
     {
         /// <summary>
-        /// (string)
+        /// (string) - The value that can be assigned to the tag key. Values are case-sensitive
         /// </summary>
         public readonly string Name;
 

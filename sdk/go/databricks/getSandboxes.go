@@ -53,6 +53,8 @@ func GetSandboxes(ctx *pulumi.Context, args *GetSandboxesArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getSandboxes.
 type GetSandboxesArgs struct {
+	// Maximum number of sandboxes to return in one page. When unset or 0 the server returns
+	// up to 1000 sandboxes; values above 5000 are reduced to 5000
 	PageSize *int `pulumi:"pageSize"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetSandboxesProviderConfig `pulumi:"providerConfig"`
@@ -72,6 +74,8 @@ func GetSandboxesOutput(ctx *pulumi.Context, args GetSandboxesOutputArgs, opts .
 
 // A collection of arguments for invoking getSandboxes.
 type GetSandboxesOutputArgs struct {
+	// Maximum number of sandboxes to return in one page. When unset or 0 the server returns
+	// up to 1000 sandboxes; values above 5000 are reduced to 5000
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetSandboxesProviderConfigPtrInput `pulumi:"providerConfig"`

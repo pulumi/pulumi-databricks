@@ -141,14 +141,18 @@ public class DisasterRecoveryFailoverGroup extends com.pulumi.resources.CustomRe
         return this.failoverGroupId;
     }
     /**
-     * (boolean) - True if errors currently block the replication point
+     * (boolean) - True when replication errors are preventing the replication point from advancing.
+     * Populated only while the failover group is INITIAL_REPLICATION or ACTIVE; the blocking
+     * errors are listed in the system.replication.states system table
      * 
      */
     @Export(name="hasReplicationPointBlockingErrors", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> hasReplicationPointBlockingErrors;
 
     /**
-     * @return (boolean) - True if errors currently block the replication point
+     * @return (boolean) - True when replication errors are preventing the replication point from advancing.
+     * Populated only while the failover group is INITIAL_REPLICATION or ACTIVE; the blocking
+     * errors are listed in the system.replication.states system table
      * 
      */
     public Output<Boolean> hasReplicationPointBlockingErrors() {
@@ -156,7 +160,7 @@ public class DisasterRecoveryFailoverGroup extends com.pulumi.resources.CustomRe
     }
     /**
      * Initial primary region. Used only in Create requests to set the starting
-     * primary region. Not returned in responses
+     * primary region, and must be one of the regions in `regions`. Not returned in responses
      * 
      */
     @Export(name="initialPrimaryRegion", refs={String.class}, tree="[0]")
@@ -164,7 +168,7 @@ public class DisasterRecoveryFailoverGroup extends com.pulumi.resources.CustomRe
 
     /**
      * @return Initial primary region. Used only in Create requests to set the starting
-     * primary region. Not returned in responses
+     * primary region, and must be one of the regions in `regions`. Not returned in responses
      * 
      */
     public Output<String> initialPrimaryRegion() {
@@ -215,56 +219,76 @@ public class DisasterRecoveryFailoverGroup extends com.pulumi.resources.CustomRe
         return this.parent;
     }
     /**
-     * List of all regions participating in this failover group
+     * The two cloud regions that participate in this failover group, the primary and the
+     * secondary. Each workspace set contains one workspace in each region
      * 
      */
     @Export(name="regions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> regions;
 
     /**
-     * @return List of all regions participating in this failover group
+     * @return The two cloud regions that participate in this failover group, the primary and the
+     * secondary. Each workspace set contains one workspace in each region
      * 
      */
     public Output<List<String>> regions() {
         return this.regions;
     }
     /**
-     * (string) - The latest point in time to which data has been replicated
+     * (string) - The most recent point in time up to which all in-scope assets have been replicated to the
+     * secondary region. Data written after this point might not exist in the secondary yet and
+     * can be lost in an unplanned failover. When both Unity Catalog and workspace assets are
+     * replicated, this is the older of the two replication points. Not populated until the
+     * first replication point exists, and not populated in ListFailoverGroups responses
      * 
      */
     @Export(name="replicationPoint", refs={String.class}, tree="[0]")
     private Output<String> replicationPoint;
 
     /**
-     * @return (string) - The latest point in time to which data has been replicated
+     * @return (string) - The most recent point in time up to which all in-scope assets have been replicated to the
+     * secondary region. Data written after this point might not exist in the secondary yet and
+     * can be lost in an unplanned failover. When both Unity Catalog and workspace assets are
+     * replicated, this is the older of the two replication points. Not populated until the
+     * first replication point exists, and not populated in ListFailoverGroups responses
      * 
      */
     public Output<String> replicationPoint() {
         return this.replicationPoint;
     }
     /**
-     * (string) - Aggregate state of the failover group. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
+     * (string) - Aggregate state of the failover group across Unity Catalog and workspace asset
+     * replication. The group is INITIAL_REPLICATION until it has a replication point, ACTIVE
+     * while replication is in steady state and failover is available, and FAILING_OVER while a
+     * failover is in progress; the `*_FAILED` values mean that the last operation did not
+     * complete. Not populated in ListFailoverGroups responses. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return (string) - Aggregate state of the failover group. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
+     * @return (string) - Aggregate state of the failover group across Unity Catalog and workspace asset
+     * replication. The group is INITIAL_REPLICATION until it has a replication point, ACTIVE
+     * while replication is in steady state and failover is available, and FAILING_OVER while a
+     * failover is in progress; the `*_FAILED` values mean that the last operation did not
+     * complete. Not populated in ListFailoverGroups responses. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
      * 
      */
     public Output<String> state() {
         return this.state;
     }
     /**
-     * Unity Catalog replication configuration
+     * Unity Catalog replication configuration: the catalogs to replicate and the storage
+     * location mappings for their data. Omit it to replicate workspace assets only
      * 
      */
     @Export(name="unityCatalogAssets", refs={DisasterRecoveryFailoverGroupUnityCatalogAssets.class}, tree="[0]")
     private Output</* @Nullable */ DisasterRecoveryFailoverGroupUnityCatalogAssets> unityCatalogAssets;
 
     /**
-     * @return Unity Catalog replication configuration
+     * @return Unity Catalog replication configuration: the catalogs to replicate and the storage
+     * location mappings for their data. Omit it to replicate workspace assets only
      * 
      */
     public Output<Optional<DisasterRecoveryFailoverGroupUnityCatalogAssets>> unityCatalogAssets() {
@@ -285,14 +309,16 @@ public class DisasterRecoveryFailoverGroup extends com.pulumi.resources.CustomRe
         return this.updateTime;
     }
     /**
-     * Workspace sets, each containing workspaces that replicate to each other
+     * Workspace sets, each containing workspaces that replicate to each other. A failover group
+     * currently supports exactly one workspace set
      * 
      */
     @Export(name="workspaceSets", refs={List.class,DisasterRecoveryFailoverGroupWorkspaceSet.class}, tree="[0,1]")
     private Output<List<DisasterRecoveryFailoverGroupWorkspaceSet>> workspaceSets;
 
     /**
-     * @return Workspace sets, each containing workspaces that replicate to each other
+     * @return Workspace sets, each containing workspaces that replicate to each other. A failover group
+     * currently supports exactly one workspace set
      * 
      */
     public Output<List<DisasterRecoveryFailoverGroupWorkspaceSet>> workspaceSets() {

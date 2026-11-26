@@ -76,7 +76,7 @@ class GetEnvironmentsWorkspaceBaseEnvironmentResult:
     @pulumi.getter(name="baseEnvironmentType")
     def base_environment_type(self) -> _builtins.str:
         """
-        (string) - The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+        (string) - The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
         """
         return pulumi.get(self, "base_environment_type")
 
@@ -113,7 +113,8 @@ class GetEnvironmentsWorkspaceBaseEnvironmentResult:
     @pulumi.getter
     def filepath(self) -> _builtins.str:
         """
-        (string) - The WSFS or UC Volumes path to the environment YAML file
+        (string) - The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+        dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
         """
         return pulumi.get(self, "filepath")
 
@@ -137,7 +138,8 @@ class GetEnvironmentsWorkspaceBaseEnvironmentResult:
     @pulumi.getter
     def message(self) -> _builtins.str:
         """
-        (string) - Status message providing additional details about the environment status
+        (string) - Status message providing additional details about the environment status.
+        When the status is `FAILED`, the message contains the build error
         """
         return pulumi.get(self, "message")
 
@@ -147,6 +149,8 @@ class GetEnvironmentsWorkspaceBaseEnvironmentResult:
         """
         (string) - The resource name of the workspace base environment.
         Format: workspace-base-environments/{workspace-base-environment}
+        The server ignores this field on create and builds the name from `workspace_base_environment_id`, or from
+        `display_name` plus a random suffix when no ID is given
         """
         return pulumi.get(self, "name")
 
@@ -159,7 +163,7 @@ class GetEnvironmentsWorkspaceBaseEnvironmentResult:
     @pulumi.getter
     def spec(self) -> 'outputs.GetEnvironmentsWorkspaceBaseEnvironmentSpecResult':
         """
-        (EnvironmentSpec) - The environment specification containing version and dependencies
+        (EnvironmentSpec) - The environment specification containing version and dependencies, read from the YAML file at `filepath`
         """
         return pulumi.get(self, "spec")
 
@@ -167,7 +171,8 @@ class GetEnvironmentsWorkspaceBaseEnvironmentResult:
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
+        (string) - The status of the materialized workspace base environment, which the server builds from the YAML file.
+        The status is `CREATED` once the build has succeeded. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
         """
         return pulumi.get(self, "status")
 
@@ -224,6 +229,8 @@ def get_environments_workspace_base_environment(name: Optional[_builtins.str] = 
 
     :param _builtins.str name: The resource name of the workspace base environment.
            Format: workspace-base-environments/{workspace-base-environment}
+           The server ignores this field on create and builds the name from `workspace_base_environment_id`, or from
+           `display_name` plus a random suffix when no ID is given
     :param Union['GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict', 'outputs.GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -269,6 +276,8 @@ def get_environments_workspace_base_environment_output(name: pulumi.Input[Option
 
     :param _builtins.str name: The resource name of the workspace base environment.
            Format: workspace-base-environments/{workspace-base-environment}
+           The server ignores this field on create and builds the name from `workspace_base_environment_id`, or from
+           `display_name` plus a random suffix when no ID is given
     :param Union['GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict', 'outputs.GetEnvironmentsWorkspaceBaseEnvironmentProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()

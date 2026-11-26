@@ -14,11 +14,11 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAlertV2ScheduleResult
     {
         /// <summary>
-        /// (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
+        /// (string) - Indicates whether this schedule is paused. While paused, the alert is not evaluated. Possible values are: `PAUSED`, `UNPAUSED`
         /// </summary>
         public readonly string? PauseStatus;
         /// <summary>
-        /// (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
+        /// (string) - A cron expression using quartz syntax that specifies the schedule for this alert.
         /// Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
         /// </summary>
         public readonly string QuartzCronSchedule;

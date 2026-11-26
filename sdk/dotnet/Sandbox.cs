@@ -62,7 +62,7 @@ namespace Pulumi.Databricks
         public Output<string?> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Metadata associated with the sandbox
+        /// Tags and other metadata associated with the sandbox
         /// </summary>
         [Output("metadata")]
         public Output<Outputs.SandboxMetadata?> Metadata { get; private set; } = null!;
@@ -81,7 +81,10 @@ namespace Pulumi.Databricks
         public Output<Outputs.SandboxProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Client-supplied ID that becomes the final path segment of the resource name
+        /// Client-supplied ID that becomes the final path segment of the resource name. It must
+        /// start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+        /// with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+        /// rejected
         /// </summary>
         [Output("sandboxId")]
         public Output<string> SandboxId { get; private set; } = null!;
@@ -157,7 +160,7 @@ namespace Pulumi.Databricks
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Metadata associated with the sandbox
+        /// Tags and other metadata associated with the sandbox
         /// </summary>
         [Input("metadata")]
         public Input<Inputs.SandboxMetadataArgs>? Metadata { get; set; }
@@ -169,7 +172,10 @@ namespace Pulumi.Databricks
         public Input<Inputs.SandboxProviderConfigArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// Client-supplied ID that becomes the final path segment of the resource name
+        /// Client-supplied ID that becomes the final path segment of the resource name. It must
+        /// start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+        /// with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+        /// rejected
         /// </summary>
         [Input("sandboxId", required: true)]
         public Input<string> SandboxId { get; set; } = null!;
@@ -201,7 +207,7 @@ namespace Pulumi.Databricks
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Metadata associated with the sandbox
+        /// Tags and other metadata associated with the sandbox
         /// </summary>
         [Input("metadata")]
         public Input<Inputs.SandboxMetadataGetArgs>? Metadata { get; set; }
@@ -220,7 +226,10 @@ namespace Pulumi.Databricks
         public Input<Inputs.SandboxProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// Client-supplied ID that becomes the final path segment of the resource name
+        /// Client-supplied ID that becomes the final path segment of the resource name. It must
+        /// start with a lowercase letter, contain only lowercase letters, digits and hyphens, end
+        /// with a letter or digit, and be at most 63 characters long. Values shaped like a UUID are
+        /// rejected
         /// </summary>
         [Input("sandboxId")]
         public Input<string>? SandboxId { get; set; }

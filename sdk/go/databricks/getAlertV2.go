@@ -73,9 +73,10 @@ type LookupAlertV2Args struct {
 type LookupAlertV2Result struct {
 	// (string) - The timestamp indicating when the alert was created
 	CreateTime string `pulumi:"createTime"`
-	// (string) - Custom description for the alert. Interpreted according to `customTemplateFormat`
+	// (string) - Custom description for the alert, used as the notification body. Interpreted according to `customTemplateFormat`.
+	// The available template variables are listed at https://docs.databricks.com/aws/en/sql/user/alerts/create#notification-templates
 	CustomDescription string `pulumi:"customDescription"`
-	// (string) - Custom summary for the alert. Interpreted according to `customTemplateFormat`
+	// (string) - Custom summary for the alert, used as the notification subject. Interpreted according to `customTemplateFormat`
 	CustomSummary string `pulumi:"customSummary"`
 	// (string) - The format used to interpret the `customSummary` and `customDescription` templates.
 	CustomTemplateFormat string `pulumi:"customTemplateFormat"`
@@ -85,11 +86,11 @@ type LookupAlertV2Result struct {
 	// This is an output-only field that shows the resolved run-as identity after applying
 	// permissions and defaults
 	EffectiveRunAs GetAlertV2EffectiveRunAs `pulumi:"effectiveRunAs"`
-	// (AlertV2Evaluation)
+	// (AlertV2Evaluation) - Condition evaluated against the query result, and who is notified when it is met
 	Evaluation GetAlertV2Evaluation `pulumi:"evaluation"`
 	// (string) - The canonical identifier of the alert to retrieve information about
 	Id string `pulumi:"id"`
-	// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
+	// (string) - Indicates whether the alert is active (`ACTIVE`) or has been moved to the trash (`DELETED`). Possible values are: `ACTIVE`, `DELETED`
 	LifecycleState string `pulumi:"lifecycleState"`
 	// (string) - The owner's username. This field is set to "Unavailable" if the user has been deleted
 	OwnerUserName string `pulumi:"ownerUserName"`
@@ -106,11 +107,11 @@ type LookupAlertV2Result struct {
 	// - For service principal: Set `servicePrincipalName` to the application ID. Requires the `servicePrincipal/user` role.
 	//   If not specified, the alert will run as the request user
 	RunAs GetAlertV2RunAs `pulumi:"runAs"`
-	// (string, deprecated) - The run as username or application ID of service principal.
-	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-	// Deprecated: Use `runAs` field instead. This field will be removed in a future release
+	// (string, deprecated) - Deprecated: Use `runAs` field instead. This field will be removed in a future release.
+	// The run as username or application ID of service principal.
+	// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
 	RunAsUserName string `pulumi:"runAsUserName"`
-	// (CronSchedule)
+	// (CronSchedule) - Schedule on which the alert runs its query and evaluates the condition
 	Schedule GetAlertV2Schedule `pulumi:"schedule"`
 	// (string) - The timestamp indicating when the alert was updated
 	UpdateTime string `pulumi:"updateTime"`
@@ -155,12 +156,13 @@ func (o LookupAlertV2ResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertV2Result) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// (string) - Custom description for the alert. Interpreted according to `customTemplateFormat`
+// (string) - Custom description for the alert, used as the notification body. Interpreted according to `customTemplateFormat`.
+// The available template variables are listed at https://docs.databricks.com/aws/en/sql/user/alerts/create#notification-templates
 func (o LookupAlertV2ResultOutput) CustomDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertV2Result) string { return v.CustomDescription }).(pulumi.StringOutput)
 }
 
-// (string) - Custom summary for the alert. Interpreted according to `customTemplateFormat`
+// (string) - Custom summary for the alert, used as the notification subject. Interpreted according to `customTemplateFormat`
 func (o LookupAlertV2ResultOutput) CustomSummary() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertV2Result) string { return v.CustomSummary }).(pulumi.StringOutput)
 }
@@ -182,7 +184,7 @@ func (o LookupAlertV2ResultOutput) EffectiveRunAs() GetAlertV2EffectiveRunAsOutp
 	return o.ApplyT(func(v LookupAlertV2Result) GetAlertV2EffectiveRunAs { return v.EffectiveRunAs }).(GetAlertV2EffectiveRunAsOutput)
 }
 
-// (AlertV2Evaluation)
+// (AlertV2Evaluation) - Condition evaluated against the query result, and who is notified when it is met
 func (o LookupAlertV2ResultOutput) Evaluation() GetAlertV2EvaluationOutput {
 	return o.ApplyT(func(v LookupAlertV2Result) GetAlertV2Evaluation { return v.Evaluation }).(GetAlertV2EvaluationOutput)
 }
@@ -192,7 +194,7 @@ func (o LookupAlertV2ResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertV2Result) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
+// (string) - Indicates whether the alert is active (`ACTIVE`) or has been moved to the trash (`DELETED`). Possible values are: `ACTIVE`, `DELETED`
 func (o LookupAlertV2ResultOutput) LifecycleState() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertV2Result) string { return v.LifecycleState }).(pulumi.StringOutput)
 }
@@ -230,14 +232,14 @@ func (o LookupAlertV2ResultOutput) RunAs() GetAlertV2RunAsOutput {
 	return o.ApplyT(func(v LookupAlertV2Result) GetAlertV2RunAs { return v.RunAs }).(GetAlertV2RunAsOutput)
 }
 
-// (string, deprecated) - The run as username or application ID of service principal.
-// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-// Deprecated: Use `runAs` field instead. This field will be removed in a future release
+// (string, deprecated) - Deprecated: Use `runAs` field instead. This field will be removed in a future release.
+// The run as username or application ID of service principal.
+// On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
 func (o LookupAlertV2ResultOutput) RunAsUserName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAlertV2Result) string { return v.RunAsUserName }).(pulumi.StringOutput)
 }
 
-// (CronSchedule)
+// (CronSchedule) - Schedule on which the alert runs its query and evaluates the condition
 func (o LookupAlertV2ResultOutput) Schedule() GetAlertV2ScheduleOutput {
 	return o.ApplyT(func(v LookupAlertV2Result) GetAlertV2Schedule { return v.Schedule }).(GetAlertV2ScheduleOutput)
 }

@@ -13,6 +13,10 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AppSpaceResourcePostgres
     {
+        /// <summary>
+        /// Resource name of the Lakebase Autoscaling branch, in the form
+        /// `projects/{project}/branches/{branch}`
+        /// </summary>
         public readonly string? Branch;
         public readonly string? Database;
         public readonly string? Permission;

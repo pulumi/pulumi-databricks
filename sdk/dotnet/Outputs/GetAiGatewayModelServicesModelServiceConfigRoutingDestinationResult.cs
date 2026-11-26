@@ -30,7 +30,9 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly bool IsDeleted;
         /// <summary>
-        /// (string) - User-facing label for this destination, used in routing references
+        /// (string) - Label that identifies this destination. Names are compared
+        /// case-insensitively and must be unique within the primary destinations and
+        /// within the fallback destinations
         /// </summary>
         public readonly string Name;
         /// <summary>

@@ -14,7 +14,9 @@ namespace Pulumi.Databricks.Outputs
     public sealed class SandboxSpecCompute
     {
         /// <summary>
-        /// Idle duration after which the sandbox is automatically terminated
+        /// Idle time after which the sandbox is automatically stopped. Unset or 0 disables inactivity
+        /// auto-stop. Negative values are rejected. Can be changed on an existing sandbox with
+        /// UpdateSandbox
         /// </summary>
         public readonly string? InactivityTimeout;
 

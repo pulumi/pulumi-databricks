@@ -23,9 +23,19 @@ public final class AppSpaceResourceUcSecurableArgs extends com.pulumi.resources.
         return this.permission;
     }
 
+    /**
+     * Full name of the Unity Catalog securable. For volumes, tables and functions this is the
+     * three-level catalog.schema.object name
+     * 
+     */
     @Import(name="securableFullName", required=true)
     private Output<String> securableFullName;
 
+    /**
+     * @return Full name of the Unity Catalog securable. For volumes, tables and functions this is the
+     * three-level catalog.schema.object name
+     * 
+     */
     public Output<String> securableFullName() {
         return this.securableFullName;
     }
@@ -48,14 +58,14 @@ public final class AppSpaceResourceUcSecurableArgs extends com.pulumi.resources.
     }
 
     /**
-     * Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
+     * Kind of Unity Catalog securable that `securableFullName` refers to. Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      * 
      */
     @Import(name="securableType", required=true)
     private Output<String> securableType;
 
     /**
-     * @return Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
+     * @return Kind of Unity Catalog securable that `securableFullName` refers to. Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      * 
      */
     public Output<String> securableType() {
@@ -98,11 +108,25 @@ public final class AppSpaceResourceUcSecurableArgs extends com.pulumi.resources.
             return permission(Output.of(permission));
         }
 
+        /**
+         * @param securableFullName Full name of the Unity Catalog securable. For volumes, tables and functions this is the
+         * three-level catalog.schema.object name
+         * 
+         * @return builder
+         * 
+         */
         public Builder securableFullName(Output<String> securableFullName) {
             $.securableFullName = securableFullName;
             return this;
         }
 
+        /**
+         * @param securableFullName Full name of the Unity Catalog securable. For volumes, tables and functions this is the
+         * three-level catalog.schema.object name
+         * 
+         * @return builder
+         * 
+         */
         public Builder securableFullName(String securableFullName) {
             return securableFullName(Output.of(securableFullName));
         }
@@ -131,7 +155,7 @@ public final class AppSpaceResourceUcSecurableArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param securableType Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
+         * @param securableType Kind of Unity Catalog securable that `securableFullName` refers to. Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
          * 
          * @return builder
          * 
@@ -142,7 +166,7 @@ public final class AppSpaceResourceUcSecurableArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param securableType Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
+         * @param securableType Kind of Unity Catalog securable that `securableFullName` refers to. Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
          * 
          * @return builder
          * 

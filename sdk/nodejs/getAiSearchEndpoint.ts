@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
  *
@@ -39,10 +39,9 @@ export function getAiSearchEndpoint(args: GetAiSearchEndpointArgs, opts?: pulumi
  */
 export interface GetAiSearchEndpointArgs {
     /**
-     * Name of the AI Search endpoint. Server-assigned full resource path
-     * (`workspaces/{workspace}/endpoints/{endpoint}`) on output. On create, the
-     * user-supplied short name is conveyed via `CreateEndpointRequest.endpoint_id`;
-     * the server composes the full `name` and returns it on the response
+     * Full resource name of the endpoint, in the form
+     * `workspaces/{workspace_id}/endpoints/{endpoint_id}`. On create, the server composes it
+     * from `parent` and `endpointId` and ignores any value supplied in the request body
      */
     name: string;
     /**
@@ -56,7 +55,10 @@ export interface GetAiSearchEndpointArgs {
  */
 export interface GetAiSearchEndpointResult {
     /**
-     * (string) - The user-selected budget policy id for the endpoint
+     * (string) - ID of the serverless budget policy to apply to the endpoint. The caller must have
+     * permission to use the policy. Set either this field or `usagePolicyId`, not both.
+     * Responses do not echo this field; they report the applied policy in
+     * `effectiveBudgetPolicyId`
      */
     readonly budgetPolicyId: string;
     /**
@@ -64,19 +66,21 @@ export interface GetAiSearchEndpointResult {
      */
     readonly createTime: string;
     /**
-     * (string) - Creator of the endpoint
+     * (string) - User name of the principal that created the endpoint. For a user, it is the user's email
+     * address; for any other principal, it is the principal's unique name
      */
     readonly creator: string;
     /**
-     * (list of CustomTag) - The custom tags assigned to the endpoint
+     * (list of CustomTag) - Custom tags assigned to the endpoint. On update, the list replaces all of the endpoint's
+     * existing tags
      */
     readonly customTags: outputs.GetAiSearchEndpointCustomTag[];
     /**
-     * (string) - The budget policy id applied to the endpoint
+     * (string) - ID of the budget policy that is currently applied to the endpoint
      */
     readonly effectiveBudgetPolicyId: string;
     /**
-     * (EndpointStatus) - Current status of the endpoint
+     * (EndpointStatus) - Current lifecycle state of the endpoint, with an optional message that explains it
      */
     readonly endpointStatus: outputs.GetAiSearchEndpointEndpointStatus;
     /**
@@ -84,7 +88,7 @@ export interface GetAiSearchEndpointResult {
      */
     readonly endpointType: string;
     /**
-     * (string) - Unique identifier of the endpoint
+     * (string) - System-generated UUID that uniquely identifies the endpoint
      */
     readonly id: string;
     /**
@@ -92,14 +96,13 @@ export interface GetAiSearchEndpointResult {
      */
     readonly indexCount: number;
     /**
-     * (string) - User who last updated the endpoint
+     * (string) - User name of the principal that last updated the endpoint, in the same format as `creator`
      */
     readonly lastUpdatedUser: string;
     /**
-     * (string) - Name of the AI Search endpoint. Server-assigned full resource path
-     * (`workspaces/{workspace}/endpoints/{endpoint}`) on output. On create, the
-     * user-supplied short name is conveyed via `CreateEndpointRequest.endpoint_id`;
-     * the server composes the full `name` and returns it on the response
+     * (string) - Full resource name of the endpoint, in the form
+     * `workspaces/{workspace_id}/endpoints/{endpoint_id}`. On create, the server composes it
+     * from `parent` and `endpointId` and ignores any value supplied in the request body
      */
     readonly name: string;
     readonly providerConfig?: outputs.GetAiSearchEndpointProviderConfig;
@@ -114,7 +117,8 @@ export interface GetAiSearchEndpointResult {
     readonly scalingInfo: outputs.GetAiSearchEndpointScalingInfo;
     /**
      * (integer) - Target QPS for the endpoint. Mutually exclusive with `replicaCount`. Best-effort;
-     * the system does not guarantee this QPS will be achieved
+     * the system does not guarantee this QPS will be achieved. Responses report the requested
+     * value in `scaling_info.requested_target_qps`
      */
     readonly targetQps: number;
     /**
@@ -126,12 +130,13 @@ export interface GetAiSearchEndpointResult {
      */
     readonly updateTime: string;
     /**
-     * (string) - The usage policy id applied to the endpoint
+     * (string) - ID of the usage policy to apply to the endpoint. The server treats it as the same setting
+     * as `budgetPolicyId`, so set only one of the two
      */
     readonly usagePolicyId: string;
 }
 /**
- * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
  *
@@ -163,10 +168,9 @@ export function getAiSearchEndpointOutput(args: GetAiSearchEndpointOutputArgs, o
  */
 export interface GetAiSearchEndpointOutputArgs {
     /**
-     * Name of the AI Search endpoint. Server-assigned full resource path
-     * (`workspaces/{workspace}/endpoints/{endpoint}`) on output. On create, the
-     * user-supplied short name is conveyed via `CreateEndpointRequest.endpoint_id`;
-     * the server composes the full `name` and returns it on the response
+     * Full resource name of the endpoint, in the form
+     * `workspaces/{workspace_id}/endpoints/{endpoint_id}`. On create, the server composes it
+     * from `parent` and `endpointId` and ignores any value supplied in the request body
      */
     name: pulumi.Input<string>;
     /**

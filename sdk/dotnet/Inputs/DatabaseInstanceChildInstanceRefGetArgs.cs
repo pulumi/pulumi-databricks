@@ -45,7 +45,9 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Lsn { get; set; }
 
         /// <summary>
-        /// The name of the instance. This is the unique identifier for the instance
+        /// The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+        /// characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+        /// consecutive hyphens
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -25,7 +25,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? Principal;
         /// <summary>
-        /// (string) - Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+        /// (string) - Interval after which the request and token counters reset. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
         /// </summary>
         public readonly string RenewalPeriod;
         /// <summary>

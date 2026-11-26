@@ -30,6 +30,7 @@ namespace Pulumi.Databricks.Outputs
         /// The number of model units to be provisioned.
         /// </summary>
         public readonly int ProvisionedModelUnits;
+        public readonly string? PtTerm;
 
         [OutputConstructor]
         private ModelServingProvisionedThroughputConfigServedEntity(
@@ -41,13 +42,16 @@ namespace Pulumi.Databricks.Outputs
 
             string? name,
 
-            int provisionedModelUnits)
+            int provisionedModelUnits,
+
+            string? ptTerm)
         {
             BurstScalingEnabled = burstScalingEnabled;
             EntityName = entityName;
             EntityVersion = entityVersion;
             Name = name;
             ProvisionedModelUnits = provisionedModelUnits;
+            PtTerm = ptTerm;
         }
     }
 }

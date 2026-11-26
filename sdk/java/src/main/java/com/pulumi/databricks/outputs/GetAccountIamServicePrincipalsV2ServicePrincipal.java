@@ -11,106 +11,108 @@ import java.util.Objects;
 @CustomType
 public final class GetAccountIamServicePrincipalsV2ServicePrincipal {
     /**
-     * @return (string) - The parent account ID for the service principal in Databricks
+     * @return (string) - The ID of the account that contains the service principal
      * 
      */
     private String accountId;
     /**
-     * @return (string) - The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * @return (string) - Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     private String accountSpStatus;
     /**
-     * @return (string) - Application ID of the service principal. Set at creation time and cannot be changed
-     * afterwards; when omitted, the server generates one
+     * @return (string) - The service principal&#39;s application ID, a UUID. If you don&#39;t set it when you create the
+     * service principal, Databricks generates one. It must be unique in the account and can&#39;t be
+     * changed
      * 
      */
     private String applicationId;
     /**
-     * @return (string) - Display name of the service principal
+     * @return (string) - The service principal&#39;s display name
      * 
      */
     private String displayName;
     /**
-     * @return (string) - ExternalId of the service principal in the customer&#39;s IdP
+     * @return (string) - The ID of the service principal in your identity provider (IdP)
      * 
      */
     private String externalId;
     /**
-     * @return (string) - The resource name of the service principal. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-     * - Workspace-scoped: service-principals/{service_principal_id}
+     * @return (string) - The resource name of the service principal, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+     * - Workspace APIs: `service-principals/{service_principal_id}`
      * 
      */
     private String name;
     /**
-     * @return The parent resource name of the account whose service principals to list.
-     * Format: accounts/{account_id}
+     * @return The resource name of the account to list service principals in, in the format
+     * `accounts/{account_id}`
      * 
      */
     private String parent;
     /**
-     * @return (string) - Internal service principal ID of the service principal in Databricks
+     * @return (string) - The Databricks ID of the service principal
      * 
      */
     private String servicePrincipalId;
 
     private GetAccountIamServicePrincipalsV2ServicePrincipal() {}
     /**
-     * @return (string) - The parent account ID for the service principal in Databricks
+     * @return (string) - The ID of the account that contains the service principal
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return (string) - The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * @return (string) - Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     public String accountSpStatus() {
         return this.accountSpStatus;
     }
     /**
-     * @return (string) - Application ID of the service principal. Set at creation time and cannot be changed
-     * afterwards; when omitted, the server generates one
+     * @return (string) - The service principal&#39;s application ID, a UUID. If you don&#39;t set it when you create the
+     * service principal, Databricks generates one. It must be unique in the account and can&#39;t be
+     * changed
      * 
      */
     public String applicationId() {
         return this.applicationId;
     }
     /**
-     * @return (string) - Display name of the service principal
+     * @return (string) - The service principal&#39;s display name
      * 
      */
     public String displayName() {
         return this.displayName;
     }
     /**
-     * @return (string) - ExternalId of the service principal in the customer&#39;s IdP
+     * @return (string) - The ID of the service principal in your identity provider (IdP)
      * 
      */
     public String externalId() {
         return this.externalId;
     }
     /**
-     * @return (string) - The resource name of the service principal. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-     * - Workspace-scoped: service-principals/{service_principal_id}
+     * @return (string) - The resource name of the service principal, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+     * - Workspace APIs: `service-principals/{service_principal_id}`
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The parent resource name of the account whose service principals to list.
-     * Format: accounts/{account_id}
+     * @return The resource name of the account to list service principals in, in the format
+     * `accounts/{account_id}`
      * 
      */
     public String parent() {
         return this.parent;
     }
     /**
-     * @return (string) - Internal service principal ID of the service principal in Databricks
+     * @return (string) - The Databricks ID of the service principal
      * 
      */
     public String servicePrincipalId() {

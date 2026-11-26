@@ -104,7 +104,7 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// Specifies the maximum number of external metadata objects to return in a single response.
-        /// The value must be less than or equal to 1000
+        /// The value must be less than or equal to 1000. Defaults to 1000 when omitted
         /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
@@ -125,7 +125,7 @@ namespace Pulumi.Databricks
     {
         /// <summary>
         /// Specifies the maximum number of external metadata objects to return in a single response.
-        /// The value must be less than or equal to 1000
+        /// The value must be less than or equal to 1000. Defaults to 1000 when omitted
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }

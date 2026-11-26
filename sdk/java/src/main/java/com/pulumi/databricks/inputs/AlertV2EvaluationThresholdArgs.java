@@ -16,9 +16,17 @@ public final class AlertV2EvaluationThresholdArgs extends com.pulumi.resources.R
 
     public static final AlertV2EvaluationThresholdArgs Empty = new AlertV2EvaluationThresholdArgs();
 
+    /**
+     * Compare the source against another column of the query result
+     * 
+     */
     @Import(name="column")
     private @Nullable Output<AlertV2EvaluationThresholdColumnArgs> column;
 
+    /**
+     * @return Compare the source against another column of the query result
+     * 
+     */
     public Optional<Output<AlertV2EvaluationThresholdColumnArgs>> column() {
         return Optional.ofNullable(this.column);
     }
@@ -55,11 +63,23 @@ public final class AlertV2EvaluationThresholdArgs extends com.pulumi.resources.R
             $ = new AlertV2EvaluationThresholdArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param column Compare the source against another column of the query result
+         * 
+         * @return builder
+         * 
+         */
         public Builder column(@Nullable Output<AlertV2EvaluationThresholdColumnArgs> column) {
             $.column = column;
             return this;
         }
 
+        /**
+         * @param column Compare the source against another column of the query result
+         * 
+         * @return builder
+         * 
+         */
         public Builder column(AlertV2EvaluationThresholdColumnArgs column) {
             return column(Output.of(column));
         }

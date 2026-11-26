@@ -29,15 +29,18 @@ class DataClassificationCatalogConfigArgs:
         """
         The set of arguments for constructing a DataClassificationCatalogConfig resource.
 
-        :param pulumi.Input[_builtins.str] parent: Parent resource in the format: catalogs/{catalog_name}
-        :param pulumi.Input[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]] auto_tag_configs: List of auto-tagging configurations for this catalog.
-               Empty list means no auto-tagging is enabled
+        :param pulumi.Input[_builtins.str] parent: Name of the catalog to enable, in the format catalogs/{catalog_name}
+        :param pulumi.Input[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]] auto_tag_configs: Auto-tagging configurations that apply to this catalog. Each entry overrides the
+               metastore-level auto-tagging setting for its classification tag; tags without an entry
+               inherit the metastore-level setting
         :param pulumi.Input['DataClassificationCatalogConfigExcludedSchemasArgs'] excluded_schemas: Schemas to exclude from the scan, each named relative to the parent catalog.
-               If specified, all schemas except the specified ones will be scanned.
+               If specified, all schemas except the specified ones will be scanned, including schemas
+               created later.
                Mutually exclusive with `included_schemas`: only one may be set per request.
                If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
         :param pulumi.Input['DataClassificationCatalogConfigIncludedSchemasArgs'] included_schemas: Schemas to include in the scan, each named relative to the parent catalog.
-               If specified, only listed schemas will be scanned.
+               If specified, only listed schemas will be scanned. Schemas created later are not scanned
+               until you add them to the list.
                Mutually exclusive with `excluded_schemas`: only one may be set per request.
                If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
         :param pulumi.Input['DataClassificationCatalogConfigProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
@@ -56,7 +59,7 @@ class DataClassificationCatalogConfigArgs:
     @pulumi.getter
     def parent(self) -> pulumi.Input[_builtins.str]:
         """
-        Parent resource in the format: catalogs/{catalog_name}
+        Name of the catalog to enable, in the format catalogs/{catalog_name}
         """
         return pulumi.get(self, "parent")
 
@@ -68,8 +71,9 @@ class DataClassificationCatalogConfigArgs:
     @pulumi.getter(name="autoTagConfigs")
     def auto_tag_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]]]:
         """
-        List of auto-tagging configurations for this catalog.
-        Empty list means no auto-tagging is enabled
+        Auto-tagging configurations that apply to this catalog. Each entry overrides the
+        metastore-level auto-tagging setting for its classification tag; tags without an entry
+        inherit the metastore-level setting
         """
         return pulumi.get(self, "auto_tag_configs")
 
@@ -82,7 +86,8 @@ class DataClassificationCatalogConfigArgs:
     def excluded_schemas(self) -> pulumi.Input[Optional['DataClassificationCatalogConfigExcludedSchemasArgs']]:
         """
         Schemas to exclude from the scan, each named relative to the parent catalog.
-        If specified, all schemas except the specified ones will be scanned.
+        If specified, all schemas except the specified ones will be scanned, including schemas
+        created later.
         Mutually exclusive with `included_schemas`: only one may be set per request.
         If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
         """
@@ -97,7 +102,8 @@ class DataClassificationCatalogConfigArgs:
     def included_schemas(self) -> pulumi.Input[Optional['DataClassificationCatalogConfigIncludedSchemasArgs']]:
         """
         Schemas to include in the scan, each named relative to the parent catalog.
-        If specified, only listed schemas will be scanned.
+        If specified, only listed schemas will be scanned. Schemas created later are not scanned
+        until you add them to the list.
         Mutually exclusive with `excluded_schemas`: only one may be set per request.
         If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
         """
@@ -132,18 +138,21 @@ class _DataClassificationCatalogConfigState:
         """
         Input properties used for looking up and filtering DataClassificationCatalogConfig resources.
 
-        :param pulumi.Input[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]] auto_tag_configs: List of auto-tagging configurations for this catalog.
-               Empty list means no auto-tagging is enabled
+        :param pulumi.Input[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]] auto_tag_configs: Auto-tagging configurations that apply to this catalog. Each entry overrides the
+               metastore-level auto-tagging setting for its classification tag; tags without an entry
+               inherit the metastore-level setting
         :param pulumi.Input['DataClassificationCatalogConfigExcludedSchemasArgs'] excluded_schemas: Schemas to exclude from the scan, each named relative to the parent catalog.
-               If specified, all schemas except the specified ones will be scanned.
+               If specified, all schemas except the specified ones will be scanned, including schemas
+               created later.
                Mutually exclusive with `included_schemas`: only one may be set per request.
                If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
         :param pulumi.Input['DataClassificationCatalogConfigIncludedSchemasArgs'] included_schemas: Schemas to include in the scan, each named relative to the parent catalog.
-               If specified, only listed schemas will be scanned.
+               If specified, only listed schemas will be scanned. Schemas created later are not scanned
+               until you add them to the list.
                Mutually exclusive with `excluded_schemas`: only one may be set per request.
                If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
         :param pulumi.Input[_builtins.str] name: (string) - Resource name in the format: catalogs/{catalog_name}/config
-        :param pulumi.Input[_builtins.str] parent: Parent resource in the format: catalogs/{catalog_name}
+        :param pulumi.Input[_builtins.str] parent: Name of the catalog to enable, in the format catalogs/{catalog_name}
         :param pulumi.Input['DataClassificationCatalogConfigProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         """
         if auto_tag_configs is not None:
@@ -163,8 +172,9 @@ class _DataClassificationCatalogConfigState:
     @pulumi.getter(name="autoTagConfigs")
     def auto_tag_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DataClassificationCatalogConfigAutoTagConfigArgs']]]]:
         """
-        List of auto-tagging configurations for this catalog.
-        Empty list means no auto-tagging is enabled
+        Auto-tagging configurations that apply to this catalog. Each entry overrides the
+        metastore-level auto-tagging setting for its classification tag; tags without an entry
+        inherit the metastore-level setting
         """
         return pulumi.get(self, "auto_tag_configs")
 
@@ -177,7 +187,8 @@ class _DataClassificationCatalogConfigState:
     def excluded_schemas(self) -> pulumi.Input[Optional['DataClassificationCatalogConfigExcludedSchemasArgs']]:
         """
         Schemas to exclude from the scan, each named relative to the parent catalog.
-        If specified, all schemas except the specified ones will be scanned.
+        If specified, all schemas except the specified ones will be scanned, including schemas
+        created later.
         Mutually exclusive with `included_schemas`: only one may be set per request.
         If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
         """
@@ -192,7 +203,8 @@ class _DataClassificationCatalogConfigState:
     def included_schemas(self) -> pulumi.Input[Optional['DataClassificationCatalogConfigIncludedSchemasArgs']]:
         """
         Schemas to include in the scan, each named relative to the parent catalog.
-        If specified, only listed schemas will be scanned.
+        If specified, only listed schemas will be scanned. Schemas created later are not scanned
+        until you add them to the list.
         Mutually exclusive with `excluded_schemas`: only one may be set per request.
         If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
         """
@@ -218,7 +230,7 @@ class _DataClassificationCatalogConfigState:
     @pulumi.getter
     def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Parent resource in the format: catalogs/{catalog_name}
+        Name of the catalog to enable, in the format catalogs/{catalog_name}
         """
         return pulumi.get(self, "parent")
 
@@ -311,17 +323,20 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DataClassificationCatalogConfigAutoTagConfigArgs', 'DataClassificationCatalogConfigAutoTagConfigArgsDict', 'outputs.DataClassificationCatalogConfigAutoTagConfig']]]] auto_tag_configs: List of auto-tagging configurations for this catalog.
-               Empty list means no auto-tagging is enabled
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataClassificationCatalogConfigAutoTagConfigArgs', 'DataClassificationCatalogConfigAutoTagConfigArgsDict', 'outputs.DataClassificationCatalogConfigAutoTagConfig']]]] auto_tag_configs: Auto-tagging configurations that apply to this catalog. Each entry overrides the
+               metastore-level auto-tagging setting for its classification tag; tags without an entry
+               inherit the metastore-level setting
         :param pulumi.Input[Union['DataClassificationCatalogConfigExcludedSchemasArgs', 'DataClassificationCatalogConfigExcludedSchemasArgsDict', 'outputs.DataClassificationCatalogConfigExcludedSchemas']] excluded_schemas: Schemas to exclude from the scan, each named relative to the parent catalog.
-               If specified, all schemas except the specified ones will be scanned.
+               If specified, all schemas except the specified ones will be scanned, including schemas
+               created later.
                Mutually exclusive with `included_schemas`: only one may be set per request.
                If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
         :param pulumi.Input[Union['DataClassificationCatalogConfigIncludedSchemasArgs', 'DataClassificationCatalogConfigIncludedSchemasArgsDict', 'outputs.DataClassificationCatalogConfigIncludedSchemas']] included_schemas: Schemas to include in the scan, each named relative to the parent catalog.
-               If specified, only listed schemas will be scanned.
+               If specified, only listed schemas will be scanned. Schemas created later are not scanned
+               until you add them to the list.
                Mutually exclusive with `excluded_schemas`: only one may be set per request.
                If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
-        :param pulumi.Input[_builtins.str] parent: Parent resource in the format: catalogs/{catalog_name}
+        :param pulumi.Input[_builtins.str] parent: Name of the catalog to enable, in the format catalogs/{catalog_name}
         :param pulumi.Input[Union['DataClassificationCatalogConfigProviderConfigArgs', 'DataClassificationCatalogConfigProviderConfigArgsDict', 'outputs.DataClassificationCatalogConfigProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         ...
@@ -448,18 +463,21 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['DataClassificationCatalogConfigAutoTagConfigArgs', 'DataClassificationCatalogConfigAutoTagConfigArgsDict', 'outputs.DataClassificationCatalogConfigAutoTagConfig']]]] auto_tag_configs: List of auto-tagging configurations for this catalog.
-               Empty list means no auto-tagging is enabled
+        :param pulumi.Input[Sequence[pulumi.Input[Union['DataClassificationCatalogConfigAutoTagConfigArgs', 'DataClassificationCatalogConfigAutoTagConfigArgsDict', 'outputs.DataClassificationCatalogConfigAutoTagConfig']]]] auto_tag_configs: Auto-tagging configurations that apply to this catalog. Each entry overrides the
+               metastore-level auto-tagging setting for its classification tag; tags without an entry
+               inherit the metastore-level setting
         :param pulumi.Input[Union['DataClassificationCatalogConfigExcludedSchemasArgs', 'DataClassificationCatalogConfigExcludedSchemasArgsDict', 'outputs.DataClassificationCatalogConfigExcludedSchemas']] excluded_schemas: Schemas to exclude from the scan, each named relative to the parent catalog.
-               If specified, all schemas except the specified ones will be scanned.
+               If specified, all schemas except the specified ones will be scanned, including schemas
+               created later.
                Mutually exclusive with `included_schemas`: only one may be set per request.
                If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
         :param pulumi.Input[Union['DataClassificationCatalogConfigIncludedSchemasArgs', 'DataClassificationCatalogConfigIncludedSchemasArgsDict', 'outputs.DataClassificationCatalogConfigIncludedSchemas']] included_schemas: Schemas to include in the scan, each named relative to the parent catalog.
-               If specified, only listed schemas will be scanned.
+               If specified, only listed schemas will be scanned. Schemas created later are not scanned
+               until you add them to the list.
                Mutually exclusive with `excluded_schemas`: only one may be set per request.
                If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
         :param pulumi.Input[_builtins.str] name: (string) - Resource name in the format: catalogs/{catalog_name}/config
-        :param pulumi.Input[_builtins.str] parent: Parent resource in the format: catalogs/{catalog_name}
+        :param pulumi.Input[_builtins.str] parent: Name of the catalog to enable, in the format catalogs/{catalog_name}
         :param pulumi.Input[Union['DataClassificationCatalogConfigProviderConfigArgs', 'DataClassificationCatalogConfigProviderConfigArgsDict', 'outputs.DataClassificationCatalogConfigProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -496,8 +514,9 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
     @pulumi.getter(name="autoTagConfigs")
     def auto_tag_configs(self) -> pulumi.Output[Optional[Sequence['outputs.DataClassificationCatalogConfigAutoTagConfig']]]:
         """
-        List of auto-tagging configurations for this catalog.
-        Empty list means no auto-tagging is enabled
+        Auto-tagging configurations that apply to this catalog. Each entry overrides the
+        metastore-level auto-tagging setting for its classification tag; tags without an entry
+        inherit the metastore-level setting
         """
         return pulumi.get(self, "auto_tag_configs")
 
@@ -506,7 +525,8 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
     def excluded_schemas(self) -> pulumi.Output[Optional['outputs.DataClassificationCatalogConfigExcludedSchemas']]:
         """
         Schemas to exclude from the scan, each named relative to the parent catalog.
-        If specified, all schemas except the specified ones will be scanned.
+        If specified, all schemas except the specified ones will be scanned, including schemas
+        created later.
         Mutually exclusive with `included_schemas`: only one may be set per request.
         If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
         """
@@ -517,7 +537,8 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
     def included_schemas(self) -> pulumi.Output[Optional['outputs.DataClassificationCatalogConfigIncludedSchemas']]:
         """
         Schemas to include in the scan, each named relative to the parent catalog.
-        If specified, only listed schemas will be scanned.
+        If specified, only listed schemas will be scanned. Schemas created later are not scanned
+        until you add them to the list.
         Mutually exclusive with `excluded_schemas`: only one may be set per request.
         If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
         """
@@ -535,7 +556,7 @@ class DataClassificationCatalogConfig(pulumi.CustomResource):
     @pulumi.getter
     def parent(self) -> pulumi.Output[_builtins.str]:
         """
-        Parent resource in the format: catalogs/{catalog_name}
+        Name of the catalog to enable, in the format catalogs/{catalog_name}
         """
         return pulumi.get(self, "parent")
 

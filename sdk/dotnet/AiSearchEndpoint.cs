@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
     /// 
@@ -41,7 +41,10 @@ namespace Pulumi.Databricks
     public partial class AiSearchEndpoint : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The user-selected budget policy id for the endpoint
+        /// ID of the serverless budget policy to apply to the endpoint. The caller must have
+        /// permission to use the policy. Set either this field or `UsagePolicyId`, not both.
+        /// Responses do not echo this field; they report the applied policy in
+        /// `EffectiveBudgetPolicyId`
         /// </summary>
         [Output("budgetPolicyId")]
         public Output<string?> BudgetPolicyId { get; private set; } = null!;
@@ -53,34 +56,36 @@ namespace Pulumi.Databricks
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - Creator of the endpoint
+        /// (string) - User name of the principal that created the endpoint. For a user, it is the user's email
+        /// address; for any other principal, it is the principal's unique name
         /// </summary>
         [Output("creator")]
         public Output<string> Creator { get; private set; } = null!;
 
         /// <summary>
-        /// The custom tags assigned to the endpoint
+        /// Custom tags assigned to the endpoint. On update, the list replaces all of the endpoint's
+        /// existing tags
         /// </summary>
         [Output("customTags")]
         public Output<ImmutableArray<Outputs.AiSearchEndpointCustomTag>> CustomTags { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The budget policy id applied to the endpoint
+        /// (string) - ID of the budget policy that is currently applied to the endpoint
         /// </summary>
         [Output("effectiveBudgetPolicyId")]
         public Output<string> EffectiveBudgetPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// The user-supplied short name for the Endpoint, per AIP-133. The server composes the
-        /// full `Endpoint.name` as `{parent}/endpoints/{endpoint_id}`. AIP-133 does not list
-        /// `EndpointId` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-        /// wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
+        /// Short name of the endpoint, which becomes the last segment of `Name`. The server rejects
+        /// a request without it. The name can have at most 50 characters, can contain only lowercase
+        /// letters, digits, hyphens, periods, and underscores, and must start and end with a letter
+        /// or digit
         /// </summary>
         [Output("endpointId")]
         public Output<string> EndpointId { get; private set; } = null!;
 
         /// <summary>
-        /// (EndpointStatus) - Current status of the endpoint
+        /// (EndpointStatus) - Current lifecycle state of the endpoint, with an optional message that explains it
         /// </summary>
         [Output("endpointStatus")]
         public Output<Outputs.AiSearchEndpointEndpointStatus> EndpointStatus { get; private set; } = null!;
@@ -98,16 +103,15 @@ namespace Pulumi.Databricks
         public Output<int> IndexCount { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - User who last updated the endpoint
+        /// (string) - User name of the principal that last updated the endpoint, in the same format as `Creator`
         /// </summary>
         [Output("lastUpdatedUser")]
         public Output<string> LastUpdatedUser { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - Name of the AI Search endpoint. Server-assigned full resource path
-        /// (`workspaces/{workspace}/endpoints/{endpoint}`) on output. On create, the
-        /// user-supplied short name is conveyed via `CreateEndpointRequest.endpoint_id`;
-        /// the server composes the full `Name` and returns it on the response
+        /// (string) - Full resource name of the endpoint, in the form
+        /// `workspaces/{workspace_id}/endpoints/{endpoint_id}`. On create, the server composes it
+        /// from `Parent` and `EndpointId` and ignores any value supplied in the request body
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -140,7 +144,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Target QPS for the endpoint. Mutually exclusive with `ReplicaCount`. Best-effort;
-        /// the system does not guarantee this QPS will be achieved
+        /// the system does not guarantee this QPS will be achieved. Responses report the requested
+        /// value in `scaling_info.requested_target_qps`
         /// </summary>
         [Output("targetQps")]
         public Output<int?> TargetQps { get; private set; } = null!;
@@ -158,7 +163,8 @@ namespace Pulumi.Databricks
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// The usage policy id applied to the endpoint
+        /// ID of the usage policy to apply to the endpoint. The server treats it as the same setting
+        /// as `BudgetPolicyId`, so set only one of the two
         /// </summary>
         [Output("usagePolicyId")]
         public Output<string?> UsagePolicyId { get; private set; } = null!;
@@ -210,7 +216,10 @@ namespace Pulumi.Databricks
     public sealed class AiSearchEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The user-selected budget policy id for the endpoint
+        /// ID of the serverless budget policy to apply to the endpoint. The caller must have
+        /// permission to use the policy. Set either this field or `UsagePolicyId`, not both.
+        /// Responses do not echo this field; they report the applied policy in
+        /// `EffectiveBudgetPolicyId`
         /// </summary>
         [Input("budgetPolicyId")]
         public Input<string>? BudgetPolicyId { get; set; }
@@ -219,7 +228,8 @@ namespace Pulumi.Databricks
         private InputList<Inputs.AiSearchEndpointCustomTagArgs>? _customTags;
 
         /// <summary>
-        /// The custom tags assigned to the endpoint
+        /// Custom tags assigned to the endpoint. On update, the list replaces all of the endpoint's
+        /// existing tags
         /// </summary>
         public InputList<Inputs.AiSearchEndpointCustomTagArgs> CustomTags
         {
@@ -228,10 +238,10 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// The user-supplied short name for the Endpoint, per AIP-133. The server composes the
-        /// full `Endpoint.name` as `{parent}/endpoints/{endpoint_id}`. AIP-133 does not list
-        /// `EndpointId` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-        /// wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
+        /// Short name of the endpoint, which becomes the last segment of `Name`. The server rejects
+        /// a request without it. The name can have at most 50 characters, can contain only lowercase
+        /// letters, digits, hyphens, periods, and underscores, and must start and end with a letter
+        /// or digit
         /// </summary>
         [Input("endpointId")]
         public Input<string>? EndpointId { get; set; }
@@ -264,13 +274,15 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Target QPS for the endpoint. Mutually exclusive with `ReplicaCount`. Best-effort;
-        /// the system does not guarantee this QPS will be achieved
+        /// the system does not guarantee this QPS will be achieved. Responses report the requested
+        /// value in `scaling_info.requested_target_qps`
         /// </summary>
         [Input("targetQps")]
         public Input<int>? TargetQps { get; set; }
 
         /// <summary>
-        /// The usage policy id applied to the endpoint
+        /// ID of the usage policy to apply to the endpoint. The server treats it as the same setting
+        /// as `BudgetPolicyId`, so set only one of the two
         /// </summary>
         [Input("usagePolicyId")]
         public Input<string>? UsagePolicyId { get; set; }
@@ -284,7 +296,10 @@ namespace Pulumi.Databricks
     public sealed class AiSearchEndpointState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The user-selected budget policy id for the endpoint
+        /// ID of the serverless budget policy to apply to the endpoint. The caller must have
+        /// permission to use the policy. Set either this field or `UsagePolicyId`, not both.
+        /// Responses do not echo this field; they report the applied policy in
+        /// `EffectiveBudgetPolicyId`
         /// </summary>
         [Input("budgetPolicyId")]
         public Input<string>? BudgetPolicyId { get; set; }
@@ -296,7 +311,8 @@ namespace Pulumi.Databricks
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// (string) - Creator of the endpoint
+        /// (string) - User name of the principal that created the endpoint. For a user, it is the user's email
+        /// address; for any other principal, it is the principal's unique name
         /// </summary>
         [Input("creator")]
         public Input<string>? Creator { get; set; }
@@ -305,7 +321,8 @@ namespace Pulumi.Databricks
         private InputList<Inputs.AiSearchEndpointCustomTagGetArgs>? _customTags;
 
         /// <summary>
-        /// The custom tags assigned to the endpoint
+        /// Custom tags assigned to the endpoint. On update, the list replaces all of the endpoint's
+        /// existing tags
         /// </summary>
         public InputList<Inputs.AiSearchEndpointCustomTagGetArgs> CustomTags
         {
@@ -314,22 +331,22 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// (string) - The budget policy id applied to the endpoint
+        /// (string) - ID of the budget policy that is currently applied to the endpoint
         /// </summary>
         [Input("effectiveBudgetPolicyId")]
         public Input<string>? EffectiveBudgetPolicyId { get; set; }
 
         /// <summary>
-        /// The user-supplied short name for the Endpoint, per AIP-133. The server composes the
-        /// full `Endpoint.name` as `{parent}/endpoints/{endpoint_id}`. AIP-133 does not list
-        /// `EndpointId` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-        /// wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
+        /// Short name of the endpoint, which becomes the last segment of `Name`. The server rejects
+        /// a request without it. The name can have at most 50 characters, can contain only lowercase
+        /// letters, digits, hyphens, periods, and underscores, and must start and end with a letter
+        /// or digit
         /// </summary>
         [Input("endpointId")]
         public Input<string>? EndpointId { get; set; }
 
         /// <summary>
-        /// (EndpointStatus) - Current status of the endpoint
+        /// (EndpointStatus) - Current lifecycle state of the endpoint, with an optional message that explains it
         /// </summary>
         [Input("endpointStatus")]
         public Input<Inputs.AiSearchEndpointEndpointStatusGetArgs>? EndpointStatus { get; set; }
@@ -347,16 +364,15 @@ namespace Pulumi.Databricks
         public Input<int>? IndexCount { get; set; }
 
         /// <summary>
-        /// (string) - User who last updated the endpoint
+        /// (string) - User name of the principal that last updated the endpoint, in the same format as `Creator`
         /// </summary>
         [Input("lastUpdatedUser")]
         public Input<string>? LastUpdatedUser { get; set; }
 
         /// <summary>
-        /// (string) - Name of the AI Search endpoint. Server-assigned full resource path
-        /// (`workspaces/{workspace}/endpoints/{endpoint}`) on output. On create, the
-        /// user-supplied short name is conveyed via `CreateEndpointRequest.endpoint_id`;
-        /// the server composes the full `Name` and returns it on the response
+        /// (string) - Full resource name of the endpoint, in the form
+        /// `workspaces/{workspace_id}/endpoints/{endpoint_id}`. On create, the server composes it
+        /// from `Parent` and `EndpointId` and ignores any value supplied in the request body
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -389,7 +405,8 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// Target QPS for the endpoint. Mutually exclusive with `ReplicaCount`. Best-effort;
-        /// the system does not guarantee this QPS will be achieved
+        /// the system does not guarantee this QPS will be achieved. Responses report the requested
+        /// value in `scaling_info.requested_target_qps`
         /// </summary>
         [Input("targetQps")]
         public Input<int>? TargetQps { get; set; }
@@ -407,7 +424,8 @@ namespace Pulumi.Databricks
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
-        /// The usage policy id applied to the endpoint
+        /// ID of the usage policy to apply to the endpoint. The server treats it as the same setting
+        /// as `BudgetPolicyId`, so set only one of the two
         /// </summary>
         [Input("usagePolicyId")]
         public Input<string>? UsagePolicyId { get; set; }

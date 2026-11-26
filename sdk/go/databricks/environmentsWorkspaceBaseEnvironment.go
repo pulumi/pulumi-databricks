@@ -85,7 +85,7 @@ import (
 type EnvironmentsWorkspaceBaseEnvironment struct {
 	pulumi.CustomResourceState
 
-	// The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+	// The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
 	BaseEnvironmentType pulumi.StringPtrOutput `pulumi:"baseEnvironmentType"`
 	// (string) - Timestamp when the environment was created
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -94,22 +94,27 @@ type EnvironmentsWorkspaceBaseEnvironment struct {
 	// Human-readable display name for the workspace base environment
 	DisplayName                  pulumi.StringOutput `pulumi:"displayName"`
 	EffectiveBaseEnvironmentType pulumi.StringOutput `pulumi:"effectiveBaseEnvironmentType"`
-	// The WSFS or UC Volumes path to the environment YAML file
+	// The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+	// dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
 	Filepath pulumi.StringPtrOutput `pulumi:"filepath"`
 	// (boolean) - Whether this is the default environment for the workspace
 	IsDefault pulumi.BoolOutput `pulumi:"isDefault"`
 	// (string) - User ID of the last user who updated the environment
 	LastUpdatedUserId pulumi.StringOutput `pulumi:"lastUpdatedUserId"`
-	// (string) - Status message providing additional details about the environment status
+	// (string) - Status message providing additional details about the environment status.
+	// When the status is `FAILED`, the message contains the build error
 	Message pulumi.StringOutput `pulumi:"message"`
 	// (string) - The resource name of the workspace base environment.
 	// Format: workspace-base-environments/{workspace-base-environment}
+	// The server ignores this field on create and builds the name from `workspaceBaseEnvironmentId`, or from
+	// `displayName` plus a random suffix when no ID is given
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig EnvironmentsWorkspaceBaseEnvironmentProviderConfigOutput `pulumi:"providerConfig"`
-	// (EnvironmentSpec) - The environment specification containing version and dependencies
+	// (EnvironmentSpec) - The environment specification containing version and dependencies, read from the YAML file at `filepath`
 	Spec EnvironmentsWorkspaceBaseEnvironmentSpecOutput `pulumi:"spec"`
-	// (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
+	// (string) - The status of the materialized workspace base environment, which the server builds from the YAML file.
+	// The status is `CREATED` once the build has succeeded. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
 	Status pulumi.StringOutput `pulumi:"status"`
 	// (string) - Timestamp when the environment was last updated
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -152,7 +157,7 @@ func GetEnvironmentsWorkspaceBaseEnvironment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EnvironmentsWorkspaceBaseEnvironment resources.
 type environmentsWorkspaceBaseEnvironmentState struct {
-	// The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+	// The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
 	BaseEnvironmentType *string `pulumi:"baseEnvironmentType"`
 	// (string) - Timestamp when the environment was created
 	CreateTime *string `pulumi:"createTime"`
@@ -161,22 +166,27 @@ type environmentsWorkspaceBaseEnvironmentState struct {
 	// Human-readable display name for the workspace base environment
 	DisplayName                  *string `pulumi:"displayName"`
 	EffectiveBaseEnvironmentType *string `pulumi:"effectiveBaseEnvironmentType"`
-	// The WSFS or UC Volumes path to the environment YAML file
+	// The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+	// dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
 	Filepath *string `pulumi:"filepath"`
 	// (boolean) - Whether this is the default environment for the workspace
 	IsDefault *bool `pulumi:"isDefault"`
 	// (string) - User ID of the last user who updated the environment
 	LastUpdatedUserId *string `pulumi:"lastUpdatedUserId"`
-	// (string) - Status message providing additional details about the environment status
+	// (string) - Status message providing additional details about the environment status.
+	// When the status is `FAILED`, the message contains the build error
 	Message *string `pulumi:"message"`
 	// (string) - The resource name of the workspace base environment.
 	// Format: workspace-base-environments/{workspace-base-environment}
+	// The server ignores this field on create and builds the name from `workspaceBaseEnvironmentId`, or from
+	// `displayName` plus a random suffix when no ID is given
 	Name *string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *EnvironmentsWorkspaceBaseEnvironmentProviderConfig `pulumi:"providerConfig"`
-	// (EnvironmentSpec) - The environment specification containing version and dependencies
+	// (EnvironmentSpec) - The environment specification containing version and dependencies, read from the YAML file at `filepath`
 	Spec *EnvironmentsWorkspaceBaseEnvironmentSpec `pulumi:"spec"`
-	// (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
+	// (string) - The status of the materialized workspace base environment, which the server builds from the YAML file.
+	// The status is `CREATED` once the build has succeeded. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
 	Status *string `pulumi:"status"`
 	// (string) - Timestamp when the environment was last updated
 	UpdateTime *string `pulumi:"updateTime"`
@@ -187,7 +197,7 @@ type environmentsWorkspaceBaseEnvironmentState struct {
 }
 
 type EnvironmentsWorkspaceBaseEnvironmentState struct {
-	// The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+	// The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
 	BaseEnvironmentType pulumi.StringPtrInput
 	// (string) - Timestamp when the environment was created
 	CreateTime pulumi.StringPtrInput
@@ -196,22 +206,27 @@ type EnvironmentsWorkspaceBaseEnvironmentState struct {
 	// Human-readable display name for the workspace base environment
 	DisplayName                  pulumi.StringPtrInput
 	EffectiveBaseEnvironmentType pulumi.StringPtrInput
-	// The WSFS or UC Volumes path to the environment YAML file
+	// The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+	// dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
 	Filepath pulumi.StringPtrInput
 	// (boolean) - Whether this is the default environment for the workspace
 	IsDefault pulumi.BoolPtrInput
 	// (string) - User ID of the last user who updated the environment
 	LastUpdatedUserId pulumi.StringPtrInput
-	// (string) - Status message providing additional details about the environment status
+	// (string) - Status message providing additional details about the environment status.
+	// When the status is `FAILED`, the message contains the build error
 	Message pulumi.StringPtrInput
 	// (string) - The resource name of the workspace base environment.
 	// Format: workspace-base-environments/{workspace-base-environment}
+	// The server ignores this field on create and builds the name from `workspaceBaseEnvironmentId`, or from
+	// `displayName` plus a random suffix when no ID is given
 	Name pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig EnvironmentsWorkspaceBaseEnvironmentProviderConfigPtrInput
-	// (EnvironmentSpec) - The environment specification containing version and dependencies
+	// (EnvironmentSpec) - The environment specification containing version and dependencies, read from the YAML file at `filepath`
 	Spec EnvironmentsWorkspaceBaseEnvironmentSpecPtrInput
-	// (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
+	// (string) - The status of the materialized workspace base environment, which the server builds from the YAML file.
+	// The status is `CREATED` once the build has succeeded. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
 	Status pulumi.StringPtrInput
 	// (string) - Timestamp when the environment was last updated
 	UpdateTime pulumi.StringPtrInput
@@ -232,11 +247,12 @@ func EnvironmentsWorkspaceBaseEnvironmentExists(ctx *pulumi.Context,
 }
 
 type environmentsWorkspaceBaseEnvironmentArgs struct {
-	// The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+	// The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
 	BaseEnvironmentType *string `pulumi:"baseEnvironmentType"`
 	// Human-readable display name for the workspace base environment
 	DisplayName string `pulumi:"displayName"`
-	// The WSFS or UC Volumes path to the environment YAML file
+	// The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+	// dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
 	Filepath *string `pulumi:"filepath"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *EnvironmentsWorkspaceBaseEnvironmentProviderConfig `pulumi:"providerConfig"`
@@ -248,11 +264,12 @@ type environmentsWorkspaceBaseEnvironmentArgs struct {
 
 // The set of arguments for constructing a EnvironmentsWorkspaceBaseEnvironment resource.
 type EnvironmentsWorkspaceBaseEnvironmentArgs struct {
-	// The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+	// The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
 	BaseEnvironmentType pulumi.StringPtrInput
 	// Human-readable display name for the workspace base environment
 	DisplayName pulumi.StringInput
-	// The WSFS or UC Volumes path to the environment YAML file
+	// The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+	// dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
 	Filepath pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig EnvironmentsWorkspaceBaseEnvironmentProviderConfigPtrInput
@@ -349,7 +366,7 @@ func (o EnvironmentsWorkspaceBaseEnvironmentOutput) ToEnvironmentsWorkspaceBaseE
 	return o
 }
 
-// The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+// The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
 func (o EnvironmentsWorkspaceBaseEnvironmentOutput) BaseEnvironmentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentsWorkspaceBaseEnvironment) pulumi.StringPtrOutput { return v.BaseEnvironmentType }).(pulumi.StringPtrOutput)
 }
@@ -375,7 +392,8 @@ func (o EnvironmentsWorkspaceBaseEnvironmentOutput) EffectiveBaseEnvironmentType
 	}).(pulumi.StringOutput)
 }
 
-// The WSFS or UC Volumes path to the environment YAML file
+// The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+// dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
 func (o EnvironmentsWorkspaceBaseEnvironmentOutput) Filepath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentsWorkspaceBaseEnvironment) pulumi.StringPtrOutput { return v.Filepath }).(pulumi.StringPtrOutput)
 }
@@ -390,13 +408,16 @@ func (o EnvironmentsWorkspaceBaseEnvironmentOutput) LastUpdatedUserId() pulumi.S
 	return o.ApplyT(func(v *EnvironmentsWorkspaceBaseEnvironment) pulumi.StringOutput { return v.LastUpdatedUserId }).(pulumi.StringOutput)
 }
 
-// (string) - Status message providing additional details about the environment status
+// (string) - Status message providing additional details about the environment status.
+// When the status is `FAILED`, the message contains the build error
 func (o EnvironmentsWorkspaceBaseEnvironmentOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnvironmentsWorkspaceBaseEnvironment) pulumi.StringOutput { return v.Message }).(pulumi.StringOutput)
 }
 
 // (string) - The resource name of the workspace base environment.
 // Format: workspace-base-environments/{workspace-base-environment}
+// The server ignores this field on create and builds the name from `workspaceBaseEnvironmentId`, or from
+// `displayName` plus a random suffix when no ID is given
 func (o EnvironmentsWorkspaceBaseEnvironmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnvironmentsWorkspaceBaseEnvironment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -408,14 +429,15 @@ func (o EnvironmentsWorkspaceBaseEnvironmentOutput) ProviderConfig() Environment
 	}).(EnvironmentsWorkspaceBaseEnvironmentProviderConfigOutput)
 }
 
-// (EnvironmentSpec) - The environment specification containing version and dependencies
+// (EnvironmentSpec) - The environment specification containing version and dependencies, read from the YAML file at `filepath`
 func (o EnvironmentsWorkspaceBaseEnvironmentOutput) Spec() EnvironmentsWorkspaceBaseEnvironmentSpecOutput {
 	return o.ApplyT(func(v *EnvironmentsWorkspaceBaseEnvironment) EnvironmentsWorkspaceBaseEnvironmentSpecOutput {
 		return v.Spec
 	}).(EnvironmentsWorkspaceBaseEnvironmentSpecOutput)
 }
 
-// (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
+// (string) - The status of the materialized workspace base environment, which the server builds from the YAML file.
+// The status is `CREATED` once the build has succeeded. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
 func (o EnvironmentsWorkspaceBaseEnvironmentOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnvironmentsWorkspaceBaseEnvironment) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

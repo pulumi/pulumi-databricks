@@ -13,6 +13,8 @@ import * as utilities from "./utilities";
  *
  * > This resource can only be used with a workspace-level provider!
  *
+ * > **Note** Write-Only argument `personalAccessTokenWo` is available to use in place of `personalAccessToken`. Write-Only arguments are supported in HashiCorp Pulumi 1.11.0 and later. Learn more.
+ *
  * ## Example Usage
  *
  * ### Git credential that uses personal access token
@@ -27,6 +29,22 @@ import * as utilities from "./utilities";
  *     gitUsername: "myuser",
  *     gitProvider: "azureDevOpsServices",
  *     personalAccessToken: "sometoken",
+ * });
+ * ```
+ *
+ * ### Git credential that uses a write-only personal access token
+ *
+ * Use `personalAccessTokenWo` to avoid storing the token in the Pulumi state. The value can come from an ephemeral resource or a variable. Increment `personalAccessTokenWoVersion` whenever the token needs to be updated:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const ado = new databricks.GitCredential("ado", {
+ *     gitUsername: "myuser",
+ *     gitProvider: "azureDevOpsServices",
+ *     personalAccessTokenWo: adoPat,
+ *     personalAccessTokenWoVersion: 1,
  * });
  * ```
  *
@@ -127,9 +145,18 @@ export class GitCredential extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+     * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `personalAccessTokenWo`.
      */
     declare public readonly personalAccessToken: pulumi.Output<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only alternative to `personalAccessToken`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `personalAccessTokenWoVersion`. When set, `personalAccessToken` is not sourced from environment variables, and a token previously stored in `personalAccessToken` is removed from the state.
+     */
+    declare public readonly personalAccessTokenWo: pulumi.Output<string | undefined>;
+    /**
+     * Use together with `personalAccessTokenWo` to trigger an update. Increment this value (starting at 1) when an update to `personalAccessTokenWo` is required.
+     */
+    declare public readonly personalAccessTokenWoVersion: pulumi.Output<number | undefined>;
     /**
      * The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
      */
@@ -159,6 +186,8 @@ export class GitCredential extends pulumi.CustomResource {
             resourceInputs["isDefaultForProvider"] = state?.isDefaultForProvider;
             resourceInputs["name"] = state?.name;
             resourceInputs["personalAccessToken"] = state?.personalAccessToken;
+            resourceInputs["personalAccessTokenWo"] = state?.personalAccessTokenWo;
+            resourceInputs["personalAccessTokenWoVersion"] = state?.personalAccessTokenWoVersion;
             resourceInputs["principalId"] = state?.principalId;
             resourceInputs["providerConfig"] = state?.providerConfig;
         } else {
@@ -173,11 +202,13 @@ export class GitCredential extends pulumi.CustomResource {
             resourceInputs["isDefaultForProvider"] = args?.isDefaultForProvider;
             resourceInputs["name"] = args?.name;
             resourceInputs["personalAccessToken"] = args?.personalAccessToken ? pulumi.secret(args.personalAccessToken) : undefined;
+            resourceInputs["personalAccessTokenWo"] = args?.personalAccessTokenWo ? pulumi.secret(args.personalAccessTokenWo) : undefined;
+            resourceInputs["personalAccessTokenWoVersion"] = args?.personalAccessTokenWoVersion;
             resourceInputs["principalId"] = args?.principalId;
             resourceInputs["providerConfig"] = args?.providerConfig;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["personalAccessToken"] };
+        const secretOpts = { additionalSecretOutputs: ["personalAccessToken", "personalAccessTokenWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(GitCredential.__pulumiType, name, resourceInputs, opts);
     }
@@ -212,9 +243,18 @@ export interface GitCredentialState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+     * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `personalAccessTokenWo`.
      */
     personalAccessToken?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only alternative to `personalAccessToken`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `personalAccessTokenWoVersion`. When set, `personalAccessToken` is not sourced from environment variables, and a token previously stored in `personalAccessToken` is removed from the state.
+     */
+    personalAccessTokenWo?: pulumi.Input<string | undefined>;
+    /**
+     * Use together with `personalAccessTokenWo` to trigger an update. Increment this value (starting at 1) when an update to `personalAccessTokenWo` is required.
+     */
+    personalAccessTokenWoVersion?: pulumi.Input<number | undefined>;
     /**
      * The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
      */
@@ -254,9 +294,18 @@ export interface GitCredentialArgs {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+     * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `personalAccessTokenWo`.
      */
     personalAccessToken?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only alternative to `personalAccessToken`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `personalAccessTokenWoVersion`. When set, `personalAccessToken` is not sourced from environment variables, and a token previously stored in `personalAccessToken` is removed from the state.
+     */
+    personalAccessTokenWo?: pulumi.Input<string | undefined>;
+    /**
+     * Use together with `personalAccessTokenWo` to trigger an update. Increment this value (starting at 1) when an update to `personalAccessTokenWo` is required.
+     */
+    personalAccessTokenWoVersion?: pulumi.Input<number | undefined>;
     /**
      * The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
      */

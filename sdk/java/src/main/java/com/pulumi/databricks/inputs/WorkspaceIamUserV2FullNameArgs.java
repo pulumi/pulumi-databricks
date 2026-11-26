@@ -15,16 +15,32 @@ public final class WorkspaceIamUserV2FullNameArgs extends com.pulumi.resources.R
 
     public static final WorkspaceIamUserV2FullNameArgs Empty = new WorkspaceIamUserV2FullNameArgs();
 
+    /**
+     * The user&#39;s family (last) name
+     * 
+     */
     @Import(name="familyName")
     private @Nullable Output<String> familyName;
 
+    /**
+     * @return The user&#39;s family (last) name
+     * 
+     */
     public Optional<Output<String>> familyName() {
         return Optional.ofNullable(this.familyName);
     }
 
+    /**
+     * The user&#39;s given (first) name
+     * 
+     */
     @Import(name="givenName")
     private @Nullable Output<String> givenName;
 
+    /**
+     * @return The user&#39;s given (first) name
+     * 
+     */
     public Optional<Output<String>> givenName() {
         return Optional.ofNullable(this.givenName);
     }
@@ -54,20 +70,44 @@ public final class WorkspaceIamUserV2FullNameArgs extends com.pulumi.resources.R
             $ = new WorkspaceIamUserV2FullNameArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param familyName The user&#39;s family (last) name
+         * 
+         * @return builder
+         * 
+         */
         public Builder familyName(@Nullable Output<String> familyName) {
             $.familyName = familyName;
             return this;
         }
 
+        /**
+         * @param familyName The user&#39;s family (last) name
+         * 
+         * @return builder
+         * 
+         */
         public Builder familyName(String familyName) {
             return familyName(Output.of(familyName));
         }
 
+        /**
+         * @param givenName The user&#39;s given (first) name
+         * 
+         * @return builder
+         * 
+         */
         public Builder givenName(@Nullable Output<String> givenName) {
             $.givenName = givenName;
             return this;
         }
 
+        /**
+         * @param givenName The user&#39;s given (first) name
+         * 
+         * @return builder
+         * 
+         */
         public Builder givenName(String givenName) {
             return givenName(Output.of(givenName));
         }

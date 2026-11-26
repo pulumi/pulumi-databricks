@@ -14,11 +14,13 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetDisasterRecoveryFailoverGroupsFailoverGroupUnityCatalogAssetsLocationMappingResult
     {
         /// <summary>
-        /// (string) - Resource name for this workspace set
+        /// (string) - Identifier of the workspace set, unique within the failover group and referenced by
+        /// unity_catalog_assets.data_replication_workspace_set. Cannot be changed after creation
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (list of LocationMappingEntry) - URI for each region. Each entry maps a region name to a storage URI
+        /// (list of LocationMappingEntry) - The storage URI of this location in each region, with exactly one entry per region of the
+        /// failover group
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDisasterRecoveryFailoverGroupsFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionResult> UriByRegions;
 

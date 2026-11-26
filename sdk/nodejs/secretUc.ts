@@ -27,11 +27,9 @@ import * as utilities from "./utilities";
  * const example = new databricks.SecretUc("example", {
  *     catalogName: "my_catalog",
  *     schemaName: "my_schema",
- *     secret: [{
- *         name: "my_secret",
- *         value: "secret_value",
- *         comment: "My secret for external service authentication",
- *     }],
+ *     name: "my_secret",
+ *     value: "secret_value",
+ *     comment: "My secret for external service authentication",
  * });
  * ```
  */

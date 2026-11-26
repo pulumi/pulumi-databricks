@@ -17,14 +17,14 @@ public final class AiSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs e
     public static final AiSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs Empty = new AiSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs();
 
     /**
-     * Dimension of the embedding vector
+     * Number of elements in each embedding vector. It must be positive
      * 
      */
     @Import(name="embeddingDimension")
     private @Nullable Output<Integer> embeddingDimension;
 
     /**
-     * @return Dimension of the embedding vector
+     * @return Number of elements in each embedding vector. It must be positive
      * 
      */
     public Optional<Output<Integer>> embeddingDimension() {
@@ -80,7 +80,7 @@ public final class AiSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs e
         }
 
         /**
-         * @param embeddingDimension Dimension of the embedding vector
+         * @param embeddingDimension Number of elements in each embedding vector. It must be positive
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class AiSearchIndexDirectAccessIndexSpecEmbeddingVectorColumnArgs e
         }
 
         /**
-         * @param embeddingDimension Dimension of the embedding vector
+         * @param embeddingDimension Number of elements in each embedding vector. It must be positive
          * 
          * @return builder
          * 

@@ -15,14 +15,14 @@ public final class DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappin
     public static final DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArgs Empty = new DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArgs();
 
     /**
-     * The region name
+     * Cloud region this URI applies to. Must be one of the failover group&#39;s regions
      * 
      */
     @Import(name="region", required=true)
     private Output<String> region;
 
     /**
-     * @return The region name
+     * @return Cloud region this URI applies to. Must be one of the failover group&#39;s regions
      * 
      */
     public Output<String> region() {
@@ -30,14 +30,16 @@ public final class DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappin
     }
 
     /**
-     * The storage URI for this region
+     * Cloud storage URI of the location in this region. End the URI with `/*` to map every path
+     * under it as a prefix; within one mapping, either all URIs or none carry the `/*` suffix
      * 
      */
     @Import(name="uri", required=true)
     private Output<String> uri;
 
     /**
-     * @return The storage URI for this region
+     * @return Cloud storage URI of the location in this region. End the URI with `/*` to map every path
+     * under it as a prefix; within one mapping, either all URIs or none carry the `/*` suffix
      * 
      */
     public Output<String> uri() {
@@ -70,7 +72,7 @@ public final class DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappin
         }
 
         /**
-         * @param region The region name
+         * @param region Cloud region this URI applies to. Must be one of the failover group&#39;s regions
          * 
          * @return builder
          * 
@@ -81,7 +83,7 @@ public final class DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappin
         }
 
         /**
-         * @param region The region name
+         * @param region Cloud region this URI applies to. Must be one of the failover group&#39;s regions
          * 
          * @return builder
          * 
@@ -91,7 +93,8 @@ public final class DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappin
         }
 
         /**
-         * @param uri The storage URI for this region
+         * @param uri Cloud storage URI of the location in this region. End the URI with `/*` to map every path
+         * under it as a prefix; within one mapping, either all URIs or none carry the `/*` suffix
          * 
          * @return builder
          * 
@@ -102,7 +105,8 @@ public final class DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappin
         }
 
         /**
-         * @param uri The storage URI for this region
+         * @param uri Cloud storage URI of the location in this region. End the URI with `/*` to map every path
+         * under it as a prefix; within one mapping, either all URIs or none carry the `/*` suffix
          * 
          * @return builder
          * 

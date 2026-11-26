@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  *
@@ -59,7 +59,7 @@ export interface GetPostgresEndpointResult {
      */
     readonly createTime: string;
     /**
-     * (string) - Part of the resource name
+     * (string) - The endpoint ID, which is the final segment of the endpoint's resource name
      */
     readonly endpointId: string;
     /**
@@ -74,15 +74,18 @@ export interface GetPostgresEndpointResult {
     readonly parent: string;
     readonly providerConfig?: outputs.GetPostgresEndpointProviderConfig;
     /**
-     * (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+     * (EndpointSpec) - The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+     * changed after creation. See `status` for the configuration that is currently in effect.
      */
     readonly spec: outputs.GetPostgresEndpointSpec;
     /**
-     * (EndpointStatus) - Current operational status of the compute endpoint
+     * (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+     * system, including the hostnames to connect to
      */
     readonly status: outputs.GetPostgresEndpointStatus;
     /**
-     * (string) - System-generated unique ID for the endpoint
+     * (string) - A system-generated ID that identifies the endpoint. Unlike `name`, it is not derived from the
+     * user-chosen endpoint ID. The endpoint's connection hostnames are based on this ID
      */
     readonly uid: string;
     /**
@@ -91,7 +94,7 @@ export interface GetPostgresEndpointResult {
     readonly updateTime: string;
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  *

@@ -78,14 +78,14 @@ public final class WorkspaceEntityTagAssignmentArgs extends com.pulumi.resources
     }
 
     /**
-     * The value of the tag
+     * The value of the tag. If the value is omitted, the tag is assigned with its key only
      * 
      */
     @Import(name="tagValue")
     private @Nullable Output<String> tagValue;
 
     /**
-     * @return The value of the tag
+     * @return The value of the tag. If the value is omitted, the tag is assigned with its key only
      * 
      */
     public Optional<Output<String>> tagValue() {
@@ -205,7 +205,7 @@ public final class WorkspaceEntityTagAssignmentArgs extends com.pulumi.resources
         }
 
         /**
-         * @param tagValue The value of the tag
+         * @param tagValue The value of the tag. If the value is omitted, the tag is assigned with its key only
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class WorkspaceEntityTagAssignmentArgs extends com.pulumi.resources
         }
 
         /**
-         * @param tagValue The value of the tag
+         * @param tagValue The value of the tag. If the value is omitted, the tag is assigned with its key only
          * 
          * @return builder
          * 

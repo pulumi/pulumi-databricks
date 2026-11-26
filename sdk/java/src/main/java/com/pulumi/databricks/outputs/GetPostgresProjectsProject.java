@@ -50,7 +50,7 @@ public final class GetPostgresProjectsProject {
      */
     private String name;
     /**
-     * @return (string) - Part of the resource name
+     * @return (string) - The project ID, which is the final segment of the project&#39;s resource name
      * 
      */
     private String projectId;
@@ -66,17 +66,21 @@ public final class GetPostgresProjectsProject {
      */
     private String purgeTime;
     /**
-     * @return (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
+     * @return (ProjectSpec) - The desired configuration of the project. The fields under `spec` are the ones that can be
+     * changed after creation, except `pgVersion`, which is fixed when the project is created. See
+     * `status` for the configuration that is currently in effect.
      * 
      */
     private GetPostgresProjectsProjectSpec spec;
     /**
-     * @return (ProjectStatus) - The current status of a Project
+     * @return (ProjectStatus) - The configuration and state of the project that are currently in effect, as reported by the
+     * system
      * 
      */
     private GetPostgresProjectsProjectStatus status;
     /**
-     * @return (string) - System-generated unique ID for the project
+     * @return (string) - A system-generated UUID that identifies the project. Unlike `name`, it is not derived from the
+     * user-chosen project ID
      * 
      */
     private String uid;
@@ -130,7 +134,7 @@ public final class GetPostgresProjectsProject {
         return this.name;
     }
     /**
-     * @return (string) - Part of the resource name
+     * @return (string) - The project ID, which is the final segment of the project&#39;s resource name
      * 
      */
     public String projectId() {
@@ -152,21 +156,25 @@ public final class GetPostgresProjectsProject {
         return this.purgeTime;
     }
     /**
-     * @return (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
+     * @return (ProjectSpec) - The desired configuration of the project. The fields under `spec` are the ones that can be
+     * changed after creation, except `pgVersion`, which is fixed when the project is created. See
+     * `status` for the configuration that is currently in effect.
      * 
      */
     public GetPostgresProjectsProjectSpec spec() {
         return this.spec;
     }
     /**
-     * @return (ProjectStatus) - The current status of a Project
+     * @return (ProjectStatus) - The configuration and state of the project that are currently in effect, as reported by the
+     * system
      * 
      */
     public GetPostgresProjectsProjectStatus status() {
         return this.status;
     }
     /**
-     * @return (string) - System-generated unique ID for the project
+     * @return (string) - A system-generated UUID that identifies the project. Unlike `name`, it is not derived from the
+     * user-chosen project ID
      * 
      */
     public String uid() {

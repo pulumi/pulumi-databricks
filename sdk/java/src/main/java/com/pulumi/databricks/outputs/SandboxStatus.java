@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class SandboxStatus {
     /**
-     * @return (string) - Lifecycle state of the sandbox. Possible values are: `SANDBOX_STATE_PENDING`, `SANDBOX_STATE_RUNNING`, `SANDBOX_STATE_STOPPED`, `SANDBOX_STATE_STOPPING`
+     * @return (string) - Lifecycle state of the sandbox.
      * 
      */
     private @Nullable String state;
 
     private SandboxStatus() {}
     /**
-     * @return (string) - Lifecycle state of the sandbox. Possible values are: `SANDBOX_STATE_PENDING`, `SANDBOX_STATE_RUNNING`, `SANDBOX_STATE_STOPPED`, `SANDBOX_STATE_STOPPING`
+     * @return (string) - Lifecycle state of the sandbox.
      * 
      */
     public Optional<String> state() {

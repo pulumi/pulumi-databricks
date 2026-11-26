@@ -14,35 +14,37 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetWorkspaceIamServicePrincipalsV2ServicePrincipalResult
     {
         /// <summary>
-        /// (string) - The parent account ID for the service principal in Databricks
+        /// (string) - The ID of the account that contains the service principal
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// (string) - The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+        /// (string) - Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
         /// </summary>
         public readonly string AccountSpStatus;
         /// <summary>
-        /// (string) - Application ID of the service principal. Set at creation time and cannot be changed
-        /// afterwards; when omitted, the server generates one
+        /// (string) - The service principal's application ID, a UUID. If you don't set it when you create the
+        /// service principal, Databricks generates one. It must be unique in the account and can't be
+        /// changed
         /// </summary>
         public readonly string ApplicationId;
         /// <summary>
-        /// (string) - Display name of the service principal
+        /// (string) - The service principal's display name
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// (string) - ExternalId of the service principal in the customer's IdP
+        /// (string) - The ID of the service principal in your identity provider (IdP)
         /// </summary>
         public readonly string ExternalId;
         /// <summary>
-        /// (string) - The resource name of the service principal. The format depends on the API that returned it:
-        /// - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-        /// - Workspace-scoped: service-principals/{service_principal_id}
+        /// (string) - The resource name of the service principal, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+        /// - Workspace APIs: `service-principals/{service_principal_id}`
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The resource name of the account to list service principals in, `accounts/{account_id}`. Optional:
-        /// defaults to the account of the calling workspace, and any other account is rejected
+        /// The resource name of the account to list service principals in, in the format
+        /// `accounts/{account_id}`. Defaults to the account that contains this workspace. Any other
+        /// account is rejected
         /// </summary>
         public readonly string Parent;
         /// <summary>
@@ -50,7 +52,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetWorkspaceIamServicePrincipalsV2ServicePrincipalProviderConfigResult? ProviderConfig;
         /// <summary>
-        /// (string) - Internal service principal ID of the service principal in Databricks
+        /// (string) - The Databricks ID of the service principal
         /// </summary>
         public readonly string ServicePrincipalId;
 

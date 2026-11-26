@@ -14,6 +14,12 @@ namespace Pulumi.Databricks.Inputs
     {
         [Input("approvedDomains")]
         private InputList<string>? _approvedDomains;
+
+        /// <summary>
+        /// Domains allowed to host embedded AI/BI dashboards. A leading wildcard allows every subdomain of a
+        /// domain. The list applies, and can only be changed, while the embedding access policy is
+        /// ALLOW_APPROVED_DOMAINS
+        /// </summary>
         public InputList<string> ApprovedDomains
         {
             get => _approvedDomains ?? (_approvedDomains = new InputList<string>());

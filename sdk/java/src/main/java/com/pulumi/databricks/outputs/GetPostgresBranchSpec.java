@@ -4,6 +4,7 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -34,17 +35,17 @@ public final class GetPostgresBranchSpec {
      * Format: projects/{project_id}/branches/{branch_id}
      * 
      */
-    private @Nullable String sourceBranch;
+    private String sourceBranch;
     /**
      * @return (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
      * 
      */
-    private @Nullable String sourceBranchLsn;
+    private String sourceBranchLsn;
     /**
      * @return (string) - The point in time on the source branch from which this branch was created
      * 
      */
-    private @Nullable String sourceBranchTime;
+    private String sourceBranchTime;
     /**
      * @return (string) - The snapshot this branch was restored from. Set only for branches created by
      * restoring a snapshot; unset for all other branches.
@@ -88,22 +89,22 @@ public final class GetPostgresBranchSpec {
      * Format: projects/{project_id}/branches/{branch_id}
      * 
      */
-    public Optional<String> sourceBranch() {
-        return Optional.ofNullable(this.sourceBranch);
+    public String sourceBranch() {
+        return this.sourceBranch;
     }
     /**
      * @return (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
      * 
      */
-    public Optional<String> sourceBranchLsn() {
-        return Optional.ofNullable(this.sourceBranchLsn);
+    public String sourceBranchLsn() {
+        return this.sourceBranchLsn;
     }
     /**
      * @return (string) - The point in time on the source branch from which this branch was created
      * 
      */
-    public Optional<String> sourceBranchTime() {
-        return Optional.ofNullable(this.sourceBranchTime);
+    public String sourceBranchTime() {
+        return this.sourceBranchTime;
     }
     /**
      * @return (string) - The snapshot this branch was restored from. Set only for branches created by
@@ -135,9 +136,9 @@ public final class GetPostgresBranchSpec {
         private @Nullable String expireTime;
         private @Nullable Boolean isProtected;
         private @Nullable Boolean noExpiry;
-        private @Nullable String sourceBranch;
-        private @Nullable String sourceBranchLsn;
-        private @Nullable String sourceBranchTime;
+        private String sourceBranch;
+        private String sourceBranchLsn;
+        private String sourceBranchTime;
         private @Nullable String sourceSnapshot;
         private @Nullable String ttl;
         public Builder() {}
@@ -172,20 +173,26 @@ public final class GetPostgresBranchSpec {
             return this;
         }
         @CustomType.Setter
-        public Builder sourceBranch(@Nullable String sourceBranch) {
-
+        public Builder sourceBranch(String sourceBranch) {
+            if (sourceBranch == null) {
+              throw new MissingRequiredPropertyException("GetPostgresBranchSpec", "sourceBranch");
+            }
             this.sourceBranch = sourceBranch;
             return this;
         }
         @CustomType.Setter
-        public Builder sourceBranchLsn(@Nullable String sourceBranchLsn) {
-
+        public Builder sourceBranchLsn(String sourceBranchLsn) {
+            if (sourceBranchLsn == null) {
+              throw new MissingRequiredPropertyException("GetPostgresBranchSpec", "sourceBranchLsn");
+            }
             this.sourceBranchLsn = sourceBranchLsn;
             return this;
         }
         @CustomType.Setter
-        public Builder sourceBranchTime(@Nullable String sourceBranchTime) {
-
+        public Builder sourceBranchTime(String sourceBranchTime) {
+            if (sourceBranchTime == null) {
+              throw new MissingRequiredPropertyException("GetPostgresBranchSpec", "sourceBranchTime");
+            }
             this.sourceBranchTime = sourceBranchTime;
             return this;
         }

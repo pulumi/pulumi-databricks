@@ -40,7 +40,9 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? Lsn;
         /// <summary>
-        /// The name of the instance. This is the unique identifier for the instance
+        /// The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+        /// characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+        /// consecutive hyphens
         /// </summary>
         public readonly string? Name;
         /// <summary>

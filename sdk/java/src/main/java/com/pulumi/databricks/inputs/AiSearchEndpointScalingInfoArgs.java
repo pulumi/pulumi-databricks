@@ -17,6 +17,76 @@ public final class AiSearchEndpointScalingInfoArgs extends com.pulumi.resources.
     public static final AiSearchEndpointScalingInfoArgs Empty = new AiSearchEndpointScalingInfoArgs();
 
     /**
+     * (string) - Reason the in-progress scaling change is delayed. When set, `estimatedCompletionTime` is
+     * unset. Unset when the change is not delayed or no scaling change is in progress. Possible values are: `CAPACITY_UNAVAILABLE`, `SCALE_DOWN_BLOCKED`, `TAKING_LONGER_THAN_EXPECTED`
+     * 
+     */
+    @Import(name="delayedReason")
+    private @Nullable Output<String> delayedReason;
+
+    /**
+     * @return (string) - Reason the in-progress scaling change is delayed. When set, `estimatedCompletionTime` is
+     * unset. Unset when the change is not delayed or no scaling change is in progress. Possible values are: `CAPACITY_UNAVAILABLE`, `SCALE_DOWN_BLOCKED`, `TAKING_LONGER_THAN_EXPECTED`
+     * 
+     */
+    public Optional<Output<String>> delayedReason() {
+        return Optional.ofNullable(this.delayedReason);
+    }
+
+    /**
+     * (string) - Estimated time at which the in-progress scaling change will complete. The estimate may
+     * change as the scaling change progresses. Unset when no scaling change is in progress,
+     * when no estimate is available, or when the change is delayed (see `delayedReason`)
+     * 
+     */
+    @Import(name="estimatedCompletionTime")
+    private @Nullable Output<String> estimatedCompletionTime;
+
+    /**
+     * @return (string) - Estimated time at which the in-progress scaling change will complete. The estimate may
+     * change as the scaling change progresses. Unset when no scaling change is in progress,
+     * when no estimate is available, or when the change is delayed (see `delayedReason`)
+     * 
+     */
+    public Optional<Output<String>> estimatedCompletionTime() {
+        return Optional.ofNullable(this.estimatedCompletionTime);
+    }
+
+    /**
+     * (integer) - Percentage of index initialization completed, from 0 to 100. Set only during the
+     * `INITIALIZING_INDEX` phase; unset in other phases or when progress is not available
+     * 
+     */
+    @Import(name="indexInitializationPercentage")
+    private @Nullable Output<Integer> indexInitializationPercentage;
+
+    /**
+     * @return (integer) - Percentage of index initialization completed, from 0 to 100. Set only during the
+     * `INITIALIZING_INDEX` phase; unset in other phases or when progress is not available
+     * 
+     */
+    public Optional<Output<Integer>> indexInitializationPercentage() {
+        return Optional.ofNullable(this.indexInitializationPercentage);
+    }
+
+    /**
+     * (string) - Current phase of the in-progress scaling change. Unset when no scaling change is in
+     * progress or the phase is not available. Possible values are: `ADJUSTING_CAPACITY`, `ESTIMATING`, `INITIALIZING_INDEX`
+     * 
+     */
+    @Import(name="phase")
+    private @Nullable Output<String> phase;
+
+    /**
+     * @return (string) - Current phase of the in-progress scaling change. Unset when no scaling change is in
+     * progress or the phase is not available. Possible values are: `ADJUSTING_CAPACITY`, `ESTIMATING`, `INITIALIZING_INDEX`
+     * 
+     */
+    public Optional<Output<String>> phase() {
+        return Optional.ofNullable(this.phase);
+    }
+
+    /**
      * The requested QPS target for the endpoint. Best-effort; the system does not
      * guarantee this QPS will be achieved
      * 
@@ -48,11 +118,35 @@ public final class AiSearchEndpointScalingInfoArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.state);
     }
 
+    /**
+     * (string) - Earliest time a new Target QPS change is accepted. Set only while a scaling change is in
+     * progress, the change lock is on, and the endpoint has a recorded last throughput change; may
+     * be in the past once the lock has expired
+     * 
+     */
+    @Import(name="targetQpsChangeAllowedAfterTime")
+    private @Nullable Output<String> targetQpsChangeAllowedAfterTime;
+
+    /**
+     * @return (string) - Earliest time a new Target QPS change is accepted. Set only while a scaling change is in
+     * progress, the change lock is on, and the endpoint has a recorded last throughput change; may
+     * be in the past once the lock has expired
+     * 
+     */
+    public Optional<Output<String>> targetQpsChangeAllowedAfterTime() {
+        return Optional.ofNullable(this.targetQpsChangeAllowedAfterTime);
+    }
+
     private AiSearchEndpointScalingInfoArgs() {}
 
     private AiSearchEndpointScalingInfoArgs(AiSearchEndpointScalingInfoArgs $) {
+        this.delayedReason = $.delayedReason;
+        this.estimatedCompletionTime = $.estimatedCompletionTime;
+        this.indexInitializationPercentage = $.indexInitializationPercentage;
+        this.phase = $.phase;
         this.requestedTargetQps = $.requestedTargetQps;
         this.state = $.state;
+        this.targetQpsChangeAllowedAfterTime = $.targetQpsChangeAllowedAfterTime;
     }
 
     public static Builder builder() {
@@ -71,6 +165,100 @@ public final class AiSearchEndpointScalingInfoArgs extends com.pulumi.resources.
 
         public Builder(AiSearchEndpointScalingInfoArgs defaults) {
             $ = new AiSearchEndpointScalingInfoArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param delayedReason (string) - Reason the in-progress scaling change is delayed. When set, `estimatedCompletionTime` is
+         * unset. Unset when the change is not delayed or no scaling change is in progress. Possible values are: `CAPACITY_UNAVAILABLE`, `SCALE_DOWN_BLOCKED`, `TAKING_LONGER_THAN_EXPECTED`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder delayedReason(@Nullable Output<String> delayedReason) {
+            $.delayedReason = delayedReason;
+            return this;
+        }
+
+        /**
+         * @param delayedReason (string) - Reason the in-progress scaling change is delayed. When set, `estimatedCompletionTime` is
+         * unset. Unset when the change is not delayed or no scaling change is in progress. Possible values are: `CAPACITY_UNAVAILABLE`, `SCALE_DOWN_BLOCKED`, `TAKING_LONGER_THAN_EXPECTED`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder delayedReason(String delayedReason) {
+            return delayedReason(Output.of(delayedReason));
+        }
+
+        /**
+         * @param estimatedCompletionTime (string) - Estimated time at which the in-progress scaling change will complete. The estimate may
+         * change as the scaling change progresses. Unset when no scaling change is in progress,
+         * when no estimate is available, or when the change is delayed (see `delayedReason`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder estimatedCompletionTime(@Nullable Output<String> estimatedCompletionTime) {
+            $.estimatedCompletionTime = estimatedCompletionTime;
+            return this;
+        }
+
+        /**
+         * @param estimatedCompletionTime (string) - Estimated time at which the in-progress scaling change will complete. The estimate may
+         * change as the scaling change progresses. Unset when no scaling change is in progress,
+         * when no estimate is available, or when the change is delayed (see `delayedReason`)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder estimatedCompletionTime(String estimatedCompletionTime) {
+            return estimatedCompletionTime(Output.of(estimatedCompletionTime));
+        }
+
+        /**
+         * @param indexInitializationPercentage (integer) - Percentage of index initialization completed, from 0 to 100. Set only during the
+         * `INITIALIZING_INDEX` phase; unset in other phases or when progress is not available
+         * 
+         * @return builder
+         * 
+         */
+        public Builder indexInitializationPercentage(@Nullable Output<Integer> indexInitializationPercentage) {
+            $.indexInitializationPercentage = indexInitializationPercentage;
+            return this;
+        }
+
+        /**
+         * @param indexInitializationPercentage (integer) - Percentage of index initialization completed, from 0 to 100. Set only during the
+         * `INITIALIZING_INDEX` phase; unset in other phases or when progress is not available
+         * 
+         * @return builder
+         * 
+         */
+        public Builder indexInitializationPercentage(Integer indexInitializationPercentage) {
+            return indexInitializationPercentage(Output.of(indexInitializationPercentage));
+        }
+
+        /**
+         * @param phase (string) - Current phase of the in-progress scaling change. Unset when no scaling change is in
+         * progress or the phase is not available. Possible values are: `ADJUSTING_CAPACITY`, `ESTIMATING`, `INITIALIZING_INDEX`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder phase(@Nullable Output<String> phase) {
+            $.phase = phase;
+            return this;
+        }
+
+        /**
+         * @param phase (string) - Current phase of the in-progress scaling change. Unset when no scaling change is in
+         * progress or the phase is not available. Possible values are: `ADJUSTING_CAPACITY`, `ESTIMATING`, `INITIALIZING_INDEX`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder phase(String phase) {
+            return phase(Output.of(phase));
         }
 
         /**
@@ -115,6 +303,31 @@ public final class AiSearchEndpointScalingInfoArgs extends com.pulumi.resources.
          */
         public Builder state(String state) {
             return state(Output.of(state));
+        }
+
+        /**
+         * @param targetQpsChangeAllowedAfterTime (string) - Earliest time a new Target QPS change is accepted. Set only while a scaling change is in
+         * progress, the change lock is on, and the endpoint has a recorded last throughput change; may
+         * be in the past once the lock has expired
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetQpsChangeAllowedAfterTime(@Nullable Output<String> targetQpsChangeAllowedAfterTime) {
+            $.targetQpsChangeAllowedAfterTime = targetQpsChangeAllowedAfterTime;
+            return this;
+        }
+
+        /**
+         * @param targetQpsChangeAllowedAfterTime (string) - Earliest time a new Target QPS change is accepted. Set only while a scaling change is in
+         * progress, the change lock is on, and the endpoint has a recorded last throughput change; may
+         * be in the past once the lock has expired
+         * 
+         * @return builder
+         * 
+         */
+        public Builder targetQpsChangeAllowedAfterTime(String targetQpsChangeAllowedAfterTime) {
+            return targetQpsChangeAllowedAfterTime(Output.of(targetQpsChangeAllowedAfterTime));
         }
 
         public AiSearchEndpointScalingInfoArgs build() {

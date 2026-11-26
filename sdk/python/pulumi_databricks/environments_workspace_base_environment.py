@@ -30,8 +30,9 @@ class EnvironmentsWorkspaceBaseEnvironmentArgs:
         The set of arguments for constructing a EnvironmentsWorkspaceBaseEnvironment resource.
 
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name for the workspace base environment
-        :param pulumi.Input[_builtins.str] base_environment_type: The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
-        :param pulumi.Input[_builtins.str] filepath: The WSFS or UC Volumes path to the environment YAML file
+        :param pulumi.Input[_builtins.str] base_environment_type: The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
+        :param pulumi.Input[_builtins.str] filepath: The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+               dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
         :param pulumi.Input['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] workspace_base_environment_id: The ID to use for the workspace base environment, which will become the final component of
                the resource name.
@@ -63,7 +64,7 @@ class EnvironmentsWorkspaceBaseEnvironmentArgs:
     @pulumi.getter(name="baseEnvironmentType")
     def base_environment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+        The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
         """
         return pulumi.get(self, "base_environment_type")
 
@@ -75,7 +76,8 @@ class EnvironmentsWorkspaceBaseEnvironmentArgs:
     @pulumi.getter
     def filepath(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The WSFS or UC Volumes path to the environment YAML file
+        The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+        dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
         """
         return pulumi.get(self, "filepath")
 
@@ -131,19 +133,24 @@ class _EnvironmentsWorkspaceBaseEnvironmentState:
         """
         Input properties used for looking up and filtering EnvironmentsWorkspaceBaseEnvironment resources.
 
-        :param pulumi.Input[_builtins.str] base_environment_type: The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+        :param pulumi.Input[_builtins.str] base_environment_type: The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
         :param pulumi.Input[_builtins.str] create_time: (string) - Timestamp when the environment was created
         :param pulumi.Input[_builtins.str] creator_user_id: (string) - User ID of the creator
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name for the workspace base environment
-        :param pulumi.Input[_builtins.str] filepath: The WSFS or UC Volumes path to the environment YAML file
+        :param pulumi.Input[_builtins.str] filepath: The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+               dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
         :param pulumi.Input[_builtins.bool] is_default: (boolean) - Whether this is the default environment for the workspace
         :param pulumi.Input[_builtins.str] last_updated_user_id: (string) - User ID of the last user who updated the environment
-        :param pulumi.Input[_builtins.str] message: (string) - Status message providing additional details about the environment status
+        :param pulumi.Input[_builtins.str] message: (string) - Status message providing additional details about the environment status.
+               When the status is `FAILED`, the message contains the build error
         :param pulumi.Input[_builtins.str] name: (string) - The resource name of the workspace base environment.
                Format: workspace-base-environments/{workspace-base-environment}
+               The server ignores this field on create and builds the name from `workspace_base_environment_id`, or from
+               `display_name` plus a random suffix when no ID is given
         :param pulumi.Input['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input['EnvironmentsWorkspaceBaseEnvironmentSpecArgs'] spec: (EnvironmentSpec) - The environment specification containing version and dependencies
-        :param pulumi.Input[_builtins.str] status: (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
+        :param pulumi.Input['EnvironmentsWorkspaceBaseEnvironmentSpecArgs'] spec: (EnvironmentSpec) - The environment specification containing version and dependencies, read from the YAML file at `filepath`
+        :param pulumi.Input[_builtins.str] status: (string) - The status of the materialized workspace base environment, which the server builds from the YAML file.
+               The status is `CREATED` once the build has succeeded. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
         :param pulumi.Input[_builtins.str] update_time: (string) - Timestamp when the environment was last updated
         :param pulumi.Input[_builtins.str] workspace_base_environment_id: The ID to use for the workspace base environment, which will become the final component of
                the resource name.
@@ -184,7 +191,7 @@ class _EnvironmentsWorkspaceBaseEnvironmentState:
     @pulumi.getter(name="baseEnvironmentType")
     def base_environment_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+        The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
         """
         return pulumi.get(self, "base_environment_type")
 
@@ -241,7 +248,8 @@ class _EnvironmentsWorkspaceBaseEnvironmentState:
     @pulumi.getter
     def filepath(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The WSFS or UC Volumes path to the environment YAML file
+        The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+        dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
         """
         return pulumi.get(self, "filepath")
 
@@ -277,7 +285,8 @@ class _EnvironmentsWorkspaceBaseEnvironmentState:
     @pulumi.getter
     def message(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - Status message providing additional details about the environment status
+        (string) - Status message providing additional details about the environment status.
+        When the status is `FAILED`, the message contains the build error
         """
         return pulumi.get(self, "message")
 
@@ -291,6 +300,8 @@ class _EnvironmentsWorkspaceBaseEnvironmentState:
         """
         (string) - The resource name of the workspace base environment.
         Format: workspace-base-environments/{workspace-base-environment}
+        The server ignores this field on create and builds the name from `workspace_base_environment_id`, or from
+        `display_name` plus a random suffix when no ID is given
         """
         return pulumi.get(self, "name")
 
@@ -314,7 +325,7 @@ class _EnvironmentsWorkspaceBaseEnvironmentState:
     @pulumi.getter
     def spec(self) -> pulumi.Input[Optional['EnvironmentsWorkspaceBaseEnvironmentSpecArgs']]:
         """
-        (EnvironmentSpec) - The environment specification containing version and dependencies
+        (EnvironmentSpec) - The environment specification containing version and dependencies, read from the YAML file at `filepath`
         """
         return pulumi.get(self, "spec")
 
@@ -326,7 +337,8 @@ class _EnvironmentsWorkspaceBaseEnvironmentState:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
+        (string) - The status of the materialized workspace base environment, which the server builds from the YAML file.
+        The status is `CREATED` once the build has succeeded. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
         """
         return pulumi.get(self, "status")
 
@@ -416,9 +428,10 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] base_environment_type: The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+        :param pulumi.Input[_builtins.str] base_environment_type: The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name for the workspace base environment
-        :param pulumi.Input[_builtins.str] filepath: The WSFS or UC Volumes path to the environment YAML file
+        :param pulumi.Input[_builtins.str] filepath: The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+               dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
         :param pulumi.Input[Union['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict', 'outputs.EnvironmentsWorkspaceBaseEnvironmentProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] workspace_base_environment_id: The ID to use for the workspace base environment, which will become the final component of
                the resource name.
@@ -549,19 +562,24 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] base_environment_type: The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+        :param pulumi.Input[_builtins.str] base_environment_type: The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
         :param pulumi.Input[_builtins.str] create_time: (string) - Timestamp when the environment was created
         :param pulumi.Input[_builtins.str] creator_user_id: (string) - User ID of the creator
         :param pulumi.Input[_builtins.str] display_name: Human-readable display name for the workspace base environment
-        :param pulumi.Input[_builtins.str] filepath: The WSFS or UC Volumes path to the environment YAML file
+        :param pulumi.Input[_builtins.str] filepath: The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+               dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
         :param pulumi.Input[_builtins.bool] is_default: (boolean) - Whether this is the default environment for the workspace
         :param pulumi.Input[_builtins.str] last_updated_user_id: (string) - User ID of the last user who updated the environment
-        :param pulumi.Input[_builtins.str] message: (string) - Status message providing additional details about the environment status
+        :param pulumi.Input[_builtins.str] message: (string) - Status message providing additional details about the environment status.
+               When the status is `FAILED`, the message contains the build error
         :param pulumi.Input[_builtins.str] name: (string) - The resource name of the workspace base environment.
                Format: workspace-base-environments/{workspace-base-environment}
+               The server ignores this field on create and builds the name from `workspace_base_environment_id`, or from
+               `display_name` plus a random suffix when no ID is given
         :param pulumi.Input[Union['EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgs', 'EnvironmentsWorkspaceBaseEnvironmentProviderConfigArgsDict', 'outputs.EnvironmentsWorkspaceBaseEnvironmentProviderConfig']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Union['EnvironmentsWorkspaceBaseEnvironmentSpecArgs', 'EnvironmentsWorkspaceBaseEnvironmentSpecArgsDict', 'outputs.EnvironmentsWorkspaceBaseEnvironmentSpec']] spec: (EnvironmentSpec) - The environment specification containing version and dependencies
-        :param pulumi.Input[_builtins.str] status: (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
+        :param pulumi.Input[Union['EnvironmentsWorkspaceBaseEnvironmentSpecArgs', 'EnvironmentsWorkspaceBaseEnvironmentSpecArgsDict', 'outputs.EnvironmentsWorkspaceBaseEnvironmentSpec']] spec: (EnvironmentSpec) - The environment specification containing version and dependencies, read from the YAML file at `filepath`
+        :param pulumi.Input[_builtins.str] status: (string) - The status of the materialized workspace base environment, which the server builds from the YAML file.
+               The status is `CREATED` once the build has succeeded. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
         :param pulumi.Input[_builtins.str] update_time: (string) - Timestamp when the environment was last updated
         :param pulumi.Input[_builtins.str] workspace_base_environment_id: The ID to use for the workspace base environment, which will become the final component of
                the resource name.
@@ -628,7 +646,7 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
     @pulumi.getter(name="baseEnvironmentType")
     def base_environment_type(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+        The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
         """
         return pulumi.get(self, "base_environment_type")
 
@@ -665,7 +683,8 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
     @pulumi.getter
     def filepath(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The WSFS or UC Volumes path to the environment YAML file
+        The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+        dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
         """
         return pulumi.get(self, "filepath")
 
@@ -689,7 +708,8 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
     @pulumi.getter
     def message(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - Status message providing additional details about the environment status
+        (string) - Status message providing additional details about the environment status.
+        When the status is `FAILED`, the message contains the build error
         """
         return pulumi.get(self, "message")
 
@@ -699,6 +719,8 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
         """
         (string) - The resource name of the workspace base environment.
         Format: workspace-base-environments/{workspace-base-environment}
+        The server ignores this field on create and builds the name from `workspace_base_environment_id`, or from
+        `display_name` plus a random suffix when no ID is given
         """
         return pulumi.get(self, "name")
 
@@ -714,7 +736,7 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
     @pulumi.getter
     def spec(self) -> pulumi.Output['outputs.EnvironmentsWorkspaceBaseEnvironmentSpec']:
         """
-        (EnvironmentSpec) - The environment specification containing version and dependencies
+        (EnvironmentSpec) - The environment specification containing version and dependencies, read from the YAML file at `filepath`
         """
         return pulumi.get(self, "spec")
 
@@ -722,7 +744,8 @@ class EnvironmentsWorkspaceBaseEnvironment(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
+        (string) - The status of the materialized workspace base environment, which the server builds from the YAML file.
+        The status is `CREATED` once the build has succeeded. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
         """
         return pulumi.get(self, "status")
 

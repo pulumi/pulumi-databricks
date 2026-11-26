@@ -17,23 +17,33 @@ public final class AlertV2EvaluationSourceArgs extends com.pulumi.resources.Reso
     public static final AlertV2EvaluationSourceArgs Empty = new AlertV2EvaluationSourceArgs();
 
     /**
-     * If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * Aggregation applied to the column across all rows of the query result: `SUM`, `COUNT`, `COUNT_DISTINCT`, `AVG`, `MEDIAN`, `MIN`, `MAX` or `STDDEV`.
+     * If not set, the value in the first row is used, which is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      * 
      */
     @Import(name="aggregation")
     private @Nullable Output<String> aggregation;
 
     /**
-     * @return If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * @return Aggregation applied to the column across all rows of the query result: `SUM`, `COUNT`, `COUNT_DISTINCT`, `AVG`, `MEDIAN`, `MIN`, `MAX` or `STDDEV`.
+     * If not set, the value in the first row is used, which is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      * 
      */
     public Optional<Output<String>> aggregation() {
         return Optional.ofNullable(this.aggregation);
     }
 
+    /**
+     * Label for the column in notifications. Defaults to `name`
+     * 
+     */
     @Import(name="display")
     private @Nullable Output<String> display;
 
+    /**
+     * @return Label for the column in notifications. Defaults to `name`
+     * 
+     */
     public Optional<Output<String>> display() {
         return Optional.ofNullable(this.display);
     }
@@ -72,7 +82,8 @@ public final class AlertV2EvaluationSourceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param aggregation If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+         * @param aggregation Aggregation applied to the column across all rows of the query result: `SUM`, `COUNT`, `COUNT_DISTINCT`, `AVG`, `MEDIAN`, `MIN`, `MAX` or `STDDEV`.
+         * If not set, the value in the first row is used, which is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
          * 
          * @return builder
          * 
@@ -83,7 +94,8 @@ public final class AlertV2EvaluationSourceArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param aggregation If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+         * @param aggregation Aggregation applied to the column across all rows of the query result: `SUM`, `COUNT`, `COUNT_DISTINCT`, `AVG`, `MEDIAN`, `MIN`, `MAX` or `STDDEV`.
+         * If not set, the value in the first row is used, which is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
          * 
          * @return builder
          * 
@@ -92,11 +104,23 @@ public final class AlertV2EvaluationSourceArgs extends com.pulumi.resources.Reso
             return aggregation(Output.of(aggregation));
         }
 
+        /**
+         * @param display Label for the column in notifications. Defaults to `name`
+         * 
+         * @return builder
+         * 
+         */
         public Builder display(@Nullable Output<String> display) {
             $.display = display;
             return this;
         }
 
+        /**
+         * @param display Label for the column in notifications. Defaults to `name`
+         * 
+         * @return builder
+         * 
+         */
         public Builder display(String display) {
             return display(Output.of(display));
         }

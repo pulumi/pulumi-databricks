@@ -18,7 +18,7 @@ public final class GetBudgetPoliciesSortSpec {
      */
     private @Nullable Boolean descending;
     /**
-     * @return The filed to sort by. Possible values are: `POLICY_NAME`
+     * @return The field to sort by. If unspecified, policies are sorted by name. Possible values are: `POLICY_NAME`
      * 
      */
     private @Nullable String field;
@@ -32,7 +32,7 @@ public final class GetBudgetPoliciesSortSpec {
         return Optional.ofNullable(this.descending);
     }
     /**
-     * @return The filed to sort by. Possible values are: `POLICY_NAME`
+     * @return The field to sort by. If unspecified, policies are sorted by name. Possible values are: `POLICY_NAME`
      * 
      */
     public Optional<String> field() {

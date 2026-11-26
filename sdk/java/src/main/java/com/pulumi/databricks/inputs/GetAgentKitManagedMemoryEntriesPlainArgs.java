@@ -97,16 +97,18 @@ public final class GetAgentKitManagedMemoryEntriesPlainArgs extends com.pulumi.r
     }
 
     /**
-     * Optional session identifier. When set, only entries with this exact `sessionId` are
-     * returned. Omitted-session (cross-session) entries are not included. Ignored when path is set
+     * Deprecated: the service will ignore this filter. Until then, when set, only entries with
+     * this exact `sessionId` are returned, and omitted-session (cross-session) entries
+     * are not included. Ignored when path is set
      * 
      */
     @Import(name="sessionId")
     private @Nullable String sessionId;
 
     /**
-     * @return Optional session identifier. When set, only entries with this exact `sessionId` are
-     * returned. Omitted-session (cross-session) entries are not included. Ignored when path is set
+     * @return Deprecated: the service will ignore this filter. Until then, when set, only entries with
+     * this exact `sessionId` are returned, and omitted-session (cross-session) entries
+     * are not included. Ignored when path is set
      * 
      */
     public Optional<String> sessionId() {
@@ -216,8 +218,9 @@ public final class GetAgentKitManagedMemoryEntriesPlainArgs extends com.pulumi.r
         }
 
         /**
-         * @param sessionId Optional session identifier. When set, only entries with this exact `sessionId` are
-         * returned. Omitted-session (cross-session) entries are not included. Ignored when path is set
+         * @param sessionId Deprecated: the service will ignore this filter. Until then, when set, only entries with
+         * this exact `sessionId` are returned, and omitted-session (cross-session) entries
+         * are not included. Ignored when path is set
          * 
          * @return builder
          * 

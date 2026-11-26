@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  * 
@@ -72,82 +72,92 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/workspaceIamUserV2:WorkspaceIamUserV2")
 public class WorkspaceIamUserV2 extends com.pulumi.resources.CustomResource {
     /**
-     * (string) - The accountId parent of the user in Databricks
+     * (string) - The ID of the account that contains the user
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return (string) - The accountId parent of the user in Databricks
+     * @return (string) - The ID of the account that contains the user
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * Whether the user is active in the account. New users are active unless you set this to
+     * `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     @Export(name="accountUserStatus", refs={String.class}, tree="[0]")
     private Output<String> accountUserStatus;
 
     /**
-     * @return The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * @return Whether the user is active in the account. New users are active unless you set this to
+     * `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     public Output<String> accountUserStatus() {
         return this.accountUserStatus;
     }
     /**
-     * ExternalId of the user in the customer&#39;s IdP
+     * The ID of the user in your identity provider (IdP)
      * 
      */
     @Export(name="externalId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> externalId;
 
     /**
-     * @return ExternalId of the user in the customer&#39;s IdP
+     * @return The ID of the user in your identity provider (IdP)
      * 
      */
     public Output<Optional<String>> externalId() {
         return Codegen.optional(this.externalId);
     }
+    /**
+     * The user&#39;s name
+     * 
+     */
     @Export(name="fullName", refs={WorkspaceIamUserV2FullName.class}, tree="[0]")
     private Output<WorkspaceIamUserV2FullName> fullName;
 
+    /**
+     * @return The user&#39;s name
+     * 
+     */
     public Output<WorkspaceIamUserV2FullName> fullName() {
         return this.fullName;
     }
     /**
-     * (string) - The resource name of the user. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/users/{user_id}
-     * - Workspace-scoped: users/{user_id}
+     * (string) - The resource name of the user, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/users/{user_id}`
+     * - Workspace APIs: `users/{user_id}`
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return (string) - The resource name of the user. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/users/{user_id}
-     * - Workspace-scoped: users/{user_id}
+     * @return (string) - The resource name of the user, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/users/{user_id}`
+     * - Workspace APIs: `users/{user_id}`
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * (string) - The resource name of the account that contains the user, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
-     * @return (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * @return (string) - The resource name of the account that contains the user, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      * 
      */
     public Output<String> parent() {
@@ -168,28 +178,30 @@ public class WorkspaceIamUserV2 extends com.pulumi.resources.CustomResource {
         return this.providerConfig;
     }
     /**
-     * (string) - Internal userId of the user in Databricks
+     * (string) - The Databricks ID of the user
      * 
      */
     @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**
-     * @return (string) - Internal userId of the user in Databricks
+     * @return (string) - The Databricks ID of the user
      * 
      */
     public Output<String> userId() {
         return this.userId;
     }
     /**
-     * Username/email of the user
+     * The user&#39;s username, which is their email address. It can&#39;t be changed after the user is
+     * created
      * 
      */
     @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**
-     * @return Username/email of the user
+     * @return The user&#39;s username, which is their email address. It can&#39;t be changed after the user is
+     * created
      * 
      */
     public Output<String> username() {

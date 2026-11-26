@@ -85,7 +85,13 @@ export interface AccountFederationPolicyOidcPolicy {
 }
 
 export interface AccountIamUserV2FullName {
+    /**
+     * The user's family (last) name
+     */
     familyName?: string;
+    /**
+     * The user's given (first) name
+     */
     givenName?: string;
 }
 
@@ -1576,24 +1582,57 @@ export interface AccountSettingUserPreferenceV2StringVal {
 
 export interface AccountSettingV2AibiDashboardEmbeddingAccessPolicy {
     /**
-     * Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * Where AI/BI dashboards can be embedded: in any domain (ALLOW_ALL_DOMAINS), only in the approved
+     * domains configured for the workspace (ALLOW_APPROVED_DOMAINS), or nowhere (DENY_ALL_DOMAINS).
+     * Defaults to ALLOW_APPROVED_DOMAINS. Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      */
     accessPolicyType: string;
 }
 
 export interface AccountSettingV2AibiDashboardEmbeddingApprovedDomains {
+    /**
+     * Domains allowed to host embedded AI/BI dashboards. A leading wildcard allows every subdomain of a
+     * domain. The list applies, and can only be changed, while the embedding access policy is
+     * ALLOW_APPROVED_DOMAINS
+     */
     approvedDomains?: string[];
 }
 
 export interface AccountSettingV2AllowedAppsUserApiScopes {
+    /**
+     * OAuth scopes that app developers can request when an app acts on behalf of a user. A list with
+     * the single entry * allows every supported scope and cannot be combined with other scopes. An
+     * empty list disables user authorization for apps
+     */
     allowedScopes?: string[];
 }
 
 export interface AccountSettingV2AutomaticClusterUpdateWorkspace {
+    /**
+     * Whether the workspace can change the enabled state. Databricks computes this value: it is false
+     * when the compliance security profile forces the feature on or when the workspace lacks the
+     * Enhanced Security and Compliance entitlement. A value sent in an update request has no effect
+     */
     canToggle?: boolean;
+    /**
+     * Whether automatic cluster update is enabled for the workspace. The effective value is always
+     * true while the compliance security profile is enabled on the workspace
+     */
     enabled?: boolean;
+    /**
+     * Why the feature is forced on or unavailable. Databricks sets these details for information only;
+     * they do not determine whether the feature is enabled
+     */
     enablementDetails?: outputs.AccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails;
+    /**
+     * When the maintenance window runs. When unset, it defaults to the first Sunday of every month at
+     * 01:00 UTC
+     */
     maintenanceWindow?: outputs.AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow;
+    /**
+     * Whether compute resources restart during every maintenance window even when no update is
+     * available. When false, they restart only when an update is available
+     */
     restartEvenIfNoUpdatesAvailable?: boolean;
 }
 
@@ -1603,7 +1642,8 @@ export interface AccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetail
      */
     forcedForComplianceMode?: boolean;
     /**
-     * The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     * The feature is unavailable because the workspace does not have the Enhanced Security and
+     * Compliance entitlement
      */
     unavailableForDisabledEntitlement?: boolean;
     /**
@@ -1613,23 +1653,36 @@ export interface AccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetail
 }
 
 export interface AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    /**
+     * Schedule anchored to a day of the week, either every week or on given weeks of the month
+     */
     weekDayBasedSchedule?: outputs.AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
 }
 
 export interface AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * Day of the week on which the maintenance window starts. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
     dayOfWeek?: string;
     /**
-     * Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * How often the maintenance window occurs: every week, or only on the listed occurrences of
+     * the day of the week within each month. Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
     frequency?: string;
+    /**
+     * Time of day, in UTC, at which the maintenance window starts
+     */
     windowStartTime?: outputs.AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
 }
 
 export interface AccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    /**
+     * Hour of the day on a 24-hour clock
+     */
     hours?: number;
+    /**
+     * Minute of the hour
+     */
     minutes?: number;
 }
 
@@ -1646,24 +1699,57 @@ export interface AccountSettingV2CollaborationPlatformConnectivity {
 
 export interface AccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
     /**
-     * Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * Where AI/BI dashboards can be embedded: in any domain (ALLOW_ALL_DOMAINS), only in the approved
+     * domains configured for the workspace (ALLOW_APPROVED_DOMAINS), or nowhere (DENY_ALL_DOMAINS).
+     * Defaults to ALLOW_APPROVED_DOMAINS. Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      */
     accessPolicyType: string;
 }
 
 export interface AccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains {
+    /**
+     * Domains allowed to host embedded AI/BI dashboards. A leading wildcard allows every subdomain of a
+     * domain. The list applies, and can only be changed, while the embedding access policy is
+     * ALLOW_APPROVED_DOMAINS
+     */
     approvedDomains?: string[];
 }
 
 export interface AccountSettingV2EffectiveAllowedAppsUserApiScopes {
+    /**
+     * OAuth scopes that app developers can request when an app acts on behalf of a user. A list with
+     * the single entry * allows every supported scope and cannot be combined with other scopes. An
+     * empty list disables user authorization for apps
+     */
     allowedScopes?: string[];
 }
 
 export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspace {
+    /**
+     * Whether the workspace can change the enabled state. Databricks computes this value: it is false
+     * when the compliance security profile forces the feature on or when the workspace lacks the
+     * Enhanced Security and Compliance entitlement. A value sent in an update request has no effect
+     */
     canToggle?: boolean;
+    /**
+     * Whether automatic cluster update is enabled for the workspace. The effective value is always
+     * true while the compliance security profile is enabled on the workspace
+     */
     enabled?: boolean;
+    /**
+     * Why the feature is forced on or unavailable. Databricks sets these details for information only;
+     * they do not determine whether the feature is enabled
+     */
     enablementDetails?: outputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails;
+    /**
+     * When the maintenance window runs. When unset, it defaults to the first Sunday of every month at
+     * 01:00 UTC
+     */
     maintenanceWindow?: outputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow;
+    /**
+     * Whether compute resources restart during every maintenance window even when no update is
+     * available. When false, they restart only when an update is available
+     */
     restartEvenIfNoUpdatesAvailable?: boolean;
 }
 
@@ -1673,7 +1759,8 @@ export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablem
      */
     forcedForComplianceMode?: boolean;
     /**
-     * The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     * The feature is unavailable because the workspace does not have the Enhanced Security and
+     * Compliance entitlement
      */
     unavailableForDisabledEntitlement?: boolean;
     /**
@@ -1683,23 +1770,36 @@ export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablem
 }
 
 export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    /**
+     * Schedule anchored to a day of the week, either every week or on given weeks of the month
+     */
     weekDayBasedSchedule?: outputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
 }
 
 export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * Day of the week on which the maintenance window starts. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
     dayOfWeek?: string;
     /**
-     * Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * How often the maintenance window occurs: every week, or only on the listed occurrences of
+     * the day of the week within each month. Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
     frequency?: string;
+    /**
+     * Time of day, in UTC, at which the maintenance window starts
+     */
     windowStartTime?: outputs.AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
 }
 
 export interface AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    /**
+     * Hour of the day on a 24-hour clock
+     */
     hours?: number;
+    /**
+     * Minute of the hour
+     */
     minutes?: number;
 }
 
@@ -1719,6 +1819,11 @@ export interface AccountSettingV2EffectiveIntegerVal {
 }
 
 export interface AccountSettingV2EffectiveOperationalEmailCustomRecipient {
+    /**
+     * Email address that receives this workspace's operational emails in addition to the workspace
+     * admins. Use a distribution list address to reach several people. An empty string clears the
+     * additional recipient
+     */
     email?: string;
 }
 
@@ -1733,7 +1838,13 @@ export interface AccountSettingV2EffectiveRestrictWorkspaceAdmins {
      */
     disableGovTagCreation?: boolean;
     /**
-     * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     * Controls what workspace admins can do with service principal tokens and job identities. With
+     * ALLOW_ALL, workspace admins can create personal access tokens on behalf of any service principal
+     * in the workspace, change a job owner to any workspace user, and set a job's runAs identity to
+     * any workspace user or to a service principal they have the Service Principal User role on. With
+     * RESTRICT_TOKENS_AND_JOB_RUN_AS, they can only create tokens for service principals they have the
+     * Service Principal User role on, change a job owner to themselves, and set runAs to themselves
+     * or to a service principal they have that role on. Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
     status: string;
 }
@@ -1742,8 +1853,682 @@ export interface AccountSettingV2EffectiveStringVal {
     value?: string;
 }
 
+export interface AccountSettingV2EffectiveWorkspaceDashboardTheme {
+    /**
+     * Color of the zero-value grid line, making it visually distinct from other grid lines
+     */
+    axisLineColor?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeAxisLineColor;
+    /**
+     * The background color of the dashboard canvas
+     */
+    canvasBackgroundColor?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeCanvasBackgroundColor;
+    /**
+     * The continuous gradient configuration for the dashboard
+     */
+    continuousGradient?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradient;
+    fontColor?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeFontColor;
+    fontFamily?: string;
+    /**
+     * The per-category typography overrides for the dashboard
+     */
+    fontSettings?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettings;
+    /**
+     * Color of chart grid lines in visualizations (horizontal and vertical guide lines)
+     */
+    gridLineColor?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeGridLineColor;
+    /**
+     * The corner radius in pixels for rectangular marks in visualizations (bars, columns, histogram bins, etc.)
+     */
+    markCornerRadius?: number;
+    /**
+     * The highlight color for selected elements in widgets
+     */
+    selectionColor?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeSelectionColor;
+    /**
+     * The sentiment color palette for the dashboard
+     */
+    sentimentColors?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeSentimentColors;
+    /**
+     * The default vertical alignment for all text box widgets in the dashboard.
+     * Individual text box widgets can override this. Possible values are: `VERTICAL_ALIGN_BOTTOM`, `VERTICAL_ALIGN_CENTER`, `VERTICAL_ALIGN_TOP`
+     */
+    textBoxVerticalAlign?: string;
+    /**
+     * Color palette for visualizations. Colors are applied in order (visualization_color_01, visualization_color_02, etc.).
+     * Invalid color values are preserved but ignored during rendering
+     */
+    visualizationColor01?: string;
+    /**
+     * The color at position 2 in the visualization color palette
+     */
+    visualizationColor02?: string;
+    /**
+     * The color at position 3 in the visualization color palette
+     */
+    visualizationColor03?: string;
+    /**
+     * The color at position 4 in the visualization color palette
+     */
+    visualizationColor04?: string;
+    /**
+     * The color at position 5 in the visualization color palette
+     */
+    visualizationColor05?: string;
+    /**
+     * The color at position 6 in the visualization color palette
+     */
+    visualizationColor06?: string;
+    /**
+     * The color at position 7 in the visualization color palette
+     */
+    visualizationColor07?: string;
+    /**
+     * The color at position 8 in the visualization color palette
+     */
+    visualizationColor08?: string;
+    /**
+     * The color at position 9 in the visualization color palette
+     */
+    visualizationColor09?: string;
+    /**
+     * The color at position 10 in the visualization color palette
+     */
+    visualizationColor10?: string;
+    /**
+     * The color at position 11 in the visualization color palette
+     */
+    visualizationColor11?: string;
+    /**
+     * The color at position 12 in the visualization color palette
+     */
+    visualizationColor12?: string;
+    /**
+     * The color at position 13 in the visualization color palette
+     */
+    visualizationColor13?: string;
+    /**
+     * The color at position 14 in the visualization color palette
+     */
+    visualizationColor14?: string;
+    /**
+     * The color at position 15 in the visualization color palette
+     */
+    visualizationColor15?: string;
+    /**
+     * The color at position 16 in the visualization color palette
+     */
+    visualizationColor16?: string;
+    /**
+     * The color at position 17 in the visualization color palette
+     */
+    visualizationColor17?: string;
+    /**
+     * The color at position 18 in the visualization color palette
+     */
+    visualizationColor18?: string;
+    /**
+     * The color at position 19 in the visualization color palette
+     */
+    visualizationColor19?: string;
+    /**
+     * The color at position 20 in the visualization color palette
+     */
+    visualizationColor20?: string;
+    /**
+     * The background color of widgets
+     */
+    widgetBackgroundColor?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeWidgetBackgroundColor;
+    /**
+     * The border color of widgets
+     */
+    widgetBorderColor?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeWidgetBorderColor;
+    /**
+     * The widget border radius in pixels
+     */
+    widgetCornerRadius?: number;
+    /**
+     * Alignment setting for all widget titles and descriptions at the dashboard level. Possible values are: `CENTER`, `LEFT`, `RIGHT`
+     */
+    widgetHeaderAlignment?: string;
+    /**
+     * The gap between widgets in pixels
+     */
+    widgetMargin?: number;
+    /**
+     * The content padding inside each widget in pixels
+     */
+    widgetPadding?: number;
+    /**
+     * The shadow intensity level applied to widgets (0 = no shadow, 100 = maximum).
+     * The actual CSS box-shadow is computed at render time from this value, factoring in
+     * background colors and color mode
+     */
+    widgetShadow?: number;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeAxisLineColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeCanvasBackgroundColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradient {
+    /**
+     * Gradient value used when the dashboard is rendered in dark mode
+     */
+    darkMode?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkMode;
+    /**
+     * Gradient value used when the dashboard is rendered in light mode
+     */
+    lightMode?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightMode;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkMode {
+    color?: string;
+    /**
+     * A named color scheme (for example, 'blues', 'viridis', 'spectral')
+     */
+    colorScheme?: string;
+    /**
+     * A custom three-stop diverging gradient
+     */
+    customDiverging?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDiverging;
+    /**
+     * A custom two-stop sequential gradient
+     */
+    customSequential?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequential;
+    /**
+     * A 0-based index into the visualization color palette, where 0 is visualization_color_01. Valid values are 0 to 19
+     */
+    fromCategoricalIndex?: number;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDiverging {
+    end?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingEnd;
+    /**
+     * The color at the midpoint of the gradient
+     */
+    mid?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingMid;
+    start?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingStart;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingMid {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequential {
+    end?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialEnd;
+    start?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialStart;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightMode {
+    color?: string;
+    /**
+     * A named color scheme (for example, 'blues', 'viridis', 'spectral')
+     */
+    colorScheme?: string;
+    /**
+     * A custom three-stop diverging gradient
+     */
+    customDiverging?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDiverging;
+    /**
+     * A custom two-stop sequential gradient
+     */
+    customSequential?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequential;
+    /**
+     * A 0-based index into the visualization color palette, where 0 is visualization_color_01. Valid values are 0 to 19
+     */
+    fromCategoricalIndex?: number;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDiverging {
+    end?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingEnd;
+    /**
+     * The color at the midpoint of the gradient
+     */
+    mid?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingMid;
+    start?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingStart;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingMid {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequential {
+    end?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialEnd;
+    start?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialStart;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettings {
+    /**
+     * The default font config applied to all text unless overridden by a more specific category
+     */
+    base?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsBase;
+    /**
+     * The font config applied to field titles (for example, axis titles, table heading titles)
+     */
+    fieldTitle?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldTitle;
+    /**
+     * The font config applied to field values (for example, axis tick labels, table cell values, tooltip values)
+     */
+    fieldValue?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldValue;
+    /**
+     * The font config applied to widget descriptions
+     */
+    widgetDescription?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetDescription;
+    /**
+     * The font config applied to widget titles
+     */
+    widgetTitle?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetTitle;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsBase {
+    fontColor?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsBaseFontColor;
+    fontFamily?: string;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsBaseFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldTitle {
+    fontColor?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldTitleFontColor;
+    fontFamily?: string;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldTitleFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldValue {
+    fontColor?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldValueFontColor;
+    fontFamily?: string;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldValueFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetDescription {
+    fontColor?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetDescriptionFontColor;
+    fontFamily?: string;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetDescriptionFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetTitle {
+    fontColor?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetTitleFontColor;
+    fontFamily?: string;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetTitleFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeGridLineColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeSelectionColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeSentimentColors {
+    /**
+     * The color applied to negative sentiment values
+     */
+    negative?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsNegative;
+    /**
+     * The color applied to neutral sentiment values
+     */
+    neutral?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsNeutral;
+    /**
+     * The color applied to positive sentiment values
+     */
+    positive?: outputs.AccountSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsPositive;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsNegative {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsNeutral {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsPositive {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeWidgetBackgroundColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2EffectiveWorkspaceDashboardThemeWidgetBorderColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
 export interface AccountSettingV2EffectiveWorkspaceLabel {
     color?: string;
+    /**
+     * Text of the label shown next to the workspace name in the top navigation bar. An empty string
+     * means no label is set
+     */
     label?: string;
 }
 
@@ -1752,6 +2537,11 @@ export interface AccountSettingV2IntegerVal {
 }
 
 export interface AccountSettingV2OperationalEmailCustomRecipient {
+    /**
+     * Email address that receives this workspace's operational emails in addition to the workspace
+     * admins. Use a distribution list address to reach several people. An empty string clears the
+     * additional recipient
+     */
     email?: string;
 }
 
@@ -1766,7 +2556,13 @@ export interface AccountSettingV2RestrictWorkspaceAdmins {
      */
     disableGovTagCreation?: boolean;
     /**
-     * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     * Controls what workspace admins can do with service principal tokens and job identities. With
+     * ALLOW_ALL, workspace admins can create personal access tokens on behalf of any service principal
+     * in the workspace, change a job owner to any workspace user, and set a job's runAs identity to
+     * any workspace user or to a service principal they have the Service Principal User role on. With
+     * RESTRICT_TOKENS_AND_JOB_RUN_AS, they can only create tokens for service principals they have the
+     * Service Principal User role on, change a job owner to themselves, and set runAs to themselves
+     * or to a service principal they have that role on. Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
     status: string;
 }
@@ -1775,8 +2571,682 @@ export interface AccountSettingV2StringVal {
     value?: string;
 }
 
+export interface AccountSettingV2WorkspaceDashboardTheme {
+    /**
+     * Color of the zero-value grid line, making it visually distinct from other grid lines
+     */
+    axisLineColor?: outputs.AccountSettingV2WorkspaceDashboardThemeAxisLineColor;
+    /**
+     * The background color of the dashboard canvas
+     */
+    canvasBackgroundColor?: outputs.AccountSettingV2WorkspaceDashboardThemeCanvasBackgroundColor;
+    /**
+     * The continuous gradient configuration for the dashboard
+     */
+    continuousGradient?: outputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradient;
+    fontColor?: outputs.AccountSettingV2WorkspaceDashboardThemeFontColor;
+    fontFamily?: string;
+    /**
+     * The per-category typography overrides for the dashboard
+     */
+    fontSettings?: outputs.AccountSettingV2WorkspaceDashboardThemeFontSettings;
+    /**
+     * Color of chart grid lines in visualizations (horizontal and vertical guide lines)
+     */
+    gridLineColor?: outputs.AccountSettingV2WorkspaceDashboardThemeGridLineColor;
+    /**
+     * The corner radius in pixels for rectangular marks in visualizations (bars, columns, histogram bins, etc.)
+     */
+    markCornerRadius?: number;
+    /**
+     * The highlight color for selected elements in widgets
+     */
+    selectionColor?: outputs.AccountSettingV2WorkspaceDashboardThemeSelectionColor;
+    /**
+     * The sentiment color palette for the dashboard
+     */
+    sentimentColors?: outputs.AccountSettingV2WorkspaceDashboardThemeSentimentColors;
+    /**
+     * The default vertical alignment for all text box widgets in the dashboard.
+     * Individual text box widgets can override this. Possible values are: `VERTICAL_ALIGN_BOTTOM`, `VERTICAL_ALIGN_CENTER`, `VERTICAL_ALIGN_TOP`
+     */
+    textBoxVerticalAlign?: string;
+    /**
+     * Color palette for visualizations. Colors are applied in order (visualization_color_01, visualization_color_02, etc.).
+     * Invalid color values are preserved but ignored during rendering
+     */
+    visualizationColor01?: string;
+    /**
+     * The color at position 2 in the visualization color palette
+     */
+    visualizationColor02?: string;
+    /**
+     * The color at position 3 in the visualization color palette
+     */
+    visualizationColor03?: string;
+    /**
+     * The color at position 4 in the visualization color palette
+     */
+    visualizationColor04?: string;
+    /**
+     * The color at position 5 in the visualization color palette
+     */
+    visualizationColor05?: string;
+    /**
+     * The color at position 6 in the visualization color palette
+     */
+    visualizationColor06?: string;
+    /**
+     * The color at position 7 in the visualization color palette
+     */
+    visualizationColor07?: string;
+    /**
+     * The color at position 8 in the visualization color palette
+     */
+    visualizationColor08?: string;
+    /**
+     * The color at position 9 in the visualization color palette
+     */
+    visualizationColor09?: string;
+    /**
+     * The color at position 10 in the visualization color palette
+     */
+    visualizationColor10?: string;
+    /**
+     * The color at position 11 in the visualization color palette
+     */
+    visualizationColor11?: string;
+    /**
+     * The color at position 12 in the visualization color palette
+     */
+    visualizationColor12?: string;
+    /**
+     * The color at position 13 in the visualization color palette
+     */
+    visualizationColor13?: string;
+    /**
+     * The color at position 14 in the visualization color palette
+     */
+    visualizationColor14?: string;
+    /**
+     * The color at position 15 in the visualization color palette
+     */
+    visualizationColor15?: string;
+    /**
+     * The color at position 16 in the visualization color palette
+     */
+    visualizationColor16?: string;
+    /**
+     * The color at position 17 in the visualization color palette
+     */
+    visualizationColor17?: string;
+    /**
+     * The color at position 18 in the visualization color palette
+     */
+    visualizationColor18?: string;
+    /**
+     * The color at position 19 in the visualization color palette
+     */
+    visualizationColor19?: string;
+    /**
+     * The color at position 20 in the visualization color palette
+     */
+    visualizationColor20?: string;
+    /**
+     * The background color of widgets
+     */
+    widgetBackgroundColor?: outputs.AccountSettingV2WorkspaceDashboardThemeWidgetBackgroundColor;
+    /**
+     * The border color of widgets
+     */
+    widgetBorderColor?: outputs.AccountSettingV2WorkspaceDashboardThemeWidgetBorderColor;
+    /**
+     * The widget border radius in pixels
+     */
+    widgetCornerRadius?: number;
+    /**
+     * Alignment setting for all widget titles and descriptions at the dashboard level. Possible values are: `CENTER`, `LEFT`, `RIGHT`
+     */
+    widgetHeaderAlignment?: string;
+    /**
+     * The gap between widgets in pixels
+     */
+    widgetMargin?: number;
+    /**
+     * The content padding inside each widget in pixels
+     */
+    widgetPadding?: number;
+    /**
+     * The shadow intensity level applied to widgets (0 = no shadow, 100 = maximum).
+     * The actual CSS box-shadow is computed at render time from this value, factoring in
+     * background colors and color mode
+     */
+    widgetShadow?: number;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeAxisLineColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeCanvasBackgroundColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradient {
+    /**
+     * Gradient value used when the dashboard is rendered in dark mode
+     */
+    darkMode?: outputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkMode;
+    /**
+     * Gradient value used when the dashboard is rendered in light mode
+     */
+    lightMode?: outputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightMode;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkMode {
+    color?: string;
+    /**
+     * A named color scheme (for example, 'blues', 'viridis', 'spectral')
+     */
+    colorScheme?: string;
+    /**
+     * A custom three-stop diverging gradient
+     */
+    customDiverging?: outputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDiverging;
+    /**
+     * A custom two-stop sequential gradient
+     */
+    customSequential?: outputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequential;
+    /**
+     * A 0-based index into the visualization color palette, where 0 is visualization_color_01. Valid values are 0 to 19
+     */
+    fromCategoricalIndex?: number;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDiverging {
+    end?: outputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingEnd;
+    /**
+     * The color at the midpoint of the gradient
+     */
+    mid?: outputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingMid;
+    start?: outputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingStart;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingMid {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequential {
+    end?: outputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialEnd;
+    start?: outputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialStart;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightMode {
+    color?: string;
+    /**
+     * A named color scheme (for example, 'blues', 'viridis', 'spectral')
+     */
+    colorScheme?: string;
+    /**
+     * A custom three-stop diverging gradient
+     */
+    customDiverging?: outputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDiverging;
+    /**
+     * A custom two-stop sequential gradient
+     */
+    customSequential?: outputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequential;
+    /**
+     * A 0-based index into the visualization color palette, where 0 is visualization_color_01. Valid values are 0 to 19
+     */
+    fromCategoricalIndex?: number;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDiverging {
+    end?: outputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingEnd;
+    /**
+     * The color at the midpoint of the gradient
+     */
+    mid?: outputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingMid;
+    start?: outputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingStart;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingMid {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequential {
+    end?: outputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialEnd;
+    start?: outputs.AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialStart;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeFontSettings {
+    /**
+     * The default font config applied to all text unless overridden by a more specific category
+     */
+    base?: outputs.AccountSettingV2WorkspaceDashboardThemeFontSettingsBase;
+    /**
+     * The font config applied to field titles (for example, axis titles, table heading titles)
+     */
+    fieldTitle?: outputs.AccountSettingV2WorkspaceDashboardThemeFontSettingsFieldTitle;
+    /**
+     * The font config applied to field values (for example, axis tick labels, table cell values, tooltip values)
+     */
+    fieldValue?: outputs.AccountSettingV2WorkspaceDashboardThemeFontSettingsFieldValue;
+    /**
+     * The font config applied to widget descriptions
+     */
+    widgetDescription?: outputs.AccountSettingV2WorkspaceDashboardThemeFontSettingsWidgetDescription;
+    /**
+     * The font config applied to widget titles
+     */
+    widgetTitle?: outputs.AccountSettingV2WorkspaceDashboardThemeFontSettingsWidgetTitle;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeFontSettingsBase {
+    fontColor?: outputs.AccountSettingV2WorkspaceDashboardThemeFontSettingsBaseFontColor;
+    fontFamily?: string;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeFontSettingsBaseFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeFontSettingsFieldTitle {
+    fontColor?: outputs.AccountSettingV2WorkspaceDashboardThemeFontSettingsFieldTitleFontColor;
+    fontFamily?: string;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeFontSettingsFieldTitleFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeFontSettingsFieldValue {
+    fontColor?: outputs.AccountSettingV2WorkspaceDashboardThemeFontSettingsFieldValueFontColor;
+    fontFamily?: string;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeFontSettingsFieldValueFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeFontSettingsWidgetDescription {
+    fontColor?: outputs.AccountSettingV2WorkspaceDashboardThemeFontSettingsWidgetDescriptionFontColor;
+    fontFamily?: string;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeFontSettingsWidgetDescriptionFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeFontSettingsWidgetTitle {
+    fontColor?: outputs.AccountSettingV2WorkspaceDashboardThemeFontSettingsWidgetTitleFontColor;
+    fontFamily?: string;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeFontSettingsWidgetTitleFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeGridLineColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeSelectionColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeSentimentColors {
+    /**
+     * The color applied to negative sentiment values
+     */
+    negative?: outputs.AccountSettingV2WorkspaceDashboardThemeSentimentColorsNegative;
+    /**
+     * The color applied to neutral sentiment values
+     */
+    neutral?: outputs.AccountSettingV2WorkspaceDashboardThemeSentimentColorsNeutral;
+    /**
+     * The color applied to positive sentiment values
+     */
+    positive?: outputs.AccountSettingV2WorkspaceDashboardThemeSentimentColorsPositive;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeSentimentColorsNegative {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeSentimentColorsNeutral {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeSentimentColorsPositive {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeWidgetBackgroundColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface AccountSettingV2WorkspaceDashboardThemeWidgetBorderColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
 export interface AccountSettingV2WorkspaceLabel {
     color?: string;
+    /**
+     * Text of the label shown next to the workspace name in the top navigation bar. An empty string
+     * means no label is set
+     */
     label?: string;
 }
 
@@ -1796,7 +3266,9 @@ export interface AgentKitManagedMemoryStoreProviderConfig {
 
 export interface AgentKitManagedMemoryStoreStorageBackend {
     /**
-     * (string) - Backend-specific identifier. For Lakebase, this is the project ID
+     * (string) - Backend-specific identifier. For Lakebase, this is the resource name of the database that
+     * holds the store's entries, in the form
+     * `projects/{project_id}/branches/{branch_id}/databases/{database_id}`
      */
     backendId: string;
     /**
@@ -1852,7 +3324,7 @@ export interface AiGatewayMcpServiceConfigRateLimit {
      */
     principal?: string;
     /**
-     * Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     * Interval after which the request and token counters reset. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
      */
     renewalPeriod: string;
     /**
@@ -1878,8 +3350,9 @@ export interface AiGatewayMcpServiceConfigSourceConnection {
      * (string) - Resource name of the MCP service.
      * Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `mcpServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `mcpServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      */
     name: string;
     /**
@@ -1906,10 +3379,31 @@ export interface AiGatewayModelProviderServiceConfig {
      * catalog and must leave this false and list their models in `targets`
      */
     allowAllTargets?: boolean;
+    /**
+     * Configuration for Amazon Bedrock. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`
+     */
     amazonBedrock?: outputs.AiGatewayModelProviderServiceConfigAmazonBedrock;
+    /**
+     * Configuration for Anthropic. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`
+     */
     anthropic?: outputs.AiGatewayModelProviderServiceConfigAnthropic;
+    /**
+     * Configuration for Azure OpenAI. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`
+     */
     azureOpenai?: outputs.AiGatewayModelProviderServiceConfigAzureOpenai;
+    /**
+     * Configuration for Amazon Bedrock Mantle, with the same fields as
+     * `amazonBedrock`. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`
+     */
     bedrockMantle?: outputs.AiGatewayModelProviderServiceConfigBedrockMantle;
+    /**
+     * Configuration for a custom OpenAI-compatible provider. Set this field when
+     * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`
+     */
     custom?: outputs.AiGatewayModelProviderServiceConfigCustom;
     /**
      * Whether to forward incoming HTTP headers to the upstream provider. Defaults
@@ -1934,6 +3428,10 @@ export interface AiGatewayModelProviderServiceConfig {
      * rejected whenever Service Policies are attached to this securable
      */
     forwardUnmanagedPaths?: boolean;
+    /**
+     * Configuration for Google Gemini Enterprise. Set this field when
+     * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`
+     */
     geminiEnterprise?: outputs.AiGatewayModelProviderServiceConfigGeminiEnterprise;
     /**
      * Payload logging configuration for requests sent directly to this provider
@@ -1941,7 +3439,15 @@ export interface AiGatewayModelProviderServiceConfig {
      * service's inference table instead
      */
     inferenceTable?: outputs.AiGatewayModelProviderServiceConfigInferenceTable;
+    /**
+     * Configuration for Microsoft Foundry. Set this field when
+     * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`
+     */
     microsoftFoundry?: outputs.AiGatewayModelProviderServiceConfigMicrosoftFoundry;
+    /**
+     * Configuration for OpenAI. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
+     */
     openai?: outputs.AiGatewayModelProviderServiceConfigOpenai;
     /**
      * Pricing configuration for this provider service. An explicitly empty
@@ -2003,9 +3509,10 @@ export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccess
 
 export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey {
     /**
-     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -2024,8 +3531,9 @@ export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccess
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -2035,8 +3543,9 @@ export interface AiGatewayModelProviderServiceConfigAmazonBedrockDirectServiceCr
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -2057,9 +3566,10 @@ export interface AiGatewayModelProviderServiceConfigAnthropicDirect {
 
 export interface AiGatewayModelProviderServiceConfigAnthropicDirectApiKey {
     /**
-     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -2078,8 +3588,9 @@ export interface AiGatewayModelProviderServiceConfigAnthropicDirectApiKeySecretR
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -2100,9 +3611,10 @@ export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirect {
 
 export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey {
     /**
-     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -2121,8 +3633,9 @@ export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeySecre
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -2144,9 +3657,10 @@ export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServic
 
 export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret {
     /**
-     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -2165,8 +3679,9 @@ export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServic
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -2176,8 +3691,9 @@ export interface AiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceCred
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -2214,9 +3730,10 @@ export interface AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccess
 
 export interface AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey {
     /**
-     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -2235,8 +3752,9 @@ export interface AiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccess
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -2246,8 +3764,9 @@ export interface AiGatewayModelProviderServiceConfigBedrockMantleDirectServiceCr
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -2269,9 +3788,10 @@ export interface AiGatewayModelProviderServiceConfigCustomDirect {
 
 export interface AiGatewayModelProviderServiceConfigCustomDirectApiKey {
     /**
-     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -2290,8 +3810,9 @@ export interface AiGatewayModelProviderServiceConfigCustomDirectApiKeySecretRefe
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -2305,16 +3826,17 @@ export interface AiGatewayModelProviderServiceConfigCustomDirectHeaderAuth {
     apiKeyName?: string;
     /**
      * Secret value forwarded under the `apiKeyName` header on outbound
-     * requests. Supplied as inline plaintext via `ProviderSecret.plaintext`
+     * requests. Supply the value in `api_key_value.plaintext`
      */
     apiKeyValue?: outputs.AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue;
 }
 
 export interface AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue {
     /**
-     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -2333,8 +3855,9 @@ export interface AiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKey
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -2355,9 +3878,10 @@ export interface AiGatewayModelProviderServiceConfigGeminiEnterpriseDirect {
 
 export interface AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey {
     /**
-     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -2376,8 +3900,9 @@ export interface AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -2387,8 +3912,9 @@ export interface AiGatewayModelProviderServiceConfigGeminiEnterpriseDirectServic
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -2407,7 +3933,7 @@ export interface AiGatewayModelProviderServiceConfigInferenceTable {
      */
     parent: string;
     /**
-     * (string) - Resolved UC table for payload logs.
+     * (string) - Resource name of the Unity Catalog table that receives the payload logs.
      * Format: `tables/{catalog}.{schema}.{table}`
      */
     table: string;
@@ -2434,9 +3960,10 @@ export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirect {
 
 export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey {
     /**
-     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -2455,8 +3982,9 @@ export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -2478,9 +4006,10 @@ export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraS
 
 export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret {
     /**
-     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -2499,8 +4028,9 @@ export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraS
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -2510,8 +4040,9 @@ export interface AiGatewayModelProviderServiceConfigMicrosoftFoundryDirectServic
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -2532,9 +4063,10 @@ export interface AiGatewayModelProviderServiceConfigOpenaiDirect {
 
 export interface AiGatewayModelProviderServiceConfigOpenaiDirectApiKey {
     /**
-     * Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -2553,8 +4085,9 @@ export interface AiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretRefe
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -2582,7 +4115,7 @@ export interface AiGatewayModelProviderServiceConfigRateLimit {
      */
     principal?: string;
     /**
-     * Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     * Interval after which the request and token counters reset. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
      */
     renewalPeriod: string;
     /**
@@ -2632,7 +4165,8 @@ export interface AiGatewayModelProviderServiceProviderConfig {
 
 export interface AiGatewayModelServiceConfig {
     /**
-     * Inference table configuration for payload logging
+     * Configuration for logging request and response payloads to a Unity
+     * Catalog inference table. Omit this field to leave payload logging off
      */
     inferenceTable?: outputs.AiGatewayModelServiceConfigInferenceTable;
     /**
@@ -2640,7 +4174,8 @@ export interface AiGatewayModelServiceConfig {
      */
     rateLimits?: outputs.AiGatewayModelServiceConfigRateLimit[];
     /**
-     * Routing configuration: destinations and fallback
+     * Routing configuration: the primary destinations that receive traffic and
+     * the fallback destinations tried when a primary destination fails
      */
     routing?: outputs.AiGatewayModelServiceConfigRouting;
 }
@@ -2660,7 +4195,7 @@ export interface AiGatewayModelServiceConfigInferenceTable {
      */
     parent: string;
     /**
-     * (string) - Resolved UC table for payload logs.
+     * (string) - Resource name of the Unity Catalog table that receives the payload logs.
      * Format: `tables/{catalog}.{schema}.{table}`
      */
     table: string;
@@ -2687,7 +4222,7 @@ export interface AiGatewayModelServiceConfigRateLimit {
      */
     principal?: string;
     /**
-     * Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     * Interval after which the request and token counters reset. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
      */
     renewalPeriod: string;
     /**
@@ -2732,8 +4267,9 @@ export interface AiGatewayModelServiceConfigRoutingDestination {
      * (string) - Resource name of the model service.
      * Format: `model-services/{catalog}.{schema}.{model_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      */
     name: string;
     /**
@@ -2756,9 +4292,7 @@ export interface AiGatewayModelServiceConfigRoutingDestination {
 export interface AiGatewayModelServiceConfigRoutingDestinationExternalModelConfig {
     /**
      * Resource name of the governed ModelProviderService that owns provider
-     * auth and provider-specific configuration. The referenced
-     * ModelProviderService also carries the provider type, so this message
-     * does not surface it directly.
+     * auth and provider-specific configuration.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually
      */
@@ -2781,9 +4315,9 @@ export interface AiGatewayModelServiceConfigRoutingDestinationExternalModelConfi
      */
     endpointRoute?: string;
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      */
     model: string;
     /**
@@ -2799,18 +4333,18 @@ export interface AiGatewayModelServiceConfigRoutingDestinationExternalModelConfi
 
 export interface AiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfig {
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      */
     model: string;
 }
 
 export interface AiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfig {
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      */
     model: string;
     /**
@@ -2849,8 +4383,9 @@ export interface AiGatewayModelServiceConfigRoutingFallbackDestination {
      * (string) - Resource name of the model service.
      * Format: `model-services/{catalog}.{schema}.{model_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      */
     name: string;
     /**
@@ -2873,9 +4408,7 @@ export interface AiGatewayModelServiceConfigRoutingFallbackDestination {
 export interface AiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfig {
     /**
      * Resource name of the governed ModelProviderService that owns provider
-     * auth and provider-specific configuration. The referenced
-     * ModelProviderService also carries the provider type, so this message
-     * does not surface it directly.
+     * auth and provider-specific configuration.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually
      */
@@ -2898,9 +4431,9 @@ export interface AiGatewayModelServiceConfigRoutingFallbackDestinationExternalMo
      */
     endpointRoute?: string;
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      */
     model: string;
     /**
@@ -2916,18 +4449,18 @@ export interface AiGatewayModelServiceConfigRoutingFallbackDestinationExternalMo
 
 export interface AiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfig {
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      */
     model: string;
 }
 
 export interface AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfig {
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      */
     model: string;
     /**
@@ -2979,6 +4512,27 @@ export interface AiSearchEndpointProviderConfig {
 
 export interface AiSearchEndpointScalingInfo {
     /**
+     * (string) - Reason the in-progress scaling change is delayed. When set, `estimatedCompletionTime` is
+     * unset. Unset when the change is not delayed or no scaling change is in progress. Possible values are: `CAPACITY_UNAVAILABLE`, `SCALE_DOWN_BLOCKED`, `TAKING_LONGER_THAN_EXPECTED`
+     */
+    delayedReason: string;
+    /**
+     * (string) - Estimated time at which the in-progress scaling change will complete. The estimate may
+     * change as the scaling change progresses. Unset when no scaling change is in progress,
+     * when no estimate is available, or when the change is delayed (see `delayedReason`)
+     */
+    estimatedCompletionTime: string;
+    /**
+     * (integer) - Percentage of index initialization completed, from 0 to 100. Set only during the
+     * `INITIALIZING_INDEX` phase; unset in other phases or when progress is not available
+     */
+    indexInitializationPercentage: number;
+    /**
+     * (string) - Current phase of the in-progress scaling change. Unset when no scaling change is in
+     * progress or the phase is not available. Possible values are: `ADJUSTING_CAPACITY`, `ESTIMATING`, `INITIALIZING_INDEX`
+     */
+    phase: string;
+    /**
      * The requested QPS target for the endpoint. Best-effort; the system does not
      * guarantee this QPS will be achieved
      */
@@ -2987,6 +4541,12 @@ export interface AiSearchEndpointScalingInfo {
      * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
      */
     state: string;
+    /**
+     * (string) - Earliest time a new Target QPS change is accepted. Set only while a scaling change is in
+     * progress, the change lock is on, and the endpoint has a recorded last throughput change; may
+     * be in the past once the lock has expired
+     */
+    targetQpsChangeAllowedAfterTime: string;
 }
 
 export interface AiSearchEndpointThroughputInfo {
@@ -3030,15 +4590,17 @@ export interface AiSearchEndpointThroughputInfo {
 
 export interface AiSearchIndexDeltaSyncIndexSpec {
     /**
-     * [Optional] Select the columns to sync with the index. If left blank, all columns
-     * from the source table are synced. The primary key column and embedding source or
-     * vector column are always synced
+     * Columns of the source table to include in the index. When empty, all columns are synced. The
+     * primary key and the embedding source or vector column are always synced. Only synced columns
+     * can be returned in query results or used in filters
      */
     columnsToSyncs?: string[];
     embeddingSourceColumns?: outputs.AiSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn[];
     embeddingVectorColumns?: outputs.AiSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn[];
     /**
-     * [Optional] Name of the Delta table to sync the index contents and computed embeddings to
+     * Three-level name of a Delta table to write the synced rows and computed embeddings to. It
+     * applies only when embeddings are computed from `embeddingSourceColumns`, and the table must
+     * not already exist
      */
     embeddingWritebackTable?: string;
     /**
@@ -3046,15 +4608,13 @@ export interface AiSearchIndexDeltaSyncIndexSpec {
      */
     pipelineId: string;
     /**
-     * Pipeline execution mode. Required on create — the backend rejects an unset value.
-     * Storage Optimized endpoints accept only `TRIGGERED`; Standard endpoints accept both.
-     * No explicit `stage` — a REQUIRED field staged below its service would be dropped from
-     * combined specs while remaining in `required`, tripping the OpenAPI required-vs-properties
-     * consistency check. The field inherits the service's launch stage. Possible values are: `CONTINUOUS`, `TRIGGERED`
+     * Sync mode of the pipeline that keeps the index up to date. `TRIGGERED` syncs at creation and
+     * then each time SyncIndex is called; `CONTINUOUS` processes source changes as they arrive.
+     * Storage Optimized endpoints accept only `TRIGGERED`, and an unset value is rejected. Possible values are: `CONTINUOUS`, `TRIGGERED`
      */
     pipelineType: string;
     /**
-     * The full name of the source Delta table
+     * Three-level Unity Catalog name of the source Delta table, in the form `catalog.schema.table`
      */
     sourceTable?: string;
 }
@@ -3080,7 +4640,7 @@ export interface AiSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
 
 export interface AiSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
     /**
-     * Dimension of the embedding vector
+     * Number of elements in each embedding vector. It must be positive
      */
     embeddingDimension?: number;
     /**
@@ -3097,9 +4657,10 @@ export interface AiSearchIndexDirectAccessIndexSpec {
     embeddingSourceColumns?: outputs.AiSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn[];
     embeddingVectorColumns?: outputs.AiSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn[];
     /**
-     * The schema of the index in JSON format. Supported types are `integer`, `long`,
-     * `float`, `double`, `boolean`, `string`, `date`, `timestamp`. Supported types for
-     * vector columns: `array<float>`, `array<double>`
+     * The schema of the index in JSON format, mapping each column name to its type. Supported
+     * types are `integer`, `long`, `float`, `double`, `boolean`, `string`, `date`, `timestamp`.
+     * Supported types for vector columns: `array<float>`, `array<double>`. The schema must include
+     * the primary key column and the embedding vector column
      */
     schemaJson?: string;
 }
@@ -3125,7 +4686,7 @@ export interface AiSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
 
 export interface AiSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
     /**
-     * Dimension of the embedding vector
+     * Number of elements in each embedding vector. It must be positive
      */
     embeddingDimension?: number;
     /**
@@ -3147,6 +4708,10 @@ export interface AiSearchIndexProviderConfig {
 
 export interface AiSearchIndexStatus {
     /**
+     * (string) - Lifecycle and ingestion state. An online index can still have a failed update. Possible values are: `DOWNLOADING`, `OFFLINE`, `OFFLINE_FAILED`, `ONLINE`, `ONLINE_CONTINUOUS_UPDATE`, `ONLINE_DIRECT_ACCESS`, `ONLINE_NO_PENDING_UPDATE`, `ONLINE_PIPELINE_FAILED`, `ONLINE_TRIGGERED_UPDATE`, `ONLINE_UPDATING_PIPELINE_RESOURCES`, `PROVISIONING`, `PROVISIONING_ENDPOINT`, `PROVISIONING_INDEX`, `PROVISIONING_INITIAL_SNAPSHOT`, `PROVISIONING_PIPELINE_RESOURCES`
+     */
+    detailedState: string;
+    /**
      * (string) - Index API URL used to perform operations on the index
      */
     indexUrl: string;
@@ -3159,7 +4724,8 @@ export interface AiSearchIndexStatus {
      */
     message: string;
     /**
-     * (boolean) - Whether the index is ready for search
+     * (boolean) - Whether the index can serve queries. After CreateIndex, poll GetIndex until true; message describes progress.
+     * This does not guarantee freshness or update success; check detailedState for update failures
      */
     ready: boolean;
 }
@@ -3267,11 +4833,11 @@ export interface AlertV2EffectiveRunAs {
 
 export interface AlertV2Evaluation {
     /**
-     * Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
+     * Operator used for comparison in alert evaluation. The alert is triggered when the comparison of the source value with the threshold is true. `IS_NULL` and `IS_NOT_NULL` take no threshold. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      */
     comparisonOperator: string;
     /**
-     * Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+     * Alert state if result is empty. If not set, an empty result sets the state to `ERROR`. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
     emptyResultState?: string;
     /**
@@ -3287,11 +4853,11 @@ export interface AlertV2Evaluation {
      */
     source: outputs.AlertV2EvaluationSource;
     /**
-     * (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+     * (string) - Latest state of alert evaluation: `TRIGGERED` when the condition was met, `OK` when it was not, and `ERROR` when the evaluation failed. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
     state: string;
     /**
-     * Threshold to user for alert evaluation, can be a column or a value
+     * Threshold to compare the source column against, either another column or a fixed value. Not needed when `comparisonOperator` is `IS_NULL` or `IS_NOT_NULL`
      */
     threshold?: outputs.AlertV2EvaluationThreshold;
 }
@@ -3309,40 +4875,69 @@ export interface AlertV2EvaluationNotification {
      * Setting this value to 1 allows the alert to send a notification on every evaluation where the condition is met, effectively making it always retrigger for notification purposes
      */
     retriggerSeconds?: number;
+    /**
+     * Users and notification destinations that receive notifications
+     */
     subscriptions?: outputs.AlertV2EvaluationNotificationSubscription[];
 }
 
 export interface AlertV2EvaluationNotificationSubscription {
+    /**
+     * ID of the notification destination to notify, as returned by the Notification Destinations API
+     */
     destinationId?: string;
+    /**
+     * Email address of the workspace user to notify
+     */
     userEmail?: string;
 }
 
 export interface AlertV2EvaluationSource {
     /**
-     * If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * Aggregation applied to the column across all rows of the query result: `SUM`, `COUNT`, `COUNT_DISTINCT`, `AVG`, `MEDIAN`, `MIN`, `MAX` or `STDDEV`.
+     * If not set, the value in the first row is used, which is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
+    /**
+     * Label for the column in notifications. Defaults to `name`
+     */
     display?: string;
     name: string;
 }
 
 export interface AlertV2EvaluationThreshold {
+    /**
+     * Compare the source against another column of the query result
+     */
     column?: outputs.AlertV2EvaluationThresholdColumn;
     value?: outputs.AlertV2EvaluationThresholdValue;
 }
 
 export interface AlertV2EvaluationThresholdColumn {
     /**
-     * If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * Aggregation applied to the column across all rows of the query result: `SUM`, `COUNT`, `COUNT_DISTINCT`, `AVG`, `MEDIAN`, `MIN`, `MAX` or `STDDEV`.
+     * If not set, the value in the first row is used, which is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
+    /**
+     * Label for the column in notifications. Defaults to `name`
+     */
     display?: string;
     name: string;
 }
 
 export interface AlertV2EvaluationThresholdValue {
+    /**
+     * Boolean threshold, for boolean columns
+     */
     boolValue?: boolean;
+    /**
+     * Numeric threshold, for numeric columns
+     */
     doubleValue?: number;
+    /**
+     * String threshold, for string or timestamp columns
+     */
     stringValue?: string;
 }
 
@@ -3376,11 +4971,11 @@ export interface AlertV2RunAs {
 
 export interface AlertV2Schedule {
     /**
-     * Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
+     * Indicates whether this schedule is paused. While paused, the alert is not evaluated. Possible values are: `PAUSED`, `UNPAUSED`
      */
     pauseStatus?: string;
     /**
-     * A cron expression using quartz syntax that specifies the schedule for this pipeline.
+     * A cron expression using quartz syntax that specifies the schedule for this alert.
      * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
      */
     quartzCronSchedule: string;
@@ -3420,6 +5015,9 @@ export interface AppActiveDeployment {
      * The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
      */
     mode?: string;
+    scanOmittedCountIsLowerBound: boolean;
+    scanOmittedFindingsCount: number;
+    scanStatus: string;
     /**
      * Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
      */
@@ -3573,6 +5171,149 @@ export interface AppDefaultGitSourceGitRepository {
     url: string;
 }
 
+export interface AppEffectiveResource {
+    /**
+     * attribute - reference to another Databricks App.
+     */
+    app?: outputs.AppEffectiveResourceApp;
+    database?: outputs.AppEffectiveResourceDatabase;
+    /**
+     * The description of the app.
+     */
+    description?: string;
+    /**
+     * attribute
+     */
+    experiment?: outputs.AppEffectiveResourceExperiment;
+    /**
+     * attribute
+     */
+    genieSpace?: outputs.AppEffectiveResourceGenieSpace;
+    /**
+     * attribute
+     */
+    job?: outputs.AppEffectiveResourceJob;
+    /**
+     * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+     */
+    name: string;
+    /**
+     * attribute
+     */
+    postgres?: outputs.AppEffectiveResourcePostgres;
+    /**
+     * attribute
+     */
+    secret?: outputs.AppEffectiveResourceSecret;
+    /**
+     * attribute
+     */
+    servingEndpoint?: outputs.AppEffectiveResourceServingEndpoint;
+    /**
+     * attribute
+     */
+    sqlWarehouse?: outputs.AppEffectiveResourceSqlWarehouse;
+    /**
+     * attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
+     */
+    ucSecurable?: outputs.AppEffectiveResourceUcSecurable;
+}
+
+export interface AppEffectiveResourceApp {
+    /**
+     * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+     */
+    name?: string;
+    permission?: string;
+}
+
+export interface AppEffectiveResourceDatabase {
+    /**
+     * The name of database.
+     */
+    databaseName: string;
+    /**
+     * The name of database instance.
+     */
+    instanceName: string;
+    permission: string;
+}
+
+export interface AppEffectiveResourceExperiment {
+    /**
+     * The ID of the MLflow experiment to grant permission on.
+     */
+    experimentId: string;
+    permission: string;
+}
+
+export interface AppEffectiveResourceGenieSpace {
+    /**
+     * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+     */
+    name: string;
+    permission: string;
+    /**
+     * The unique ID of Genie Space.
+     */
+    spaceId: string;
+}
+
+export interface AppEffectiveResourceJob {
+    /**
+     * The unique identifier of the app.
+     */
+    id: string;
+    permission: string;
+}
+
+export interface AppEffectiveResourcePostgres {
+    branch?: string;
+    database?: string;
+    permission?: string;
+}
+
+export interface AppEffectiveResourceSecret {
+    /**
+     * Key of the secret to grant permission on.
+     */
+    key: string;
+    permission: string;
+    /**
+     * Scope of the secret to grant permission on.
+     */
+    scope: string;
+}
+
+export interface AppEffectiveResourceServingEndpoint {
+    /**
+     * The name of the app. The name must contain only lowercase alphanumeric characters and hyphens. It must be unique within the workspace.
+     */
+    name: string;
+    permission: string;
+}
+
+export interface AppEffectiveResourceSqlWarehouse {
+    /**
+     * The unique identifier of the app.
+     */
+    id: string;
+    permission: string;
+}
+
+export interface AppEffectiveResourceUcSecurable {
+    permission: string;
+    /**
+     * The full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+     */
+    securableFullName: string;
+    securableKind: string;
+    /**
+     * The type of UC securable. Supported values are `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`.
+     */
+    securableType: string;
+}
+
 export interface AppGitRepository {
     /**
      * When `true`, the app is automatically redeployed on push events to the branch configured in `gitSource`. This requires `gitSource` to specify a `branch`; a `tag` or `commit` cannot be used, because automatic deployment is triggered by pushes to a branch. Automatic deployment is currently supported only for the `gitHub` and `azureDevOpsServices` providers.
@@ -3663,6 +5404,9 @@ export interface AppPendingDeployment {
      * The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
      */
     mode?: string;
+    scanOmittedCountIsLowerBound: boolean;
+    scanOmittedFindingsCount: number;
+    scanStatus: string;
     /**
      * Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`gitRepository`/`gitSource`). This value is not returned by the service; the workspace path of the last active deployment is exported as `defaultSourceCodePath`.
      */
@@ -3948,24 +5692,52 @@ export interface AppSpaceProviderConfig {
 }
 
 export interface AppSpaceResource {
+    /**
+     * Another app in the workspace that this app is granted access to
+     */
     app?: outputs.AppSpaceResourceApp;
     database?: outputs.AppSpaceResourceDatabase;
     /**
      * The description of the app space
      */
     description?: string;
+    /**
+     * MLflow experiment the app is granted access to
+     */
     experiment?: outputs.AppSpaceResourceExperiment;
+    /**
+     * Genie space the app is granted access to
+     */
     genieSpace?: outputs.AppSpaceResourceGenieSpace;
+    /**
+     * Lakeflow job the app is granted access to
+     */
     job?: outputs.AppSpaceResourceJob;
     /**
      * The name of the app space. The name must contain only lowercase alphanumeric characters and hyphens.
      * It must be unique within the workspace
      */
     name: string;
+    /**
+     * Lakebase Autoscaling Postgres database the app is granted access to
+     */
     postgres?: outputs.AppSpaceResourcePostgres;
+    /**
+     * Secret the app is granted access to
+     */
     secret?: outputs.AppSpaceResourceSecret;
+    /**
+     * Model serving endpoint the app is granted access to
+     */
     servingEndpoint?: outputs.AppSpaceResourceServingEndpoint;
+    /**
+     * SQL warehouse the app is granted access to
+     */
     sqlWarehouse?: outputs.AppSpaceResourceSqlWarehouse;
+    /**
+     * Unity Catalog securable (volume, table, function, connection or model service) the app is
+     * granted a privilege on
+     */
     ucSecurable?: outputs.AppSpaceResourceUcSecurable;
 }
 
@@ -3979,12 +5751,21 @@ export interface AppSpaceResourceApp {
 }
 
 export interface AppSpaceResourceDatabase {
+    /**
+     * Name of the database within the instance
+     */
     databaseName: string;
+    /**
+     * Name of the Lakebase database instance
+     */
     instanceName: string;
     permission: string;
 }
 
 export interface AppSpaceResourceExperiment {
+    /**
+     * ID of the MLflow experiment
+     */
     experimentId: string;
     permission: string;
 }
@@ -3996,6 +5777,9 @@ export interface AppSpaceResourceGenieSpace {
      */
     name: string;
     permission: string;
+    /**
+     * ID of the Genie space
+     */
     spaceId: string;
 }
 
@@ -4008,6 +5792,10 @@ export interface AppSpaceResourceJob {
 }
 
 export interface AppSpaceResourcePostgres {
+    /**
+     * Resource name of the Lakebase Autoscaling branch, in the form
+     * `projects/{project}/branches/{branch}`
+     */
     branch?: string;
     database?: string;
     permission?: string;
@@ -4044,6 +5832,10 @@ export interface AppSpaceResourceSqlWarehouse {
 
 export interface AppSpaceResourceUcSecurable {
     permission: string;
+    /**
+     * Full name of the Unity Catalog securable. For volumes, tables and functions this is the
+     * three-level catalog.schema.object name
+     */
     securableFullName: string;
     /**
      * (string) - The securable kind from Unity Catalog.
@@ -4051,7 +5843,7 @@ export interface AppSpaceResourceUcSecurable {
      */
     securableKind: string;
     /**
-     * Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
+     * Kind of Unity Catalog securable that `securableFullName` refers to. Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      */
     securableType: string;
 }
@@ -4171,6 +5963,13 @@ export interface ArtifactAllowlistArtifactMatcher {
 }
 
 export interface ArtifactAllowlistProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface AssumeGroupRestrictedSharingGroupProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
      */
@@ -4989,7 +6788,9 @@ export interface DataClassificationCatalogConfigAutoTagConfig {
     autoTaggingMode: string;
     /**
      * The Classification Tag. For built-in classes this is a system tag (e.g., "class.name",
-     * "class.location"); for custom classes it is a user-defined governance tag key
+     * "class.location"); for custom classes it is a user-defined governance tag key. The built-in
+     * tags are listed at
+     * https://docs.databricks.com/aws/en/data-governance/unity-catalog/data-classification-tags
      */
     classificationTag: string;
 }
@@ -5017,7 +6818,7 @@ export interface DataClassificationCatalogConfigProviderConfig {
 
 export interface DataQualityMonitorAnomalyDetectionConfig {
     /**
-     * List of fully qualified table names to exclude from anomaly detection
+     * List of fully qualified table names to exclude from anomaly detection. Format: `catalog.schema.table_name`
      */
     excludedTableFullNames?: string[];
     notificationSettings?: outputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettings;
@@ -5025,7 +6826,8 @@ export interface DataQualityMonitorAnomalyDetectionConfig {
 
 export interface DataQualityMonitorAnomalyDetectionConfigNotificationSettings {
     /**
-     * Destinations to send notifications on failure/timeout
+     * Recipients to notify when a refresh of the monitor fails or times out. Only supported on table
+     * monitors, via `dataProfilingConfig`, and only `emailAddresses` is accepted there
      */
     onFailure?: outputs.DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure;
     /**
@@ -5038,9 +6840,9 @@ export interface DataQualityMonitorAnomalyDetectionConfigNotificationSettings {
 
 export interface DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure {
     /**
-     * The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
-     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
-     * 25 destination IDs is supported.
+     * The notification-destination IDs (Slack / Teams / webhook / Asana / ServiceNow / AWS
+     * EventBridge) to send the notification to. The destinations must already exist in the
+     * workspace; a workspace admin creates them. A maximum of 25 destination IDs is supported.
      * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
      */
     destinationIds?: string[];
@@ -5050,16 +6852,17 @@ export interface DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnF
      */
     destinationUserIds?: number[];
     /**
-     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported.
+     * Only supported on table monitors, via `dataProfilingConfig`; rejected on schema monitors
      */
     emailAddresses?: string[];
 }
 
 export interface DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable {
     /**
-     * The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
-     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
-     * 25 destination IDs is supported.
+     * The notification-destination IDs (Slack / Teams / webhook / Asana / ServiceNow / AWS
+     * EventBridge) to send the notification to. The destinations must already exist in the
+     * workspace; a workspace admin creates them. A maximum of 25 destination IDs is supported.
      * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
      */
     destinationIds?: string[];
@@ -5069,32 +6872,35 @@ export interface DataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnU
      */
     destinationUserIds?: number[];
     /**
-     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported.
+     * Only supported on table monitors, via `dataProfilingConfig`; rejected on schema monitors
      */
     emailAddresses?: string[];
 }
 
 export interface DataQualityMonitorDataProfilingConfig {
     /**
-     * Field for specifying the absolute path to a custom directory to store data-monitoring
-     * assets. Normally prepopulated to a default user location via UI and Python APIs
+     * The absolute workspace path of the directory where the monitor's assets, such as
+     * the dashboard, are stored. The UI and the Python APIs normally prepopulate a default user location
      */
     assetsDir?: string;
     /**
-     * Baseline table name.
-     * Baseline data is used to compute drift from the data in the monitored `tableName`.
-     * The baseline table and the monitored table shall have the same schema
+     * The fully qualified name of a baseline table. Format: `catalog.schema.table_name`.
+     * Drift metrics compare the monitored table against the baseline data, so the two tables must have the same
+     * schema
      */
     baselineTableName?: string;
     /**
-     * Custom metrics
+     * Custom metrics to compute in addition to the built-in ones. See
+     * [custom metrics](https://docs.databricks.com/aws/en/data-governance/unity-catalog/data-quality-monitoring/data-profiling/custom-metrics)
      */
     customMetrics?: outputs.DataQualityMonitorDataProfilingConfigCustomMetric[];
     dashboardId: string;
     driftMetricsTableName: string;
     effectiveWarehouseId: string;
     /**
-     * `Analysis Configuration` for monitoring inference log tables
+     * Profiles an inference log table, which stores the requests and predictions of a model. Metrics are
+     * computed per time window and include model quality metrics
      */
     inferenceLog?: outputs.DataQualityMonitorDataProfilingConfigInferenceLog;
     latestMonitorFailureMessage: string;
@@ -5102,12 +6908,14 @@ export interface DataQualityMonitorDataProfilingConfig {
     monitoredTableName: string;
     notificationSettings?: outputs.DataQualityMonitorDataProfilingConfigNotificationSettings;
     /**
-     * ID of the schema where output tables are created
+     * The UUID of the Unity Catalog schema where the profile and drift metrics tables
+     * are created
      */
     outputSchemaId: string;
     profileMetricsTableName: string;
     /**
-     * The cron schedule
+     * The schedule on which the monitor refreshes its metrics. Refreshes can also be
+     * triggered on demand through the Refresh resource
      */
     schedule?: outputs.DataQualityMonitorDataProfilingConfigSchedule;
     /**
@@ -5117,24 +6925,25 @@ export interface DataQualityMonitorDataProfilingConfig {
     /**
      * List of column expressions to slice data with for targeted analysis. The data is grouped by
      * each expression independently, resulting in a separate slice for each predicate and its
-     * complements. For example `slicing_exprs=[“col_1”, “col_2 > 10”]` will generate the following
+     * complements. For example `slicing_exprs=["col1", "col2 " pulumi-lang-dotnet="> 10"]` will generate the following
      * slices: two slices for `col2 > 10` (True and False), and one slice per unique value in
      * `col1`. For high-cardinality columns, only the top 100 unique values by frequency will
      * generate slices
      */
     slicingExprs?: string[];
     /**
-     * `Analysis Configuration` for monitoring snapshot tables
+     * Profiles the full contents of the table. Metrics are computed over all rows at each refresh
      */
     snapshot?: outputs.DataQualityMonitorDataProfilingConfigSnapshot;
     status: string;
     /**
-     * `Analysis Configuration` for monitoring time series tables
+     * Profiles a time series table. Metrics are computed per time window, as defined by `timestampColumn`
+     * and `granularities`
      */
     timeSeries?: outputs.DataQualityMonitorDataProfilingConfigTimeSeries;
     /**
-     * Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
-     * warehouse will be used
+     * The ID of the SQL warehouse used to create the dashboard. If not specified, the first running warehouse the
+     * caller can access is used
      */
     warehouseId: string;
 }
@@ -5146,7 +6955,7 @@ export interface DataQualityMonitorDataProfilingConfigCustomMetric {
     definition: string;
     /**
      * A list of column names in the input table the metric should be computed for.
-     * Can use ``":table"`` to indicate that the metric needs information from multiple columns
+     * Can use `":table"` to indicate that the metric needs information from multiple columns
      */
     inputColumns: string[];
     /**
@@ -5154,11 +6963,15 @@ export interface DataQualityMonitorDataProfilingConfigCustomMetric {
      */
     name: string;
     /**
-     * The output type of the custom metric
+     * Specifies the Spark SQL data type of the metric value, either as a plain type name or as a JSON-encoded
+     * StructField
      */
     outputDataType: string;
     /**
-     * The type of the custom metric. Possible values are: `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT`
+     * The type of the custom metric. `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE` metrics depend only on the
+     * columns of the input table, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED` metrics depend only on previously
+     * computed aggregate metrics, and `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT` metrics depend on previously computed
+     * aggregate or derived metrics. Possible values are: `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT`
      */
     type: string;
 }
@@ -5166,19 +6979,20 @@ export interface DataQualityMonitorDataProfilingConfigCustomMetric {
 export interface DataQualityMonitorDataProfilingConfigInferenceLog {
     granularities: string[];
     /**
-     * Column for the label
+     * Column containing the ground truth for the model's predictions
      */
     labelColumn?: string;
     /**
-     * Column for the model identifier
+     * Column containing the ID of the model that produced each prediction. A slice is created automatically for
+     * each distinct model ID
      */
     modelIdColumn: string;
     /**
-     * Column for the prediction
+     * Column containing the model's predicted values
      */
     predictionColumn: string;
     /**
-     * Problem type the model aims to solve. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
+     * The type of problem the model solves. It determines which model quality metrics are computed. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
      */
     problemType: string;
     timestampColumn: string;
@@ -5186,7 +7000,8 @@ export interface DataQualityMonitorDataProfilingConfigInferenceLog {
 
 export interface DataQualityMonitorDataProfilingConfigNotificationSettings {
     /**
-     * Destinations to send notifications on failure/timeout
+     * Recipients to notify when a refresh of the monitor fails or times out. Only supported on table
+     * monitors, via `dataProfilingConfig`, and only `emailAddresses` is accepted there
      */
     onFailure?: outputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure;
     /**
@@ -5199,9 +7014,9 @@ export interface DataQualityMonitorDataProfilingConfigNotificationSettings {
 
 export interface DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure {
     /**
-     * The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
-     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
-     * 25 destination IDs is supported.
+     * The notification-destination IDs (Slack / Teams / webhook / Asana / ServiceNow / AWS
+     * EventBridge) to send the notification to. The destinations must already exist in the
+     * workspace; a workspace admin creates them. A maximum of 25 destination IDs is supported.
      * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
      */
     destinationIds?: string[];
@@ -5211,16 +7026,17 @@ export interface DataQualityMonitorDataProfilingConfigNotificationSettingsOnFail
      */
     destinationUserIds?: number[];
     /**
-     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported.
+     * Only supported on table monitors, via `dataProfilingConfig`; rejected on schema monitors
      */
     emailAddresses?: string[];
 }
 
 export interface DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable {
     /**
-     * The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
-     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
-     * 25 destination IDs is supported.
+     * The notification-destination IDs (Slack / Teams / webhook / Asana / ServiceNow / AWS
+     * EventBridge) to send the notification to. The destinations must already exist in the
+     * workspace; a workspace admin creates them. A maximum of 25 destination IDs is supported.
      * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
      */
     destinationIds?: string[];
@@ -5230,7 +7046,8 @@ export interface DataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhe
      */
     destinationUserIds?: number[];
     /**
-     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     * The list of email addresses to send the notification to. A maximum of 5 email addresses is supported.
+     * Only supported on table monitors, via `dataProfilingConfig`; rejected on schema monitors
      */
     emailAddresses?: string[];
 }
@@ -5242,9 +7059,8 @@ export interface DataQualityMonitorDataProfilingConfigSchedule {
      */
     quartzCronExpression: string;
     /**
-     * A Java timezone id. The schedule for a job will be resolved with respect to this timezone.
-     * See `Java TimeZone <http://docs.oracle.com/javase/7/docs/api/java/util/TimeZone.html>`_ for details.
-     * The timezone id (e.g., ``America/Los_Angeles``) in which to evaluate the quartz expression
+     * The Java timezone ID in which the cron expression is evaluated. See
+     * [Java TimeZone](https://docs.oracle.com/javase/8/docs/api/java/util/TimeZone.html) for the supported IDs
      */
     timezoneId: string;
 }
@@ -5306,7 +7122,9 @@ export interface DatabaseInstanceChildInstanceRef {
      */
     lsn: string;
     /**
-     * The name of the instance. This is the unique identifier for the instance
+     * The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+     * characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+     * consecutive hyphens
      */
     name?: string;
     /**
@@ -5365,7 +7183,9 @@ export interface DatabaseInstanceParentInstanceRef {
      */
     lsn: string;
     /**
-     * The name of the instance. This is the unique identifier for the instance
+     * The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+     * characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+     * consecutive hyphens
      */
     name?: string;
     /**
@@ -5382,11 +7202,19 @@ export interface DatabaseInstanceProviderConfig {
 }
 
 export interface DatabaseSyncedDatabaseTableDataSynchronizationStatus {
+    /**
+     * Provides detailed status for an online table with the CONTINUOUS scheduling policy. It is populated when
+     * detailedState is SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE or SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES
+     */
     continuousUpdateStatus?: outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatus;
     /**
      * (string) - The state of the synced table. Possible values are: `SYNCED_TABLED_OFFLINE`, `SYNCED_TABLE_OFFLINE_FAILED`, `SYNCED_TABLE_ONLINE`, `SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE`, `SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE`, `SYNCED_TABLE_ONLINE_PIPELINE_FAILED`, `SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE`, `SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES`, `SYNCED_TABLE_PROVISIONING`, `SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT`, `SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES`
      */
     detailedState: string;
+    /**
+     * Provides detailed status for a table whose data synchronization pipeline has failed. It is populated when
+     * detailedState is SYNCED_TABLE_OFFLINE_FAILED or SYNCED_TABLE_ONLINE_PIPELINE_FAILED
+     */
     failedStatus?: outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatus;
     /**
      * (SyncedTablePosition) - Summary of the last successful synchronization from source to destination.
@@ -5401,7 +7229,16 @@ export interface DatabaseSyncedDatabaseTableDataSynchronizationStatus {
      * (in the case of bin packing), or generated by the server (when creating a new pipeline)
      */
     pipelineId: string;
+    /**
+     * Provides detailed status while the table is being provisioned. It is populated when detailedState is
+     * SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES or SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT
+     */
     provisioningStatus?: outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatus;
+    /**
+     * Provides detailed status for an online table with the TRIGGERED or SNAPSHOT scheduling policy. It is
+     * populated when detailedState is SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE, SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE
+     * or SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES
+     */
     triggeredUpdateStatus?: outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatus;
 }
 
@@ -5464,7 +7301,7 @@ export interface DatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatu
 
 export interface DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSync {
     /**
-     * (DeltaTableSyncInfo)
+     * (DeltaTableSyncInfo) - Identifies the position in the source Delta table at the time of the last successful sync
      */
     deltaTableSyncInfo: outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfo;
     /**
@@ -5589,7 +7426,8 @@ export interface DatabaseSyncedDatabaseTableSpec {
     acceleratedSync: boolean;
     /**
      * If true, the synced table's logical database and schema resources in PG
-     * will be created if they do not already exist
+     * will be created if they do not already exist. The request fails if this is false and the database
+     * or schema does not exist
      */
     createDatabaseObjectsIfMissing: boolean;
     /**
@@ -5610,11 +7448,17 @@ export interface DatabaseSyncedDatabaseTableSpec {
      */
     newPipelineSpec: outputs.DatabaseSyncedDatabaseTableSpecNewPipelineSpec;
     /**
-     * Primary Key columns to be used for data insert/update in the destination
+     * The primary key columns are used to insert and update rows in the destination table. At least one
+     * column is required. Rows whose primary key columns contain null values are not synced, and the primary
+     * key cannot be changed after the table is created
      */
     primaryKeyColumns?: string[];
     /**
-     * Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+     * Specifies the scheduling policy of the underlying pipeline. With CONTINUOUS, the pipeline keeps running and
+     * applies source changes as they happen. With TRIGGERED and SNAPSHOT, the pipeline stops after the
+     * initial load and syncs again only when it is run (manually, on a schedule or from a job); TRIGGERED
+     * applies source changes incrementally, while SNAPSHOT copies the full source table on every run.
+     * CONTINUOUS and TRIGGERED require the source table to provide a change data feed. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
      */
     schedulingPolicy?: string;
     /**
@@ -5622,7 +7466,9 @@ export interface DatabaseSyncedDatabaseTableSpec {
      */
     sourceTableFullName?: string;
     /**
-     * Time series key to deduplicate (tie-break) rows with the same primary key
+     * The time series key deduplicates (tie-breaks) rows with the same primary key. When primary key values
+     * can repeat in the source table, the synced table keeps only the row with the latest value of this
+     * column for each primary key. The key cannot be changed after the table is created
      */
     timeseriesKey?: string;
     /**
@@ -5741,23 +7587,28 @@ export interface DisableLegacyFeaturesSettingProviderConfig {
 
 export interface DisasterRecoveryFailoverGroupInitialReplicationProgress {
     /**
-     * (integer) - Percent complete, 0-100
+     * (integer) - Percentage of in-scope assets replicated so far, from 0 to 100. Stays below 100 while
+     * errors block the first replication point
      */
     completed: number;
 }
 
 export interface DisasterRecoveryFailoverGroupUnityCatalogAssets {
     /**
-     * UC catalogs to replicate
+     * Unity Catalog catalogs to replicate, including their metadata and managed table data.
+     * Adding a catalog to an existing failover group returns the group to INITIAL_REPLICATION
+     * until the catalog has been replicated
      */
     catalogs: outputs.DisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog[];
     /**
-     * The workspace set whose workspaces will be used for data replication
-     * of all UC catalogs' underlying storage
+     * Name of the workspace set whose workspaces run the data replication for the catalogs'
+     * underlying storage. Must match the name of a workspace set in this failover group
      */
     dataReplicationWorkspaceSet: string;
     /**
-     * Location mappings - storage URI per region for each location
+     * Storage location mappings. Each mapping pairs a storage path used by the replicated
+     * catalogs in one region with the corresponding path in the other region, so that
+     * replicated data is written to the matching storage in the secondary region
      */
     locationMappings?: outputs.DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping[];
 }
@@ -5777,18 +7628,20 @@ export interface DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping 
      */
     name: string;
     /**
-     * URI for each region. Each entry maps a region name to a storage URI
+     * The storage URI of this location in each region, with exactly one entry per region of the
+     * failover group
      */
     uriByRegions: outputs.DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion[];
 }
 
 export interface DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion {
     /**
-     * The region name
+     * Cloud region this URI applies to. Must be one of the failover group's regions
      */
     region: string;
     /**
-     * The storage URI for this region
+     * Cloud storage URI of the location in this region. End the URI with `/*` to map every path
+     * under it as a prefix; within one mapping, either all URIs or none carry the `/*` suffix
      */
     uri: string;
 }
@@ -5800,19 +7653,24 @@ export interface DisasterRecoveryFailoverGroupWorkspaceSet {
      */
     name: string;
     /**
-     * Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
-     * Defaults to false
+     * Whether to replicate workspace assets (notebooks, jobs, clusters, SQL warehouses and so
+     * on) and their ACLs for this set. Defaults to false. Can be turned on or off with
+     * UpdateFailoverGroup
      */
     replicateWorkspaceAssets?: boolean;
     /**
      * Resource names of stable URLs associated with this workspace set.
      * Format: accounts/{account_id}/stable-urls/{stable_url_id}.
-     * The referenced stable URLs must already exist (via CreateStableUrl)
+     * The referenced stable URLs must already exist (via CreateStableUrl), and the list can only
+     * be set when replicateWorkspaceAssets is true. While workspace asset replication stays
+     * enabled, an update can attach or detach one stable URL at a time
      */
     stableUrlNames?: string[];
     /**
-     * Workspace IDs in this set. The system derives and validates regions.
-     * All workspaces must be in the Mission Critical tier
+     * IDs of the two workspaces in this set, one in each of the failover group's regions. The
+     * system derives and validates each workspace's region. Both workspaces must belong to the
+     * account and have the Mission Critical add-on enabled, and they cannot be changed after
+     * creation
      */
     workspaceIds: string[];
 }
@@ -6425,6 +8283,10 @@ export interface FeatureEngineeringFeatureSource {
      */
     featureViewSource?: outputs.FeatureEngineeringFeatureSourceFeatureViewSource;
     /**
+     * A Unity Catalog managed or foreign Iceberg table source
+     */
+    icebergTableSource?: outputs.FeatureEngineeringFeatureSourceIcebergTableSource;
+    /**
      * A Kafka stream data source
      */
     kafkaSource?: outputs.FeatureEngineeringFeatureSourceKafkaSource;
@@ -6476,6 +8338,16 @@ export interface FeatureEngineeringFeatureSourceFeatureViewSourceFeatureReferenc
      * The three-part full name of the upstream Feature
      */
     feature: string;
+}
+
+export interface FeatureEngineeringFeatureSourceIcebergTableSource {
+    dataframeSchema?: string;
+    filterCondition?: string;
+    /**
+     * The full three-part name (catalog, schema, name) of the feature
+     */
+    fullName: string;
+    transformationSql?: string;
 }
 
 export interface FeatureEngineeringFeatureSourceKafkaSource {
@@ -6545,7 +8417,7 @@ export interface FeatureEngineeringFeatureSourceSdpSource {
      * The full three-part names of the tables the pipeline reads from. Required to materialize this
      * feature with a TableTrigger, which starts a run when these tables update. Each table must exist
      * when the feature is created. Feature Store doesn't confirm that the pipeline reads from these
-     * tables. At most 100 tables
+     * tables. At most 25 tables
      */
     inputTables?: string[];
     /**
@@ -6713,11 +8585,11 @@ export interface GenieAgentDefinitionDataSources {
      */
     mcpConnections?: outputs.GenieAgentDefinitionDataSourcesMcpConnection[];
     /**
-     * Unity Catalog tables, views, and metric views, in the order they were added
+     * Unity Catalog tables, views, and metric views, sorted by `identifier`
      */
     tables?: outputs.GenieAgentDefinitionDataSourcesTable[];
     /**
-     * Unity Catalog volumes, in the order they were added
+     * Unity Catalog volumes, sorted by `path`
      */
     volumes?: outputs.GenieAgentDefinitionDataSourcesVolume[];
 }
@@ -7119,222 +8991,224 @@ export interface GetAccountFederationPolicyOidcPolicy {
 
 export interface GetAccountIamDirectGroupMembersV2DirectGroupMember {
     /**
-     * (string) - Display name of the principal
+     * (string) - The member's display name
      */
     displayName: string;
     /**
-     * (string) - The external ID of the principal in the customer's IdP
+     * (string) - The ID of the member in your identity provider (IdP)
      */
     externalId: string;
     /**
-     * (integer) - The internal ID of the group this member belongs to
+     * (integer) - The Databricks ID of the group
      */
     groupId: number;
     /**
-     * (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+     * (string) - Where the membership comes from. Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
      */
     membershipSource: string;
     /**
-     * (string) - The resource name of the group membership. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+     * (string) - The resource name of the membership, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+     * - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
      */
     name: string;
     /**
-     * The parent resource name of the group whose direct members to list.
-     * Format: accounts/{account_id}/groups/{group_id}
+     * The resource name of the group, in the format `accounts/{account_id}/groups/{group_id}`
      */
     parent: string;
     /**
-     * (integer) - Internal ID of the principal in Databricks
+     * (integer) - The Databricks ID of the member
      */
     principalId: number;
     /**
-     * (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * (string) - Whether the member is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      */
     principalType: string;
 }
 
 export interface GetAccountIamExternalUserV2FullName {
     /**
-     * (string) - The family (last) name of the user, from the customer's IdP
+     * (string) - The user's family (last) name
      */
     familyName: string;
     /**
-     * (string) - The given (first) name of the user, from the customer's IdP
+     * (string) - The user's given (first) name
      */
     givenName: string;
 }
 
 export interface GetAccountIamGroupsV2Group {
     /**
-     * (string) - The parent account ID for group in Databricks
+     * (string) - The ID of the account that contains the group
      */
     accountId: string;
     /**
-     * (string) - ExternalId of the group in the customer's IdP
+     * (string) - The ID of the group in your identity provider (IdP)
      */
     externalId: string;
     /**
-     * (string) - Internal group ID of the group in Databricks
+     * (string) - The Databricks ID of the group. It is a numeric string that Databricks assigns when the group
+     * is created, and it is the `{group_id}` segment of `name`
      */
     groupId: string;
     /**
-     * (string) - Display name of the group
+     * (string) - The display name of the group. It must be unique in the account, must not be blank, and must be
+     * shorter than 255 characters. Databricks trims surrounding whitespace. You can't use the name of a
+     * group that Databricks manages, such as `admins` or `users`
      */
     groupName: string;
     /**
-     * (string) - The resource name of the group. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * (string) - The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      */
     name: string;
     /**
-     * The parent resource name of the account whose groups to list.
-     * Format: accounts/{account_id}
+     * The resource name of the account to list groups in, in the format `accounts/{account_id}`
      */
     parent: string;
 }
 
 export interface GetAccountIamServicePrincipalsV2ServicePrincipal {
     /**
-     * (string) - The parent account ID for the service principal in Databricks
+     * (string) - The ID of the account that contains the service principal
      */
     accountId: string;
     /**
-     * (string) - The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * (string) - Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
      */
     accountSpStatus: string;
     /**
-     * (string) - Application ID of the service principal. Set at creation time and cannot be changed
-     * afterwards; when omitted, the server generates one
+     * (string) - The service principal's application ID, a UUID. If you don't set it when you create the
+     * service principal, Databricks generates one. It must be unique in the account and can't be
+     * changed
      */
     applicationId: string;
     /**
-     * (string) - Display name of the service principal
+     * (string) - The service principal's display name
      */
     displayName: string;
     /**
-     * (string) - ExternalId of the service principal in the customer's IdP
+     * (string) - The ID of the service principal in your identity provider (IdP)
      */
     externalId: string;
     /**
-     * (string) - The resource name of the service principal. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-     * - Workspace-scoped: service-principals/{service_principal_id}
+     * (string) - The resource name of the service principal, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+     * - Workspace APIs: `service-principals/{service_principal_id}`
      */
     name: string;
     /**
-     * The parent resource name of the account whose service principals to list.
-     * Format: accounts/{account_id}
+     * The resource name of the account to list service principals in, in the format
+     * `accounts/{account_id}`
      */
     parent: string;
     /**
-     * (string) - Internal service principal ID of the service principal in Databricks
+     * (string) - The Databricks ID of the service principal
      */
     servicePrincipalId: string;
 }
 
 export interface GetAccountIamUserV2FullName {
     /**
-     * (string)
+     * (string) - The user's family (last) name
      */
     familyName?: string;
     /**
-     * (string)
+     * (string) - The user's given (first) name
      */
     givenName?: string;
 }
 
 export interface GetAccountIamUsersV2User {
     /**
-     * (string) - The accountId parent of the user in Databricks
+     * (string) - The ID of the account that contains the user
      */
     accountId: string;
     /**
-     * (string) - The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * (string) - Whether the user is active in the account. New users are active unless you set this to
+     * `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      */
     accountUserStatus: string;
     /**
-     * (string) - ExternalId of the user in the customer's IdP
+     * (string) - The ID of the user in your identity provider (IdP)
      */
     externalId: string;
     /**
-     * (UserFullName)
+     * (UserFullName) - The user's name
      */
     fullName: outputs.GetAccountIamUsersV2UserFullName;
     /**
-     * (string) - The resource name of the user. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/users/{user_id}
-     * - Workspace-scoped: users/{user_id}
+     * (string) - The resource name of the user, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/users/{user_id}`
+     * - Workspace APIs: `users/{user_id}`
      */
     name: string;
     /**
-     * The parent resource name of the account whose users to list.
-     * Format: accounts/{account_id}
+     * The resource name of the account to list users in, in the format `accounts/{account_id}`
      */
     parent: string;
     /**
-     * (string) - Internal userId of the user in Databricks
+     * (string) - The Databricks ID of the user
      */
     userId: string;
     /**
-     * (string) - Username/email of the user
+     * (string) - The user's username, which is their email address. It can't be changed after the user is
+     * created
      */
     username: string;
 }
 
 export interface GetAccountIamUsersV2UserFullName {
     /**
-     * (string)
+     * (string) - The user's family (last) name
      */
     familyName?: string;
     /**
-     * (string)
+     * (string) - The user's given (first) name
      */
     givenName?: string;
 }
 
 export interface GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignment {
     /**
-     * (string) - The account ID parent of the workspace where the principal is assigned
+     * (string) - The ID of the account that contains the workspace
      */
     accountId: string;
     /**
-     * (list of string) - Every entitlement the principal holds in this workspace, whether granted directly or through
-     * group membership. Get responses populate this field. List responses leave it empty
+     * (list of string) - Every entitlement the principal has in the workspace, granted directly or through a group. List
+     * responses leave it empty
      */
     effectiveEntitlements: string[];
     /**
-     * (list of string) - Entitlements granted directly to the principal on this workspace. This is the only
-     * client-settable field. Create and update manage exactly this set, including entitlements the
-     * principal also holds through a group.
-     * List responses leave this field empty. Get a single principal to read its entitlements
+     * (list of string) - The entitlements granted directly by this assignment. Create and update set exactly this list,
+     * even if the principal also gets some of these entitlements through a group. List responses
+     * leave it empty
      */
     entitlements: string[];
     /**
-     * (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
-     * - Workspace-scoped: workspace-assignments/{principal_id}
+     * (string) - The resource name of the assignment, in one of these formats:
+     * - Account APIs:
+     *   `accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}`
+     * - Workspace APIs: `workspace-assignments/{principal_id}`
      */
     name: string;
     /**
-     * The parent resource name of the workspace whose assignments to list.
-     * Format: accounts/{account_id}/workspaces/{workspace_id}
+     * The resource name of the workspace, in the format
+     * `accounts/{account_id}/workspaces/{workspace_id}`
      */
     parent: string;
     /**
-     * (integer) - The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
-     * created and cannot be changed afterwards; to assign a different principal, create a new
-     * assignment
+     * (integer) - The Databricks ID of the assigned user, service principal, or group. It can't be changed after
+     * the assignment is created
      */
     principalId: number;
     /**
-     * (string) - The type of the principal (user/service principal/group) that is assigned. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * (string) - Whether the assigned principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      */
     principalType: string;
     /**
-     * (integer) - The workspace ID where the principal is assigned
+     * (integer) - The ID of the workspace
      */
     workspaceId: number;
 }
@@ -11868,44 +13742,56 @@ export interface GetAccountSettingUserPreferenceV2StringVal {
 
 export interface GetAccountSettingV2AibiDashboardEmbeddingAccessPolicy {
     /**
-     * (string) - Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * (string) - Where AI/BI dashboards can be embedded: in any domain (ALLOW_ALL_DOMAINS), only in the approved
+     * domains configured for the workspace (ALLOW_APPROVED_DOMAINS), or nowhere (DENY_ALL_DOMAINS).
+     * Defaults to ALLOW_APPROVED_DOMAINS. Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      */
     accessPolicyType: string;
 }
 
 export interface GetAccountSettingV2AibiDashboardEmbeddingApprovedDomains {
     /**
-     * (list of string)
+     * (list of string) - Domains allowed to host embedded AI/BI dashboards. A leading wildcard allows every subdomain of a
+     * domain. The list applies, and can only be changed, while the embedding access policy is
+     * ALLOW_APPROVED_DOMAINS
      */
     approvedDomains?: string[];
 }
 
 export interface GetAccountSettingV2AllowedAppsUserApiScopes {
     /**
-     * (list of string)
+     * (list of string) - OAuth scopes that app developers can request when an app acts on behalf of a user. A list with
+     * the single entry * allows every supported scope and cannot be combined with other scopes. An
+     * empty list disables user authorization for apps
      */
     allowedScopes?: string[];
 }
 
 export interface GetAccountSettingV2AutomaticClusterUpdateWorkspace {
     /**
-     * (boolean)
+     * (boolean) - Whether the workspace can change the enabled state. Databricks computes this value: it is false
+     * when the compliance security profile forces the feature on or when the workspace lacks the
+     * Enhanced Security and Compliance entitlement. A value sent in an update request has no effect
      */
     canToggle?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Whether automatic cluster update is enabled for the workspace. The effective value is always
+     * true while the compliance security profile is enabled on the workspace
      */
     enabled?: boolean;
     /**
-     * (ClusterAutoRestartMessageEnablementDetails)
+     * (ClusterAutoRestartMessageEnablementDetails) - Why the feature is forced on or unavailable. Databricks sets these details for information only;
+     * they do not determine whether the feature is enabled
      */
     enablementDetails?: outputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails;
     /**
-     * (ClusterAutoRestartMessageMaintenanceWindow)
+     * (ClusterAutoRestartMessageMaintenanceWindow) - When the maintenance window runs. When unset, it defaults to the first Sunday of every month at
+     * 01:00 UTC
      */
     maintenanceWindow?: outputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow;
     /**
-     * (boolean)
+     * (boolean) - Whether compute resources restart during every maintenance window even when no update is
+     * available. When false, they restart only when an update is available
      */
     restartEvenIfNoUpdatesAvailable?: boolean;
 }
@@ -11916,7 +13802,8 @@ export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDet
      */
     forcedForComplianceMode?: boolean;
     /**
-     * (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     * (boolean) - The feature is unavailable because the workspace does not have the Enhanced Security and
+     * Compliance entitlement
      */
     unavailableForDisabledEntitlement?: boolean;
     /**
@@ -11927,33 +13814,34 @@ export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceEnablementDet
 
 export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow {
     /**
-     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule) - Schedule anchored to a day of the week, either every week or on given weeks of the month
      */
     weekDayBasedSchedule?: outputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
 }
 
 export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * (string) - Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * (string) - Day of the week on which the maintenance window starts. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
     dayOfWeek?: string;
     /**
-     * (string) - Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * (string) - How often the maintenance window occurs: every week, or only on the listed occurrences of
+     * the day of the week within each month. Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
     frequency?: string;
     /**
-     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
+     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime) - Time of day, in UTC, at which the maintenance window starts
      */
     windowStartTime?: outputs.GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
 }
 
 export interface GetAccountSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
     /**
-     * (integer)
+     * (integer) - Hour of the day on a 24-hour clock
      */
     hours?: number;
     /**
-     * (integer)
+     * (integer) - Minute of the hour
      */
     minutes?: number;
 }
@@ -11974,44 +13862,56 @@ export interface GetAccountSettingV2CollaborationPlatformConnectivity {
 
 export interface GetAccountSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
     /**
-     * (string) - Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * (string) - Where AI/BI dashboards can be embedded: in any domain (ALLOW_ALL_DOMAINS), only in the approved
+     * domains configured for the workspace (ALLOW_APPROVED_DOMAINS), or nowhere (DENY_ALL_DOMAINS).
+     * Defaults to ALLOW_APPROVED_DOMAINS. Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      */
     accessPolicyType: string;
 }
 
 export interface GetAccountSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains {
     /**
-     * (list of string)
+     * (list of string) - Domains allowed to host embedded AI/BI dashboards. A leading wildcard allows every subdomain of a
+     * domain. The list applies, and can only be changed, while the embedding access policy is
+     * ALLOW_APPROVED_DOMAINS
      */
     approvedDomains?: string[];
 }
 
 export interface GetAccountSettingV2EffectiveAllowedAppsUserApiScopes {
     /**
-     * (list of string)
+     * (list of string) - OAuth scopes that app developers can request when an app acts on behalf of a user. A list with
+     * the single entry * allows every supported scope and cannot be combined with other scopes. An
+     * empty list disables user authorization for apps
      */
     allowedScopes?: string[];
 }
 
 export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspace {
     /**
-     * (boolean)
+     * (boolean) - Whether the workspace can change the enabled state. Databricks computes this value: it is false
+     * when the compliance security profile forces the feature on or when the workspace lacks the
+     * Enhanced Security and Compliance entitlement. A value sent in an update request has no effect
      */
     canToggle?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Whether automatic cluster update is enabled for the workspace. The effective value is always
+     * true while the compliance security profile is enabled on the workspace
      */
     enabled?: boolean;
     /**
-     * (ClusterAutoRestartMessageEnablementDetails)
+     * (ClusterAutoRestartMessageEnablementDetails) - Why the feature is forced on or unavailable. Databricks sets these details for information only;
+     * they do not determine whether the feature is enabled
      */
     enablementDetails?: outputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails;
     /**
-     * (ClusterAutoRestartMessageMaintenanceWindow)
+     * (ClusterAutoRestartMessageMaintenanceWindow) - When the maintenance window runs. When unset, it defaults to the first Sunday of every month at
+     * 01:00 UTC
      */
     maintenanceWindow?: outputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow;
     /**
-     * (boolean)
+     * (boolean) - Whether compute resources restart during every maintenance window even when no update is
+     * available. When false, they restart only when an update is available
      */
     restartEvenIfNoUpdatesAvailable?: boolean;
 }
@@ -12022,7 +13922,8 @@ export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnab
      */
     forcedForComplianceMode?: boolean;
     /**
-     * (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     * (boolean) - The feature is unavailable because the workspace does not have the Enhanced Security and
+     * Compliance entitlement
      */
     unavailableForDisabledEntitlement?: boolean;
     /**
@@ -12033,33 +13934,34 @@ export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnab
 
 export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow {
     /**
-     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule) - Schedule anchored to a day of the week, either every week or on given weeks of the month
      */
     weekDayBasedSchedule?: outputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
 }
 
 export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * (string) - Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * (string) - Day of the week on which the maintenance window starts. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
     dayOfWeek?: string;
     /**
-     * (string) - Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * (string) - How often the maintenance window occurs: every week, or only on the listed occurrences of
+     * the day of the week within each month. Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
     frequency?: string;
     /**
-     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
+     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime) - Time of day, in UTC, at which the maintenance window starts
      */
     windowStartTime?: outputs.GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
 }
 
 export interface GetAccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
     /**
-     * (integer)
+     * (integer) - Hour of the day on a 24-hour clock
      */
     hours?: number;
     /**
-     * (integer)
+     * (integer) - Minute of the hour
      */
     minutes?: number;
 }
@@ -12087,7 +13989,9 @@ export interface GetAccountSettingV2EffectiveIntegerVal {
 
 export interface GetAccountSettingV2EffectiveOperationalEmailCustomRecipient {
     /**
-     * (string)
+     * (string) - Email address that receives this workspace's operational emails in addition to the workspace
+     * admins. Use a distribution list address to reach several people. An empty string clears the
+     * additional recipient
      */
     email?: string;
 }
@@ -12106,7 +14010,13 @@ export interface GetAccountSettingV2EffectiveRestrictWorkspaceAdmins {
      */
     disableGovTagCreation?: boolean;
     /**
-     * (string) - Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     * (string) - Controls what workspace admins can do with service principal tokens and job identities. With
+     * ALLOW_ALL, workspace admins can create personal access tokens on behalf of any service principal
+     * in the workspace, change a job owner to any workspace user, and set a job's runAs identity to
+     * any workspace user or to a service principal they have the Service Principal User role on. With
+     * RESTRICT_TOKENS_AND_JOB_RUN_AS, they can only create tokens for service principals they have the
+     * Service Principal User role on, change a job owner to themselves, and set runAs to themselves
+     * or to a service principal they have that role on. Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
     status: string;
 }
@@ -12118,13 +14028,753 @@ export interface GetAccountSettingV2EffectiveStringVal {
     value?: string;
 }
 
-export interface GetAccountSettingV2EffectiveWorkspaceLabel {
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardTheme {
     /**
-     * (string)
+     * (DashboardThemeDashboardThemeColor) - Color of the zero-value grid line, making it visually distinct from other grid lines
+     */
+    axisLineColor?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeAxisLineColor;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The background color of the dashboard canvas
+     */
+    canvasBackgroundColor?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeCanvasBackgroundColor;
+    /**
+     * (DashboardThemeContinuousGradient) - The continuous gradient configuration for the dashboard
+     */
+    continuousGradient?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradient;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The font color applied to text in this category
+     */
+    fontColor?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeFontColor;
+    /**
+     * (string) - The font family name used for text in this category
+     */
+    fontFamily?: string;
+    /**
+     * (DashboardThemeFontSettings) - The per-category typography overrides for the dashboard
+     */
+    fontSettings?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeFontSettings;
+    /**
+     * (DashboardThemeDashboardThemeColor) - Color of chart grid lines in visualizations (horizontal and vertical guide lines)
+     */
+    gridLineColor?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeGridLineColor;
+    /**
+     * (integer) - The corner radius in pixels for rectangular marks in visualizations (bars, columns, histogram bins, etc.)
+     */
+    markCornerRadius?: number;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The highlight color for selected elements in widgets
+     */
+    selectionColor?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeSelectionColor;
+    /**
+     * (DashboardThemeSentimentColors) - The sentiment color palette for the dashboard
+     */
+    sentimentColors?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeSentimentColors;
+    /**
+     * (string) - The default vertical alignment for all text box widgets in the dashboard.
+     * Individual text box widgets can override this. Possible values are: `VERTICAL_ALIGN_BOTTOM`, `VERTICAL_ALIGN_CENTER`, `VERTICAL_ALIGN_TOP`
+     */
+    textBoxVerticalAlign?: string;
+    /**
+     * (string) - Color palette for visualizations. Colors are applied in order (visualization_color_01, visualization_color_02, etc.).
+     * Invalid color values are preserved but ignored during rendering
+     */
+    visualizationColor01?: string;
+    /**
+     * (string) - The color at position 2 in the visualization color palette
+     */
+    visualizationColor02?: string;
+    /**
+     * (string) - The color at position 3 in the visualization color palette
+     */
+    visualizationColor03?: string;
+    /**
+     * (string) - The color at position 4 in the visualization color palette
+     */
+    visualizationColor04?: string;
+    /**
+     * (string) - The color at position 5 in the visualization color palette
+     */
+    visualizationColor05?: string;
+    /**
+     * (string) - The color at position 6 in the visualization color palette
+     */
+    visualizationColor06?: string;
+    /**
+     * (string) - The color at position 7 in the visualization color palette
+     */
+    visualizationColor07?: string;
+    /**
+     * (string) - The color at position 8 in the visualization color palette
+     */
+    visualizationColor08?: string;
+    /**
+     * (string) - The color at position 9 in the visualization color palette
+     */
+    visualizationColor09?: string;
+    /**
+     * (string) - The color at position 10 in the visualization color palette
+     */
+    visualizationColor10?: string;
+    /**
+     * (string) - The color at position 11 in the visualization color palette
+     */
+    visualizationColor11?: string;
+    /**
+     * (string) - The color at position 12 in the visualization color palette
+     */
+    visualizationColor12?: string;
+    /**
+     * (string) - The color at position 13 in the visualization color palette
+     */
+    visualizationColor13?: string;
+    /**
+     * (string) - The color at position 14 in the visualization color palette
+     */
+    visualizationColor14?: string;
+    /**
+     * (string) - The color at position 15 in the visualization color palette
+     */
+    visualizationColor15?: string;
+    /**
+     * (string) - The color at position 16 in the visualization color palette
+     */
+    visualizationColor16?: string;
+    /**
+     * (string) - The color at position 17 in the visualization color palette
+     */
+    visualizationColor17?: string;
+    /**
+     * (string) - The color at position 18 in the visualization color palette
+     */
+    visualizationColor18?: string;
+    /**
+     * (string) - The color at position 19 in the visualization color palette
+     */
+    visualizationColor19?: string;
+    /**
+     * (string) - The color at position 20 in the visualization color palette
+     */
+    visualizationColor20?: string;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The background color of widgets
+     */
+    widgetBackgroundColor?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeWidgetBackgroundColor;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The border color of widgets
+     */
+    widgetBorderColor?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeWidgetBorderColor;
+    /**
+     * (integer) - The widget border radius in pixels
+     */
+    widgetCornerRadius?: number;
+    /**
+     * (string) - Alignment setting for all widget titles and descriptions at the dashboard level. Possible values are: `CENTER`, `LEFT`, `RIGHT`
+     */
+    widgetHeaderAlignment?: string;
+    /**
+     * (integer) - The gap between widgets in pixels
+     */
+    widgetMargin?: number;
+    /**
+     * (integer) - The content padding inside each widget in pixels
+     */
+    widgetPadding?: number;
+    /**
+     * (integer) - The shadow intensity level applied to widgets (0 = no shadow, 100 = maximum).
+     * The actual CSS box-shadow is computed at render time from this value, factoring in
+     * background colors and color mode
+     */
+    widgetShadow?: number;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeAxisLineColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeCanvasBackgroundColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradient {
+    /**
+     * (DashboardThemeContinuousGradientGradientValue) - Gradient value used when the dashboard is rendered in dark mode
+     */
+    darkMode?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkMode;
+    /**
+     * (DashboardThemeContinuousGradientGradientValue) - Gradient value used when the dashboard is rendered in light mode
+     */
+    lightMode?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightMode;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkMode {
+    /**
+     * (string) - Color of the label badge. The supported colors are coral, lemon, lime, turquoise, indigo, purple
+     * and pink. It is an empty string when no label is set
      */
     color?: string;
     /**
-     * (string)
+     * (string) - A named color scheme (for example, 'blues', 'viridis', 'spectral')
+     */
+    colorScheme?: string;
+    /**
+     * (DashboardThemeContinuousGradientCustomDivergingRamp) - A custom three-stop diverging gradient
+     */
+    customDiverging?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDiverging;
+    /**
+     * (DashboardThemeContinuousGradientCustomSequentialRamp) - A custom two-stop sequential gradient
+     */
+    customSequential?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequential;
+    /**
+     * (integer) - A 0-based index into the visualization color palette, where 0 is visualization_color_01. Valid values are 0 to 19
+     */
+    fromCategoricalIndex?: number;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDiverging {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the end of the gradient (highest value)
+     */
+    end?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingEnd;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the midpoint of the gradient
+     */
+    mid?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingMid;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the start of the gradient (lowest value)
+     */
+    start?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingStart;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingEnd {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingMid {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingStart {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequential {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the end of the gradient (highest value)
+     */
+    end?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialEnd;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the start of the gradient (lowest value)
+     */
+    start?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialStart;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialEnd {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialStart {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightMode {
+    /**
+     * (string) - Color of the label badge. The supported colors are coral, lemon, lime, turquoise, indigo, purple
+     * and pink. It is an empty string when no label is set
+     */
+    color?: string;
+    /**
+     * (string) - A named color scheme (for example, 'blues', 'viridis', 'spectral')
+     */
+    colorScheme?: string;
+    /**
+     * (DashboardThemeContinuousGradientCustomDivergingRamp) - A custom three-stop diverging gradient
+     */
+    customDiverging?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDiverging;
+    /**
+     * (DashboardThemeContinuousGradientCustomSequentialRamp) - A custom two-stop sequential gradient
+     */
+    customSequential?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequential;
+    /**
+     * (integer) - A 0-based index into the visualization color palette, where 0 is visualization_color_01. Valid values are 0 to 19
+     */
+    fromCategoricalIndex?: number;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDiverging {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the end of the gradient (highest value)
+     */
+    end?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingEnd;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the midpoint of the gradient
+     */
+    mid?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingMid;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the start of the gradient (lowest value)
+     */
+    start?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingStart;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingEnd {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingMid {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingStart {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequential {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the end of the gradient (highest value)
+     */
+    end?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialEnd;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the start of the gradient (lowest value)
+     */
+    start?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialStart;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialEnd {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialStart {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeFontColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeFontSettings {
+    /**
+     * (DashboardThemeFontConfig) - The default font config applied to all text unless overridden by a more specific category
+     */
+    base?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsBase;
+    /**
+     * (DashboardThemeFontConfig) - The font config applied to field titles (for example, axis titles, table heading titles)
+     */
+    fieldTitle?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldTitle;
+    /**
+     * (DashboardThemeFontConfig) - The font config applied to field values (for example, axis tick labels, table cell values, tooltip values)
+     */
+    fieldValue?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldValue;
+    /**
+     * (DashboardThemeFontConfig) - The font config applied to widget descriptions
+     */
+    widgetDescription?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetDescription;
+    /**
+     * (DashboardThemeFontConfig) - The font config applied to widget titles
+     */
+    widgetTitle?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetTitle;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsBase {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The font color applied to text in this category
+     */
+    fontColor?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsBaseFontColor;
+    /**
+     * (string) - The font family name used for text in this category
+     */
+    fontFamily?: string;
+    /**
+     * (integer) - The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * (string) - The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * (integer) - The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * (string) - The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * (string) - The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsBaseFontColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldTitle {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The font color applied to text in this category
+     */
+    fontColor?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldTitleFontColor;
+    /**
+     * (string) - The font family name used for text in this category
+     */
+    fontFamily?: string;
+    /**
+     * (integer) - The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * (string) - The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * (integer) - The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * (string) - The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * (string) - The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldTitleFontColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldValue {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The font color applied to text in this category
+     */
+    fontColor?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldValueFontColor;
+    /**
+     * (string) - The font family name used for text in this category
+     */
+    fontFamily?: string;
+    /**
+     * (integer) - The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * (string) - The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * (integer) - The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * (string) - The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * (string) - The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldValueFontColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetDescription {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The font color applied to text in this category
+     */
+    fontColor?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetDescriptionFontColor;
+    /**
+     * (string) - The font family name used for text in this category
+     */
+    fontFamily?: string;
+    /**
+     * (integer) - The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * (string) - The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * (integer) - The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * (string) - The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * (string) - The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetDescriptionFontColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetTitle {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The font color applied to text in this category
+     */
+    fontColor?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetTitleFontColor;
+    /**
+     * (string) - The font family name used for text in this category
+     */
+    fontFamily?: string;
+    /**
+     * (integer) - The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * (string) - The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * (integer) - The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * (string) - The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * (string) - The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetTitleFontColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeGridLineColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeSelectionColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeSentimentColors {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color applied to negative sentiment values
+     */
+    negative?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsNegative;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color applied to neutral sentiment values
+     */
+    neutral?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsNeutral;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color applied to positive sentiment values
+     */
+    positive?: outputs.GetAccountSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsPositive;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsNegative {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsNeutral {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsPositive {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeWidgetBackgroundColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceDashboardThemeWidgetBorderColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2EffectiveWorkspaceLabel {
+    /**
+     * (string) - Color of the label badge. The supported colors are coral, lemon, lime, turquoise, indigo, purple
+     * and pink. It is an empty string when no label is set
+     */
+    color?: string;
+    /**
+     * (string) - Text of the label shown next to the workspace name in the top navigation bar. An empty string
+     * means no label is set
      */
     label?: string;
 }
@@ -12138,7 +14788,9 @@ export interface GetAccountSettingV2IntegerVal {
 
 export interface GetAccountSettingV2OperationalEmailCustomRecipient {
     /**
-     * (string)
+     * (string) - Email address that receives this workspace's operational emails in addition to the workspace
+     * admins. Use a distribution list address to reach several people. An empty string clears the
+     * additional recipient
      */
     email?: string;
 }
@@ -12157,7 +14809,13 @@ export interface GetAccountSettingV2RestrictWorkspaceAdmins {
      */
     disableGovTagCreation?: boolean;
     /**
-     * (string) - Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     * (string) - Controls what workspace admins can do with service principal tokens and job identities. With
+     * ALLOW_ALL, workspace admins can create personal access tokens on behalf of any service principal
+     * in the workspace, change a job owner to any workspace user, and set a job's runAs identity to
+     * any workspace user or to a service principal they have the Service Principal User role on. With
+     * RESTRICT_TOKENS_AND_JOB_RUN_AS, they can only create tokens for service principals they have the
+     * Service Principal User role on, change a job owner to themselves, and set runAs to themselves
+     * or to a service principal they have that role on. Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
     status: string;
 }
@@ -12169,13 +14827,753 @@ export interface GetAccountSettingV2StringVal {
     value?: string;
 }
 
-export interface GetAccountSettingV2WorkspaceLabel {
+export interface GetAccountSettingV2WorkspaceDashboardTheme {
     /**
-     * (string)
+     * (DashboardThemeDashboardThemeColor) - Color of the zero-value grid line, making it visually distinct from other grid lines
+     */
+    axisLineColor?: outputs.GetAccountSettingV2WorkspaceDashboardThemeAxisLineColor;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The background color of the dashboard canvas
+     */
+    canvasBackgroundColor?: outputs.GetAccountSettingV2WorkspaceDashboardThemeCanvasBackgroundColor;
+    /**
+     * (DashboardThemeContinuousGradient) - The continuous gradient configuration for the dashboard
+     */
+    continuousGradient?: outputs.GetAccountSettingV2WorkspaceDashboardThemeContinuousGradient;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The font color applied to text in this category
+     */
+    fontColor?: outputs.GetAccountSettingV2WorkspaceDashboardThemeFontColor;
+    /**
+     * (string) - The font family name used for text in this category
+     */
+    fontFamily?: string;
+    /**
+     * (DashboardThemeFontSettings) - The per-category typography overrides for the dashboard
+     */
+    fontSettings?: outputs.GetAccountSettingV2WorkspaceDashboardThemeFontSettings;
+    /**
+     * (DashboardThemeDashboardThemeColor) - Color of chart grid lines in visualizations (horizontal and vertical guide lines)
+     */
+    gridLineColor?: outputs.GetAccountSettingV2WorkspaceDashboardThemeGridLineColor;
+    /**
+     * (integer) - The corner radius in pixels for rectangular marks in visualizations (bars, columns, histogram bins, etc.)
+     */
+    markCornerRadius?: number;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The highlight color for selected elements in widgets
+     */
+    selectionColor?: outputs.GetAccountSettingV2WorkspaceDashboardThemeSelectionColor;
+    /**
+     * (DashboardThemeSentimentColors) - The sentiment color palette for the dashboard
+     */
+    sentimentColors?: outputs.GetAccountSettingV2WorkspaceDashboardThemeSentimentColors;
+    /**
+     * (string) - The default vertical alignment for all text box widgets in the dashboard.
+     * Individual text box widgets can override this. Possible values are: `VERTICAL_ALIGN_BOTTOM`, `VERTICAL_ALIGN_CENTER`, `VERTICAL_ALIGN_TOP`
+     */
+    textBoxVerticalAlign?: string;
+    /**
+     * (string) - Color palette for visualizations. Colors are applied in order (visualization_color_01, visualization_color_02, etc.).
+     * Invalid color values are preserved but ignored during rendering
+     */
+    visualizationColor01?: string;
+    /**
+     * (string) - The color at position 2 in the visualization color palette
+     */
+    visualizationColor02?: string;
+    /**
+     * (string) - The color at position 3 in the visualization color palette
+     */
+    visualizationColor03?: string;
+    /**
+     * (string) - The color at position 4 in the visualization color palette
+     */
+    visualizationColor04?: string;
+    /**
+     * (string) - The color at position 5 in the visualization color palette
+     */
+    visualizationColor05?: string;
+    /**
+     * (string) - The color at position 6 in the visualization color palette
+     */
+    visualizationColor06?: string;
+    /**
+     * (string) - The color at position 7 in the visualization color palette
+     */
+    visualizationColor07?: string;
+    /**
+     * (string) - The color at position 8 in the visualization color palette
+     */
+    visualizationColor08?: string;
+    /**
+     * (string) - The color at position 9 in the visualization color palette
+     */
+    visualizationColor09?: string;
+    /**
+     * (string) - The color at position 10 in the visualization color palette
+     */
+    visualizationColor10?: string;
+    /**
+     * (string) - The color at position 11 in the visualization color palette
+     */
+    visualizationColor11?: string;
+    /**
+     * (string) - The color at position 12 in the visualization color palette
+     */
+    visualizationColor12?: string;
+    /**
+     * (string) - The color at position 13 in the visualization color palette
+     */
+    visualizationColor13?: string;
+    /**
+     * (string) - The color at position 14 in the visualization color palette
+     */
+    visualizationColor14?: string;
+    /**
+     * (string) - The color at position 15 in the visualization color palette
+     */
+    visualizationColor15?: string;
+    /**
+     * (string) - The color at position 16 in the visualization color palette
+     */
+    visualizationColor16?: string;
+    /**
+     * (string) - The color at position 17 in the visualization color palette
+     */
+    visualizationColor17?: string;
+    /**
+     * (string) - The color at position 18 in the visualization color palette
+     */
+    visualizationColor18?: string;
+    /**
+     * (string) - The color at position 19 in the visualization color palette
+     */
+    visualizationColor19?: string;
+    /**
+     * (string) - The color at position 20 in the visualization color palette
+     */
+    visualizationColor20?: string;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The background color of widgets
+     */
+    widgetBackgroundColor?: outputs.GetAccountSettingV2WorkspaceDashboardThemeWidgetBackgroundColor;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The border color of widgets
+     */
+    widgetBorderColor?: outputs.GetAccountSettingV2WorkspaceDashboardThemeWidgetBorderColor;
+    /**
+     * (integer) - The widget border radius in pixels
+     */
+    widgetCornerRadius?: number;
+    /**
+     * (string) - Alignment setting for all widget titles and descriptions at the dashboard level. Possible values are: `CENTER`, `LEFT`, `RIGHT`
+     */
+    widgetHeaderAlignment?: string;
+    /**
+     * (integer) - The gap between widgets in pixels
+     */
+    widgetMargin?: number;
+    /**
+     * (integer) - The content padding inside each widget in pixels
+     */
+    widgetPadding?: number;
+    /**
+     * (integer) - The shadow intensity level applied to widgets (0 = no shadow, 100 = maximum).
+     * The actual CSS box-shadow is computed at render time from this value, factoring in
+     * background colors and color mode
+     */
+    widgetShadow?: number;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeAxisLineColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeCanvasBackgroundColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeContinuousGradient {
+    /**
+     * (DashboardThemeContinuousGradientGradientValue) - Gradient value used when the dashboard is rendered in dark mode
+     */
+    darkMode?: outputs.GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkMode;
+    /**
+     * (DashboardThemeContinuousGradientGradientValue) - Gradient value used when the dashboard is rendered in light mode
+     */
+    lightMode?: outputs.GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientLightMode;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkMode {
+    /**
+     * (string) - Color of the label badge. The supported colors are coral, lemon, lime, turquoise, indigo, purple
+     * and pink. It is an empty string when no label is set
      */
     color?: string;
     /**
-     * (string)
+     * (string) - A named color scheme (for example, 'blues', 'viridis', 'spectral')
+     */
+    colorScheme?: string;
+    /**
+     * (DashboardThemeContinuousGradientCustomDivergingRamp) - A custom three-stop diverging gradient
+     */
+    customDiverging?: outputs.GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDiverging;
+    /**
+     * (DashboardThemeContinuousGradientCustomSequentialRamp) - A custom two-stop sequential gradient
+     */
+    customSequential?: outputs.GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequential;
+    /**
+     * (integer) - A 0-based index into the visualization color palette, where 0 is visualization_color_01. Valid values are 0 to 19
+     */
+    fromCategoricalIndex?: number;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDiverging {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the end of the gradient (highest value)
+     */
+    end?: outputs.GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingEnd;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the midpoint of the gradient
+     */
+    mid?: outputs.GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingMid;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the start of the gradient (lowest value)
+     */
+    start?: outputs.GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingStart;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingEnd {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingMid {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingStart {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequential {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the end of the gradient (highest value)
+     */
+    end?: outputs.GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialEnd;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the start of the gradient (lowest value)
+     */
+    start?: outputs.GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialStart;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialEnd {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialStart {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientLightMode {
+    /**
+     * (string) - Color of the label badge. The supported colors are coral, lemon, lime, turquoise, indigo, purple
+     * and pink. It is an empty string when no label is set
+     */
+    color?: string;
+    /**
+     * (string) - A named color scheme (for example, 'blues', 'viridis', 'spectral')
+     */
+    colorScheme?: string;
+    /**
+     * (DashboardThemeContinuousGradientCustomDivergingRamp) - A custom three-stop diverging gradient
+     */
+    customDiverging?: outputs.GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDiverging;
+    /**
+     * (DashboardThemeContinuousGradientCustomSequentialRamp) - A custom two-stop sequential gradient
+     */
+    customSequential?: outputs.GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequential;
+    /**
+     * (integer) - A 0-based index into the visualization color palette, where 0 is visualization_color_01. Valid values are 0 to 19
+     */
+    fromCategoricalIndex?: number;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDiverging {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the end of the gradient (highest value)
+     */
+    end?: outputs.GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingEnd;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the midpoint of the gradient
+     */
+    mid?: outputs.GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingMid;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the start of the gradient (lowest value)
+     */
+    start?: outputs.GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingStart;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingEnd {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingMid {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingStart {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequential {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the end of the gradient (highest value)
+     */
+    end?: outputs.GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialEnd;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the start of the gradient (lowest value)
+     */
+    start?: outputs.GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialStart;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialEnd {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialStart {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeFontColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeFontSettings {
+    /**
+     * (DashboardThemeFontConfig) - The default font config applied to all text unless overridden by a more specific category
+     */
+    base?: outputs.GetAccountSettingV2WorkspaceDashboardThemeFontSettingsBase;
+    /**
+     * (DashboardThemeFontConfig) - The font config applied to field titles (for example, axis titles, table heading titles)
+     */
+    fieldTitle?: outputs.GetAccountSettingV2WorkspaceDashboardThemeFontSettingsFieldTitle;
+    /**
+     * (DashboardThemeFontConfig) - The font config applied to field values (for example, axis tick labels, table cell values, tooltip values)
+     */
+    fieldValue?: outputs.GetAccountSettingV2WorkspaceDashboardThemeFontSettingsFieldValue;
+    /**
+     * (DashboardThemeFontConfig) - The font config applied to widget descriptions
+     */
+    widgetDescription?: outputs.GetAccountSettingV2WorkspaceDashboardThemeFontSettingsWidgetDescription;
+    /**
+     * (DashboardThemeFontConfig) - The font config applied to widget titles
+     */
+    widgetTitle?: outputs.GetAccountSettingV2WorkspaceDashboardThemeFontSettingsWidgetTitle;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeFontSettingsBase {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The font color applied to text in this category
+     */
+    fontColor?: outputs.GetAccountSettingV2WorkspaceDashboardThemeFontSettingsBaseFontColor;
+    /**
+     * (string) - The font family name used for text in this category
+     */
+    fontFamily?: string;
+    /**
+     * (integer) - The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * (string) - The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * (integer) - The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * (string) - The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * (string) - The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeFontSettingsBaseFontColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeFontSettingsFieldTitle {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The font color applied to text in this category
+     */
+    fontColor?: outputs.GetAccountSettingV2WorkspaceDashboardThemeFontSettingsFieldTitleFontColor;
+    /**
+     * (string) - The font family name used for text in this category
+     */
+    fontFamily?: string;
+    /**
+     * (integer) - The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * (string) - The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * (integer) - The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * (string) - The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * (string) - The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeFontSettingsFieldTitleFontColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeFontSettingsFieldValue {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The font color applied to text in this category
+     */
+    fontColor?: outputs.GetAccountSettingV2WorkspaceDashboardThemeFontSettingsFieldValueFontColor;
+    /**
+     * (string) - The font family name used for text in this category
+     */
+    fontFamily?: string;
+    /**
+     * (integer) - The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * (string) - The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * (integer) - The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * (string) - The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * (string) - The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeFontSettingsFieldValueFontColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeFontSettingsWidgetDescription {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The font color applied to text in this category
+     */
+    fontColor?: outputs.GetAccountSettingV2WorkspaceDashboardThemeFontSettingsWidgetDescriptionFontColor;
+    /**
+     * (string) - The font family name used for text in this category
+     */
+    fontFamily?: string;
+    /**
+     * (integer) - The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * (string) - The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * (integer) - The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * (string) - The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * (string) - The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeFontSettingsWidgetDescriptionFontColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeFontSettingsWidgetTitle {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The font color applied to text in this category
+     */
+    fontColor?: outputs.GetAccountSettingV2WorkspaceDashboardThemeFontSettingsWidgetTitleFontColor;
+    /**
+     * (string) - The font family name used for text in this category
+     */
+    fontFamily?: string;
+    /**
+     * (integer) - The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * (string) - The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * (integer) - The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * (string) - The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * (string) - The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeFontSettingsWidgetTitleFontColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeGridLineColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeSelectionColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeSentimentColors {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color applied to negative sentiment values
+     */
+    negative?: outputs.GetAccountSettingV2WorkspaceDashboardThemeSentimentColorsNegative;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color applied to neutral sentiment values
+     */
+    neutral?: outputs.GetAccountSettingV2WorkspaceDashboardThemeSentimentColorsNeutral;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color applied to positive sentiment values
+     */
+    positive?: outputs.GetAccountSettingV2WorkspaceDashboardThemeSentimentColorsPositive;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeSentimentColorsNegative {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeSentimentColorsNeutral {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeSentimentColorsPositive {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeWidgetBackgroundColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceDashboardThemeWidgetBorderColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetAccountSettingV2WorkspaceLabel {
+    /**
+     * (string) - Color of the label badge. The supported colors are coral, lemon, lime, turquoise, indigo, purple
+     * and pink. It is an empty string when no label is set
+     */
+    color?: string;
+    /**
+     * (string) - Text of the label shown next to the workspace name in the top navigation bar. An empty string
+     * means no label is set
      */
     label?: string;
 }
@@ -12204,7 +15602,8 @@ export interface GetAgentKitManagedMemoryEntriesManagedMemoryEntry {
      */
     name: string;
     /**
-     * (string) - Absolute, case-sensitive path identifying the entry within its actor and optional session.
+     * (string) - Absolute, case-sensitive path identifying the entry within its actor and, until the
+     * deprecated `sessionId` is ignored, its optional session.
      * Paths must begin with `/` and must not contain empty, `.` or `..` segments
      */
     path: string;
@@ -12213,12 +15612,14 @@ export interface GetAgentKitManagedMemoryEntriesManagedMemoryEntry {
      */
     providerConfig?: outputs.GetAgentKitManagedMemoryEntriesManagedMemoryEntryProviderConfig;
     /**
-     * Optional session identifier. When set, only entries with this exact `sessionId` are
-     * returned. Omitted-session (cross-session) entries are not included. Ignored when path is set
+     * Deprecated: the service will ignore this filter. Until then, when set, only entries with
+     * this exact `sessionId` are returned, and omitted-session (cross-session) entries
+     * are not included. Ignored when path is set
      */
     sessionId: string;
     /**
-     * (string) - Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+     * (string) - Which writer created this entry. Caller sets this on Create; immutable after creation.
+     * The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
      */
     sourceType: string;
     /**
@@ -12257,7 +15658,9 @@ export interface GetAgentKitManagedMemoryStoreProviderConfig {
 
 export interface GetAgentKitManagedMemoryStoreStorageBackend {
     /**
-     * (string) - Backend-specific identifier. For Lakebase, this is the project ID
+     * (string) - Backend-specific identifier. For Lakebase, this is the resource name of the database that
+     * holds the store's entries, in the form
+     * `projects/{project_id}/branches/{branch_id}/databases/{database_id}`
      */
     backendId: string;
     /**
@@ -12323,7 +15726,9 @@ export interface GetAgentKitManagedMemoryStoresManagedMemoryStoreProviderConfig 
 
 export interface GetAgentKitManagedMemoryStoresManagedMemoryStoreStorageBackend {
     /**
-     * (string) - Backend-specific identifier. For Lakebase, this is the project ID
+     * (string) - Backend-specific identifier. For Lakebase, this is the resource name of the database that
+     * holds the store's entries, in the form
+     * `projects/{project_id}/branches/{branch_id}/databases/{database_id}`
      */
     backendId: string;
     /**
@@ -12493,7 +15898,7 @@ export interface GetAiGatewayMcpServiceConfigRateLimit {
      */
     principal?: string;
     /**
-     * (string) - Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     * (string) - Interval after which the request and token counters reset. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
      */
     renewalPeriod: string;
     /**
@@ -12519,8 +15924,9 @@ export interface GetAiGatewayMcpServiceConfigSourceConnection {
      * Resource name of the MCP service.
      * Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `mcpServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `mcpServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      */
     name: string;
     /**
@@ -12555,11 +15961,11 @@ export interface GetAiGatewayMcpServicesMcpService {
      */
     createTime: string;
     /**
-     * (string) - Creator identity
+     * (string) - Username or service principal application ID of the principal that created the MCP service
      */
     createdBy: string;
     /**
-     * (string) - Owner of the MCP service
+     * (string) - Username, group name, or service principal application ID of the MCP service owner
      */
     effectiveOwner: string;
     /**
@@ -12570,7 +15976,7 @@ export interface GetAiGatewayMcpServicesMcpService {
      */
     etag: string;
     /**
-     * (string) - Metastore hosting the MCP service
+     * (string) - Unique identifier of the metastore that contains the MCP service
      */
     metastoreId: string;
     /**
@@ -12587,7 +15993,8 @@ export interface GetAiGatewayMcpServicesMcpService {
      */
     updateTime: string;
     /**
-     * (string) - Identity of the last updater
+     * (string) - Username or service principal application ID of the principal that last updated the MCP
+     * service
      */
     updatedBy: string;
 }
@@ -12625,7 +16032,7 @@ export interface GetAiGatewayMcpServicesMcpServiceConfigRateLimit {
      */
     principal?: string;
     /**
-     * (string) - Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     * (string) - Interval after which the request and token counters reset. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
      */
     renewalPeriod: string;
     /**
@@ -12684,23 +16091,29 @@ export interface GetAiGatewayModelProviderServiceConfig {
      */
     allowAllTargets?: boolean;
     /**
-     * (ModelProviderServiceConfigAmazonBedrockProviderConfig)
+     * (ModelProviderServiceConfigAmazonBedrockProviderConfig) - Configuration for Amazon Bedrock. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`
      */
     amazonBedrock?: outputs.GetAiGatewayModelProviderServiceConfigAmazonBedrock;
     /**
-     * (ModelProviderServiceConfigAnthropicProviderConfig)
+     * (ModelProviderServiceConfigAnthropicProviderConfig) - Configuration for Anthropic. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`
      */
     anthropic?: outputs.GetAiGatewayModelProviderServiceConfigAnthropic;
     /**
-     * (ModelProviderServiceConfigAzureOpenAiProviderConfig)
+     * (ModelProviderServiceConfigAzureOpenAiProviderConfig) - Configuration for Azure OpenAI. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`
      */
     azureOpenai?: outputs.GetAiGatewayModelProviderServiceConfigAzureOpenai;
     /**
-     * (ModelProviderServiceConfigAmazonBedrockProviderConfig)
+     * (ModelProviderServiceConfigAmazonBedrockProviderConfig) - Configuration for Amazon Bedrock Mantle, with the same fields as
+     * `amazonBedrock`. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`
      */
     bedrockMantle?: outputs.GetAiGatewayModelProviderServiceConfigBedrockMantle;
     /**
-     * (ModelProviderServiceConfigCustomProviderConfig)
+     * (ModelProviderServiceConfigCustomProviderConfig) - Configuration for a custom OpenAI-compatible provider. Set this field when
+     * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`
      */
     custom?: outputs.GetAiGatewayModelProviderServiceConfigCustom;
     /**
@@ -12727,7 +16140,8 @@ export interface GetAiGatewayModelProviderServiceConfig {
      */
     forwardUnmanagedPaths?: boolean;
     /**
-     * (ModelProviderServiceConfigGeminiEnterpriseProviderConfig)
+     * (ModelProviderServiceConfigGeminiEnterpriseProviderConfig) - Configuration for Google Gemini Enterprise. Set this field when
+     * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`
      */
     geminiEnterprise?: outputs.GetAiGatewayModelProviderServiceConfigGeminiEnterprise;
     /**
@@ -12737,11 +16151,13 @@ export interface GetAiGatewayModelProviderServiceConfig {
      */
     inferenceTable?: outputs.GetAiGatewayModelProviderServiceConfigInferenceTable;
     /**
-     * (ModelProviderServiceConfigMicrosoftFoundryProviderConfig)
+     * (ModelProviderServiceConfigMicrosoftFoundryProviderConfig) - Configuration for Microsoft Foundry. Set this field when
+     * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`
      */
     microsoftFoundry?: outputs.GetAiGatewayModelProviderServiceConfigMicrosoftFoundry;
     /**
-     * (ModelProviderServiceConfigOpenAiProviderConfig)
+     * (ModelProviderServiceConfigOpenAiProviderConfig) - Configuration for OpenAI. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
      */
     openai?: outputs.GetAiGatewayModelProviderServiceConfigOpenai;
     /**
@@ -12819,9 +16235,10 @@ export interface GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAcc
 
 export interface GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey {
     /**
-     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * (string) - Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -12840,8 +16257,9 @@ export interface GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectAwsAcc
      * Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -12851,8 +16269,9 @@ export interface GetAiGatewayModelProviderServiceConfigAmazonBedrockDirectServic
      * Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -12880,9 +16299,10 @@ export interface GetAiGatewayModelProviderServiceConfigAnthropicDirect {
 
 export interface GetAiGatewayModelProviderServiceConfigAnthropicDirectApiKey {
     /**
-     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * (string) - Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -12901,8 +16321,9 @@ export interface GetAiGatewayModelProviderServiceConfigAnthropicDirectApiKeySecr
      * Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -12947,9 +16368,10 @@ export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirect {
 
 export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKey {
     /**
-     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * (string) - Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -12968,8 +16390,9 @@ export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectApiKeySe
      * Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -12991,9 +16414,10 @@ export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraSer
 
 export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret {
     /**
-     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * (string) - Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -13012,8 +16436,9 @@ export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectEntraSer
      * Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -13023,8 +16448,9 @@ export interface GetAiGatewayModelProviderServiceConfigAzureOpenaiDirectServiceC
      * Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -13076,9 +16502,10 @@ export interface GetAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAcc
 
 export interface GetAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey {
     /**
-     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * (string) - Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -13097,8 +16524,9 @@ export interface GetAiGatewayModelProviderServiceConfigBedrockMantleDirectAwsAcc
      * Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -13108,8 +16536,9 @@ export interface GetAiGatewayModelProviderServiceConfigBedrockMantleDirectServic
      * Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -13142,9 +16571,10 @@ export interface GetAiGatewayModelProviderServiceConfigCustomDirect {
 
 export interface GetAiGatewayModelProviderServiceConfigCustomDirectApiKey {
     /**
-     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * (string) - Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -13163,8 +16593,9 @@ export interface GetAiGatewayModelProviderServiceConfigCustomDirectApiKeySecretR
      * Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -13178,16 +16609,17 @@ export interface GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuth {
     apiKeyName?: string;
     /**
      * (ModelProviderServiceConfigProviderSecret) - Secret value forwarded under the `apiKeyName` header on outbound
-     * requests. Supplied as inline plaintext via `ProviderSecret.plaintext`
+     * requests. Supply the value in `api_key_value.plaintext`
      */
     apiKeyValue?: outputs.GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue;
 }
 
 export interface GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue {
     /**
-     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * (string) - Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -13206,8 +16638,9 @@ export interface GetAiGatewayModelProviderServiceConfigCustomDirectHeaderAuthApi
      * Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -13247,9 +16680,10 @@ export interface GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirect {
 
 export interface GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApiKey {
     /**
-     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * (string) - Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -13268,8 +16702,9 @@ export interface GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectApi
      * Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -13279,8 +16714,9 @@ export interface GetAiGatewayModelProviderServiceConfigGeminiEnterpriseDirectSer
      * Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -13299,7 +16735,7 @@ export interface GetAiGatewayModelProviderServiceConfigInferenceTable {
      */
     parent: string;
     /**
-     * (string) - Resolved UC table for payload logs.
+     * (string) - Resource name of the Unity Catalog table that receives the payload logs.
      * Format: `tables/{catalog}.{schema}.{table}`
      */
     table: string;
@@ -13350,9 +16786,10 @@ export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirect {
 
 export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApiKey {
     /**
-     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * (string) - Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -13371,8 +16808,9 @@ export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectApi
      * Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -13394,9 +16832,10 @@ export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEnt
 
 export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret {
     /**
-     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * (string) - Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -13415,8 +16854,9 @@ export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectEnt
      * Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -13426,8 +16866,9 @@ export interface GetAiGatewayModelProviderServiceConfigMicrosoftFoundryDirectSer
      * Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -13459,9 +16900,10 @@ export interface GetAiGatewayModelProviderServiceConfigOpenaiDirect {
 
 export interface GetAiGatewayModelProviderServiceConfigOpenaiDirectApiKey {
     /**
-     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * (string) - Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -13480,8 +16922,9 @@ export interface GetAiGatewayModelProviderServiceConfigOpenaiDirectApiKeySecretR
      * Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
 }
@@ -13509,7 +16952,7 @@ export interface GetAiGatewayModelProviderServiceConfigRateLimit {
      */
     principal?: string;
     /**
-     * (string) - Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     * (string) - Interval after which the request and token counters reset. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
      */
     renewalPeriod: string;
     /**
@@ -13573,11 +17016,11 @@ export interface GetAiGatewayModelProviderServicesModelProviderService {
      */
     createTime: string;
     /**
-     * (string) - Creator identity
+     * (string) - Username of the user who created the model provider service
      */
     createdBy: string;
     /**
-     * (string) - Owner of the model provider service
+     * (string) - Username or group name of the model provider service owner
      */
     effectiveOwner: string;
     /**
@@ -13588,7 +17031,7 @@ export interface GetAiGatewayModelProviderServicesModelProviderService {
      */
     etag: string;
     /**
-     * (string) - Metastore hosting the provider service
+     * (string) - Unique identifier of the metastore that contains the model provider service
      */
     metastoreId: string;
     /**
@@ -13607,7 +17050,7 @@ export interface GetAiGatewayModelProviderServicesModelProviderService {
      */
     updateTime: string;
     /**
-     * (string) - Identity of the last updater
+     * (string) - Username of the user who last updated the model provider service
      */
     updatedBy: string;
 }
@@ -13621,23 +17064,29 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfig {
      */
     allowAllTargets?: boolean;
     /**
-     * (ModelProviderServiceConfigAmazonBedrockProviderConfig)
+     * (ModelProviderServiceConfigAmazonBedrockProviderConfig) - Configuration for Amazon Bedrock. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`
      */
     amazonBedrock?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrock;
     /**
-     * (ModelProviderServiceConfigAnthropicProviderConfig)
+     * (ModelProviderServiceConfigAnthropicProviderConfig) - Configuration for Anthropic. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`
      */
     anthropic?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropic;
     /**
-     * (ModelProviderServiceConfigAzureOpenAiProviderConfig)
+     * (ModelProviderServiceConfigAzureOpenAiProviderConfig) - Configuration for Azure OpenAI. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`
      */
     azureOpenai?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenai;
     /**
-     * (ModelProviderServiceConfigAmazonBedrockProviderConfig)
+     * (ModelProviderServiceConfigAmazonBedrockProviderConfig) - Configuration for Amazon Bedrock Mantle, with the same fields as
+     * `amazonBedrock`. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`
      */
     bedrockMantle?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigBedrockMantle;
     /**
-     * (ModelProviderServiceConfigCustomProviderConfig)
+     * (ModelProviderServiceConfigCustomProviderConfig) - Configuration for a custom OpenAI-compatible provider. Set this field when
+     * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`
      */
     custom?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigCustom;
     /**
@@ -13664,7 +17113,8 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfig {
      */
     forwardUnmanagedPaths?: boolean;
     /**
-     * (ModelProviderServiceConfigGeminiEnterpriseProviderConfig)
+     * (ModelProviderServiceConfigGeminiEnterpriseProviderConfig) - Configuration for Google Gemini Enterprise. Set this field when
+     * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`
      */
     geminiEnterprise?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterprise;
     /**
@@ -13674,11 +17124,13 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfig {
      */
     inferenceTable?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigInferenceTable;
     /**
-     * (ModelProviderServiceConfigMicrosoftFoundryProviderConfig)
+     * (ModelProviderServiceConfigMicrosoftFoundryProviderConfig) - Configuration for Microsoft Foundry. Set this field when
+     * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`
      */
     microsoftFoundry?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundry;
     /**
-     * (ModelProviderServiceConfigOpenAiProviderConfig)
+     * (ModelProviderServiceConfigOpenAiProviderConfig) - Configuration for OpenAI. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
      */
     openai?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenai;
     /**
@@ -13756,9 +17208,10 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAmaz
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAmazonBedrockDirectAwsAccessKeySecretAccessKey {
     /**
-     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * (string) - Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -13815,9 +17268,10 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAnth
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAnthropicDirectApiKey {
     /**
-     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * (string) - Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -13881,9 +17335,10 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAzur
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectApiKey {
     /**
-     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * (string) - Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -13924,9 +17379,10 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAzur
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigAzureOpenaiDirectEntraServicePrincipalClientSecret {
     /**
-     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * (string) - Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -14007,9 +17463,10 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigBedr
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigBedrockMantleDirectAwsAccessKeySecretAccessKey {
     /**
-     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * (string) - Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -14071,9 +17528,10 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigCust
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectApiKey {
     /**
-     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * (string) - Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -14106,16 +17564,17 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigCust
     apiKeyName?: string;
     /**
      * (ModelProviderServiceConfigProviderSecret) - Secret value forwarded under the `apiKeyName` header on outbound
-     * requests. Supplied as inline plaintext via `ProviderSecret.plaintext`
+     * requests. Supply the value in `api_key_value.plaintext`
      */
     apiKeyValue?: outputs.GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue;
 }
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue {
     /**
-     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * (string) - Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -14174,9 +17633,10 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigGemi
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigGeminiEnterpriseDirectApiKey {
     /**
-     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * (string) - Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -14224,7 +17684,7 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigInfe
      */
     parent: string;
     /**
-     * (string) - Resolved UC table for payload logs.
+     * (string) - Resource name of the Unity Catalog table that receives the payload logs.
      * Format: `tables/{catalog}.{schema}.{table}`
      */
     table: string;
@@ -14275,9 +17735,10 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigMicr
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectApiKey {
     /**
-     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * (string) - Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -14318,9 +17779,10 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigMicr
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigMicrosoftFoundryDirectEntraServicePrincipalClientSecret {
     /**
-     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * (string) - Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -14381,9 +17843,10 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigOpen
 
 export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigOpenaiDirectApiKey {
     /**
-     * (string) - Inline plaintext credential. INPUT_ONLY: the value never round-trips on
-     * reads. Get and List responses omit `plaintext`; the enclosing secret
-     * object remains present to indicate that a secret is configured
+     * (string) - Inline plaintext credential. The value is write-only and never
+     * round-trips on reads. Get and List responses omit `plaintext`; the
+     * enclosing secret object remains present to indicate that a secret is
+     * configured
      */
     plaintext: string;
     /**
@@ -14430,7 +17893,7 @@ export interface GetAiGatewayModelProviderServicesModelProviderServiceConfigRate
      */
     principal?: string;
     /**
-     * (string) - Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     * (string) - Interval after which the request and token counters reset. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
      */
     renewalPeriod: string;
     /**
@@ -14487,7 +17950,8 @@ export interface GetAiGatewayModelProviderServicesProviderConfig {
 
 export interface GetAiGatewayModelServiceConfig {
     /**
-     * (InferenceTableConfig) - Inference table configuration for payload logging
+     * (InferenceTableConfig) - Configuration for logging request and response payloads to a Unity
+     * Catalog inference table. Omit this field to leave payload logging off
      */
     inferenceTable?: outputs.GetAiGatewayModelServiceConfigInferenceTable;
     /**
@@ -14495,7 +17959,8 @@ export interface GetAiGatewayModelServiceConfig {
      */
     rateLimits?: outputs.GetAiGatewayModelServiceConfigRateLimit[];
     /**
-     * (ModelServiceConfigRoutingConfig) - Routing configuration: destinations and fallback
+     * (ModelServiceConfigRoutingConfig) - Routing configuration: the primary destinations that receive traffic and
+     * the fallback destinations tried when a primary destination fails
      */
     routing?: outputs.GetAiGatewayModelServiceConfigRouting;
 }
@@ -14515,7 +17980,7 @@ export interface GetAiGatewayModelServiceConfigInferenceTable {
      */
     parent: string;
     /**
-     * (string) - Resolved UC table for payload logs.
+     * (string) - Resource name of the Unity Catalog table that receives the payload logs.
      * Format: `tables/{catalog}.{schema}.{table}`
      */
     table: string;
@@ -14542,7 +18007,7 @@ export interface GetAiGatewayModelServiceConfigRateLimit {
      */
     principal?: string;
     /**
-     * (string) - Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     * (string) - Interval after which the request and token counters reset. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
      */
     renewalPeriod: string;
     /**
@@ -14594,8 +18059,9 @@ export interface GetAiGatewayModelServiceConfigRoutingDestination {
      * Resource name of the model service.
      * Format: `model-services/{catalog}.{schema}.{model_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      */
     name: string;
     /**
@@ -14618,9 +18084,7 @@ export interface GetAiGatewayModelServiceConfigRoutingDestination {
 export interface GetAiGatewayModelServiceConfigRoutingDestinationExternalModelConfig {
     /**
      * (string) - Resource name of the governed ModelProviderService that owns provider
-     * auth and provider-specific configuration. The referenced
-     * ModelProviderService also carries the provider type, so this message
-     * does not surface it directly.
+     * auth and provider-specific configuration.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually
      */
@@ -14643,9 +18107,9 @@ export interface GetAiGatewayModelServiceConfigRoutingDestinationExternalModelCo
      */
     endpointRoute?: string;
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      */
     model: string;
     /**
@@ -14661,18 +18125,18 @@ export interface GetAiGatewayModelServiceConfigRoutingDestinationExternalModelCo
 
 export interface GetAiGatewayModelServiceConfigRoutingDestinationPayPerTokenConfig {
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      */
     model: string;
 }
 
 export interface GetAiGatewayModelServiceConfigRoutingDestinationProvisionedThroughputConfig {
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      */
     model: string;
     /**
@@ -14718,8 +18182,9 @@ export interface GetAiGatewayModelServiceConfigRoutingFallbackDestination {
      * Resource name of the model service.
      * Format: `model-services/{catalog}.{schema}.{model_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      */
     name: string;
     /**
@@ -14742,9 +18207,7 @@ export interface GetAiGatewayModelServiceConfigRoutingFallbackDestination {
 export interface GetAiGatewayModelServiceConfigRoutingFallbackDestinationExternalModelConfig {
     /**
      * (string) - Resource name of the governed ModelProviderService that owns provider
-     * auth and provider-specific configuration. The referenced
-     * ModelProviderService also carries the provider type, so this message
-     * does not surface it directly.
+     * auth and provider-specific configuration.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually
      */
@@ -14767,9 +18230,9 @@ export interface GetAiGatewayModelServiceConfigRoutingFallbackDestinationExterna
      */
     endpointRoute?: string;
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      */
     model: string;
     /**
@@ -14785,18 +18248,18 @@ export interface GetAiGatewayModelServiceConfigRoutingFallbackDestinationExterna
 
 export interface GetAiGatewayModelServiceConfigRoutingFallbackDestinationPayPerTokenConfig {
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      */
     model: string;
 }
 
 export interface GetAiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfig {
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      */
     model: string;
     /**
@@ -14833,11 +18296,11 @@ export interface GetAiGatewayModelServicesModelService {
      */
     createTime: string;
     /**
-     * (string) - Creator identity
+     * (string) - Username of the user who created the model service
      */
     createdBy: string;
     /**
-     * (string) - Owner of the model service
+     * (string) - Username or group name of the model service owner
      */
     effectiveOwner: string;
     /**
@@ -14848,11 +18311,13 @@ export interface GetAiGatewayModelServicesModelService {
      */
     etag: string;
     /**
-     * (string) - Metastore hosting the model service
+     * (string) - Unique identifier of the metastore that contains the model service
      */
     metastoreId: string;
     /**
-     * (string) - User-facing label for this destination, used in routing references
+     * (string) - Label that identifies this destination. Names are compared
+     * case-insensitively and must be unique within the primary destinations and
+     * within the fallback destinations
      */
     name: string;
     /**
@@ -14871,14 +18336,15 @@ export interface GetAiGatewayModelServicesModelService {
      */
     updateTime: string;
     /**
-     * (string) - Identity of the last updater
+     * (string) - Username of the user who last updated the model service
      */
     updatedBy: string;
 }
 
 export interface GetAiGatewayModelServicesModelServiceConfig {
     /**
-     * (InferenceTableConfig) - Inference table configuration for payload logging
+     * (InferenceTableConfig) - Configuration for logging request and response payloads to a Unity
+     * Catalog inference table. Omit this field to leave payload logging off
      */
     inferenceTable?: outputs.GetAiGatewayModelServicesModelServiceConfigInferenceTable;
     /**
@@ -14886,7 +18352,8 @@ export interface GetAiGatewayModelServicesModelServiceConfig {
      */
     rateLimits?: outputs.GetAiGatewayModelServicesModelServiceConfigRateLimit[];
     /**
-     * (ModelServiceConfigRoutingConfig) - Routing configuration: destinations and fallback
+     * (ModelServiceConfigRoutingConfig) - Routing configuration: the primary destinations that receive traffic and
+     * the fallback destinations tried when a primary destination fails
      */
     routing?: outputs.GetAiGatewayModelServicesModelServiceConfigRouting;
 }
@@ -14906,7 +18373,7 @@ export interface GetAiGatewayModelServicesModelServiceConfigInferenceTable {
      */
     parent: string;
     /**
-     * (string) - Resolved UC table for payload logs.
+     * (string) - Resource name of the Unity Catalog table that receives the payload logs.
      * Format: `tables/{catalog}.{schema}.{table}`
      */
     table: string;
@@ -14933,7 +18400,7 @@ export interface GetAiGatewayModelServicesModelServiceConfigRateLimit {
      */
     principal?: string;
     /**
-     * (string) - Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     * (string) - Interval after which the request and token counters reset. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
      */
     renewalPeriod: string;
     /**
@@ -14982,7 +18449,9 @@ export interface GetAiGatewayModelServicesModelServiceConfigRoutingDestination {
      */
     isDeleted: boolean;
     /**
-     * (string) - User-facing label for this destination, used in routing references
+     * (string) - Label that identifies this destination. Names are compared
+     * case-insensitively and must be unique within the primary destinations and
+     * within the fallback destinations
      */
     name: string;
     /**
@@ -15005,9 +18474,7 @@ export interface GetAiGatewayModelServicesModelServiceConfigRoutingDestination {
 export interface GetAiGatewayModelServicesModelServiceConfigRoutingDestinationExternalModelConfig {
     /**
      * (string) - Resource name of the governed ModelProviderService that owns provider
-     * auth and provider-specific configuration. The referenced
-     * ModelProviderService also carries the provider type, so this message
-     * does not surface it directly.
+     * auth and provider-specific configuration.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually
      */
@@ -15030,9 +18497,9 @@ export interface GetAiGatewayModelServicesModelServiceConfigRoutingDestinationEx
      */
     endpointRoute?: string;
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      */
     model: string;
     /**
@@ -15048,18 +18515,18 @@ export interface GetAiGatewayModelServicesModelServiceConfigRoutingDestinationEx
 
 export interface GetAiGatewayModelServicesModelServiceConfigRoutingDestinationPayPerTokenConfig {
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      */
     model: string;
 }
 
 export interface GetAiGatewayModelServicesModelServiceConfigRoutingDestinationProvisionedThroughputConfig {
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      */
     model: string;
     /**
@@ -15102,7 +18569,9 @@ export interface GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDesti
      */
     isDeleted: boolean;
     /**
-     * (string) - User-facing label for this destination, used in routing references
+     * (string) - Label that identifies this destination. Names are compared
+     * case-insensitively and must be unique within the primary destinations and
+     * within the fallback destinations
      */
     name: string;
     /**
@@ -15125,9 +18594,7 @@ export interface GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDesti
 export interface GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDestinationExternalModelConfig {
     /**
      * (string) - Resource name of the governed ModelProviderService that owns provider
-     * auth and provider-specific configuration. The referenced
-     * ModelProviderService also carries the provider type, so this message
-     * does not surface it directly.
+     * auth and provider-specific configuration.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually
      */
@@ -15150,9 +18617,9 @@ export interface GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDesti
      */
     endpointRoute?: string;
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      */
     model: string;
     /**
@@ -15168,18 +18635,18 @@ export interface GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDesti
 
 export interface GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDestinationPayPerTokenConfig {
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      */
     model: string;
 }
 
 export interface GetAiGatewayModelServicesModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfig {
     /**
-     * (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      */
     model: string;
     /**
@@ -15238,6 +18705,27 @@ export interface GetAiSearchEndpointProviderConfig {
 
 export interface GetAiSearchEndpointScalingInfo {
     /**
+     * (string) - Reason the in-progress scaling change is delayed. When set, `estimatedCompletionTime` is
+     * unset. Unset when the change is not delayed or no scaling change is in progress. Possible values are: `CAPACITY_UNAVAILABLE`, `SCALE_DOWN_BLOCKED`, `TAKING_LONGER_THAN_EXPECTED`
+     */
+    delayedReason: string;
+    /**
+     * (string) - Estimated time at which the in-progress scaling change will complete. The estimate may
+     * change as the scaling change progresses. Unset when no scaling change is in progress,
+     * when no estimate is available, or when the change is delayed (see `delayedReason`)
+     */
+    estimatedCompletionTime: string;
+    /**
+     * (integer) - Percentage of index initialization completed, from 0 to 100. Set only during the
+     * `INITIALIZING_INDEX` phase; unset in other phases or when progress is not available
+     */
+    indexInitializationPercentage: number;
+    /**
+     * (string) - Current phase of the in-progress scaling change. Unset when no scaling change is in
+     * progress or the phase is not available. Possible values are: `ADJUSTING_CAPACITY`, `ESTIMATING`, `INITIALIZING_INDEX`
+     */
+    phase: string;
+    /**
      * (integer) - The requested QPS target for the endpoint. Best-effort; the system does not
      * guarantee this QPS will be achieved
      */
@@ -15246,6 +18734,12 @@ export interface GetAiSearchEndpointScalingInfo {
      * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
      */
     state: string;
+    /**
+     * (string) - Earliest time a new Target QPS change is accepted. Set only while a scaling change is in
+     * progress, the change lock is on, and the endpoint has a recorded last throughput change; may
+     * be in the past once the lock has expired
+     */
+    targetQpsChangeAllowedAfterTime: string;
 }
 
 export interface GetAiSearchEndpointThroughputInfo {
@@ -15289,7 +18783,10 @@ export interface GetAiSearchEndpointThroughputInfo {
 
 export interface GetAiSearchEndpointsEndpoint {
     /**
-     * (string) - The user-selected budget policy id for the endpoint
+     * (string) - ID of the serverless budget policy to apply to the endpoint. The caller must have
+     * permission to use the policy. Set either this field or `usagePolicyId`, not both.
+     * Responses do not echo this field; they report the applied policy in
+     * `effectiveBudgetPolicyId`
      */
     budgetPolicyId: string;
     /**
@@ -15297,19 +18794,21 @@ export interface GetAiSearchEndpointsEndpoint {
      */
     createTime: string;
     /**
-     * (string) - Creator of the endpoint
+     * (string) - User name of the principal that created the endpoint. For a user, it is the user's email
+     * address; for any other principal, it is the principal's unique name
      */
     creator: string;
     /**
-     * (list of CustomTag) - The custom tags assigned to the endpoint
+     * (list of CustomTag) - Custom tags assigned to the endpoint. On update, the list replaces all of the endpoint's
+     * existing tags
      */
     customTags: outputs.GetAiSearchEndpointsEndpointCustomTag[];
     /**
-     * (string) - The budget policy id applied to the endpoint
+     * (string) - ID of the budget policy that is currently applied to the endpoint
      */
     effectiveBudgetPolicyId: string;
     /**
-     * (EndpointStatus) - Current status of the endpoint
+     * (EndpointStatus) - Current lifecycle state of the endpoint, with an optional message that explains it
      */
     endpointStatus: outputs.GetAiSearchEndpointsEndpointEndpointStatus;
     /**
@@ -15317,7 +18816,7 @@ export interface GetAiSearchEndpointsEndpoint {
      */
     endpointType: string;
     /**
-     * (string) - Unique identifier of the endpoint
+     * (string) - System-generated UUID that uniquely identifies the endpoint
      */
     id: string;
     /**
@@ -15325,14 +18824,13 @@ export interface GetAiSearchEndpointsEndpoint {
      */
     indexCount: number;
     /**
-     * (string) - User who last updated the endpoint
+     * (string) - User name of the principal that last updated the endpoint, in the same format as `creator`
      */
     lastUpdatedUser: string;
     /**
-     * (string) - Name of the AI Search endpoint. Server-assigned full resource path
-     * (`workspaces/{workspace}/endpoints/{endpoint}`) on output. On create, the
-     * user-supplied short name is conveyed via `CreateEndpointRequest.endpoint_id`;
-     * the server composes the full `name` and returns it on the response
+     * (string) - Full resource name of the endpoint, in the form
+     * `workspaces/{workspace_id}/endpoints/{endpoint_id}`. On create, the server composes it
+     * from `parent` and `endpointId` and ignores any value supplied in the request body
      */
     name: string;
     /**
@@ -15350,7 +18848,8 @@ export interface GetAiSearchEndpointsEndpoint {
     scalingInfo: outputs.GetAiSearchEndpointsEndpointScalingInfo;
     /**
      * (integer) - Target QPS for the endpoint. Mutually exclusive with `replicaCount`. Best-effort;
-     * the system does not guarantee this QPS will be achieved
+     * the system does not guarantee this QPS will be achieved. Responses report the requested
+     * value in `scaling_info.requested_target_qps`
      */
     targetQps: number;
     /**
@@ -15362,7 +18861,8 @@ export interface GetAiSearchEndpointsEndpoint {
      */
     updateTime: string;
     /**
-     * (string) - The usage policy id applied to the endpoint
+     * (string) - ID of the usage policy to apply to the endpoint. The server treats it as the same setting
+     * as `budgetPolicyId`, so set only one of the two
      */
     usagePolicyId: string;
 }
@@ -15398,6 +18898,27 @@ export interface GetAiSearchEndpointsEndpointProviderConfig {
 
 export interface GetAiSearchEndpointsEndpointScalingInfo {
     /**
+     * (string) - Reason the in-progress scaling change is delayed. When set, `estimatedCompletionTime` is
+     * unset. Unset when the change is not delayed or no scaling change is in progress. Possible values are: `CAPACITY_UNAVAILABLE`, `SCALE_DOWN_BLOCKED`, `TAKING_LONGER_THAN_EXPECTED`
+     */
+    delayedReason: string;
+    /**
+     * (string) - Estimated time at which the in-progress scaling change will complete. The estimate may
+     * change as the scaling change progresses. Unset when no scaling change is in progress,
+     * when no estimate is available, or when the change is delayed (see `delayedReason`)
+     */
+    estimatedCompletionTime: string;
+    /**
+     * (integer) - Percentage of index initialization completed, from 0 to 100. Set only during the
+     * `INITIALIZING_INDEX` phase; unset in other phases or when progress is not available
+     */
+    indexInitializationPercentage: number;
+    /**
+     * (string) - Current phase of the in-progress scaling change. Unset when no scaling change is in
+     * progress or the phase is not available. Possible values are: `ADJUSTING_CAPACITY`, `ESTIMATING`, `INITIALIZING_INDEX`
+     */
+    phase: string;
+    /**
      * (integer) - The requested QPS target for the endpoint. Best-effort; the system does not
      * guarantee this QPS will be achieved
      */
@@ -15406,6 +18927,12 @@ export interface GetAiSearchEndpointsEndpointScalingInfo {
      * (string) - Current lifecycle state of the endpoint. See `State` for the meaning of each value. Possible values are: `DELETED`, `OFFLINE`, `ONLINE`, `PROVISIONING`, `RED_STATE`, `STARTING`, `STOPPED`, `STOPPING`, `YELLOW_STATE`
      */
     state: string;
+    /**
+     * (string) - Earliest time a new Target QPS change is accepted. Set only while a scaling change is in
+     * progress, the change lock is on, and the endpoint has a recorded last throughput change; may
+     * be in the past once the lock has expired
+     */
+    targetQpsChangeAllowedAfterTime: string;
 }
 
 export interface GetAiSearchEndpointsEndpointThroughputInfo {
@@ -15456,21 +18983,25 @@ export interface GetAiSearchEndpointsProviderConfig {
 
 export interface GetAiSearchIndexDeltaSyncIndexSpec {
     /**
-     * (list of string) - [Optional] Select the columns to sync with the index. If left blank, all columns
-     * from the source table are synced. The primary key column and embedding source or
-     * vector column are always synced
+     * (list of string) - Columns of the source table to include in the index. When empty, all columns are synced. The
+     * primary key and the embedding source or vector column are always synced. Only synced columns
+     * can be returned in query results or used in filters
      */
     columnsToSyncs?: string[];
     /**
-     * (list of EmbeddingSourceColumn) - The columns that contain the embedding source
+     * (list of EmbeddingSourceColumn) - Columns that contain the text to embed, each with the model endpoint that computes its
+     * embeddings
      */
     embeddingSourceColumns?: outputs.GetAiSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn[];
     /**
-     * (list of EmbeddingVectorColumn) - The columns that contain the embedding vectors
+     * (list of EmbeddingVectorColumn) - Columns that hold precomputed embedding vectors. A single vector column is supported, and it
+     * cannot be the primary key
      */
     embeddingVectorColumns?: outputs.GetAiSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn[];
     /**
-     * (string) - [Optional] Name of the Delta table to sync the index contents and computed embeddings to
+     * (string) - Three-level name of a Delta table to write the synced rows and computed embeddings to. It
+     * applies only when embeddings are computed from `embeddingSourceColumns`, and the table must
+     * not already exist
      */
     embeddingWritebackTable?: string;
     /**
@@ -15478,15 +19009,13 @@ export interface GetAiSearchIndexDeltaSyncIndexSpec {
      */
     pipelineId: string;
     /**
-     * (string) - Pipeline execution mode. Required on create — the backend rejects an unset value.
-     * Storage Optimized endpoints accept only `TRIGGERED`; Standard endpoints accept both.
-     * No explicit `stage` — a REQUIRED field staged below its service would be dropped from
-     * combined specs while remaining in `required`, tripping the OpenAPI required-vs-properties
-     * consistency check. The field inherits the service's launch stage. Possible values are: `CONTINUOUS`, `TRIGGERED`
+     * (string) - Sync mode of the pipeline that keeps the index up to date. `TRIGGERED` syncs at creation and
+     * then each time SyncIndex is called; `CONTINUOUS` processes source changes as they arrive.
+     * Storage Optimized endpoints accept only `TRIGGERED`, and an unset value is rejected. Possible values are: `CONTINUOUS`, `TRIGGERED`
      */
     pipelineType: string;
     /**
-     * (string) - The full name of the source Delta table
+     * (string) - Three-level Unity Catalog name of the source Delta table, in the form `catalog.schema.table`
      */
     sourceTable?: string;
 }
@@ -15512,7 +19041,7 @@ export interface GetAiSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn {
 
 export interface GetAiSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
     /**
-     * (integer) - Dimension of the embedding vector
+     * (integer) - Number of elements in each embedding vector. It must be positive
      */
     embeddingDimension?: number;
     /**
@@ -15527,17 +19056,20 @@ export interface GetAiSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
 
 export interface GetAiSearchIndexDirectAccessIndexSpec {
     /**
-     * (list of EmbeddingSourceColumn) - The columns that contain the embedding source
+     * (list of EmbeddingSourceColumn) - Columns that contain the text to embed, each with the model endpoint that computes its
+     * embeddings
      */
     embeddingSourceColumns?: outputs.GetAiSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn[];
     /**
-     * (list of EmbeddingVectorColumn) - The columns that contain the embedding vectors
+     * (list of EmbeddingVectorColumn) - Columns that hold precomputed embedding vectors. A single vector column is supported, and it
+     * cannot be the primary key
      */
     embeddingVectorColumns?: outputs.GetAiSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn[];
     /**
-     * (string) - The schema of the index in JSON format. Supported types are `integer`, `long`,
-     * `float`, `double`, `boolean`, `string`, `date`, `timestamp`. Supported types for
-     * vector columns: `array<float>`, `array<double>`
+     * (string) - The schema of the index in JSON format, mapping each column name to its type. Supported
+     * types are `integer`, `long`, `float`, `double`, `boolean`, `string`, `date`, `timestamp`.
+     * Supported types for vector columns: `array<float>`, `array<double>`. The schema must include
+     * the primary key column and the embedding vector column
      */
     schemaJson?: string;
 }
@@ -15563,7 +19095,7 @@ export interface GetAiSearchIndexDirectAccessIndexSpecEmbeddingSourceColumn {
 
 export interface GetAiSearchIndexDirectAccessIndexSpecEmbeddingVectorColumn {
     /**
-     * (integer) - Dimension of the embedding vector
+     * (integer) - Number of elements in each embedding vector. It must be positive
      */
     embeddingDimension?: number;
     /**
@@ -15585,6 +19117,10 @@ export interface GetAiSearchIndexProviderConfig {
 
 export interface GetAiSearchIndexStatus {
     /**
+     * (string) - Lifecycle and ingestion state. An online index can still have a failed update. Possible values are: `DOWNLOADING`, `OFFLINE`, `OFFLINE_FAILED`, `ONLINE`, `ONLINE_CONTINUOUS_UPDATE`, `ONLINE_DIRECT_ACCESS`, `ONLINE_NO_PENDING_UPDATE`, `ONLINE_PIPELINE_FAILED`, `ONLINE_TRIGGERED_UPDATE`, `ONLINE_UPDATING_PIPELINE_RESOURCES`, `PROVISIONING`, `PROVISIONING_ENDPOINT`, `PROVISIONING_INDEX`, `PROVISIONING_INITIAL_SNAPSHOT`, `PROVISIONING_PIPELINE_RESOURCES`
+     */
+    detailedState: string;
+    /**
      * (string) - Index API URL used to perform operations on the index
      */
     indexUrl: string;
@@ -15597,7 +19133,8 @@ export interface GetAiSearchIndexStatus {
      */
     message: string;
     /**
-     * (boolean) - Whether the index is ready for search
+     * (boolean) - Whether the index can serve queries. After CreateIndex, poll GetIndex until true; message describes progress.
+     * This does not guarantee freshness or update success; check detailedState for update failures
      */
     ready: boolean;
 }
@@ -15621,19 +19158,25 @@ export interface GetAiSearchIndexesIndex {
      */
     endpoint: string;
     /**
-     * (string) - The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+     * (string) - Subtype of the index. Use `HYBRID` for vector and hybrid search, or `FULL_TEXT` for
+     * keyword-only search without embeddings; `VECTOR` is not a supported create value. Set on
+     * create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
      */
     indexSubtype: string;
     /**
-     * (string) - Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+     * (string) - Type of index. A `DELTA_SYNC` index is kept in sync with a source Delta table; a
+     * `DIRECT_ACCESS` index holds rows that you write through UpsertData and RemoveData. Set on
+     * create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
      */
     indexType: string;
     /**
-     * (string) - Name of the column
+     * (string) - Name of the column that holds the precomputed embedding vectors
      */
     name: string;
     /**
-     * (string) - Primary key of the index. Set on create and immutable thereafter
+     * (string) - Name of the column that uniquely identifies each row. It must exist in the source table
+     * (Delta Sync) or in `schemaJson` (Direct Access) and cannot be the embedding source or vector
+     * column. Set on create and immutable thereafter
      */
     primaryKey: string;
     /**
@@ -15648,21 +19191,25 @@ export interface GetAiSearchIndexesIndex {
 
 export interface GetAiSearchIndexesIndexDeltaSyncIndexSpec {
     /**
-     * (list of string) - [Optional] Select the columns to sync with the index. If left blank, all columns
-     * from the source table are synced. The primary key column and embedding source or
-     * vector column are always synced
+     * (list of string) - Columns of the source table to include in the index. When empty, all columns are synced. The
+     * primary key and the embedding source or vector column are always synced. Only synced columns
+     * can be returned in query results or used in filters
      */
     columnsToSyncs?: string[];
     /**
-     * (list of EmbeddingSourceColumn) - The columns that contain the embedding source
+     * (list of EmbeddingSourceColumn) - Columns that contain the text to embed, each with the model endpoint that computes its
+     * embeddings
      */
     embeddingSourceColumns?: outputs.GetAiSearchIndexesIndexDeltaSyncIndexSpecEmbeddingSourceColumn[];
     /**
-     * (list of EmbeddingVectorColumn) - The columns that contain the embedding vectors
+     * (list of EmbeddingVectorColumn) - Columns that hold precomputed embedding vectors. A single vector column is supported, and it
+     * cannot be the primary key
      */
     embeddingVectorColumns?: outputs.GetAiSearchIndexesIndexDeltaSyncIndexSpecEmbeddingVectorColumn[];
     /**
-     * (string) - [Optional] Name of the Delta table to sync the index contents and computed embeddings to
+     * (string) - Three-level name of a Delta table to write the synced rows and computed embeddings to. It
+     * applies only when embeddings are computed from `embeddingSourceColumns`, and the table must
+     * not already exist
      */
     embeddingWritebackTable?: string;
     /**
@@ -15670,15 +19217,13 @@ export interface GetAiSearchIndexesIndexDeltaSyncIndexSpec {
      */
     pipelineId: string;
     /**
-     * (string) - Pipeline execution mode. Required on create — the backend rejects an unset value.
-     * Storage Optimized endpoints accept only `TRIGGERED`; Standard endpoints accept both.
-     * No explicit `stage` — a REQUIRED field staged below its service would be dropped from
-     * combined specs while remaining in `required`, tripping the OpenAPI required-vs-properties
-     * consistency check. The field inherits the service's launch stage. Possible values are: `CONTINUOUS`, `TRIGGERED`
+     * (string) - Sync mode of the pipeline that keeps the index up to date. `TRIGGERED` syncs at creation and
+     * then each time SyncIndex is called; `CONTINUOUS` processes source changes as they arrive.
+     * Storage Optimized endpoints accept only `TRIGGERED`, and an unset value is rejected. Possible values are: `CONTINUOUS`, `TRIGGERED`
      */
     pipelineType: string;
     /**
-     * (string) - The full name of the source Delta table
+     * (string) - Three-level Unity Catalog name of the source Delta table, in the form `catalog.schema.table`
      */
     sourceTable?: string;
 }
@@ -15693,35 +19238,38 @@ export interface GetAiSearchIndexesIndexDeltaSyncIndexSpecEmbeddingSourceColumn 
      */
     modelEndpointNameForQuery?: string;
     /**
-     * (string) - Name of the column
+     * (string) - Name of the column that holds the precomputed embedding vectors
      */
     name?: string;
 }
 
 export interface GetAiSearchIndexesIndexDeltaSyncIndexSpecEmbeddingVectorColumn {
     /**
-     * (integer) - Dimension of the embedding vector
+     * (integer) - Number of elements in each embedding vector. It must be positive
      */
     embeddingDimension?: number;
     /**
-     * (string) - Name of the column
+     * (string) - Name of the column that holds the precomputed embedding vectors
      */
     name?: string;
 }
 
 export interface GetAiSearchIndexesIndexDirectAccessIndexSpec {
     /**
-     * (list of EmbeddingSourceColumn) - The columns that contain the embedding source
+     * (list of EmbeddingSourceColumn) - Columns that contain the text to embed, each with the model endpoint that computes its
+     * embeddings
      */
     embeddingSourceColumns?: outputs.GetAiSearchIndexesIndexDirectAccessIndexSpecEmbeddingSourceColumn[];
     /**
-     * (list of EmbeddingVectorColumn) - The columns that contain the embedding vectors
+     * (list of EmbeddingVectorColumn) - Columns that hold precomputed embedding vectors. A single vector column is supported, and it
+     * cannot be the primary key
      */
     embeddingVectorColumns?: outputs.GetAiSearchIndexesIndexDirectAccessIndexSpecEmbeddingVectorColumn[];
     /**
-     * (string) - The schema of the index in JSON format. Supported types are `integer`, `long`,
-     * `float`, `double`, `boolean`, `string`, `date`, `timestamp`. Supported types for
-     * vector columns: `array<float>`, `array<double>`
+     * (string) - The schema of the index in JSON format, mapping each column name to its type. Supported
+     * types are `integer`, `long`, `float`, `double`, `boolean`, `string`, `date`, `timestamp`.
+     * Supported types for vector columns: `array<float>`, `array<double>`. The schema must include
+     * the primary key column and the embedding vector column
      */
     schemaJson?: string;
 }
@@ -15736,18 +19284,18 @@ export interface GetAiSearchIndexesIndexDirectAccessIndexSpecEmbeddingSourceColu
      */
     modelEndpointNameForQuery?: string;
     /**
-     * (string) - Name of the column
+     * (string) - Name of the column that holds the precomputed embedding vectors
      */
     name?: string;
 }
 
 export interface GetAiSearchIndexesIndexDirectAccessIndexSpecEmbeddingVectorColumn {
     /**
-     * (integer) - Dimension of the embedding vector
+     * (integer) - Number of elements in each embedding vector. It must be positive
      */
     embeddingDimension?: number;
     /**
-     * (string) - Name of the column
+     * (string) - Name of the column that holds the precomputed embedding vectors
      */
     name?: string;
 }
@@ -15761,6 +19309,10 @@ export interface GetAiSearchIndexesIndexProviderConfig {
 
 export interface GetAiSearchIndexesIndexStatus {
     /**
+     * (string) - Lifecycle and ingestion state. An online index can still have a failed update. Possible values are: `DOWNLOADING`, `OFFLINE`, `OFFLINE_FAILED`, `ONLINE`, `ONLINE_CONTINUOUS_UPDATE`, `ONLINE_DIRECT_ACCESS`, `ONLINE_NO_PENDING_UPDATE`, `ONLINE_PIPELINE_FAILED`, `ONLINE_TRIGGERED_UPDATE`, `ONLINE_UPDATING_PIPELINE_RESOURCES`, `PROVISIONING`, `PROVISIONING_ENDPOINT`, `PROVISIONING_INDEX`, `PROVISIONING_INITIAL_SNAPSHOT`, `PROVISIONING_PIPELINE_RESOURCES`
+     */
+    detailedState: string;
+    /**
      * (string) - Index API URL used to perform operations on the index
      */
     indexUrl: string;
@@ -15773,7 +19325,8 @@ export interface GetAiSearchIndexesIndexStatus {
      */
     message: string;
     /**
-     * (boolean) - Whether the index is ready for search
+     * (boolean) - Whether the index can serve queries. After CreateIndex, poll GetIndex until true; message describes progress.
+     * This does not guarantee freshness or update success; check detailedState for update failures
      */
     ready: boolean;
 }
@@ -15798,11 +19351,11 @@ export interface GetAlertV2EffectiveRunAs {
 
 export interface GetAlertV2Evaluation {
     /**
-     * (string) - Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
+     * (string) - Operator used for comparison in alert evaluation. The alert is triggered when the comparison of the source value with the threshold is true. `IS_NULL` and `IS_NOT_NULL` take no threshold. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      */
     comparisonOperator: string;
     /**
-     * (string) - Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+     * (string) - Alert state if result is empty. If not set, an empty result sets the state to `ERROR`. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
     emptyResultState?: string;
     /**
@@ -15818,11 +19371,11 @@ export interface GetAlertV2Evaluation {
      */
     source: outputs.GetAlertV2EvaluationSource;
     /**
-     * (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+     * (string) - Latest state of alert evaluation: `TRIGGERED` when the condition was met, `OK` when it was not, and `ERROR` when the evaluation failed. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
     state: string;
     /**
-     * (AlertV2Operand) - Threshold to user for alert evaluation, can be a column or a value
+     * (AlertV2Operand) - Threshold to compare the source column against, either another column or a fixed value. Not needed when `comparisonOperator` is `IS_NULL` or `IS_NOT_NULL`
      */
     threshold?: outputs.GetAlertV2EvaluationThreshold;
 }
@@ -15841,81 +19394,83 @@ export interface GetAlertV2EvaluationNotification {
      */
     retriggerSeconds?: number;
     /**
-     * (list of AlertV2Subscription)
+     * (list of AlertV2Subscription) - Users and notification destinations that receive notifications
      */
     subscriptions?: outputs.GetAlertV2EvaluationNotificationSubscription[];
 }
 
 export interface GetAlertV2EvaluationNotificationSubscription {
     /**
-     * (string)
+     * (string) - ID of the notification destination to notify, as returned by the Notification Destinations API
      */
     destinationId?: string;
     /**
-     * (string)
+     * (string) - Email address of the workspace user to notify
      */
     userEmail?: string;
 }
 
 export interface GetAlertV2EvaluationSource {
     /**
-     * (string) - If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * (string) - Aggregation applied to the column across all rows of the query result: `SUM`, `COUNT`, `COUNT_DISTINCT`, `AVG`, `MEDIAN`, `MIN`, `MAX` or `STDDEV`.
+     * If not set, the value in the first row is used, which is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
     /**
-     * (string)
+     * (string) - Label for the column in notifications. Defaults to `name`
      */
     display?: string;
     /**
-     * (string)
+     * (string) - Name of the column in the query result
      */
     name: string;
 }
 
 export interface GetAlertV2EvaluationThreshold {
     /**
-     * (AlertV2OperandColumn)
+     * (AlertV2OperandColumn) - Compare the source against another column of the query result
      */
     column?: outputs.GetAlertV2EvaluationThresholdColumn;
     /**
-     * (AlertV2OperandValue)
+     * (AlertV2OperandValue) - Compare the source against a fixed value
      */
     value?: outputs.GetAlertV2EvaluationThresholdValue;
 }
 
 export interface GetAlertV2EvaluationThresholdColumn {
     /**
-     * (string) - If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * (string) - Aggregation applied to the column across all rows of the query result: `SUM`, `COUNT`, `COUNT_DISTINCT`, `AVG`, `MEDIAN`, `MIN`, `MAX` or `STDDEV`.
+     * If not set, the value in the first row is used, which is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
     /**
-     * (string)
+     * (string) - Label for the column in notifications. Defaults to `name`
      */
     display?: string;
     /**
-     * (string)
+     * (string) - Name of the column in the query result
      */
     name: string;
 }
 
 export interface GetAlertV2EvaluationThresholdValue {
     /**
-     * (boolean)
+     * (boolean) - Boolean threshold, for boolean columns
      */
     boolValue?: boolean;
     /**
-     * (number)
+     * (number) - Numeric threshold, for numeric columns
      */
     doubleValue?: number;
     /**
-     * (string)
+     * (string) - String threshold, for string or timestamp columns
      */
     stringValue?: string;
 }
 
 export interface GetAlertV2Parameter {
     /**
-     * (string)
+     * (string) - Name of the column in the query result
      */
     name: string;
     /**
@@ -15924,7 +19479,7 @@ export interface GetAlertV2Parameter {
      */
     type?: string;
     /**
-     * (AlertV2OperandValue)
+     * (AlertV2OperandValue) - Compare the source against a fixed value
      */
     value?: string;
 }
@@ -15949,11 +19504,11 @@ export interface GetAlertV2RunAs {
 
 export interface GetAlertV2Schedule {
     /**
-     * (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
+     * (string) - Indicates whether this schedule is paused. While paused, the alert is not evaluated. Possible values are: `PAUSED`, `UNPAUSED`
      */
     pauseStatus?: string;
     /**
-     * (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
+     * (string) - A cron expression using quartz syntax that specifies the schedule for this alert.
      * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
      */
     quartzCronSchedule: string;
@@ -15971,11 +19526,12 @@ export interface GetAlertsV2Alert {
      */
     createTime: string;
     /**
-     * (string) - Custom description for the alert. Interpreted according to `customTemplateFormat`
+     * (string) - Custom description for the alert, used as the notification body. Interpreted according to `customTemplateFormat`.
+     * The available template variables are listed at https://docs.databricks.com/aws/en/sql/user/alerts/create#notification-templates
      */
     customDescription: string;
     /**
-     * (string) - Custom summary for the alert. Interpreted according to `customTemplateFormat`
+     * (string) - Custom summary for the alert, used as the notification subject. Interpreted according to `customTemplateFormat`
      */
     customSummary: string;
     /**
@@ -15993,7 +19549,7 @@ export interface GetAlertsV2Alert {
      */
     effectiveRunAs: outputs.GetAlertsV2AlertEffectiveRunAs;
     /**
-     * (AlertV2Evaluation)
+     * (AlertV2Evaluation) - Condition evaluated against the query result, and who is notified when it is met
      */
     evaluation: outputs.GetAlertsV2AlertEvaluation;
     /**
@@ -16001,7 +19557,7 @@ export interface GetAlertsV2Alert {
      */
     id: string;
     /**
-     * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
+     * (string) - Indicates whether the alert is active (`ACTIVE`) or has been moved to the trash (`DELETED`). Possible values are: `ACTIVE`, `DELETED`
      */
     lifecycleState: string;
     /**
@@ -16033,13 +19589,13 @@ export interface GetAlertsV2Alert {
      */
     runAs: outputs.GetAlertsV2AlertRunAs;
     /**
-     * (string, deprecated) - The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
+     * (string, deprecated) - Deprecated: Use `runAs` field instead. This field will be removed in a future release.
+     * The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
      */
     runAsUserName: string;
     /**
-     * (CronSchedule)
+     * (CronSchedule) - Schedule on which the alert runs its query and evaluates the condition
      */
     schedule: outputs.GetAlertsV2AlertSchedule;
     /**
@@ -16065,11 +19621,11 @@ export interface GetAlertsV2AlertEffectiveRunAs {
 
 export interface GetAlertsV2AlertEvaluation {
     /**
-     * (string) - Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
+     * (string) - Operator used for comparison in alert evaluation. The alert is triggered when the comparison of the source value with the threshold is true. `IS_NULL` and `IS_NOT_NULL` take no threshold. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      */
     comparisonOperator: string;
     /**
-     * (string) - Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+     * (string) - Alert state if result is empty. If not set, an empty result sets the state to `ERROR`. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
     emptyResultState?: string;
     /**
@@ -16085,11 +19641,11 @@ export interface GetAlertsV2AlertEvaluation {
      */
     source: outputs.GetAlertsV2AlertEvaluationSource;
     /**
-     * (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+     * (string) - Latest state of alert evaluation: `TRIGGERED` when the condition was met, `OK` when it was not, and `ERROR` when the evaluation failed. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      */
     state: string;
     /**
-     * (AlertV2Operand) - Threshold to user for alert evaluation, can be a column or a value
+     * (AlertV2Operand) - Threshold to compare the source column against, either another column or a fixed value. Not needed when `comparisonOperator` is `IS_NULL` or `IS_NOT_NULL`
      */
     threshold?: outputs.GetAlertsV2AlertEvaluationThreshold;
 }
@@ -16108,81 +19664,83 @@ export interface GetAlertsV2AlertEvaluationNotification {
      */
     retriggerSeconds?: number;
     /**
-     * (list of AlertV2Subscription)
+     * (list of AlertV2Subscription) - Users and notification destinations that receive notifications
      */
     subscriptions?: outputs.GetAlertsV2AlertEvaluationNotificationSubscription[];
 }
 
 export interface GetAlertsV2AlertEvaluationNotificationSubscription {
     /**
-     * (string)
+     * (string) - ID of the notification destination to notify, as returned by the Notification Destinations API
      */
     destinationId?: string;
     /**
-     * (string)
+     * (string) - Email address of the workspace user to notify
      */
     userEmail?: string;
 }
 
 export interface GetAlertsV2AlertEvaluationSource {
     /**
-     * (string) - If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * (string) - Aggregation applied to the column across all rows of the query result: `SUM`, `COUNT`, `COUNT_DISTINCT`, `AVG`, `MEDIAN`, `MIN`, `MAX` or `STDDEV`.
+     * If not set, the value in the first row is used, which is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
     /**
-     * (string)
+     * (string) - Label for the column in notifications. Defaults to `name`
      */
     display?: string;
     /**
-     * (string)
+     * (string) - Name of the column in the query result
      */
     name: string;
 }
 
 export interface GetAlertsV2AlertEvaluationThreshold {
     /**
-     * (AlertV2OperandColumn)
+     * (AlertV2OperandColumn) - Compare the source against another column of the query result
      */
     column?: outputs.GetAlertsV2AlertEvaluationThresholdColumn;
     /**
-     * (AlertV2OperandValue)
+     * (AlertV2OperandValue) - Compare the source against a fixed value
      */
     value?: outputs.GetAlertsV2AlertEvaluationThresholdValue;
 }
 
 export interface GetAlertsV2AlertEvaluationThresholdColumn {
     /**
-     * (string) - If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * (string) - Aggregation applied to the column across all rows of the query result: `SUM`, `COUNT`, `COUNT_DISTINCT`, `AVG`, `MEDIAN`, `MIN`, `MAX` or `STDDEV`.
+     * If not set, the value in the first row is used, which is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      */
     aggregation?: string;
     /**
-     * (string)
+     * (string) - Label for the column in notifications. Defaults to `name`
      */
     display?: string;
     /**
-     * (string)
+     * (string) - Name of the column in the query result
      */
     name: string;
 }
 
 export interface GetAlertsV2AlertEvaluationThresholdValue {
     /**
-     * (boolean)
+     * (boolean) - Boolean threshold, for boolean columns
      */
     boolValue?: boolean;
     /**
-     * (number)
+     * (number) - Numeric threshold, for numeric columns
      */
     doubleValue?: number;
     /**
-     * (string)
+     * (string) - String threshold, for string or timestamp columns
      */
     stringValue?: string;
 }
 
 export interface GetAlertsV2AlertParameter {
     /**
-     * (string)
+     * (string) - Name of the column in the query result
      */
     name: string;
     /**
@@ -16191,7 +19749,7 @@ export interface GetAlertsV2AlertParameter {
      */
     type?: string;
     /**
-     * (AlertV2OperandValue)
+     * (AlertV2OperandValue) - Compare the source against a fixed value
      */
     value?: string;
 }
@@ -16216,11 +19774,11 @@ export interface GetAlertsV2AlertRunAs {
 
 export interface GetAlertsV2AlertSchedule {
     /**
-     * (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
+     * (string) - Indicates whether this schedule is paused. While paused, the alert is not evaluated. Possible values are: `PAUSED`, `UNPAUSED`
      */
     pauseStatus?: string;
     /**
-     * (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
+     * (string) - A cron expression using quartz syntax that specifies the schedule for this alert.
      * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
      */
     quartzCronSchedule: string;
@@ -16283,6 +19841,7 @@ export interface GetAppApp {
      * The effective budget policy ID.
      */
     effectiveBudgetPolicyId: string;
+    effectiveResources: outputs.GetAppAppEffectiveResource[];
     /**
      * The effective usage policy ID.
      */
@@ -16396,6 +19955,9 @@ export interface GetAppAppActiveDeployment {
      * The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
      */
     mode?: string;
+    scanOmittedCountIsLowerBound: boolean;
+    scanOmittedFindingsCount: number;
+    scanStatus: string;
     /**
      * The snapshotted workspace file system path of the source code loaded by the deployed app.
      */
@@ -16528,6 +20090,188 @@ export interface GetAppAppDefaultGitSourceGitRepository {
     url: string;
 }
 
+export interface GetAppAppEffectiveResource {
+    /**
+     * attribute - reference to another Databricks App.
+     */
+    app?: outputs.GetAppAppEffectiveResourceApp;
+    /**
+     * The resource path of a specific database within the branch (e.g. `projects/proj-abc123/branches/branch-xyz789/databases/db-456`).
+     */
+    database?: outputs.GetAppAppEffectiveResourceDatabase;
+    /**
+     * The description of the resource.
+     */
+    description?: string;
+    /**
+     * attribute
+     */
+    experiment?: outputs.GetAppAppEffectiveResourceExperiment;
+    /**
+     * attribute
+     */
+    genieSpace?: outputs.GetAppAppEffectiveResourceGenieSpace;
+    /**
+     * attribute
+     */
+    job?: outputs.GetAppAppEffectiveResourceJob;
+    /**
+     * The name of the app.
+     */
+    name: string;
+    /**
+     * attribute
+     */
+    postgres?: outputs.GetAppAppEffectiveResourcePostgres;
+    /**
+     * attribute
+     */
+    secret?: outputs.GetAppAppEffectiveResourceSecret;
+    /**
+     * attribute
+     */
+    servingEndpoint?: outputs.GetAppAppEffectiveResourceServingEndpoint;
+    /**
+     * attribute
+     */
+    sqlWarehouse?: outputs.GetAppAppEffectiveResourceSqlWarehouse;
+    /**
+     * attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
+     */
+    ucSecurable?: outputs.GetAppAppEffectiveResourceUcSecurable;
+}
+
+export interface GetAppAppEffectiveResourceApp {
+    /**
+     * The name of the app.
+     */
+    name?: string;
+    /**
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+     */
+    permission?: string;
+}
+
+export interface GetAppAppEffectiveResourceDatabase {
+    /**
+     * The name of database.
+     */
+    databaseName: string;
+    /**
+     * The name of database instance.
+     */
+    instanceName: string;
+    /**
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+     */
+    permission: string;
+}
+
+export interface GetAppAppEffectiveResourceExperiment {
+    /**
+     * The ID of the MLflow experiment to grant permission on.
+     */
+    experimentId: string;
+    /**
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+     */
+    permission: string;
+}
+
+export interface GetAppAppEffectiveResourceGenieSpace {
+    /**
+     * The name of the app.
+     */
+    name: string;
+    /**
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+     */
+    permission: string;
+    /**
+     * The unique ID of Genie Space.
+     */
+    spaceId: string;
+}
+
+export interface GetAppAppEffectiveResourceJob {
+    /**
+     * Id of the job to grant permission on.
+     */
+    id: string;
+    /**
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+     */
+    permission: string;
+}
+
+export interface GetAppAppEffectiveResourcePostgres {
+    /**
+     * The resource path of the Lakebase Autoscaling branch (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     */
+    branch?: string;
+    /**
+     * The resource path of a specific database within the branch (e.g. `projects/proj-abc123/branches/branch-xyz789/databases/db-456`).
+     */
+    database?: string;
+    /**
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+     */
+    permission?: string;
+}
+
+export interface GetAppAppEffectiveResourceSecret {
+    /**
+     * Key of the secret to grant permission on.
+     */
+    key: string;
+    /**
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+     */
+    permission: string;
+    /**
+     * Scope of the secret to grant permission on.
+     */
+    scope: string;
+}
+
+export interface GetAppAppEffectiveResourceServingEndpoint {
+    /**
+     * The name of the app.
+     */
+    name: string;
+    /**
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+     */
+    permission: string;
+}
+
+export interface GetAppAppEffectiveResourceSqlWarehouse {
+    /**
+     * Id of the job to grant permission on.
+     */
+    id: string;
+    /**
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+     */
+    permission: string;
+}
+
+export interface GetAppAppEffectiveResourceUcSecurable {
+    /**
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+     */
+    permission: string;
+    /**
+     * The full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+     */
+    securableFullName: string;
+    securableKind: string;
+    /**
+     * The type of UC securable. Supported values are `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`.
+     */
+    securableType: string;
+}
+
 export interface GetAppAppGitRepository {
     autoDeploy?: boolean;
     callerCredentialId: number;
@@ -16597,6 +20341,9 @@ export interface GetAppAppPendingDeployment {
      * The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
      */
     mode?: string;
+    scanOmittedCountIsLowerBound: boolean;
+    scanOmittedFindingsCount: number;
+    scanStatus: string;
     /**
      * The snapshotted workspace file system path of the source code loaded by the deployed app.
      */
@@ -16891,11 +20638,12 @@ export interface GetAppSpaceProviderConfig {
 
 export interface GetAppSpaceResource {
     /**
-     * (AppResourceApp)
+     * (AppResourceApp) - Another app in the workspace that this app is granted access to
      */
     app?: outputs.GetAppSpaceResourceApp;
     /**
-     * (string)
+     * (string) - Resource name of the database within the branch, in the form
+     * `projects/{project}/branches/{branch}/databases/{database}`
      */
     database?: outputs.GetAppSpaceResourceDatabase;
     /**
@@ -16903,15 +20651,15 @@ export interface GetAppSpaceResource {
      */
     description?: string;
     /**
-     * (AppResourceExperiment)
+     * (AppResourceExperiment) - MLflow experiment the app is granted access to
      */
     experiment?: outputs.GetAppSpaceResourceExperiment;
     /**
-     * (AppResourceGenieSpace)
+     * (AppResourceGenieSpace) - Genie space the app is granted access to
      */
     genieSpace?: outputs.GetAppSpaceResourceGenieSpace;
     /**
-     * (AppResourceJob)
+     * (AppResourceJob) - Lakeflow job the app is granted access to
      */
     job?: outputs.GetAppSpaceResourceJob;
     /**
@@ -16920,23 +20668,24 @@ export interface GetAppSpaceResource {
      */
     name: string;
     /**
-     * (AppResourcePostgres)
+     * (AppResourcePostgres) - Lakebase Autoscaling Postgres database the app is granted access to
      */
     postgres?: outputs.GetAppSpaceResourcePostgres;
     /**
-     * (AppResourceSecret)
+     * (AppResourceSecret) - Secret the app is granted access to
      */
     secret?: outputs.GetAppSpaceResourceSecret;
     /**
-     * (AppResourceServingEndpoint)
+     * (AppResourceServingEndpoint) - Model serving endpoint the app is granted access to
      */
     servingEndpoint?: outputs.GetAppSpaceResourceServingEndpoint;
     /**
-     * (AppResourceSqlWarehouse)
+     * (AppResourceSqlWarehouse) - SQL warehouse the app is granted access to
      */
     sqlWarehouse?: outputs.GetAppSpaceResourceSqlWarehouse;
     /**
-     * (AppResourceUcSecurable)
+     * (AppResourceUcSecurable) - Unity Catalog securable (volume, table, function, connection or model service) the app is
+     * granted a privilege on
      */
     ucSecurable?: outputs.GetAppSpaceResourceUcSecurable;
 }
@@ -16948,33 +20697,36 @@ export interface GetAppSpaceResourceApp {
      */
     name?: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission?: string;
 }
 
 export interface GetAppSpaceResourceDatabase {
     /**
-     * (string)
+     * (string) - Name of the database within the instance
      */
     databaseName: string;
     /**
-     * (string)
+     * (string) - Name of the Lakebase database instance
      */
     instanceName: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
 
 export interface GetAppSpaceResourceExperiment {
     /**
-     * (string)
+     * (string) - ID of the MLflow experiment
      */
     experimentId: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
@@ -16986,11 +20738,12 @@ export interface GetAppSpaceResourceGenieSpace {
      */
     name: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
     /**
-     * (string)
+     * (string) - ID of the Genie space
      */
     spaceId: string;
 }
@@ -17001,22 +20754,26 @@ export interface GetAppSpaceResourceJob {
      */
     id: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
 
 export interface GetAppSpaceResourcePostgres {
     /**
-     * (string)
+     * (string) - Resource name of the Lakebase Autoscaling branch, in the form
+     * `projects/{project}/branches/{branch}`
      */
     branch?: string;
     /**
-     * (string)
+     * (string) - Resource name of the database within the branch, in the form
+     * `projects/{project}/branches/{branch}/databases/{database}`
      */
     database?: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission?: string;
 }
@@ -17027,7 +20784,8 @@ export interface GetAppSpaceResourceSecret {
      */
     key: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
     /**
@@ -17043,7 +20801,8 @@ export interface GetAppSpaceResourceServingEndpoint {
      */
     name: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
@@ -17054,18 +20813,21 @@ export interface GetAppSpaceResourceSqlWarehouse {
      */
     id: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
 
 export interface GetAppSpaceResourceUcSecurable {
     /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
     /**
-     * (string)
+     * (string) - Full name of the Unity Catalog securable. For volumes, tables and functions this is the
+     * three-level catalog.schema.object name
      */
     securableFullName: string;
     /**
@@ -17074,7 +20836,7 @@ export interface GetAppSpaceResourceUcSecurable {
      */
     securableKind: string;
     /**
-     * (string) - Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
+     * (string) - Kind of Unity Catalog securable that `securableFullName` refers to. Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      */
     securableType: string;
 }
@@ -17183,11 +20945,12 @@ export interface GetAppSpacesSpaceProviderConfig {
 
 export interface GetAppSpacesSpaceResource {
     /**
-     * (AppResourceApp)
+     * (AppResourceApp) - Another app in the workspace that this app is granted access to
      */
     app?: outputs.GetAppSpacesSpaceResourceApp;
     /**
-     * (string)
+     * (string) - Resource name of the database within the branch, in the form
+     * `projects/{project}/branches/{branch}/databases/{database}`
      */
     database?: outputs.GetAppSpacesSpaceResourceDatabase;
     /**
@@ -17195,15 +20958,15 @@ export interface GetAppSpacesSpaceResource {
      */
     description?: string;
     /**
-     * (AppResourceExperiment)
+     * (AppResourceExperiment) - MLflow experiment the app is granted access to
      */
     experiment?: outputs.GetAppSpacesSpaceResourceExperiment;
     /**
-     * (AppResourceGenieSpace)
+     * (AppResourceGenieSpace) - Genie space the app is granted access to
      */
     genieSpace?: outputs.GetAppSpacesSpaceResourceGenieSpace;
     /**
-     * (AppResourceJob)
+     * (AppResourceJob) - Lakeflow job the app is granted access to
      */
     job?: outputs.GetAppSpacesSpaceResourceJob;
     /**
@@ -17211,23 +20974,24 @@ export interface GetAppSpacesSpaceResource {
      */
     name: string;
     /**
-     * (AppResourcePostgres)
+     * (AppResourcePostgres) - Lakebase Autoscaling Postgres database the app is granted access to
      */
     postgres?: outputs.GetAppSpacesSpaceResourcePostgres;
     /**
-     * (AppResourceSecret)
+     * (AppResourceSecret) - Secret the app is granted access to
      */
     secret?: outputs.GetAppSpacesSpaceResourceSecret;
     /**
-     * (AppResourceServingEndpoint)
+     * (AppResourceServingEndpoint) - Model serving endpoint the app is granted access to
      */
     servingEndpoint?: outputs.GetAppSpacesSpaceResourceServingEndpoint;
     /**
-     * (AppResourceSqlWarehouse)
+     * (AppResourceSqlWarehouse) - SQL warehouse the app is granted access to
      */
     sqlWarehouse?: outputs.GetAppSpacesSpaceResourceSqlWarehouse;
     /**
-     * (AppResourceUcSecurable)
+     * (AppResourceUcSecurable) - Unity Catalog securable (volume, table, function, connection or model service) the app is
+     * granted a privilege on
      */
     ucSecurable?: outputs.GetAppSpacesSpaceResourceUcSecurable;
 }
@@ -17238,33 +21002,36 @@ export interface GetAppSpacesSpaceResourceApp {
      */
     name?: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission?: string;
 }
 
 export interface GetAppSpacesSpaceResourceDatabase {
     /**
-     * (string)
+     * (string) - Name of the database within the instance
      */
     databaseName: string;
     /**
-     * (string)
+     * (string) - Name of the Lakebase database instance
      */
     instanceName: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
 
 export interface GetAppSpacesSpaceResourceExperiment {
     /**
-     * (string)
+     * (string) - ID of the MLflow experiment
      */
     experimentId: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
@@ -17275,11 +21042,12 @@ export interface GetAppSpacesSpaceResourceGenieSpace {
      */
     name: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
     /**
-     * (string)
+     * (string) - ID of the Genie space
      */
     spaceId: string;
 }
@@ -17290,22 +21058,26 @@ export interface GetAppSpacesSpaceResourceJob {
      */
     id: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
 
 export interface GetAppSpacesSpaceResourcePostgres {
     /**
-     * (string)
+     * (string) - Resource name of the Lakebase Autoscaling branch, in the form
+     * `projects/{project}/branches/{branch}`
      */
     branch?: string;
     /**
-     * (string)
+     * (string) - Resource name of the database within the branch, in the form
+     * `projects/{project}/branches/{branch}/databases/{database}`
      */
     database?: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission?: string;
 }
@@ -17316,7 +21088,8 @@ export interface GetAppSpacesSpaceResourceSecret {
      */
     key: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
     /**
@@ -17331,7 +21104,8 @@ export interface GetAppSpacesSpaceResourceServingEndpoint {
      */
     name: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
@@ -17342,18 +21116,21 @@ export interface GetAppSpacesSpaceResourceSqlWarehouse {
      */
     id: string;
     /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
 }
 
 export interface GetAppSpacesSpaceResourceUcSecurable {
     /**
-     * (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      */
     permission: string;
     /**
-     * (string)
+     * (string) - Full name of the Unity Catalog securable. For volumes, tables and functions this is the
+     * three-level catalog.schema.object name
      */
     securableFullName: string;
     /**
@@ -17362,7 +21139,7 @@ export interface GetAppSpacesSpaceResourceUcSecurable {
      */
     securableKind: string;
     /**
-     * (string) - Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
+     * (string) - Kind of Unity Catalog securable that `securableFullName` refers to. Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      */
     securableType: string;
 }
@@ -17422,6 +21199,7 @@ export interface GetAppsApp {
      * The effective budget policy ID.
      */
     effectiveBudgetPolicyId: string;
+    effectiveResources: outputs.GetAppsAppEffectiveResource[];
     /**
      * The effective usage policy ID.
      */
@@ -17535,6 +21313,9 @@ export interface GetAppsAppActiveDeployment {
      * The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
      */
     mode?: string;
+    scanOmittedCountIsLowerBound: boolean;
+    scanOmittedFindingsCount: number;
+    scanStatus: string;
     /**
      * The snapshotted workspace file system path of the source code loaded by the deployed app.
      */
@@ -17667,6 +21448,188 @@ export interface GetAppsAppDefaultGitSourceGitRepository {
     url: string;
 }
 
+export interface GetAppsAppEffectiveResource {
+    /**
+     * attribute - reference to another Databricks App.
+     */
+    app?: outputs.GetAppsAppEffectiveResourceApp;
+    /**
+     * The resource path of a specific database within the branch (e.g. `projects/proj-abc123/branches/branch-xyz789/databases/db-456`).
+     */
+    database?: outputs.GetAppsAppEffectiveResourceDatabase;
+    /**
+     * The description of the resource.
+     */
+    description?: string;
+    /**
+     * attribute
+     */
+    experiment?: outputs.GetAppsAppEffectiveResourceExperiment;
+    /**
+     * attribute
+     */
+    genieSpace?: outputs.GetAppsAppEffectiveResourceGenieSpace;
+    /**
+     * attribute
+     */
+    job?: outputs.GetAppsAppEffectiveResourceJob;
+    /**
+     * The name of the app to grant permission on.
+     */
+    name: string;
+    /**
+     * attribute
+     */
+    postgres?: outputs.GetAppsAppEffectiveResourcePostgres;
+    /**
+     * attribute
+     */
+    secret?: outputs.GetAppsAppEffectiveResourceSecret;
+    /**
+     * attribute
+     */
+    servingEndpoint?: outputs.GetAppsAppEffectiveResourceServingEndpoint;
+    /**
+     * attribute
+     */
+    sqlWarehouse?: outputs.GetAppsAppEffectiveResourceSqlWarehouse;
+    /**
+     * attribute (see the [API docs](https://docs.databricks.com/api/workspace/apps/create#resources-uc_securable) for full list of supported UC objects)
+     */
+    ucSecurable?: outputs.GetAppsAppEffectiveResourceUcSecurable;
+}
+
+export interface GetAppsAppEffectiveResourceApp {
+    /**
+     * The name of the app to grant permission on.
+     */
+    name?: string;
+    /**
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+     */
+    permission?: string;
+}
+
+export interface GetAppsAppEffectiveResourceDatabase {
+    /**
+     * The name of database.
+     */
+    databaseName: string;
+    /**
+     * The name of database instance.
+     */
+    instanceName: string;
+    /**
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+     */
+    permission: string;
+}
+
+export interface GetAppsAppEffectiveResourceExperiment {
+    /**
+     * The ID of the MLflow experiment to grant permission on.
+     */
+    experimentId: string;
+    /**
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+     */
+    permission: string;
+}
+
+export interface GetAppsAppEffectiveResourceGenieSpace {
+    /**
+     * The name of the app to grant permission on.
+     */
+    name: string;
+    /**
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+     */
+    permission: string;
+    /**
+     * The unique ID of Genie Space.
+     */
+    spaceId: string;
+}
+
+export interface GetAppsAppEffectiveResourceJob {
+    /**
+     * Id of the job to grant permission on.
+     */
+    id: string;
+    /**
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+     */
+    permission: string;
+}
+
+export interface GetAppsAppEffectiveResourcePostgres {
+    /**
+     * The resource path of the Lakebase Autoscaling branch (e.g. `projects/proj-abc123/branches/branch-xyz789`).
+     */
+    branch?: string;
+    /**
+     * The resource path of a specific database within the branch (e.g. `projects/proj-abc123/branches/branch-xyz789/databases/db-456`).
+     */
+    database?: string;
+    /**
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+     */
+    permission?: string;
+}
+
+export interface GetAppsAppEffectiveResourceSecret {
+    /**
+     * Key of the secret to grant permission on.
+     */
+    key: string;
+    /**
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+     */
+    permission: string;
+    /**
+     * Scope of the secret to grant permission on.
+     */
+    scope: string;
+}
+
+export interface GetAppsAppEffectiveResourceServingEndpoint {
+    /**
+     * The name of the app to grant permission on.
+     */
+    name: string;
+    /**
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+     */
+    permission: string;
+}
+
+export interface GetAppsAppEffectiveResourceSqlWarehouse {
+    /**
+     * Id of the job to grant permission on.
+     */
+    id: string;
+    /**
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+     */
+    permission: string;
+}
+
+export interface GetAppsAppEffectiveResourceUcSecurable {
+    /**
+     * Permission to grant on the experiment. Supported permissions are: `CAN_READ`, `CAN_EDIT`, `CAN_MANAGE`.
+     */
+    permission: string;
+    /**
+     * The full name of UC securable, i.e. `my-catalog.my-schema.my-volume`.
+     */
+    securableFullName: string;
+    securableKind: string;
+    /**
+     * The type of UC securable. Supported values are `CONNECTION`, `FUNCTION`, `TABLE`, `VOLUME`.
+     */
+    securableType: string;
+}
+
 export interface GetAppsAppGitRepository {
     autoDeploy?: boolean;
     callerCredentialId: number;
@@ -17736,6 +21699,9 @@ export interface GetAppsAppPendingDeployment {
      * The deployment mode (`AUTO_SYNC` or `SNAPSHOT`).
      */
     mode?: string;
+    scanOmittedCountIsLowerBound: boolean;
+    scanOmittedFindingsCount: number;
+    scanStatus: string;
     /**
      * The snapshotted workspace file system path of the source code loaded by the deployed app.
      */
@@ -18279,10 +22245,52 @@ export interface GetAppsSettingsCustomTemplatesTemplateProviderConfig {
     workspaceId: string;
 }
 
+export interface GetAssumeGroupRestrictedSharingGroupProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAssumeGroupRestrictedSharingGroupsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetAssumeGroupRestrictedSharingGroupsRestrictedSharingGroup {
+    /**
+     * (string) - The display name of the restricted workspace group
+     */
+    groupDisplayName: string;
+    /**
+     * (string) - The resource name of the restricted sharing group.
+     * Format: `restricted-sharing-groups/{restricted_sharing_group_id}`
+     * Example: `restricted-sharing-groups/123`
+     */
+    name: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetAssumeGroupRestrictedSharingGroupsRestrictedSharingGroupProviderConfig;
+    /**
+     * (string) - The id of the restricted workspace group: the numeric id of an existing and
+     * non-system workspace group
+     */
+    restrictedSharingGroupId: string;
+}
+
+export interface GetAssumeGroupRestrictedSharingGroupsRestrictedSharingGroupProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
 export interface GetBudgetPoliciesFilterBy {
     /**
-     * The policy creator user id to be filtered on.
-     * If unspecified, all policies will be returned
+     * Deprecated: This field is ignored. Creator filtering will be removed in a future version
      */
     creatorUserId?: number;
     /**
@@ -18344,7 +22352,7 @@ export interface GetBudgetPoliciesSortSpec {
      */
     descending?: boolean;
     /**
-     * The filed to sort by. Possible values are: `POLICY_NAME`
+     * The field to sort by. If unspecified, policies are sorted by name. Possible values are: `POLICY_NAME`
      */
     field?: string;
 }
@@ -19244,7 +23252,9 @@ export interface GetDataClassificationCatalogConfigAutoTagConfig {
     autoTaggingMode: string;
     /**
      * (string) - The Classification Tag. For built-in classes this is a system tag (e.g., "class.name",
-     * "class.location"); for custom classes it is a user-defined governance tag key
+     * "class.location"); for custom classes it is a user-defined governance tag key. The built-in
+     * tags are listed at
+     * https://docs.databricks.com/aws/en/data-governance/unity-catalog/data-classification-tags
      */
     classificationTag: string;
 }
@@ -19272,18 +23282,20 @@ export interface GetDataClassificationCatalogConfigProviderConfig {
 
 export interface GetDataQualityMonitorAnomalyDetectionConfig {
     /**
-     * (list of string) - List of fully qualified table names to exclude from anomaly detection
+     * (list of string) - List of fully qualified table names to exclude from anomaly detection. Format: `catalog.schema.table_name`
      */
     excludedTableFullNames?: string[];
     /**
-     * (NotificationSettings) - Field for specifying notification settings
+     * (NotificationSettings) - Who to notify about this monitor's refreshes. Only `onFailure` with
+     * `emailAddresses` is supported here
      */
     notificationSettings?: outputs.GetDataQualityMonitorAnomalyDetectionConfigNotificationSettings;
 }
 
 export interface GetDataQualityMonitorAnomalyDetectionConfigNotificationSettings {
     /**
-     * (NotificationDestination) - Destinations to send notifications on failure/timeout
+     * (NotificationDestination) - Recipients to notify when a refresh of the monitor fails or times out. Only supported on table
+     * monitors, via `dataProfilingConfig`, and only `emailAddresses` is accepted there
      */
     onFailure?: outputs.GetDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure;
     /**
@@ -19296,9 +23308,9 @@ export interface GetDataQualityMonitorAnomalyDetectionConfigNotificationSettings
 
 export interface GetDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnFailure {
     /**
-     * (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
-     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
-     * 25 destination IDs is supported.
+     * (list of string) - The notification-destination IDs (Slack / Teams / webhook / Asana / ServiceNow / AWS
+     * EventBridge) to send the notification to. The destinations must already exist in the
+     * workspace; a workspace admin creates them. A maximum of 25 destination IDs is supported.
      * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
      */
     destinationIds?: string[];
@@ -19308,16 +23320,17 @@ export interface GetDataQualityMonitorAnomalyDetectionConfigNotificationSettings
      */
     destinationUserIds?: number[];
     /**
-     * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported.
+     * Only supported on table monitors, via `dataProfilingConfig`; rejected on schema monitors
      */
     emailAddresses?: string[];
 }
 
 export interface GetDataQualityMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable {
     /**
-     * (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
-     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
-     * 25 destination IDs is supported.
+     * (list of string) - The notification-destination IDs (Slack / Teams / webhook / Asana / ServiceNow / AWS
+     * EventBridge) to send the notification to. The destinations must already exist in the
+     * workspace; a workspace admin creates them. A maximum of 25 destination IDs is supported.
      * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
      */
     destinationIds?: string[];
@@ -19327,30 +23340,33 @@ export interface GetDataQualityMonitorAnomalyDetectionConfigNotificationSettings
      */
     destinationUserIds?: number[];
     /**
-     * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported.
+     * Only supported on table monitors, via `dataProfilingConfig`; rejected on schema monitors
      */
     emailAddresses?: string[];
 }
 
 export interface GetDataQualityMonitorDataProfilingConfig {
     /**
-     * (string) - Field for specifying the absolute path to a custom directory to store data-monitoring
-     * assets. Normally prepopulated to a default user location via UI and Python APIs
+     * (string) - The absolute workspace path of the directory where the monitor's assets, such as
+     * the dashboard, are stored. The UI and the Python APIs normally prepopulate a default user location
      */
     assetsDir?: string;
     /**
-     * (string) - Baseline table name.
-     * Baseline data is used to compute drift from the data in the monitored `tableName`.
-     * The baseline table and the monitored table shall have the same schema
+     * (string) - The fully qualified name of a baseline table. Format: `catalog.schema.table_name`.
+     * Drift metrics compare the monitored table against the baseline data, so the two tables must have the same
+     * schema
      */
     baselineTableName?: string;
     /**
-     * (list of DataProfilingCustomMetric) - Custom metrics
+     * (list of DataProfilingCustomMetric) - Custom metrics to compute in addition to the built-in ones. See
+     * [custom metrics](https://docs.databricks.com/aws/en/data-governance/unity-catalog/data-quality-monitoring/data-profiling/custom-metrics)
      */
     customMetrics?: outputs.GetDataQualityMonitorDataProfilingConfigCustomMetric[];
     /**
-     * (string) - Id of dashboard that visualizes the computed metrics.
-     * This can be empty if the monitor is in PENDING state
+     * (string) - The ID of the dashboard that visualizes the computed metrics. It is empty while
+     * the monitor is pending, when the dashboard was skipped with `skipBuiltinDashboard`, or when the caller is in
+     * a different workspace from the one where the monitor was created
      */
     dashboardId: string;
     /**
@@ -19362,7 +23378,8 @@ export interface GetDataQualityMonitorDataProfilingConfig {
      */
     effectiveWarehouseId: string;
     /**
-     * (InferenceLogConfig) - `Analysis Configuration` for monitoring inference log tables
+     * (InferenceLogConfig) - Profiles an inference log table, which stores the requests and predictions of a model. Metrics are
+     * computed per time window and include model quality metrics
      */
     inferenceLog?: outputs.GetDataQualityMonitorDataProfilingConfigInferenceLog;
     /**
@@ -19376,15 +23393,17 @@ export interface GetDataQualityMonitorDataProfilingConfig {
      */
     monitorVersion: number;
     /**
-     * (string) - Unity Catalog table to monitor. Format: `catalog.schema.table_name`
+     * (string) - The fully qualified name of the monitored table. Format: `catalog.schema.table_name`
      */
     monitoredTableName: string;
     /**
-     * (NotificationSettings) - Field for specifying notification settings
+     * (NotificationSettings) - Who to notify about this monitor's refreshes. Only `onFailure` with
+     * `emailAddresses` is supported here
      */
     notificationSettings?: outputs.GetDataQualityMonitorDataProfilingConfigNotificationSettings;
     /**
-     * (string) - ID of the schema where output tables are created
+     * (string) - The UUID of the Unity Catalog schema where the profile and drift metrics tables
+     * are created
      */
     outputSchemaId: string;
     /**
@@ -19392,7 +23411,8 @@ export interface GetDataQualityMonitorDataProfilingConfig {
      */
     profileMetricsTableName: string;
     /**
-     * (CronSchedule) - The cron schedule
+     * (CronSchedule) - The schedule on which the monitor refreshes its metrics. Refreshes can also be
+     * triggered on demand through the Refresh resource
      */
     schedule?: outputs.GetDataQualityMonitorDataProfilingConfigSchedule;
     /**
@@ -19402,27 +23422,32 @@ export interface GetDataQualityMonitorDataProfilingConfig {
     /**
      * (list of string) - List of column expressions to slice data with for targeted analysis. The data is grouped by
      * each expression independently, resulting in a separate slice for each predicate and its
-     * complements. For example `slicing_exprs=[“col_1”, “col_2 > 10”]` will generate the following
+     * complements. For example `slicing_exprs=["col1", "col2 " pulumi-lang-dotnet="> 10"]` will generate the following
      * slices: two slices for `col2 > 10` (True and False), and one slice per unique value in
      * `col1`. For high-cardinality columns, only the top 100 unique values by frequency will
      * generate slices
      */
     slicingExprs?: string[];
     /**
-     * (SnapshotConfig) - `Analysis Configuration` for monitoring snapshot tables
+     * (SnapshotConfig) - Profiles the full contents of the table. Metrics are computed over all rows at each refresh
      */
     snapshot?: outputs.GetDataQualityMonitorDataProfilingConfigSnapshot;
     /**
-     * (string) - The data profiling monitor status. Possible values are: `DATA_PROFILING_STATUS_ACTIVE`, `DATA_PROFILING_STATUS_DELETE_PENDING`, `DATA_PROFILING_STATUS_ERROR`, `DATA_PROFILING_STATUS_FAILED`, `DATA_PROFILING_STATUS_PENDING`
+     * (string) - The status of the monitor. `DATA_PROFILING_STATUS_PENDING` means the monitor's
+     * assets are being created or updated. `DATA_PROFILING_STATUS_ACTIVE` means the monitor is ready and can be
+     * refreshed. `DATA_PROFILING_STATUS_FAILED` and `DATA_PROFILING_STATUS_ERROR` mean the monitor is not
+     * operational, and `latestMonitorFailureMessage` describes the cause when one was recorded.
+     * `DATA_PROFILING_STATUS_DELETE_PENDING` means the monitor is being deleted. Possible values are: `DATA_PROFILING_STATUS_ACTIVE`, `DATA_PROFILING_STATUS_DELETE_PENDING`, `DATA_PROFILING_STATUS_ERROR`, `DATA_PROFILING_STATUS_FAILED`, `DATA_PROFILING_STATUS_PENDING`
      */
     status: string;
     /**
-     * (TimeSeriesConfig) - `Analysis Configuration` for monitoring time series tables
+     * (TimeSeriesConfig) - Profiles a time series table. Metrics are computed per time window, as defined by `timestampColumn`
+     * and `granularities`
      */
     timeSeries?: outputs.GetDataQualityMonitorDataProfilingConfigTimeSeries;
     /**
-     * (string) - Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
-     * warehouse will be used
+     * (string) - The ID of the SQL warehouse used to create the dashboard. If not specified, the first running warehouse the
+     * caller can access is used
      */
     warehouseId: string;
 }
@@ -19434,7 +23459,7 @@ export interface GetDataQualityMonitorDataProfilingConfigCustomMetric {
     definition: string;
     /**
      * (list of string) - A list of column names in the input table the metric should be computed for.
-     * Can use ``":table"`` to indicate that the metric needs information from multiple columns
+     * Can use `":table"` to indicate that the metric needs information from multiple columns
      */
     inputColumns: string[];
     /**
@@ -19442,11 +23467,15 @@ export interface GetDataQualityMonitorDataProfilingConfigCustomMetric {
      */
     name: string;
     /**
-     * (string) - The output type of the custom metric
+     * (string) - Specifies the Spark SQL data type of the metric value, either as a plain type name or as a JSON-encoded
+     * StructField
      */
     outputDataType: string;
     /**
-     * (string) - The type of the custom metric. Possible values are: `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT`
+     * (string) - The type of the custom metric. `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE` metrics depend only on the
+     * columns of the input table, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED` metrics depend only on previously
+     * computed aggregate metrics, and `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT` metrics depend on previously computed
+     * aggregate or derived metrics. Possible values are: `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT`
      */
     type: string;
 }
@@ -19457,30 +23486,32 @@ export interface GetDataQualityMonitorDataProfilingConfigInferenceLog {
      */
     granularities: string[];
     /**
-     * (string) - Column for the label
+     * (string) - Column containing the ground truth for the model's predictions
      */
     labelColumn?: string;
     /**
-     * (string) - Column for the model identifier
+     * (string) - Column containing the ID of the model that produced each prediction. A slice is created automatically for
+     * each distinct model ID
      */
     modelIdColumn: string;
     /**
-     * (string) - Column for the prediction
+     * (string) - Column containing the model's predicted values
      */
     predictionColumn: string;
     /**
-     * (string) - Problem type the model aims to solve. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
+     * (string) - The type of problem the model solves. It determines which model quality metrics are computed. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
      */
     problemType: string;
     /**
-     * (string) - Column for the timestamp
+     * (string) - Column containing the timestamp of each row. Its type must be TIMESTAMP or convertible to a timestamp
      */
     timestampColumn: string;
 }
 
 export interface GetDataQualityMonitorDataProfilingConfigNotificationSettings {
     /**
-     * (NotificationDestination) - Destinations to send notifications on failure/timeout
+     * (NotificationDestination) - Recipients to notify when a refresh of the monitor fails or times out. Only supported on table
+     * monitors, via `dataProfilingConfig`, and only `emailAddresses` is accepted there
      */
     onFailure?: outputs.GetDataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure;
     /**
@@ -19493,9 +23524,9 @@ export interface GetDataQualityMonitorDataProfilingConfigNotificationSettings {
 
 export interface GetDataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure {
     /**
-     * (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
-     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
-     * 25 destination IDs is supported.
+     * (list of string) - The notification-destination IDs (Slack / Teams / webhook / Asana / ServiceNow / AWS
+     * EventBridge) to send the notification to. The destinations must already exist in the
+     * workspace; a workspace admin creates them. A maximum of 25 destination IDs is supported.
      * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
      */
     destinationIds?: string[];
@@ -19505,16 +23536,17 @@ export interface GetDataQualityMonitorDataProfilingConfigNotificationSettingsOnF
      */
     destinationUserIds?: number[];
     /**
-     * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported.
+     * Only supported on table monitors, via `dataProfilingConfig`; rejected on schema monitors
      */
     emailAddresses?: string[];
 }
 
 export interface GetDataQualityMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable {
     /**
-     * (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
-     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
-     * 25 destination IDs is supported.
+     * (list of string) - The notification-destination IDs (Slack / Teams / webhook / Asana / ServiceNow / AWS
+     * EventBridge) to send the notification to. The destinations must already exist in the
+     * workspace; a workspace admin creates them. A maximum of 25 destination IDs is supported.
      * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
      */
     destinationIds?: string[];
@@ -19524,7 +23556,8 @@ export interface GetDataQualityMonitorDataProfilingConfigNotificationSettingsOnU
      */
     destinationUserIds?: number[];
     /**
-     * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported.
+     * Only supported on table monitors, via `dataProfilingConfig`; rejected on schema monitors
      */
     emailAddresses?: string[];
 }
@@ -19539,9 +23572,8 @@ export interface GetDataQualityMonitorDataProfilingConfigSchedule {
      */
     quartzCronExpression: string;
     /**
-     * (string) - A Java timezone id. The schedule for a job will be resolved with respect to this timezone.
-     * See `Java TimeZone <http://docs.oracle.com/javase/7/docs/api/java/util/TimeZone.html>`_ for details.
-     * The timezone id (e.g., ``America/Los_Angeles``) in which to evaluate the quartz expression
+     * (string) - The Java timezone ID in which the cron expression is evaluated. See
+     * [Java TimeZone](https://docs.oracle.com/javase/8/docs/api/java/util/TimeZone.html) for the supported IDs
      */
     timezoneId: string;
 }
@@ -19555,7 +23587,7 @@ export interface GetDataQualityMonitorDataProfilingConfigTimeSeries {
      */
     granularities: string[];
     /**
-     * (string) - Column for the timestamp
+     * (string) - Column containing the timestamp of each row. Its type must be TIMESTAMP or convertible to a timestamp
      */
     timestampColumn: string;
 }
@@ -19569,12 +23601,13 @@ export interface GetDataQualityMonitorProviderConfig {
 
 export interface GetDataQualityMonitorsMonitor {
     /**
-     * (AnomalyDetectionConfig) - Anomaly Detection Configuration, applicable to `schema` object types
+     * (AnomalyDetectionConfig) - Anomaly detection settings. Required when `objectType` is `schema`. When reading a `table` monitor, this holds
+     * the settings of the parent schema's monitor if the schema has one
      */
     anomalyDetectionConfig: outputs.GetDataQualityMonitorsMonitorAnomalyDetectionConfig;
     /**
-     * (DataProfilingConfig) - Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-     * must be present
+     * (DataProfilingConfig) - Data profiling settings. Required when `objectType` is `table`. Exactly one of `inferenceLog`, `timeSeries`
+     * or `snapshot` must be set
      */
     dataProfilingConfig: outputs.GetDataQualityMonitorsMonitorDataProfilingConfig;
     /**
@@ -19593,18 +23626,20 @@ export interface GetDataQualityMonitorsMonitor {
 
 export interface GetDataQualityMonitorsMonitorAnomalyDetectionConfig {
     /**
-     * (list of string) - List of fully qualified table names to exclude from anomaly detection
+     * (list of string) - List of fully qualified table names to exclude from anomaly detection. Format: `catalog.schema.table_name`
      */
     excludedTableFullNames?: string[];
     /**
-     * (NotificationSettings) - Field for specifying notification settings
+     * (NotificationSettings) - Who to notify about this monitor's refreshes. Only `onFailure` with
+     * `emailAddresses` is supported here
      */
     notificationSettings?: outputs.GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettings;
 }
 
 export interface GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettings {
     /**
-     * (NotificationDestination) - Destinations to send notifications on failure/timeout
+     * (NotificationDestination) - Recipients to notify when a refresh of the monitor fails or times out. Only supported on table
+     * monitors, via `dataProfilingConfig`, and only `emailAddresses` is accepted there
      */
     onFailure?: outputs.GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettingsOnFailure;
     /**
@@ -19617,9 +23652,9 @@ export interface GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotification
 
 export interface GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettingsOnFailure {
     /**
-     * (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
-     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
-     * 25 destination IDs is supported.
+     * (list of string) - The notification-destination IDs (Slack / Teams / webhook / Asana / ServiceNow / AWS
+     * EventBridge) to send the notification to. The destinations must already exist in the
+     * workspace; a workspace admin creates them. A maximum of 25 destination IDs is supported.
      * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
      */
     destinationIds?: string[];
@@ -19629,16 +23664,17 @@ export interface GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotification
      */
     destinationUserIds?: number[];
     /**
-     * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported.
+     * Only supported on table monitors, via `dataProfilingConfig`; rejected on schema monitors
      */
     emailAddresses?: string[];
 }
 
 export interface GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotificationSettingsOnUnhealthyTable {
     /**
-     * (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
-     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
-     * 25 destination IDs is supported.
+     * (list of string) - The notification-destination IDs (Slack / Teams / webhook / Asana / ServiceNow / AWS
+     * EventBridge) to send the notification to. The destinations must already exist in the
+     * workspace; a workspace admin creates them. A maximum of 25 destination IDs is supported.
      * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
      */
     destinationIds?: string[];
@@ -19648,30 +23684,33 @@ export interface GetDataQualityMonitorsMonitorAnomalyDetectionConfigNotification
      */
     destinationUserIds?: number[];
     /**
-     * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported.
+     * Only supported on table monitors, via `dataProfilingConfig`; rejected on schema monitors
      */
     emailAddresses?: string[];
 }
 
 export interface GetDataQualityMonitorsMonitorDataProfilingConfig {
     /**
-     * (string) - Field for specifying the absolute path to a custom directory to store data-monitoring
-     * assets. Normally prepopulated to a default user location via UI and Python APIs
+     * (string) - The absolute workspace path of the directory where the monitor's assets, such as
+     * the dashboard, are stored. The UI and the Python APIs normally prepopulate a default user location
      */
     assetsDir?: string;
     /**
-     * (string) - Baseline table name.
-     * Baseline data is used to compute drift from the data in the monitored `tableName`.
-     * The baseline table and the monitored table shall have the same schema
+     * (string) - The fully qualified name of a baseline table. Format: `catalog.schema.table_name`.
+     * Drift metrics compare the monitored table against the baseline data, so the two tables must have the same
+     * schema
      */
     baselineTableName?: string;
     /**
-     * (list of DataProfilingCustomMetric) - Custom metrics
+     * (list of DataProfilingCustomMetric) - Custom metrics to compute in addition to the built-in ones. See
+     * [custom metrics](https://docs.databricks.com/aws/en/data-governance/unity-catalog/data-quality-monitoring/data-profiling/custom-metrics)
      */
     customMetrics?: outputs.GetDataQualityMonitorsMonitorDataProfilingConfigCustomMetric[];
     /**
-     * (string) - Id of dashboard that visualizes the computed metrics.
-     * This can be empty if the monitor is in PENDING state
+     * (string) - The ID of the dashboard that visualizes the computed metrics. It is empty while
+     * the monitor is pending, when the dashboard was skipped with `skipBuiltinDashboard`, or when the caller is in
+     * a different workspace from the one where the monitor was created
      */
     dashboardId: string;
     /**
@@ -19683,7 +23722,8 @@ export interface GetDataQualityMonitorsMonitorDataProfilingConfig {
      */
     effectiveWarehouseId: string;
     /**
-     * (InferenceLogConfig) - `Analysis Configuration` for monitoring inference log tables
+     * (InferenceLogConfig) - Profiles an inference log table, which stores the requests and predictions of a model. Metrics are
+     * computed per time window and include model quality metrics
      */
     inferenceLog?: outputs.GetDataQualityMonitorsMonitorDataProfilingConfigInferenceLog;
     /**
@@ -19697,15 +23737,17 @@ export interface GetDataQualityMonitorsMonitorDataProfilingConfig {
      */
     monitorVersion: number;
     /**
-     * (string) - Unity Catalog table to monitor. Format: `catalog.schema.table_name`
+     * (string) - The fully qualified name of the monitored table. Format: `catalog.schema.table_name`
      */
     monitoredTableName: string;
     /**
-     * (NotificationSettings) - Field for specifying notification settings
+     * (NotificationSettings) - Who to notify about this monitor's refreshes. Only `onFailure` with
+     * `emailAddresses` is supported here
      */
     notificationSettings?: outputs.GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettings;
     /**
-     * (string) - ID of the schema where output tables are created
+     * (string) - The UUID of the Unity Catalog schema where the profile and drift metrics tables
+     * are created
      */
     outputSchemaId: string;
     /**
@@ -19713,7 +23755,8 @@ export interface GetDataQualityMonitorsMonitorDataProfilingConfig {
      */
     profileMetricsTableName: string;
     /**
-     * (CronSchedule) - The cron schedule
+     * (CronSchedule) - The schedule on which the monitor refreshes its metrics. Refreshes can also be
+     * triggered on demand through the Refresh resource
      */
     schedule?: outputs.GetDataQualityMonitorsMonitorDataProfilingConfigSchedule;
     /**
@@ -19723,27 +23766,32 @@ export interface GetDataQualityMonitorsMonitorDataProfilingConfig {
     /**
      * (list of string) - List of column expressions to slice data with for targeted analysis. The data is grouped by
      * each expression independently, resulting in a separate slice for each predicate and its
-     * complements. For example `slicing_exprs=[“col_1”, “col_2 > 10”]` will generate the following
+     * complements. For example `slicing_exprs=["col1", "col2 " pulumi-lang-dotnet="> 10"]` will generate the following
      * slices: two slices for `col2 > 10` (True and False), and one slice per unique value in
      * `col1`. For high-cardinality columns, only the top 100 unique values by frequency will
      * generate slices
      */
     slicingExprs?: string[];
     /**
-     * (SnapshotConfig) - `Analysis Configuration` for monitoring snapshot tables
+     * (SnapshotConfig) - Profiles the full contents of the table. Metrics are computed over all rows at each refresh
      */
     snapshot?: outputs.GetDataQualityMonitorsMonitorDataProfilingConfigSnapshot;
     /**
-     * (string) - The data profiling monitor status. Possible values are: `DATA_PROFILING_STATUS_ACTIVE`, `DATA_PROFILING_STATUS_DELETE_PENDING`, `DATA_PROFILING_STATUS_ERROR`, `DATA_PROFILING_STATUS_FAILED`, `DATA_PROFILING_STATUS_PENDING`
+     * (string) - The status of the monitor. `DATA_PROFILING_STATUS_PENDING` means the monitor's
+     * assets are being created or updated. `DATA_PROFILING_STATUS_ACTIVE` means the monitor is ready and can be
+     * refreshed. `DATA_PROFILING_STATUS_FAILED` and `DATA_PROFILING_STATUS_ERROR` mean the monitor is not
+     * operational, and `latestMonitorFailureMessage` describes the cause when one was recorded.
+     * `DATA_PROFILING_STATUS_DELETE_PENDING` means the monitor is being deleted. Possible values are: `DATA_PROFILING_STATUS_ACTIVE`, `DATA_PROFILING_STATUS_DELETE_PENDING`, `DATA_PROFILING_STATUS_ERROR`, `DATA_PROFILING_STATUS_FAILED`, `DATA_PROFILING_STATUS_PENDING`
      */
     status: string;
     /**
-     * (TimeSeriesConfig) - `Analysis Configuration` for monitoring time series tables
+     * (TimeSeriesConfig) - Profiles a time series table. Metrics are computed per time window, as defined by `timestampColumn`
+     * and `granularities`
      */
     timeSeries?: outputs.GetDataQualityMonitorsMonitorDataProfilingConfigTimeSeries;
     /**
-     * (string) - Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
-     * warehouse will be used
+     * (string) - The ID of the SQL warehouse used to create the dashboard. If not specified, the first running warehouse the
+     * caller can access is used
      */
     warehouseId: string;
 }
@@ -19755,7 +23803,7 @@ export interface GetDataQualityMonitorsMonitorDataProfilingConfigCustomMetric {
     definition: string;
     /**
      * (list of string) - A list of column names in the input table the metric should be computed for.
-     * Can use ``":table"`` to indicate that the metric needs information from multiple columns
+     * Can use `":table"` to indicate that the metric needs information from multiple columns
      */
     inputColumns: string[];
     /**
@@ -19763,11 +23811,15 @@ export interface GetDataQualityMonitorsMonitorDataProfilingConfigCustomMetric {
      */
     name: string;
     /**
-     * (string) - The output type of the custom metric
+     * (string) - Specifies the Spark SQL data type of the metric value, either as a plain type name or as a JSON-encoded
+     * StructField
      */
     outputDataType: string;
     /**
-     * (string) - The type of the custom metric. Possible values are: `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT`
+     * (string) - The type of the custom metric. `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE` metrics depend only on the
+     * columns of the input table, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED` metrics depend only on previously
+     * computed aggregate metrics, and `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT` metrics depend on previously computed
+     * aggregate or derived metrics. Possible values are: `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT`
      */
     type: string;
 }
@@ -19778,30 +23830,32 @@ export interface GetDataQualityMonitorsMonitorDataProfilingConfigInferenceLog {
      */
     granularities: string[];
     /**
-     * (string) - Column for the label
+     * (string) - Column containing the ground truth for the model's predictions
      */
     labelColumn?: string;
     /**
-     * (string) - Column for the model identifier
+     * (string) - Column containing the ID of the model that produced each prediction. A slice is created automatically for
+     * each distinct model ID
      */
     modelIdColumn: string;
     /**
-     * (string) - Column for the prediction
+     * (string) - Column containing the model's predicted values
      */
     predictionColumn: string;
     /**
-     * (string) - Problem type the model aims to solve. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
+     * (string) - The type of problem the model solves. It determines which model quality metrics are computed. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
      */
     problemType: string;
     /**
-     * (string) - Column for the timestamp
+     * (string) - Column containing the timestamp of each row. Its type must be TIMESTAMP or convertible to a timestamp
      */
     timestampColumn: string;
 }
 
 export interface GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettings {
     /**
-     * (NotificationDestination) - Destinations to send notifications on failure/timeout
+     * (NotificationDestination) - Recipients to notify when a refresh of the monitor fails or times out. Only supported on table
+     * monitors, via `dataProfilingConfig`, and only `emailAddresses` is accepted there
      */
     onFailure?: outputs.GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnFailure;
     /**
@@ -19814,9 +23868,9 @@ export interface GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSet
 
 export interface GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnFailure {
     /**
-     * (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
-     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
-     * 25 destination IDs is supported.
+     * (list of string) - The notification-destination IDs (Slack / Teams / webhook / Asana / ServiceNow / AWS
+     * EventBridge) to send the notification to. The destinations must already exist in the
+     * workspace; a workspace admin creates them. A maximum of 25 destination IDs is supported.
      * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
      */
     destinationIds?: string[];
@@ -19826,16 +23880,17 @@ export interface GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSet
      */
     destinationUserIds?: number[];
     /**
-     * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported.
+     * Only supported on table monitors, via `dataProfilingConfig`; rejected on schema monitors
      */
     emailAddresses?: string[];
 }
 
 export interface GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSettingsOnUnhealthyTable {
     /**
-     * (list of string) - The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
-     * destinations must already exist in the workspace; a workspace admin creates them. A maximum of
-     * 25 destination IDs is supported.
+     * (list of string) - The notification-destination IDs (Slack / Teams / webhook / Asana / ServiceNow / AWS
+     * EventBridge) to send the notification to. The destinations must already exist in the
+     * workspace; a workspace admin creates them. A maximum of 25 destination IDs is supported.
      * Only supported on schema monitors, via `anomalyDetectionConfig`; rejected on table monitors
      */
     destinationIds?: string[];
@@ -19845,7 +23900,8 @@ export interface GetDataQualityMonitorsMonitorDataProfilingConfigNotificationSet
      */
     destinationUserIds?: number[];
     /**
-     * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+     * (list of string) - The list of email addresses to send the notification to. A maximum of 5 email addresses is supported.
+     * Only supported on table monitors, via `dataProfilingConfig`; rejected on schema monitors
      */
     emailAddresses?: string[];
 }
@@ -19860,9 +23916,8 @@ export interface GetDataQualityMonitorsMonitorDataProfilingConfigSchedule {
      */
     quartzCronExpression: string;
     /**
-     * (string) - A Java timezone id. The schedule for a job will be resolved with respect to this timezone.
-     * See `Java TimeZone <http://docs.oracle.com/javase/7/docs/api/java/util/TimeZone.html>`_ for details.
-     * The timezone id (e.g., ``America/Los_Angeles``) in which to evaluate the quartz expression
+     * (string) - The Java timezone ID in which the cron expression is evaluated. See
+     * [Java TimeZone](https://docs.oracle.com/javase/8/docs/api/java/util/TimeZone.html) for the supported IDs
      */
     timezoneId: string;
 }
@@ -19876,7 +23931,7 @@ export interface GetDataQualityMonitorsMonitorDataProfilingConfigTimeSeries {
      */
     granularities: string[];
     /**
-     * (string) - Column for the timestamp
+     * (string) - Column containing the timestamp of each row. Its type must be TIMESTAMP or convertible to a timestamp
      */
     timestampColumn: string;
 }
@@ -19972,7 +24027,8 @@ export interface GetDatabaseDatabaseCatalogProviderConfig {
 
 export interface GetDatabaseDatabaseCatalogsDatabaseCatalog {
     /**
-     * (boolean)
+     * (boolean) - If true, the database named in databaseName is created in the instance when it does not already
+     * exist, with the calling user as its owner. Defaults to false
      */
     createDatabaseIfNotExists: boolean;
     /**
@@ -19980,11 +24036,13 @@ export interface GetDatabaseDatabaseCatalogsDatabaseCatalog {
      */
     databaseInstanceName: string;
     /**
-     * (string) - The name of the database (in an instance) associated with the catalog
+     * (string) - The name of the Postgres database in the instance that the catalog registers. The database must
+     * already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+     * databricks_system, template0 and template1 cannot be registered
      */
     databaseName: string;
     /**
-     * (string) - The name of the catalog in UC
+     * (string) - The name of the catalog in Unity Catalog
      */
     name: string;
     /**
@@ -19992,7 +24050,7 @@ export interface GetDatabaseDatabaseCatalogsDatabaseCatalog {
      */
     providerConfig?: outputs.GetDatabaseDatabaseCatalogsDatabaseCatalogProviderConfig;
     /**
-     * (string)
+     * (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
      */
     uid: string;
 }
@@ -20036,7 +24094,9 @@ export interface GetDatabaseInstanceChildInstanceRef {
      */
     lsn: string;
     /**
-     * The name of the instance. This is the unique identifier for the instance
+     * The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+     * characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+     * consecutive hyphens
      */
     name?: string;
     /**
@@ -20092,7 +24152,9 @@ export interface GetDatabaseInstanceParentInstanceRef {
      */
     lsn: string;
     /**
-     * The name of the instance. This is the unique identifier for the instance
+     * The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+     * characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+     * consecutive hyphens
      */
     name?: string;
     /**
@@ -20110,7 +24172,8 @@ export interface GetDatabaseInstanceProviderConfig {
 
 export interface GetDatabaseInstancesDatabaseInstance {
     /**
-     * (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+     * (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8". Must be set when
+     * creating an instance
      */
     capacity: string;
     /**
@@ -20127,11 +24190,12 @@ export interface GetDatabaseInstancesDatabaseInstance {
      */
     creator: string;
     /**
-     * (list of CustomTag) - Custom tags associated with the instance. This field is only included on create and update responses
+     * (list of CustomTag) - Custom tags associated with the instance. This field is only included on create and update responses.
+     * An instance can have at most 10 tags; keys must be unique ignoring case
      */
     customTags: outputs.GetDatabaseInstancesDatabaseInstanceCustomTag[];
     /**
-     * (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+     * (string, deprecated) - Deprecated: this field always matches the value of capacity; read capacity instead.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      */
@@ -20185,7 +24249,8 @@ export interface GetDatabaseInstancesDatabaseInstance {
      */
     enablePgNativeLogin: boolean;
     /**
-     * (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+     * (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+     * nodeCount greater than 1
      */
     enableReadableSecondaries: boolean;
     /**
@@ -20198,8 +24263,9 @@ export interface GetDatabaseInstancesDatabaseInstance {
      */
     nodeCount: number;
     /**
-     * (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
-     * child instance.
+     * (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is a
+     * child instance. A child instance inherits customTags and usagePolicyId from
+     * its parent and cannot set them.
      * Input: For specifying the parent instance to create a child instance. Optional.
      * Output: Only populated if provided as input to create a child instance
      */
@@ -20232,7 +24298,9 @@ export interface GetDatabaseInstancesDatabaseInstance {
      */
     state: string;
     /**
-     * (boolean) - Whether to stop the instance. An input only param, see effectiveStopped for the output
+     * (boolean) - Whether to stop the instance. An input only param, see effectiveStopped for the output. An
+     * instance cannot be created in the stopped state; set this field on update to stop or start
+     * the instance
      */
     stopped: boolean;
     /**
@@ -20351,7 +24419,8 @@ export interface GetDatabaseInstancesProviderConfig {
 
 export interface GetDatabaseSyncedDatabaseTableDataSynchronizationStatus {
     /**
-     * (SyncedTableContinuousUpdateStatus)
+     * (SyncedTableContinuousUpdateStatus) - Provides detailed status for an online table with the CONTINUOUS scheduling policy. It is populated when
+     * detailedState is SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE or SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES
      */
     continuousUpdateStatus?: outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatus;
     /**
@@ -20359,7 +24428,8 @@ export interface GetDatabaseSyncedDatabaseTableDataSynchronizationStatus {
      */
     detailedState: string;
     /**
-     * (SyncedTableFailedStatus)
+     * (SyncedTableFailedStatus) - Provides detailed status for a table whose data synchronization pipeline has failed. It is populated when
+     * detailedState is SYNCED_TABLE_OFFLINE_FAILED or SYNCED_TABLE_ONLINE_PIPELINE_FAILED
      */
     failedStatus?: outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatus;
     /**
@@ -20376,11 +24446,14 @@ export interface GetDatabaseSyncedDatabaseTableDataSynchronizationStatus {
      */
     pipelineId: string;
     /**
-     * (SyncedTableProvisioningStatus)
+     * (SyncedTableProvisioningStatus) - Provides detailed status while the table is being provisioned. It is populated when detailedState is
+     * SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES or SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT
      */
     provisioningStatus?: outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatus;
     /**
-     * (SyncedTableTriggeredUpdateStatus)
+     * (SyncedTableTriggeredUpdateStatus) - Provides detailed status for an online table with the TRIGGERED or SNAPSHOT scheduling policy. It is
+     * populated when detailedState is SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE, SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE
+     * or SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES
      */
     triggeredUpdateStatus?: outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatus;
 }
@@ -20444,7 +24517,7 @@ export interface GetDatabaseSyncedDatabaseTableDataSynchronizationStatusFailedSt
 
 export interface GetDatabaseSyncedDatabaseTableDataSynchronizationStatusLastSync {
     /**
-     * (DeltaTableSyncInfo)
+     * (DeltaTableSyncInfo) - Identifies the position in the source Delta table at the time of the last successful sync
      */
     deltaTableSyncInfo: outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfo;
     /**
@@ -20569,7 +24642,8 @@ export interface GetDatabaseSyncedDatabaseTableSpec {
     acceleratedSync: boolean;
     /**
      * (boolean) - If true, the synced table's logical database and schema resources in PG
-     * will be created if they do not already exist
+     * will be created if they do not already exist. The request fails if this is false and the database
+     * or schema does not exist
      */
     createDatabaseObjectsIfMissing: boolean;
     /**
@@ -20581,11 +24655,17 @@ export interface GetDatabaseSyncedDatabaseTableSpec {
      */
     newPipelineSpec: outputs.GetDatabaseSyncedDatabaseTableSpecNewPipelineSpec;
     /**
-     * (list of string) - Primary Key columns to be used for data insert/update in the destination
+     * (list of string) - The primary key columns are used to insert and update rows in the destination table. At least one
+     * column is required. Rows whose primary key columns contain null values are not synced, and the primary
+     * key cannot be changed after the table is created
      */
     primaryKeyColumns?: string[];
     /**
-     * (string) - Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+     * (string) - Specifies the scheduling policy of the underlying pipeline. With CONTINUOUS, the pipeline keeps running and
+     * applies source changes as they happen. With TRIGGERED and SNAPSHOT, the pipeline stops after the
+     * initial load and syncs again only when it is run (manually, on a schedule or from a job); TRIGGERED
+     * applies source changes incrementally, while SNAPSHOT copies the full source table on every run.
+     * CONTINUOUS and TRIGGERED require the source table to provide a change data feed. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
      */
     schedulingPolicy?: string;
     /**
@@ -20593,7 +24673,9 @@ export interface GetDatabaseSyncedDatabaseTableSpec {
      */
     sourceTableFullName?: string;
     /**
-     * (string) - Time series key to deduplicate (tie-break) rows with the same primary key
+     * (string) - The time series key deduplicates (tie-breaks) rows with the same primary key. When primary key values
+     * can repeat in the source table, the synced table keeps only the row with the latest value of this
+     * column for each primary key. The key cannot be changed after the table is created
      */
     timeseriesKey?: string;
     /**
@@ -20643,7 +24725,8 @@ export interface GetDatabaseSyncedDatabaseTablesProviderConfig {
 
 export interface GetDatabaseSyncedDatabaseTablesSyncedTable {
     /**
-     * (SyncedTableStatus) - Synced Table data synchronization status
+     * (SyncedTableStatus) - Reports the status of the data synchronization pipeline that keeps this table in sync with its
+     * source, including the pipeline ID and the position of the last successful sync
      */
     dataSynchronizationStatus: outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatus;
     /**
@@ -20654,8 +24737,8 @@ export interface GetDatabaseSyncedDatabaseTablesSyncedTable {
      */
     databaseInstanceName: string;
     /**
-     * (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-     * tables inside database catalogs is inferred database instance associated with the catalog.
+     * (string) - The name of the database instance that this table is registered to. This field is always returned; for
+     * tables inside database catalogs it is the database instance associated with the catalog.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      */
@@ -20679,7 +24762,7 @@ export interface GetDatabaseSyncedDatabaseTablesSyncedTable {
      */
     providerConfig?: outputs.GetDatabaseSyncedDatabaseTablesSyncedTableProviderConfig;
     /**
-     * (SyncedTableSpec)
+     * (SyncedTableSpec) - Specifies the source table, the key columns and how the data synchronization pipeline runs
      */
     spec: outputs.GetDatabaseSyncedDatabaseTablesSyncedTableSpec;
     /**
@@ -20692,7 +24775,8 @@ export interface GetDatabaseSyncedDatabaseTablesSyncedTable {
 
 export interface GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatus {
     /**
-     * (SyncedTableContinuousUpdateStatus)
+     * (SyncedTableContinuousUpdateStatus) - Provides detailed status for an online table with the CONTINUOUS scheduling policy. It is populated when
+     * detailedState is SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE or SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES
      */
     continuousUpdateStatus?: outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusContinuousUpdateStatus;
     /**
@@ -20700,7 +24784,8 @@ export interface GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationSt
      */
     detailedState: string;
     /**
-     * (SyncedTableFailedStatus)
+     * (SyncedTableFailedStatus) - Provides detailed status for a table whose data synchronization pipeline has failed. It is populated when
+     * detailedState is SYNCED_TABLE_OFFLINE_FAILED or SYNCED_TABLE_ONLINE_PIPELINE_FAILED
      */
     failedStatus?: outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusFailedStatus;
     /**
@@ -20717,11 +24802,14 @@ export interface GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationSt
      */
     pipelineId: string;
     /**
-     * (SyncedTableProvisioningStatus)
+     * (SyncedTableProvisioningStatus) - Provides detailed status while the table is being provisioned. It is populated when detailedState is
+     * SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES or SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT
      */
     provisioningStatus?: outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusProvisioningStatus;
     /**
-     * (SyncedTableTriggeredUpdateStatus)
+     * (SyncedTableTriggeredUpdateStatus) - Provides detailed status for an online table with the TRIGGERED or SNAPSHOT scheduling policy. It is
+     * populated when detailedState is SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE, SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE
+     * or SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES
      */
     triggeredUpdateStatus?: outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusTriggeredUpdateStatus;
 }
@@ -20785,7 +24873,7 @@ export interface GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationSt
 
 export interface GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusLastSync {
     /**
-     * (DeltaTableSyncInfo)
+     * (DeltaTableSyncInfo) - Identifies the position in the source Delta table at the time of the last successful sync
      */
     deltaTableSyncInfo: outputs.GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusLastSyncDeltaTableSyncInfo;
     /**
@@ -20910,7 +24998,8 @@ export interface GetDatabaseSyncedDatabaseTablesSyncedTableSpec {
     acceleratedSync: boolean;
     /**
      * (boolean) - If true, the synced table's logical database and schema resources in PG
-     * will be created if they do not already exist
+     * will be created if they do not already exist. The request fails if this is false and the database
+     * or schema does not exist
      */
     createDatabaseObjectsIfMissing: boolean;
     /**
@@ -20922,11 +25011,17 @@ export interface GetDatabaseSyncedDatabaseTablesSyncedTableSpec {
      */
     newPipelineSpec: outputs.GetDatabaseSyncedDatabaseTablesSyncedTableSpecNewPipelineSpec;
     /**
-     * (list of string) - Primary Key columns to be used for data insert/update in the destination
+     * (list of string) - The primary key columns are used to insert and update rows in the destination table. At least one
+     * column is required. Rows whose primary key columns contain null values are not synced, and the primary
+     * key cannot be changed after the table is created
      */
     primaryKeyColumns?: string[];
     /**
-     * (string) - Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+     * (string) - Specifies the scheduling policy of the underlying pipeline. With CONTINUOUS, the pipeline keeps running and
+     * applies source changes as they happen. With TRIGGERED and SNAPSHOT, the pipeline stops after the
+     * initial load and syncs again only when it is run (manually, on a schedule or from a job); TRIGGERED
+     * applies source changes incrementally, while SNAPSHOT copies the full source table on every run.
+     * CONTINUOUS and TRIGGERED require the source table to provide a change data feed. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
      */
     schedulingPolicy?: string;
     /**
@@ -20934,7 +25029,9 @@ export interface GetDatabaseSyncedDatabaseTablesSyncedTableSpec {
      */
     sourceTableFullName?: string;
     /**
-     * (string) - Time series key to deduplicate (tie-break) rows with the same primary key
+     * (string) - The time series key deduplicates (tie-breaks) rows with the same primary key. When primary key values
+     * can repeat in the source table, the synced table keeps only the row with the latest value of this
+     * column for each primary key. The key cannot be changed after the table is created
      */
     timeseriesKey?: string;
     /**
@@ -21006,23 +25103,28 @@ export interface GetDirectoryProviderConfig {
 
 export interface GetDisasterRecoveryFailoverGroupInitialReplicationProgress {
     /**
-     * (integer) - Percent complete, 0-100
+     * (integer) - Percentage of in-scope assets replicated so far, from 0 to 100. Stays below 100 while
+     * errors block the first replication point
      */
     completed: number;
 }
 
 export interface GetDisasterRecoveryFailoverGroupUnityCatalogAssets {
     /**
-     * (list of UcCatalog) - UC catalogs to replicate
+     * (list of UcCatalog) - Unity Catalog catalogs to replicate, including their metadata and managed table data.
+     * Adding a catalog to an existing failover group returns the group to INITIAL_REPLICATION
+     * until the catalog has been replicated
      */
     catalogs: outputs.GetDisasterRecoveryFailoverGroupUnityCatalogAssetsCatalog[];
     /**
-     * (string) - The workspace set whose workspaces will be used for data replication
-     * of all UC catalogs' underlying storage
+     * (string) - Name of the workspace set whose workspaces run the data replication for the catalogs'
+     * underlying storage. Must match the name of a workspace set in this failover group
      */
     dataReplicationWorkspaceSet: string;
     /**
-     * (list of LocationMapping) - Location mappings - storage URI per region for each location
+     * (list of LocationMapping) - Storage location mappings. Each mapping pairs a storage path used by the replicated
+     * catalogs in one region with the corresponding path in the other region, so that
+     * replicated data is written to the matching storage in the secondary region
      */
     locationMappings?: outputs.GetDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMapping[];
 }
@@ -21042,18 +25144,20 @@ export interface GetDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappi
      */
     name: string;
     /**
-     * (list of LocationMappingEntry) - URI for each region. Each entry maps a region name to a storage URI
+     * (list of LocationMappingEntry) - The storage URI of this location in each region, with exactly one entry per region of the
+     * failover group
      */
     uriByRegions: outputs.GetDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion[];
 }
 
 export interface GetDisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion {
     /**
-     * (string) - The region name
+     * (string) - Cloud region this URI applies to. Must be one of the failover group's regions
      */
     region: string;
     /**
-     * (string) - The storage URI for this region
+     * (string) - Cloud storage URI of the location in this region. End the URI with `/*` to map every path
+     * under it as a prefix; within one mapping, either all URIs or none carry the `/*` suffix
      */
     uri: string;
 }
@@ -21065,19 +25169,24 @@ export interface GetDisasterRecoveryFailoverGroupWorkspaceSet {
      */
     name: string;
     /**
-     * (boolean) - Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
-     * Defaults to false
+     * (boolean) - Whether to replicate workspace assets (notebooks, jobs, clusters, SQL warehouses and so
+     * on) and their ACLs for this set. Defaults to false. Can be turned on or off with
+     * UpdateFailoverGroup
      */
     replicateWorkspaceAssets?: boolean;
     /**
      * (list of string) - Resource names of stable URLs associated with this workspace set.
      * Format: accounts/{account_id}/stable-urls/{stable_url_id}.
-     * The referenced stable URLs must already exist (via CreateStableUrl)
+     * The referenced stable URLs must already exist (via CreateStableUrl), and the list can only
+     * be set when replicateWorkspaceAssets is true. While workspace asset replication stays
+     * enabled, an update can attach or detach one stable URL at a time
      */
     stableUrlNames?: string[];
     /**
-     * (list of string) - Workspace IDs in this set. The system derives and validates regions.
-     * All workspaces must be in the Mission Critical tier
+     * (list of string) - IDs of the two workspaces in this set, one in each of the failover group's regions. The
+     * system derives and validates each workspace's region. Both workspaces must belong to the
+     * account and have the Mission Critical add-on enabled, and they cannot be changed after
+     * creation
      */
     workspaceIds: string[];
 }
@@ -21097,12 +25206,14 @@ export interface GetDisasterRecoveryFailoverGroupsFailoverGroup {
      */
     etag: string;
     /**
-     * (boolean) - True if errors currently block the replication point
+     * (boolean) - True when replication errors are preventing the replication point from advancing.
+     * Populated only while the failover group is INITIAL_REPLICATION or ACTIVE; the blocking
+     * errors are listed in the system.replication.states system table
      */
     hasReplicationPointBlockingErrors: boolean;
     /**
      * (string) - Initial primary region. Used only in Create requests to set the starting
-     * primary region. Not returned in responses
+     * primary region, and must be one of the regions in `regions`. Not returned in responses
      */
     initialPrimaryRegion: string;
     /**
@@ -21110,23 +25221,34 @@ export interface GetDisasterRecoveryFailoverGroupsFailoverGroup {
      */
     initialReplicationProgress: outputs.GetDisasterRecoveryFailoverGroupsFailoverGroupInitialReplicationProgress;
     /**
-     * (string) - Resource name for this workspace set
+     * (string) - Identifier of the workspace set, unique within the failover group and referenced by
+     * unity_catalog_assets.data_replication_workspace_set. Cannot be changed after creation
      */
     name: string;
     /**
-     * (list of string) - List of all regions participating in this failover group
+     * (list of string) - The two cloud regions that participate in this failover group, the primary and the
+     * secondary. Each workspace set contains one workspace in each region
      */
     regions: string[];
     /**
-     * (string) - The latest point in time to which data has been replicated
+     * (string) - The most recent point in time up to which all in-scope assets have been replicated to the
+     * secondary region. Data written after this point might not exist in the secondary yet and
+     * can be lost in an unplanned failover. When both Unity Catalog and workspace assets are
+     * replicated, this is the older of the two replication points. Not populated until the
+     * first replication point exists, and not populated in ListFailoverGroups responses
      */
     replicationPoint: string;
     /**
-     * (string) - Aggregate state of the failover group. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
+     * (string) - Aggregate state of the failover group across Unity Catalog and workspace asset
+     * replication. The group is INITIAL_REPLICATION until it has a replication point, ACTIVE
+     * while replication is in steady state and failover is available, and FAILING_OVER while a
+     * failover is in progress; the `*_FAILED` values mean that the last operation did not
+     * complete. Not populated in ListFailoverGroups responses. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
      */
     state: string;
     /**
-     * (UcReplicationConfig) - Unity Catalog replication configuration
+     * (UcReplicationConfig) - Unity Catalog replication configuration: the catalogs to replicate and the storage
+     * location mappings for their data. Omit it to replicate workspace assets only
      */
     unityCatalogAssets: outputs.GetDisasterRecoveryFailoverGroupsFailoverGroupUnityCatalogAssets;
     /**
@@ -21134,82 +25256,98 @@ export interface GetDisasterRecoveryFailoverGroupsFailoverGroup {
      */
     updateTime: string;
     /**
-     * (list of WorkspaceSet) - Workspace sets, each containing workspaces that replicate to each other
+     * (list of WorkspaceSet) - Workspace sets, each containing workspaces that replicate to each other. A failover group
+     * currently supports exactly one workspace set
      */
     workspaceSets: outputs.GetDisasterRecoveryFailoverGroupsFailoverGroupWorkspaceSet[];
 }
 
 export interface GetDisasterRecoveryFailoverGroupsFailoverGroupInitialReplicationProgress {
     /**
-     * (integer) - Percent complete, 0-100
+     * (integer) - Percentage of in-scope assets replicated so far, from 0 to 100. Stays below 100 while
+     * errors block the first replication point
      */
     completed: number;
 }
 
 export interface GetDisasterRecoveryFailoverGroupsFailoverGroupUnityCatalogAssets {
     /**
-     * (list of UcCatalog) - UC catalogs to replicate
+     * (list of UcCatalog) - Unity Catalog catalogs to replicate, including their metadata and managed table data.
+     * Adding a catalog to an existing failover group returns the group to INITIAL_REPLICATION
+     * until the catalog has been replicated
      */
     catalogs: outputs.GetDisasterRecoveryFailoverGroupsFailoverGroupUnityCatalogAssetsCatalog[];
     /**
-     * (string) - The workspace set whose workspaces will be used for data replication
-     * of all UC catalogs' underlying storage
+     * (string) - Name of the workspace set whose workspaces run the data replication for the catalogs'
+     * underlying storage. Must match the name of a workspace set in this failover group
      */
     dataReplicationWorkspaceSet: string;
     /**
-     * (list of LocationMapping) - Location mappings - storage URI per region for each location
+     * (list of LocationMapping) - Storage location mappings. Each mapping pairs a storage path used by the replicated
+     * catalogs in one region with the corresponding path in the other region, so that
+     * replicated data is written to the matching storage in the secondary region
      */
     locationMappings?: outputs.GetDisasterRecoveryFailoverGroupsFailoverGroupUnityCatalogAssetsLocationMapping[];
 }
 
 export interface GetDisasterRecoveryFailoverGroupsFailoverGroupUnityCatalogAssetsCatalog {
     /**
-     * (string) - Resource name for this workspace set
+     * (string) - Identifier of the workspace set, unique within the failover group and referenced by
+     * unity_catalog_assets.data_replication_workspace_set. Cannot be changed after creation
      */
     name: string;
 }
 
 export interface GetDisasterRecoveryFailoverGroupsFailoverGroupUnityCatalogAssetsLocationMapping {
     /**
-     * (string) - Resource name for this workspace set
+     * (string) - Identifier of the workspace set, unique within the failover group and referenced by
+     * unity_catalog_assets.data_replication_workspace_set. Cannot be changed after creation
      */
     name: string;
     /**
-     * (list of LocationMappingEntry) - URI for each region. Each entry maps a region name to a storage URI
+     * (list of LocationMappingEntry) - The storage URI of this location in each region, with exactly one entry per region of the
+     * failover group
      */
     uriByRegions: outputs.GetDisasterRecoveryFailoverGroupsFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion[];
 }
 
 export interface GetDisasterRecoveryFailoverGroupsFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion {
     /**
-     * (string) - The region name
+     * (string) - Cloud region this URI applies to. Must be one of the failover group's regions
      */
     region: string;
     /**
-     * (string) - The storage URI for this region
+     * (string) - Cloud storage URI of the location in this region. End the URI with `/*` to map every path
+     * under it as a prefix; within one mapping, either all URIs or none carry the `/*` suffix
      */
     uri: string;
 }
 
 export interface GetDisasterRecoveryFailoverGroupsFailoverGroupWorkspaceSet {
     /**
-     * (string) - Resource name for this workspace set
+     * (string) - Identifier of the workspace set, unique within the failover group and referenced by
+     * unity_catalog_assets.data_replication_workspace_set. Cannot be changed after creation
      */
     name: string;
     /**
-     * (boolean) - Whether to enable control plane DR (notebooks, jobs, clusters, etc.) for this set.
-     * Defaults to false
+     * (boolean) - Whether to replicate workspace assets (notebooks, jobs, clusters, SQL warehouses and so
+     * on) and their ACLs for this set. Defaults to false. Can be turned on or off with
+     * UpdateFailoverGroup
      */
     replicateWorkspaceAssets?: boolean;
     /**
      * (list of string) - Resource names of stable URLs associated with this workspace set.
      * Format: accounts/{account_id}/stable-urls/{stable_url_id}.
-     * The referenced stable URLs must already exist (via CreateStableUrl)
+     * The referenced stable URLs must already exist (via CreateStableUrl), and the list can only
+     * be set when replicateWorkspaceAssets is true. While workspace asset replication stays
+     * enabled, an update can attach or detach one stable URL at a time
      */
     stableUrlNames?: string[];
     /**
-     * (list of string) - Workspace IDs in this set. The system derives and validates regions.
-     * All workspaces must be in the Mission Critical tier
+     * (list of string) - IDs of the two workspaces in this set, one in each of the failover group's regions. The
+     * system derives and validates each workspace's region. Both workspaces must belong to the
+     * account and have the Mission Critical add-on enabled, and they cannot be changed after
+     * creation
      */
     workspaceIds: string[];
 }
@@ -21639,7 +25777,7 @@ export interface GetEnvironmentsWorkspaceBaseEnvironmentsProviderConfig {
 
 export interface GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironment {
     /**
-     * (string) - The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+     * (string) - The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
      */
     baseEnvironmentType: string;
     /**
@@ -21656,7 +25794,8 @@ export interface GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmen
     displayName: string;
     effectiveBaseEnvironmentType: string;
     /**
-     * (string) - The WSFS or UC Volumes path to the environment YAML file
+     * (string) - The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+     * dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
      */
     filepath: string;
     /**
@@ -21668,12 +25807,15 @@ export interface GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmen
      */
     lastUpdatedUserId: string;
     /**
-     * (string) - Status message providing additional details about the environment status
+     * (string) - Status message providing additional details about the environment status.
+     * When the status is `FAILED`, the message contains the build error
      */
     message: string;
     /**
      * (string) - The resource name of the workspace base environment.
      * Format: workspace-base-environments/{workspace-base-environment}
+     * The server ignores this field on create and builds the name from `workspaceBaseEnvironmentId`, or from
+     * `displayName` plus a random suffix when no ID is given
      */
     name: string;
     /**
@@ -21681,11 +25823,12 @@ export interface GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmen
      */
     providerConfig?: outputs.GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmentProviderConfig;
     /**
-     * (EnvironmentSpec) - The environment specification containing version and dependencies
+     * (EnvironmentSpec) - The environment specification containing version and dependencies, read from the YAML file at `filepath`
      */
     spec: outputs.GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmentSpec;
     /**
-     * (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
+     * (string) - The status of the materialized workspace base environment, which the server builds from the YAML file.
+     * The status is `CREATED` once the build has succeeded. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
      */
     status: string;
     /**
@@ -21905,7 +26048,8 @@ export interface GetExternalMetadataProviderConfig {
 
 export interface GetExternalMetadatasExternalMetadata {
     /**
-     * (list of string) - List of columns associated with the external metadata object
+     * (list of string) - Names of the columns of the object, used for column-level mappings in external lineage relationships.
+     * Column names must be unique within the list, and the combined size of all column names is limited
      */
     columns: string[];
     /**
@@ -21917,15 +26061,16 @@ export interface GetExternalMetadatasExternalMetadata {
      */
     createdBy: string;
     /**
-     * (string) - User-provided free-form text description
+     * (string) - User-provided free-form text description of the object. The description must not exceed 5000 characters
      */
     description: string;
     /**
-     * (string) - Type of entity within the external system
+     * (string) - Type of the object within the external system, such as a table, a report, or a dashboard. The value is
+     * free-form text of at most 255 characters
      */
     entityType: string;
     /**
-     * (string) - Unique identifier of the external metadata object
+     * (string) - Unique identifier of the external metadata object. The ID is a UUID that the system assigns on creation
      */
     id: string;
     /**
@@ -21933,15 +26078,20 @@ export interface GetExternalMetadatasExternalMetadata {
      */
     metastoreId: string;
     /**
-     * (string) - Name of the external metadata object
+     * (string) - Name of the external metadata object. The name is unique within the metastore, must follow the
+     * [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+     * and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+     * refer to the object by this name
      */
     name: string;
     /**
-     * (string) - Owner of the external metadata object
+     * (string) - Owner of the external metadata object. Defaults to the creator. To change the owner, send an update whose
+     * update mask includes `owner`
      */
     owner: string;
     /**
-     * (object) - A map of key-value properties attached to the external metadata object
+     * (object) - Key-value properties attached to the object. Keys and values must be non-empty, and the combined length
+     * of all keys and values must not exceed 5000 characters
      */
     properties: {[key: string]: string};
     /**
@@ -21949,7 +26099,7 @@ export interface GetExternalMetadatasExternalMetadata {
      */
     providerConfig?: outputs.GetExternalMetadatasExternalMetadataProviderConfig;
     /**
-     * (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+     * (string) - Type of the external system that holds the object. Use `OTHER` for a system that is not in the list. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
      */
     systemType: string;
     /**
@@ -21961,7 +26111,8 @@ export interface GetExternalMetadatasExternalMetadata {
      */
     updatedBy: string;
     /**
-     * (string) - URL associated with the external metadata object
+     * (string) - URL of the object in the external system. When set, lineage graph viewers can follow it to the external
+     * asset. The URL must not exceed 2048 characters
      */
     url: string;
 }
@@ -22454,6 +26605,10 @@ export interface GetFeatureEngineeringFeatureSource {
      */
     featureViewSource?: outputs.GetFeatureEngineeringFeatureSourceFeatureViewSource;
     /**
+     * (IcebergTableSource) - A Unity Catalog managed or foreign Iceberg table source
+     */
+    icebergTableSource?: outputs.GetFeatureEngineeringFeatureSourceIcebergTableSource;
+    /**
      * (KafkaSource) - A Kafka stream data source
      */
     kafkaSource?: outputs.GetFeatureEngineeringFeatureSourceKafkaSource;
@@ -22518,6 +26673,28 @@ export interface GetFeatureEngineeringFeatureSourceFeatureViewSourceFeatureRefer
      * (string) - The three-part full name of the upstream Feature
      */
     feature: string;
+}
+
+export interface GetFeatureEngineeringFeatureSourceIcebergTableSource {
+    /**
+     * (string) - Schema of the resulting dataframe after transformations, in Spark StructType
+     * JSON format (from df.schema.json()).
+     * Any subsequent functions operate against this dataframe
+     */
+    dataframeSchema?: string;
+    /**
+     * (string) - The filter condition applied to the source data before aggregation
+     */
+    filterCondition?: string;
+    /**
+     * The full three-part name (catalog, schema, name) of the feature
+     */
+    fullName: string;
+    /**
+     * (string) - The pipeline runs these SQL statements immediately after conversion into
+     * the schema specified on the Stream object
+     */
+    transformationSql?: string;
 }
 
 export interface GetFeatureEngineeringFeatureSourceKafkaSource {
@@ -22619,7 +26796,7 @@ export interface GetFeatureEngineeringFeatureSourceSdpSource {
      * (list of string) - The full three-part names of the tables the pipeline reads from. Required to materialize this
      * feature with a TableTrigger, which starts a run when these tables update. Each table must exist
      * when the feature is created. Feature Store doesn't confirm that the pipeline reads from these
-     * tables. At most 100 tables
+     * tables. At most 25 tables
      */
     inputTables?: string[];
     /**
@@ -22852,6 +27029,10 @@ export interface GetFeatureEngineeringFeaturesFeature {
      * backwards compatibility but is deprecated; migrate to dot notation
      */
     name: string;
+    /**
+     * (string) - Output type in Databricks SQL DDL (e.g., "BIGINT", "DECIMAL(10,2)", "ARRAY<STRING>", "STRUCT<name:STRING>")
+     */
+    outputTypeText: string;
     /**
      * Configure the provider for management through account provider.
      */
@@ -23348,6 +27529,10 @@ export interface GetFeatureEngineeringFeaturesFeatureSource {
      */
     featureViewSource?: outputs.GetFeatureEngineeringFeaturesFeatureSourceFeatureViewSource;
     /**
+     * (IcebergTableSource) - A Unity Catalog managed or foreign Iceberg table source
+     */
+    icebergTableSource?: outputs.GetFeatureEngineeringFeaturesFeatureSourceIcebergTableSource;
+    /**
      * (KafkaSource) - A Kafka stream data source
      */
     kafkaSource?: outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSource;
@@ -23412,6 +27597,28 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceFeatureViewSourceFeat
      * (string) - The three-part full name of the upstream Feature
      */
     feature: string;
+}
+
+export interface GetFeatureEngineeringFeaturesFeatureSourceIcebergTableSource {
+    /**
+     * (string) - Schema of the resulting dataframe after transformations, in Spark StructType
+     * JSON format (from df.schema.json()).
+     * Any subsequent functions operate against this dataframe
+     */
+    dataframeSchema?: string;
+    /**
+     * (string) - The filter condition applied to the source data before aggregation
+     */
+    filterCondition?: string;
+    /**
+     * (string) - Three-part full name of the Stream (catalog.schema.stream)
+     */
+    fullName: string;
+    /**
+     * (string) - The pipeline runs these SQL statements immediately after conversion into
+     * the schema specified on the Stream object
+     */
+    transformationSql?: string;
 }
 
 export interface GetFeatureEngineeringFeaturesFeatureSourceKafkaSource {
@@ -23513,7 +27720,7 @@ export interface GetFeatureEngineeringFeaturesFeatureSourceSdpSource {
      * (list of string) - The full three-part names of the tables the pipeline reads from. Required to materialize this
      * feature with a TableTrigger, which starts a run when these tables update. Each table must exist
      * when the feature is created. Feature Store doesn't confirm that the pipeline reads from these
-     * tables. At most 100 tables
+     * tables. At most 25 tables
      */
     inputTables?: string[];
     /**
@@ -24051,11 +28258,11 @@ export interface GetGenieAgentDefinitionDataSources {
      */
     mcpConnections?: outputs.GetGenieAgentDefinitionDataSourcesMcpConnection[];
     /**
-     * (list of GenieAgentTable) - Unity Catalog tables, views, and metric views, in the order they were added
+     * (list of GenieAgentTable) - Unity Catalog tables, views, and metric views, sorted by `identifier`
      */
     tables?: outputs.GetGenieAgentDefinitionDataSourcesTable[];
     /**
-     * (list of GenieAgentVolume) - Unity Catalog volumes, in the order they were added
+     * (list of GenieAgentVolume) - Unity Catalog volumes, sorted by `path`
      */
     volumes?: outputs.GetGenieAgentDefinitionDataSourcesVolume[];
 }
@@ -24530,11 +28737,11 @@ export interface GetGenieAgentsGenieAgentDefinitionDataSources {
      */
     mcpConnections?: outputs.GetGenieAgentsGenieAgentDefinitionDataSourcesMcpConnection[];
     /**
-     * (list of GenieAgentTable) - Unity Catalog tables, views, and metric views, in the order they were added
+     * (list of GenieAgentTable) - Unity Catalog tables, views, and metric views, sorted by `identifier`
      */
     tables?: outputs.GetGenieAgentsGenieAgentDefinitionDataSourcesTable[];
     /**
-     * (list of GenieAgentVolume) - Unity Catalog volumes, in the order they were added
+     * (list of GenieAgentVolume) - Unity Catalog volumes, sorted by `path`
      */
     volumes?: outputs.GetGenieAgentsGenieAgentDefinitionDataSourcesVolume[];
 }
@@ -25104,6 +29311,7 @@ export interface GetJobJobSettingsSettingsEnvironmentSpec {
     client?: string;
     dependencies?: string[];
     environmentVersion?: string;
+    imageUri?: string;
     javaDependencies?: string[];
     projectEnvironment?: string;
 }
@@ -26858,6 +31066,2582 @@ export interface GetKnowledgeAssistantsProviderConfig {
     workspaceId: string;
 }
 
+export interface GetLakewatchAlertConfigProviderConfig {
+    /**
+     * (string) - Deprecated and ignored: exports always egress through the request's own
+     * workspace. Kept so configs stored by older builds still round-trip
+     */
+    workspaceId: string;
+}
+
+export interface GetLakewatchAlertConfigSecurityAlertExportConfig {
+    /**
+     * (boolean) - Whether export is currently active
+     */
+    enabled?: boolean;
+    /**
+     * (JiraExportConfig)
+     */
+    jira?: outputs.GetLakewatchAlertConfigSecurityAlertExportConfigJira;
+    /**
+     * (ServiceNowExportConfig)
+     */
+    serviceNow?: outputs.GetLakewatchAlertConfigSecurityAlertExportConfigServiceNow;
+    /**
+     * (SlackExportConfig)
+     */
+    slack?: outputs.GetLakewatchAlertConfigSecurityAlertExportConfigSlack;
+    /**
+     * (TinesExportConfig)
+     */
+    tines?: outputs.GetLakewatchAlertConfigSecurityAlertExportConfigTines;
+    /**
+     * (WebhookExportConfig)
+     */
+    webhook?: outputs.GetLakewatchAlertConfigSecurityAlertExportConfigWebhook;
+    /**
+     * (string) - Deprecated and ignored: exports always egress through the request's own
+     * workspace. Kept so configs stored by older builds still round-trip
+     */
+    workspaceId?: string;
+}
+
+export interface GetLakewatchAlertConfigSecurityAlertExportConfigJira {
+    /**
+     * (string) - Three-level Unity Catalog name (`catalog.schema.secret`) of the secret holding
+     * the Jira API token, paired with `userEmail` as the Jira Cloud basic-auth
+     * credential (`email:token`). Only the name is stored; the token is read when an
+     * alert is exported, so rotating the secret takes effect without editing this config
+     */
+    apiTokenUcSecret: string;
+    /**
+     * (string) - Default issue type for created tickets (e.g. `Task`, `Incident`). Jira issue creation
+     * requires an issue type, so it is validated at config-save time rather than failing the
+     * export at Jira later
+     */
+    defaultIssueType: string;
+    /**
+     * (string) - Jira instance URL (e.g. `https://acme.atlassian.net`)
+     */
+    instanceUrl: string;
+    /**
+     * (string) - Jira project key the exported issues are created under
+     */
+    projectKey: string;
+    /**
+     * (string) - User email paired with the API token for Jira Cloud basic auth
+     */
+    userEmail: string;
+}
+
+export interface GetLakewatchAlertConfigSecurityAlertExportConfigServiceNow {
+    /**
+     * (string) - OAuth client ID of the registered ServiceNow application. An identifier rather
+     * than secret material — ServiceNow shows it on the application record — so it
+     * is stored and read back verbatim
+     */
+    clientId: string;
+    /**
+     * (string) - Three-level Unity Catalog name (`catalog.schema.secret`) of the secret holding
+     * the OAuth client secret. Only the name is stored; the secret is read when an alert
+     * is exported, so rotating it takes effect without editing this config
+     */
+    clientSecretUcSecret: string;
+    /**
+     * (string) - ServiceNow instance ID — the host label only, not the full URL. For an
+     * instance reachable at `https://acme.service-now.com`, this is `acme`
+     */
+    instanceId: string;
+}
+
+export interface GetLakewatchAlertConfigSecurityAlertExportConfigSlack {
+    /**
+     * (string) - Three-level Unity Catalog name (`catalog.schema.secret`) of the secret holding
+     * the Slack bot token. Only the name is stored; the token is read when an alert is
+     * exported, so rotating the secret takes effect without editing this config
+     */
+    botTokenUcSecret: string;
+    /**
+     * (string) - Channel the alert is posted to: a channel ID (e.g. `C0123456789`) or a channel
+     * name without the leading `#` (e.g. `soc-alerts`). The value is stored as sent, so
+     * a leading `#`, surrounding whitespace, or a value naming more than one channel is
+     * rejected. For private channels, prefer the channel ID — Slack does not guarantee
+     * name resolution for those.
+     */
+    channel: string;
+}
+
+export interface GetLakewatchAlertConfigSecurityAlertExportConfigTines {
+    /**
+     * (boolean) - Whether a later change to an already-exported alert is delivered too, as a second
+     * `lakewatch.alert.updated` event to the same webhook URL (a close is such an update, carrying a
+     * terminal `alertState`). Creation export is unaffected either way.
+     */
+    exportUpdates?: boolean;
+    /**
+     * (string) - Three-level Unity Catalog name (`catalog.schema.secret`) of the secret holding the Tines
+     * webhook secret. Only the name is stored; the secret is read when an alert is exported, so
+     * rotating it takes effect without editing this config. Required: without it the destination
+     * would be an unauthenticated endpoint
+     */
+    webhookSecretUcSecret: string;
+    /**
+     * (string) - Tines webhook action URL, typically of the form
+     * `https://<tenant>.tines.com/webhook/<path>`. Any HTTPS host is accepted, so
+     * that a Tines tenant on a custom domain works.
+     */
+    webhookUri: string;
+}
+
+export interface GetLakewatchAlertConfigSecurityAlertExportConfigWebhook {
+    /**
+     * (boolean) - Whether a later change to an already-exported alert is delivered too, as a second
+     * `lakewatch.alert.updated` event to the same webhook URL (a close is such an update, carrying a
+     * terminal `alertState`). Creation export is unaffected either way.
+     */
+    exportUpdates?: boolean;
+    /**
+     * (string) - Webhook destination the server POSTs payloads to, in plaintext. Userinfo
+     * (`user:password@`) is sent as HTTP Basic auth
+     */
+    url?: string;
+}
+
+export interface GetLakewatchAlertConfigSystemAlertExportConfig {
+    /**
+     * (boolean) - Whether export is currently active
+     */
+    enabled?: boolean;
+    /**
+     * (JiraExportConfig)
+     */
+    jira?: outputs.GetLakewatchAlertConfigSystemAlertExportConfigJira;
+    /**
+     * (ServiceNowExportConfig)
+     */
+    serviceNow?: outputs.GetLakewatchAlertConfigSystemAlertExportConfigServiceNow;
+    /**
+     * (SlackExportConfig)
+     */
+    slack?: outputs.GetLakewatchAlertConfigSystemAlertExportConfigSlack;
+    /**
+     * (TinesExportConfig)
+     */
+    tines?: outputs.GetLakewatchAlertConfigSystemAlertExportConfigTines;
+    /**
+     * (WebhookExportConfig)
+     */
+    webhook?: outputs.GetLakewatchAlertConfigSystemAlertExportConfigWebhook;
+    /**
+     * (string) - Deprecated and ignored: exports always egress through the request's own
+     * workspace. Kept so configs stored by older builds still round-trip
+     */
+    workspaceId?: string;
+}
+
+export interface GetLakewatchAlertConfigSystemAlertExportConfigJira {
+    /**
+     * (string) - Three-level Unity Catalog name (`catalog.schema.secret`) of the secret holding
+     * the Jira API token, paired with `userEmail` as the Jira Cloud basic-auth
+     * credential (`email:token`). Only the name is stored; the token is read when an
+     * alert is exported, so rotating the secret takes effect without editing this config
+     */
+    apiTokenUcSecret: string;
+    /**
+     * (string) - Default issue type for created tickets (e.g. `Task`, `Incident`). Jira issue creation
+     * requires an issue type, so it is validated at config-save time rather than failing the
+     * export at Jira later
+     */
+    defaultIssueType: string;
+    /**
+     * (string) - Jira instance URL (e.g. `https://acme.atlassian.net`)
+     */
+    instanceUrl: string;
+    /**
+     * (string) - Jira project key the exported issues are created under
+     */
+    projectKey: string;
+    /**
+     * (string) - User email paired with the API token for Jira Cloud basic auth
+     */
+    userEmail: string;
+}
+
+export interface GetLakewatchAlertConfigSystemAlertExportConfigServiceNow {
+    /**
+     * (string) - OAuth client ID of the registered ServiceNow application. An identifier rather
+     * than secret material — ServiceNow shows it on the application record — so it
+     * is stored and read back verbatim
+     */
+    clientId: string;
+    /**
+     * (string) - Three-level Unity Catalog name (`catalog.schema.secret`) of the secret holding
+     * the OAuth client secret. Only the name is stored; the secret is read when an alert
+     * is exported, so rotating it takes effect without editing this config
+     */
+    clientSecretUcSecret: string;
+    /**
+     * (string) - ServiceNow instance ID — the host label only, not the full URL. For an
+     * instance reachable at `https://acme.service-now.com`, this is `acme`
+     */
+    instanceId: string;
+}
+
+export interface GetLakewatchAlertConfigSystemAlertExportConfigSlack {
+    /**
+     * (string) - Three-level Unity Catalog name (`catalog.schema.secret`) of the secret holding
+     * the Slack bot token. Only the name is stored; the token is read when an alert is
+     * exported, so rotating the secret takes effect without editing this config
+     */
+    botTokenUcSecret: string;
+    /**
+     * (string) - Channel the alert is posted to: a channel ID (e.g. `C0123456789`) or a channel
+     * name without the leading `#` (e.g. `soc-alerts`). The value is stored as sent, so
+     * a leading `#`, surrounding whitespace, or a value naming more than one channel is
+     * rejected. For private channels, prefer the channel ID — Slack does not guarantee
+     * name resolution for those.
+     */
+    channel: string;
+}
+
+export interface GetLakewatchAlertConfigSystemAlertExportConfigTines {
+    /**
+     * (boolean) - Whether a later change to an already-exported alert is delivered too, as a second
+     * `lakewatch.alert.updated` event to the same webhook URL (a close is such an update, carrying a
+     * terminal `alertState`). Creation export is unaffected either way.
+     */
+    exportUpdates?: boolean;
+    /**
+     * (string) - Three-level Unity Catalog name (`catalog.schema.secret`) of the secret holding the Tines
+     * webhook secret. Only the name is stored; the secret is read when an alert is exported, so
+     * rotating it takes effect without editing this config. Required: without it the destination
+     * would be an unauthenticated endpoint
+     */
+    webhookSecretUcSecret: string;
+    /**
+     * (string) - Tines webhook action URL, typically of the form
+     * `https://<tenant>.tines.com/webhook/<path>`. Any HTTPS host is accepted, so
+     * that a Tines tenant on a custom domain works.
+     */
+    webhookUri: string;
+}
+
+export interface GetLakewatchAlertConfigSystemAlertExportConfigWebhook {
+    /**
+     * (boolean) - Whether a later change to an already-exported alert is delivered too, as a second
+     * `lakewatch.alert.updated` event to the same webhook URL (a close is such an update, carrying a
+     * terminal `alertState`). Creation export is unaffected either way.
+     */
+    exportUpdates?: boolean;
+    /**
+     * (string) - Webhook destination the server POSTs payloads to, in plaintext. Userinfo
+     * (`user:password@`) is sent as HTTP Basic auth
+     */
+    url?: string;
+}
+
+export interface GetLakewatchAlertConfigUpdatedBy {
+    /**
+     * (string) - Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * (string) - Email (regular users only)
+     */
+    email?: string;
+    /**
+     * (string) - User / service-principal ID
+     */
+    id?: string;
+    /**
+     * (string) - Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetLakewatchBuiltinParserProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetLakewatchBuiltinParserTag {
+    /**
+     * (string) - The tag key, e.g. `cloudProvider`. Required: a keyless tag cannot be
+     * filtered on and is meaningless
+     */
+    key: string;
+    /**
+     * (string) - The tag value, e.g. `aws`
+     */
+    value?: string;
+}
+
+export interface GetLakewatchBuiltinParserVersionProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetLakewatchBuiltinParserVersionTag {
+    /**
+     * (string) - The tag key, e.g. `cloudProvider`. Required: a keyless tag cannot be
+     * filtered on and is meaningless
+     */
+    key: string;
+    /**
+     * (string) - The tag value, e.g. `aws`
+     */
+    value?: string;
+}
+
+export interface GetLakewatchBuiltinParserVersionsBuiltinParserVersion {
+    /**
+     * (string) - Free-form description of this parser, authored by Databricks
+     */
+    description: string;
+    /**
+     * (string) - Resource name. Format:
+     * `builtin-parsers/{parser_id}/versions/{version}`
+     */
+    name: string;
+    /**
+     * (string) - The parent built-in's published leaf name, copied from the container on read.
+     * Denormalized so a caller that needs identity alongside the spec reads the
+     * version alone rather than the container as well. Populated by
+     * `GetBuiltinParserVersion`; List omits it, as List omits `spec`
+     */
+    parserName: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetLakewatchBuiltinParserVersionsBuiltinParserVersionProviderConfig;
+    /**
+     * (string) - The parser spec: the field definitions for this log source, as
+     * a YAML document. Read-only; built-in specs are authored by Databricks, so
+     * no client-facing size cap is enforced here
+     */
+    spec: string;
+    /**
+     * (list of ParserTag) - The parent built-in's tags, copied from the container on read. Rendering reads
+     * these for connector-specific details, such as the source table a Lakeflow
+     * Connect parser reads
+     */
+    tags: outputs.GetLakewatchBuiltinParserVersionsBuiltinParserVersionTag[];
+    /**
+     * (integer) - Version number
+     */
+    version: number;
+}
+
+export interface GetLakewatchBuiltinParserVersionsBuiltinParserVersionProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetLakewatchBuiltinParserVersionsBuiltinParserVersionTag {
+    /**
+     * (string) - The tag key, e.g. `cloudProvider`. Required: a keyless tag cannot be
+     * filtered on and is meaningless
+     */
+    key: string;
+    /**
+     * (string) - The tag value, e.g. `aws`
+     */
+    value?: string;
+}
+
+export interface GetLakewatchBuiltinParserVersionsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetLakewatchBuiltinParsersBuiltinParser {
+    /**
+     * (integer) - Newest published version number
+     */
+    latestVersion: number;
+    /**
+     * (string) - Resource name. Format: `builtin-parsers/{parser_id}`
+     */
+    name: string;
+    /**
+     * (string) - The parser's UUID, authored into the built-in's published definition rather
+     * than minted per customer, so every workspace addresses the same built-in by
+     * the same id. It is the leaf of `name`
+     */
+    parserId: string;
+    /**
+     * (string) - The built-in's own leaf name, as published in content-marketplace. Stable and
+     * human-readable, which is what a UI shows; `name` addresses the resource by id
+     */
+    parserName: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetLakewatchBuiltinParsersBuiltinParserProviderConfig;
+    /**
+     * (list of ParserTag) - Key/value tags describing this parser, e.g.
+     * `cloud_provider=aws` or `log_source=cloudtrail`. A parser may carry up to
+     * 32. Filterable on list
+     */
+    tags: outputs.GetLakewatchBuiltinParsersBuiltinParserTag[];
+}
+
+export interface GetLakewatchBuiltinParsersBuiltinParserProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetLakewatchBuiltinParsersBuiltinParserTag {
+    /**
+     * (string) - The tag key, e.g. `cloudProvider`. Required: a keyless tag cannot be
+     * filtered on and is meaningless
+     */
+    key: string;
+    /**
+     * (string) - The tag value, e.g. `aws`
+     */
+    value?: string;
+}
+
+export interface GetLakewatchBuiltinParsersProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetLakewatchCommonConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetLakewatchCommonConfigUpdatedBy {
+    /**
+     * (string) - Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * (string) - Email (regular users only)
+     */
+    email?: string;
+    /**
+     * (string) - User / service-principal ID
+     */
+    id?: string;
+    /**
+     * (string) - Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetLakewatchDatasourceAutoloader {
+    /**
+     * (string) - Name of the workspace secret scope that holds the AWS access key ID and secret access key,
+     * under the keys `awsAccessKeyId` and `awsSecretAccessKey`
+     */
+    awsSecretScope?: string;
+    /**
+     * (boolean) - Whether ingestion started with the files already present at `location`. Populated on get,
+     * create, and update responses
+     */
+    effectiveIncludeExistingFiles: boolean;
+    /**
+     * (TableName) - The table that the raw data is written to: `rawTable` in the datasource's catalog and
+     * schema, under their current Unity Catalog names. Populated on get, create, and update
+     * responses
+     */
+    effectiveRawTable: outputs.GetLakewatchDatasourceAutoloaderEffectiveRawTable;
+    /**
+     * (Envelope) - How to unwrap a transport envelope around the source records before parsing. Supported only
+     * for the JSON and JSONL formats. If unset, each source record is treated as one event
+     */
+    envelope?: outputs.GetLakewatchDatasourceAutoloaderEnvelope;
+    /**
+     * (string) - File format of the source files. Required. Possible values are: `AUTOLOADER_FORMAT_CSV`, `AUTOLOADER_FORMAT_JSON`, `AUTOLOADER_FORMAT_JSONL`, `AUTOLOADER_FORMAT_PARQUET`, `AUTOLOADER_FORMAT_XML`
+     */
+    format: string;
+    /**
+     * (object) - Format-specific parsing options, passed to Auto Loader. Supported for the CSV, JSON, JSONL,
+     * and XML formats, each of which accepts a fixed set of options. The XML format requires the
+     * `rowTag` option
+     */
+    formatOptions?: {[key: string]: string};
+    /**
+     * (boolean) - Whether to ingest the files already present at `location` when ingestion
+     * first starts. Set true to ingest the existing files and then every new file.
+     * Set false, or leave unset, to ingest only files that arrive after the
+     * datasource starts. Defaults to false. Cannot be changed after creation.
+     * Reads return the value as supplied; the setting in effect is reported in
+     * `effectiveIncludeExistingFiles`
+     */
+    includeExistingFiles?: boolean;
+    /**
+     * (string) - URI of the source files: a path in a Unity Catalog volume or external location, or a
+     * cloud storage URL such as an Amazon S3 path. Required, including when new files are
+     * discovered through `queueUrl`. Cannot be changed after creation
+     */
+    location: string;
+    /**
+     * (list of string) - Hive-style partition columns to derive from the source file paths. If unset, no partition
+     * columns are derived
+     */
+    overridePartitionColumns?: string[];
+    /**
+     * (string) - URL of a customer-managed Amazon SQS queue that receives file-arrival notifications. Set it
+     * to discover new files through the queue. If unset, new files are discovered through the
+     * file events of the source's Unity Catalog external location when it has them configured,
+     * and by directory listing otherwise. Cannot be changed after creation
+     */
+    queueUrl?: string;
+    /**
+     * (TableName) - Table that stores the raw data before parsers schematize it. Every Auto Loader datasource
+     * writes its raw rows to this table before any parser reads them. The table must be in the
+     * datasource's catalog and schema; an omitted `catalogName` or `schemaName` defaults to
+     * them. Cannot be changed after creation. Reads return the value as supplied; the table the
+     * data is written to is reported in `effectiveRawTable`
+     */
+    rawTable: outputs.GetLakewatchDatasourceAutoloaderRawTable;
+    /**
+     * (string) - Name of the Unity Catalog service credential to use
+     */
+    serviceCredentials?: string;
+}
+
+export interface GetLakewatchDatasourceAutoloaderEffectiveRawTable {
+    /**
+     * (string) - Name of the parent Unity Catalog catalog
+     */
+    catalogName?: string;
+    /**
+     * (string) - Name of the parent Unity Catalog schema
+     */
+    schemaName?: string;
+    /**
+     * (string) - Unity Catalog table name
+     */
+    tableName: string;
+}
+
+export interface GetLakewatchDatasourceAutoloaderEnvelope {
+    /**
+     * (CloudWatchLogsEnvelope)
+     */
+    cloudWatchLogs?: outputs.GetLakewatchDatasourceAutoloaderEnvelopeCloudWatchLogs;
+    /**
+     * (JsonArrayEnvelope)
+     */
+    jsonArray?: outputs.GetLakewatchDatasourceAutoloaderEnvelopeJsonArray;
+}
+
+export interface GetLakewatchDatasourceAutoloaderEnvelopeCloudWatchLogs {
+    /**
+     * (boolean) - Whether to keep the envelope's `owner`, `logGroup`, and `logStream` values in
+     * the `data.lw_header` field of each unwrapped row. Must be set explicitly to
+     * `true` or `false`
+     */
+    headerRetention?: boolean;
+}
+
+export interface GetLakewatchDatasourceAutoloaderEnvelopeJsonArray {
+    /**
+     * (string) - Name of the root-level key that holds the array of events, for example
+     * `Records`. Nested paths are not supported
+     */
+    path: string;
+}
+
+export interface GetLakewatchDatasourceAutoloaderRawTable {
+    /**
+     * (string) - Name of the parent Unity Catalog catalog
+     */
+    catalogName?: string;
+    /**
+     * (string) - Name of the parent Unity Catalog schema
+     */
+    schemaName?: string;
+    /**
+     * (string) - Unity Catalog table name
+     */
+    tableName: string;
+}
+
+export interface GetLakewatchDatasourceConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetLakewatchDatasourceConfigUpdatedBy {
+    /**
+     * (string) - Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * (string) - Email (regular users only)
+     */
+    email?: string;
+    /**
+     * (string) - User / service-principal ID
+     */
+    id?: string;
+    /**
+     * (string) - Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetLakewatchDatasourceCreatedBy {
+    /**
+     * (string) - Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * (string) - Email (regular users only)
+     */
+    email?: string;
+    /**
+     * (string) - User / service-principal ID
+     */
+    id?: string;
+    /**
+     * (string) - Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetLakewatchDatasourceExistingTable {
+    /**
+     * (string) - Name of the catalog the existing table lives in. Optional on create and
+     * defaults to the datasource's own catalog. Cannot be changed. Reads return
+     * the value as supplied; the catalog in use is reported in `effectiveCatalog`
+     */
+    catalog?: string;
+    /**
+     * (string) - Current Unity Catalog catalog name of the source table, resolved from its
+     * stable table ID, so a rename of the source table is reported here without
+     * changing `catalog`
+     */
+    effectiveCatalog: string;
+    /**
+     * (string) - Current Unity Catalog name of the source table, resolved from its stable
+     * table ID
+     */
+    effectiveName: string;
+    /**
+     * (string) - Current Unity Catalog schema name of the source table, resolved from its
+     * stable table ID
+     */
+    effectiveSchema: string;
+    /**
+     * (boolean) - Whether to ingest the rows already present in the source table when
+     * ingestion first starts. Set true to ingest the existing rows and then every
+     * new commit. Set false, or leave unset, to ingest only rows written after the
+     * datasource starts. Defaults to false, and must be true for a Delta Sharing
+     * source table. Takes effect only at first start and cannot be changed. Reads
+     * return the value as supplied
+     */
+    includeExistingRows?: boolean;
+    /**
+     * Resource name of the datasource, in the format `datasources/{datasource_id}`. Unlike the
+     * datasource's Unity Catalog location (`catalogName`, `schemaName`, and `datasourceName`),
+     * the name does not change when the datasource or its catalog or schema is renamed in Unity
+     * Catalog
+     */
+    name: string;
+    /**
+     * (string) - Name of the schema the existing table lives in. Optional, but required when
+     * `catalog` is set; supplying `catalog` without `schema` is rejected. Defaults
+     * to the datasource's own schema. Cannot be changed. Reads return the value as
+     * supplied; the schema in use is reported in `effectiveSchema`
+     */
+    schema?: string;
+}
+
+export interface GetLakewatchDatasourceOwner {
+    /**
+     * (string) - Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * (string) - Email (regular users only)
+     */
+    email?: string;
+    /**
+     * (string) - User / service-principal ID
+     */
+    id?: string;
+    /**
+     * (string) - Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetLakewatchDatasourceParser {
+    /**
+     * (TableName) - The table this parser's data is written to: `targetTable` when supplied, otherwise the
+     * table derived from the datasource's catalog and schema and the parser name. Fixed once
+     * resolved, so a later parser rename does not move it. Populated on get, create, and update
+     * responses with the resolved table
+     */
+    effectiveTargetTable: outputs.GetLakewatchDatasourceParserEffectiveTargetTable;
+    /**
+     * (string) - User / service-principal ID
+     */
+    id: string;
+    /**
+     * (TableName) - Table that this parser's data is written to. The table must be in the datasource's catalog
+     * and schema. If unset, the table name is derived from the parser name. Reads return the value
+     * as supplied; the table the data is written to is reported in `effectiveTargetTable`
+     */
+    targetTable?: outputs.GetLakewatchDatasourceParserTargetTable;
+    /**
+     * (string) - Version of the parser to use, given as an explicit version number
+     */
+    version: string;
+}
+
+export interface GetLakewatchDatasourceParserEffectiveTargetTable {
+    /**
+     * (string) - Name of the parent Unity Catalog catalog
+     */
+    catalogName?: string;
+    /**
+     * (string) - Name of the parent Unity Catalog schema
+     */
+    schemaName?: string;
+    /**
+     * (string) - Unity Catalog table name
+     */
+    tableName: string;
+}
+
+export interface GetLakewatchDatasourceParserTargetTable {
+    /**
+     * (string) - Name of the parent Unity Catalog catalog
+     */
+    catalogName?: string;
+    /**
+     * (string) - Name of the parent Unity Catalog schema
+     */
+    schemaName?: string;
+    /**
+     * (string) - Unity Catalog table name
+     */
+    tableName: string;
+}
+
+export interface GetLakewatchDatasourceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetLakewatchDatasourceSchedule {
+    /**
+     * (string) - Duration string defining the minimum cadence. May contain components
+     * for days, hours, minutes, seconds (e.g. `5d`, `5d3h`, `3d2h5m12s`,
+     * `12m16s`)
+     */
+    atLeastEvery?: string;
+    /**
+     * (string) - `dedicated`, `inherited`, `automatic`, or a custom group name. Reads return
+     * the value as supplied. A rule whose schedule omits it runs on `dedicated`
+     */
+    computeGroup?: string;
+    /**
+     * (boolean) - Run continuously (sentinel — must be `true` when set in this branch)
+     */
+    continuous?: boolean;
+    /**
+     * (string) - Quartz cron expression
+     */
+    cronExpression?: string;
+    /**
+     * (boolean) - Whether the job is scheduled to run. Defaults to true
+     */
+    enabled?: boolean;
+}
+
+export interface GetLakewatchDatasourceStatus {
+    /**
+     * (ResourceStatus) - Status of the datasource's ingestion job
+     */
+    ingestionJob: outputs.GetLakewatchDatasourceStatusIngestionJob;
+    /**
+     * (ResourceStatus) - Status of the managed ingestion pipeline. Populated only when `unityCatalogConnection`
+     * is set, with `pipelineId` identifying the pipeline
+     */
+    ingestionPipeline: outputs.GetLakewatchDatasourceStatusIngestionPipeline;
+}
+
+export interface GetLakewatchDatasourceStatusIngestionJob {
+    /**
+     * (string)
+     */
+    createTime: string;
+    /**
+     * (string) - Databricks Jobs API job ID. Unset for a pure ingestion pipeline
+     */
+    jobId: string;
+    /**
+     * (string) - When the most recent run completed. Pairs with `runState = SUCCEEDED`
+     */
+    lastCompleteTime: string;
+    /**
+     * (string) - Most recent error message, if any. Pairs with `runState = FAILED`
+     */
+    lastErrorMessage: string;
+    /**
+     * (string) - When the most recent run started. Pairs with `runState = RUNNING`
+     */
+    lastStartTime: string;
+    /**
+     * (string)
+     */
+    lastStatusChangeTime: string;
+    /**
+     * (string) - Scheduling lifecycle of the resource's underlying job/pipeline: whether it
+     * is unscheduled, scheduled, stopped, or deleted. Distinct from `runState`,
+     * which reports the outcome of the most recent run. Possible values are: `DELETED`, `SCHEDULED`, `STOPPED`, `UNSCHEDULED`
+     */
+    lifecycleState: string;
+    /**
+     * (string) - DLT ingestion-pipeline ID. Set only when this status represents the
+     * datasource's ingestion pipeline (unset for job statuses)
+     */
+    pipelineId: string;
+    /**
+     * (string) - Possible values are: `CANCELED`, `FAILED`, `RUNNING`, `SUCCEEDED`
+     */
+    runState: string;
+}
+
+export interface GetLakewatchDatasourceStatusIngestionPipeline {
+    /**
+     * (string)
+     */
+    createTime: string;
+    /**
+     * (string) - Databricks Jobs API job ID. Unset for a pure ingestion pipeline
+     */
+    jobId: string;
+    /**
+     * (string) - When the most recent run completed. Pairs with `runState = SUCCEEDED`
+     */
+    lastCompleteTime: string;
+    /**
+     * (string) - Most recent error message, if any. Pairs with `runState = FAILED`
+     */
+    lastErrorMessage: string;
+    /**
+     * (string) - When the most recent run started. Pairs with `runState = RUNNING`
+     */
+    lastStartTime: string;
+    /**
+     * (string)
+     */
+    lastStatusChangeTime: string;
+    /**
+     * (string) - Scheduling lifecycle of the resource's underlying job/pipeline: whether it
+     * is unscheduled, scheduled, stopped, or deleted. Distinct from `runState`,
+     * which reports the outcome of the most recent run. Possible values are: `DELETED`, `SCHEDULED`, `STOPPED`, `UNSCHEDULED`
+     */
+    lifecycleState: string;
+    /**
+     * (string) - DLT ingestion-pipeline ID. Set only when this status represents the
+     * datasource's ingestion pipeline (unset for job statuses)
+     */
+    pipelineId: string;
+    /**
+     * (string) - Possible values are: `CANCELED`, `FAILED`, `RUNNING`, `SUCCEEDED`
+     */
+    runState: string;
+}
+
+export interface GetLakewatchDatasourceUnityCatalogConnection {
+    /**
+     * (object) - Free-form key-value configuration for the managed ingestion pipeline
+     */
+    configuration?: {[key: string]: string};
+    /**
+     * (string) - Name of the Unity Catalog connection to ingest through
+     */
+    connectionName: string;
+    /**
+     * (string) - Connector type of the connection, such as `SLACK_AUDIT_LOGS`. Resolved by the server from
+     * `connectionName` through Unity Catalog; not accepted as input
+     */
+    connector: string;
+    /**
+     * (string) - The start time ingestion uses: the supplied `startTime`, or the creation time when it was
+     * omitted. Always populated
+     */
+    effectiveStartTime: string;
+    /**
+     * (string) - Earliest source event time to ingest. Leave unset to start at creation time, with no
+     * history backfilled. Rejected if in the future, beyond the connector's history window, or
+     * for a connector without start-time support. Takes effect only at first start and cannot
+     * be changed. Reads return the value as supplied; the start time ingestion uses is reported
+     * in `effectiveStartTime`
+     */
+    startTime?: string;
+}
+
+export interface GetLakewatchDatasourceUpdatedBy {
+    /**
+     * (string) - Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * (string) - Email (regular users only)
+     */
+    email?: string;
+    /**
+     * (string) - User / service-principal ID
+     */
+    id?: string;
+    /**
+     * (string) - Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetLakewatchDatasourcesDatasource {
+    /**
+     * (object) - Free-form key-value annotations on the datasource, managed by the client
+     */
+    annotations: {[key: string]: string};
+    /**
+     * (AutoLoader)
+     */
+    autoloader: outputs.GetLakewatchDatasourcesDatasourceAutoloader;
+    /**
+     * Name of the Unity Catalog catalog to list datasources from. Required; each request lists the
+     * datasources of a single catalog
+     */
+    catalogName: string;
+    /**
+     * (string) - Compute mode for the datasource's ingestion job. If unset, the `defaultComputeMode` of
+     * the catalog's datasource configuration applies, or `DS_COMPUTE_PERFORMANCE_OPTIMIZED` if
+     * the catalog has none. Possible values are: `DS_COMPUTE_PERFORMANCE_OPTIMIZED`, `DS_COMPUTE_STANDARD`
+     */
+    computeMode: string;
+    /**
+     * (string) - ID of the workspace whose compute runs this datasource's ingestion job and
+     * owns its associated resources, such as the storage the ingested data lands
+     * in. Server-assigned
+     */
+    computeWorkspaceId: string;
+    /**
+     * (string)
+     */
+    createTime: string;
+    /**
+     * (Principal)
+     */
+    createdBy: outputs.GetLakewatchDatasourcesDatasourceCreatedBy;
+    /**
+     * (string) - Unity Catalog securable ID (a UUID) of the datasource. It never changes, including when the
+     * datasource is renamed in Unity Catalog, and is the final segment of `name`
+     */
+    datasourceId: string;
+    /**
+     * (string) - Name of the datasource in Unity Catalog, unique within its schema. Required on create and
+     * can be updated within the same catalog and schema. Get synchronizes this field with the
+     * current Unity Catalog name, also reported in `effectiveDatasourceName`
+     */
+    datasourceName: string;
+    /**
+     * (string) - Free-form description of the datasource
+     */
+    description: string;
+    /**
+     * (string) - Current name of the Unity Catalog catalog that contains the datasource, which reflects
+     * catalog renames without a change to `catalogName`. Populated on get, create, and update
+     * responses; list responses omit it
+     */
+    effectiveCatalogName: string;
+    /**
+     * (string) - Current UC leaf name of the datasource (server-owned). Tracks UC renames so
+     * callers can observe the live name without having to update the client-owned
+     * `datasourceName`; unset until resolved
+     */
+    effectiveDatasourceName: string;
+    /**
+     * (string) - The identity the datasource runs as: the resolved `runAsPrincipal`, or the requester's
+     * identity if `runAsPrincipal` was omitted on create or cleared on update. Given as a user
+     * email or service principal application ID, or as the numeric principal ID if the identity
+     * can no longer be resolved. Populated on get, create, and update responses; list responses
+     * omit it
+     */
+    effectiveRunAsPrincipal: string;
+    /**
+     * (string) - Current name of the Unity Catalog schema that contains the datasource, which reflects
+     * schema renames without a change to `schemaName`. Populated on get, create, and update
+     * responses; list responses omit it
+     */
+    effectiveSchemaName: string;
+    /**
+     * (string) - Opaque entity tag for optimistic concurrency control. Returned by get, create, and update
+     * responses and by list responses in the `DATASOURCE_VIEW_FULL` view. To make an update
+     * conditional on the datasource not having changed since it was read, pass this value as the
+     * update request's `etag`. Changes to `status` do not change the etag
+     */
+    etag: string;
+    /**
+     * (ExistingTable)
+     */
+    existingTable: outputs.GetLakewatchDatasourcesDatasourceExistingTable;
+    /**
+     * (string) - Name of the source table or view. Required on create and cannot be changed.
+     * Reads return the value as supplied; the table's current name is reported in
+     * `effectiveName`
+     */
+    name: string;
+    /**
+     * (Principal) - Unity Catalog owner of the datasource, assigned by the server. Create responses omit it
+     */
+    owner: outputs.GetLakewatchDatasourcesDatasourceOwner;
+    /**
+     * (list of ParserRef) - Parsers that schematize the ingested data. Each record is matched against the parsers in
+     * order and written to the parsed table of the first parser that it matches. Existing-table
+     * and Unity Catalog connection datasources require at least one parser; an Auto Loader
+     * datasource with no parsers writes only its raw table
+     */
+    parsers: outputs.GetLakewatchDatasourcesDatasourceParser[];
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetLakewatchDatasourcesDatasourceProviderConfig;
+    /**
+     * (string) - The user or service principal that the datasource runs as, given as a user email or
+     * service principal application ID. When it is supplied on create or update, the requester
+     * must be authorized to run the datasource as that principal, or the request is rejected.
+     * When it is omitted on create, the datasource runs as the requester. On update, a mask that
+     * includes `runAsPrincipal` without a value clears it, so the datasource runs as the
+     * requester; a mask that omits it keeps the current identity. Reads return the value as
+     * supplied; the identity the datasource runs as is reported in `effectiveRunAsPrincipal`
+     */
+    runAsPrincipal: string;
+    /**
+     * (Schedule) - Schedule on which the datasource's ingestion job runs. A datasource cannot be paused, so a
+     * request that sets `schedule.enabled` to `false` is rejected. Continuous schedules are not
+     * supported for Unity Catalog connection datasources. For an existing-table datasource, runs
+     * must be no further apart than the shorter of the source table's
+     * `delta.deletedFileRetentionDuration` and `delta.logRetentionDuration`
+     */
+    schedule: outputs.GetLakewatchDatasourcesDatasourceSchedule;
+    /**
+     * Name of a Unity Catalog schema in `catalogName`. Optional; if set, only the datasources in
+     * this schema are returned, and if omitted, the datasources in all schemas of the catalog are
+     * returned
+     */
+    schemaName: string;
+    /**
+     * (DatasourceStatus) - Runtime status of the jobs and pipelines that run this datasource
+     */
+    status: outputs.GetLakewatchDatasourcesDatasourceStatus;
+    /**
+     * (UnityCatalogConnection)
+     */
+    unityCatalogConnection: outputs.GetLakewatchDatasourcesDatasourceUnityCatalogConnection;
+    /**
+     * (string)
+     */
+    updateTime: string;
+    /**
+     * (Principal)
+     */
+    updatedBy: outputs.GetLakewatchDatasourcesDatasourceUpdatedBy;
+    /**
+     * (string) - Version of the parser to use, given as an explicit version number
+     */
+    version: number;
+    /**
+     * (string) - ID of the SQL warehouse that runs the checks Lakewatch performs to validate a create or update
+     * request, such as source and destination access checks. Required and non-blank on every create
+     * and update request except a rename-only PATCH; there is no default warehouse. The requester
+     * must be able to use the warehouse. It is not stored, is not returned on reads, and does
+     * not affect the compute that runs the ingestion job
+     */
+    warehouseId: string;
+}
+
+export interface GetLakewatchDatasourcesDatasourceAutoloader {
+    /**
+     * (string) - Name of the workspace secret scope that holds the AWS access key ID and secret access key,
+     * under the keys `awsAccessKeyId` and `awsSecretAccessKey`
+     */
+    awsSecretScope?: string;
+    /**
+     * (boolean) - Whether ingestion started with the files already present at `location`. Populated on get,
+     * create, and update responses
+     */
+    effectiveIncludeExistingFiles: boolean;
+    /**
+     * (TableName) - The table that the raw data is written to: `rawTable` in the datasource's catalog and
+     * schema, under their current Unity Catalog names. Populated on get, create, and update
+     * responses
+     */
+    effectiveRawTable: outputs.GetLakewatchDatasourcesDatasourceAutoloaderEffectiveRawTable;
+    /**
+     * (Envelope) - How to unwrap a transport envelope around the source records before parsing. Supported only
+     * for the JSON and JSONL formats. If unset, each source record is treated as one event
+     */
+    envelope?: outputs.GetLakewatchDatasourcesDatasourceAutoloaderEnvelope;
+    /**
+     * (string) - File format of the source files. Required. Possible values are: `AUTOLOADER_FORMAT_CSV`, `AUTOLOADER_FORMAT_JSON`, `AUTOLOADER_FORMAT_JSONL`, `AUTOLOADER_FORMAT_PARQUET`, `AUTOLOADER_FORMAT_XML`
+     */
+    format: string;
+    /**
+     * (object) - Format-specific parsing options, passed to Auto Loader. Supported for the CSV, JSON, JSONL,
+     * and XML formats, each of which accepts a fixed set of options. The XML format requires the
+     * `rowTag` option
+     */
+    formatOptions?: {[key: string]: string};
+    /**
+     * (boolean) - Whether to ingest the files already present at `location` when ingestion
+     * first starts. Set true to ingest the existing files and then every new file.
+     * Set false, or leave unset, to ingest only files that arrive after the
+     * datasource starts. Defaults to false. Cannot be changed after creation.
+     * Reads return the value as supplied; the setting in effect is reported in
+     * `effectiveIncludeExistingFiles`
+     */
+    includeExistingFiles?: boolean;
+    /**
+     * (string) - URI of the source files: a path in a Unity Catalog volume or external location, or a
+     * cloud storage URL such as an Amazon S3 path. Required, including when new files are
+     * discovered through `queueUrl`. Cannot be changed after creation
+     */
+    location: string;
+    /**
+     * (list of string) - Hive-style partition columns to derive from the source file paths. If unset, no partition
+     * columns are derived
+     */
+    overridePartitionColumns?: string[];
+    /**
+     * (string) - URL of a customer-managed Amazon SQS queue that receives file-arrival notifications. Set it
+     * to discover new files through the queue. If unset, new files are discovered through the
+     * file events of the source's Unity Catalog external location when it has them configured,
+     * and by directory listing otherwise. Cannot be changed after creation
+     */
+    queueUrl?: string;
+    /**
+     * (TableName) - Table that stores the raw data before parsers schematize it. Every Auto Loader datasource
+     * writes its raw rows to this table before any parser reads them. The table must be in the
+     * datasource's catalog and schema; an omitted `catalogName` or `schemaName` defaults to
+     * them. Cannot be changed after creation. Reads return the value as supplied; the table the
+     * data is written to is reported in `effectiveRawTable`
+     */
+    rawTable: outputs.GetLakewatchDatasourcesDatasourceAutoloaderRawTable;
+    /**
+     * (string) - Name of the Unity Catalog service credential to use
+     */
+    serviceCredentials?: string;
+}
+
+export interface GetLakewatchDatasourcesDatasourceAutoloaderEffectiveRawTable {
+    /**
+     * Name of the Unity Catalog catalog to list datasources from. Required; each request lists the
+     * datasources of a single catalog
+     */
+    catalogName?: string;
+    /**
+     * Name of a Unity Catalog schema in `catalogName`. Optional; if set, only the datasources in
+     * this schema are returned, and if omitted, the datasources in all schemas of the catalog are
+     * returned
+     */
+    schemaName?: string;
+    /**
+     * (string) - Unity Catalog table name
+     */
+    tableName: string;
+}
+
+export interface GetLakewatchDatasourcesDatasourceAutoloaderEnvelope {
+    /**
+     * (CloudWatchLogsEnvelope)
+     */
+    cloudWatchLogs?: outputs.GetLakewatchDatasourcesDatasourceAutoloaderEnvelopeCloudWatchLogs;
+    /**
+     * (JsonArrayEnvelope)
+     */
+    jsonArray?: outputs.GetLakewatchDatasourcesDatasourceAutoloaderEnvelopeJsonArray;
+}
+
+export interface GetLakewatchDatasourcesDatasourceAutoloaderEnvelopeCloudWatchLogs {
+    /**
+     * (boolean) - Whether to keep the envelope's `owner`, `logGroup`, and `logStream` values in
+     * the `data.lw_header` field of each unwrapped row. Must be set explicitly to
+     * `true` or `false`
+     */
+    headerRetention?: boolean;
+}
+
+export interface GetLakewatchDatasourcesDatasourceAutoloaderEnvelopeJsonArray {
+    /**
+     * (string) - Name of the root-level key that holds the array of events, for example
+     * `Records`. Nested paths are not supported
+     */
+    path: string;
+}
+
+export interface GetLakewatchDatasourcesDatasourceAutoloaderRawTable {
+    /**
+     * Name of the Unity Catalog catalog to list datasources from. Required; each request lists the
+     * datasources of a single catalog
+     */
+    catalogName?: string;
+    /**
+     * Name of a Unity Catalog schema in `catalogName`. Optional; if set, only the datasources in
+     * this schema are returned, and if omitted, the datasources in all schemas of the catalog are
+     * returned
+     */
+    schemaName?: string;
+    /**
+     * (string) - Unity Catalog table name
+     */
+    tableName: string;
+}
+
+export interface GetLakewatchDatasourcesDatasourceCreatedBy {
+    /**
+     * (string) - Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * (string) - Email (regular users only)
+     */
+    email?: string;
+    /**
+     * (string) - User / service-principal ID
+     */
+    id?: string;
+    /**
+     * (string) - Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetLakewatchDatasourcesDatasourceExistingTable {
+    /**
+     * (string) - Name of the catalog the existing table lives in. Optional on create and
+     * defaults to the datasource's own catalog. Cannot be changed. Reads return
+     * the value as supplied; the catalog in use is reported in `effectiveCatalog`
+     */
+    catalog?: string;
+    /**
+     * (string) - Current Unity Catalog catalog name of the source table, resolved from its
+     * stable table ID, so a rename of the source table is reported here without
+     * changing `catalog`
+     */
+    effectiveCatalog: string;
+    /**
+     * (string) - Current Unity Catalog name of the source table, resolved from its stable
+     * table ID
+     */
+    effectiveName: string;
+    /**
+     * (string) - Current Unity Catalog schema name of the source table, resolved from its
+     * stable table ID
+     */
+    effectiveSchema: string;
+    /**
+     * (boolean) - Whether to ingest the rows already present in the source table when
+     * ingestion first starts. Set true to ingest the existing rows and then every
+     * new commit. Set false, or leave unset, to ingest only rows written after the
+     * datasource starts. Defaults to false, and must be true for a Delta Sharing
+     * source table. Takes effect only at first start and cannot be changed. Reads
+     * return the value as supplied
+     */
+    includeExistingRows?: boolean;
+    /**
+     * (string) - Name of the source table or view. Required on create and cannot be changed.
+     * Reads return the value as supplied; the table's current name is reported in
+     * `effectiveName`
+     */
+    name: string;
+    /**
+     * (string) - Name of the schema the existing table lives in. Optional, but required when
+     * `catalog` is set; supplying `catalog` without `schema` is rejected. Defaults
+     * to the datasource's own schema. Cannot be changed. Reads return the value as
+     * supplied; the schema in use is reported in `effectiveSchema`
+     */
+    schema?: string;
+}
+
+export interface GetLakewatchDatasourcesDatasourceOwner {
+    /**
+     * (string) - Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * (string) - Email (regular users only)
+     */
+    email?: string;
+    /**
+     * (string) - User / service-principal ID
+     */
+    id?: string;
+    /**
+     * (string) - Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetLakewatchDatasourcesDatasourceParser {
+    /**
+     * (TableName) - The table this parser's data is written to: `targetTable` when supplied, otherwise the
+     * table derived from the datasource's catalog and schema and the parser name. Fixed once
+     * resolved, so a later parser rename does not move it. Populated on get, create, and update
+     * responses with the resolved table
+     */
+    effectiveTargetTable: outputs.GetLakewatchDatasourcesDatasourceParserEffectiveTargetTable;
+    /**
+     * (string) - User / service-principal ID
+     */
+    id: string;
+    /**
+     * (TableName) - Table that this parser's data is written to. The table must be in the datasource's catalog
+     * and schema. If unset, the table name is derived from the parser name. Reads return the value
+     * as supplied; the table the data is written to is reported in `effectiveTargetTable`
+     */
+    targetTable?: outputs.GetLakewatchDatasourcesDatasourceParserTargetTable;
+    /**
+     * (string) - Version of the parser to use, given as an explicit version number
+     */
+    version: string;
+}
+
+export interface GetLakewatchDatasourcesDatasourceParserEffectiveTargetTable {
+    /**
+     * Name of the Unity Catalog catalog to list datasources from. Required; each request lists the
+     * datasources of a single catalog
+     */
+    catalogName?: string;
+    /**
+     * Name of a Unity Catalog schema in `catalogName`. Optional; if set, only the datasources in
+     * this schema are returned, and if omitted, the datasources in all schemas of the catalog are
+     * returned
+     */
+    schemaName?: string;
+    /**
+     * (string) - Unity Catalog table name
+     */
+    tableName: string;
+}
+
+export interface GetLakewatchDatasourcesDatasourceParserTargetTable {
+    /**
+     * Name of the Unity Catalog catalog to list datasources from. Required; each request lists the
+     * datasources of a single catalog
+     */
+    catalogName?: string;
+    /**
+     * Name of a Unity Catalog schema in `catalogName`. Optional; if set, only the datasources in
+     * this schema are returned, and if omitted, the datasources in all schemas of the catalog are
+     * returned
+     */
+    schemaName?: string;
+    /**
+     * (string) - Unity Catalog table name
+     */
+    tableName: string;
+}
+
+export interface GetLakewatchDatasourcesDatasourceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetLakewatchDatasourcesDatasourceSchedule {
+    /**
+     * (string) - Duration string defining the minimum cadence. May contain components
+     * for days, hours, minutes, seconds (e.g. `5d`, `5d3h`, `3d2h5m12s`,
+     * `12m16s`)
+     */
+    atLeastEvery?: string;
+    /**
+     * (string) - `dedicated`, `inherited`, `automatic`, or a custom group name. Reads return
+     * the value as supplied. A rule whose schedule omits it runs on `dedicated`
+     */
+    computeGroup?: string;
+    /**
+     * (boolean) - Run continuously (sentinel — must be `true` when set in this branch)
+     */
+    continuous?: boolean;
+    /**
+     * (string) - Quartz cron expression
+     */
+    cronExpression?: string;
+    /**
+     * (boolean) - Whether the job is scheduled to run. Defaults to true
+     */
+    enabled?: boolean;
+}
+
+export interface GetLakewatchDatasourcesDatasourceStatus {
+    /**
+     * (ResourceStatus) - Status of the datasource's ingestion job
+     */
+    ingestionJob: outputs.GetLakewatchDatasourcesDatasourceStatusIngestionJob;
+    /**
+     * (ResourceStatus) - Status of the managed ingestion pipeline. Populated only when `unityCatalogConnection`
+     * is set, with `pipelineId` identifying the pipeline
+     */
+    ingestionPipeline: outputs.GetLakewatchDatasourcesDatasourceStatusIngestionPipeline;
+}
+
+export interface GetLakewatchDatasourcesDatasourceStatusIngestionJob {
+    /**
+     * (string)
+     */
+    createTime: string;
+    /**
+     * (string) - Databricks Jobs API job ID. Unset for a pure ingestion pipeline
+     */
+    jobId: string;
+    /**
+     * (string) - When the most recent run completed. Pairs with `runState = SUCCEEDED`
+     */
+    lastCompleteTime: string;
+    /**
+     * (string) - Most recent error message, if any. Pairs with `runState = FAILED`
+     */
+    lastErrorMessage: string;
+    /**
+     * (string) - When the most recent run started. Pairs with `runState = RUNNING`
+     */
+    lastStartTime: string;
+    /**
+     * (string)
+     */
+    lastStatusChangeTime: string;
+    /**
+     * (string) - Scheduling lifecycle of the resource's underlying job/pipeline: whether it
+     * is unscheduled, scheduled, stopped, or deleted. Distinct from `runState`,
+     * which reports the outcome of the most recent run. Possible values are: `DELETED`, `SCHEDULED`, `STOPPED`, `UNSCHEDULED`
+     */
+    lifecycleState: string;
+    /**
+     * (string) - DLT ingestion-pipeline ID. Set only when this status represents the
+     * datasource's ingestion pipeline (unset for job statuses)
+     */
+    pipelineId: string;
+    /**
+     * (string) - Possible values are: `CANCELED`, `FAILED`, `RUNNING`, `SUCCEEDED`
+     */
+    runState: string;
+}
+
+export interface GetLakewatchDatasourcesDatasourceStatusIngestionPipeline {
+    /**
+     * (string)
+     */
+    createTime: string;
+    /**
+     * (string) - Databricks Jobs API job ID. Unset for a pure ingestion pipeline
+     */
+    jobId: string;
+    /**
+     * (string) - When the most recent run completed. Pairs with `runState = SUCCEEDED`
+     */
+    lastCompleteTime: string;
+    /**
+     * (string) - Most recent error message, if any. Pairs with `runState = FAILED`
+     */
+    lastErrorMessage: string;
+    /**
+     * (string) - When the most recent run started. Pairs with `runState = RUNNING`
+     */
+    lastStartTime: string;
+    /**
+     * (string)
+     */
+    lastStatusChangeTime: string;
+    /**
+     * (string) - Scheduling lifecycle of the resource's underlying job/pipeline: whether it
+     * is unscheduled, scheduled, stopped, or deleted. Distinct from `runState`,
+     * which reports the outcome of the most recent run. Possible values are: `DELETED`, `SCHEDULED`, `STOPPED`, `UNSCHEDULED`
+     */
+    lifecycleState: string;
+    /**
+     * (string) - DLT ingestion-pipeline ID. Set only when this status represents the
+     * datasource's ingestion pipeline (unset for job statuses)
+     */
+    pipelineId: string;
+    /**
+     * (string) - Possible values are: `CANCELED`, `FAILED`, `RUNNING`, `SUCCEEDED`
+     */
+    runState: string;
+}
+
+export interface GetLakewatchDatasourcesDatasourceUnityCatalogConnection {
+    /**
+     * (object) - Free-form key-value configuration for the managed ingestion pipeline
+     */
+    configuration?: {[key: string]: string};
+    /**
+     * (string) - Name of the Unity Catalog connection to ingest through
+     */
+    connectionName: string;
+    /**
+     * (string) - Connector type of the connection, such as `SLACK_AUDIT_LOGS`. Resolved by the server from
+     * `connectionName` through Unity Catalog; not accepted as input
+     */
+    connector: string;
+    /**
+     * (string) - The start time ingestion uses: the supplied `startTime`, or the creation time when it was
+     * omitted. Always populated
+     */
+    effectiveStartTime: string;
+    /**
+     * (string) - Earliest source event time to ingest. Leave unset to start at creation time, with no
+     * history backfilled. Rejected if in the future, beyond the connector's history window, or
+     * for a connector without start-time support. Takes effect only at first start and cannot
+     * be changed. Reads return the value as supplied; the start time ingestion uses is reported
+     * in `effectiveStartTime`
+     */
+    startTime?: string;
+}
+
+export interface GetLakewatchDatasourcesDatasourceUpdatedBy {
+    /**
+     * (string) - Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * (string) - Email (regular users only)
+     */
+    email?: string;
+    /**
+     * (string) - User / service-principal ID
+     */
+    id?: string;
+    /**
+     * (string) - Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetLakewatchDatasourcesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetLakewatchParserCreatedBy {
+    /**
+     * (string) - Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * (string) - Email (regular users only)
+     */
+    email?: string;
+    /**
+     * (string) - User / service-principal ID
+     */
+    id?: string;
+    /**
+     * (string) - Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetLakewatchParserOwner {
+    /**
+     * (string) - Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * (string) - Email (regular users only)
+     */
+    email?: string;
+    /**
+     * (string) - User / service-principal ID
+     */
+    id?: string;
+    /**
+     * (string) - Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetLakewatchParserProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetLakewatchParserVersionCreatedBy {
+    /**
+     * (string) - Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * (string) - Email (regular users only)
+     */
+    email?: string;
+    /**
+     * (string) - User / service-principal ID
+     */
+    id?: string;
+    /**
+     * (string) - Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetLakewatchParserVersionProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetLakewatchParserVersionsParserVersion {
+    /**
+     * (string) - When this version was appended
+     */
+    createTime: string;
+    /**
+     * (Principal) - The principal that appended this version
+     */
+    createdBy: outputs.GetLakewatchParserVersionsParserVersionCreatedBy;
+    /**
+     * (string) - Free-form description of this version, set when the version is created
+     */
+    description: string;
+    /**
+     * (string) - Resource name. Format:
+     * `parsers/{parser_id}/versions/{version}`
+     */
+    name: string;
+    /**
+     * (string) - The parent parser's name, copied from the container on read. Denormalized so a
+     * caller that needs identity alongside the spec reads the version alone rather
+     * than the container as well. Populated by `GetParserVersion`; List omits it, as
+     * List omits `spec`
+     */
+    parserName: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetLakewatchParserVersionsParserVersionProviderConfig;
+    /**
+     * (string) - The field definitions for this log source, as a YAML document. Validated on
+     * write, so an invalid spec is never stored
+     */
+    spec: string;
+    /**
+     * (integer) - Version number, assigned by the server when the version is appended
+     */
+    version: number;
+}
+
+export interface GetLakewatchParserVersionsParserVersionCreatedBy {
+    /**
+     * (string) - Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * (string) - Email (regular users only)
+     */
+    email?: string;
+    /**
+     * (string) - User / service-principal ID
+     */
+    id?: string;
+    /**
+     * (string) - Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetLakewatchParserVersionsParserVersionProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetLakewatchParserVersionsProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetLakewatchParsersParser {
+    /**
+     * Name of the parent UC catalog to list parsers from. Required:
+     * List is scoped to a single catalog, mirroring the Unity Catalog
+     * tables/functions APIs, which take catalogName as a request field (bound to
+     * a query parameter) rather than a catalog path segment
+     */
+    catalogName: string;
+    /**
+     * (string) - When the parser was created
+     */
+    createTime: string;
+    /**
+     * (Principal) - The principal that created this parser. Each version records its own
+     * `createdBy`
+     */
+    createdBy: outputs.GetLakewatchParsersParserCreatedBy;
+    /**
+     * (string) - Description of version 1. Accepted only by `CreateParser`; read a version's
+     * description with `GetParserVersion`
+     */
+    description: string;
+    /**
+     * (string) - The current name of the parser's UC catalog. Tracks UC renames; when the
+     * current name cannot be looked up, the name as of the parser's last write
+     */
+    effectiveCatalogName: string;
+    /**
+     * (string) - The current name of the parser's UC schema. Tracks UC renames; when the
+     * current name cannot be looked up, the name as of the parser's last write
+     */
+    effectiveSchemaName: string;
+    /**
+     * (integer) - Newest version of this parser. Read its spec by passing this to
+     * `GetParserVersion`, or by using the `latest` alias. Absent when every version
+     * has been deleted
+     */
+    latestVersion: number;
+    /**
+     * (string) - Resource name. Format: `parsers/{parser_id}`, where the leaf is the
+     * immutable server-assigned UUID. Create-time placement names are stored
+     * separately and do not affect the resource name
+     */
+    name: string;
+    /**
+     * (Principal) - The principal that owns this parser. Server-set from the authenticated
+     * creator, never supplied by the client. Beta reads by UUID perform no
+     * authorization. Owner-gated write RPCs are outside this API's current
+     * implementation scope
+     */
+    owner: outputs.GetLakewatchParsersParserOwner;
+    /**
+     * (string) - The parser's server-assigned UUID. It is not currently a UC securable ID,
+     * is immutable for the life of the resource, is the leaf of `name`, and is
+     * returned by CreateParser
+     */
+    parserId: string;
+    /**
+     * (string) - Client-supplied parser name, stored as supplied and fixed at create time.
+     * Must be a valid UC identifier. A custom parser is not currently a UC securable
+     * and this field has no rename path
+     */
+    parserName: string;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetLakewatchParsersParserProviderConfig;
+    /**
+     * Name of the parent UC schema. Optional: when set, results are narrowed to
+     * this schema; when omitted, parsers across all schemas in
+     * `catalogName` are returned
+     */
+    schemaName: string;
+    /**
+     * (string) - Spec of version 1, as a YAML document. Accepted only by `CreateParser`; read
+     * a version's spec with `GetParserVersion`
+     */
+    spec: string;
+}
+
+export interface GetLakewatchParsersParserCreatedBy {
+    /**
+     * (string) - Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * (string) - Email (regular users only)
+     */
+    email?: string;
+    /**
+     * (string) - User / service-principal ID
+     */
+    id?: string;
+    /**
+     * (string) - Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetLakewatchParsersParserOwner {
+    /**
+     * (string) - Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * (string) - Email (regular users only)
+     */
+    email?: string;
+    /**
+     * (string) - User / service-principal ID
+     */
+    id?: string;
+    /**
+     * (string) - Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetLakewatchParsersParserProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetLakewatchParsersProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetLakewatchRuleBatch {
+    /**
+     * (RuleInputCustomNotebook) - Custom-notebook user function. The output is used as input data for the
+     * rule
+     */
+    custom?: outputs.GetLakewatchRuleBatchCustom;
+    /**
+     * (RuleInputBatchSql) - SQL query evaluated as the rule input
+     */
+    sql?: outputs.GetLakewatchRuleBatchSql;
+    /**
+     * (string) - SQL warehouse that runs this scheduled detection
+     */
+    warehouseId?: string;
+}
+
+export interface GetLakewatchRuleBatchCustom {
+    /**
+     * (string) - Fully-qualified notebook path, or a path relative to the configured base
+     * notebook directory
+     */
+    notebook: string;
+    /**
+     * (object) - Optional arguments supplied when invoking the custom function
+     */
+    options?: {[key: string]: string};
+}
+
+export interface GetLakewatchRuleBatchSql {
+    /**
+     * (string) - Default catalog used to resolve unqualified identifiers in `query`. If
+     * unset, the rule's `catalogName` is used
+     */
+    defaultCatalogName?: string;
+    /**
+     * (string) - Default schema used to resolve unqualified identifiers in `query`. If
+     * unset, the rule's `schemaName` is used
+     */
+    defaultSchemaName?: string;
+    /**
+     * (string) - SQL query evaluated as the rule input
+     */
+    query: string;
+}
+
+export interface GetLakewatchRuleConfigDefaultSchedule {
+    /**
+     * (string) - Defines the minimum cadence as a duration string. It may contain components
+     * for days, hours, minutes, and seconds (e.g. `5d`, `5d3h`, `3d2h5m12s`,
+     * `12m16s`)
+     */
+    atLeastEvery?: string;
+    /**
+     * (string) - Defines the schedule using a Quartz cron expression
+     */
+    cronExpression?: string;
+    /**
+     * (boolean) - Sets whether the job is scheduled to run. Defaults to true
+     */
+    enabled?: boolean;
+}
+
+export interface GetLakewatchRuleConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetLakewatchRuleConfigUpdatedBy {
+    /**
+     * (string) - Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * (string) - Email (regular users only)
+     */
+    email?: string;
+    /**
+     * (string) - User / service-principal ID
+     */
+    id?: string;
+    /**
+     * (string) - Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetLakewatchRuleCreatedBy {
+    /**
+     * (string) - Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * (string) - Email (regular users only)
+     */
+    email?: string;
+    /**
+     * (string) - User / service-principal ID
+     */
+    id?: string;
+    /**
+     * (string) - Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetLakewatchRuleMitre {
+    /**
+     * (string) - Human-readable MITRE sub-technique name
+     */
+    subTechnique?: string;
+    /**
+     * (string) - MITRE sub-technique ID, such as `T1078.001`
+     */
+    subTechniqueId?: string;
+    /**
+     * (string) - Adversary objective during this attack, such as `Command and Control`
+     */
+    tactic?: string;
+    /**
+     * (string) - Structured framework that organizes adversary behaviors, such as
+     * `mitre-attack`
+     */
+    taxonomy?: string;
+    /**
+     * (string) - Human-readable MITRE technique name
+     */
+    technique?: string;
+    /**
+     * (string) - MITRE technique ID, such as `T1078`
+     */
+    techniqueId?: string;
+}
+
+export interface GetLakewatchRuleOriginalContentPack {
+    /**
+     * (string) - UUID of the content pack
+     */
+    uuid: string;
+    /**
+     * (string) - Pack version the resource was installed from
+     */
+    version: string;
+}
+
+export interface GetLakewatchRuleOutput {
+    /**
+     * (object) - Key/value context to record from the input row. Values may contain SQL
+     * expressions in braces
+     */
+    context?: {[key: string]: string};
+    /**
+     * (boolean) - If true, also record every column of the triggering input row. Custom
+     * context wins on key collision
+     */
+    defaultContext?: boolean;
+    /**
+     * (string) - Column in the rule output that holds the event timestamp
+     */
+    eventTimeColumn?: string;
+    /**
+     * (string) - Signal summary. May contain SQL expressions in braces that the
+     * server substitutes from the input row
+     */
+    summary?: string;
+}
+
+export interface GetLakewatchRuleOwner {
+    /**
+     * (string) - Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * (string) - Email (regular users only)
+     */
+    email?: string;
+    /**
+     * (string) - User / service-principal ID
+     */
+    id?: string;
+    /**
+     * (string) - Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetLakewatchRuleProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetLakewatchRuleSchedule {
+    /**
+     * (string) - Defines the minimum cadence as a duration string. It may contain components
+     * for days, hours, minutes, and seconds (e.g. `5d`, `5d3h`, `3d2h5m12s`,
+     * `12m16s`)
+     */
+    atLeastEvery?: string;
+    /**
+     * (string) - Defines the schedule using a Quartz cron expression
+     */
+    cronExpression?: string;
+    /**
+     * (boolean) - Sets whether the job is scheduled to run. Defaults to true
+     */
+    enabled?: boolean;
+}
+
+export interface GetLakewatchRuleStatus {
+    /**
+     * (string)
+     */
+    createTime: string;
+    /**
+     * (string) - Databricks Jobs API job ID. Unset for a pure ingestion pipeline
+     */
+    jobId: string;
+    /**
+     * (string) - When the most recent run completed. Pairs with `runState = SUCCEEDED`
+     */
+    lastCompleteTime: string;
+    /**
+     * (string) - Most recent error message, if any. Pairs with `runState = FAILED`
+     */
+    lastErrorMessage: string;
+    /**
+     * (string) - When the most recent run started. Pairs with `runState = RUNNING`
+     */
+    lastStartTime: string;
+    /**
+     * (string)
+     */
+    lastStatusChangeTime: string;
+    /**
+     * (string) - Scheduling lifecycle of the resource's underlying job/pipeline: whether it
+     * is unscheduled, scheduled, stopped, or deleted. Distinct from `runState`,
+     * which reports the outcome of the most recent run. Possible values are: `DELETED`, `SCHEDULED`, `STOPPED`, `UNSCHEDULED`
+     */
+    lifecycleState: string;
+    /**
+     * (string) - DLT ingestion-pipeline ID. Set only when this status represents the
+     * datasource's ingestion pipeline (unset for job statuses)
+     */
+    pipelineId: string;
+    /**
+     * (string) - Possible values are: `CANCELED`, `FAILED`, `RUNNING`, `SUCCEEDED`
+     */
+    runState: string;
+}
+
+export interface GetLakewatchRuleTimerange {
+    /**
+     * (string) - Extends the start of the execution time range by a compact duration with integer
+     * days, hours, minutes, and seconds in that order, such as `1h30m` or `15m`.
+     * Zero duration disables extension. Unset or empty uses a fixed `15m` at execution
+     * time. Only the start moves; the end is unchanged. Has no effect on a detection
+     * query that does not use `IN_TIMERANGE`. Values must fit signed 64-bit microseconds
+     */
+    extendLookback?: string;
+}
+
+export interface GetLakewatchRuleUpdatedBy {
+    /**
+     * (string) - Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * (string) - Email (regular users only)
+     */
+    email?: string;
+    /**
+     * (string) - User / service-principal ID
+     */
+    id?: string;
+    /**
+     * (string) - Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetLakewatchRulesProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetLakewatchRulesRule {
+    /**
+     * (object) - Free-form client-managed key/value annotations
+     */
+    annotations: {[key: string]: string};
+    /**
+     * (RuleInputBatch) - Scheduled detection (also known as batch detection) input
+     */
+    batch: outputs.GetLakewatchRulesRuleBatch;
+    /**
+     * Name of the Unity Catalog catalog to list rules from. Required
+     */
+    catalogName: string;
+    /**
+     * (string) - Free-form rule category
+     */
+    category: string;
+    /**
+     * (string) - ID of the workspace whose compute runs this rule's jobs and owns its
+     * associated resources, such as the SQL warehouse a scheduled detection runs on.
+     * Server-assigned; a rule's warehouse can only be changed from this workspace
+     */
+    computeWorkspaceId: string;
+    /**
+     * (string) - Immutable UUIDv4 identifying the authored content resource installed as this rule
+     */
+    contentResourceId: string;
+    /**
+     * (string)
+     */
+    createTime: string;
+    /**
+     * (Principal) - Principal that created the rule
+     */
+    createdBy: outputs.GetLakewatchRulesRuleCreatedBy;
+    /**
+     * (string) - Signal deduplication mode. Possible values are: `DEDUPLICATION_DEFAULT`, `DEDUPLICATION_DISABLED`, `DEDUPLICATION_ENABLED`
+     */
+    deduplication: string;
+    /**
+     * (string) - Time window for deduplication, such as `1h`, `24h`, `7d`, or `automatic`
+     */
+    deduplicationTimeWindow: string;
+    /**
+     * (string) - Free-form description
+     */
+    description: string;
+    /**
+     * (string) - Current name of the Unity Catalog catalog that contains the rule. Reflects catalog renames,
+     * which do not change `catalogName`. Unset until resolved
+     */
+    effectiveCatalogName: string;
+    /**
+     * (string) - Current UC leaf name of the rule (server-owned). Tracks UC renames so callers
+     * can observe the live name without having to update the client-owned
+     * `ruleName`; unset until resolved
+     */
+    effectiveRuleName: string;
+    /**
+     * (string) - The identity this rule's job runs as: the resolved `runAsPrincipal`, or the
+     * requester's identity when it was omitted on create or cleared on update. The value is a user
+     * email or service-principal application ID, falling back to the numeric principal ID if that
+     * identity can no longer be resolved. Populated on single-rule reads (get/create/update); list
+     * responses omit it
+     */
+    effectiveRunAsPrincipal: string;
+    /**
+     * (string) - Current name of the Unity Catalog schema that contains the rule. Reflects schema renames,
+     * which do not change `schemaName`. Unset until resolved
+     */
+    effectiveSchemaName: string;
+    /**
+     * (string) - Opaque entity tag for optimistic concurrency. Content-version ETags change on
+     * user edits and remain stable across runtime status updates
+     */
+    etag: string;
+    /**
+     * (string) - Signal quality for this rule. Possible values are: `FIDELITY_DEVELOPMENT`, `FIDELITY_HIGH`, `FIDELITY_INVESTIGATIVE`, `FIDELITY_MEDIUM`
+     */
+    fidelity: string;
+    /**
+     * (list of RuleMitreMapping) - Up to 64 MITRE ATT&CK mappings, producing at most 192 flattened alert tags
+     */
+    mitres: outputs.GetLakewatchRulesRuleMitre[];
+    /**
+     * (string) - Resource name, in the form `rules/{rule_id}`. Assigned by the server on create; required
+     * on update
+     */
+    name: string;
+    /**
+     * (string) - Long-form description of what this rule detects
+     */
+    objective: string;
+    /**
+     * (ContentPackReference) - Reference to the content pack this rule was originally installed from
+     */
+    originalContentPack: outputs.GetLakewatchRulesRuleOriginalContentPack;
+    /**
+     * (RuleOutput) - What to record in each signal
+     */
+    output: outputs.GetLakewatchRulesRuleOutput;
+    /**
+     * (Principal) - Unity Catalog owner of the rule. Assigned by the server. Populated by `GetRule`
+     */
+    owner: outputs.GetLakewatchRulesRuleOwner;
+    /**
+     * Configure the provider for management through account provider.
+     */
+    providerConfig?: outputs.GetLakewatchRulesRuleProviderConfig;
+    /**
+     * (list of string) - Ordered reference URLs carried from the authored rule metadata. A maximum of three references
+     * of up to 512 characters each is supported. Requests exceeding these limits are rejected
+     */
+    references: string[];
+    /**
+     * (string) - Unity Catalog securable UUID of the rule, and the last segment of `name`. Never changes,
+     * including when the rule's catalog or schema is renamed
+     */
+    ruleId: string;
+    /**
+     * (string) - Name of the rule within its Unity Catalog schema. Required on create; can be updated
+     * within the same catalog and schema. Get synchronizes this field with the current Unity Catalog
+     * name, also reported in `effectiveRuleName`
+     */
+    ruleName: string;
+    /**
+     * (string) - The principal whose identity this rule's job runs as, given as a
+     * user email or service-principal application ID. When supplied on
+     * create/update, Lakewatch resolves the principal, records it on the rule, and
+     * creates the delegation to run as that principal — the requester must be
+     * authorized to delegate to it, or the request is rejected. When omitted on
+     * create, the requester's own identity is used. An update whose mask does not
+     * include `runAsPrincipal` keeps the current identity, and the requester must
+     * still be authorized to delegate to it; an editor who is not must supply a
+     * runAsPrincipal they can delegate to (for example, their own identity), or
+     * clear it, either of which reassigns the rule. An update whose mask includes
+     * `runAsPrincipal` but supplies no value clears it: the rule then runs as the
+     * requester, exactly as when it is omitted on create. Reads return the value as
+     * supplied; the identity the rule runs as is reported in
+     * `effectiveRunAsPrincipal`
+     */
+    runAsPrincipal: string;
+    /**
+     * (string) - Long-form operational guidance carried from the authored rule metadata. Supports up to 4096
+     * characters. Requests exceeding this limit are rejected. Supports Markdown; analysts and the
+     * investigation agent follow it when triaging this rule's alerts
+     */
+    runbook: string;
+    /**
+     * (RuleSchedule) - When the rule executes
+     */
+    schedule: outputs.GetLakewatchRulesRuleSchedule;
+    /**
+     * Name of a Unity Catalog schema in `catalogName`. If set, only rules in this schema are
+     * returned. If unset, rules in all schemas of the catalog are returned
+     */
+    schemaName: string;
+    /**
+     * (string) - Free-form severity label, such as `Informational`, `Medium`, `High`, or
+     * `Critical`
+     */
+    severity: string;
+    /**
+     * (ResourceStatus) - Read-only lifecycle status
+     */
+    status: outputs.GetLakewatchRulesRuleStatus;
+    /**
+     * (string) - If set, this rule's signals do not open new alerts until the given time
+     */
+    suppressUntilTime: string;
+    /**
+     * (RuleTimeRange) - Time-range configuration for scheduled detections. If unset, the execution time range is
+     * extended by a fixed `15m` lookback
+     */
+    timerange: outputs.GetLakewatchRulesRuleTimerange;
+    /**
+     * (string) - Time the rule was last updated
+     */
+    updateTime: string;
+    /**
+     * (Principal) - Principal that last updated the rule
+     */
+    updatedBy: outputs.GetLakewatchRulesRuleUpdatedBy;
+    /**
+     * (string) - Pack version the resource was installed from
+     */
+    version: number;
+}
+
+export interface GetLakewatchRulesRuleBatch {
+    /**
+     * (RuleInputCustomNotebook) - Custom-notebook user function. The output is used as input data for the
+     * rule
+     */
+    custom?: outputs.GetLakewatchRulesRuleBatchCustom;
+    /**
+     * (RuleInputBatchSql) - SQL query evaluated as the rule input
+     */
+    sql?: outputs.GetLakewatchRulesRuleBatchSql;
+    /**
+     * (string) - SQL warehouse that runs this scheduled detection
+     */
+    warehouseId?: string;
+}
+
+export interface GetLakewatchRulesRuleBatchCustom {
+    /**
+     * (string) - Fully-qualified notebook path, or a path relative to the configured base
+     * notebook directory
+     */
+    notebook: string;
+    /**
+     * (object) - Optional arguments supplied when invoking the custom function
+     */
+    options?: {[key: string]: string};
+}
+
+export interface GetLakewatchRulesRuleBatchSql {
+    /**
+     * (string) - Default catalog used to resolve unqualified identifiers in `query`. If
+     * unset, the rule's `catalogName` is used
+     */
+    defaultCatalogName?: string;
+    /**
+     * (string) - Default schema used to resolve unqualified identifiers in `query`. If
+     * unset, the rule's `schemaName` is used
+     */
+    defaultSchemaName?: string;
+    /**
+     * (string) - SQL query evaluated as the rule input
+     */
+    query: string;
+}
+
+export interface GetLakewatchRulesRuleCreatedBy {
+    /**
+     * (string) - Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * (string) - Email (regular users only)
+     */
+    email?: string;
+    /**
+     * (string) - User / service-principal ID
+     */
+    id?: string;
+    /**
+     * (string) - Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetLakewatchRulesRuleMitre {
+    /**
+     * (string) - Human-readable MITRE sub-technique name
+     */
+    subTechnique?: string;
+    /**
+     * (string) - MITRE sub-technique ID, such as `T1078.001`
+     */
+    subTechniqueId?: string;
+    /**
+     * (string) - Adversary objective during this attack, such as `Command and Control`
+     */
+    tactic?: string;
+    /**
+     * (string) - Structured framework that organizes adversary behaviors, such as
+     * `mitre-attack`
+     */
+    taxonomy?: string;
+    /**
+     * (string) - Human-readable MITRE technique name
+     */
+    technique?: string;
+    /**
+     * (string) - MITRE technique ID, such as `T1078`
+     */
+    techniqueId?: string;
+}
+
+export interface GetLakewatchRulesRuleOriginalContentPack {
+    /**
+     * (string) - UUID of the content pack
+     */
+    uuid: string;
+    /**
+     * (string) - Pack version the resource was installed from
+     */
+    version: string;
+}
+
+export interface GetLakewatchRulesRuleOutput {
+    /**
+     * (object) - Key/value context to record from the input row. Values may contain SQL
+     * expressions in braces
+     */
+    context?: {[key: string]: string};
+    /**
+     * (boolean) - If true, also record every column of the triggering input row. Custom
+     * context wins on key collision
+     */
+    defaultContext?: boolean;
+    /**
+     * (string) - Column in the rule output that holds the event timestamp
+     */
+    eventTimeColumn?: string;
+    /**
+     * (string) - Signal summary. May contain SQL expressions in braces that the
+     * server substitutes from the input row
+     */
+    summary?: string;
+}
+
+export interface GetLakewatchRulesRuleOwner {
+    /**
+     * (string) - Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * (string) - Email (regular users only)
+     */
+    email?: string;
+    /**
+     * (string) - User / service-principal ID
+     */
+    id?: string;
+    /**
+     * (string) - Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface GetLakewatchRulesRuleProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface GetLakewatchRulesRuleSchedule {
+    /**
+     * (string) - Defines the minimum cadence as a duration string. It may contain components
+     * for days, hours, minutes, and seconds (e.g. `5d`, `5d3h`, `3d2h5m12s`,
+     * `12m16s`)
+     */
+    atLeastEvery?: string;
+    /**
+     * (string) - Defines the schedule using a Quartz cron expression
+     */
+    cronExpression?: string;
+    /**
+     * (boolean) - Sets whether the job is scheduled to run. Defaults to true
+     */
+    enabled?: boolean;
+}
+
+export interface GetLakewatchRulesRuleStatus {
+    /**
+     * (string)
+     */
+    createTime: string;
+    /**
+     * (string) - Databricks Jobs API job ID. Unset for a pure ingestion pipeline
+     */
+    jobId: string;
+    /**
+     * (string) - When the most recent run completed. Pairs with `runState = SUCCEEDED`
+     */
+    lastCompleteTime: string;
+    /**
+     * (string) - Most recent error message, if any. Pairs with `runState = FAILED`
+     */
+    lastErrorMessage: string;
+    /**
+     * (string) - When the most recent run started. Pairs with `runState = RUNNING`
+     */
+    lastStartTime: string;
+    /**
+     * (string)
+     */
+    lastStatusChangeTime: string;
+    /**
+     * (string) - Scheduling lifecycle of the resource's underlying job/pipeline: whether it
+     * is unscheduled, scheduled, stopped, or deleted. Distinct from `runState`,
+     * which reports the outcome of the most recent run. Possible values are: `DELETED`, `SCHEDULED`, `STOPPED`, `UNSCHEDULED`
+     */
+    lifecycleState: string;
+    /**
+     * (string) - DLT ingestion-pipeline ID. Set only when this status represents the
+     * datasource's ingestion pipeline (unset for job statuses)
+     */
+    pipelineId: string;
+    /**
+     * (string) - Possible values are: `CANCELED`, `FAILED`, `RUNNING`, `SUCCEEDED`
+     */
+    runState: string;
+}
+
+export interface GetLakewatchRulesRuleTimerange {
+    /**
+     * (string) - Extends the start of the execution time range by a compact duration with integer
+     * days, hours, minutes, and seconds in that order, such as `1h30m` or `15m`.
+     * Zero duration disables extension. Unset or empty uses a fixed `15m` at execution
+     * time. Only the start moves; the end is unchanged. Has no effect on a detection
+     * query that does not use `IN_TIMERANGE`. Values must fit signed 64-bit microseconds
+     */
+    extendLookback?: string;
+}
+
+export interface GetLakewatchRulesRuleUpdatedBy {
+    /**
+     * (string) - Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * (string) - Email (regular users only)
+     */
+    email?: string;
+    /**
+     * (string) - User / service-principal ID
+     */
+    id?: string;
+    /**
+     * (string) - Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
 export interface GetMaterializedFeaturesFeatureTagProviderConfig {
     /**
      * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
@@ -27235,7 +34019,7 @@ export interface GetNotebookProviderConfig {
 
 export interface GetNotificationDestinationsNotificationDestination {
     /**
-     * The type of the notification destination. Possible values are `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
+     * The type of the notification destination. Possible values are `DATABRICKS_APP_SLACK`, `DATABRICKS_APP_TEAMS`, `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
      */
     destinationType?: string;
     /**
@@ -27830,15 +34614,15 @@ export interface GetPostgresBranchSpec {
      * (string) - The name of the source branch from which this branch was created.
      * Format: projects/{project_id}/branches/{branch_id}
      */
-    sourceBranch?: string;
+    sourceBranch: string;
     /**
      * (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
      */
-    sourceBranchLsn?: string;
+    sourceBranchLsn: string;
     /**
      * (string) - The point in time on the source branch from which this branch was created
      */
-    sourceBranchTime?: string;
+    sourceBranchTime: string;
     /**
      * (string) - The snapshot this branch was restored from. Set only for branches created by
      * restoring a snapshot; unset for all other branches.
@@ -27940,7 +34724,7 @@ export interface GetPostgresBranchesBranch {
      */
     providerConfig?: outputs.GetPostgresBranchesBranchProviderConfig;
     /**
-     * (BranchSpec) - The spec contains the branch configuration
+     * (BranchSpec) - The spec contains the branch configuration.
      */
     spec: outputs.GetPostgresBranchesBranchSpec;
     /**
@@ -27983,15 +34767,15 @@ export interface GetPostgresBranchesBranchSpec {
      * (string) - The name of the source branch from which this branch was created.
      * Format: projects/{project_id}/branches/{branch_id}
      */
-    sourceBranch?: string;
+    sourceBranch: string;
     /**
      * (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
      */
-    sourceBranchLsn?: string;
+    sourceBranchLsn: string;
     /**
      * (string) - The point in time on the source branch from which this branch was created
      */
-    sourceBranchTime?: string;
+    sourceBranchTime: string;
     /**
      * (string) - The snapshot this branch was restored from. Set only for branches created by
      * restoring a snapshot; unset for all other branches.
@@ -28156,6 +34940,13 @@ export interface GetPostgresCdfConfigsCdfConfig {
      * Set at creation; the CdfConfig is immutable
      */
     schema: string;
+    /**
+     * (string) - The service principal (application id) whose identity authorizes this
+     * change data feed's ongoing writes to Unity Catalog. When unset, writes are
+     * authorized as the creating identity. Changing it requires a new CdfConfig,
+     * which writes to new Delta tables
+     */
+    servicePrincipal: string;
 }
 
 export interface GetPostgresCdfConfigsCdfConfigProviderConfig {
@@ -28387,7 +35178,7 @@ export interface GetPostgresDatabasesDatabase {
      */
     providerConfig?: outputs.GetPostgresDatabasesDatabaseProviderConfig;
     /**
-     * (DatabaseDatabaseSpec) - The desired state of the Database
+     * (DatabaseDatabaseSpec) - The desired state of the Database.
      */
     spec: outputs.GetPostgresDatabasesDatabaseSpec;
     /**
@@ -28476,24 +35267,25 @@ export interface GetPostgresEndpointSpec {
     group?: outputs.GetPostgresEndpointSpecGroup;
     /**
      * (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided.
+     * The value must be true when provided.
      * Mutually exclusive with `suspendTimeoutDuration`
      */
     noSuspension?: boolean;
     /**
-     * (EndpointSettings)
+     * (EndpointSettings) - The Postgres server parameters currently set on the compute endpoint
      */
     settings?: outputs.GetPostgresEndpointSpecSettings;
     /**
-     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended. Absent when
+     * automatic suspension is disabled
      */
     suspendTimeoutDuration?: string;
 }
 
 export interface GetPostgresEndpointSpecGroup {
     /**
-     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
-     * by specifying size.max > 1
+     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if the endpoint has more than
+     * one compute (`max` greater than 1)
      */
     enableReadableSecondaries?: boolean;
     /**
@@ -28511,7 +35303,8 @@ export interface GetPostgresEndpointSpecGroup {
 
 export interface GetPostgresEndpointSpecSettings {
     /**
-     * (object) - A raw representation of Postgres settings
+     * (object) - Postgres server parameters to set on the compute endpoint, keyed by parameter name. Each value is
+     * given as a string
      */
     pgSettings?: {[key: string]: string};
 }
@@ -28527,7 +35320,7 @@ export interface GetPostgresEndpointStatus {
      */
     autoscalingLimitMinCu: number;
     /**
-     * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+     * (string) - The state the compute endpoint is in now. Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      */
     currentState: string;
     /**
@@ -28538,7 +35331,7 @@ export interface GetPostgresEndpointStatus {
      */
     disabled: boolean;
     /**
-     * (string) - Part of the resource name
+     * (string) - The endpoint ID, which is the final segment of the endpoint's resource name
      */
     endpointId: string;
     /**
@@ -28558,23 +35351,24 @@ export interface GetPostgresEndpointStatus {
      */
     lastActiveTime: string;
     /**
-     * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+     * (string) - The state the compute endpoint is transitioning to, if a transition is in progress. Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      */
     pendingState: string;
     /**
-     * (EndpointSettings)
+     * (EndpointSettings) - The Postgres server parameters currently set on the compute endpoint
      */
     settings: outputs.GetPostgresEndpointStatusSettings;
     /**
-     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended. Absent when
+     * automatic suspension is disabled
      */
     suspendTimeoutDuration: string;
 }
 
 export interface GetPostgresEndpointStatusGroup {
     /**
-     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
-     * by specifying size.max > 1
+     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if the endpoint has more than
+     * one compute (`max` greater than 1)
      */
     enableReadableSecondaries: boolean;
     /**
@@ -28615,7 +35409,8 @@ export interface GetPostgresEndpointStatusHosts {
 
 export interface GetPostgresEndpointStatusSettings {
     /**
-     * (object) - A raw representation of Postgres settings
+     * (object) - Postgres server parameters to set on the compute endpoint, keyed by parameter name. Each value is
+     * given as a string
      */
     pgSettings?: {[key: string]: string};
 }
@@ -28626,7 +35421,7 @@ export interface GetPostgresEndpointsEndpoint {
      */
     createTime: string;
     /**
-     * (string) - Part of the resource name
+     * (string) - The endpoint ID, which is the final segment of the endpoint's resource name
      */
     endpointId: string;
     /**
@@ -28644,15 +35439,18 @@ export interface GetPostgresEndpointsEndpoint {
      */
     providerConfig?: outputs.GetPostgresEndpointsEndpointProviderConfig;
     /**
-     * (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+     * (EndpointSpec) - The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+     * changed after creation. See `status` for the configuration that is currently in effect.
      */
     spec: outputs.GetPostgresEndpointsEndpointSpec;
     /**
-     * (EndpointStatus) - Current operational status of the compute endpoint
+     * (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+     * system, including the hostnames to connect to
      */
     status: outputs.GetPostgresEndpointsEndpointStatus;
     /**
-     * (string) - System-generated unique ID for the endpoint
+     * (string) - A system-generated ID that identifies the endpoint. Unlike `name`, it is not derived from the
+     * user-chosen endpoint ID. The endpoint's connection hostnames are based on this ID
      */
     uid: string;
     /**
@@ -28695,24 +35493,25 @@ export interface GetPostgresEndpointsEndpointSpec {
     group?: outputs.GetPostgresEndpointsEndpointSpecGroup;
     /**
      * (boolean) - When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided.
+     * The value must be true when provided.
      * Mutually exclusive with `suspendTimeoutDuration`
      */
     noSuspension?: boolean;
     /**
-     * (EndpointSettings)
+     * (EndpointSettings) - The Postgres server parameters currently set on the compute endpoint
      */
     settings?: outputs.GetPostgresEndpointsEndpointSpecSettings;
     /**
-     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended. Absent when
+     * automatic suspension is disabled
      */
     suspendTimeoutDuration?: string;
 }
 
 export interface GetPostgresEndpointsEndpointSpecGroup {
     /**
-     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
-     * by specifying size.max > 1
+     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if the endpoint has more than
+     * one compute (`max` greater than 1)
      */
     enableReadableSecondaries?: boolean;
     /**
@@ -28730,7 +35529,8 @@ export interface GetPostgresEndpointsEndpointSpecGroup {
 
 export interface GetPostgresEndpointsEndpointSpecSettings {
     /**
-     * (object) - A raw representation of Postgres settings
+     * (object) - Postgres server parameters to set on the compute endpoint, keyed by parameter name. Each value is
+     * given as a string
      */
     pgSettings?: {[key: string]: string};
 }
@@ -28746,7 +35546,7 @@ export interface GetPostgresEndpointsEndpointStatus {
      */
     autoscalingLimitMinCu: number;
     /**
-     * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+     * (string) - The state the compute endpoint is in now. Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      */
     currentState: string;
     /**
@@ -28757,7 +35557,7 @@ export interface GetPostgresEndpointsEndpointStatus {
      */
     disabled: boolean;
     /**
-     * (string) - Part of the resource name
+     * (string) - The endpoint ID, which is the final segment of the endpoint's resource name
      */
     endpointId: string;
     /**
@@ -28777,23 +35577,24 @@ export interface GetPostgresEndpointsEndpointStatus {
      */
     lastActiveTime: string;
     /**
-     * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+     * (string) - The state the compute endpoint is transitioning to, if a transition is in progress. Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      */
     pendingState: string;
     /**
-     * (EndpointSettings)
+     * (EndpointSettings) - The Postgres server parameters currently set on the compute endpoint
      */
     settings: outputs.GetPostgresEndpointsEndpointStatusSettings;
     /**
-     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended. Absent when
+     * automatic suspension is disabled
      */
     suspendTimeoutDuration: string;
 }
 
 export interface GetPostgresEndpointsEndpointStatusGroup {
     /**
-     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
-     * by specifying size.max > 1
+     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if the endpoint has more than
+     * one compute (`max` greater than 1)
      */
     enableReadableSecondaries: boolean;
     /**
@@ -28834,7 +35635,8 @@ export interface GetPostgresEndpointsEndpointStatusHosts {
 
 export interface GetPostgresEndpointsEndpointStatusSettings {
     /**
-     * (object) - A raw representation of Postgres settings
+     * (object) - Postgres server parameters to set on the compute endpoint, keyed by parameter name. Each value is
+     * given as a string
      */
     pgSettings?: {[key: string]: string};
 }
@@ -28883,7 +35685,7 @@ export interface GetPostgresProjectInitialEndpointSpec {
 export interface GetPostgresProjectInitialEndpointSpecGroup {
     /**
      * (boolean) - Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
-     * size.max > 1
+     * `max` is greater than 1. When enabled, the endpoint also reports a read-only host in `status.hosts`
      */
     enableReadableSecondaries?: boolean;
     /**
@@ -28938,7 +35740,7 @@ export interface GetPostgresProjectSpec {
     /**
      * (integer) - The effective major Postgres version number
      */
-    pgVersion?: number;
+    pgVersion: number;
 }
 
 export interface GetPostgresProjectSpecCustomTag {
@@ -29025,7 +35827,7 @@ export interface GetPostgresProjectStatus {
      */
     pgVersion: number;
     /**
-     * (string) - Part of the resource name
+     * (string) - The project ID, which is the final segment of the project's resource name
      */
     projectId: string;
     /**
@@ -29101,7 +35903,7 @@ export interface GetPostgresProjectsProject {
      */
     name: string;
     /**
-     * (string) - Part of the resource name
+     * (string) - The project ID, which is the final segment of the project's resource name
      */
     projectId: string;
     /**
@@ -29114,15 +35916,19 @@ export interface GetPostgresProjectsProject {
      */
     purgeTime: string;
     /**
-     * (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
+     * (ProjectSpec) - The desired configuration of the project. The fields under `spec` are the ones that can be
+     * changed after creation, except `pgVersion`, which is fixed when the project is created. See
+     * `status` for the configuration that is currently in effect.
      */
     spec: outputs.GetPostgresProjectsProjectSpec;
     /**
-     * (ProjectStatus) - The current status of a Project
+     * (ProjectStatus) - The configuration and state of the project that are currently in effect, as reported by the
+     * system
      */
     status: outputs.GetPostgresProjectsProjectStatus;
     /**
-     * (string) - System-generated unique ID for the project
+     * (string) - A system-generated UUID that identifies the project. Unlike `name`, it is not derived from the
+     * user-chosen project ID
      */
     uid: string;
     /**
@@ -29168,7 +35974,7 @@ export interface GetPostgresProjectsProjectInitialEndpointSpec {
 export interface GetPostgresProjectsProjectInitialEndpointSpecGroup {
     /**
      * (boolean) - Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
-     * size.max > 1
+     * `max` is greater than 1. When enabled, the endpoint also reports a read-only host in `status.hosts`
      */
     enableReadableSecondaries?: boolean;
     /**
@@ -29223,7 +36029,7 @@ export interface GetPostgresProjectsProjectSpec {
     /**
      * (integer) - The effective major Postgres version number
      */
-    pgVersion?: number;
+    pgVersion: number;
 }
 
 export interface GetPostgresProjectsProjectSpecCustomTag {
@@ -29310,7 +36116,7 @@ export interface GetPostgresProjectsProjectStatus {
      */
     pgVersion: number;
     /**
-     * (string) - Part of the resource name
+     * (string) - The project ID, which is the final segment of the project's resource name
      */
     projectId: string;
     /**
@@ -29373,57 +36179,57 @@ export interface GetPostgresRoleProviderConfig {
 
 export interface GetPostgresRoleSpec {
     /**
-     * (RoleAttributes) - The PG role attributes associated with the role
+     * (RoleAttributes) - The Postgres role attributes currently granted to the role
      */
     attributes?: outputs.GetPostgresRoleSpecAttributes;
     /**
-     * (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+     * (string) - How the role authenticates when it connects to Postgres. Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
      */
-    authMethod?: string;
+    authMethod: string;
     /**
-     * (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * (string) - The type of Databricks identity that backs the role, if any. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      */
-    identityType?: string;
+    identityType: string;
     /**
-     * (list of string) - An enum value for a standard role that this role is a member of
+     * (list of string) - The standard roles that the role is currently a member of
      */
     membershipRoles?: string[];
     /**
      * (string) - The name of the Postgres role
      */
-    postgresRole?: string;
+    postgresRole: string;
 }
 
 export interface GetPostgresRoleSpecAttributes {
     /**
-     * (boolean)
+     * (boolean) - Whether the role bypasses every row-level security policy (the Postgres BYPASSRLS attribute)
      */
     bypassrls?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Whether the role can create databases (the Postgres CREATEDB attribute)
      */
     createdb?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Whether the role can create, alter and drop other roles (the Postgres CREATEROLE attribute)
      */
     createrole?: boolean;
 }
 
 export interface GetPostgresRoleStatus {
     /**
-     * (RoleAttributes) - The PG role attributes associated with the role
+     * (RoleAttributes) - The Postgres role attributes currently granted to the role
      */
     attributes?: outputs.GetPostgresRoleStatusAttributes;
     /**
-     * (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+     * (string) - How the role authenticates when it connects to Postgres. Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
      */
     authMethod?: string;
     /**
-     * (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * (string) - The type of Databricks identity that backs the role, if any. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      */
     identityType?: string;
     /**
-     * (list of string) - An enum value for a standard role that this role is a member of
+     * (list of string) - The standard roles that the role is currently a member of
      */
     membershipRoles?: string[];
     /**
@@ -29438,15 +36244,15 @@ export interface GetPostgresRoleStatus {
 
 export interface GetPostgresRoleStatusAttributes {
     /**
-     * (boolean)
+     * (boolean) - Whether the role bypasses every row-level security policy (the Postgres BYPASSRLS attribute)
      */
     bypassrls?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Whether the role can create databases (the Postgres CREATEDB attribute)
      */
     createdb?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Whether the role can create, alter and drop other roles (the Postgres CREATEROLE attribute)
      */
     createrole?: boolean;
 }
@@ -29460,7 +36266,7 @@ export interface GetPostgresRolesProviderConfig {
 
 export interface GetPostgresRolesRole {
     /**
-     * (string)
+     * (string) - A timestamp indicating when the role was created
      */
     createTime: string;
     /**
@@ -29482,7 +36288,7 @@ export interface GetPostgresRolesRole {
      */
     roleId: string;
     /**
-     * (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes
+     * (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes.
      */
     spec: outputs.GetPostgresRolesRoleSpec;
     /**
@@ -29490,7 +36296,7 @@ export interface GetPostgresRolesRole {
      */
     status: outputs.GetPostgresRolesRoleStatus;
     /**
-     * (string)
+     * (string) - A timestamp indicating when the role was last updated
      */
     updateTime: string;
 }
@@ -29504,57 +36310,57 @@ export interface GetPostgresRolesRoleProviderConfig {
 
 export interface GetPostgresRolesRoleSpec {
     /**
-     * (RoleAttributes) - The PG role attributes associated with the role
+     * (RoleAttributes) - The Postgres role attributes currently granted to the role
      */
     attributes?: outputs.GetPostgresRolesRoleSpecAttributes;
     /**
-     * (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+     * (string) - How the role authenticates when it connects to Postgres. Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
      */
-    authMethod?: string;
+    authMethod: string;
     /**
-     * (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * (string) - The type of Databricks identity that backs the role, if any. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      */
-    identityType?: string;
+    identityType: string;
     /**
-     * (list of string) - An enum value for a standard role that this role is a member of
+     * (list of string) - The standard roles that the role is currently a member of
      */
     membershipRoles?: string[];
     /**
      * (string) - The name of the Postgres role
      */
-    postgresRole?: string;
+    postgresRole: string;
 }
 
 export interface GetPostgresRolesRoleSpecAttributes {
     /**
-     * (boolean)
+     * (boolean) - Whether the role bypasses every row-level security policy (the Postgres BYPASSRLS attribute)
      */
     bypassrls?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Whether the role can create databases (the Postgres CREATEDB attribute)
      */
     createdb?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Whether the role can create, alter and drop other roles (the Postgres CREATEROLE attribute)
      */
     createrole?: boolean;
 }
 
 export interface GetPostgresRolesRoleStatus {
     /**
-     * (RoleAttributes) - The PG role attributes associated with the role
+     * (RoleAttributes) - The Postgres role attributes currently granted to the role
      */
     attributes?: outputs.GetPostgresRolesRoleStatusAttributes;
     /**
-     * (string) - Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
+     * (string) - How the role authenticates when it connects to Postgres. Possible values are: `LAKEBASE_OAUTH_V1`, `NO_LOGIN`, `PG_PASSWORD_SCRAM_SHA_256`
      */
     authMethod?: string;
     /**
-     * (string) - The type of the role. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * (string) - The type of Databricks identity that backs the role, if any. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      */
     identityType?: string;
     /**
-     * (list of string) - An enum value for a standard role that this role is a member of
+     * (list of string) - The standard roles that the role is currently a member of
      */
     membershipRoles?: string[];
     /**
@@ -29569,15 +36375,15 @@ export interface GetPostgresRolesRoleStatus {
 
 export interface GetPostgresRolesRoleStatusAttributes {
     /**
-     * (boolean)
+     * (boolean) - Whether the role bypasses every row-level security policy (the Postgres BYPASSRLS attribute)
      */
     bypassrls?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Whether the role can create databases (the Postgres CREATEDB attribute)
      */
     createdb?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Whether the role can create, alter and drop other roles (the Postgres CREATEROLE attribute)
      */
     createrole?: boolean;
 }
@@ -29656,7 +36462,7 @@ export interface GetPostgresSyncedTableSpec {
      */
     acceleratedSync?: boolean;
     /**
-     * (string) - The full resource name the branch associated with the table.
+     * (string) - The full resource name of the branch that contains the synced table.
      */
     branch?: string;
     /**
@@ -29666,7 +36472,8 @@ export interface GetPostgresSyncedTableSpec {
      */
     createDatabaseObjectsIfMissing?: boolean;
     /**
-     * (string) - ID of an existing pipeline to bin-pack this synced table into.
+     * (string) - ID of an existing pipeline to bin-pack this synced table into. The pipeline must be a synced
+     * table pipeline that runs continuously if and only if schedulingPolicy is CONTINUOUS.
      * At most one of existingPipelineId and newPipelineSpec should be defined.
      */
     existingPipelineId?: string;
@@ -29680,15 +36487,19 @@ export interface GetPostgresSyncedTableSpec {
      */
     newPipelineSpec?: outputs.GetPostgresSyncedTableSpecNewPipelineSpec;
     /**
-     * (string) - The Postgres database name where the synced table will be created in.
+     * (string) - The name of the Postgres database where the synced table is created. A value must be specified
+     * on creation. If the synced table is created inside a Lakebase catalog, the value must match the
+     * Postgres database of that catalog
      */
     postgresDatabase?: string;
     /**
-     * (list of string) - Primary Key columns to be used for data insert/update in the destination
+     * (list of string) - Primary Key columns to be used for data insert/update in the destination. At least one column
+     * must be specified
      */
     primaryKeyColumns?: string[];
     /**
-     * (string) - Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+     * (string) - Scheduling policy of the underlying pipeline. A value must be specified on creation. See
+     * https://docs.databricks.com/aws/en/oltp/projects/sync-tables for how to choose a sync mode. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
      */
     schedulingPolicy?: string;
     /**
@@ -29788,7 +36599,8 @@ export interface GetPostgresSyncedTableStatus {
      */
     message: string;
     /**
-     * (SyncedTablePipelineProgress)
+     * (SyncedTablePipelineProgress) - Progress of the sync that is currently running, either the initial data load or an update of a
+     * triggered or snapshot synced table
      */
     ongoingSyncProgress: outputs.GetPostgresSyncedTableStatusOngoingSyncProgress;
     /**
@@ -29811,7 +36623,7 @@ export interface GetPostgresSyncedTableStatus {
 
 export interface GetPostgresSyncedTableStatusLastSync {
     /**
-     * (DeltaTableSyncInfo)
+     * (DeltaTableSyncInfo) - The source Delta table version that the last successful sync read
      */
     deltaTableSyncInfo: outputs.GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfo;
     /**
@@ -30476,7 +37288,7 @@ export interface GetRfaAccessRequestDestinationsDestination {
 
 export interface GetRfaAccessRequestDestinationsDestinationSourceSecurable {
     /**
-     * The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     * The full name of the securable, repeated from **securable**
      */
     fullName?: string;
     /**
@@ -30500,7 +37312,7 @@ export interface GetRfaAccessRequestDestinationsProviderConfig {
 
 export interface GetRfaAccessRequestDestinationsSecurable {
     /**
-     * The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     * The full name of the securable, repeated from **securable**
      */
     fullName?: string;
     /**
@@ -30532,34 +37344,37 @@ export interface GetSandboxProviderConfig {
 
 export interface GetSandboxSpec {
     /**
-     * (ComputeSpec) - Compute configuration (size, inactivity timeout) requested for the sandbox
+     * (ComputeSpec) - Compute settings requested for the sandbox, such as the inactivity timeout
      */
     compute?: outputs.GetSandboxSpecCompute;
     /**
-     * (EnvironmentSpec) - The execution environment to use for the sandbox
+     * (EnvironmentSpec) - Software environment for the sandbox, such as the container image it runs
      */
     environment?: outputs.GetSandboxSpecEnvironment;
 }
 
 export interface GetSandboxSpecCompute {
     /**
-     * (string) - Idle duration after which the sandbox is automatically terminated
+     * (string) - Idle time after which the sandbox is automatically stopped. Unset or 0 disables inactivity
+     * auto-stop. Negative values are rejected. Can be changed on an existing sandbox with
+     * UpdateSandbox
      */
     inactivityTimeout?: string;
 }
 
 export interface GetSandboxSpecEnvironment {
     /**
-     * (string) - The Unity Catalog container image to use for the sandbox environment
-     * (for example, `catalog.schema.folder.image:tag`). See
-     * [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
+     * (string) - The Unity Catalog container image to run the sandbox from, in the form
+     * `catalog.schema.artifact:tag`, or `catalog.schema.artifact@sha256:<digest>` to pin an
+     * exact version. When omitted, the sandbox runs the default sandbox image. See
+     * [custom images](https://docs.databricks.com/en/compute/serverless/sandbox-custom-image)
      */
     imageUri?: string;
 }
 
 export interface GetSandboxStatus {
     /**
-     * (string) - Lifecycle state of the sandbox. Possible values are: `SANDBOX_STATE_PENDING`, `SANDBOX_STATE_RUNNING`, `SANDBOX_STATE_STOPPED`, `SANDBOX_STATE_STOPPING`
+     * (string) - Lifecycle state of the sandbox.
      */
     state: string;
 }
@@ -30581,7 +37396,7 @@ export interface GetSandboxesSandbox {
      */
     displayName: string;
     /**
-     * (SandboxMetadata) - Metadata associated with the sandbox
+     * (SandboxMetadata) - Tags and other metadata associated with the sandbox
      */
     metadata: outputs.GetSandboxesSandboxMetadata;
     /**
@@ -30624,34 +37439,37 @@ export interface GetSandboxesSandboxProviderConfig {
 
 export interface GetSandboxesSandboxSpec {
     /**
-     * (ComputeSpec) - Compute configuration (size, inactivity timeout) requested for the sandbox
+     * (ComputeSpec) - Compute settings requested for the sandbox, such as the inactivity timeout
      */
     compute?: outputs.GetSandboxesSandboxSpecCompute;
     /**
-     * (EnvironmentSpec) - The execution environment to use for the sandbox
+     * (EnvironmentSpec) - Software environment for the sandbox, such as the container image it runs
      */
     environment?: outputs.GetSandboxesSandboxSpecEnvironment;
 }
 
 export interface GetSandboxesSandboxSpecCompute {
     /**
-     * (string) - Idle duration after which the sandbox is automatically terminated
+     * (string) - Idle time after which the sandbox is automatically stopped. Unset or 0 disables inactivity
+     * auto-stop. Negative values are rejected. Can be changed on an existing sandbox with
+     * UpdateSandbox
      */
     inactivityTimeout?: string;
 }
 
 export interface GetSandboxesSandboxSpecEnvironment {
     /**
-     * (string) - The Unity Catalog container image to use for the sandbox environment
-     * (for example, `catalog.schema.folder.image:tag`). See
-     * [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
+     * (string) - The Unity Catalog container image to run the sandbox from, in the form
+     * `catalog.schema.artifact:tag`, or `catalog.schema.artifact@sha256:<digest>` to pin an
+     * exact version. When omitted, the sandbox runs the default sandbox image. See
+     * [custom images](https://docs.databricks.com/en/compute/serverless/sandbox-custom-image)
      */
     imageUri?: string;
 }
 
 export interface GetSandboxesSandboxStatus {
     /**
-     * (string) - Lifecycle state of the sandbox. Possible values are: `SANDBOX_STATE_PENDING`, `SANDBOX_STATE_RUNNING`, `SANDBOX_STATE_STOPPED`, `SANDBOX_STATE_STOPPING`
+     * (string) - Lifecycle state of the sandbox.
      */
     state: string;
 }
@@ -32014,11 +38832,11 @@ export interface GetTagPoliciesTagPolicy {
      */
     createTime: string;
     /**
-     * (string)
+     * (string) - A description of the governed tag, such as its purpose or the meaning of its values
      */
     description: string;
     /**
-     * (string)
+     * (string) - The unique identifier of the tag policy, generated when the policy is created
      */
     id: string;
     /**
@@ -32026,7 +38844,7 @@ export interface GetTagPoliciesTagPolicy {
      */
     providerConfig?: outputs.GetTagPoliciesTagPolicyProviderConfig;
     /**
-     * (string)
+     * (string) - The tag key that this policy governs. Tag keys are case-sensitive
      */
     tagKey: string;
     /**
@@ -32034,7 +38852,8 @@ export interface GetTagPoliciesTagPolicy {
      */
     updateTime: string;
     /**
-     * (list of Value)
+     * (list of Value) - The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+     * value must be unique. A policy without values defines a key-only governed tag
      */
     values: outputs.GetTagPoliciesTagPolicyValue[];
 }
@@ -32048,7 +38867,7 @@ export interface GetTagPoliciesTagPolicyProviderConfig {
 
 export interface GetTagPoliciesTagPolicyValue {
     /**
-     * (string)
+     * (string) - The value that can be assigned to the tag key. Values are case-sensitive
      */
     name: string;
 }
@@ -32062,7 +38881,7 @@ export interface GetTagPolicyProviderConfig {
 
 export interface GetTagPolicyValue {
     /**
-     * (string)
+     * (string) - The value that can be assigned to the tag key. Values are case-sensitive
      */
     name: string;
 }
@@ -32339,7 +39158,7 @@ export interface GetWorkspaceEntityTagAssignmentsTagAssignment {
      */
     tagKey: string;
     /**
-     * (string) - The value of the tag
+     * (string) - The value of the tag. If the value is omitted, the tag is assigned with its key only
      */
     tagValue: string;
 }
@@ -32360,38 +39179,37 @@ export interface GetWorkspaceIamDirectGroupMemberV2ProviderConfig {
 
 export interface GetWorkspaceIamDirectGroupMembersV2DirectGroupMember {
     /**
-     * (string) - Display name of the principal
+     * (string) - The member's display name
      */
     displayName: string;
     /**
-     * (string) - The external ID of the principal in the customer's IdP
+     * (string) - The ID of the member in your identity provider (IdP)
      */
     externalId: string;
     /**
-     * (integer) - The internal ID of the group this member belongs to
+     * (integer) - The Databricks ID of the group
      */
     groupId: number;
     /**
-     * (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+     * (string) - Where the membership comes from. Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
      */
     membershipSource: string;
     /**
-     * (string) - The resource name of the group membership. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-     * - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+     * (string) - The resource name of the membership, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+     * - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
      */
     name: string;
     /**
-     * The parent resource name of the group whose direct members to list.
-     * Format: groups/{group_id}
+     * The resource name of the group, in the format `groups/{group_id}`
      */
     parent: string;
     /**
-     * (integer) - Internal ID of the principal in Databricks
+     * (integer) - The Databricks ID of the member
      */
     principalId: number;
     /**
-     * (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * (string) - Whether the member is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      */
     principalType: string;
     /**
@@ -32430,11 +39248,11 @@ export interface GetWorkspaceIamExternalServicePrincipalV2ProviderConfig {
 
 export interface GetWorkspaceIamExternalUserV2FullName {
     /**
-     * (string) - The family (last) name of the user, from the customer's IdP
+     * (string) - The user's family (last) name
      */
     familyName: string;
     /**
-     * (string) - The given (first) name of the user, from the customer's IdP
+     * (string) - The user's given (first) name
      */
     givenName: string;
 }
@@ -32455,30 +39273,33 @@ export interface GetWorkspaceIamGroupV2ProviderConfig {
 
 export interface GetWorkspaceIamGroupsV2Group {
     /**
-     * (string) - The parent account ID for group in Databricks
+     * (string) - The ID of the account that contains the group
      */
     accountId: string;
     /**
-     * (string) - ExternalId of the group in the customer's IdP
+     * (string) - The ID of the group in your identity provider (IdP)
      */
     externalId: string;
     /**
-     * (string) - Internal group ID of the group in Databricks
+     * (string) - The Databricks ID of the group. It is a numeric string that Databricks assigns when the group
+     * is created, and it is the `{group_id}` segment of `name`
      */
     groupId: string;
     /**
-     * (string) - Display name of the group
+     * (string) - The display name of the group. It must be unique in the account, must not be blank, and must be
+     * shorter than 255 characters. Databricks trims surrounding whitespace. You can't use the name of a
+     * group that Databricks manages, such as `admins` or `users`
      */
     groupName: string;
     /**
-     * (string) - The resource name of the group. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * (string) - The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      */
     name: string;
     /**
-     * The resource name of the account to list groups in, `accounts/{account_id}`. Optional:
-     * defaults to the account of the calling workspace, and any other account is rejected
+     * The resource name of the account to list groups in, in the format `accounts/{account_id}`.
+     * Defaults to the account that contains this workspace. Any other account is rejected
      */
     parent: string;
     /**
@@ -32517,35 +39338,37 @@ export interface GetWorkspaceIamServicePrincipalsV2ProviderConfig {
 
 export interface GetWorkspaceIamServicePrincipalsV2ServicePrincipal {
     /**
-     * (string) - The parent account ID for the service principal in Databricks
+     * (string) - The ID of the account that contains the service principal
      */
     accountId: string;
     /**
-     * (string) - The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * (string) - Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
      */
     accountSpStatus: string;
     /**
-     * (string) - Application ID of the service principal. Set at creation time and cannot be changed
-     * afterwards; when omitted, the server generates one
+     * (string) - The service principal's application ID, a UUID. If you don't set it when you create the
+     * service principal, Databricks generates one. It must be unique in the account and can't be
+     * changed
      */
     applicationId: string;
     /**
-     * (string) - Display name of the service principal
+     * (string) - The service principal's display name
      */
     displayName: string;
     /**
-     * (string) - ExternalId of the service principal in the customer's IdP
+     * (string) - The ID of the service principal in your identity provider (IdP)
      */
     externalId: string;
     /**
-     * (string) - The resource name of the service principal. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-     * - Workspace-scoped: service-principals/{service_principal_id}
+     * (string) - The resource name of the service principal, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+     * - Workspace APIs: `service-principals/{service_principal_id}`
      */
     name: string;
     /**
-     * The resource name of the account to list service principals in, `accounts/{account_id}`. Optional:
-     * defaults to the account of the calling workspace, and any other account is rejected
+     * The resource name of the account to list service principals in, in the format
+     * `accounts/{account_id}`. Defaults to the account that contains this workspace. Any other
+     * account is rejected
      */
     parent: string;
     /**
@@ -32553,7 +39376,7 @@ export interface GetWorkspaceIamServicePrincipalsV2ServicePrincipal {
      */
     providerConfig?: outputs.GetWorkspaceIamServicePrincipalsV2ServicePrincipalProviderConfig;
     /**
-     * (string) - Internal service principal ID of the service principal in Databricks
+     * (string) - The Databricks ID of the service principal
      */
     servicePrincipalId: string;
 }
@@ -32567,11 +39390,11 @@ export interface GetWorkspaceIamServicePrincipalsV2ServicePrincipalProviderConfi
 
 export interface GetWorkspaceIamUserV2FullName {
     /**
-     * (string)
+     * (string) - The user's family (last) name
      */
     familyName?: string;
     /**
-     * (string)
+     * (string) - The user's given (first) name
      */
     givenName?: string;
 }
@@ -32592,30 +39415,31 @@ export interface GetWorkspaceIamUsersV2ProviderConfig {
 
 export interface GetWorkspaceIamUsersV2User {
     /**
-     * (string) - The accountId parent of the user in Databricks
+     * (string) - The ID of the account that contains the user
      */
     accountId: string;
     /**
-     * (string) - The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * (string) - Whether the user is active in the account. New users are active unless you set this to
+     * `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      */
     accountUserStatus: string;
     /**
-     * (string) - ExternalId of the user in the customer's IdP
+     * (string) - The ID of the user in your identity provider (IdP)
      */
     externalId: string;
     /**
-     * (UserFullName)
+     * (UserFullName) - The user's name
      */
     fullName: outputs.GetWorkspaceIamUsersV2UserFullName;
     /**
-     * (string) - The resource name of the user. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/users/{user_id}
-     * - Workspace-scoped: users/{user_id}
+     * (string) - The resource name of the user, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/users/{user_id}`
+     * - Workspace APIs: `users/{user_id}`
      */
     name: string;
     /**
-     * The resource name of the account to list users in, `accounts/{account_id}`. Optional:
-     * defaults to the account of the calling workspace, and any other account is rejected
+     * The resource name of the account to list users in, in the format `accounts/{account_id}`.
+     * Defaults to the account that contains this workspace. Any other account is rejected
      */
     parent: string;
     /**
@@ -32623,22 +39447,23 @@ export interface GetWorkspaceIamUsersV2User {
      */
     providerConfig?: outputs.GetWorkspaceIamUsersV2UserProviderConfig;
     /**
-     * (string) - Internal userId of the user in Databricks
+     * (string) - The Databricks ID of the user
      */
     userId: string;
     /**
-     * (string) - Username/email of the user
+     * (string) - The user's username, which is their email address. It can't be changed after the user is
+     * created
      */
     username: string;
 }
 
 export interface GetWorkspaceIamUsersV2UserFullName {
     /**
-     * (string)
+     * (string) - The user's family (last) name
      */
     familyName?: string;
     /**
-     * (string)
+     * (string) - The user's given (first) name
      */
     givenName?: string;
 }
@@ -32652,55 +39477,54 @@ export interface GetWorkspaceIamUsersV2UserProviderConfig {
 
 export interface GetWorkspaceIamWorkspaceAssignmentV2ProviderConfig {
     /**
-     * (integer) - The workspace ID where the principal is assigned
+     * (integer) - The ID of the workspace
      */
     workspaceId: string;
 }
 
 export interface GetWorkspaceIamWorkspaceAssignmentsV2ProviderConfig {
     /**
-     * (integer) - The workspace ID where the principal is assigned
+     * (integer) - The ID of the workspace
      */
     workspaceId: string;
 }
 
 export interface GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignment {
     /**
-     * (string) - The account ID parent of the workspace where the principal is assigned
+     * (string) - The ID of the account that contains the workspace
      */
     accountId: string;
     /**
-     * (list of string) - Every entitlement the principal holds in this workspace, whether granted directly or through
-     * group membership. Get responses populate this field. List responses leave it empty
+     * (list of string) - Every entitlement the principal has in the workspace, granted directly or through a group. List
+     * responses leave it empty
      */
     effectiveEntitlements: string[];
     /**
-     * (list of string) - Entitlements granted directly to the principal on this workspace. This is the only
-     * client-settable field. Create and update manage exactly this set, including entitlements the
-     * principal also holds through a group.
-     * List responses leave this field empty. Get a single principal to read its entitlements
+     * (list of string) - The entitlements granted directly by this assignment. Create and update set exactly this list,
+     * even if the principal also gets some of these entitlements through a group. List responses
+     * leave it empty
      */
     entitlements: string[];
     /**
-     * (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
-     * - Workspace-scoped: workspace-assignments/{principal_id}
+     * (string) - The resource name of the assignment, in one of these formats:
+     * - Account APIs:
+     *   `accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}`
+     * - Workspace APIs: `workspace-assignments/{principal_id}`
      */
     name: string;
     /**
-     * The resource name of the workspace to list assignments of,
-     * `accounts/{account_id}/workspaces/{workspace_id}`. Optional: defaults to the calling workspace,
-     * and any other workspace is rejected
+     * The resource name of the workspace, in the format
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Defaults to this workspace. Any other
+     * workspace is rejected
      */
     parent: string;
     /**
-     * (integer) - The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
-     * created and cannot be changed afterwards; to assign a different principal, create a new
-     * assignment
+     * (integer) - The Databricks ID of the assigned user, service principal, or group. It can't be changed after
+     * the assignment is created
      */
     principalId: number;
     /**
-     * (string) - The type of the principal (user/service principal/group) that is assigned. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * (string) - Whether the assigned principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      */
     principalType: string;
     /**
@@ -32708,14 +39532,14 @@ export interface GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignment {
      */
     providerConfig?: outputs.GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignmentProviderConfig;
     /**
-     * (integer) - The workspace ID where the principal is assigned
+     * (integer) - The ID of the workspace
      */
     workspaceId: number;
 }
 
 export interface GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignmentProviderConfig {
     /**
-     * (integer) - The workspace ID where the principal is assigned
+     * (integer) - The ID of the workspace
      */
     workspaceId: string;
 }
@@ -32729,44 +39553,56 @@ export interface GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfig {
 
 export interface GetWorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy {
     /**
-     * (string) - Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * (string) - Where AI/BI dashboards can be embedded: in any domain (ALLOW_ALL_DOMAINS), only in the approved
+     * domains configured for the workspace (ALLOW_APPROVED_DOMAINS), or nowhere (DENY_ALL_DOMAINS).
+     * Defaults to ALLOW_APPROVED_DOMAINS. Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      */
     accessPolicyType: string;
 }
 
 export interface GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains {
     /**
-     * (list of string)
+     * (list of string) - Domains allowed to host embedded AI/BI dashboards. A leading wildcard allows every subdomain of a
+     * domain. The list applies, and can only be changed, while the embedding access policy is
+     * ALLOW_APPROVED_DOMAINS
      */
     approvedDomains?: string[];
 }
 
 export interface GetWorkspaceSettingV2AllowedAppsUserApiScopes {
     /**
-     * (list of string)
+     * (list of string) - OAuth scopes that app developers can request when an app acts on behalf of a user. A list with
+     * the single entry * allows every supported scope and cannot be combined with other scopes. An
+     * empty list disables user authorization for apps
      */
     allowedScopes?: string[];
 }
 
 export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspace {
     /**
-     * (boolean)
+     * (boolean) - Whether the workspace can change the enabled state. Databricks computes this value: it is false
+     * when the compliance security profile forces the feature on or when the workspace lacks the
+     * Enhanced Security and Compliance entitlement. A value sent in an update request has no effect
      */
     canToggle?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Whether automatic cluster update is enabled for the workspace. The effective value is always
+     * true while the compliance security profile is enabled on the workspace
      */
     enabled?: boolean;
     /**
-     * (ClusterAutoRestartMessageEnablementDetails)
+     * (ClusterAutoRestartMessageEnablementDetails) - Why the feature is forced on or unavailable. Databricks sets these details for information only;
+     * they do not determine whether the feature is enabled
      */
     enablementDetails?: outputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails;
     /**
-     * (ClusterAutoRestartMessageMaintenanceWindow)
+     * (ClusterAutoRestartMessageMaintenanceWindow) - When the maintenance window runs. When unset, it defaults to the first Sunday of every month at
+     * 01:00 UTC
      */
     maintenanceWindow?: outputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow;
     /**
-     * (boolean)
+     * (boolean) - Whether compute resources restart during every maintenance window even when no update is
+     * available. When false, they restart only when an update is available
      */
     restartEvenIfNoUpdatesAvailable?: boolean;
 }
@@ -32777,7 +39613,8 @@ export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementD
      */
     forcedForComplianceMode?: boolean;
     /**
-     * (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     * (boolean) - The feature is unavailable because the workspace does not have the Enhanced Security and
+     * Compliance entitlement
      */
     unavailableForDisabledEntitlement?: boolean;
     /**
@@ -32788,33 +39625,34 @@ export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementD
 
 export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow {
     /**
-     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule) - Schedule anchored to a day of the week, either every week or on given weeks of the month
      */
     weekDayBasedSchedule?: outputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
 }
 
 export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * (string) - Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * (string) - Day of the week on which the maintenance window starts. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
     dayOfWeek?: string;
     /**
-     * (string) - Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * (string) - How often the maintenance window occurs: every week, or only on the listed occurrences of
+     * the day of the week within each month. Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
     frequency?: string;
     /**
-     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
+     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime) - Time of day, in UTC, at which the maintenance window starts
      */
     windowStartTime?: outputs.GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
 }
 
 export interface GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
     /**
-     * (integer)
+     * (integer) - Hour of the day on a 24-hour clock
      */
     hours?: number;
     /**
-     * (integer)
+     * (integer) - Minute of the hour
      */
     minutes?: number;
 }
@@ -32835,44 +39673,56 @@ export interface GetWorkspaceSettingV2CollaborationPlatformConnectivity {
 
 export interface GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
     /**
-     * (string) - Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * (string) - Where AI/BI dashboards can be embedded: in any domain (ALLOW_ALL_DOMAINS), only in the approved
+     * domains configured for the workspace (ALLOW_APPROVED_DOMAINS), or nowhere (DENY_ALL_DOMAINS).
+     * Defaults to ALLOW_APPROVED_DOMAINS. Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      */
     accessPolicyType: string;
 }
 
 export interface GetWorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains {
     /**
-     * (list of string)
+     * (list of string) - Domains allowed to host embedded AI/BI dashboards. A leading wildcard allows every subdomain of a
+     * domain. The list applies, and can only be changed, while the embedding access policy is
+     * ALLOW_APPROVED_DOMAINS
      */
     approvedDomains?: string[];
 }
 
 export interface GetWorkspaceSettingV2EffectiveAllowedAppsUserApiScopes {
     /**
-     * (list of string)
+     * (list of string) - OAuth scopes that app developers can request when an app acts on behalf of a user. A list with
+     * the single entry * allows every supported scope and cannot be combined with other scopes. An
+     * empty list disables user authorization for apps
      */
     allowedScopes?: string[];
 }
 
 export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace {
     /**
-     * (boolean)
+     * (boolean) - Whether the workspace can change the enabled state. Databricks computes this value: it is false
+     * when the compliance security profile forces the feature on or when the workspace lacks the
+     * Enhanced Security and Compliance entitlement. A value sent in an update request has no effect
      */
     canToggle?: boolean;
     /**
-     * (boolean)
+     * (boolean) - Whether automatic cluster update is enabled for the workspace. The effective value is always
+     * true while the compliance security profile is enabled on the workspace
      */
     enabled?: boolean;
     /**
-     * (ClusterAutoRestartMessageEnablementDetails)
+     * (ClusterAutoRestartMessageEnablementDetails) - Why the feature is forced on or unavailable. Databricks sets these details for information only;
+     * they do not determine whether the feature is enabled
      */
     enablementDetails?: outputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails;
     /**
-     * (ClusterAutoRestartMessageMaintenanceWindow)
+     * (ClusterAutoRestartMessageMaintenanceWindow) - When the maintenance window runs. When unset, it defaults to the first Sunday of every month at
+     * 01:00 UTC
      */
     maintenanceWindow?: outputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow;
     /**
-     * (boolean)
+     * (boolean) - Whether compute resources restart during every maintenance window even when no update is
+     * available. When false, they restart only when an update is available
      */
     restartEvenIfNoUpdatesAvailable?: boolean;
 }
@@ -32883,7 +39733,8 @@ export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEn
      */
     forcedForComplianceMode?: boolean;
     /**
-     * (boolean) - The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     * (boolean) - The feature is unavailable because the workspace does not have the Enhanced Security and
+     * Compliance entitlement
      */
     unavailableForDisabledEntitlement?: boolean;
     /**
@@ -32894,33 +39745,34 @@ export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEn
 
 export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow {
     /**
-     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+     * (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule) - Schedule anchored to a day of the week, either every week or on given weeks of the month
      */
     weekDayBasedSchedule?: outputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
 }
 
 export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * (string) - Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * (string) - Day of the week on which the maintenance window starts. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
     dayOfWeek?: string;
     /**
-     * (string) - Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * (string) - How often the maintenance window occurs: every week, or only on the listed occurrences of
+     * the day of the week within each month. Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
     frequency?: string;
     /**
-     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime)
+     * (ClusterAutoRestartMessageMaintenanceWindowWindowStartTime) - Time of day, in UTC, at which the maintenance window starts
      */
     windowStartTime?: outputs.GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
 }
 
 export interface GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
     /**
-     * (integer)
+     * (integer) - Hour of the day on a 24-hour clock
      */
     hours?: number;
     /**
-     * (integer)
+     * (integer) - Minute of the hour
      */
     minutes?: number;
 }
@@ -32948,7 +39800,9 @@ export interface GetWorkspaceSettingV2EffectiveIntegerVal {
 
 export interface GetWorkspaceSettingV2EffectiveOperationalEmailCustomRecipient {
     /**
-     * (string)
+     * (string) - Email address that receives this workspace's operational emails in addition to the workspace
+     * admins. Use a distribution list address to reach several people. An empty string clears the
+     * additional recipient
      */
     email?: string;
 }
@@ -32967,7 +39821,13 @@ export interface GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins {
      */
     disableGovTagCreation?: boolean;
     /**
-     * (string) - Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     * (string) - Controls what workspace admins can do with service principal tokens and job identities. With
+     * ALLOW_ALL, workspace admins can create personal access tokens on behalf of any service principal
+     * in the workspace, change a job owner to any workspace user, and set a job's runAs identity to
+     * any workspace user or to a service principal they have the Service Principal User role on. With
+     * RESTRICT_TOKENS_AND_JOB_RUN_AS, they can only create tokens for service principals they have the
+     * Service Principal User role on, change a job owner to themselves, and set runAs to themselves
+     * or to a service principal they have that role on. Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
     status: string;
 }
@@ -32979,13 +39839,753 @@ export interface GetWorkspaceSettingV2EffectiveStringVal {
     value?: string;
 }
 
-export interface GetWorkspaceSettingV2EffectiveWorkspaceLabel {
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardTheme {
     /**
-     * (string)
+     * (DashboardThemeDashboardThemeColor) - Color of the zero-value grid line, making it visually distinct from other grid lines
+     */
+    axisLineColor?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeAxisLineColor;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The background color of the dashboard canvas
+     */
+    canvasBackgroundColor?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeCanvasBackgroundColor;
+    /**
+     * (DashboardThemeContinuousGradient) - The continuous gradient configuration for the dashboard
+     */
+    continuousGradient?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradient;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The font color applied to text in this category
+     */
+    fontColor?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontColor;
+    /**
+     * (string) - The font family name used for text in this category
+     */
+    fontFamily?: string;
+    /**
+     * (DashboardThemeFontSettings) - The per-category typography overrides for the dashboard
+     */
+    fontSettings?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettings;
+    /**
+     * (DashboardThemeDashboardThemeColor) - Color of chart grid lines in visualizations (horizontal and vertical guide lines)
+     */
+    gridLineColor?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeGridLineColor;
+    /**
+     * (integer) - The corner radius in pixels for rectangular marks in visualizations (bars, columns, histogram bins, etc.)
+     */
+    markCornerRadius?: number;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The highlight color for selected elements in widgets
+     */
+    selectionColor?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeSelectionColor;
+    /**
+     * (DashboardThemeSentimentColors) - The sentiment color palette for the dashboard
+     */
+    sentimentColors?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeSentimentColors;
+    /**
+     * (string) - The default vertical alignment for all text box widgets in the dashboard.
+     * Individual text box widgets can override this. Possible values are: `VERTICAL_ALIGN_BOTTOM`, `VERTICAL_ALIGN_CENTER`, `VERTICAL_ALIGN_TOP`
+     */
+    textBoxVerticalAlign?: string;
+    /**
+     * (string) - Color palette for visualizations. Colors are applied in order (visualization_color_01, visualization_color_02, etc.).
+     * Invalid color values are preserved but ignored during rendering
+     */
+    visualizationColor01?: string;
+    /**
+     * (string) - The color at position 2 in the visualization color palette
+     */
+    visualizationColor02?: string;
+    /**
+     * (string) - The color at position 3 in the visualization color palette
+     */
+    visualizationColor03?: string;
+    /**
+     * (string) - The color at position 4 in the visualization color palette
+     */
+    visualizationColor04?: string;
+    /**
+     * (string) - The color at position 5 in the visualization color palette
+     */
+    visualizationColor05?: string;
+    /**
+     * (string) - The color at position 6 in the visualization color palette
+     */
+    visualizationColor06?: string;
+    /**
+     * (string) - The color at position 7 in the visualization color palette
+     */
+    visualizationColor07?: string;
+    /**
+     * (string) - The color at position 8 in the visualization color palette
+     */
+    visualizationColor08?: string;
+    /**
+     * (string) - The color at position 9 in the visualization color palette
+     */
+    visualizationColor09?: string;
+    /**
+     * (string) - The color at position 10 in the visualization color palette
+     */
+    visualizationColor10?: string;
+    /**
+     * (string) - The color at position 11 in the visualization color palette
+     */
+    visualizationColor11?: string;
+    /**
+     * (string) - The color at position 12 in the visualization color palette
+     */
+    visualizationColor12?: string;
+    /**
+     * (string) - The color at position 13 in the visualization color palette
+     */
+    visualizationColor13?: string;
+    /**
+     * (string) - The color at position 14 in the visualization color palette
+     */
+    visualizationColor14?: string;
+    /**
+     * (string) - The color at position 15 in the visualization color palette
+     */
+    visualizationColor15?: string;
+    /**
+     * (string) - The color at position 16 in the visualization color palette
+     */
+    visualizationColor16?: string;
+    /**
+     * (string) - The color at position 17 in the visualization color palette
+     */
+    visualizationColor17?: string;
+    /**
+     * (string) - The color at position 18 in the visualization color palette
+     */
+    visualizationColor18?: string;
+    /**
+     * (string) - The color at position 19 in the visualization color palette
+     */
+    visualizationColor19?: string;
+    /**
+     * (string) - The color at position 20 in the visualization color palette
+     */
+    visualizationColor20?: string;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The background color of widgets
+     */
+    widgetBackgroundColor?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeWidgetBackgroundColor;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The border color of widgets
+     */
+    widgetBorderColor?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeWidgetBorderColor;
+    /**
+     * (integer) - The widget border radius in pixels
+     */
+    widgetCornerRadius?: number;
+    /**
+     * (string) - Alignment setting for all widget titles and descriptions at the dashboard level. Possible values are: `CENTER`, `LEFT`, `RIGHT`
+     */
+    widgetHeaderAlignment?: string;
+    /**
+     * (integer) - The gap between widgets in pixels
+     */
+    widgetMargin?: number;
+    /**
+     * (integer) - The content padding inside each widget in pixels
+     */
+    widgetPadding?: number;
+    /**
+     * (integer) - The shadow intensity level applied to widgets (0 = no shadow, 100 = maximum).
+     * The actual CSS box-shadow is computed at render time from this value, factoring in
+     * background colors and color mode
+     */
+    widgetShadow?: number;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeAxisLineColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeCanvasBackgroundColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradient {
+    /**
+     * (DashboardThemeContinuousGradientGradientValue) - Gradient value used when the dashboard is rendered in dark mode
+     */
+    darkMode?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkMode;
+    /**
+     * (DashboardThemeContinuousGradientGradientValue) - Gradient value used when the dashboard is rendered in light mode
+     */
+    lightMode?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightMode;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkMode {
+    /**
+     * (string) - Color of the label badge. The supported colors are coral, lemon, lime, turquoise, indigo, purple
+     * and pink. It is an empty string when no label is set
      */
     color?: string;
     /**
-     * (string)
+     * (string) - A named color scheme (for example, 'blues', 'viridis', 'spectral')
+     */
+    colorScheme?: string;
+    /**
+     * (DashboardThemeContinuousGradientCustomDivergingRamp) - A custom three-stop diverging gradient
+     */
+    customDiverging?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDiverging;
+    /**
+     * (DashboardThemeContinuousGradientCustomSequentialRamp) - A custom two-stop sequential gradient
+     */
+    customSequential?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequential;
+    /**
+     * (integer) - A 0-based index into the visualization color palette, where 0 is visualization_color_01. Valid values are 0 to 19
+     */
+    fromCategoricalIndex?: number;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDiverging {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the end of the gradient (highest value)
+     */
+    end?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingEnd;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the midpoint of the gradient
+     */
+    mid?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingMid;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the start of the gradient (lowest value)
+     */
+    start?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingStart;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingEnd {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingMid {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingStart {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequential {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the end of the gradient (highest value)
+     */
+    end?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialEnd;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the start of the gradient (lowest value)
+     */
+    start?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialStart;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialEnd {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialStart {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightMode {
+    /**
+     * (string) - Color of the label badge. The supported colors are coral, lemon, lime, turquoise, indigo, purple
+     * and pink. It is an empty string when no label is set
+     */
+    color?: string;
+    /**
+     * (string) - A named color scheme (for example, 'blues', 'viridis', 'spectral')
+     */
+    colorScheme?: string;
+    /**
+     * (DashboardThemeContinuousGradientCustomDivergingRamp) - A custom three-stop diverging gradient
+     */
+    customDiverging?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDiverging;
+    /**
+     * (DashboardThemeContinuousGradientCustomSequentialRamp) - A custom two-stop sequential gradient
+     */
+    customSequential?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequential;
+    /**
+     * (integer) - A 0-based index into the visualization color palette, where 0 is visualization_color_01. Valid values are 0 to 19
+     */
+    fromCategoricalIndex?: number;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDiverging {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the end of the gradient (highest value)
+     */
+    end?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingEnd;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the midpoint of the gradient
+     */
+    mid?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingMid;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the start of the gradient (lowest value)
+     */
+    start?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingStart;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingEnd {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingMid {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingStart {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequential {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the end of the gradient (highest value)
+     */
+    end?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialEnd;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the start of the gradient (lowest value)
+     */
+    start?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialStart;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialEnd {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialStart {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettings {
+    /**
+     * (DashboardThemeFontConfig) - The default font config applied to all text unless overridden by a more specific category
+     */
+    base?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsBase;
+    /**
+     * (DashboardThemeFontConfig) - The font config applied to field titles (for example, axis titles, table heading titles)
+     */
+    fieldTitle?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldTitle;
+    /**
+     * (DashboardThemeFontConfig) - The font config applied to field values (for example, axis tick labels, table cell values, tooltip values)
+     */
+    fieldValue?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldValue;
+    /**
+     * (DashboardThemeFontConfig) - The font config applied to widget descriptions
+     */
+    widgetDescription?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetDescription;
+    /**
+     * (DashboardThemeFontConfig) - The font config applied to widget titles
+     */
+    widgetTitle?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetTitle;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsBase {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The font color applied to text in this category
+     */
+    fontColor?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsBaseFontColor;
+    /**
+     * (string) - The font family name used for text in this category
+     */
+    fontFamily?: string;
+    /**
+     * (integer) - The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * (string) - The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * (integer) - The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * (string) - The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * (string) - The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsBaseFontColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldTitle {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The font color applied to text in this category
+     */
+    fontColor?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldTitleFontColor;
+    /**
+     * (string) - The font family name used for text in this category
+     */
+    fontFamily?: string;
+    /**
+     * (integer) - The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * (string) - The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * (integer) - The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * (string) - The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * (string) - The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldTitleFontColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldValue {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The font color applied to text in this category
+     */
+    fontColor?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldValueFontColor;
+    /**
+     * (string) - The font family name used for text in this category
+     */
+    fontFamily?: string;
+    /**
+     * (integer) - The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * (string) - The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * (integer) - The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * (string) - The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * (string) - The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldValueFontColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetDescription {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The font color applied to text in this category
+     */
+    fontColor?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetDescriptionFontColor;
+    /**
+     * (string) - The font family name used for text in this category
+     */
+    fontFamily?: string;
+    /**
+     * (integer) - The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * (string) - The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * (integer) - The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * (string) - The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * (string) - The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetDescriptionFontColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetTitle {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The font color applied to text in this category
+     */
+    fontColor?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetTitleFontColor;
+    /**
+     * (string) - The font family name used for text in this category
+     */
+    fontFamily?: string;
+    /**
+     * (integer) - The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * (string) - The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * (integer) - The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * (string) - The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * (string) - The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetTitleFontColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeGridLineColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeSelectionColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeSentimentColors {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color applied to negative sentiment values
+     */
+    negative?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsNegative;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color applied to neutral sentiment values
+     */
+    neutral?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsNeutral;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color applied to positive sentiment values
+     */
+    positive?: outputs.GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsPositive;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsNegative {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsNeutral {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsPositive {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeWidgetBackgroundColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeWidgetBorderColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2EffectiveWorkspaceLabel {
+    /**
+     * (string) - Color of the label badge. The supported colors are coral, lemon, lime, turquoise, indigo, purple
+     * and pink. It is an empty string when no label is set
+     */
+    color?: string;
+    /**
+     * (string) - Text of the label shown next to the workspace name in the top navigation bar. An empty string
+     * means no label is set
      */
     label?: string;
 }
@@ -32999,7 +40599,9 @@ export interface GetWorkspaceSettingV2IntegerVal {
 
 export interface GetWorkspaceSettingV2OperationalEmailCustomRecipient {
     /**
-     * (string)
+     * (string) - Email address that receives this workspace's operational emails in addition to the workspace
+     * admins. Use a distribution list address to reach several people. An empty string clears the
+     * additional recipient
      */
     email?: string;
 }
@@ -33025,7 +40627,13 @@ export interface GetWorkspaceSettingV2RestrictWorkspaceAdmins {
      */
     disableGovTagCreation?: boolean;
     /**
-     * (string) - Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     * (string) - Controls what workspace admins can do with service principal tokens and job identities. With
+     * ALLOW_ALL, workspace admins can create personal access tokens on behalf of any service principal
+     * in the workspace, change a job owner to any workspace user, and set a job's runAs identity to
+     * any workspace user or to a service principal they have the Service Principal User role on. With
+     * RESTRICT_TOKENS_AND_JOB_RUN_AS, they can only create tokens for service principals they have the
+     * Service Principal User role on, change a job owner to themselves, and set runAs to themselves
+     * or to a service principal they have that role on. Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
     status: string;
 }
@@ -33037,13 +40645,753 @@ export interface GetWorkspaceSettingV2StringVal {
     value?: string;
 }
 
-export interface GetWorkspaceSettingV2WorkspaceLabel {
+export interface GetWorkspaceSettingV2WorkspaceDashboardTheme {
     /**
-     * (string)
+     * (DashboardThemeDashboardThemeColor) - Color of the zero-value grid line, making it visually distinct from other grid lines
+     */
+    axisLineColor?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeAxisLineColor;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The background color of the dashboard canvas
+     */
+    canvasBackgroundColor?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeCanvasBackgroundColor;
+    /**
+     * (DashboardThemeContinuousGradient) - The continuous gradient configuration for the dashboard
+     */
+    continuousGradient?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradient;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The font color applied to text in this category
+     */
+    fontColor?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeFontColor;
+    /**
+     * (string) - The font family name used for text in this category
+     */
+    fontFamily?: string;
+    /**
+     * (DashboardThemeFontSettings) - The per-category typography overrides for the dashboard
+     */
+    fontSettings?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeFontSettings;
+    /**
+     * (DashboardThemeDashboardThemeColor) - Color of chart grid lines in visualizations (horizontal and vertical guide lines)
+     */
+    gridLineColor?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeGridLineColor;
+    /**
+     * (integer) - The corner radius in pixels for rectangular marks in visualizations (bars, columns, histogram bins, etc.)
+     */
+    markCornerRadius?: number;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The highlight color for selected elements in widgets
+     */
+    selectionColor?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeSelectionColor;
+    /**
+     * (DashboardThemeSentimentColors) - The sentiment color palette for the dashboard
+     */
+    sentimentColors?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeSentimentColors;
+    /**
+     * (string) - The default vertical alignment for all text box widgets in the dashboard.
+     * Individual text box widgets can override this. Possible values are: `VERTICAL_ALIGN_BOTTOM`, `VERTICAL_ALIGN_CENTER`, `VERTICAL_ALIGN_TOP`
+     */
+    textBoxVerticalAlign?: string;
+    /**
+     * (string) - Color palette for visualizations. Colors are applied in order (visualization_color_01, visualization_color_02, etc.).
+     * Invalid color values are preserved but ignored during rendering
+     */
+    visualizationColor01?: string;
+    /**
+     * (string) - The color at position 2 in the visualization color palette
+     */
+    visualizationColor02?: string;
+    /**
+     * (string) - The color at position 3 in the visualization color palette
+     */
+    visualizationColor03?: string;
+    /**
+     * (string) - The color at position 4 in the visualization color palette
+     */
+    visualizationColor04?: string;
+    /**
+     * (string) - The color at position 5 in the visualization color palette
+     */
+    visualizationColor05?: string;
+    /**
+     * (string) - The color at position 6 in the visualization color palette
+     */
+    visualizationColor06?: string;
+    /**
+     * (string) - The color at position 7 in the visualization color palette
+     */
+    visualizationColor07?: string;
+    /**
+     * (string) - The color at position 8 in the visualization color palette
+     */
+    visualizationColor08?: string;
+    /**
+     * (string) - The color at position 9 in the visualization color palette
+     */
+    visualizationColor09?: string;
+    /**
+     * (string) - The color at position 10 in the visualization color palette
+     */
+    visualizationColor10?: string;
+    /**
+     * (string) - The color at position 11 in the visualization color palette
+     */
+    visualizationColor11?: string;
+    /**
+     * (string) - The color at position 12 in the visualization color palette
+     */
+    visualizationColor12?: string;
+    /**
+     * (string) - The color at position 13 in the visualization color palette
+     */
+    visualizationColor13?: string;
+    /**
+     * (string) - The color at position 14 in the visualization color palette
+     */
+    visualizationColor14?: string;
+    /**
+     * (string) - The color at position 15 in the visualization color palette
+     */
+    visualizationColor15?: string;
+    /**
+     * (string) - The color at position 16 in the visualization color palette
+     */
+    visualizationColor16?: string;
+    /**
+     * (string) - The color at position 17 in the visualization color palette
+     */
+    visualizationColor17?: string;
+    /**
+     * (string) - The color at position 18 in the visualization color palette
+     */
+    visualizationColor18?: string;
+    /**
+     * (string) - The color at position 19 in the visualization color palette
+     */
+    visualizationColor19?: string;
+    /**
+     * (string) - The color at position 20 in the visualization color palette
+     */
+    visualizationColor20?: string;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The background color of widgets
+     */
+    widgetBackgroundColor?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeWidgetBackgroundColor;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The border color of widgets
+     */
+    widgetBorderColor?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeWidgetBorderColor;
+    /**
+     * (integer) - The widget border radius in pixels
+     */
+    widgetCornerRadius?: number;
+    /**
+     * (string) - Alignment setting for all widget titles and descriptions at the dashboard level. Possible values are: `CENTER`, `LEFT`, `RIGHT`
+     */
+    widgetHeaderAlignment?: string;
+    /**
+     * (integer) - The gap between widgets in pixels
+     */
+    widgetMargin?: number;
+    /**
+     * (integer) - The content padding inside each widget in pixels
+     */
+    widgetPadding?: number;
+    /**
+     * (integer) - The shadow intensity level applied to widgets (0 = no shadow, 100 = maximum).
+     * The actual CSS box-shadow is computed at render time from this value, factoring in
+     * background colors and color mode
+     */
+    widgetShadow?: number;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeAxisLineColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeCanvasBackgroundColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradient {
+    /**
+     * (DashboardThemeContinuousGradientGradientValue) - Gradient value used when the dashboard is rendered in dark mode
+     */
+    darkMode?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkMode;
+    /**
+     * (DashboardThemeContinuousGradientGradientValue) - Gradient value used when the dashboard is rendered in light mode
+     */
+    lightMode?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightMode;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkMode {
+    /**
+     * (string) - Color of the label badge. The supported colors are coral, lemon, lime, turquoise, indigo, purple
+     * and pink. It is an empty string when no label is set
      */
     color?: string;
     /**
-     * (string)
+     * (string) - A named color scheme (for example, 'blues', 'viridis', 'spectral')
+     */
+    colorScheme?: string;
+    /**
+     * (DashboardThemeContinuousGradientCustomDivergingRamp) - A custom three-stop diverging gradient
+     */
+    customDiverging?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDiverging;
+    /**
+     * (DashboardThemeContinuousGradientCustomSequentialRamp) - A custom two-stop sequential gradient
+     */
+    customSequential?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequential;
+    /**
+     * (integer) - A 0-based index into the visualization color palette, where 0 is visualization_color_01. Valid values are 0 to 19
+     */
+    fromCategoricalIndex?: number;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDiverging {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the end of the gradient (highest value)
+     */
+    end?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingEnd;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the midpoint of the gradient
+     */
+    mid?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingMid;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the start of the gradient (lowest value)
+     */
+    start?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingStart;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingEnd {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingMid {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingStart {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequential {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the end of the gradient (highest value)
+     */
+    end?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialEnd;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the start of the gradient (lowest value)
+     */
+    start?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialStart;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialEnd {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialStart {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightMode {
+    /**
+     * (string) - Color of the label badge. The supported colors are coral, lemon, lime, turquoise, indigo, purple
+     * and pink. It is an empty string when no label is set
+     */
+    color?: string;
+    /**
+     * (string) - A named color scheme (for example, 'blues', 'viridis', 'spectral')
+     */
+    colorScheme?: string;
+    /**
+     * (DashboardThemeContinuousGradientCustomDivergingRamp) - A custom three-stop diverging gradient
+     */
+    customDiverging?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDiverging;
+    /**
+     * (DashboardThemeContinuousGradientCustomSequentialRamp) - A custom two-stop sequential gradient
+     */
+    customSequential?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequential;
+    /**
+     * (integer) - A 0-based index into the visualization color palette, where 0 is visualization_color_01. Valid values are 0 to 19
+     */
+    fromCategoricalIndex?: number;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDiverging {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the end of the gradient (highest value)
+     */
+    end?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingEnd;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the midpoint of the gradient
+     */
+    mid?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingMid;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the start of the gradient (lowest value)
+     */
+    start?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingStart;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingEnd {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingMid {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingStart {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequential {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the end of the gradient (highest value)
+     */
+    end?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialEnd;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color at the start of the gradient (lowest value)
+     */
+    start?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialStart;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialEnd {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialStart {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeFontColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeFontSettings {
+    /**
+     * (DashboardThemeFontConfig) - The default font config applied to all text unless overridden by a more specific category
+     */
+    base?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeFontSettingsBase;
+    /**
+     * (DashboardThemeFontConfig) - The font config applied to field titles (for example, axis titles, table heading titles)
+     */
+    fieldTitle?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeFontSettingsFieldTitle;
+    /**
+     * (DashboardThemeFontConfig) - The font config applied to field values (for example, axis tick labels, table cell values, tooltip values)
+     */
+    fieldValue?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeFontSettingsFieldValue;
+    /**
+     * (DashboardThemeFontConfig) - The font config applied to widget descriptions
+     */
+    widgetDescription?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeFontSettingsWidgetDescription;
+    /**
+     * (DashboardThemeFontConfig) - The font config applied to widget titles
+     */
+    widgetTitle?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeFontSettingsWidgetTitle;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeFontSettingsBase {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The font color applied to text in this category
+     */
+    fontColor?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeFontSettingsBaseFontColor;
+    /**
+     * (string) - The font family name used for text in this category
+     */
+    fontFamily?: string;
+    /**
+     * (integer) - The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * (string) - The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * (integer) - The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * (string) - The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * (string) - The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeFontSettingsBaseFontColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeFontSettingsFieldTitle {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The font color applied to text in this category
+     */
+    fontColor?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeFontSettingsFieldTitleFontColor;
+    /**
+     * (string) - The font family name used for text in this category
+     */
+    fontFamily?: string;
+    /**
+     * (integer) - The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * (string) - The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * (integer) - The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * (string) - The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * (string) - The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeFontSettingsFieldTitleFontColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeFontSettingsFieldValue {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The font color applied to text in this category
+     */
+    fontColor?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeFontSettingsFieldValueFontColor;
+    /**
+     * (string) - The font family name used for text in this category
+     */
+    fontFamily?: string;
+    /**
+     * (integer) - The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * (string) - The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * (integer) - The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * (string) - The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * (string) - The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeFontSettingsFieldValueFontColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeFontSettingsWidgetDescription {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The font color applied to text in this category
+     */
+    fontColor?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeFontSettingsWidgetDescriptionFontColor;
+    /**
+     * (string) - The font family name used for text in this category
+     */
+    fontFamily?: string;
+    /**
+     * (integer) - The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * (string) - The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * (integer) - The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * (string) - The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * (string) - The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeFontSettingsWidgetDescriptionFontColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeFontSettingsWidgetTitle {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The font color applied to text in this category
+     */
+    fontColor?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeFontSettingsWidgetTitleFontColor;
+    /**
+     * (string) - The font family name used for text in this category
+     */
+    fontFamily?: string;
+    /**
+     * (integer) - The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * (string) - The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * (integer) - The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * (string) - The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * (string) - The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeFontSettingsWidgetTitleFontColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeGridLineColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeSelectionColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeSentimentColors {
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color applied to negative sentiment values
+     */
+    negative?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeSentimentColorsNegative;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color applied to neutral sentiment values
+     */
+    neutral?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeSentimentColorsNeutral;
+    /**
+     * (DashboardThemeDashboardThemeColor) - The color applied to positive sentiment values
+     */
+    positive?: outputs.GetWorkspaceSettingV2WorkspaceDashboardThemeSentimentColorsPositive;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeSentimentColorsNegative {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeSentimentColorsNeutral {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeSentimentColorsPositive {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeWidgetBackgroundColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceDashboardThemeWidgetBorderColor {
+    /**
+     * (string) - The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * (string) - The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface GetWorkspaceSettingV2WorkspaceLabel {
+    /**
+     * (string) - Color of the label badge. The supported colors are coral, lemon, lime, turquoise, indigo, purple
+     * and pink. It is an empty string when no label is set
+     */
+    color?: string;
+    /**
+     * (string) - Text of the label shown next to the workspace name in the top navigation bar. An empty string
+     * means no label is set
      */
     label?: string;
 }
@@ -33363,6 +41711,7 @@ export interface JobEnvironmentSpec {
      * client version used by the environment. Each version comes with a specific Python version and a set of Python packages.
      */
     environmentVersion?: string;
+    imageUri?: string;
     javaDependencies?: string[];
     projectEnvironment?: string;
 }
@@ -34155,7 +42504,7 @@ export interface JobSchedule {
 }
 
 export interface JobScheduleSqlCondition {
-    sqlQueryId: string;
+    sqlQueryId?: string;
     triggerMode?: string;
     warehouseId: string;
 }
@@ -36737,7 +45086,7 @@ export interface JobTriggerSchedule {
 }
 
 export interface JobTriggerSqlCondition {
-    sqlQueryId: string;
+    sqlQueryId?: string;
     triggerMode?: string;
     warehouseId: string;
 }
@@ -36988,6 +45337,1104 @@ export interface LakehouseMonitorTimeSeries {
      * Column of the timestamp of predictions
      */
     timestampCol: string;
+}
+
+export interface LakewatchAlertConfigProviderConfig {
+    workspaceId: string;
+}
+
+export interface LakewatchAlertConfigSecurityAlertExportConfig {
+    /**
+     * Whether export is currently active
+     */
+    enabled?: boolean;
+    jira?: outputs.LakewatchAlertConfigSecurityAlertExportConfigJira;
+    serviceNow?: outputs.LakewatchAlertConfigSecurityAlertExportConfigServiceNow;
+    slack?: outputs.LakewatchAlertConfigSecurityAlertExportConfigSlack;
+    tines?: outputs.LakewatchAlertConfigSecurityAlertExportConfigTines;
+    webhook?: outputs.LakewatchAlertConfigSecurityAlertExportConfigWebhook;
+    workspaceId?: string;
+}
+
+export interface LakewatchAlertConfigSecurityAlertExportConfigJira {
+    /**
+     * Three-level Unity Catalog name (`catalog.schema.secret`) of the secret holding
+     * the Jira API token, paired with `userEmail` as the Jira Cloud basic-auth
+     * credential (`email:token`). Only the name is stored; the token is read when an
+     * alert is exported, so rotating the secret takes effect without editing this config
+     */
+    apiTokenUcSecret: string;
+    /**
+     * Default issue type for created tickets (e.g. `Task`, `Incident`). Jira issue creation
+     * requires an issue type, so it is validated at config-save time rather than failing the
+     * export at Jira later
+     */
+    defaultIssueType: string;
+    /**
+     * Jira instance URL (e.g. `https://acme.atlassian.net`)
+     */
+    instanceUrl: string;
+    /**
+     * Jira project key the exported issues are created under
+     */
+    projectKey: string;
+    /**
+     * User email paired with the API token for Jira Cloud basic auth
+     */
+    userEmail: string;
+}
+
+export interface LakewatchAlertConfigSecurityAlertExportConfigServiceNow {
+    /**
+     * OAuth client ID of the registered ServiceNow application. An identifier rather
+     * than secret material — ServiceNow shows it on the application record — so it
+     * is stored and read back verbatim
+     */
+    clientId: string;
+    /**
+     * Three-level Unity Catalog name (`catalog.schema.secret`) of the secret holding
+     * the OAuth client secret. Only the name is stored; the secret is read when an alert
+     * is exported, so rotating it takes effect without editing this config
+     */
+    clientSecretUcSecret: string;
+    /**
+     * ServiceNow instance ID — the host label only, not the full URL. For an
+     * instance reachable at `https://acme.service-now.com`, this is `acme`
+     */
+    instanceId: string;
+}
+
+export interface LakewatchAlertConfigSecurityAlertExportConfigSlack {
+    /**
+     * Three-level Unity Catalog name (`catalog.schema.secret`) of the secret holding
+     * the Slack bot token. Only the name is stored; the token is read when an alert is
+     * exported, so rotating the secret takes effect without editing this config
+     */
+    botTokenUcSecret: string;
+    /**
+     * Channel the alert is posted to: a channel ID (e.g. `C0123456789`) or a channel
+     * name without the leading `#` (e.g. `soc-alerts`). The value is stored as sent, so
+     * a leading `#`, surrounding whitespace, or a value naming more than one channel is
+     * rejected. For private channels, prefer the channel ID — Slack does not guarantee
+     * name resolution for those.
+     *
+     * The Slack app must be a member of the channel and hold the `chat:write` scope
+     */
+    channel: string;
+}
+
+export interface LakewatchAlertConfigSecurityAlertExportConfigTines {
+    exportUpdates?: boolean;
+    /**
+     * Three-level Unity Catalog name (`catalog.schema.secret`) of the secret holding the Tines
+     * webhook secret. Only the name is stored; the secret is read when an alert is exported, so
+     * rotating it takes effect without editing this config. Required: without it the destination
+     * would be an unauthenticated endpoint
+     */
+    webhookSecretUcSecret: string;
+    /**
+     * Tines webhook action URL, typically of the form
+     * `https://<tenant>.tines.com/webhook/<path>`. Any HTTPS host is accepted, so
+     * that a Tines tenant on a custom domain works.
+     *
+     * The secret is sent as a header, so it must not be embedded in the URL: a
+     * trailing secret path segment (`/webhook/<path>/<secret>`) and a `secret`
+     * query parameter are both rejected. API-path-prefix URLs (`/api/public/...`)
+     * are not supported
+     */
+    webhookUri: string;
+}
+
+export interface LakewatchAlertConfigSecurityAlertExportConfigWebhook {
+    exportUpdates?: boolean;
+    /**
+     * Webhook destination the server POSTs payloads to, in plaintext. Userinfo
+     * (`user:password@`) is sent as HTTP Basic auth
+     */
+    url?: string;
+}
+
+export interface LakewatchAlertConfigSystemAlertExportConfig {
+    /**
+     * Whether export is currently active
+     */
+    enabled?: boolean;
+    jira?: outputs.LakewatchAlertConfigSystemAlertExportConfigJira;
+    serviceNow?: outputs.LakewatchAlertConfigSystemAlertExportConfigServiceNow;
+    slack?: outputs.LakewatchAlertConfigSystemAlertExportConfigSlack;
+    tines?: outputs.LakewatchAlertConfigSystemAlertExportConfigTines;
+    webhook?: outputs.LakewatchAlertConfigSystemAlertExportConfigWebhook;
+    workspaceId?: string;
+}
+
+export interface LakewatchAlertConfigSystemAlertExportConfigJira {
+    /**
+     * Three-level Unity Catalog name (`catalog.schema.secret`) of the secret holding
+     * the Jira API token, paired with `userEmail` as the Jira Cloud basic-auth
+     * credential (`email:token`). Only the name is stored; the token is read when an
+     * alert is exported, so rotating the secret takes effect without editing this config
+     */
+    apiTokenUcSecret: string;
+    /**
+     * Default issue type for created tickets (e.g. `Task`, `Incident`). Jira issue creation
+     * requires an issue type, so it is validated at config-save time rather than failing the
+     * export at Jira later
+     */
+    defaultIssueType: string;
+    /**
+     * Jira instance URL (e.g. `https://acme.atlassian.net`)
+     */
+    instanceUrl: string;
+    /**
+     * Jira project key the exported issues are created under
+     */
+    projectKey: string;
+    /**
+     * User email paired with the API token for Jira Cloud basic auth
+     */
+    userEmail: string;
+}
+
+export interface LakewatchAlertConfigSystemAlertExportConfigServiceNow {
+    /**
+     * OAuth client ID of the registered ServiceNow application. An identifier rather
+     * than secret material — ServiceNow shows it on the application record — so it
+     * is stored and read back verbatim
+     */
+    clientId: string;
+    /**
+     * Three-level Unity Catalog name (`catalog.schema.secret`) of the secret holding
+     * the OAuth client secret. Only the name is stored; the secret is read when an alert
+     * is exported, so rotating it takes effect without editing this config
+     */
+    clientSecretUcSecret: string;
+    /**
+     * ServiceNow instance ID — the host label only, not the full URL. For an
+     * instance reachable at `https://acme.service-now.com`, this is `acme`
+     */
+    instanceId: string;
+}
+
+export interface LakewatchAlertConfigSystemAlertExportConfigSlack {
+    /**
+     * Three-level Unity Catalog name (`catalog.schema.secret`) of the secret holding
+     * the Slack bot token. Only the name is stored; the token is read when an alert is
+     * exported, so rotating the secret takes effect without editing this config
+     */
+    botTokenUcSecret: string;
+    /**
+     * Channel the alert is posted to: a channel ID (e.g. `C0123456789`) or a channel
+     * name without the leading `#` (e.g. `soc-alerts`). The value is stored as sent, so
+     * a leading `#`, surrounding whitespace, or a value naming more than one channel is
+     * rejected. For private channels, prefer the channel ID — Slack does not guarantee
+     * name resolution for those.
+     *
+     * The Slack app must be a member of the channel and hold the `chat:write` scope
+     */
+    channel: string;
+}
+
+export interface LakewatchAlertConfigSystemAlertExportConfigTines {
+    exportUpdates?: boolean;
+    /**
+     * Three-level Unity Catalog name (`catalog.schema.secret`) of the secret holding the Tines
+     * webhook secret. Only the name is stored; the secret is read when an alert is exported, so
+     * rotating it takes effect without editing this config. Required: without it the destination
+     * would be an unauthenticated endpoint
+     */
+    webhookSecretUcSecret: string;
+    /**
+     * Tines webhook action URL, typically of the form
+     * `https://<tenant>.tines.com/webhook/<path>`. Any HTTPS host is accepted, so
+     * that a Tines tenant on a custom domain works.
+     *
+     * The secret is sent as a header, so it must not be embedded in the URL: a
+     * trailing secret path segment (`/webhook/<path>/<secret>`) and a `secret`
+     * query parameter are both rejected. API-path-prefix URLs (`/api/public/...`)
+     * are not supported
+     */
+    webhookUri: string;
+}
+
+export interface LakewatchAlertConfigSystemAlertExportConfigWebhook {
+    exportUpdates?: boolean;
+    /**
+     * Webhook destination the server POSTs payloads to, in plaintext. Userinfo
+     * (`user:password@`) is sent as HTTP Basic auth
+     */
+    url?: string;
+}
+
+export interface LakewatchAlertConfigUpdatedBy {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * Email (regular users only)
+     */
+    email?: string;
+    /**
+     * User / service-principal ID
+     */
+    id?: string;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface LakewatchCommonConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface LakewatchCommonConfigUpdatedBy {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * Email (regular users only)
+     */
+    email?: string;
+    /**
+     * User / service-principal ID
+     */
+    id?: string;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface LakewatchDatasourceAutoloader {
+    /**
+     * Name of the workspace secret scope that holds the AWS access key ID and secret access key,
+     * under the keys `awsAccessKeyId` and `awsSecretAccessKey`
+     */
+    awsSecretScope?: string;
+    /**
+     * (boolean) - Whether ingestion started with the files already present at `location`. Populated on get,
+     * create, and update responses
+     */
+    effectiveIncludeExistingFiles: boolean;
+    /**
+     * (TableName) - The table that the raw data is written to: `rawTable` in the datasource's catalog and
+     * schema, under their current Unity Catalog names. Populated on get, create, and update
+     * responses
+     */
+    effectiveRawTable: outputs.LakewatchDatasourceAutoloaderEffectiveRawTable;
+    /**
+     * How to unwrap a transport envelope around the source records before parsing. Supported only
+     * for the JSON and JSONL formats. If unset, each source record is treated as one event
+     */
+    envelope?: outputs.LakewatchDatasourceAutoloaderEnvelope;
+    /**
+     * File format of the source files. Required. Possible values are: `AUTOLOADER_FORMAT_CSV`, `AUTOLOADER_FORMAT_JSON`, `AUTOLOADER_FORMAT_JSONL`, `AUTOLOADER_FORMAT_PARQUET`, `AUTOLOADER_FORMAT_XML`
+     */
+    format: string;
+    /**
+     * Format-specific parsing options, passed to Auto Loader. Supported for the CSV, JSON, JSONL,
+     * and XML formats, each of which accepts a fixed set of options. The XML format requires the
+     * `rowTag` option
+     */
+    formatOptions?: {[key: string]: string};
+    /**
+     * Whether to ingest the files already present at `location` when ingestion
+     * first starts. Set true to ingest the existing files and then every new file.
+     * Set false, or leave unset, to ingest only files that arrive after the
+     * datasource starts. Defaults to false. Cannot be changed after creation.
+     * Reads return the value as supplied; the setting in effect is reported in
+     * `effectiveIncludeExistingFiles`
+     */
+    includeExistingFiles?: boolean;
+    /**
+     * URI of the source files: a path in a Unity Catalog volume or external location, or a
+     * cloud storage URL such as an Amazon S3 path. Required, including when new files are
+     * discovered through `queueUrl`. Cannot be changed after creation
+     */
+    location: string;
+    /**
+     * Hive-style partition columns to derive from the source file paths. If unset, no partition
+     * columns are derived
+     */
+    overridePartitionColumns?: string[];
+    /**
+     * URL of a customer-managed Amazon SQS queue that receives file-arrival notifications. Set it
+     * to discover new files through the queue. If unset, new files are discovered through the
+     * file events of the source's Unity Catalog external location when it has them configured,
+     * and by directory listing otherwise. Cannot be changed after creation
+     */
+    queueUrl?: string;
+    /**
+     * Table that stores the raw data before parsers schematize it. Every Auto Loader datasource
+     * writes its raw rows to this table before any parser reads them. The table must be in the
+     * datasource's catalog and schema; an omitted `catalogName` or `schemaName` defaults to
+     * them. Cannot be changed after creation. Reads return the value as supplied; the table the
+     * data is written to is reported in `effectiveRawTable`
+     */
+    rawTable: outputs.LakewatchDatasourceAutoloaderRawTable;
+    /**
+     * Name of the Unity Catalog service credential to use
+     */
+    serviceCredentials?: string;
+}
+
+export interface LakewatchDatasourceAutoloaderEffectiveRawTable {
+    /**
+     * Name of the Unity Catalog catalog that contains the datasource. Required on create and
+     * cannot be changed afterward. Reads return the value as supplied; the catalog's current name
+     * is reported in `effectiveCatalogName`
+     */
+    catalogName?: string;
+    /**
+     * Name of the Unity Catalog schema that contains the datasource. Required on create and
+     * cannot be changed afterward. Reads return the value as supplied; the schema's current name
+     * is reported in `effectiveSchemaName`
+     */
+    schemaName?: string;
+    /**
+     * Unity Catalog table name
+     */
+    tableName: string;
+}
+
+export interface LakewatchDatasourceAutoloaderEnvelope {
+    cloudWatchLogs?: outputs.LakewatchDatasourceAutoloaderEnvelopeCloudWatchLogs;
+    jsonArray?: outputs.LakewatchDatasourceAutoloaderEnvelopeJsonArray;
+}
+
+export interface LakewatchDatasourceAutoloaderEnvelopeCloudWatchLogs {
+    /**
+     * Whether to keep the envelope's `owner`, `logGroup`, and `logStream` values in
+     * the `data.lw_header` field of each unwrapped row. Must be set explicitly to
+     * `true` or `false`
+     */
+    headerRetention?: boolean;
+}
+
+export interface LakewatchDatasourceAutoloaderEnvelopeJsonArray {
+    /**
+     * Name of the root-level key that holds the array of events, for example
+     * `Records`. Nested paths are not supported
+     */
+    path: string;
+}
+
+export interface LakewatchDatasourceAutoloaderRawTable {
+    /**
+     * Name of the Unity Catalog catalog that contains the datasource. Required on create and
+     * cannot be changed afterward. Reads return the value as supplied; the catalog's current name
+     * is reported in `effectiveCatalogName`
+     */
+    catalogName?: string;
+    /**
+     * Name of the Unity Catalog schema that contains the datasource. Required on create and
+     * cannot be changed afterward. Reads return the value as supplied; the schema's current name
+     * is reported in `effectiveSchemaName`
+     */
+    schemaName?: string;
+    /**
+     * Unity Catalog table name
+     */
+    tableName: string;
+}
+
+export interface LakewatchDatasourceConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface LakewatchDatasourceConfigUpdatedBy {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * Email (regular users only)
+     */
+    email?: string;
+    /**
+     * User / service-principal ID
+     */
+    id?: string;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface LakewatchDatasourceCreatedBy {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * Email (regular users only)
+     */
+    email?: string;
+    id?: string;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface LakewatchDatasourceExistingTable {
+    /**
+     * Name of the catalog the existing table lives in. Optional on create and
+     * defaults to the datasource's own catalog. Cannot be changed. Reads return
+     * the value as supplied; the catalog in use is reported in `effectiveCatalog`
+     */
+    catalog?: string;
+    /**
+     * (string) - Current Unity Catalog catalog name of the source table, resolved from its
+     * stable table ID, so a rename of the source table is reported here without
+     * changing `catalog`
+     */
+    effectiveCatalog: string;
+    /**
+     * (string) - Current Unity Catalog name of the source table, resolved from its stable
+     * table ID
+     */
+    effectiveName: string;
+    /**
+     * (string) - Current Unity Catalog schema name of the source table, resolved from its
+     * stable table ID
+     */
+    effectiveSchema: string;
+    /**
+     * Whether to ingest the rows already present in the source table when
+     * ingestion first starts. Set true to ingest the existing rows and then every
+     * new commit. Set false, or leave unset, to ingest only rows written after the
+     * datasource starts. Defaults to false, and must be true for a Delta Sharing
+     * source table. Takes effect only at first start and cannot be changed. Reads
+     * return the value as supplied
+     */
+    includeExistingRows?: boolean;
+    /**
+     * (string) - Resource name of the datasource, in the format `datasources/{datasource_id}`. Unlike the
+     * datasource's Unity Catalog location (`catalogName`, `schemaName`, and `datasourceName`),
+     * the name does not change when the datasource or its catalog or schema is renamed in Unity
+     * Catalog
+     */
+    name: string;
+    /**
+     * Name of the schema the existing table lives in. Optional, but required when
+     * `catalog` is set; supplying `catalog` without `schema` is rejected. Defaults
+     * to the datasource's own schema. Cannot be changed. Reads return the value as
+     * supplied; the schema in use is reported in `effectiveSchema`
+     */
+    schema?: string;
+}
+
+export interface LakewatchDatasourceOwner {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * Email (regular users only)
+     */
+    email?: string;
+    id?: string;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface LakewatchDatasourceParser {
+    /**
+     * (TableName) - The table this parser's data is written to: `targetTable` when supplied, otherwise the
+     * table derived from the datasource's catalog and schema and the parser name. Fixed once
+     * resolved, so a later parser rename does not move it. Populated on get, create, and update
+     * responses with the resolved table
+     */
+    effectiveTargetTable: outputs.LakewatchDatasourceParserEffectiveTargetTable;
+    id: string;
+    /**
+     * Table that this parser's data is written to. The table must be in the datasource's catalog
+     * and schema. If unset, the table name is derived from the parser name. Reads return the value
+     * as supplied; the table the data is written to is reported in `effectiveTargetTable`
+     */
+    targetTable?: outputs.LakewatchDatasourceParserTargetTable;
+    /**
+     * (integer) - Version number of the datasource, incremented on each update. Informational only; use
+     * `etag` for optimistic concurrency control
+     */
+    version: string;
+}
+
+export interface LakewatchDatasourceParserEffectiveTargetTable {
+    /**
+     * Name of the Unity Catalog catalog that contains the datasource. Required on create and
+     * cannot be changed afterward. Reads return the value as supplied; the catalog's current name
+     * is reported in `effectiveCatalogName`
+     */
+    catalogName?: string;
+    /**
+     * Name of the Unity Catalog schema that contains the datasource. Required on create and
+     * cannot be changed afterward. Reads return the value as supplied; the schema's current name
+     * is reported in `effectiveSchemaName`
+     */
+    schemaName?: string;
+    /**
+     * Unity Catalog table name
+     */
+    tableName: string;
+}
+
+export interface LakewatchDatasourceParserTargetTable {
+    /**
+     * Name of the Unity Catalog catalog that contains the datasource. Required on create and
+     * cannot be changed afterward. Reads return the value as supplied; the catalog's current name
+     * is reported in `effectiveCatalogName`
+     */
+    catalogName?: string;
+    /**
+     * Name of the Unity Catalog schema that contains the datasource. Required on create and
+     * cannot be changed afterward. Reads return the value as supplied; the schema's current name
+     * is reported in `effectiveSchemaName`
+     */
+    schemaName?: string;
+    /**
+     * Unity Catalog table name
+     */
+    tableName: string;
+}
+
+export interface LakewatchDatasourceProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface LakewatchDatasourceSchedule {
+    /**
+     * Duration string defining the minimum cadence. May contain components
+     * for days, hours, minutes, seconds (e.g. `5d`, `5d3h`, `3d2h5m12s`,
+     * `12m16s`)
+     */
+    atLeastEvery?: string;
+    /**
+     * `dedicated`, `inherited`, `automatic`, or a custom group name. Reads return
+     * the value as supplied. A rule whose schedule omits it runs on `dedicated`
+     */
+    computeGroup?: string;
+    /**
+     * Run continuously (sentinel — must be `true` when set in this branch)
+     */
+    continuous?: boolean;
+    /**
+     * Quartz cron expression
+     */
+    cronExpression?: string;
+    /**
+     * Whether the job is scheduled to run. Defaults to true
+     */
+    enabled?: boolean;
+}
+
+export interface LakewatchDatasourceStatus {
+    /**
+     * (ResourceStatus) - Status of the datasource's ingestion job
+     */
+    ingestionJob: outputs.LakewatchDatasourceStatusIngestionJob;
+    /**
+     * (ResourceStatus) - Status of the managed ingestion pipeline. Populated only when `unityCatalogConnection`
+     * is set, with `pipelineId` identifying the pipeline
+     */
+    ingestionPipeline: outputs.LakewatchDatasourceStatusIngestionPipeline;
+}
+
+export interface LakewatchDatasourceStatusIngestionJob {
+    /**
+     * (string)
+     */
+    createTime: string;
+    /**
+     * (string) - Databricks Jobs API job ID. Unset for a pure ingestion pipeline
+     */
+    jobId: string;
+    /**
+     * (string) - When the most recent run completed. Pairs with `runState = SUCCEEDED`
+     */
+    lastCompleteTime: string;
+    /**
+     * (string) - Most recent error message, if any. Pairs with `runState = FAILED`
+     */
+    lastErrorMessage: string;
+    /**
+     * (string) - When the most recent run started. Pairs with `runState = RUNNING`
+     */
+    lastStartTime: string;
+    /**
+     * (string)
+     */
+    lastStatusChangeTime: string;
+    /**
+     * (string) - Scheduling lifecycle of the resource's underlying job/pipeline: whether it
+     * is unscheduled, scheduled, stopped, or deleted. Distinct from `runState`,
+     * which reports the outcome of the most recent run. Possible values are: `DELETED`, `SCHEDULED`, `STOPPED`, `UNSCHEDULED`
+     */
+    lifecycleState: string;
+    /**
+     * (string) - DLT ingestion-pipeline ID. Set only when this status represents the
+     * datasource's ingestion pipeline (unset for job statuses)
+     */
+    pipelineId: string;
+    /**
+     * (string) - Possible values are: `CANCELED`, `FAILED`, `RUNNING`, `SUCCEEDED`
+     */
+    runState: string;
+}
+
+export interface LakewatchDatasourceStatusIngestionPipeline {
+    /**
+     * (string)
+     */
+    createTime: string;
+    /**
+     * (string) - Databricks Jobs API job ID. Unset for a pure ingestion pipeline
+     */
+    jobId: string;
+    /**
+     * (string) - When the most recent run completed. Pairs with `runState = SUCCEEDED`
+     */
+    lastCompleteTime: string;
+    /**
+     * (string) - Most recent error message, if any. Pairs with `runState = FAILED`
+     */
+    lastErrorMessage: string;
+    /**
+     * (string) - When the most recent run started. Pairs with `runState = RUNNING`
+     */
+    lastStartTime: string;
+    /**
+     * (string)
+     */
+    lastStatusChangeTime: string;
+    /**
+     * (string) - Scheduling lifecycle of the resource's underlying job/pipeline: whether it
+     * is unscheduled, scheduled, stopped, or deleted. Distinct from `runState`,
+     * which reports the outcome of the most recent run. Possible values are: `DELETED`, `SCHEDULED`, `STOPPED`, `UNSCHEDULED`
+     */
+    lifecycleState: string;
+    /**
+     * (string) - DLT ingestion-pipeline ID. Set only when this status represents the
+     * datasource's ingestion pipeline (unset for job statuses)
+     */
+    pipelineId: string;
+    /**
+     * (string) - Possible values are: `CANCELED`, `FAILED`, `RUNNING`, `SUCCEEDED`
+     */
+    runState: string;
+}
+
+export interface LakewatchDatasourceUnityCatalogConnection {
+    /**
+     * Free-form key-value configuration for the managed ingestion pipeline
+     */
+    configuration?: {[key: string]: string};
+    /**
+     * Name of the Unity Catalog connection to ingest through
+     */
+    connectionName: string;
+    /**
+     * (string) - Connector type of the connection, such as `SLACK_AUDIT_LOGS`. Resolved by the server from
+     * `connectionName` through Unity Catalog; not accepted as input
+     */
+    connector: string;
+    /**
+     * (string) - The start time ingestion uses: the supplied `startTime`, or the creation time when it was
+     * omitted. Always populated
+     */
+    effectiveStartTime: string;
+    /**
+     * Earliest source event time to ingest. Leave unset to start at creation time, with no
+     * history backfilled. Rejected if in the future, beyond the connector's history window, or
+     * for a connector without start-time support. Takes effect only at first start and cannot
+     * be changed. Reads return the value as supplied; the start time ingestion uses is reported
+     * in `effectiveStartTime`
+     */
+    startTime?: string;
+}
+
+export interface LakewatchDatasourceUpdatedBy {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * Email (regular users only)
+     */
+    email?: string;
+    id?: string;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface LakewatchParserCreatedBy {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * Email (regular users only)
+     */
+    email?: string;
+    /**
+     * User / service-principal ID
+     */
+    id?: string;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface LakewatchParserOwner {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * Email (regular users only)
+     */
+    email?: string;
+    /**
+     * User / service-principal ID
+     */
+    id?: string;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface LakewatchParserProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface LakewatchParserVersionCreatedBy {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * Email (regular users only)
+     */
+    email?: string;
+    /**
+     * User / service-principal ID
+     */
+    id?: string;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface LakewatchParserVersionProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface LakewatchRuleBatch {
+    /**
+     * Custom-notebook user function. The output is used as input data for the
+     * rule
+     */
+    custom?: outputs.LakewatchRuleBatchCustom;
+    /**
+     * SQL query evaluated as the rule input
+     */
+    sql?: outputs.LakewatchRuleBatchSql;
+    /**
+     * SQL warehouse that runs this scheduled detection
+     */
+    warehouseId?: string;
+}
+
+export interface LakewatchRuleBatchCustom {
+    /**
+     * Fully-qualified notebook path, or a path relative to the configured base
+     * notebook directory
+     */
+    notebook: string;
+    /**
+     * Optional arguments supplied when invoking the custom function
+     */
+    options?: {[key: string]: string};
+}
+
+export interface LakewatchRuleBatchSql {
+    /**
+     * Default catalog used to resolve unqualified identifiers in `query`. If
+     * unset, the rule's `catalogName` is used
+     */
+    defaultCatalogName?: string;
+    /**
+     * Default schema used to resolve unqualified identifiers in `query`. If
+     * unset, the rule's `schemaName` is used
+     */
+    defaultSchemaName?: string;
+    /**
+     * SQL query evaluated as the rule input
+     */
+    query: string;
+}
+
+export interface LakewatchRuleConfigDefaultSchedule {
+    /**
+     * Defines the minimum cadence as a duration string. It may contain components
+     * for days, hours, minutes, and seconds (e.g. `5d`, `5d3h`, `3d2h5m12s`,
+     * `12m16s`)
+     */
+    atLeastEvery?: string;
+    /**
+     * Defines the schedule using a Quartz cron expression
+     */
+    cronExpression?: string;
+    /**
+     * Sets whether the job is scheduled to run. Defaults to true
+     */
+    enabled?: boolean;
+}
+
+export interface LakewatchRuleConfigProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface LakewatchRuleConfigUpdatedBy {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * Email (regular users only)
+     */
+    email?: string;
+    /**
+     * User / service-principal ID
+     */
+    id?: string;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface LakewatchRuleCreatedBy {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * Email (regular users only)
+     */
+    email?: string;
+    /**
+     * User / service-principal ID
+     */
+    id?: string;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface LakewatchRuleMitre {
+    /**
+     * Human-readable MITRE sub-technique name
+     */
+    subTechnique?: string;
+    /**
+     * MITRE sub-technique ID, such as `T1078.001`
+     */
+    subTechniqueId?: string;
+    /**
+     * Adversary objective during this attack, such as `Command and Control`
+     */
+    tactic?: string;
+    /**
+     * Structured framework that organizes adversary behaviors, such as
+     * `mitre-attack`
+     */
+    taxonomy?: string;
+    /**
+     * Human-readable MITRE technique name
+     */
+    technique?: string;
+    /**
+     * MITRE technique ID, such as `T1078`
+     */
+    techniqueId?: string;
+}
+
+export interface LakewatchRuleOriginalContentPack {
+    /**
+     * (string) - UUID of the content pack
+     */
+    uuid: string;
+    /**
+     * (string) - Pack version the resource was installed from
+     */
+    version: string;
+}
+
+export interface LakewatchRuleOutput {
+    /**
+     * Key/value context to record from the input row. Values may contain SQL
+     * expressions in braces
+     */
+    context?: {[key: string]: string};
+    /**
+     * If true, also record every column of the triggering input row. Custom
+     * context wins on key collision
+     */
+    defaultContext?: boolean;
+    /**
+     * Column in the rule output that holds the event timestamp
+     */
+    eventTimeColumn?: string;
+    /**
+     * Signal summary. May contain SQL expressions in braces that the
+     * server substitutes from the input row
+     */
+    summary?: string;
+}
+
+export interface LakewatchRuleOwner {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * Email (regular users only)
+     */
+    email?: string;
+    /**
+     * User / service-principal ID
+     */
+    id?: string;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
+}
+
+export interface LakewatchRuleProviderConfig {
+    /**
+     * Workspace ID which the resource belongs to. This workspace must be part of the account which the provider is configured with.
+     */
+    workspaceId: string;
+}
+
+export interface LakewatchRuleSchedule {
+    /**
+     * Defines the minimum cadence as a duration string. It may contain components
+     * for days, hours, minutes, and seconds (e.g. `5d`, `5d3h`, `3d2h5m12s`,
+     * `12m16s`)
+     */
+    atLeastEvery?: string;
+    /**
+     * Defines the schedule using a Quartz cron expression
+     */
+    cronExpression?: string;
+    /**
+     * Sets whether the job is scheduled to run. Defaults to true
+     */
+    enabled?: boolean;
+}
+
+export interface LakewatchRuleStatus {
+    /**
+     * (string)
+     */
+    createTime: string;
+    /**
+     * (string) - Databricks Jobs API job ID. Unset for a pure ingestion pipeline
+     */
+    jobId: string;
+    /**
+     * (string) - When the most recent run completed. Pairs with `runState = SUCCEEDED`
+     */
+    lastCompleteTime: string;
+    /**
+     * (string) - Most recent error message, if any. Pairs with `runState = FAILED`
+     */
+    lastErrorMessage: string;
+    /**
+     * (string) - When the most recent run started. Pairs with `runState = RUNNING`
+     */
+    lastStartTime: string;
+    /**
+     * (string)
+     */
+    lastStatusChangeTime: string;
+    /**
+     * (string) - Scheduling lifecycle of the resource's underlying job/pipeline: whether it
+     * is unscheduled, scheduled, stopped, or deleted. Distinct from `runState`,
+     * which reports the outcome of the most recent run. Possible values are: `DELETED`, `SCHEDULED`, `STOPPED`, `UNSCHEDULED`
+     */
+    lifecycleState: string;
+    /**
+     * (string) - DLT ingestion-pipeline ID. Set only when this status represents the
+     * datasource's ingestion pipeline (unset for job statuses)
+     */
+    pipelineId: string;
+    /**
+     * (string) - Possible values are: `CANCELED`, `FAILED`, `RUNNING`, `SUCCEEDED`
+     */
+    runState: string;
+}
+
+export interface LakewatchRuleTimerange {
+    /**
+     * Extends the start of the execution time range by a compact duration with integer
+     * days, hours, minutes, and seconds in that order, such as `1h30m` or `15m`.
+     * Zero duration disables extension. Unset or empty uses a fixed `15m` at execution
+     * time. Only the start moves; the end is unchanged. Has no effect on a detection
+     * query that does not use `IN_TIMERANGE`. Values must fit signed 64-bit microseconds
+     */
+    extendLookback?: string;
+}
+
+export interface LakewatchRuleUpdatedBy {
+    /**
+     * Display name (user or SP name)
+     */
+    displayName?: string;
+    /**
+     * Email (regular users only)
+     */
+    email?: string;
+    /**
+     * User / service-principal ID
+     */
+    id?: string;
+    /**
+     * Whether this principal is a regular user, service principal, or system principal. Possible values are: `REGULAR_USER`, `SERVICE_PRINCIPAL`, `SYSTEM_USER`
+     */
+    principalType?: string;
 }
 
 export interface LibraryCran {
@@ -37917,6 +47364,7 @@ export interface ModelServingProvisionedThroughputConfigServedEntity {
      * The number of model units to be provisioned.
      */
     provisionedModelUnits: number;
+    ptTerm?: string;
 }
 
 export interface ModelServingProvisionedThroughputConfigTrafficConfig {
@@ -38211,11 +47659,11 @@ export interface MwsNetworksGcpNetworkInfo {
      */
     networkProjectId: string;
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.145.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     podIpRangeName?: string;
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.145.0/docs/guides/gcp-workspace#creating-a-vpc
      */
     serviceIpRangeName?: string;
     /**
@@ -38282,11 +47730,11 @@ export interface MwsWorkspacesExternalCustomerInfo {
 
 export interface MwsWorkspacesGcpManagedNetworkConfig {
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_pod_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.145.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterPodIpRange?: string;
     /**
-     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gcp_managed_network_config.gke_cluster_service_ip_range is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.145.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      */
     gkeClusterServiceIpRange?: string;
     subnetCidr: string;
@@ -38318,7 +47766,13 @@ export interface NotebookProviderConfig {
 }
 
 export interface NotificationDestinationConfig {
+    /**
+     * The configuration for a Slack channel reached through the Databricks app. The app must already be installed in the Slack workspace and connected to the Databricks workspace. It must contain the following:
+     */
     databricksAppSlack?: outputs.NotificationDestinationConfigDatabricksAppSlack;
+    /**
+     * The configuration for a Microsoft Teams channel reached through the Databricks app. The app must already be installed in the Microsoft 365 tenant and connected to the Databricks workspace. It must contain the following:
+     */
     databricksAppTeams?: outputs.NotificationDestinationConfigDatabricksAppTeams;
     /**
      * The email configuration of the Notification Destination. It must contain the following:
@@ -38344,27 +47798,33 @@ export interface NotificationDestinationConfig {
 
 export interface NotificationDestinationConfigDatabricksAppSlack {
     /**
-     * Slack channel ID for notifications.
+     * Slack channel ID notifications are posted to.
      */
     channelId?: string;
-    channelIdSet?: boolean;
+    channelIdSet: boolean;
+    /**
+     * Slack workspace (team) ID the Databricks app is installed in.
+     */
     teamId?: string;
-    teamIdSet?: boolean;
+    teamIdSet: boolean;
 }
 
 export interface NotificationDestinationConfigDatabricksAppTeams {
     /**
-     * Slack channel ID for notifications.
+     * Teams channel ID notifications are posted to.
      */
     channelId?: string;
-    channelIdSet?: boolean;
-    teamId?: string;
-    teamIdSet?: boolean;
+    channelIdSet: boolean;
     /**
-     * Tenant ID for Microsoft Teams App.
+     * Microsoft Entra group ID of the team that owns the channel.
+     */
+    teamId?: string;
+    teamIdSet: boolean;
+    /**
+     * Microsoft Entra tenant ID of the Microsoft 365 tenant the app is installed in.
      */
     tenantId?: string;
-    tenantIdSet?: boolean;
+    tenantIdSet: boolean;
 }
 
 export interface NotificationDestinationConfigEmail {
@@ -39955,6 +49415,53 @@ export interface PipelineRunAs {
     userName?: string;
 }
 
+export interface PipelineTesting {
+    environment?: outputs.PipelineTestingEnvironment;
+    sources?: outputs.PipelineTestingSource[];
+}
+
+export interface PipelineTestingEnvironment {
+    /**
+     * a list of pip dependencies, as supported by the version of pip in this environment. Each dependency is a [pip requirement file line](https://pip.pypa.io/en/stable/reference/requirements-file-format/).  See [API docs](https://docs.databricks.com/api/azure/workspace/pipelines/create#environment-dependencies) for more information.
+     *
+     * Example:
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as databricks from "@pulumi/databricks";
+     *
+     * const _this = new databricks.Pipeline("this", {
+     *     name: "Serverless demo",
+     *     serverless: true,
+     *     catalog: "main",
+     *     schema: "ldp_demo",
+     *     environment: {
+     *         dependencies: [
+     *             "foo==0.0.1",
+     *             "-r /Workspace/Users/user.name/my-pipeline/requirements.txt",
+     *             "/Volumes/main/default/libs/my_lib.whl",
+     *         ],
+     *     },
+     * });
+     * ```
+     */
+    dependencies?: string[];
+}
+
+export interface PipelineTestingSource {
+    /**
+     * The unified field to include source code. Each entry should have the `include` attribute that can specify a notebook path, a file path, or a folder path that ends `/**` (to include everything from that folder). This field cannot be used together with `notebook` or `file`.
+     */
+    glob?: outputs.PipelineTestingSourceGlob;
+}
+
+export interface PipelineTestingSourceGlob {
+    /**
+     * Paths to include.
+     */
+    include?: string;
+}
+
 export interface PipelineTrigger {
     cron?: outputs.PipelineTriggerCron;
     manual?: outputs.PipelineTriggerManual;
@@ -40120,15 +49627,15 @@ export interface PostgresBranchSpec {
      * (string) - The name of the source branch from which this branch was created.
      * Format: projects/{project_id}/branches/{branch_id}
      */
-    sourceBranch?: string;
+    sourceBranch: string;
     /**
      * (string) - The Log Sequence Number (LSN) on the source branch from which this branch was created
      */
-    sourceBranchLsn?: string;
+    sourceBranchLsn: string;
     /**
      * (string) - The point in time on the source branch from which this branch was created
      */
-    sourceBranchTime?: string;
+    sourceBranchTime: string;
     /**
      * (string) - The snapshot this branch was restored from. Set only for branches created by
      * restoring a snapshot; unset for all other branches.
@@ -40402,24 +49909,25 @@ export interface PostgresEndpointSpec {
     group?: outputs.PostgresEndpointSpecGroup;
     /**
      * When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided.
+     * The value must be true when provided.
      * Mutually exclusive with `suspendTimeoutDuration`
      */
     noSuspension?: boolean;
     /**
-     * (EndpointSettings)
+     * (EndpointSettings) - The Postgres server parameters currently set on the compute endpoint
      */
     settings?: outputs.PostgresEndpointSpecSettings;
     /**
-     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended. Absent when
+     * automatic suspension is disabled
      */
     suspendTimeoutDuration?: string;
 }
 
 export interface PostgresEndpointSpecGroup {
     /**
-     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
-     * by specifying size.max > 1
+     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if the endpoint has more than
+     * one compute (`max` greater than 1)
      */
     enableReadableSecondaries?: boolean;
     max: number;
@@ -40428,7 +49936,8 @@ export interface PostgresEndpointSpecGroup {
 
 export interface PostgresEndpointSpecSettings {
     /**
-     * A raw representation of Postgres settings
+     * Postgres server parameters to set on the compute endpoint, keyed by parameter name. Each value is
+     * given as a string
      */
     pgSettings?: {[key: string]: string};
 }
@@ -40444,7 +49953,7 @@ export interface PostgresEndpointStatus {
      */
     autoscalingLimitMinCu: number;
     /**
-     * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+     * (string) - The state the compute endpoint is in now. Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      */
     currentState: string;
     /**
@@ -40455,7 +49964,7 @@ export interface PostgresEndpointStatus {
      */
     disabled: boolean;
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
      */
     endpointId: string;
     /**
@@ -40475,23 +49984,24 @@ export interface PostgresEndpointStatus {
      */
     lastActiveTime: string;
     /**
-     * (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+     * (string) - The state the compute endpoint is transitioning to, if a transition is in progress. Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
      */
     pendingState: string;
     /**
-     * (EndpointSettings)
+     * (EndpointSettings) - The Postgres server parameters currently set on the compute endpoint
      */
     settings: outputs.PostgresEndpointStatusSettings;
     /**
-     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended. Absent when
+     * automatic suspension is disabled
      */
     suspendTimeoutDuration: string;
 }
 
 export interface PostgresEndpointStatusGroup {
     /**
-     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
-     * by specifying size.max > 1
+     * (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if the endpoint has more than
+     * one compute (`max` greater than 1)
      */
     enableReadableSecondaries: boolean;
     max: number;
@@ -40523,7 +50033,8 @@ export interface PostgresEndpointStatusHosts {
 
 export interface PostgresEndpointStatusSettings {
     /**
-     * A raw representation of Postgres settings
+     * Postgres server parameters to set on the compute endpoint, keyed by parameter name. Each value is
+     * given as a string
      */
     pgSettings?: {[key: string]: string};
 }
@@ -40549,7 +50060,7 @@ export interface PostgresProjectInitialEndpointSpec {
 export interface PostgresProjectInitialEndpointSpecGroup {
     /**
      * Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
-     * size.max > 1
+     * `max` is greater than 1. When enabled, the endpoint also reports a read-only host in `status.hosts`
      */
     enableReadableSecondaries?: boolean;
     /**
@@ -40604,7 +50115,7 @@ export interface PostgresProjectSpec {
     /**
      * (integer) - The effective major Postgres version number
      */
-    pgVersion?: number;
+    pgVersion: number;
 }
 
 export interface PostgresProjectSpecCustomTag {
@@ -40675,7 +50186,7 @@ export interface PostgresProjectStatus {
      */
     pgVersion: number;
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The project ID chosen when the project was created. It is the final segment of `name`
      */
     projectId: string;
     /**
@@ -40715,15 +50226,24 @@ export interface PostgresRoleProviderConfig {
 
 export interface PostgresRoleSpec {
     attributes?: outputs.PostgresRoleSpecAttributes;
-    authMethod?: string;
-    identityType?: string;
+    authMethod: string;
+    identityType: string;
     membershipRoles?: string[];
-    postgresRole?: string;
+    postgresRole: string;
 }
 
 export interface PostgresRoleSpecAttributes {
+    /**
+     * Whether the role bypasses every row-level security policy (the Postgres BYPASSRLS attribute)
+     */
     bypassrls?: boolean;
+    /**
+     * Whether the role can create databases (the Postgres CREATEDB attribute)
+     */
     createdb?: boolean;
+    /**
+     * Whether the role can create, alter and drop other roles (the Postgres CREATEROLE attribute)
+     */
     createrole?: boolean;
 }
 
@@ -40740,8 +50260,17 @@ export interface PostgresRoleStatus {
 }
 
 export interface PostgresRoleStatusAttributes {
+    /**
+     * Whether the role bypasses every row-level security policy (the Postgres BYPASSRLS attribute)
+     */
     bypassrls?: boolean;
+    /**
+     * Whether the role can create databases (the Postgres CREATEDB attribute)
+     */
     createdb?: boolean;
+    /**
+     * Whether the role can create, alter and drop other roles (the Postgres CREATEROLE attribute)
+     */
     createrole?: boolean;
 }
 
@@ -40810,9 +50339,12 @@ export interface PostgresSyncedTableSpec {
      */
     acceleratedSync?: boolean;
     /**
-     * The full resource name the branch associated with the table.
+     * The full resource name of the branch that contains the synced table.
      *
-     * Format: "projects/{project_id}/branches/{branch_id}"
+     * Format: "projects/{project_id}/branches/{branch_id}".
+     *
+     * A value must be specified when creating a synced table inside a standard catalog. Inside a
+     * Lakebase catalog it can be omitted, and if specified it must match the branch of that catalog
      */
     branch?: string;
     /**
@@ -40824,10 +50356,11 @@ export interface PostgresSyncedTableSpec {
      */
     createDatabaseObjectsIfMissing?: boolean;
     /**
-     * ID of an existing pipeline to bin-pack this synced table into.
+     * ID of an existing pipeline to bin-pack this synced table into. The pipeline must be a synced
+     * table pipeline that runs continuously if and only if schedulingPolicy is CONTINUOUS.
      * At most one of existingPipelineId and newPipelineSpec should be defined.
      *
-     * The pipeline used for the synced table is returned via the top level pipelineId attribute
+     * The pipeline used for the synced table is returned in status.pipeline_id
      */
     existingPipelineId?: string;
     /**
@@ -40838,24 +50371,23 @@ export interface PostgresSyncedTableSpec {
      * Specification for creating a new pipeline.
      * At most one of existingPipelineId and newPipelineSpec should be defined.
      *
-     * The pipeline used for the synced table is returned via the top level pipelineId attribute
+     * The pipeline used for the synced table is returned in status.pipeline_id
      */
     newPipelineSpec?: outputs.PostgresSyncedTableSpecNewPipelineSpec;
     /**
-     * The Postgres database name where the synced table will be created in.
-     *
-     * If this synced table is created inside a Lakebase Catalog, this attribute can be omitted on creation and is inferred
-     * from the postgresDatabase associated with the Lakebase Catalog. If specified when inside a Lakebase Catalog, the value must match.
-     *
-     * A value must be specified when creating a synced table inside a Standard Catalog
+     * The name of the Postgres database where the synced table is created. A value must be specified
+     * on creation. If the synced table is created inside a Lakebase catalog, the value must match the
+     * Postgres database of that catalog
      */
     postgresDatabase?: string;
     /**
-     * Primary Key columns to be used for data insert/update in the destination
+     * Primary Key columns to be used for data insert/update in the destination. At least one column
+     * must be specified
      */
     primaryKeyColumns?: string[];
     /**
-     * Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+     * Scheduling policy of the underlying pipeline. A value must be specified on creation. See
+     * https://docs.databricks.com/aws/en/oltp/projects/sync-tables for how to choose a sync mode. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
      */
     schedulingPolicy?: string;
     /**
@@ -40954,7 +50486,8 @@ export interface PostgresSyncedTableStatus {
      */
     message: string;
     /**
-     * (SyncedTablePipelineProgress)
+     * (SyncedTablePipelineProgress) - Progress of the sync that is currently running, either the initial data load or an update of a
+     * triggered or snapshot synced table
      */
     ongoingSyncProgress: outputs.PostgresSyncedTableStatusOngoingSyncProgress;
     /**
@@ -40977,7 +50510,7 @@ export interface PostgresSyncedTableStatus {
 
 export interface PostgresSyncedTableStatusLastSync {
     /**
-     * (DeltaTableSyncInfo)
+     * (DeltaTableSyncInfo) - The source Delta table version that the last successful sync read
      */
     deltaTableSyncInfo: outputs.PostgresSyncedTableStatusLastSyncDeltaTableSyncInfo;
     /**
@@ -41542,7 +51075,7 @@ export interface RfaAccessRequestDestinationsDestination {
 
 export interface RfaAccessRequestDestinationsDestinationSourceSecurable {
     /**
-     * (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     * (string) - The full name of the securable, repeated from **securable**
      */
     fullName?: string;
     /**
@@ -41599,34 +51132,37 @@ export interface SandboxProviderConfig {
 
 export interface SandboxSpec {
     /**
-     * Compute configuration (size, inactivity timeout) requested for the sandbox
+     * Compute settings requested for the sandbox, such as the inactivity timeout
      */
     compute?: outputs.SandboxSpecCompute;
     /**
-     * The execution environment to use for the sandbox
+     * Software environment for the sandbox, such as the container image it runs
      */
     environment?: outputs.SandboxSpecEnvironment;
 }
 
 export interface SandboxSpecCompute {
     /**
-     * Idle duration after which the sandbox is automatically terminated
+     * Idle time after which the sandbox is automatically stopped. Unset or 0 disables inactivity
+     * auto-stop. Negative values are rejected. Can be changed on an existing sandbox with
+     * UpdateSandbox
      */
     inactivityTimeout?: string;
 }
 
 export interface SandboxSpecEnvironment {
     /**
-     * The Unity Catalog container image to use for the sandbox environment
-     * (for example, `catalog.schema.folder.image:tag`). See
-     * [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
+     * The Unity Catalog container image to run the sandbox from, in the form
+     * `catalog.schema.artifact:tag`, or `catalog.schema.artifact@sha256:<digest>` to pin an
+     * exact version. When omitted, the sandbox runs the default sandbox image. See
+     * [custom images](https://docs.databricks.com/en/compute/serverless/sandbox-custom-image)
      */
     imageUri?: string;
 }
 
 export interface SandboxStatus {
     /**
-     * (string) - Lifecycle state of the sandbox. Possible values are: `SANDBOX_STATE_PENDING`, `SANDBOX_STATE_RUNNING`, `SANDBOX_STATE_STOPPED`, `SANDBOX_STATE_STOPPING`
+     * (string) - Lifecycle state of the sandbox.
      */
     state: string;
 }
@@ -42362,6 +51898,9 @@ export interface TagPolicyProviderConfig {
 }
 
 export interface TagPolicyValue {
+    /**
+     * The value that can be assigned to the tag key. Values are case-sensitive
+     */
     name: string;
 }
 
@@ -42403,11 +51942,16 @@ export interface VectorSearchEndpointProviderConfig {
 }
 
 export interface VectorSearchEndpointScalingInfo {
+    delayedReason?: string;
+    estimatedCompletionTimestamp?: number;
+    indexInitializationPercentage?: number;
+    phase?: string;
     requestedTargetQps?: number;
     /**
      * Current state of the endpoint. Currently following values are supported: `PROVISIONING`, `ONLINE`, and `OFFLINE`.
      */
     state?: string;
+    targetQpsChangeAllowedAfterTimestamp?: number;
 }
 
 export interface VectorSearchIndexDeltaSyncIndexSpec {
@@ -42516,6 +52060,8 @@ export interface VectorSearchIndexProviderConfig {
 }
 
 export interface VectorSearchIndexStatus {
+    detailedState?: string;
+    failedStatus?: outputs.VectorSearchIndexStatusFailedStatus;
     /**
      * Index API Url to be used to perform operations on the index
      */
@@ -42532,6 +52078,16 @@ export interface VectorSearchIndexStatus {
      * Whether the index is ready for search
      */
     ready?: boolean;
+}
+
+export interface VectorSearchIndexStatusFailedStatus {
+    errorCode?: string;
+    errorMessage?: string;
+    lastProcessedCommitTimestamp?: outputs.VectorSearchIndexStatusFailedStatusLastProcessedCommitTimestamp;
+    lastProcessedCommitVersion?: number;
+}
+
+export interface VectorSearchIndexStatusFailedStatusLastProcessedCommitTimestamp {
 }
 
 export interface VolumeProviderConfig {
@@ -42598,7 +52154,13 @@ export interface WorkspaceIamServicePrincipalV2ProviderConfig {
 }
 
 export interface WorkspaceIamUserV2FullName {
+    /**
+     * The user's family (last) name
+     */
     familyName?: string;
+    /**
+     * The user's given (first) name
+     */
     givenName?: string;
 }
 
@@ -42611,7 +52173,7 @@ export interface WorkspaceIamUserV2ProviderConfig {
 
 export interface WorkspaceIamWorkspaceAssignmentV2ProviderConfig {
     /**
-     * (integer) - The workspace ID where the principal is assigned
+     * (integer) - The ID of the workspace
      */
     workspaceId: string;
 }
@@ -42625,24 +52187,57 @@ export interface WorkspaceIamWorkspaceIdentityDetailV2ProviderConfig {
 
 export interface WorkspaceSettingV2AibiDashboardEmbeddingAccessPolicy {
     /**
-     * Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * Where AI/BI dashboards can be embedded: in any domain (ALLOW_ALL_DOMAINS), only in the approved
+     * domains configured for the workspace (ALLOW_APPROVED_DOMAINS), or nowhere (DENY_ALL_DOMAINS).
+     * Defaults to ALLOW_APPROVED_DOMAINS. Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      */
     accessPolicyType: string;
 }
 
 export interface WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains {
+    /**
+     * Domains allowed to host embedded AI/BI dashboards. A leading wildcard allows every subdomain of a
+     * domain. The list applies, and can only be changed, while the embedding access policy is
+     * ALLOW_APPROVED_DOMAINS
+     */
     approvedDomains?: string[];
 }
 
 export interface WorkspaceSettingV2AllowedAppsUserApiScopes {
+    /**
+     * OAuth scopes that app developers can request when an app acts on behalf of a user. A list with
+     * the single entry * allows every supported scope and cannot be combined with other scopes. An
+     * empty list disables user authorization for apps
+     */
     allowedScopes?: string[];
 }
 
 export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspace {
+    /**
+     * Whether the workspace can change the enabled state. Databricks computes this value: it is false
+     * when the compliance security profile forces the feature on or when the workspace lacks the
+     * Enhanced Security and Compliance entitlement. A value sent in an update request has no effect
+     */
     canToggle?: boolean;
+    /**
+     * Whether automatic cluster update is enabled for the workspace. The effective value is always
+     * true while the compliance security profile is enabled on the workspace
+     */
     enabled?: boolean;
+    /**
+     * Why the feature is forced on or unavailable. Databricks sets these details for information only;
+     * they do not determine whether the feature is enabled
+     */
     enablementDetails?: outputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDetails;
+    /**
+     * When the maintenance window runs. When unset, it defaults to the first Sunday of every month at
+     * 01:00 UTC
+     */
     maintenanceWindow?: outputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow;
+    /**
+     * Whether compute resources restart during every maintenance window even when no update is
+     * available. When false, they restart only when an update is available
+     */
     restartEvenIfNoUpdatesAvailable?: boolean;
 }
 
@@ -42652,7 +52247,8 @@ export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDeta
      */
     forcedForComplianceMode?: boolean;
     /**
-     * The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     * The feature is unavailable because the workspace does not have the Enhanced Security and
+     * Compliance entitlement
      */
     unavailableForDisabledEntitlement?: boolean;
     /**
@@ -42662,23 +52258,36 @@ export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceEnablementDeta
 }
 
 export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    /**
+     * Schedule anchored to a day of the week, either every week or on given weeks of the month
+     */
     weekDayBasedSchedule?: outputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
 }
 
 export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * Day of the week on which the maintenance window starts. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
     dayOfWeek?: string;
     /**
-     * Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * How often the maintenance window occurs: every week, or only on the listed occurrences of
+     * the day of the week within each month. Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
     frequency?: string;
+    /**
+     * Time of day, in UTC, at which the maintenance window starts
+     */
     windowStartTime?: outputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
 }
 
 export interface WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    /**
+     * Hour of the day on a 24-hour clock
+     */
     hours?: number;
+    /**
+     * Minute of the hour
+     */
     minutes?: number;
 }
 
@@ -42695,24 +52304,57 @@ export interface WorkspaceSettingV2CollaborationPlatformConnectivity {
 
 export interface WorkspaceSettingV2EffectiveAibiDashboardEmbeddingAccessPolicy {
     /**
-     * Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
+     * Where AI/BI dashboards can be embedded: in any domain (ALLOW_ALL_DOMAINS), only in the approved
+     * domains configured for the workspace (ALLOW_APPROVED_DOMAINS), or nowhere (DENY_ALL_DOMAINS).
+     * Defaults to ALLOW_APPROVED_DOMAINS. Possible values are: `ALLOW_ALL_DOMAINS`, `ALLOW_APPROVED_DOMAINS`, `DENY_ALL_DOMAINS`
      */
     accessPolicyType: string;
 }
 
 export interface WorkspaceSettingV2EffectiveAibiDashboardEmbeddingApprovedDomains {
+    /**
+     * Domains allowed to host embedded AI/BI dashboards. A leading wildcard allows every subdomain of a
+     * domain. The list applies, and can only be changed, while the embedding access policy is
+     * ALLOW_APPROVED_DOMAINS
+     */
     approvedDomains?: string[];
 }
 
 export interface WorkspaceSettingV2EffectiveAllowedAppsUserApiScopes {
+    /**
+     * OAuth scopes that app developers can request when an app acts on behalf of a user. A list with
+     * the single entry * allows every supported scope and cannot be combined with other scopes. An
+     * empty list disables user authorization for apps
+     */
     allowedScopes?: string[];
 }
 
 export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspace {
+    /**
+     * Whether the workspace can change the enabled state. Databricks computes this value: it is false
+     * when the compliance security profile forces the feature on or when the workspace lacks the
+     * Enhanced Security and Compliance entitlement. A value sent in an update request has no effect
+     */
     canToggle?: boolean;
+    /**
+     * Whether automatic cluster update is enabled for the workspace. The effective value is always
+     * true while the compliance security profile is enabled on the workspace
+     */
     enabled?: boolean;
+    /**
+     * Why the feature is forced on or unavailable. Databricks sets these details for information only;
+     * they do not determine whether the feature is enabled
+     */
     enablementDetails?: outputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnablementDetails;
+    /**
+     * When the maintenance window runs. When unset, it defaults to the first Sunday of every month at
+     * 01:00 UTC
+     */
     maintenanceWindow?: outputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow;
+    /**
+     * Whether compute resources restart during every maintenance window even when no update is
+     * available. When false, they restart only when an update is available
+     */
     restartEvenIfNoUpdatesAvailable?: boolean;
 }
 
@@ -42722,7 +52364,8 @@ export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnabl
      */
     forcedForComplianceMode?: boolean;
     /**
-     * The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     * The feature is unavailable because the workspace does not have the Enhanced Security and
+     * Compliance entitlement
      */
     unavailableForDisabledEntitlement?: boolean;
     /**
@@ -42732,23 +52375,36 @@ export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEnabl
 }
 
 export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindow {
+    /**
+     * Schedule anchored to a day of the week, either every week or on given weeks of the month
+     */
     weekDayBasedSchedule?: outputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule;
 }
 
 export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule {
     /**
-     * Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+     * Day of the week on which the maintenance window starts. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
      */
     dayOfWeek?: string;
     /**
-     * Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+     * How often the maintenance window occurs: every week, or only on the listed occurrences of
+     * the day of the week within each month. Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
      */
     frequency?: string;
+    /**
+     * Time of day, in UTC, at which the maintenance window starts
+     */
     windowStartTime?: outputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime;
 }
 
 export interface WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
+    /**
+     * Hour of the day on a 24-hour clock
+     */
     hours?: number;
+    /**
+     * Minute of the hour
+     */
     minutes?: number;
 }
 
@@ -42768,6 +52424,11 @@ export interface WorkspaceSettingV2EffectiveIntegerVal {
 }
 
 export interface WorkspaceSettingV2EffectiveOperationalEmailCustomRecipient {
+    /**
+     * Email address that receives this workspace's operational emails in addition to the workspace
+     * admins. Use a distribution list address to reach several people. An empty string clears the
+     * additional recipient
+     */
     email?: string;
 }
 
@@ -42782,7 +52443,13 @@ export interface WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins {
      */
     disableGovTagCreation?: boolean;
     /**
-     * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     * Controls what workspace admins can do with service principal tokens and job identities. With
+     * ALLOW_ALL, workspace admins can create personal access tokens on behalf of any service principal
+     * in the workspace, change a job owner to any workspace user, and set a job's runAs identity to
+     * any workspace user or to a service principal they have the Service Principal User role on. With
+     * RESTRICT_TOKENS_AND_JOB_RUN_AS, they can only create tokens for service principals they have the
+     * Service Principal User role on, change a job owner to themselves, and set runAs to themselves
+     * or to a service principal they have that role on. Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
     status: string;
 }
@@ -42791,8 +52458,682 @@ export interface WorkspaceSettingV2EffectiveStringVal {
     value?: string;
 }
 
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardTheme {
+    /**
+     * Color of the zero-value grid line, making it visually distinct from other grid lines
+     */
+    axisLineColor?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeAxisLineColor;
+    /**
+     * The background color of the dashboard canvas
+     */
+    canvasBackgroundColor?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeCanvasBackgroundColor;
+    /**
+     * The continuous gradient configuration for the dashboard
+     */
+    continuousGradient?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradient;
+    fontColor?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontColor;
+    fontFamily?: string;
+    /**
+     * The per-category typography overrides for the dashboard
+     */
+    fontSettings?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettings;
+    /**
+     * Color of chart grid lines in visualizations (horizontal and vertical guide lines)
+     */
+    gridLineColor?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeGridLineColor;
+    /**
+     * The corner radius in pixels for rectangular marks in visualizations (bars, columns, histogram bins, etc.)
+     */
+    markCornerRadius?: number;
+    /**
+     * The highlight color for selected elements in widgets
+     */
+    selectionColor?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeSelectionColor;
+    /**
+     * The sentiment color palette for the dashboard
+     */
+    sentimentColors?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeSentimentColors;
+    /**
+     * The default vertical alignment for all text box widgets in the dashboard.
+     * Individual text box widgets can override this. Possible values are: `VERTICAL_ALIGN_BOTTOM`, `VERTICAL_ALIGN_CENTER`, `VERTICAL_ALIGN_TOP`
+     */
+    textBoxVerticalAlign?: string;
+    /**
+     * Color palette for visualizations. Colors are applied in order (visualization_color_01, visualization_color_02, etc.).
+     * Invalid color values are preserved but ignored during rendering
+     */
+    visualizationColor01?: string;
+    /**
+     * The color at position 2 in the visualization color palette
+     */
+    visualizationColor02?: string;
+    /**
+     * The color at position 3 in the visualization color palette
+     */
+    visualizationColor03?: string;
+    /**
+     * The color at position 4 in the visualization color palette
+     */
+    visualizationColor04?: string;
+    /**
+     * The color at position 5 in the visualization color palette
+     */
+    visualizationColor05?: string;
+    /**
+     * The color at position 6 in the visualization color palette
+     */
+    visualizationColor06?: string;
+    /**
+     * The color at position 7 in the visualization color palette
+     */
+    visualizationColor07?: string;
+    /**
+     * The color at position 8 in the visualization color palette
+     */
+    visualizationColor08?: string;
+    /**
+     * The color at position 9 in the visualization color palette
+     */
+    visualizationColor09?: string;
+    /**
+     * The color at position 10 in the visualization color palette
+     */
+    visualizationColor10?: string;
+    /**
+     * The color at position 11 in the visualization color palette
+     */
+    visualizationColor11?: string;
+    /**
+     * The color at position 12 in the visualization color palette
+     */
+    visualizationColor12?: string;
+    /**
+     * The color at position 13 in the visualization color palette
+     */
+    visualizationColor13?: string;
+    /**
+     * The color at position 14 in the visualization color palette
+     */
+    visualizationColor14?: string;
+    /**
+     * The color at position 15 in the visualization color palette
+     */
+    visualizationColor15?: string;
+    /**
+     * The color at position 16 in the visualization color palette
+     */
+    visualizationColor16?: string;
+    /**
+     * The color at position 17 in the visualization color palette
+     */
+    visualizationColor17?: string;
+    /**
+     * The color at position 18 in the visualization color palette
+     */
+    visualizationColor18?: string;
+    /**
+     * The color at position 19 in the visualization color palette
+     */
+    visualizationColor19?: string;
+    /**
+     * The color at position 20 in the visualization color palette
+     */
+    visualizationColor20?: string;
+    /**
+     * The background color of widgets
+     */
+    widgetBackgroundColor?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeWidgetBackgroundColor;
+    /**
+     * The border color of widgets
+     */
+    widgetBorderColor?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeWidgetBorderColor;
+    /**
+     * The widget border radius in pixels
+     */
+    widgetCornerRadius?: number;
+    /**
+     * Alignment setting for all widget titles and descriptions at the dashboard level. Possible values are: `CENTER`, `LEFT`, `RIGHT`
+     */
+    widgetHeaderAlignment?: string;
+    /**
+     * The gap between widgets in pixels
+     */
+    widgetMargin?: number;
+    /**
+     * The content padding inside each widget in pixels
+     */
+    widgetPadding?: number;
+    /**
+     * The shadow intensity level applied to widgets (0 = no shadow, 100 = maximum).
+     * The actual CSS box-shadow is computed at render time from this value, factoring in
+     * background colors and color mode
+     */
+    widgetShadow?: number;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeAxisLineColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeCanvasBackgroundColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradient {
+    /**
+     * Gradient value used when the dashboard is rendered in dark mode
+     */
+    darkMode?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkMode;
+    /**
+     * Gradient value used when the dashboard is rendered in light mode
+     */
+    lightMode?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightMode;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkMode {
+    color?: string;
+    /**
+     * A named color scheme (for example, 'blues', 'viridis', 'spectral')
+     */
+    colorScheme?: string;
+    /**
+     * A custom three-stop diverging gradient
+     */
+    customDiverging?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDiverging;
+    /**
+     * A custom two-stop sequential gradient
+     */
+    customSequential?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequential;
+    /**
+     * A 0-based index into the visualization color palette, where 0 is visualization_color_01. Valid values are 0 to 19
+     */
+    fromCategoricalIndex?: number;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDiverging {
+    end?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingEnd;
+    /**
+     * The color at the midpoint of the gradient
+     */
+    mid?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingMid;
+    start?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingStart;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingMid {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequential {
+    end?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialEnd;
+    start?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialStart;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightMode {
+    color?: string;
+    /**
+     * A named color scheme (for example, 'blues', 'viridis', 'spectral')
+     */
+    colorScheme?: string;
+    /**
+     * A custom three-stop diverging gradient
+     */
+    customDiverging?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDiverging;
+    /**
+     * A custom two-stop sequential gradient
+     */
+    customSequential?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequential;
+    /**
+     * A 0-based index into the visualization color palette, where 0 is visualization_color_01. Valid values are 0 to 19
+     */
+    fromCategoricalIndex?: number;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDiverging {
+    end?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingEnd;
+    /**
+     * The color at the midpoint of the gradient
+     */
+    mid?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingMid;
+    start?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingStart;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingMid {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequential {
+    end?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialEnd;
+    start?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialStart;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettings {
+    /**
+     * The default font config applied to all text unless overridden by a more specific category
+     */
+    base?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsBase;
+    /**
+     * The font config applied to field titles (for example, axis titles, table heading titles)
+     */
+    fieldTitle?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldTitle;
+    /**
+     * The font config applied to field values (for example, axis tick labels, table cell values, tooltip values)
+     */
+    fieldValue?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldValue;
+    /**
+     * The font config applied to widget descriptions
+     */
+    widgetDescription?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetDescription;
+    /**
+     * The font config applied to widget titles
+     */
+    widgetTitle?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetTitle;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsBase {
+    fontColor?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsBaseFontColor;
+    fontFamily?: string;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsBaseFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldTitle {
+    fontColor?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldTitleFontColor;
+    fontFamily?: string;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldTitleFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldValue {
+    fontColor?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldValueFontColor;
+    fontFamily?: string;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsFieldValueFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetDescription {
+    fontColor?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetDescriptionFontColor;
+    fontFamily?: string;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetDescriptionFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetTitle {
+    fontColor?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetTitleFontColor;
+    fontFamily?: string;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeFontSettingsWidgetTitleFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeGridLineColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeSelectionColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeSentimentColors {
+    /**
+     * The color applied to negative sentiment values
+     */
+    negative?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsNegative;
+    /**
+     * The color applied to neutral sentiment values
+     */
+    neutral?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsNeutral;
+    /**
+     * The color applied to positive sentiment values
+     */
+    positive?: outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsPositive;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsNegative {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsNeutral {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeSentimentColorsPositive {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeWidgetBackgroundColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2EffectiveWorkspaceDashboardThemeWidgetBorderColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
 export interface WorkspaceSettingV2EffectiveWorkspaceLabel {
     color?: string;
+    /**
+     * Text of the label shown next to the workspace name in the top navigation bar. An empty string
+     * means no label is set
+     */
     label?: string;
 }
 
@@ -42801,6 +53142,11 @@ export interface WorkspaceSettingV2IntegerVal {
 }
 
 export interface WorkspaceSettingV2OperationalEmailCustomRecipient {
+    /**
+     * Email address that receives this workspace's operational emails in addition to the workspace
+     * admins. Use a distribution list address to reach several people. An empty string clears the
+     * additional recipient
+     */
     email?: string;
 }
 
@@ -42822,7 +53168,13 @@ export interface WorkspaceSettingV2RestrictWorkspaceAdmins {
      */
     disableGovTagCreation?: boolean;
     /**
-     * Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
+     * Controls what workspace admins can do with service principal tokens and job identities. With
+     * ALLOW_ALL, workspace admins can create personal access tokens on behalf of any service principal
+     * in the workspace, change a job owner to any workspace user, and set a job's runAs identity to
+     * any workspace user or to a service principal they have the Service Principal User role on. With
+     * RESTRICT_TOKENS_AND_JOB_RUN_AS, they can only create tokens for service principals they have the
+     * Service Principal User role on, change a job owner to themselves, and set runAs to themselves
+     * or to a service principal they have that role on. Possible values are: `ALLOW_ALL`, `RESTRICT_TOKENS_AND_JOB_RUN_AS`
      */
     status: string;
 }
@@ -42831,8 +53183,682 @@ export interface WorkspaceSettingV2StringVal {
     value?: string;
 }
 
+export interface WorkspaceSettingV2WorkspaceDashboardTheme {
+    /**
+     * Color of the zero-value grid line, making it visually distinct from other grid lines
+     */
+    axisLineColor?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeAxisLineColor;
+    /**
+     * The background color of the dashboard canvas
+     */
+    canvasBackgroundColor?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeCanvasBackgroundColor;
+    /**
+     * The continuous gradient configuration for the dashboard
+     */
+    continuousGradient?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradient;
+    fontColor?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeFontColor;
+    fontFamily?: string;
+    /**
+     * The per-category typography overrides for the dashboard
+     */
+    fontSettings?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeFontSettings;
+    /**
+     * Color of chart grid lines in visualizations (horizontal and vertical guide lines)
+     */
+    gridLineColor?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeGridLineColor;
+    /**
+     * The corner radius in pixels for rectangular marks in visualizations (bars, columns, histogram bins, etc.)
+     */
+    markCornerRadius?: number;
+    /**
+     * The highlight color for selected elements in widgets
+     */
+    selectionColor?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeSelectionColor;
+    /**
+     * The sentiment color palette for the dashboard
+     */
+    sentimentColors?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeSentimentColors;
+    /**
+     * The default vertical alignment for all text box widgets in the dashboard.
+     * Individual text box widgets can override this. Possible values are: `VERTICAL_ALIGN_BOTTOM`, `VERTICAL_ALIGN_CENTER`, `VERTICAL_ALIGN_TOP`
+     */
+    textBoxVerticalAlign?: string;
+    /**
+     * Color palette for visualizations. Colors are applied in order (visualization_color_01, visualization_color_02, etc.).
+     * Invalid color values are preserved but ignored during rendering
+     */
+    visualizationColor01?: string;
+    /**
+     * The color at position 2 in the visualization color palette
+     */
+    visualizationColor02?: string;
+    /**
+     * The color at position 3 in the visualization color palette
+     */
+    visualizationColor03?: string;
+    /**
+     * The color at position 4 in the visualization color palette
+     */
+    visualizationColor04?: string;
+    /**
+     * The color at position 5 in the visualization color palette
+     */
+    visualizationColor05?: string;
+    /**
+     * The color at position 6 in the visualization color palette
+     */
+    visualizationColor06?: string;
+    /**
+     * The color at position 7 in the visualization color palette
+     */
+    visualizationColor07?: string;
+    /**
+     * The color at position 8 in the visualization color palette
+     */
+    visualizationColor08?: string;
+    /**
+     * The color at position 9 in the visualization color palette
+     */
+    visualizationColor09?: string;
+    /**
+     * The color at position 10 in the visualization color palette
+     */
+    visualizationColor10?: string;
+    /**
+     * The color at position 11 in the visualization color palette
+     */
+    visualizationColor11?: string;
+    /**
+     * The color at position 12 in the visualization color palette
+     */
+    visualizationColor12?: string;
+    /**
+     * The color at position 13 in the visualization color palette
+     */
+    visualizationColor13?: string;
+    /**
+     * The color at position 14 in the visualization color palette
+     */
+    visualizationColor14?: string;
+    /**
+     * The color at position 15 in the visualization color palette
+     */
+    visualizationColor15?: string;
+    /**
+     * The color at position 16 in the visualization color palette
+     */
+    visualizationColor16?: string;
+    /**
+     * The color at position 17 in the visualization color palette
+     */
+    visualizationColor17?: string;
+    /**
+     * The color at position 18 in the visualization color palette
+     */
+    visualizationColor18?: string;
+    /**
+     * The color at position 19 in the visualization color palette
+     */
+    visualizationColor19?: string;
+    /**
+     * The color at position 20 in the visualization color palette
+     */
+    visualizationColor20?: string;
+    /**
+     * The background color of widgets
+     */
+    widgetBackgroundColor?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeWidgetBackgroundColor;
+    /**
+     * The border color of widgets
+     */
+    widgetBorderColor?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeWidgetBorderColor;
+    /**
+     * The widget border radius in pixels
+     */
+    widgetCornerRadius?: number;
+    /**
+     * Alignment setting for all widget titles and descriptions at the dashboard level. Possible values are: `CENTER`, `LEFT`, `RIGHT`
+     */
+    widgetHeaderAlignment?: string;
+    /**
+     * The gap between widgets in pixels
+     */
+    widgetMargin?: number;
+    /**
+     * The content padding inside each widget in pixels
+     */
+    widgetPadding?: number;
+    /**
+     * The shadow intensity level applied to widgets (0 = no shadow, 100 = maximum).
+     * The actual CSS box-shadow is computed at render time from this value, factoring in
+     * background colors and color mode
+     */
+    widgetShadow?: number;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeAxisLineColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeCanvasBackgroundColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradient {
+    /**
+     * Gradient value used when the dashboard is rendered in dark mode
+     */
+    darkMode?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkMode;
+    /**
+     * Gradient value used when the dashboard is rendered in light mode
+     */
+    lightMode?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightMode;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkMode {
+    color?: string;
+    /**
+     * A named color scheme (for example, 'blues', 'viridis', 'spectral')
+     */
+    colorScheme?: string;
+    /**
+     * A custom three-stop diverging gradient
+     */
+    customDiverging?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDiverging;
+    /**
+     * A custom two-stop sequential gradient
+     */
+    customSequential?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequential;
+    /**
+     * A 0-based index into the visualization color palette, where 0 is visualization_color_01. Valid values are 0 to 19
+     */
+    fromCategoricalIndex?: number;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDiverging {
+    end?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingEnd;
+    /**
+     * The color at the midpoint of the gradient
+     */
+    mid?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingMid;
+    start?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingStart;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingMid {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomDivergingStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequential {
+    end?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialEnd;
+    start?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialStart;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientDarkModeCustomSequentialStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightMode {
+    color?: string;
+    /**
+     * A named color scheme (for example, 'blues', 'viridis', 'spectral')
+     */
+    colorScheme?: string;
+    /**
+     * A custom three-stop diverging gradient
+     */
+    customDiverging?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDiverging;
+    /**
+     * A custom two-stop sequential gradient
+     */
+    customSequential?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequential;
+    /**
+     * A 0-based index into the visualization color palette, where 0 is visualization_color_01. Valid values are 0 to 19
+     */
+    fromCategoricalIndex?: number;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDiverging {
+    end?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingEnd;
+    /**
+     * The color at the midpoint of the gradient
+     */
+    mid?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingMid;
+    start?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingStart;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingMid {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomDivergingStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequential {
+    end?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialEnd;
+    start?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialStart;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialEnd {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeContinuousGradientLightModeCustomSequentialStart {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeFontSettings {
+    /**
+     * The default font config applied to all text unless overridden by a more specific category
+     */
+    base?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsBase;
+    /**
+     * The font config applied to field titles (for example, axis titles, table heading titles)
+     */
+    fieldTitle?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsFieldTitle;
+    /**
+     * The font config applied to field values (for example, axis tick labels, table cell values, tooltip values)
+     */
+    fieldValue?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsFieldValue;
+    /**
+     * The font config applied to widget descriptions
+     */
+    widgetDescription?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsWidgetDescription;
+    /**
+     * The font config applied to widget titles
+     */
+    widgetTitle?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsWidgetTitle;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsBase {
+    fontColor?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsBaseFontColor;
+    fontFamily?: string;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsBaseFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsFieldTitle {
+    fontColor?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsFieldTitleFontColor;
+    fontFamily?: string;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsFieldTitleFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsFieldValue {
+    fontColor?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsFieldValueFontColor;
+    fontFamily?: string;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsFieldValueFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsWidgetDescription {
+    fontColor?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsWidgetDescriptionFontColor;
+    fontFamily?: string;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsWidgetDescriptionFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsWidgetTitle {
+    fontColor?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsWidgetTitleFontColor;
+    fontFamily?: string;
+    /**
+     * The font size in pixels
+     */
+    fontSize?: number;
+    /**
+     * The font style (slant) applied to text in this category. Possible values are: `FONT_STYLE_ITALIC`, `FONT_STYLE_NORMAL`
+     */
+    fontStyle?: string;
+    /**
+     * The font weight value (for example, 400 for normal, 700 for bold)
+     */
+    fontWeight?: number;
+    /**
+     * The text case transformation applied to text in this category. Possible values are: `TEXT_CASE_CAPITALIZE`, `TEXT_CASE_LOWERCASE`, `TEXT_CASE_UPPERCASE`
+     */
+    textCase?: string;
+    /**
+     * The text decoration applied to text in this category. Possible values are: `TEXT_DECORATION_NONE`, `TEXT_DECORATION_UNDERLINE`
+     */
+    textDecoration?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeFontSettingsWidgetTitleFontColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeGridLineColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeSelectionColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeSentimentColors {
+    /**
+     * The color applied to negative sentiment values
+     */
+    negative?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeSentimentColorsNegative;
+    /**
+     * The color applied to neutral sentiment values
+     */
+    neutral?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeSentimentColorsNeutral;
+    /**
+     * The color applied to positive sentiment values
+     */
+    positive?: outputs.WorkspaceSettingV2WorkspaceDashboardThemeSentimentColorsPositive;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeSentimentColorsNegative {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeSentimentColorsNeutral {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeSentimentColorsPositive {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeWidgetBackgroundColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
+export interface WorkspaceSettingV2WorkspaceDashboardThemeWidgetBorderColor {
+    /**
+     * The color used when the dashboard is rendered in dark mode (for example, '#FF0000')
+     */
+    dark?: string;
+    /**
+     * The color used when the dashboard is rendered in light mode (for example, '#FF0000')
+     */
+    light?: string;
+}
+
 export interface WorkspaceSettingV2WorkspaceLabel {
     color?: string;
+    /**
+     * Text of the label shown next to the workspace name in the top navigation bar. An empty string
+     * means no label is set
+     */
     label?: string;
 }
 

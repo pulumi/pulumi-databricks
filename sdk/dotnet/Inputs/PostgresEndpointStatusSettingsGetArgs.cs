@@ -16,7 +16,8 @@ namespace Pulumi.Databricks.Inputs
         private InputMap<string>? _pgSettings;
 
         /// <summary>
-        /// A raw representation of Postgres settings
+        /// Postgres server parameters to set on the compute endpoint, keyed by parameter name. Each value is
+        /// given as a string
         /// </summary>
         public InputMap<string> PgSettings
         {

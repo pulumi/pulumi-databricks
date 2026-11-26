@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  *
@@ -75,7 +75,7 @@ export interface GetPostgresDatabaseResult {
     readonly parent: string;
     readonly providerConfig?: outputs.GetPostgresDatabaseProviderConfig;
     /**
-     * (DatabaseDatabaseSpec) - The desired state of the Database
+     * (DatabaseDatabaseSpec) - The desired state of the Database.
      */
     readonly spec: outputs.GetPostgresDatabaseSpec;
     /**
@@ -88,7 +88,7 @@ export interface GetPostgresDatabaseResult {
     readonly updateTime: string;
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  *

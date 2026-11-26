@@ -16,8 +16,9 @@ namespace Pulumi.Databricks.Inputs
         /// (string) - Resource name of the provider service.
         /// Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
         /// Each `{...}` component is capped at 255 characters individually.
-        /// Server-derived on Create from `Parent` +
-        /// `ModelProviderServiceId`; required and immutable on Update/Get/Delete
+        /// The server derives the name on Create from
+        /// `Parent` and `ModelProviderServiceId`; it is required and immutable on
+        /// Update, Get, and Delete
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

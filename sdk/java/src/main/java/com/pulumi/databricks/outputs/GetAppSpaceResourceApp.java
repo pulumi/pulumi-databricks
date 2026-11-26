@@ -18,7 +18,8 @@ public final class GetAppSpaceResourceApp {
      */
     private @Nullable String name;
     /**
-     * @return (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * @return (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      * 
      */
     private @Nullable String permission;
@@ -33,7 +34,8 @@ public final class GetAppSpaceResourceApp {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * @return (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      * 
      */
     public Optional<String> permission() {

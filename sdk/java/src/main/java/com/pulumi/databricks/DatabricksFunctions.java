@@ -94,6 +94,10 @@ import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplateArgs;
 import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatePlainArgs;
 import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatesArgs;
 import com.pulumi.databricks.inputs.GetAppsSettingsCustomTemplatesPlainArgs;
+import com.pulumi.databricks.inputs.GetAssumeGroupRestrictedSharingGroupArgs;
+import com.pulumi.databricks.inputs.GetAssumeGroupRestrictedSharingGroupPlainArgs;
+import com.pulumi.databricks.inputs.GetAssumeGroupRestrictedSharingGroupsArgs;
+import com.pulumi.databricks.inputs.GetAssumeGroupRestrictedSharingGroupsPlainArgs;
 import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyArgs;
 import com.pulumi.databricks.inputs.GetAwsAssumeRolePolicyPlainArgs;
 import com.pulumi.databricks.inputs.GetAwsBucketPolicyArgs;
@@ -216,6 +220,38 @@ import com.pulumi.databricks.inputs.GetKnowledgeAssistantKnowledgeSourcesPlainAr
 import com.pulumi.databricks.inputs.GetKnowledgeAssistantPlainArgs;
 import com.pulumi.databricks.inputs.GetKnowledgeAssistantsArgs;
 import com.pulumi.databricks.inputs.GetKnowledgeAssistantsPlainArgs;
+import com.pulumi.databricks.inputs.GetLakewatchAlertConfigArgs;
+import com.pulumi.databricks.inputs.GetLakewatchAlertConfigPlainArgs;
+import com.pulumi.databricks.inputs.GetLakewatchBuiltinParserArgs;
+import com.pulumi.databricks.inputs.GetLakewatchBuiltinParserPlainArgs;
+import com.pulumi.databricks.inputs.GetLakewatchBuiltinParserVersionArgs;
+import com.pulumi.databricks.inputs.GetLakewatchBuiltinParserVersionPlainArgs;
+import com.pulumi.databricks.inputs.GetLakewatchBuiltinParserVersionsArgs;
+import com.pulumi.databricks.inputs.GetLakewatchBuiltinParserVersionsPlainArgs;
+import com.pulumi.databricks.inputs.GetLakewatchBuiltinParsersArgs;
+import com.pulumi.databricks.inputs.GetLakewatchBuiltinParsersPlainArgs;
+import com.pulumi.databricks.inputs.GetLakewatchCommonConfigArgs;
+import com.pulumi.databricks.inputs.GetLakewatchCommonConfigPlainArgs;
+import com.pulumi.databricks.inputs.GetLakewatchDatasourceArgs;
+import com.pulumi.databricks.inputs.GetLakewatchDatasourceConfigArgs;
+import com.pulumi.databricks.inputs.GetLakewatchDatasourceConfigPlainArgs;
+import com.pulumi.databricks.inputs.GetLakewatchDatasourcePlainArgs;
+import com.pulumi.databricks.inputs.GetLakewatchDatasourcesArgs;
+import com.pulumi.databricks.inputs.GetLakewatchDatasourcesPlainArgs;
+import com.pulumi.databricks.inputs.GetLakewatchParserArgs;
+import com.pulumi.databricks.inputs.GetLakewatchParserPlainArgs;
+import com.pulumi.databricks.inputs.GetLakewatchParserVersionArgs;
+import com.pulumi.databricks.inputs.GetLakewatchParserVersionPlainArgs;
+import com.pulumi.databricks.inputs.GetLakewatchParserVersionsArgs;
+import com.pulumi.databricks.inputs.GetLakewatchParserVersionsPlainArgs;
+import com.pulumi.databricks.inputs.GetLakewatchParsersArgs;
+import com.pulumi.databricks.inputs.GetLakewatchParsersPlainArgs;
+import com.pulumi.databricks.inputs.GetLakewatchRuleArgs;
+import com.pulumi.databricks.inputs.GetLakewatchRuleConfigArgs;
+import com.pulumi.databricks.inputs.GetLakewatchRuleConfigPlainArgs;
+import com.pulumi.databricks.inputs.GetLakewatchRulePlainArgs;
+import com.pulumi.databricks.inputs.GetLakewatchRulesArgs;
+import com.pulumi.databricks.inputs.GetLakewatchRulesPlainArgs;
 import com.pulumi.databricks.inputs.GetMaterializedFeaturesFeatureTagArgs;
 import com.pulumi.databricks.inputs.GetMaterializedFeaturesFeatureTagPlainArgs;
 import com.pulumi.databricks.inputs.GetMaterializedFeaturesFeatureTagsArgs;
@@ -457,6 +493,8 @@ import com.pulumi.databricks.outputs.GetAppSpacesResult;
 import com.pulumi.databricks.outputs.GetAppsResult;
 import com.pulumi.databricks.outputs.GetAppsSettingsCustomTemplateResult;
 import com.pulumi.databricks.outputs.GetAppsSettingsCustomTemplatesResult;
+import com.pulumi.databricks.outputs.GetAssumeGroupRestrictedSharingGroupResult;
+import com.pulumi.databricks.outputs.GetAssumeGroupRestrictedSharingGroupsResult;
 import com.pulumi.databricks.outputs.GetAwsAssumeRolePolicyResult;
 import com.pulumi.databricks.outputs.GetAwsBucketPolicyResult;
 import com.pulumi.databricks.outputs.GetAwsCrossAccountPolicyResult;
@@ -518,6 +556,22 @@ import com.pulumi.databricks.outputs.GetKnowledgeAssistantKnowledgeSourceResult;
 import com.pulumi.databricks.outputs.GetKnowledgeAssistantKnowledgeSourcesResult;
 import com.pulumi.databricks.outputs.GetKnowledgeAssistantResult;
 import com.pulumi.databricks.outputs.GetKnowledgeAssistantsResult;
+import com.pulumi.databricks.outputs.GetLakewatchAlertConfigResult;
+import com.pulumi.databricks.outputs.GetLakewatchBuiltinParserResult;
+import com.pulumi.databricks.outputs.GetLakewatchBuiltinParserVersionResult;
+import com.pulumi.databricks.outputs.GetLakewatchBuiltinParserVersionsResult;
+import com.pulumi.databricks.outputs.GetLakewatchBuiltinParsersResult;
+import com.pulumi.databricks.outputs.GetLakewatchCommonConfigResult;
+import com.pulumi.databricks.outputs.GetLakewatchDatasourceConfigResult;
+import com.pulumi.databricks.outputs.GetLakewatchDatasourceResult;
+import com.pulumi.databricks.outputs.GetLakewatchDatasourcesResult;
+import com.pulumi.databricks.outputs.GetLakewatchParserResult;
+import com.pulumi.databricks.outputs.GetLakewatchParserVersionResult;
+import com.pulumi.databricks.outputs.GetLakewatchParserVersionsResult;
+import com.pulumi.databricks.outputs.GetLakewatchParsersResult;
+import com.pulumi.databricks.outputs.GetLakewatchRuleConfigResult;
+import com.pulumi.databricks.outputs.GetLakewatchRuleResult;
+import com.pulumi.databricks.outputs.GetLakewatchRulesResult;
 import com.pulumi.databricks.outputs.GetMaterializedFeaturesFeatureTagResult;
 import com.pulumi.databricks.outputs.GetMaterializedFeaturesFeatureTagsResult;
 import com.pulumi.databricks.outputs.GetMetastoreResult;
@@ -1213,7 +1267,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountFederationPolicy:getAccountFederationPolicy", TypeShape.of(GetAccountFederationPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1261,7 +1315,7 @@ public final class DatabricksFunctions {
         return getAccountIamDirectGroupMemberV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1309,7 +1363,7 @@ public final class DatabricksFunctions {
         return getAccountIamDirectGroupMemberV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1357,7 +1411,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamDirectGroupMemberV2:getAccountIamDirectGroupMemberV2", TypeShape.of(GetAccountIamDirectGroupMemberV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1405,7 +1459,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamDirectGroupMemberV2:getAccountIamDirectGroupMemberV2", TypeShape.of(GetAccountIamDirectGroupMemberV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1453,7 +1507,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamDirectGroupMemberV2:getAccountIamDirectGroupMemberV2", TypeShape.of(GetAccountIamDirectGroupMemberV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1501,7 +1555,7 @@ public final class DatabricksFunctions {
         return getAccountIamDirectGroupMembersV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1549,7 +1603,7 @@ public final class DatabricksFunctions {
         return getAccountIamDirectGroupMembersV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1597,7 +1651,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamDirectGroupMembersV2:getAccountIamDirectGroupMembersV2", TypeShape.of(GetAccountIamDirectGroupMembersV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1645,7 +1699,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamDirectGroupMembersV2:getAccountIamDirectGroupMembersV2", TypeShape.of(GetAccountIamDirectGroupMembersV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1693,7 +1747,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamDirectGroupMembersV2:getAccountIamDirectGroupMembersV2", TypeShape.of(GetAccountIamDirectGroupMembersV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1745,7 +1799,7 @@ public final class DatabricksFunctions {
         return getAccountIamExternalGroupV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1797,7 +1851,7 @@ public final class DatabricksFunctions {
         return getAccountIamExternalGroupV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1849,7 +1903,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamExternalGroupV2:getAccountIamExternalGroupV2", TypeShape.of(GetAccountIamExternalGroupV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1901,7 +1955,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamExternalGroupV2:getAccountIamExternalGroupV2", TypeShape.of(GetAccountIamExternalGroupV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -1953,7 +2007,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamExternalGroupV2:getAccountIamExternalGroupV2", TypeShape.of(GetAccountIamExternalGroupV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2005,7 +2059,7 @@ public final class DatabricksFunctions {
         return getAccountIamExternalServicePrincipalV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2057,7 +2111,7 @@ public final class DatabricksFunctions {
         return getAccountIamExternalServicePrincipalV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2109,7 +2163,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamExternalServicePrincipalV2:getAccountIamExternalServicePrincipalV2", TypeShape.of(GetAccountIamExternalServicePrincipalV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2161,7 +2215,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamExternalServicePrincipalV2:getAccountIamExternalServicePrincipalV2", TypeShape.of(GetAccountIamExternalServicePrincipalV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2213,7 +2267,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamExternalServicePrincipalV2:getAccountIamExternalServicePrincipalV2", TypeShape.of(GetAccountIamExternalServicePrincipalV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2265,7 +2319,7 @@ public final class DatabricksFunctions {
         return getAccountIamExternalUserV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2317,7 +2371,7 @@ public final class DatabricksFunctions {
         return getAccountIamExternalUserV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2369,7 +2423,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamExternalUserV2:getAccountIamExternalUserV2", TypeShape.of(GetAccountIamExternalUserV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2421,7 +2475,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamExternalUserV2:getAccountIamExternalUserV2", TypeShape.of(GetAccountIamExternalUserV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2473,7 +2527,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamExternalUserV2:getAccountIamExternalUserV2", TypeShape.of(GetAccountIamExternalUserV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2521,7 +2575,7 @@ public final class DatabricksFunctions {
         return getAccountIamGroupV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2569,7 +2623,7 @@ public final class DatabricksFunctions {
         return getAccountIamGroupV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2617,7 +2671,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamGroupV2:getAccountIamGroupV2", TypeShape.of(GetAccountIamGroupV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2665,7 +2719,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamGroupV2:getAccountIamGroupV2", TypeShape.of(GetAccountIamGroupV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2713,7 +2767,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamGroupV2:getAccountIamGroupV2", TypeShape.of(GetAccountIamGroupV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2761,7 +2815,7 @@ public final class DatabricksFunctions {
         return getAccountIamGroupsV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2809,7 +2863,7 @@ public final class DatabricksFunctions {
         return getAccountIamGroupsV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2857,7 +2911,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamGroupsV2:getAccountIamGroupsV2", TypeShape.of(GetAccountIamGroupsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2905,7 +2959,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamGroupsV2:getAccountIamGroupsV2", TypeShape.of(GetAccountIamGroupsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -2953,7 +3007,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamGroupsV2:getAccountIamGroupsV2", TypeShape.of(GetAccountIamGroupsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3001,7 +3055,7 @@ public final class DatabricksFunctions {
         return getAccountIamServicePrincipalV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3049,7 +3103,7 @@ public final class DatabricksFunctions {
         return getAccountIamServicePrincipalV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3097,7 +3151,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamServicePrincipalV2:getAccountIamServicePrincipalV2", TypeShape.of(GetAccountIamServicePrincipalV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3145,7 +3199,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamServicePrincipalV2:getAccountIamServicePrincipalV2", TypeShape.of(GetAccountIamServicePrincipalV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3193,7 +3247,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamServicePrincipalV2:getAccountIamServicePrincipalV2", TypeShape.of(GetAccountIamServicePrincipalV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3241,7 +3295,7 @@ public final class DatabricksFunctions {
         return getAccountIamServicePrincipalsV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3289,7 +3343,7 @@ public final class DatabricksFunctions {
         return getAccountIamServicePrincipalsV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3337,7 +3391,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamServicePrincipalsV2:getAccountIamServicePrincipalsV2", TypeShape.of(GetAccountIamServicePrincipalsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3385,7 +3439,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamServicePrincipalsV2:getAccountIamServicePrincipalsV2", TypeShape.of(GetAccountIamServicePrincipalsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3433,7 +3487,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamServicePrincipalsV2:getAccountIamServicePrincipalsV2", TypeShape.of(GetAccountIamServicePrincipalsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3481,7 +3535,7 @@ public final class DatabricksFunctions {
         return getAccountIamUserV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3529,7 +3583,7 @@ public final class DatabricksFunctions {
         return getAccountIamUserV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3577,7 +3631,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamUserV2:getAccountIamUserV2", TypeShape.of(GetAccountIamUserV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3625,7 +3679,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamUserV2:getAccountIamUserV2", TypeShape.of(GetAccountIamUserV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3673,7 +3727,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamUserV2:getAccountIamUserV2", TypeShape.of(GetAccountIamUserV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3721,7 +3775,7 @@ public final class DatabricksFunctions {
         return getAccountIamUsersV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3769,7 +3823,7 @@ public final class DatabricksFunctions {
         return getAccountIamUsersV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3817,7 +3871,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamUsersV2:getAccountIamUsersV2", TypeShape.of(GetAccountIamUsersV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3865,7 +3919,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamUsersV2:getAccountIamUsersV2", TypeShape.of(GetAccountIamUsersV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3913,7 +3967,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamUsersV2:getAccountIamUsersV2", TypeShape.of(GetAccountIamUsersV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -3961,7 +4015,7 @@ public final class DatabricksFunctions {
         return getAccountIamWorkspaceAssignmentV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -4009,7 +4063,7 @@ public final class DatabricksFunctions {
         return getAccountIamWorkspaceAssignmentV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -4057,7 +4111,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamWorkspaceAssignmentV2:getAccountIamWorkspaceAssignmentV2", TypeShape.of(GetAccountIamWorkspaceAssignmentV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -4105,7 +4159,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamWorkspaceAssignmentV2:getAccountIamWorkspaceAssignmentV2", TypeShape.of(GetAccountIamWorkspaceAssignmentV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -4153,7 +4207,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAccountIamWorkspaceAssignmentV2:getAccountIamWorkspaceAssignmentV2", TypeShape.of(GetAccountIamWorkspaceAssignmentV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -4164,7 +4218,7 @@ public final class DatabricksFunctions {
         return getAccountIamWorkspaceAssignmentsV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -4175,7 +4229,7 @@ public final class DatabricksFunctions {
         return getAccountIamWorkspaceAssignmentsV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -4186,7 +4240,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamWorkspaceAssignmentsV2:getAccountIamWorkspaceAssignmentsV2", TypeShape.of(GetAccountIamWorkspaceAssignmentsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -4197,7 +4251,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAccountIamWorkspaceAssignmentsV2:getAccountIamWorkspaceAssignmentsV2", TypeShape.of(GetAccountIamWorkspaceAssignmentsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/account/iamv2)
      * 
@@ -7141,7 +7195,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAiGatewayModelServices:getAiGatewayModelServices", TypeShape.of(GetAiGatewayModelServicesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -7187,7 +7241,7 @@ public final class DatabricksFunctions {
         return getAiSearchEndpoint(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -7233,7 +7287,7 @@ public final class DatabricksFunctions {
         return getAiSearchEndpointPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -7279,7 +7333,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchEndpoint:getAiSearchEndpoint", TypeShape.of(GetAiSearchEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -7325,7 +7379,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchEndpoint:getAiSearchEndpoint", TypeShape.of(GetAiSearchEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -7371,7 +7425,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAiSearchEndpoint:getAiSearchEndpoint", TypeShape.of(GetAiSearchEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -7416,7 +7470,7 @@ public final class DatabricksFunctions {
         return getAiSearchEndpoints(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -7461,7 +7515,7 @@ public final class DatabricksFunctions {
         return getAiSearchEndpointsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -7506,7 +7560,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchEndpoints:getAiSearchEndpoints", TypeShape.of(GetAiSearchEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -7551,7 +7605,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchEndpoints:getAiSearchEndpoints", TypeShape.of(GetAiSearchEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -7596,7 +7650,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAiSearchEndpoints:getAiSearchEndpoints", TypeShape.of(GetAiSearchEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -7643,7 +7697,7 @@ public final class DatabricksFunctions {
         return getAiSearchIndex(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -7690,7 +7744,7 @@ public final class DatabricksFunctions {
         return getAiSearchIndexPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -7737,7 +7791,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchIndex:getAiSearchIndex", TypeShape.of(GetAiSearchIndexResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -7784,7 +7838,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchIndex:getAiSearchIndex", TypeShape.of(GetAiSearchIndexResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -7831,7 +7885,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getAiSearchIndex:getAiSearchIndex", TypeShape.of(GetAiSearchIndexResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -7877,7 +7931,7 @@ public final class DatabricksFunctions {
         return getAiSearchIndexes(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -7923,7 +7977,7 @@ public final class DatabricksFunctions {
         return getAiSearchIndexesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -7969,7 +8023,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchIndexes:getAiSearchIndexes", TypeShape.of(GetAiSearchIndexesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -8015,7 +8069,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getAiSearchIndexes:getAiSearchIndexes", TypeShape.of(GetAiSearchIndexesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
      * 
@@ -10409,6 +10463,114 @@ public final class DatabricksFunctions {
      */
     public static CompletableFuture<GetAppsSettingsCustomTemplatesResult> getAppsSettingsCustomTemplatesPlain(GetAppsSettingsCustomTemplatesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("databricks:index/getAppsSettingsCustomTemplates:getAppsSettingsCustomTemplates", TypeShape.of(GetAppsSettingsCustomTemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/assumegroup)
+     * 
+     */
+    public static Output<GetAssumeGroupRestrictedSharingGroupResult> getAssumeGroupRestrictedSharingGroup(GetAssumeGroupRestrictedSharingGroupArgs args) {
+        return getAssumeGroupRestrictedSharingGroup(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/assumegroup)
+     * 
+     */
+    public static CompletableFuture<GetAssumeGroupRestrictedSharingGroupResult> getAssumeGroupRestrictedSharingGroupPlain(GetAssumeGroupRestrictedSharingGroupPlainArgs args) {
+        return getAssumeGroupRestrictedSharingGroupPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/assumegroup)
+     * 
+     */
+    public static Output<GetAssumeGroupRestrictedSharingGroupResult> getAssumeGroupRestrictedSharingGroup(GetAssumeGroupRestrictedSharingGroupArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAssumeGroupRestrictedSharingGroup:getAssumeGroupRestrictedSharingGroup", TypeShape.of(GetAssumeGroupRestrictedSharingGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/assumegroup)
+     * 
+     */
+    public static Output<GetAssumeGroupRestrictedSharingGroupResult> getAssumeGroupRestrictedSharingGroup(GetAssumeGroupRestrictedSharingGroupArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAssumeGroupRestrictedSharingGroup:getAssumeGroupRestrictedSharingGroup", TypeShape.of(GetAssumeGroupRestrictedSharingGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/assumegroup)
+     * 
+     */
+    public static CompletableFuture<GetAssumeGroupRestrictedSharingGroupResult> getAssumeGroupRestrictedSharingGroupPlain(GetAssumeGroupRestrictedSharingGroupPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAssumeGroupRestrictedSharingGroup:getAssumeGroupRestrictedSharingGroup", TypeShape.of(GetAssumeGroupRestrictedSharingGroupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/assumegroup)
+     * 
+     */
+    public static Output<GetAssumeGroupRestrictedSharingGroupsResult> getAssumeGroupRestrictedSharingGroups() {
+        return getAssumeGroupRestrictedSharingGroups(GetAssumeGroupRestrictedSharingGroupsArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/assumegroup)
+     * 
+     */
+    public static CompletableFuture<GetAssumeGroupRestrictedSharingGroupsResult> getAssumeGroupRestrictedSharingGroupsPlain() {
+        return getAssumeGroupRestrictedSharingGroupsPlain(GetAssumeGroupRestrictedSharingGroupsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/assumegroup)
+     * 
+     */
+    public static Output<GetAssumeGroupRestrictedSharingGroupsResult> getAssumeGroupRestrictedSharingGroups(GetAssumeGroupRestrictedSharingGroupsArgs args) {
+        return getAssumeGroupRestrictedSharingGroups(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/assumegroup)
+     * 
+     */
+    public static CompletableFuture<GetAssumeGroupRestrictedSharingGroupsResult> getAssumeGroupRestrictedSharingGroupsPlain(GetAssumeGroupRestrictedSharingGroupsPlainArgs args) {
+        return getAssumeGroupRestrictedSharingGroupsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/assumegroup)
+     * 
+     */
+    public static Output<GetAssumeGroupRestrictedSharingGroupsResult> getAssumeGroupRestrictedSharingGroups(GetAssumeGroupRestrictedSharingGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAssumeGroupRestrictedSharingGroups:getAssumeGroupRestrictedSharingGroups", TypeShape.of(GetAssumeGroupRestrictedSharingGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/assumegroup)
+     * 
+     */
+    public static Output<GetAssumeGroupRestrictedSharingGroupsResult> getAssumeGroupRestrictedSharingGroups(GetAssumeGroupRestrictedSharingGroupsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getAssumeGroupRestrictedSharingGroups:getAssumeGroupRestrictedSharingGroups", TypeShape.of(GetAssumeGroupRestrictedSharingGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/assumegroup)
+     * 
+     */
+    public static CompletableFuture<GetAssumeGroupRestrictedSharingGroupsResult> getAssumeGroupRestrictedSharingGroupsPlain(GetAssumeGroupRestrictedSharingGroupsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getAssumeGroupRestrictedSharingGroups:getAssumeGroupRestrictedSharingGroups", TypeShape.of(GetAssumeGroupRestrictedSharingGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * This data source constructs necessary AWS STS assume role policy for you.
@@ -20835,7 +20997,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDisasterRecoveryStableUrls:getDisasterRecoveryStableUrls", TypeShape.of(GetDisasterRecoveryStableUrlsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/domains)
      * 
@@ -20879,7 +21041,7 @@ public final class DatabricksFunctions {
         return getDomain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/domains)
      * 
@@ -20923,7 +21085,7 @@ public final class DatabricksFunctions {
         return getDomainPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/domains)
      * 
@@ -20967,7 +21129,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDomain:getDomain", TypeShape.of(GetDomainResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/domains)
      * 
@@ -21011,7 +21173,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDomain:getDomain", TypeShape.of(GetDomainResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/domains)
      * 
@@ -21055,7 +21217,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getDomain:getDomain", TypeShape.of(GetDomainResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/domains)
      * 
@@ -21068,7 +21230,7 @@ public final class DatabricksFunctions {
         return getDomains(GetDomainsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/domains)
      * 
@@ -21081,7 +21243,7 @@ public final class DatabricksFunctions {
         return getDomainsPlain(GetDomainsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/domains)
      * 
@@ -21094,7 +21256,7 @@ public final class DatabricksFunctions {
         return getDomains(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/domains)
      * 
@@ -21107,7 +21269,7 @@ public final class DatabricksFunctions {
         return getDomainsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/domains)
      * 
@@ -21120,7 +21282,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/domains)
      * 
@@ -21133,7 +21295,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/domains)
      * 
@@ -27938,6 +28100,744 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getKnowledgeAssistants:getKnowledgeAssistants", TypeShape.of(GetKnowledgeAssistantsResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchAlertConfigResult> getLakewatchAlertConfig(GetLakewatchAlertConfigArgs args) {
+        return getLakewatchAlertConfig(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchAlertConfigResult> getLakewatchAlertConfigPlain(GetLakewatchAlertConfigPlainArgs args) {
+        return getLakewatchAlertConfigPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchAlertConfigResult> getLakewatchAlertConfig(GetLakewatchAlertConfigArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchAlertConfig:getLakewatchAlertConfig", TypeShape.of(GetLakewatchAlertConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchAlertConfigResult> getLakewatchAlertConfig(GetLakewatchAlertConfigArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchAlertConfig:getLakewatchAlertConfig", TypeShape.of(GetLakewatchAlertConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchAlertConfigResult> getLakewatchAlertConfigPlain(GetLakewatchAlertConfigPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getLakewatchAlertConfig:getLakewatchAlertConfig", TypeShape.of(GetLakewatchAlertConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchBuiltinParserResult> getLakewatchBuiltinParser(GetLakewatchBuiltinParserArgs args) {
+        return getLakewatchBuiltinParser(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchBuiltinParserResult> getLakewatchBuiltinParserPlain(GetLakewatchBuiltinParserPlainArgs args) {
+        return getLakewatchBuiltinParserPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchBuiltinParserResult> getLakewatchBuiltinParser(GetLakewatchBuiltinParserArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchBuiltinParser:getLakewatchBuiltinParser", TypeShape.of(GetLakewatchBuiltinParserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchBuiltinParserResult> getLakewatchBuiltinParser(GetLakewatchBuiltinParserArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchBuiltinParser:getLakewatchBuiltinParser", TypeShape.of(GetLakewatchBuiltinParserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchBuiltinParserResult> getLakewatchBuiltinParserPlain(GetLakewatchBuiltinParserPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getLakewatchBuiltinParser:getLakewatchBuiltinParser", TypeShape.of(GetLakewatchBuiltinParserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchBuiltinParserVersionResult> getLakewatchBuiltinParserVersion(GetLakewatchBuiltinParserVersionArgs args) {
+        return getLakewatchBuiltinParserVersion(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchBuiltinParserVersionResult> getLakewatchBuiltinParserVersionPlain(GetLakewatchBuiltinParserVersionPlainArgs args) {
+        return getLakewatchBuiltinParserVersionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchBuiltinParserVersionResult> getLakewatchBuiltinParserVersion(GetLakewatchBuiltinParserVersionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchBuiltinParserVersion:getLakewatchBuiltinParserVersion", TypeShape.of(GetLakewatchBuiltinParserVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchBuiltinParserVersionResult> getLakewatchBuiltinParserVersion(GetLakewatchBuiltinParserVersionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchBuiltinParserVersion:getLakewatchBuiltinParserVersion", TypeShape.of(GetLakewatchBuiltinParserVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchBuiltinParserVersionResult> getLakewatchBuiltinParserVersionPlain(GetLakewatchBuiltinParserVersionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getLakewatchBuiltinParserVersion:getLakewatchBuiltinParserVersion", TypeShape.of(GetLakewatchBuiltinParserVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchBuiltinParserVersionsResult> getLakewatchBuiltinParserVersions(GetLakewatchBuiltinParserVersionsArgs args) {
+        return getLakewatchBuiltinParserVersions(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchBuiltinParserVersionsResult> getLakewatchBuiltinParserVersionsPlain(GetLakewatchBuiltinParserVersionsPlainArgs args) {
+        return getLakewatchBuiltinParserVersionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchBuiltinParserVersionsResult> getLakewatchBuiltinParserVersions(GetLakewatchBuiltinParserVersionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchBuiltinParserVersions:getLakewatchBuiltinParserVersions", TypeShape.of(GetLakewatchBuiltinParserVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchBuiltinParserVersionsResult> getLakewatchBuiltinParserVersions(GetLakewatchBuiltinParserVersionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchBuiltinParserVersions:getLakewatchBuiltinParserVersions", TypeShape.of(GetLakewatchBuiltinParserVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchBuiltinParserVersionsResult> getLakewatchBuiltinParserVersionsPlain(GetLakewatchBuiltinParserVersionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getLakewatchBuiltinParserVersions:getLakewatchBuiltinParserVersions", TypeShape.of(GetLakewatchBuiltinParserVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchBuiltinParsersResult> getLakewatchBuiltinParsers() {
+        return getLakewatchBuiltinParsers(GetLakewatchBuiltinParsersArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchBuiltinParsersResult> getLakewatchBuiltinParsersPlain() {
+        return getLakewatchBuiltinParsersPlain(GetLakewatchBuiltinParsersPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchBuiltinParsersResult> getLakewatchBuiltinParsers(GetLakewatchBuiltinParsersArgs args) {
+        return getLakewatchBuiltinParsers(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchBuiltinParsersResult> getLakewatchBuiltinParsersPlain(GetLakewatchBuiltinParsersPlainArgs args) {
+        return getLakewatchBuiltinParsersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchBuiltinParsersResult> getLakewatchBuiltinParsers(GetLakewatchBuiltinParsersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchBuiltinParsers:getLakewatchBuiltinParsers", TypeShape.of(GetLakewatchBuiltinParsersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchBuiltinParsersResult> getLakewatchBuiltinParsers(GetLakewatchBuiltinParsersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchBuiltinParsers:getLakewatchBuiltinParsers", TypeShape.of(GetLakewatchBuiltinParsersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchBuiltinParsersResult> getLakewatchBuiltinParsersPlain(GetLakewatchBuiltinParsersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getLakewatchBuiltinParsers:getLakewatchBuiltinParsers", TypeShape.of(GetLakewatchBuiltinParsersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchCommonConfigResult> getLakewatchCommonConfig(GetLakewatchCommonConfigArgs args) {
+        return getLakewatchCommonConfig(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchCommonConfigResult> getLakewatchCommonConfigPlain(GetLakewatchCommonConfigPlainArgs args) {
+        return getLakewatchCommonConfigPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchCommonConfigResult> getLakewatchCommonConfig(GetLakewatchCommonConfigArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchCommonConfig:getLakewatchCommonConfig", TypeShape.of(GetLakewatchCommonConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchCommonConfigResult> getLakewatchCommonConfig(GetLakewatchCommonConfigArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchCommonConfig:getLakewatchCommonConfig", TypeShape.of(GetLakewatchCommonConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchCommonConfigResult> getLakewatchCommonConfigPlain(GetLakewatchCommonConfigPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getLakewatchCommonConfig:getLakewatchCommonConfig", TypeShape.of(GetLakewatchCommonConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchDatasourceResult> getLakewatchDatasource(GetLakewatchDatasourceArgs args) {
+        return getLakewatchDatasource(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchDatasourceResult> getLakewatchDatasourcePlain(GetLakewatchDatasourcePlainArgs args) {
+        return getLakewatchDatasourcePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchDatasourceResult> getLakewatchDatasource(GetLakewatchDatasourceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchDatasource:getLakewatchDatasource", TypeShape.of(GetLakewatchDatasourceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchDatasourceResult> getLakewatchDatasource(GetLakewatchDatasourceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchDatasource:getLakewatchDatasource", TypeShape.of(GetLakewatchDatasourceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchDatasourceResult> getLakewatchDatasourcePlain(GetLakewatchDatasourcePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getLakewatchDatasource:getLakewatchDatasource", TypeShape.of(GetLakewatchDatasourceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchDatasourceConfigResult> getLakewatchDatasourceConfig(GetLakewatchDatasourceConfigArgs args) {
+        return getLakewatchDatasourceConfig(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchDatasourceConfigResult> getLakewatchDatasourceConfigPlain(GetLakewatchDatasourceConfigPlainArgs args) {
+        return getLakewatchDatasourceConfigPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchDatasourceConfigResult> getLakewatchDatasourceConfig(GetLakewatchDatasourceConfigArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchDatasourceConfig:getLakewatchDatasourceConfig", TypeShape.of(GetLakewatchDatasourceConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchDatasourceConfigResult> getLakewatchDatasourceConfig(GetLakewatchDatasourceConfigArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchDatasourceConfig:getLakewatchDatasourceConfig", TypeShape.of(GetLakewatchDatasourceConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchDatasourceConfigResult> getLakewatchDatasourceConfigPlain(GetLakewatchDatasourceConfigPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getLakewatchDatasourceConfig:getLakewatchDatasourceConfig", TypeShape.of(GetLakewatchDatasourceConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchDatasourcesResult> getLakewatchDatasources(GetLakewatchDatasourcesArgs args) {
+        return getLakewatchDatasources(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchDatasourcesResult> getLakewatchDatasourcesPlain(GetLakewatchDatasourcesPlainArgs args) {
+        return getLakewatchDatasourcesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchDatasourcesResult> getLakewatchDatasources(GetLakewatchDatasourcesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchDatasources:getLakewatchDatasources", TypeShape.of(GetLakewatchDatasourcesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchDatasourcesResult> getLakewatchDatasources(GetLakewatchDatasourcesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchDatasources:getLakewatchDatasources", TypeShape.of(GetLakewatchDatasourcesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchDatasourcesResult> getLakewatchDatasourcesPlain(GetLakewatchDatasourcesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getLakewatchDatasources:getLakewatchDatasources", TypeShape.of(GetLakewatchDatasourcesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchParserResult> getLakewatchParser(GetLakewatchParserArgs args) {
+        return getLakewatchParser(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchParserResult> getLakewatchParserPlain(GetLakewatchParserPlainArgs args) {
+        return getLakewatchParserPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchParserResult> getLakewatchParser(GetLakewatchParserArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchParser:getLakewatchParser", TypeShape.of(GetLakewatchParserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchParserResult> getLakewatchParser(GetLakewatchParserArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchParser:getLakewatchParser", TypeShape.of(GetLakewatchParserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchParserResult> getLakewatchParserPlain(GetLakewatchParserPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getLakewatchParser:getLakewatchParser", TypeShape.of(GetLakewatchParserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchParserVersionResult> getLakewatchParserVersion(GetLakewatchParserVersionArgs args) {
+        return getLakewatchParserVersion(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchParserVersionResult> getLakewatchParserVersionPlain(GetLakewatchParserVersionPlainArgs args) {
+        return getLakewatchParserVersionPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchParserVersionResult> getLakewatchParserVersion(GetLakewatchParserVersionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchParserVersion:getLakewatchParserVersion", TypeShape.of(GetLakewatchParserVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchParserVersionResult> getLakewatchParserVersion(GetLakewatchParserVersionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchParserVersion:getLakewatchParserVersion", TypeShape.of(GetLakewatchParserVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchParserVersionResult> getLakewatchParserVersionPlain(GetLakewatchParserVersionPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getLakewatchParserVersion:getLakewatchParserVersion", TypeShape.of(GetLakewatchParserVersionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchParserVersionsResult> getLakewatchParserVersions(GetLakewatchParserVersionsArgs args) {
+        return getLakewatchParserVersions(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchParserVersionsResult> getLakewatchParserVersionsPlain(GetLakewatchParserVersionsPlainArgs args) {
+        return getLakewatchParserVersionsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchParserVersionsResult> getLakewatchParserVersions(GetLakewatchParserVersionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchParserVersions:getLakewatchParserVersions", TypeShape.of(GetLakewatchParserVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchParserVersionsResult> getLakewatchParserVersions(GetLakewatchParserVersionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchParserVersions:getLakewatchParserVersions", TypeShape.of(GetLakewatchParserVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchParserVersionsResult> getLakewatchParserVersionsPlain(GetLakewatchParserVersionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getLakewatchParserVersions:getLakewatchParserVersions", TypeShape.of(GetLakewatchParserVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchParsersResult> getLakewatchParsers(GetLakewatchParsersArgs args) {
+        return getLakewatchParsers(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchParsersResult> getLakewatchParsersPlain(GetLakewatchParsersPlainArgs args) {
+        return getLakewatchParsersPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchParsersResult> getLakewatchParsers(GetLakewatchParsersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchParsers:getLakewatchParsers", TypeShape.of(GetLakewatchParsersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchParsersResult> getLakewatchParsers(GetLakewatchParsersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchParsers:getLakewatchParsers", TypeShape.of(GetLakewatchParsersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchParsersResult> getLakewatchParsersPlain(GetLakewatchParsersPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getLakewatchParsers:getLakewatchParsers", TypeShape.of(GetLakewatchParsersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchRuleResult> getLakewatchRule(GetLakewatchRuleArgs args) {
+        return getLakewatchRule(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchRuleResult> getLakewatchRulePlain(GetLakewatchRulePlainArgs args) {
+        return getLakewatchRulePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchRuleResult> getLakewatchRule(GetLakewatchRuleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchRule:getLakewatchRule", TypeShape.of(GetLakewatchRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchRuleResult> getLakewatchRule(GetLakewatchRuleArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchRule:getLakewatchRule", TypeShape.of(GetLakewatchRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchRuleResult> getLakewatchRulePlain(GetLakewatchRulePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getLakewatchRule:getLakewatchRule", TypeShape.of(GetLakewatchRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchRuleConfigResult> getLakewatchRuleConfig(GetLakewatchRuleConfigArgs args) {
+        return getLakewatchRuleConfig(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchRuleConfigResult> getLakewatchRuleConfigPlain(GetLakewatchRuleConfigPlainArgs args) {
+        return getLakewatchRuleConfigPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchRuleConfigResult> getLakewatchRuleConfig(GetLakewatchRuleConfigArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchRuleConfig:getLakewatchRuleConfig", TypeShape.of(GetLakewatchRuleConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchRuleConfigResult> getLakewatchRuleConfig(GetLakewatchRuleConfigArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchRuleConfig:getLakewatchRuleConfig", TypeShape.of(GetLakewatchRuleConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchRuleConfigResult> getLakewatchRuleConfigPlain(GetLakewatchRuleConfigPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getLakewatchRuleConfig:getLakewatchRuleConfig", TypeShape.of(GetLakewatchRuleConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchRulesResult> getLakewatchRules(GetLakewatchRulesArgs args) {
+        return getLakewatchRules(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchRulesResult> getLakewatchRulesPlain(GetLakewatchRulesPlainArgs args) {
+        return getLakewatchRulesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchRulesResult> getLakewatchRules(GetLakewatchRulesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchRules:getLakewatchRules", TypeShape.of(GetLakewatchRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static Output<GetLakewatchRulesResult> getLakewatchRules(GetLakewatchRulesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("databricks:index/getLakewatchRules:getLakewatchRules", TypeShape.of(GetLakewatchRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * 
+     * [API Documentation](https://docs.databricks.com/api/workspace/lakewatch)
+     * 
+     */
+    public static CompletableFuture<GetLakewatchRulesResult> getLakewatchRulesPlain(GetLakewatchRulesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("databricks:index/getLakewatchRules:getLakewatchRules", TypeShape.of(GetLakewatchRulesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      */
@@ -34262,7 +35162,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getPolicyInfos:getPolicyInfos", TypeShape.of(GetPolicyInfosResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -34309,7 +35209,7 @@ public final class DatabricksFunctions {
         return getPostgresBranch(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -34356,7 +35256,7 @@ public final class DatabricksFunctions {
         return getPostgresBranchPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -34403,7 +35303,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresBranch:getPostgresBranch", TypeShape.of(GetPostgresBranchResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -34450,7 +35350,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresBranch:getPostgresBranch", TypeShape.of(GetPostgresBranchResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -34497,7 +35397,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresBranch:getPostgresBranch", TypeShape.of(GetPostgresBranchResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -34512,7 +35412,7 @@ public final class DatabricksFunctions {
         return getPostgresBranches(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -34527,7 +35427,7 @@ public final class DatabricksFunctions {
         return getPostgresBranchesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -34542,7 +35442,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresBranches:getPostgresBranches", TypeShape.of(GetPostgresBranchesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -34557,7 +35457,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresBranches:getPostgresBranches", TypeShape.of(GetPostgresBranchesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -34572,7 +35472,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresBranches:getPostgresBranches", TypeShape.of(GetPostgresBranchesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -34619,7 +35519,7 @@ public final class DatabricksFunctions {
         return getPostgresCatalog(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -34666,7 +35566,7 @@ public final class DatabricksFunctions {
         return getPostgresCatalogPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -34713,7 +35613,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresCatalog:getPostgresCatalog", TypeShape.of(GetPostgresCatalogResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -34760,7 +35660,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresCatalog:getPostgresCatalog", TypeShape.of(GetPostgresCatalogResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -35427,7 +36327,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresCdfStatuses:getPostgresCdfStatuses", TypeShape.of(GetPostgresCdfStatusesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -35475,7 +36375,7 @@ public final class DatabricksFunctions {
         return getPostgresDataApi(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -35523,7 +36423,7 @@ public final class DatabricksFunctions {
         return getPostgresDataApiPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -35571,7 +36471,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresDataApi:getPostgresDataApi", TypeShape.of(GetPostgresDataApiResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -35619,7 +36519,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresDataApi:getPostgresDataApi", TypeShape.of(GetPostgresDataApiResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![Private Preview](https://img.shields.io/badge/Release_Stage-Private_Preview-blueviolet)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -35667,7 +36567,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresDataApi:getPostgresDataApi", TypeShape.of(GetPostgresDataApiResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -35715,7 +36615,7 @@ public final class DatabricksFunctions {
         return getPostgresDatabase(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -35763,7 +36663,7 @@ public final class DatabricksFunctions {
         return getPostgresDatabasePlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -35811,7 +36711,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresDatabase:getPostgresDatabase", TypeShape.of(GetPostgresDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -35859,7 +36759,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresDatabase:getPostgresDatabase", TypeShape.of(GetPostgresDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -35907,7 +36807,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresDatabase:getPostgresDatabase", TypeShape.of(GetPostgresDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -35922,7 +36822,7 @@ public final class DatabricksFunctions {
         return getPostgresDatabases(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -35937,7 +36837,7 @@ public final class DatabricksFunctions {
         return getPostgresDatabasesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -35952,7 +36852,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresDatabases:getPostgresDatabases", TypeShape.of(GetPostgresDatabasesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -35967,7 +36867,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresDatabases:getPostgresDatabases", TypeShape.of(GetPostgresDatabasesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -35982,7 +36882,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresDatabases:getPostgresDatabases", TypeShape.of(GetPostgresDatabasesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36029,7 +36929,7 @@ public final class DatabricksFunctions {
         return getPostgresEndpoint(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36076,7 +36976,7 @@ public final class DatabricksFunctions {
         return getPostgresEndpointPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36123,7 +37023,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresEndpoint:getPostgresEndpoint", TypeShape.of(GetPostgresEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36170,7 +37070,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresEndpoint:getPostgresEndpoint", TypeShape.of(GetPostgresEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36217,7 +37117,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresEndpoint:getPostgresEndpoint", TypeShape.of(GetPostgresEndpointResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36232,7 +37132,7 @@ public final class DatabricksFunctions {
         return getPostgresEndpoints(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36247,7 +37147,7 @@ public final class DatabricksFunctions {
         return getPostgresEndpointsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36262,7 +37162,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresEndpoints:getPostgresEndpoints", TypeShape.of(GetPostgresEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36277,7 +37177,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresEndpoints:getPostgresEndpoints", TypeShape.of(GetPostgresEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36292,7 +37192,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresEndpoints:getPostgresEndpoints", TypeShape.of(GetPostgresEndpointsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36341,7 +37241,7 @@ public final class DatabricksFunctions {
         return getPostgresProject(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36390,7 +37290,7 @@ public final class DatabricksFunctions {
         return getPostgresProjectPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36439,7 +37339,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresProject:getPostgresProject", TypeShape.of(GetPostgresProjectResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36488,7 +37388,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresProject:getPostgresProject", TypeShape.of(GetPostgresProjectResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36537,7 +37437,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresProject:getPostgresProject", TypeShape.of(GetPostgresProjectResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36552,7 +37452,7 @@ public final class DatabricksFunctions {
         return getPostgresProjects(GetPostgresProjectsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36567,7 +37467,7 @@ public final class DatabricksFunctions {
         return getPostgresProjectsPlain(GetPostgresProjectsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36582,7 +37482,7 @@ public final class DatabricksFunctions {
         return getPostgresProjects(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36597,7 +37497,7 @@ public final class DatabricksFunctions {
         return getPostgresProjectsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36612,7 +37512,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresProjects:getPostgresProjects", TypeShape.of(GetPostgresProjectsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36627,7 +37527,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresProjects:getPostgresProjects", TypeShape.of(GetPostgresProjectsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36642,7 +37542,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresProjects:getPostgresProjects", TypeShape.of(GetPostgresProjectsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36691,7 +37591,7 @@ public final class DatabricksFunctions {
         return getPostgresRole(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36740,7 +37640,7 @@ public final class DatabricksFunctions {
         return getPostgresRolePlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36789,7 +37689,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresRole:getPostgresRole", TypeShape.of(GetPostgresRoleResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36838,7 +37738,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresRole:getPostgresRole", TypeShape.of(GetPostgresRoleResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36887,7 +37787,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresRole:getPostgresRole", TypeShape.of(GetPostgresRoleResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36902,7 +37802,7 @@ public final class DatabricksFunctions {
         return getPostgresRoles(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36917,7 +37817,7 @@ public final class DatabricksFunctions {
         return getPostgresRolesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36932,7 +37832,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresRoles:getPostgresRoles", TypeShape.of(GetPostgresRolesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36947,7 +37847,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresRoles:getPostgresRoles", TypeShape.of(GetPostgresRolesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -36962,7 +37862,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresRoles:getPostgresRoles", TypeShape.of(GetPostgresRolesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -37009,7 +37909,7 @@ public final class DatabricksFunctions {
         return getPostgresSnapshotSchedule(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -37056,7 +37956,7 @@ public final class DatabricksFunctions {
         return getPostgresSnapshotSchedulePlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -37103,7 +38003,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresSnapshotSchedule:getPostgresSnapshotSchedule", TypeShape.of(GetPostgresSnapshotScheduleResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -37150,7 +38050,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresSnapshotSchedule:getPostgresSnapshotSchedule", TypeShape.of(GetPostgresSnapshotScheduleResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -37197,7 +38097,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getPostgresSnapshotSchedule:getPostgresSnapshotSchedule", TypeShape.of(GetPostgresSnapshotScheduleResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -37244,7 +38144,7 @@ public final class DatabricksFunctions {
         return getPostgresSyncedTable(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -37291,7 +38191,7 @@ public final class DatabricksFunctions {
         return getPostgresSyncedTablePlain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -37338,7 +38238,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresSyncedTable:getPostgresSyncedTable", TypeShape.of(GetPostgresSyncedTableResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -37385,7 +38285,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getPostgresSyncedTable:getPostgresSyncedTable", TypeShape.of(GetPostgresSyncedTableResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
      * 
@@ -50209,7 +51109,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceEntityTagAssignments:getWorkspaceEntityTagAssignments", TypeShape.of(GetWorkspaceEntityTagAssignmentsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -50258,7 +51158,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamDirectGroupMemberV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -50307,7 +51207,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamDirectGroupMemberV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -50356,7 +51256,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamDirectGroupMemberV2:getWorkspaceIamDirectGroupMemberV2", TypeShape.of(GetWorkspaceIamDirectGroupMemberV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -50405,7 +51305,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamDirectGroupMemberV2:getWorkspaceIamDirectGroupMemberV2", TypeShape.of(GetWorkspaceIamDirectGroupMemberV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -50454,7 +51354,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamDirectGroupMemberV2:getWorkspaceIamDirectGroupMemberV2", TypeShape.of(GetWorkspaceIamDirectGroupMemberV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -50502,7 +51402,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamDirectGroupMembersV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -50550,7 +51450,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamDirectGroupMembersV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -50598,7 +51498,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamDirectGroupMembersV2:getWorkspaceIamDirectGroupMembersV2", TypeShape.of(GetWorkspaceIamDirectGroupMembersV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -50646,7 +51546,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamDirectGroupMembersV2:getWorkspaceIamDirectGroupMembersV2", TypeShape.of(GetWorkspaceIamDirectGroupMembersV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -50694,7 +51594,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamDirectGroupMembersV2:getWorkspaceIamDirectGroupMembersV2", TypeShape.of(GetWorkspaceIamDirectGroupMembersV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -50750,7 +51650,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamExternalGroupV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -50806,7 +51706,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamExternalGroupV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -50862,7 +51762,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamExternalGroupV2:getWorkspaceIamExternalGroupV2", TypeShape.of(GetWorkspaceIamExternalGroupV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -50918,7 +51818,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamExternalGroupV2:getWorkspaceIamExternalGroupV2", TypeShape.of(GetWorkspaceIamExternalGroupV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -50974,7 +51874,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamExternalGroupV2:getWorkspaceIamExternalGroupV2", TypeShape.of(GetWorkspaceIamExternalGroupV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -51030,7 +51930,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamExternalServicePrincipalV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -51086,7 +51986,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamExternalServicePrincipalV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -51142,7 +52042,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamExternalServicePrincipalV2:getWorkspaceIamExternalServicePrincipalV2", TypeShape.of(GetWorkspaceIamExternalServicePrincipalV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -51198,7 +52098,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamExternalServicePrincipalV2:getWorkspaceIamExternalServicePrincipalV2", TypeShape.of(GetWorkspaceIamExternalServicePrincipalV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -51254,7 +52154,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamExternalServicePrincipalV2:getWorkspaceIamExternalServicePrincipalV2", TypeShape.of(GetWorkspaceIamExternalServicePrincipalV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -51310,7 +52210,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamExternalUserV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -51366,7 +52266,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamExternalUserV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -51422,7 +52322,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamExternalUserV2:getWorkspaceIamExternalUserV2", TypeShape.of(GetWorkspaceIamExternalUserV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -51478,7 +52378,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamExternalUserV2:getWorkspaceIamExternalUserV2", TypeShape.of(GetWorkspaceIamExternalUserV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -51534,7 +52434,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamExternalUserV2:getWorkspaceIamExternalUserV2", TypeShape.of(GetWorkspaceIamExternalUserV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -51582,7 +52482,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamGroupV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -51630,7 +52530,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamGroupV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -51678,7 +52578,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamGroupV2:getWorkspaceIamGroupV2", TypeShape.of(GetWorkspaceIamGroupV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -51726,7 +52626,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamGroupV2:getWorkspaceIamGroupV2", TypeShape.of(GetWorkspaceIamGroupV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -51774,7 +52674,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamGroupV2:getWorkspaceIamGroupV2", TypeShape.of(GetWorkspaceIamGroupV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -51821,7 +52721,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamGroupsV2(GetWorkspaceIamGroupsV2Args.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -51868,7 +52768,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamGroupsV2Plain(GetWorkspaceIamGroupsV2PlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -51915,7 +52815,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamGroupsV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -51962,7 +52862,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamGroupsV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -52009,7 +52909,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamGroupsV2:getWorkspaceIamGroupsV2", TypeShape.of(GetWorkspaceIamGroupsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -52056,7 +52956,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamGroupsV2:getWorkspaceIamGroupsV2", TypeShape.of(GetWorkspaceIamGroupsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -52103,7 +53003,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamGroupsV2:getWorkspaceIamGroupsV2", TypeShape.of(GetWorkspaceIamGroupsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -52151,7 +53051,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamServicePrincipalV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -52199,7 +53099,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamServicePrincipalV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -52247,7 +53147,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamServicePrincipalV2:getWorkspaceIamServicePrincipalV2", TypeShape.of(GetWorkspaceIamServicePrincipalV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -52295,7 +53195,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamServicePrincipalV2:getWorkspaceIamServicePrincipalV2", TypeShape.of(GetWorkspaceIamServicePrincipalV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -52343,7 +53243,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamServicePrincipalV2:getWorkspaceIamServicePrincipalV2", TypeShape.of(GetWorkspaceIamServicePrincipalV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -52390,7 +53290,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamServicePrincipalsV2(GetWorkspaceIamServicePrincipalsV2Args.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -52437,7 +53337,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamServicePrincipalsV2Plain(GetWorkspaceIamServicePrincipalsV2PlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -52484,7 +53384,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamServicePrincipalsV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -52531,7 +53431,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamServicePrincipalsV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -52578,7 +53478,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamServicePrincipalsV2:getWorkspaceIamServicePrincipalsV2", TypeShape.of(GetWorkspaceIamServicePrincipalsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -52625,7 +53525,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamServicePrincipalsV2:getWorkspaceIamServicePrincipalsV2", TypeShape.of(GetWorkspaceIamServicePrincipalsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -52672,7 +53572,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamServicePrincipalsV2:getWorkspaceIamServicePrincipalsV2", TypeShape.of(GetWorkspaceIamServicePrincipalsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -52720,7 +53620,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamUserV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -52768,7 +53668,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamUserV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -52816,7 +53716,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamUserV2:getWorkspaceIamUserV2", TypeShape.of(GetWorkspaceIamUserV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -52864,7 +53764,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamUserV2:getWorkspaceIamUserV2", TypeShape.of(GetWorkspaceIamUserV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -52912,7 +53812,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamUserV2:getWorkspaceIamUserV2", TypeShape.of(GetWorkspaceIamUserV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -52959,7 +53859,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamUsersV2(GetWorkspaceIamUsersV2Args.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -53006,7 +53906,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamUsersV2Plain(GetWorkspaceIamUsersV2PlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -53053,7 +53953,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamUsersV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -53100,7 +54000,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamUsersV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -53147,7 +54047,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamUsersV2:getWorkspaceIamUsersV2", TypeShape.of(GetWorkspaceIamUsersV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -53194,7 +54094,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamUsersV2:getWorkspaceIamUsersV2", TypeShape.of(GetWorkspaceIamUsersV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -53241,7 +54141,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamUsersV2:getWorkspaceIamUsersV2", TypeShape.of(GetWorkspaceIamUsersV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -53290,7 +54190,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamWorkspaceAssignmentV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -53339,7 +54239,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamWorkspaceAssignmentV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -53388,7 +54288,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamWorkspaceAssignmentV2:getWorkspaceIamWorkspaceAssignmentV2", TypeShape.of(GetWorkspaceIamWorkspaceAssignmentV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -53437,7 +54337,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamWorkspaceAssignmentV2:getWorkspaceIamWorkspaceAssignmentV2", TypeShape.of(GetWorkspaceIamWorkspaceAssignmentV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -53486,7 +54386,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamWorkspaceAssignmentV2:getWorkspaceIamWorkspaceAssignmentV2", TypeShape.of(GetWorkspaceIamWorkspaceAssignmentV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -53497,7 +54397,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamWorkspaceAssignmentsV2(GetWorkspaceIamWorkspaceAssignmentsV2Args.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -53508,7 +54408,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamWorkspaceAssignmentsV2Plain(GetWorkspaceIamWorkspaceAssignmentsV2PlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -53519,7 +54419,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamWorkspaceAssignmentsV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -53530,7 +54430,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamWorkspaceAssignmentsV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -53541,7 +54441,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamWorkspaceAssignmentsV2:getWorkspaceIamWorkspaceAssignmentsV2", TypeShape.of(GetWorkspaceIamWorkspaceAssignmentsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -53552,7 +54452,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamWorkspaceAssignmentsV2:getWorkspaceIamWorkspaceAssignmentsV2", TypeShape.of(GetWorkspaceIamWorkspaceAssignmentsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -53563,7 +54463,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invokeAsync("databricks:index/getWorkspaceIamWorkspaceAssignmentsV2:getWorkspaceIamWorkspaceAssignmentsV2", TypeShape.of(GetWorkspaceIamWorkspaceAssignmentsV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -53609,7 +54509,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamWorkspaceIdentityDetailV2(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -53655,7 +54555,7 @@ public final class DatabricksFunctions {
         return getWorkspaceIamWorkspaceIdentityDetailV2Plain(args, InvokeOptions.Empty);
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -53701,7 +54601,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamWorkspaceIdentityDetailV2:getWorkspaceIamWorkspaceIdentityDetailV2", TypeShape.of(GetWorkspaceIamWorkspaceIdentityDetailV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -53747,7 +54647,7 @@ public final class DatabricksFunctions {
         return Deployment.getInstance().invoke("databricks:index/getWorkspaceIamWorkspaceIdentityDetailV2:getWorkspaceIamWorkspaceIdentityDetailV2", TypeShape.of(GetWorkspaceIamWorkspaceIdentityDetailV2Result.class), args, Utilities.withVersion(options));
     }
     /**
-     * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+     * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
      * 
@@ -54037,11 +54937,11 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
      * 
-     * This data source can be used to get a single account setting.
+     * This data source can be used to get a single workspace setting.
      * 
      * ## Example Usage
      * 
-     * Referring to a setting by id
+     * Referring to a setting by name
      * <pre>
      * {@code
      * package generated_program;
@@ -54066,7 +54966,6 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceSettingV2(GetWorkspaceSettingV2Args.builder()
      *             .name("llm_proxy_partner_powered")
-     *             .booleanVal(Map.of("value", false))
      *             .build());
      * 
      *     }
@@ -54083,11 +54982,11 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
      * 
-     * This data source can be used to get a single account setting.
+     * This data source can be used to get a single workspace setting.
      * 
      * ## Example Usage
      * 
-     * Referring to a setting by id
+     * Referring to a setting by name
      * <pre>
      * {@code
      * package generated_program;
@@ -54112,7 +55011,6 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceSettingV2(GetWorkspaceSettingV2Args.builder()
      *             .name("llm_proxy_partner_powered")
-     *             .booleanVal(Map.of("value", false))
      *             .build());
      * 
      *     }
@@ -54129,11 +55027,11 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
      * 
-     * This data source can be used to get a single account setting.
+     * This data source can be used to get a single workspace setting.
      * 
      * ## Example Usage
      * 
-     * Referring to a setting by id
+     * Referring to a setting by name
      * <pre>
      * {@code
      * package generated_program;
@@ -54158,7 +55056,6 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceSettingV2(GetWorkspaceSettingV2Args.builder()
      *             .name("llm_proxy_partner_powered")
-     *             .booleanVal(Map.of("value", false))
      *             .build());
      * 
      *     }
@@ -54175,11 +55072,11 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
      * 
-     * This data source can be used to get a single account setting.
+     * This data source can be used to get a single workspace setting.
      * 
      * ## Example Usage
      * 
-     * Referring to a setting by id
+     * Referring to a setting by name
      * <pre>
      * {@code
      * package generated_program;
@@ -54204,7 +55101,6 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceSettingV2(GetWorkspaceSettingV2Args.builder()
      *             .name("llm_proxy_partner_powered")
-     *             .booleanVal(Map.of("value", false))
      *             .build());
      * 
      *     }
@@ -54221,11 +55117,11 @@ public final class DatabricksFunctions {
      * 
      * [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
      * 
-     * This data source can be used to get a single account setting.
+     * This data source can be used to get a single workspace setting.
      * 
      * ## Example Usage
      * 
-     * Referring to a setting by id
+     * Referring to a setting by name
      * <pre>
      * {@code
      * package generated_program;
@@ -54250,7 +55146,6 @@ public final class DatabricksFunctions {
      *     public static void stack(Context ctx) {
      *         final var this = DatabricksFunctions.getWorkspaceSettingV2(GetWorkspaceSettingV2Args.builder()
      *             .name("llm_proxy_partner_powered")
-     *             .booleanVal(Map.of("value", false))
      *             .build());
      * 
      *     }

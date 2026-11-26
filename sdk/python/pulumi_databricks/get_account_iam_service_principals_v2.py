@@ -55,8 +55,8 @@ class GetAccountIamServicePrincipalsV2Result:
     @pulumi.getter
     def parent(self) -> _builtins.str:
         """
-        (string) - The resource name of the account that contains the service principal,
-        `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+        (string) - The resource name of the account that contains the service principal, in the format
+        `accounts/{account_id}`. Workspace APIs return the same format
         """
         return pulumi.get(self, "parent")
 
@@ -83,7 +83,7 @@ def get_account_iam_service_principals_v2(filter: Optional[_builtins.str] = None
                                           parent: Optional[_builtins.str] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountIamServicePrincipalsV2Result:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/iamv2)
 
@@ -103,11 +103,12 @@ def get_account_iam_service_principals_v2(filter: Optional[_builtins.str] = None
     ```
 
 
-    :param _builtins.str filter: Optional. Allows filtering service principals by application id or external id
-    :param _builtins.int page_size: The maximum number of service principals to return. The service may return fewer than this value.
-           If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
-    :param _builtins.str parent: The parent resource name of the account whose service principals to list.
-           Format: accounts/{account_id}
+    :param _builtins.str filter: Filters service principals by `application_id` or `external_id`, for example
+           `application_id eq "<application-id>"`. Put the value in quotes
+    :param _builtins.int page_size: The maximum number of service principals to return, up to 1000. The default is 1000. A page
+           can contain fewer service principals
+    :param _builtins.str parent: The resource name of the account to list service principals in, in the format
+           `accounts/{account_id}`
     """
     __args__ = dict()
     __args__['filter'] = filter
@@ -126,7 +127,7 @@ def get_account_iam_service_principals_v2_output(filter: pulumi.Input[Optional[O
                                                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountIamServicePrincipalsV2Result]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/iamv2)
 
@@ -146,11 +147,12 @@ def get_account_iam_service_principals_v2_output(filter: pulumi.Input[Optional[O
     ```
 
 
-    :param _builtins.str filter: Optional. Allows filtering service principals by application id or external id
-    :param _builtins.int page_size: The maximum number of service principals to return. The service may return fewer than this value.
-           If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
-    :param _builtins.str parent: The parent resource name of the account whose service principals to list.
-           Format: accounts/{account_id}
+    :param _builtins.str filter: Filters service principals by `application_id` or `external_id`, for example
+           `application_id eq "<application-id>"`. Put the value in quotes
+    :param _builtins.int page_size: The maximum number of service principals to return, up to 1000. The default is 1000. A page
+           can contain fewer service principals
+    :param _builtins.str parent: The resource name of the account to list service principals in, in the format
+           `accounts/{account_id}`
     """
     __args__ = dict()
     __args__['filter'] = filter

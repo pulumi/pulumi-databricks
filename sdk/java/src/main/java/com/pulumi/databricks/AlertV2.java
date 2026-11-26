@@ -120,28 +120,30 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Custom description for the alert. Interpreted according to `customTemplateFormat`
+     * Custom description for the alert, used as the notification body. Interpreted according to `customTemplateFormat`.
+     * The available template variables are listed at https://docs.databricks.com/aws/en/sql/user/alerts/create#notification-templates
      * 
      */
     @Export(name="customDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customDescription;
 
     /**
-     * @return Custom description for the alert. Interpreted according to `customTemplateFormat`
+     * @return Custom description for the alert, used as the notification body. Interpreted according to `customTemplateFormat`.
+     * The available template variables are listed at https://docs.databricks.com/aws/en/sql/user/alerts/create#notification-templates
      * 
      */
     public Output<Optional<String>> customDescription() {
         return Codegen.optional(this.customDescription);
     }
     /**
-     * Custom summary for the alert. Interpreted according to `customTemplateFormat`
+     * Custom summary for the alert, used as the notification subject. Interpreted according to `customTemplateFormat`
      * 
      */
     @Export(name="customSummary", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customSummary;
 
     /**
-     * @return Custom summary for the alert. Interpreted according to `customTemplateFormat`
+     * @return Custom summary for the alert, used as the notification subject. Interpreted according to `customTemplateFormat`
      * 
      */
     public Output<Optional<String>> customSummary() {
@@ -209,21 +211,29 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
     public Output<AlertV2EffectiveRunAs> effectiveRunAs() {
         return this.effectiveRunAs;
     }
+    /**
+     * Condition evaluated against the query result, and who is notified when it is met
+     * 
+     */
     @Export(name="evaluation", refs={AlertV2Evaluation.class}, tree="[0]")
     private Output<AlertV2Evaluation> evaluation;
 
+    /**
+     * @return Condition evaluated against the query result, and who is notified when it is met
+     * 
+     */
     public Output<AlertV2Evaluation> evaluation() {
         return this.evaluation;
     }
     /**
-     * (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
+     * (string) - Indicates whether the alert is active (`ACTIVE`) or has been moved to the trash (`DELETED`). Possible values are: `ACTIVE`, `DELETED`
      * 
      */
     @Export(name="lifecycleState", refs={String.class}, tree="[0]")
     private Output<String> lifecycleState;
 
     /**
-     * @return (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
+     * @return (string) - Indicates whether the alert is active (`ACTIVE`) or has been moved to the trash (`DELETED`). Possible values are: `ACTIVE`, `DELETED`
      * 
      */
     public Output<String> lifecycleState() {
@@ -356,26 +366,34 @@ public class AlertV2 extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.runAs);
     }
     /**
+     * Deprecated: Use `runAs` field instead. This field will be removed in a future release.
      * The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
      * 
      */
     @Export(name="runAsUserName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> runAsUserName;
 
     /**
-     * @return The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
+     * @return Deprecated: Use `runAs` field instead. This field will be removed in a future release.
+     * The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
      * 
      */
     public Output<Optional<String>> runAsUserName() {
         return Codegen.optional(this.runAsUserName);
     }
+    /**
+     * Schedule on which the alert runs its query and evaluates the condition
+     * 
+     */
     @Export(name="schedule", refs={AlertV2Schedule.class}, tree="[0]")
     private Output<AlertV2Schedule> schedule;
 
+    /**
+     * @return Schedule on which the alert runs its query and evaluates the condition
+     * 
+     */
     public Output<AlertV2Schedule> schedule() {
         return this.schedule;
     }

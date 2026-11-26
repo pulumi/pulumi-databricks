@@ -64,6 +64,7 @@ func GetDataQualityMonitors(ctx *pulumi.Context, args *GetDataQualityMonitorsArg
 
 // A collection of arguments for invoking getDataQualityMonitors.
 type GetDataQualityMonitorsArgs struct {
+	// The maximum number of monitors to return in one page
 	PageSize *int `pulumi:"pageSize"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetDataQualityMonitorsProviderConfig `pulumi:"providerConfig"`
@@ -83,6 +84,7 @@ func GetDataQualityMonitorsOutput(ctx *pulumi.Context, args GetDataQualityMonito
 
 // A collection of arguments for invoking getDataQualityMonitors.
 type GetDataQualityMonitorsOutputArgs struct {
+	// The maximum number of monitors to return in one page
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetDataQualityMonitorsProviderConfigPtrInput `pulumi:"providerConfig"`

@@ -12,14 +12,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains {
     /**
-     * @return (list of string)
+     * @return (list of string) - Domains allowed to host embedded AI/BI dashboards. A leading wildcard allows every subdomain of a
+     * domain. The list applies, and can only be changed, while the embedding access policy is
+     * ALLOW_APPROVED_DOMAINS
      * 
      */
     private @Nullable List<String> approvedDomains;
 
     private GetWorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains() {}
     /**
-     * @return (list of string)
+     * @return (list of string) - Domains allowed to host embedded AI/BI dashboards. A leading wildcard allows every subdomain of a
+     * domain. The list applies, and can only be changed, while the embedding access policy is
+     * ALLOW_APPROVED_DOMAINS
      * 
      */
     public List<String> approvedDomains() {

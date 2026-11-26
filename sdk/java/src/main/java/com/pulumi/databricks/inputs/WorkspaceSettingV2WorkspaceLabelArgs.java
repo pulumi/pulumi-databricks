@@ -22,9 +22,19 @@ public final class WorkspaceSettingV2WorkspaceLabelArgs extends com.pulumi.resou
         return Optional.ofNullable(this.color);
     }
 
+    /**
+     * Text of the label shown next to the workspace name in the top navigation bar. An empty string
+     * means no label is set
+     * 
+     */
     @Import(name="label")
     private @Nullable Output<String> label;
 
+    /**
+     * @return Text of the label shown next to the workspace name in the top navigation bar. An empty string
+     * means no label is set
+     * 
+     */
     public Optional<Output<String>> label() {
         return Optional.ofNullable(this.label);
     }
@@ -63,11 +73,25 @@ public final class WorkspaceSettingV2WorkspaceLabelArgs extends com.pulumi.resou
             return color(Output.of(color));
         }
 
+        /**
+         * @param label Text of the label shown next to the workspace name in the top navigation bar. An empty string
+         * means no label is set
+         * 
+         * @return builder
+         * 
+         */
         public Builder label(@Nullable Output<String> label) {
             $.label = label;
             return this;
         }
 
+        /**
+         * @param label Text of the label shown next to the workspace name in the top navigation bar. An empty string
+         * means no label is set
+         * 
+         * @return builder
+         * 
+         */
         public Builder label(String label) {
             return label(Output.of(label));
         }

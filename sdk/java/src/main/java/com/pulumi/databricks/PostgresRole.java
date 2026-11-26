@@ -19,7 +19,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  * 
@@ -34,9 +34,9 @@ import javax.annotation.Nullable;
  * 
  * If you&#39;re unsure of the exact value, find the role in the Lakebase UI (or list the branch&#39;s roles with the Postgres API) and read its `roleId` rather than deriving it by hand. Since Pulumi is declarative, managing an already-existing resource requires `replaceExisting = true`: it lets Pulumi represent the implicitly created role in Pulumi state and immediately apply the provided configuration to it.
  * 
- * `replaceExisting = true` only affects the initial adoption. Once the role is in Pulumi state, it is managed like any other resource: removing it from your configuration and applying **deletes the actual role**, not just the state entry. This is unlike `databricks.PostgresBranch`, whose deletion is instead controlled by its parent project. To stop managing the role without deleting it, remove it from state with `terraform state rm` before removing it from your configuration — this is also required for the implicit owner role, which cannot be deleted while it still owns objects on the branch.
+ * `replaceExisting = true` only affects the initial adoption. After the role is in Pulumi state, it is managed like any other resource: removing it from your configuration and running `pulumi up` **deletes the actual role**, not just the state entry. This is unlike the implicitly created root Branch, whose deletion is controlled by its parent Project. To stop managing the role without deleting it, remove it from state with `terraform state rm` before removing it from your configuration — this is also required for the implicit owner role, which cannot be deleted while it still owns objects on the branch.
  * 
- * `spec.membership_roles` overwrites the role&#39;s memberships on every apply. The list you provide fully replaces the previous one, it isn&#39;t merged. Keep `DATABRICKS_SUPERUSER` in the list; leaving it out removes all of the role&#39;s memberships.
+ * When Pulumi updates a Role with a non-null spec, `spec.membership_roles` replaces its memberships. The list you provide fully replaces the previous one, it isn&#39;t merged. Keep `DATABRICKS_SUPERUSER` in the list; leaving it out removes all of the role&#39;s memberships.
  * 
  * <pre>
  * {@code
@@ -360,14 +360,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/postgresRole:PostgresRole")
 public class PostgresRole extends com.pulumi.resources.CustomResource {
     /**
-     * (string)
+     * (string) - A timestamp indicating when the role was created
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return (string)
+     * @return (string) - A timestamp indicating when the role was created
      * 
      */
     public Output<String> createTime() {
@@ -428,7 +428,9 @@ public class PostgresRole extends com.pulumi.resources.CustomResource {
      * Attributes omitted from the request retain their current values.
      * Set an attribute explicitly to false to disable it.
      * `identityType`, `authMethod`, and `postgresRole` retain their
-     * existing values; supplied values for these fields are ignored.
+     * existing values. Omit these fields or supply their current values.
+     * A differing supplied value returns INVALID_PARAMETER_VALUE and rejects
+     * the entire request, including changes to mutable fields.
      * `membershipRoles` is overwritten, not merged. Leaving
      * `membershipRoles` empty clears all of the role&#39;s existing memberships,
      * including `DATABRICKS_SUPERUSER`. Always send the complete desired list
@@ -447,7 +449,9 @@ public class PostgresRole extends com.pulumi.resources.CustomResource {
      * Attributes omitted from the request retain their current values.
      * Set an attribute explicitly to false to disable it.
      * `identityType`, `authMethod`, and `postgresRole` retain their
-     * existing values; supplied values for these fields are ignored.
+     * existing values. Omit these fields or supply their current values.
+     * A differing supplied value returns INVALID_PARAMETER_VALUE and rejects
+     * the entire request, including changes to mutable fields.
      * `membershipRoles` is overwritten, not merged. Leaving
      * `membershipRoles` empty clears all of the role&#39;s existing memberships,
      * including `DATABRICKS_SUPERUSER`. Always send the complete desired list
@@ -472,18 +476,26 @@ public class PostgresRole extends com.pulumi.resources.CustomResource {
         return this.roleId;
     }
     /**
-     * The spec contains the role configuration, including identity type, authentication method, and role attributes
+     * The spec contains the role configuration, including identity type, authentication method, and role attributes.
+     * 
+     * Read the resource&#39;s current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      * 
      */
     @Export(name="spec", refs={PostgresRoleSpec.class}, tree="[0]")
-    private Output<PostgresRoleSpec> spec;
+    private Output</* @Nullable */ PostgresRoleSpec> spec;
 
     /**
-     * @return The spec contains the role configuration, including identity type, authentication method, and role attributes
+     * @return The spec contains the role configuration, including identity type, authentication method, and role attributes.
+     * 
+     * Read the resource&#39;s current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      * 
      */
-    public Output<PostgresRoleSpec> spec() {
-        return this.spec;
+    public Output<Optional<PostgresRoleSpec>> spec() {
+        return Codegen.optional(this.spec);
     }
     /**
      * (RoleRoleStatus) - Current status of the role, including its identity type, authentication method, and role attributes
@@ -500,14 +512,14 @@ public class PostgresRole extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * (string)
+     * (string) - A timestamp indicating when the role was last updated
      * 
      */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return (string)
+     * @return (string) - A timestamp indicating when the role was last updated
      * 
      */
     public Output<String> updateTime() {

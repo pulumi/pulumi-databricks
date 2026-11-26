@@ -19,18 +19,16 @@ public final class GetAiSearchEndpointsArgs extends com.pulumi.resources.InvokeA
     public static final GetAiSearchEndpointsArgs Empty = new GetAiSearchEndpointsArgs();
 
     /**
-     * Best-effort upper bound on the number of results to return. Honored as an upper
-     * bound by the shim: `pageSize` only narrows the legacy backend&#39;s response, never
-     * widens it, so the practical cap is `min(page_size, legacy_fixed_page_size)`
+     * Maximum number of endpoints to return in one page. The server applies its own page size
+     * limit, so a page can hold fewer endpoints than `pageSize` even when more remain
      * 
      */
     @Import(name="pageSize")
     private @Nullable Output<Integer> pageSize;
 
     /**
-     * @return Best-effort upper bound on the number of results to return. Honored as an upper
-     * bound by the shim: `pageSize` only narrows the legacy backend&#39;s response, never
-     * widens it, so the practical cap is `min(page_size, legacy_fixed_page_size)`
+     * @return Maximum number of endpoints to return in one page. The server applies its own page size
+     * limit, so a page can hold fewer endpoints than `pageSize` even when more remain
      * 
      */
     public Optional<Output<Integer>> pageSize() {
@@ -96,9 +94,8 @@ public final class GetAiSearchEndpointsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param pageSize Best-effort upper bound on the number of results to return. Honored as an upper
-         * bound by the shim: `pageSize` only narrows the legacy backend&#39;s response, never
-         * widens it, so the practical cap is `min(page_size, legacy_fixed_page_size)`
+         * @param pageSize Maximum number of endpoints to return in one page. The server applies its own page size
+         * limit, so a page can hold fewer endpoints than `pageSize` even when more remain
          * 
          * @return builder
          * 
@@ -109,9 +106,8 @@ public final class GetAiSearchEndpointsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param pageSize Best-effort upper bound on the number of results to return. Honored as an upper
-         * bound by the shim: `pageSize` only narrows the legacy backend&#39;s response, never
-         * widens it, so the practical cap is `min(page_size, legacy_fixed_page_size)`
+         * @param pageSize Maximum number of endpoints to return in one page. The server applies its own page size
+         * limit, so a page can hold fewer endpoints than `pageSize` even when more remain
          * 
          * @return builder
          * 

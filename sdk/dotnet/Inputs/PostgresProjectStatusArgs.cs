@@ -85,7 +85,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<int>? PgVersion { get; set; }
 
         /// <summary>
-        /// The part of the name, chosen by the user when the resource was created
+        /// The project ID chosen when the project was created. It is the final segment of `Name`
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }

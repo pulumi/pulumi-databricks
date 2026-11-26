@@ -40,6 +40,7 @@ class WorkspaceSettingV2Args:
                  provider_config: pulumi.Input[Optional['WorkspaceSettingV2ProviderConfigArgs']] = None,
                  restrict_workspace_admins: pulumi.Input[Optional['WorkspaceSettingV2RestrictWorkspaceAdminsArgs']] = None,
                  string_val: pulumi.Input[Optional['WorkspaceSettingV2StringValArgs']] = None,
+                 workspace_dashboard_theme: pulumi.Input[Optional['WorkspaceSettingV2WorkspaceDashboardThemeArgs']] = None,
                  workspace_label: pulumi.Input[Optional['WorkspaceSettingV2WorkspaceLabelArgs']] = None):
         """
         The set of arguments for constructing a WorkspaceSettingV2 resource.
@@ -57,12 +58,13 @@ class WorkspaceSettingV2Args:
         :param pulumi.Input['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs'] effective_restrict_workspace_admins: Effective setting value for restrict_workspace_admins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
         :param pulumi.Input['WorkspaceSettingV2EffectiveWorkspaceLabelArgs'] effective_workspace_label: Effective setting value for workspace_label setting. This is the final effective value of setting. To set a value use workspace_label
         :param pulumi.Input['WorkspaceSettingV2IntegerValArgs'] integer_val: Setting value for integer type setting. This is the setting value set by consumers, check effective_integer_val for final setting value
-        :param pulumi.Input[_builtins.str] name: Name of the setting
+        :param pulumi.Input[_builtins.str] name: Name of the setting. The settings metadata endpoint lists the names available at each scope
         :param pulumi.Input['WorkspaceSettingV2OperationalEmailCustomRecipientArgs'] operational_email_custom_recipient: Setting value for operational_email_custom_recipient setting. This is the setting value set by consumers, check effective_operational_email_custom_recipient for final setting value
         :param pulumi.Input['WorkspaceSettingV2PersonalComputeArgs'] personal_compute: Setting value for personal_compute setting. This is the setting value set by consumers, check effective_personal_compute for final setting value
         :param pulumi.Input['WorkspaceSettingV2ProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['WorkspaceSettingV2RestrictWorkspaceAdminsArgs'] restrict_workspace_admins: Setting value for restrict_workspace_admins setting. This is the setting value set by consumers, check effective_restrict_workspace_admins for final setting value
         :param pulumi.Input['WorkspaceSettingV2StringValArgs'] string_val: Setting value for string type setting. This is the setting value set by consumers, check effective_string_val for final setting value
+        :param pulumi.Input['WorkspaceSettingV2WorkspaceDashboardThemeArgs'] workspace_dashboard_theme: Setting value for the workspace_dashboard_theme setting. This is the setting value set by consumers. Check effective_workspace_dashboard_theme for the final setting value
         :param pulumi.Input['WorkspaceSettingV2WorkspaceLabelArgs'] workspace_label: Setting value for workspace_label setting. This is the setting value set by consumers, check effective_workspace_label for final setting value
         """
         if aibi_dashboard_embedding_access_policy is not None:
@@ -103,6 +105,8 @@ class WorkspaceSettingV2Args:
             pulumi.set(__self__, "restrict_workspace_admins", restrict_workspace_admins)
         if string_val is not None:
             pulumi.set(__self__, "string_val", string_val)
+        if workspace_dashboard_theme is not None:
+            pulumi.set(__self__, "workspace_dashboard_theme", workspace_dashboard_theme)
         if workspace_label is not None:
             pulumi.set(__self__, "workspace_label", workspace_label)
 
@@ -266,7 +270,7 @@ class WorkspaceSettingV2Args:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the setting
+        Name of the setting. The settings metadata endpoint lists the names available at each scope
         """
         return pulumi.get(self, "name")
 
@@ -335,6 +339,18 @@ class WorkspaceSettingV2Args:
         pulumi.set(self, "string_val", value)
 
     @_builtins.property
+    @pulumi.getter(name="workspaceDashboardTheme")
+    def workspace_dashboard_theme(self) -> pulumi.Input[Optional['WorkspaceSettingV2WorkspaceDashboardThemeArgs']]:
+        """
+        Setting value for the workspace_dashboard_theme setting. This is the setting value set by consumers. Check effective_workspace_dashboard_theme for the final setting value
+        """
+        return pulumi.get(self, "workspace_dashboard_theme")
+
+    @workspace_dashboard_theme.setter
+    def workspace_dashboard_theme(self, value: pulumi.Input[Optional['WorkspaceSettingV2WorkspaceDashboardThemeArgs']]):
+        pulumi.set(self, "workspace_dashboard_theme", value)
+
+    @_builtins.property
     @pulumi.getter(name="workspaceLabel")
     def workspace_label(self) -> pulumi.Input[Optional['WorkspaceSettingV2WorkspaceLabelArgs']]:
         """
@@ -367,6 +383,7 @@ class _WorkspaceSettingV2State:
                  effective_personal_compute: pulumi.Input[Optional['WorkspaceSettingV2EffectivePersonalComputeArgs']] = None,
                  effective_restrict_workspace_admins: pulumi.Input[Optional['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs']] = None,
                  effective_string_val: pulumi.Input[Optional['WorkspaceSettingV2EffectiveStringValArgs']] = None,
+                 effective_workspace_dashboard_theme: pulumi.Input[Optional['WorkspaceSettingV2EffectiveWorkspaceDashboardThemeArgs']] = None,
                  effective_workspace_label: pulumi.Input[Optional['WorkspaceSettingV2EffectiveWorkspaceLabelArgs']] = None,
                  integer_val: pulumi.Input[Optional['WorkspaceSettingV2IntegerValArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -375,6 +392,7 @@ class _WorkspaceSettingV2State:
                  provider_config: pulumi.Input[Optional['WorkspaceSettingV2ProviderConfigArgs']] = None,
                  restrict_workspace_admins: pulumi.Input[Optional['WorkspaceSettingV2RestrictWorkspaceAdminsArgs']] = None,
                  string_val: pulumi.Input[Optional['WorkspaceSettingV2StringValArgs']] = None,
+                 workspace_dashboard_theme: pulumi.Input[Optional['WorkspaceSettingV2WorkspaceDashboardThemeArgs']] = None,
                  workspace_label: pulumi.Input[Optional['WorkspaceSettingV2WorkspaceLabelArgs']] = None):
         """
         Input properties used for looking up and filtering WorkspaceSettingV2 resources.
@@ -396,14 +414,16 @@ class _WorkspaceSettingV2State:
         :param pulumi.Input['WorkspaceSettingV2EffectivePersonalComputeArgs'] effective_personal_compute: Effective setting value for personal_compute setting. This is the final effective value of setting. To set a value use personal_compute
         :param pulumi.Input['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs'] effective_restrict_workspace_admins: Effective setting value for restrict_workspace_admins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
         :param pulumi.Input['WorkspaceSettingV2EffectiveStringValArgs'] effective_string_val: (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
+        :param pulumi.Input['WorkspaceSettingV2EffectiveWorkspaceDashboardThemeArgs'] effective_workspace_dashboard_theme: (DashboardTheme) - Effective setting value for the workspace_dashboard_theme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
         :param pulumi.Input['WorkspaceSettingV2EffectiveWorkspaceLabelArgs'] effective_workspace_label: Effective setting value for workspace_label setting. This is the final effective value of setting. To set a value use workspace_label
         :param pulumi.Input['WorkspaceSettingV2IntegerValArgs'] integer_val: Setting value for integer type setting. This is the setting value set by consumers, check effective_integer_val for final setting value
-        :param pulumi.Input[_builtins.str] name: Name of the setting
+        :param pulumi.Input[_builtins.str] name: Name of the setting. The settings metadata endpoint lists the names available at each scope
         :param pulumi.Input['WorkspaceSettingV2OperationalEmailCustomRecipientArgs'] operational_email_custom_recipient: Setting value for operational_email_custom_recipient setting. This is the setting value set by consumers, check effective_operational_email_custom_recipient for final setting value
         :param pulumi.Input['WorkspaceSettingV2PersonalComputeArgs'] personal_compute: Setting value for personal_compute setting. This is the setting value set by consumers, check effective_personal_compute for final setting value
         :param pulumi.Input['WorkspaceSettingV2ProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['WorkspaceSettingV2RestrictWorkspaceAdminsArgs'] restrict_workspace_admins: Setting value for restrict_workspace_admins setting. This is the setting value set by consumers, check effective_restrict_workspace_admins for final setting value
         :param pulumi.Input['WorkspaceSettingV2StringValArgs'] string_val: Setting value for string type setting. This is the setting value set by consumers, check effective_string_val for final setting value
+        :param pulumi.Input['WorkspaceSettingV2WorkspaceDashboardThemeArgs'] workspace_dashboard_theme: Setting value for the workspace_dashboard_theme setting. This is the setting value set by consumers. Check effective_workspace_dashboard_theme for the final setting value
         :param pulumi.Input['WorkspaceSettingV2WorkspaceLabelArgs'] workspace_label: Setting value for workspace_label setting. This is the setting value set by consumers, check effective_workspace_label for final setting value
         """
         if aibi_dashboard_embedding_access_policy is not None:
@@ -440,6 +460,8 @@ class _WorkspaceSettingV2State:
             pulumi.set(__self__, "effective_restrict_workspace_admins", effective_restrict_workspace_admins)
         if effective_string_val is not None:
             pulumi.set(__self__, "effective_string_val", effective_string_val)
+        if effective_workspace_dashboard_theme is not None:
+            pulumi.set(__self__, "effective_workspace_dashboard_theme", effective_workspace_dashboard_theme)
         if effective_workspace_label is not None:
             pulumi.set(__self__, "effective_workspace_label", effective_workspace_label)
         if integer_val is not None:
@@ -456,6 +478,8 @@ class _WorkspaceSettingV2State:
             pulumi.set(__self__, "restrict_workspace_admins", restrict_workspace_admins)
         if string_val is not None:
             pulumi.set(__self__, "string_val", string_val)
+        if workspace_dashboard_theme is not None:
+            pulumi.set(__self__, "workspace_dashboard_theme", workspace_dashboard_theme)
         if workspace_label is not None:
             pulumi.set(__self__, "workspace_label", workspace_label)
 
@@ -664,6 +688,18 @@ class _WorkspaceSettingV2State:
         pulumi.set(self, "effective_string_val", value)
 
     @_builtins.property
+    @pulumi.getter(name="effectiveWorkspaceDashboardTheme")
+    def effective_workspace_dashboard_theme(self) -> pulumi.Input[Optional['WorkspaceSettingV2EffectiveWorkspaceDashboardThemeArgs']]:
+        """
+        (DashboardTheme) - Effective setting value for the workspace_dashboard_theme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+        """
+        return pulumi.get(self, "effective_workspace_dashboard_theme")
+
+    @effective_workspace_dashboard_theme.setter
+    def effective_workspace_dashboard_theme(self, value: pulumi.Input[Optional['WorkspaceSettingV2EffectiveWorkspaceDashboardThemeArgs']]):
+        pulumi.set(self, "effective_workspace_dashboard_theme", value)
+
+    @_builtins.property
     @pulumi.getter(name="effectiveWorkspaceLabel")
     def effective_workspace_label(self) -> pulumi.Input[Optional['WorkspaceSettingV2EffectiveWorkspaceLabelArgs']]:
         """
@@ -691,7 +727,7 @@ class _WorkspaceSettingV2State:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the setting
+        Name of the setting. The settings metadata endpoint lists the names available at each scope
         """
         return pulumi.get(self, "name")
 
@@ -760,6 +796,18 @@ class _WorkspaceSettingV2State:
         pulumi.set(self, "string_val", value)
 
     @_builtins.property
+    @pulumi.getter(name="workspaceDashboardTheme")
+    def workspace_dashboard_theme(self) -> pulumi.Input[Optional['WorkspaceSettingV2WorkspaceDashboardThemeArgs']]:
+        """
+        Setting value for the workspace_dashboard_theme setting. This is the setting value set by consumers. Check effective_workspace_dashboard_theme for the final setting value
+        """
+        return pulumi.get(self, "workspace_dashboard_theme")
+
+    @workspace_dashboard_theme.setter
+    def workspace_dashboard_theme(self, value: pulumi.Input[Optional['WorkspaceSettingV2WorkspaceDashboardThemeArgs']]):
+        pulumi.set(self, "workspace_dashboard_theme", value)
+
+    @_builtins.property
     @pulumi.getter(name="workspaceLabel")
     def workspace_label(self) -> pulumi.Input[Optional['WorkspaceSettingV2WorkspaceLabelArgs']]:
         """
@@ -797,6 +845,7 @@ class WorkspaceSettingV2(pulumi.CustomResource):
                  provider_config: pulumi.Input[Optional[Union['WorkspaceSettingV2ProviderConfigArgs', 'WorkspaceSettingV2ProviderConfigArgsDict', 'outputs.WorkspaceSettingV2ProviderConfig']]] = None,
                  restrict_workspace_admins: pulumi.Input[Optional[Union['WorkspaceSettingV2RestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict', 'outputs.WorkspaceSettingV2RestrictWorkspaceAdmins']]] = None,
                  string_val: pulumi.Input[Optional[Union['WorkspaceSettingV2StringValArgs', 'WorkspaceSettingV2StringValArgsDict', 'outputs.WorkspaceSettingV2StringVal']]] = None,
+                 workspace_dashboard_theme: pulumi.Input[Optional[Union['WorkspaceSettingV2WorkspaceDashboardThemeArgs', 'WorkspaceSettingV2WorkspaceDashboardThemeArgsDict', 'outputs.WorkspaceSettingV2WorkspaceDashboardTheme']]] = None,
                  workspace_label: pulumi.Input[Optional[Union['WorkspaceSettingV2WorkspaceLabelArgs', 'WorkspaceSettingV2WorkspaceLabelArgsDict', 'outputs.WorkspaceSettingV2WorkspaceLabel']]] = None,
                  __props__=None):
         """
@@ -840,12 +889,13 @@ class WorkspaceSettingV2(pulumi.CustomResource):
         :param pulumi.Input[Union['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgsDict', 'outputs.WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins']] effective_restrict_workspace_admins: Effective setting value for restrict_workspace_admins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
         :param pulumi.Input[Union['WorkspaceSettingV2EffectiveWorkspaceLabelArgs', 'WorkspaceSettingV2EffectiveWorkspaceLabelArgsDict', 'outputs.WorkspaceSettingV2EffectiveWorkspaceLabel']] effective_workspace_label: Effective setting value for workspace_label setting. This is the final effective value of setting. To set a value use workspace_label
         :param pulumi.Input[Union['WorkspaceSettingV2IntegerValArgs', 'WorkspaceSettingV2IntegerValArgsDict', 'outputs.WorkspaceSettingV2IntegerVal']] integer_val: Setting value for integer type setting. This is the setting value set by consumers, check effective_integer_val for final setting value
-        :param pulumi.Input[_builtins.str] name: Name of the setting
+        :param pulumi.Input[_builtins.str] name: Name of the setting. The settings metadata endpoint lists the names available at each scope
         :param pulumi.Input[Union['WorkspaceSettingV2OperationalEmailCustomRecipientArgs', 'WorkspaceSettingV2OperationalEmailCustomRecipientArgsDict', 'outputs.WorkspaceSettingV2OperationalEmailCustomRecipient']] operational_email_custom_recipient: Setting value for operational_email_custom_recipient setting. This is the setting value set by consumers, check effective_operational_email_custom_recipient for final setting value
         :param pulumi.Input[Union['WorkspaceSettingV2PersonalComputeArgs', 'WorkspaceSettingV2PersonalComputeArgsDict', 'outputs.WorkspaceSettingV2PersonalCompute']] personal_compute: Setting value for personal_compute setting. This is the setting value set by consumers, check effective_personal_compute for final setting value
         :param pulumi.Input[Union['WorkspaceSettingV2ProviderConfigArgs', 'WorkspaceSettingV2ProviderConfigArgsDict', 'outputs.WorkspaceSettingV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['WorkspaceSettingV2RestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict', 'outputs.WorkspaceSettingV2RestrictWorkspaceAdmins']] restrict_workspace_admins: Setting value for restrict_workspace_admins setting. This is the setting value set by consumers, check effective_restrict_workspace_admins for final setting value
         :param pulumi.Input[Union['WorkspaceSettingV2StringValArgs', 'WorkspaceSettingV2StringValArgsDict', 'outputs.WorkspaceSettingV2StringVal']] string_val: Setting value for string type setting. This is the setting value set by consumers, check effective_string_val for final setting value
+        :param pulumi.Input[Union['WorkspaceSettingV2WorkspaceDashboardThemeArgs', 'WorkspaceSettingV2WorkspaceDashboardThemeArgsDict', 'outputs.WorkspaceSettingV2WorkspaceDashboardTheme']] workspace_dashboard_theme: Setting value for the workspace_dashboard_theme setting. This is the setting value set by consumers. Check effective_workspace_dashboard_theme for the final setting value
         :param pulumi.Input[Union['WorkspaceSettingV2WorkspaceLabelArgs', 'WorkspaceSettingV2WorkspaceLabelArgsDict', 'outputs.WorkspaceSettingV2WorkspaceLabel']] workspace_label: Setting value for workspace_label setting. This is the setting value set by consumers, check effective_workspace_label for final setting value
         """
         ...
@@ -914,6 +964,7 @@ class WorkspaceSettingV2(pulumi.CustomResource):
                  provider_config: pulumi.Input[Optional[Union['WorkspaceSettingV2ProviderConfigArgs', 'WorkspaceSettingV2ProviderConfigArgsDict', 'outputs.WorkspaceSettingV2ProviderConfig']]] = None,
                  restrict_workspace_admins: pulumi.Input[Optional[Union['WorkspaceSettingV2RestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict', 'outputs.WorkspaceSettingV2RestrictWorkspaceAdmins']]] = None,
                  string_val: pulumi.Input[Optional[Union['WorkspaceSettingV2StringValArgs', 'WorkspaceSettingV2StringValArgsDict', 'outputs.WorkspaceSettingV2StringVal']]] = None,
+                 workspace_dashboard_theme: pulumi.Input[Optional[Union['WorkspaceSettingV2WorkspaceDashboardThemeArgs', 'WorkspaceSettingV2WorkspaceDashboardThemeArgsDict', 'outputs.WorkspaceSettingV2WorkspaceDashboardTheme']]] = None,
                  workspace_label: pulumi.Input[Optional[Union['WorkspaceSettingV2WorkspaceLabelArgs', 'WorkspaceSettingV2WorkspaceLabelArgsDict', 'outputs.WorkspaceSettingV2WorkspaceLabel']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -943,6 +994,7 @@ class WorkspaceSettingV2(pulumi.CustomResource):
             __props__.__dict__["provider_config"] = provider_config
             __props__.__dict__["restrict_workspace_admins"] = restrict_workspace_admins
             __props__.__dict__["string_val"] = string_val
+            __props__.__dict__["workspace_dashboard_theme"] = workspace_dashboard_theme
             __props__.__dict__["workspace_label"] = workspace_label
             __props__.__dict__["effective_allowed_apps_user_api_scopes"] = None
             __props__.__dict__["effective_boolean_val"] = None
@@ -950,6 +1002,7 @@ class WorkspaceSettingV2(pulumi.CustomResource):
             __props__.__dict__["effective_integer_val"] = None
             __props__.__dict__["effective_operational_email_custom_recipient"] = None
             __props__.__dict__["effective_string_val"] = None
+            __props__.__dict__["effective_workspace_dashboard_theme"] = None
         super(WorkspaceSettingV2, __self__).__init__(
             'databricks:index/workspaceSettingV2:WorkspaceSettingV2',
             resource_name,
@@ -977,6 +1030,7 @@ class WorkspaceSettingV2(pulumi.CustomResource):
             effective_personal_compute: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectivePersonalComputeArgs', 'WorkspaceSettingV2EffectivePersonalComputeArgsDict', 'outputs.WorkspaceSettingV2EffectivePersonalCompute']]] = None,
             effective_restrict_workspace_admins: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgsDict', 'outputs.WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins']]] = None,
             effective_string_val: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveStringValArgs', 'WorkspaceSettingV2EffectiveStringValArgsDict', 'outputs.WorkspaceSettingV2EffectiveStringVal']]] = None,
+            effective_workspace_dashboard_theme: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveWorkspaceDashboardThemeArgs', 'WorkspaceSettingV2EffectiveWorkspaceDashboardThemeArgsDict', 'outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardTheme']]] = None,
             effective_workspace_label: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveWorkspaceLabelArgs', 'WorkspaceSettingV2EffectiveWorkspaceLabelArgsDict', 'outputs.WorkspaceSettingV2EffectiveWorkspaceLabel']]] = None,
             integer_val: pulumi.Input[Optional[Union['WorkspaceSettingV2IntegerValArgs', 'WorkspaceSettingV2IntegerValArgsDict', 'outputs.WorkspaceSettingV2IntegerVal']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -985,6 +1039,7 @@ class WorkspaceSettingV2(pulumi.CustomResource):
             provider_config: pulumi.Input[Optional[Union['WorkspaceSettingV2ProviderConfigArgs', 'WorkspaceSettingV2ProviderConfigArgsDict', 'outputs.WorkspaceSettingV2ProviderConfig']]] = None,
             restrict_workspace_admins: pulumi.Input[Optional[Union['WorkspaceSettingV2RestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict', 'outputs.WorkspaceSettingV2RestrictWorkspaceAdmins']]] = None,
             string_val: pulumi.Input[Optional[Union['WorkspaceSettingV2StringValArgs', 'WorkspaceSettingV2StringValArgsDict', 'outputs.WorkspaceSettingV2StringVal']]] = None,
+            workspace_dashboard_theme: pulumi.Input[Optional[Union['WorkspaceSettingV2WorkspaceDashboardThemeArgs', 'WorkspaceSettingV2WorkspaceDashboardThemeArgsDict', 'outputs.WorkspaceSettingV2WorkspaceDashboardTheme']]] = None,
             workspace_label: pulumi.Input[Optional[Union['WorkspaceSettingV2WorkspaceLabelArgs', 'WorkspaceSettingV2WorkspaceLabelArgsDict', 'outputs.WorkspaceSettingV2WorkspaceLabel']]] = None) -> 'WorkspaceSettingV2':
         """
         Get an existing WorkspaceSettingV2 resource's state with the given name, id, and optional extra
@@ -1010,14 +1065,16 @@ class WorkspaceSettingV2(pulumi.CustomResource):
         :param pulumi.Input[Union['WorkspaceSettingV2EffectivePersonalComputeArgs', 'WorkspaceSettingV2EffectivePersonalComputeArgsDict', 'outputs.WorkspaceSettingV2EffectivePersonalCompute']] effective_personal_compute: Effective setting value for personal_compute setting. This is the final effective value of setting. To set a value use personal_compute
         :param pulumi.Input[Union['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgsDict', 'outputs.WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins']] effective_restrict_workspace_admins: Effective setting value for restrict_workspace_admins setting. This is the final effective value of setting. To set a value use restrict_workspace_admins
         :param pulumi.Input[Union['WorkspaceSettingV2EffectiveStringValArgs', 'WorkspaceSettingV2EffectiveStringValArgsDict', 'outputs.WorkspaceSettingV2EffectiveStringVal']] effective_string_val: (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
+        :param pulumi.Input[Union['WorkspaceSettingV2EffectiveWorkspaceDashboardThemeArgs', 'WorkspaceSettingV2EffectiveWorkspaceDashboardThemeArgsDict', 'outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardTheme']] effective_workspace_dashboard_theme: (DashboardTheme) - Effective setting value for the workspace_dashboard_theme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
         :param pulumi.Input[Union['WorkspaceSettingV2EffectiveWorkspaceLabelArgs', 'WorkspaceSettingV2EffectiveWorkspaceLabelArgsDict', 'outputs.WorkspaceSettingV2EffectiveWorkspaceLabel']] effective_workspace_label: Effective setting value for workspace_label setting. This is the final effective value of setting. To set a value use workspace_label
         :param pulumi.Input[Union['WorkspaceSettingV2IntegerValArgs', 'WorkspaceSettingV2IntegerValArgsDict', 'outputs.WorkspaceSettingV2IntegerVal']] integer_val: Setting value for integer type setting. This is the setting value set by consumers, check effective_integer_val for final setting value
-        :param pulumi.Input[_builtins.str] name: Name of the setting
+        :param pulumi.Input[_builtins.str] name: Name of the setting. The settings metadata endpoint lists the names available at each scope
         :param pulumi.Input[Union['WorkspaceSettingV2OperationalEmailCustomRecipientArgs', 'WorkspaceSettingV2OperationalEmailCustomRecipientArgsDict', 'outputs.WorkspaceSettingV2OperationalEmailCustomRecipient']] operational_email_custom_recipient: Setting value for operational_email_custom_recipient setting. This is the setting value set by consumers, check effective_operational_email_custom_recipient for final setting value
         :param pulumi.Input[Union['WorkspaceSettingV2PersonalComputeArgs', 'WorkspaceSettingV2PersonalComputeArgsDict', 'outputs.WorkspaceSettingV2PersonalCompute']] personal_compute: Setting value for personal_compute setting. This is the setting value set by consumers, check effective_personal_compute for final setting value
         :param pulumi.Input[Union['WorkspaceSettingV2ProviderConfigArgs', 'WorkspaceSettingV2ProviderConfigArgsDict', 'outputs.WorkspaceSettingV2ProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['WorkspaceSettingV2RestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict', 'outputs.WorkspaceSettingV2RestrictWorkspaceAdmins']] restrict_workspace_admins: Setting value for restrict_workspace_admins setting. This is the setting value set by consumers, check effective_restrict_workspace_admins for final setting value
         :param pulumi.Input[Union['WorkspaceSettingV2StringValArgs', 'WorkspaceSettingV2StringValArgsDict', 'outputs.WorkspaceSettingV2StringVal']] string_val: Setting value for string type setting. This is the setting value set by consumers, check effective_string_val for final setting value
+        :param pulumi.Input[Union['WorkspaceSettingV2WorkspaceDashboardThemeArgs', 'WorkspaceSettingV2WorkspaceDashboardThemeArgsDict', 'outputs.WorkspaceSettingV2WorkspaceDashboardTheme']] workspace_dashboard_theme: Setting value for the workspace_dashboard_theme setting. This is the setting value set by consumers. Check effective_workspace_dashboard_theme for the final setting value
         :param pulumi.Input[Union['WorkspaceSettingV2WorkspaceLabelArgs', 'WorkspaceSettingV2WorkspaceLabelArgsDict', 'outputs.WorkspaceSettingV2WorkspaceLabel']] workspace_label: Setting value for workspace_label setting. This is the setting value set by consumers, check effective_workspace_label for final setting value
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1041,6 +1098,7 @@ class WorkspaceSettingV2(pulumi.CustomResource):
         __props__.__dict__["effective_personal_compute"] = effective_personal_compute
         __props__.__dict__["effective_restrict_workspace_admins"] = effective_restrict_workspace_admins
         __props__.__dict__["effective_string_val"] = effective_string_val
+        __props__.__dict__["effective_workspace_dashboard_theme"] = effective_workspace_dashboard_theme
         __props__.__dict__["effective_workspace_label"] = effective_workspace_label
         __props__.__dict__["integer_val"] = integer_val
         __props__.__dict__["name"] = name
@@ -1049,6 +1107,7 @@ class WorkspaceSettingV2(pulumi.CustomResource):
         __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["restrict_workspace_admins"] = restrict_workspace_admins
         __props__.__dict__["string_val"] = string_val
+        __props__.__dict__["workspace_dashboard_theme"] = workspace_dashboard_theme
         __props__.__dict__["workspace_label"] = workspace_label
         return WorkspaceSettingV2(resource_name, opts=opts, __props__=__props__)
 
@@ -1072,6 +1131,7 @@ class WorkspaceSettingV2(pulumi.CustomResource):
             effective_personal_compute: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectivePersonalComputeArgs', 'WorkspaceSettingV2EffectivePersonalComputeArgsDict', 'outputs.WorkspaceSettingV2EffectivePersonalCompute']]] = None,
             effective_restrict_workspace_admins: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2EffectiveRestrictWorkspaceAdminsArgsDict', 'outputs.WorkspaceSettingV2EffectiveRestrictWorkspaceAdmins']]] = None,
             effective_string_val: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveStringValArgs', 'WorkspaceSettingV2EffectiveStringValArgsDict', 'outputs.WorkspaceSettingV2EffectiveStringVal']]] = None,
+            effective_workspace_dashboard_theme: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveWorkspaceDashboardThemeArgs', 'WorkspaceSettingV2EffectiveWorkspaceDashboardThemeArgsDict', 'outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardTheme']]] = None,
             effective_workspace_label: pulumi.Input[Optional[Union['WorkspaceSettingV2EffectiveWorkspaceLabelArgs', 'WorkspaceSettingV2EffectiveWorkspaceLabelArgsDict', 'outputs.WorkspaceSettingV2EffectiveWorkspaceLabel']]] = None,
             integer_val: pulumi.Input[Optional[Union['WorkspaceSettingV2IntegerValArgs', 'WorkspaceSettingV2IntegerValArgsDict', 'outputs.WorkspaceSettingV2IntegerVal']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1080,6 +1140,7 @@ class WorkspaceSettingV2(pulumi.CustomResource):
             provider_config: pulumi.Input[Optional[Union['WorkspaceSettingV2ProviderConfigArgs', 'WorkspaceSettingV2ProviderConfigArgsDict', 'outputs.WorkspaceSettingV2ProviderConfig']]] = None,
             restrict_workspace_admins: pulumi.Input[Optional[Union['WorkspaceSettingV2RestrictWorkspaceAdminsArgs', 'WorkspaceSettingV2RestrictWorkspaceAdminsArgsDict', 'outputs.WorkspaceSettingV2RestrictWorkspaceAdmins']]] = None,
             string_val: pulumi.Input[Optional[Union['WorkspaceSettingV2StringValArgs', 'WorkspaceSettingV2StringValArgsDict', 'outputs.WorkspaceSettingV2StringVal']]] = None,
+            workspace_dashboard_theme: pulumi.Input[Optional[Union['WorkspaceSettingV2WorkspaceDashboardThemeArgs', 'WorkspaceSettingV2WorkspaceDashboardThemeArgsDict', 'outputs.WorkspaceSettingV2WorkspaceDashboardTheme']]] = None,
             workspace_label: pulumi.Input[Optional[Union['WorkspaceSettingV2WorkspaceLabelArgs', 'WorkspaceSettingV2WorkspaceLabelArgsDict', 'outputs.WorkspaceSettingV2WorkspaceLabel']]] = None) -> pulumi.Output[bool]:
         __props__: dict = {}
         __props__["aibiDashboardEmbeddingAccessPolicy"] = aibi_dashboard_embedding_access_policy
@@ -1099,6 +1160,7 @@ class WorkspaceSettingV2(pulumi.CustomResource):
         __props__["effectivePersonalCompute"] = effective_personal_compute
         __props__["effectiveRestrictWorkspaceAdmins"] = effective_restrict_workspace_admins
         __props__["effectiveStringVal"] = effective_string_val
+        __props__["effectiveWorkspaceDashboardTheme"] = effective_workspace_dashboard_theme
         __props__["effectiveWorkspaceLabel"] = effective_workspace_label
         __props__["integerVal"] = integer_val
         __props__["name"] = name
@@ -1107,6 +1169,7 @@ class WorkspaceSettingV2(pulumi.CustomResource):
         __props__["providerConfig"] = provider_config
         __props__["restrictWorkspaceAdmins"] = restrict_workspace_admins
         __props__["stringVal"] = string_val
+        __props__["workspaceDashboardTheme"] = workspace_dashboard_theme
         __props__["workspaceLabel"] = workspace_label
         return pulumi.runtime.exists_resource(None, 'databricks:index/workspaceSettingV2:WorkspaceSettingV2', id, __props__, opts or pulumi.ResourceOptions())
 
@@ -1247,6 +1310,14 @@ class WorkspaceSettingV2(pulumi.CustomResource):
         return pulumi.get(self, "effective_string_val")
 
     @_builtins.property
+    @pulumi.getter(name="effectiveWorkspaceDashboardTheme")
+    def effective_workspace_dashboard_theme(self) -> pulumi.Output['outputs.WorkspaceSettingV2EffectiveWorkspaceDashboardTheme']:
+        """
+        (DashboardTheme) - Effective setting value for the workspace_dashboard_theme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+        """
+        return pulumi.get(self, "effective_workspace_dashboard_theme")
+
+    @_builtins.property
     @pulumi.getter(name="effectiveWorkspaceLabel")
     def effective_workspace_label(self) -> pulumi.Output[Optional['outputs.WorkspaceSettingV2EffectiveWorkspaceLabel']]:
         """
@@ -1266,7 +1337,7 @@ class WorkspaceSettingV2(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the setting
+        Name of the setting. The settings metadata endpoint lists the names available at each scope
         """
         return pulumi.get(self, "name")
 
@@ -1309,6 +1380,14 @@ class WorkspaceSettingV2(pulumi.CustomResource):
         Setting value for string type setting. This is the setting value set by consumers, check effective_string_val for final setting value
         """
         return pulumi.get(self, "string_val")
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceDashboardTheme")
+    def workspace_dashboard_theme(self) -> pulumi.Output[Optional['outputs.WorkspaceSettingV2WorkspaceDashboardTheme']]:
+        """
+        Setting value for the workspace_dashboard_theme setting. This is the setting value set by consumers. Check effective_workspace_dashboard_theme for the final setting value
+        """
+        return pulumi.get(self, "workspace_dashboard_theme")
 
     @_builtins.property
     @pulumi.getter(name="workspaceLabel")

@@ -13,6 +13,35 @@ namespace Pulumi.Databricks.Inputs
     public sealed class AiSearchEndpointScalingInfoGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (string) - Reason the in-progress scaling change is delayed. When set, `EstimatedCompletionTime` is
+        /// unset. Unset when the change is not delayed or no scaling change is in progress. Possible values are: `CAPACITY_UNAVAILABLE`, `SCALE_DOWN_BLOCKED`, `TAKING_LONGER_THAN_EXPECTED`
+        /// </summary>
+        [Input("delayedReason")]
+        public Input<string>? DelayedReason { get; set; }
+
+        /// <summary>
+        /// (string) - Estimated time at which the in-progress scaling change will complete. The estimate may
+        /// change as the scaling change progresses. Unset when no scaling change is in progress,
+        /// when no estimate is available, or when the change is delayed (see `DelayedReason`)
+        /// </summary>
+        [Input("estimatedCompletionTime")]
+        public Input<string>? EstimatedCompletionTime { get; set; }
+
+        /// <summary>
+        /// (integer) - Percentage of index initialization completed, from 0 to 100. Set only during the
+        /// `INITIALIZING_INDEX` phase; unset in other phases or when progress is not available
+        /// </summary>
+        [Input("indexInitializationPercentage")]
+        public Input<int>? IndexInitializationPercentage { get; set; }
+
+        /// <summary>
+        /// (string) - Current phase of the in-progress scaling change. Unset when no scaling change is in
+        /// progress or the phase is not available. Possible values are: `ADJUSTING_CAPACITY`, `ESTIMATING`, `INITIALIZING_INDEX`
+        /// </summary>
+        [Input("phase")]
+        public Input<string>? Phase { get; set; }
+
+        /// <summary>
         /// The requested QPS target for the endpoint. Best-effort; the system does not
         /// guarantee this QPS will be achieved
         /// </summary>
@@ -24,6 +53,14 @@ namespace Pulumi.Databricks.Inputs
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// (string) - Earliest time a new Target QPS change is accepted. Set only while a scaling change is in
+        /// progress, the change lock is on, and the endpoint has a recorded last throughput change; may
+        /// be in the past once the lock has expired
+        /// </summary>
+        [Input("targetQpsChangeAllowedAfterTime")]
+        public Input<string>? TargetQpsChangeAllowedAfterTime { get; set; }
 
         public AiSearchEndpointScalingInfoGetArgs()
         {

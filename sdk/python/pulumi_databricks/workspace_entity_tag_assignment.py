@@ -33,7 +33,7 @@ class WorkspaceEntityTagAssignmentArgs:
         :param pulumi.Input[_builtins.str] entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
         :param pulumi.Input['WorkspaceEntityTagAssignmentProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] tag_value: The value of the tag
+        :param pulumi.Input[_builtins.str] tag_value: The value of the tag. If the value is omitted, the tag is assigned with its key only
         """
         pulumi.set(__self__, "entity_id", entity_id)
         pulumi.set(__self__, "entity_type", entity_type)
@@ -95,7 +95,7 @@ class WorkspaceEntityTagAssignmentArgs:
     @pulumi.getter(name="tagValue")
     def tag_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The value of the tag
+        The value of the tag. If the value is omitted, the tag is assigned with its key only
         """
         return pulumi.get(self, "tag_value")
 
@@ -119,7 +119,7 @@ class _WorkspaceEntityTagAssignmentState:
         :param pulumi.Input[_builtins.str] entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
         :param pulumi.Input['WorkspaceEntityTagAssignmentProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
-        :param pulumi.Input[_builtins.str] tag_value: The value of the tag
+        :param pulumi.Input[_builtins.str] tag_value: The value of the tag. If the value is omitted, the tag is assigned with its key only
         """
         if entity_id is not None:
             pulumi.set(__self__, "entity_id", entity_id)
@@ -184,7 +184,7 @@ class _WorkspaceEntityTagAssignmentState:
     @pulumi.getter(name="tagValue")
     def tag_value(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The value of the tag
+        The value of the tag. If the value is omitted, the tag is assigned with its key only
         """
         return pulumi.get(self, "tag_value")
 
@@ -247,7 +247,7 @@ class WorkspaceEntityTagAssignment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
         :param pulumi.Input[Union['WorkspaceEntityTagAssignmentProviderConfigArgs', 'WorkspaceEntityTagAssignmentProviderConfigArgsDict', 'outputs.WorkspaceEntityTagAssignmentProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
-        :param pulumi.Input[_builtins.str] tag_value: The value of the tag
+        :param pulumi.Input[_builtins.str] tag_value: The value of the tag. If the value is omitted, the tag is assigned with its key only
         """
         ...
     @overload
@@ -357,7 +357,7 @@ class WorkspaceEntityTagAssignment(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] entity_type: The type of entity to which the tag is assigned. Allowed values are apps, dashboards, geniespaces, notebooks
         :param pulumi.Input[Union['WorkspaceEntityTagAssignmentProviderConfigArgs', 'WorkspaceEntityTagAssignmentProviderConfigArgsDict', 'outputs.WorkspaceEntityTagAssignmentProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] tag_key: The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
-        :param pulumi.Input[_builtins.str] tag_value: The value of the tag
+        :param pulumi.Input[_builtins.str] tag_value: The value of the tag. If the value is omitted, the tag is assigned with its key only
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -422,7 +422,7 @@ class WorkspaceEntityTagAssignment(pulumi.CustomResource):
     @pulumi.getter(name="tagValue")
     def tag_value(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The value of the tag
+        The value of the tag. If the value is omitted, the tag is assigned with its key only
         """
         return pulumi.get(self, "tag_value")
 

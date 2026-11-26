@@ -129,7 +129,8 @@ export class DatabaseInstance extends pulumi.CustomResource {
     }
 
     /**
-     * The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+     * The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8". Must be set when
+     * creating an instance
      */
     declare public readonly capacity: pulumi.Output<string | undefined>;
     /**
@@ -146,11 +147,12 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly creator: pulumi.Output<string>;
     /**
-     * Custom tags associated with the instance. This field is only included on create and update responses
+     * Custom tags associated with the instance. This field is only included on create and update responses.
+     * An instance can have at most 10 tags; keys must be unique ignoring case
      */
     declare public readonly customTags: pulumi.Output<outputs.DatabaseInstanceCustomTag[]>;
     /**
-     * (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+     * (string, deprecated) - Deprecated: this field always matches the value of capacity; read capacity instead.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      */
@@ -204,11 +206,14 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     declare public readonly enablePgNativeLogin: pulumi.Output<boolean>;
     /**
-     * Whether to enable secondaries to serve read-only traffic. Defaults to false
+     * Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+     * nodeCount greater than 1
      */
     declare public readonly enableReadableSecondaries: pulumi.Output<boolean>;
     /**
-     * The name of the instance. This is the unique identifier for the instance
+     * The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+     * characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+     * consecutive hyphens
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -217,8 +222,9 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     declare public readonly nodeCount: pulumi.Output<number>;
     /**
-     * The ref of the parent instance. This is only available if the instance is
-     * child instance.
+     * The ref of the parent instance. This is only available if the instance is a
+     * child instance. A child instance inherits customTags and usagePolicyId from
+     * its parent and cannot set them.
      * Input: For specifying the parent instance to create a child instance. Optional.
      * Output: Only populated if provided as input to create a child instance
      */
@@ -232,8 +238,8 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     declare public readonly providerConfig: pulumi.Output<outputs.DatabaseInstanceProviderConfig>;
     /**
-     * Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
-     * of false will throw a bad request
+     * Deprecated: omitting the field or setting it to true hard deletes the instance. Setting it to
+     * false returns a bad request
      */
     declare public readonly purgeOnDelete: pulumi.Output<boolean | undefined>;
     /**
@@ -256,7 +262,9 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
-     * Whether to stop the instance. An input only param, see effectiveStopped for the output
+     * Whether to stop the instance. An input only param, see effectiveStopped for the output. An
+     * instance cannot be created in the stopped state; set this field on update to stop or start
+     * the instance
      */
     declare public readonly stopped: pulumi.Output<boolean>;
     /**
@@ -350,7 +358,8 @@ export class DatabaseInstance extends pulumi.CustomResource {
  */
 export interface DatabaseInstanceState {
     /**
-     * The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+     * The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8". Must be set when
+     * creating an instance
      */
     capacity?: pulumi.Input<string | undefined>;
     /**
@@ -367,11 +376,12 @@ export interface DatabaseInstanceState {
      */
     creator?: pulumi.Input<string | undefined>;
     /**
-     * Custom tags associated with the instance. This field is only included on create and update responses
+     * Custom tags associated with the instance. This field is only included on create and update responses.
+     * An instance can have at most 10 tags; keys must be unique ignoring case
      */
     customTags?: pulumi.Input<pulumi.Input<inputs.DatabaseInstanceCustomTag>[] | undefined>;
     /**
-     * (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+     * (string, deprecated) - Deprecated: this field always matches the value of capacity; read capacity instead.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      */
@@ -425,11 +435,14 @@ export interface DatabaseInstanceState {
      */
     enablePgNativeLogin?: pulumi.Input<boolean | undefined>;
     /**
-     * Whether to enable secondaries to serve read-only traffic. Defaults to false
+     * Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+     * nodeCount greater than 1
      */
     enableReadableSecondaries?: pulumi.Input<boolean | undefined>;
     /**
-     * The name of the instance. This is the unique identifier for the instance
+     * The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+     * characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+     * consecutive hyphens
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -438,8 +451,9 @@ export interface DatabaseInstanceState {
      */
     nodeCount?: pulumi.Input<number | undefined>;
     /**
-     * The ref of the parent instance. This is only available if the instance is
-     * child instance.
+     * The ref of the parent instance. This is only available if the instance is a
+     * child instance. A child instance inherits customTags and usagePolicyId from
+     * its parent and cannot set them.
      * Input: For specifying the parent instance to create a child instance. Optional.
      * Output: Only populated if provided as input to create a child instance
      */
@@ -453,8 +467,8 @@ export interface DatabaseInstanceState {
      */
     providerConfig?: pulumi.Input<inputs.DatabaseInstanceProviderConfig | undefined>;
     /**
-     * Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
-     * of false will throw a bad request
+     * Deprecated: omitting the field or setting it to true hard deletes the instance. Setting it to
+     * false returns a bad request
      */
     purgeOnDelete?: pulumi.Input<boolean | undefined>;
     /**
@@ -477,7 +491,9 @@ export interface DatabaseInstanceState {
      */
     state?: pulumi.Input<string | undefined>;
     /**
-     * Whether to stop the instance. An input only param, see effectiveStopped for the output
+     * Whether to stop the instance. An input only param, see effectiveStopped for the output. An
+     * instance cannot be created in the stopped state; set this field on update to stop or start
+     * the instance
      */
     stopped?: pulumi.Input<boolean | undefined>;
     /**
@@ -495,11 +511,13 @@ export interface DatabaseInstanceState {
  */
 export interface DatabaseInstanceArgs {
     /**
-     * The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+     * The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8". Must be set when
+     * creating an instance
      */
     capacity?: pulumi.Input<string | undefined>;
     /**
-     * Custom tags associated with the instance. This field is only included on create and update responses
+     * Custom tags associated with the instance. This field is only included on create and update responses.
+     * An instance can have at most 10 tags; keys must be unique ignoring case
      */
     customTags?: pulumi.Input<pulumi.Input<inputs.DatabaseInstanceCustomTag>[] | undefined>;
     /**
@@ -507,11 +525,14 @@ export interface DatabaseInstanceArgs {
      */
     enablePgNativeLogin?: pulumi.Input<boolean | undefined>;
     /**
-     * Whether to enable secondaries to serve read-only traffic. Defaults to false
+     * Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+     * nodeCount greater than 1
      */
     enableReadableSecondaries?: pulumi.Input<boolean | undefined>;
     /**
-     * The name of the instance. This is the unique identifier for the instance
+     * The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+     * characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+     * consecutive hyphens
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -520,8 +541,9 @@ export interface DatabaseInstanceArgs {
      */
     nodeCount?: pulumi.Input<number | undefined>;
     /**
-     * The ref of the parent instance. This is only available if the instance is
-     * child instance.
+     * The ref of the parent instance. This is only available if the instance is a
+     * child instance. A child instance inherits customTags and usagePolicyId from
+     * its parent and cannot set them.
      * Input: For specifying the parent instance to create a child instance. Optional.
      * Output: Only populated if provided as input to create a child instance
      */
@@ -531,8 +553,8 @@ export interface DatabaseInstanceArgs {
      */
     providerConfig?: pulumi.Input<inputs.DatabaseInstanceProviderConfig | undefined>;
     /**
-     * Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
-     * of false will throw a bad request
+     * Deprecated: omitting the field or setting it to true hard deletes the instance. Setting it to
+     * false returns a bad request
      */
     purgeOnDelete?: pulumi.Input<boolean | undefined>;
     /**
@@ -542,7 +564,9 @@ export interface DatabaseInstanceArgs {
      */
     retentionWindowInDays?: pulumi.Input<number | undefined>;
     /**
-     * Whether to stop the instance. An input only param, see effectiveStopped for the output
+     * Whether to stop the instance. An input only param, see effectiveStopped for the output. An
+     * instance cannot be created in the stopped state; set this field on update to stop or start
+     * the instance
      */
     stopped?: pulumi.Input<boolean | undefined>;
     /**

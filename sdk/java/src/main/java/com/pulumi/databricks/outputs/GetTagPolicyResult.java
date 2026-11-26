@@ -21,18 +21,18 @@ public final class GetTagPolicyResult {
      */
     private String createTime;
     /**
-     * @return (string)
+     * @return (string) - A description of the governed tag, such as its purpose or the meaning of its values
      * 
      */
     private String description;
     /**
-     * @return (string)
+     * @return (string) - The unique identifier of the tag policy, generated when the policy is created
      * 
      */
     private String id;
     private @Nullable GetTagPolicyProviderConfig providerConfig;
     /**
-     * @return (string)
+     * @return (string) - The tag key that this policy governs. Tag keys are case-sensitive
      * 
      */
     private String tagKey;
@@ -42,7 +42,8 @@ public final class GetTagPolicyResult {
      */
     private String updateTime;
     /**
-     * @return (list of Value)
+     * @return (list of Value) - The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+     * value must be unique. A policy without values defines a key-only governed tag
      * 
      */
     private List<GetTagPolicyValue> values;
@@ -56,14 +57,14 @@ public final class GetTagPolicyResult {
         return this.createTime;
     }
     /**
-     * @return (string)
+     * @return (string) - A description of the governed tag, such as its purpose or the meaning of its values
      * 
      */
     public String description() {
         return this.description;
     }
     /**
-     * @return (string)
+     * @return (string) - The unique identifier of the tag policy, generated when the policy is created
      * 
      */
     public String id() {
@@ -73,7 +74,7 @@ public final class GetTagPolicyResult {
         return Optional.ofNullable(this.providerConfig);
     }
     /**
-     * @return (string)
+     * @return (string) - The tag key that this policy governs. Tag keys are case-sensitive
      * 
      */
     public String tagKey() {
@@ -87,7 +88,8 @@ public final class GetTagPolicyResult {
         return this.updateTime;
     }
     /**
-     * @return (list of Value)
+     * @return (list of Value) - The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+     * value must be unique. A policy without values defines a key-only governed tag
      * 
      */
     public List<GetTagPolicyValue> values() {

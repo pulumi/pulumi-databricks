@@ -13,12 +13,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAlertV2Schedule {
     /**
-     * @return (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
+     * @return (string) - Indicates whether this schedule is paused. While paused, the alert is not evaluated. Possible values are: `PAUSED`, `UNPAUSED`
      * 
      */
     private @Nullable String pauseStatus;
     /**
-     * @return (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
+     * @return (string) - A cron expression using quartz syntax that specifies the schedule for this alert.
      * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
      * 
      */
@@ -33,14 +33,14 @@ public final class GetAlertV2Schedule {
 
     private GetAlertV2Schedule() {}
     /**
-     * @return (string) - Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
+     * @return (string) - Indicates whether this schedule is paused. While paused, the alert is not evaluated. Possible values are: `PAUSED`, `UNPAUSED`
      * 
      */
     public Optional<String> pauseStatus() {
         return Optional.ofNullable(this.pauseStatus);
     }
     /**
-     * @return (string) - A cron expression using quartz syntax that specifies the schedule for this pipeline.
+     * @return (string) - A cron expression using quartz syntax that specifies the schedule for this alert.
      * Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
      * 
      */

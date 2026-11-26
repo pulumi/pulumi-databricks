@@ -97,7 +97,9 @@ class GetAiSearchIndexResult:
     @pulumi.getter(name="indexSubtype")
     def index_subtype(self) -> _builtins.str:
         """
-        (string) - The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+        (string) - Subtype of the index. Use `HYBRID` for vector and hybrid search, or `FULL_TEXT` for
+        keyword-only search without embeddings; `VECTOR` is not a supported create value. Set on
+        create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
         """
         return pulumi.get(self, "index_subtype")
 
@@ -105,7 +107,9 @@ class GetAiSearchIndexResult:
     @pulumi.getter(name="indexType")
     def index_type(self) -> _builtins.str:
         """
-        (string) - Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+        (string) - Type of index. A `DELTA_SYNC` index is kept in sync with a source Delta table; a
+        `DIRECT_ACCESS` index holds rows that you write through UpsertData and RemoveData. Set on
+        create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
         """
         return pulumi.get(self, "index_type")
 
@@ -113,7 +117,7 @@ class GetAiSearchIndexResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        (string) - Name of the column
+        (string) - Name of the column that holds the precomputed embedding vectors
         """
         return pulumi.get(self, "name")
 
@@ -121,7 +125,9 @@ class GetAiSearchIndexResult:
     @pulumi.getter(name="primaryKey")
     def primary_key(self) -> _builtins.str:
         """
-        (string) - Primary key of the index. Set on create and immutable thereafter
+        (string) - Name of the column that uniquely identifies each row. It must exist in the source table
+        (Delta Sync) or in `schema_json` (Direct Access) and cannot be the embedding source or vector
+        column. Set on create and immutable thereafter
         """
         return pulumi.get(self, "primary_key")
 
@@ -161,7 +167,7 @@ def get_ai_search_index(name: Optional[_builtins.str] = None,
                         provider_config: Optional[Union['GetAiSearchIndexProviderConfigArgs', 'GetAiSearchIndexProviderConfigArgsDict', 'outputs.GetAiSearchIndexProviderConfigResult']] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAiSearchIndexResult:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
 
@@ -208,7 +214,7 @@ def get_ai_search_index_output(name: pulumi.Input[Optional[_builtins.str]] = Non
                                provider_config: pulumi.Input[Optional[Optional[Union['GetAiSearchIndexProviderConfigArgs', 'GetAiSearchIndexProviderConfigArgsDict', 'outputs.GetAiSearchIndexProviderConfigResult']]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiSearchIndexResult]:
     """
-    [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
 

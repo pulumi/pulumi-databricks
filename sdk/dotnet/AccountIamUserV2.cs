@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
     /// 
@@ -51,49 +51,54 @@ namespace Pulumi.Databricks
     public partial class AccountIamUserV2 : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (string) - The accountId parent of the user in Databricks
+        /// (string) - The ID of the account that contains the user
         /// </summary>
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+        /// Whether the user is active in the account. New users are active unless you set this to
+        /// `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
         /// </summary>
         [Output("accountUserStatus")]
         public Output<string> AccountUserStatus { get; private set; } = null!;
 
         /// <summary>
-        /// ExternalId of the user in the customer's IdP
+        /// The ID of the user in your identity provider (IdP)
         /// </summary>
         [Output("externalId")]
         public Output<string?> ExternalId { get; private set; } = null!;
 
+        /// <summary>
+        /// The user's name
+        /// </summary>
         [Output("fullName")]
         public Output<Outputs.AccountIamUserV2FullName> FullName { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The resource name of the user. The format depends on the API that returned it:
-        /// - Account-scoped: accounts/{account_id}/users/{user_id}
-        /// - Workspace-scoped: users/{user_id}
+        /// (string) - The resource name of the user, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/users/{user_id}`
+        /// - Workspace APIs: `users/{user_id}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-        /// account-scoped and workspace-scoped APIs return it
+        /// The resource name of the account that contains the user, in the format
+        /// `accounts/{account_id}`. Workspace APIs return the same format
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - Internal userId of the user in Databricks
+        /// (string) - The Databricks ID of the user
         /// </summary>
         [Output("userId")]
         public Output<string> UserId { get; private set; } = null!;
 
         /// <summary>
-        /// Username/email of the user
+        /// The user's username, which is their email address. It can't be changed after the user is
+        /// created
         /// </summary>
         [Output("username")]
         public Output<string> Username { get; private set; } = null!;
@@ -145,29 +150,34 @@ namespace Pulumi.Databricks
     public sealed class AccountIamUserV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+        /// Whether the user is active in the account. New users are active unless you set this to
+        /// `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
         /// </summary>
         [Input("accountUserStatus", required: true)]
         public Input<string> AccountUserStatus { get; set; } = null!;
 
         /// <summary>
-        /// ExternalId of the user in the customer's IdP
+        /// The ID of the user in your identity provider (IdP)
         /// </summary>
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
 
+        /// <summary>
+        /// The user's name
+        /// </summary>
         [Input("fullName", required: true)]
         public Input<Inputs.AccountIamUserV2FullNameArgs> FullName { get; set; } = null!;
 
         /// <summary>
-        /// The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-        /// account-scoped and workspace-scoped APIs return it
+        /// The resource name of the account that contains the user, in the format
+        /// `accounts/{account_id}`. Workspace APIs return the same format
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
-        /// Username/email of the user
+        /// The user's username, which is their email address. It can't be changed after the user is
+        /// created
         /// </summary>
         [Input("username", required: true)]
         public Input<string> Username { get; set; } = null!;
@@ -181,49 +191,54 @@ namespace Pulumi.Databricks
     public sealed class AccountIamUserV2State : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (string) - The accountId parent of the user in Databricks
+        /// (string) - The ID of the account that contains the user
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
 
         /// <summary>
-        /// The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+        /// Whether the user is active in the account. New users are active unless you set this to
+        /// `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
         /// </summary>
         [Input("accountUserStatus")]
         public Input<string>? AccountUserStatus { get; set; }
 
         /// <summary>
-        /// ExternalId of the user in the customer's IdP
+        /// The ID of the user in your identity provider (IdP)
         /// </summary>
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
 
+        /// <summary>
+        /// The user's name
+        /// </summary>
         [Input("fullName")]
         public Input<Inputs.AccountIamUserV2FullNameGetArgs>? FullName { get; set; }
 
         /// <summary>
-        /// (string) - The resource name of the user. The format depends on the API that returned it:
-        /// - Account-scoped: accounts/{account_id}/users/{user_id}
-        /// - Workspace-scoped: users/{user_id}
+        /// (string) - The resource name of the user, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/users/{user_id}`
+        /// - Workspace APIs: `users/{user_id}`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-        /// account-scoped and workspace-scoped APIs return it
+        /// The resource name of the account that contains the user, in the format
+        /// `accounts/{account_id}`. Workspace APIs return the same format
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
         /// <summary>
-        /// (string) - Internal userId of the user in Databricks
+        /// (string) - The Databricks ID of the user
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }
 
         /// <summary>
-        /// Username/email of the user
+        /// The user's username, which is their email address. It can't be changed after the user is
+        /// created
         /// </summary>
         [Input("username")]
         public Input<string>? Username { get; set; }

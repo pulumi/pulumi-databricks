@@ -20,7 +20,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly bool? AcceleratedSync;
         /// <summary>
-        /// (string) - The full resource name the branch associated with the table.
+        /// (string) - The full resource name of the branch that contains the synced table.
         /// </summary>
         public readonly string? Branch;
         /// <summary>
@@ -30,7 +30,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly bool? CreateDatabaseObjectsIfMissing;
         /// <summary>
-        /// (string) - ID of an existing pipeline to bin-pack this synced table into.
+        /// (string) - ID of an existing pipeline to bin-pack this synced table into. The pipeline must be a synced
+        /// table pipeline that runs continuously if and only if SchedulingPolicy is CONTINUOUS.
         /// At most one of ExistingPipelineId and NewPipelineSpec should be defined.
         /// </summary>
         public readonly string? ExistingPipelineId;
@@ -44,15 +45,19 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetPostgresSyncedTableSpecNewPipelineSpecResult? NewPipelineSpec;
         /// <summary>
-        /// (string) - The Postgres database name where the synced table will be created in.
+        /// (string) - The name of the Postgres database where the synced table is created. A value must be specified
+        /// on creation. If the synced table is created inside a Lakebase catalog, the value must match the
+        /// Postgres database of that catalog
         /// </summary>
         public readonly string? PostgresDatabase;
         /// <summary>
-        /// (list of string) - Primary Key columns to be used for data insert/update in the destination
+        /// (list of string) - Primary Key columns to be used for data insert/update in the destination. At least one column
+        /// must be specified
         /// </summary>
         public readonly ImmutableArray<string> PrimaryKeyColumns;
         /// <summary>
-        /// (string) - Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+        /// (string) - Scheduling policy of the underlying pipeline. A value must be specified on creation. See
+        /// https://docs.databricks.com/aws/en/oltp/projects/sync-tables for how to choose a sync mode. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
         /// </summary>
         public readonly string? SchedulingPolicy;
         /// <summary>

@@ -28,7 +28,11 @@ class TagPolicyArgs:
         """
         The set of arguments for constructing a TagPolicy resource.
 
+        :param pulumi.Input[_builtins.str] tag_key: The tag key that this policy governs. Tag keys are case-sensitive
+        :param pulumi.Input[_builtins.str] description: A description of the governed tag, such as its purpose or the meaning of its values
         :param pulumi.Input['TagPolicyProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Sequence[pulumi.Input['TagPolicyValueArgs']]] values: The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+               value must be unique. A policy without values defines a key-only governed tag
         """
         pulumi.set(__self__, "tag_key", tag_key)
         if description is not None:
@@ -41,6 +45,9 @@ class TagPolicyArgs:
     @_builtins.property
     @pulumi.getter(name="tagKey")
     def tag_key(self) -> pulumi.Input[_builtins.str]:
+        """
+        The tag key that this policy governs. Tag keys are case-sensitive
+        """
         return pulumi.get(self, "tag_key")
 
     @tag_key.setter
@@ -50,6 +57,9 @@ class TagPolicyArgs:
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A description of the governed tag, such as its purpose or the meaning of its values
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -71,6 +81,10 @@ class TagPolicyArgs:
     @_builtins.property
     @pulumi.getter
     def values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TagPolicyValueArgs']]]]:
+        """
+        The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+        value must be unique. A policy without values defines a key-only governed tag
+        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -91,8 +105,12 @@ class _TagPolicyState:
         Input properties used for looking up and filtering TagPolicy resources.
 
         :param pulumi.Input[_builtins.str] create_time: (string) - Timestamp when the tag policy was created
+        :param pulumi.Input[_builtins.str] description: A description of the governed tag, such as its purpose or the meaning of its values
         :param pulumi.Input['TagPolicyProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.str] tag_key: The tag key that this policy governs. Tag keys are case-sensitive
         :param pulumi.Input[_builtins.str] update_time: (string) - Timestamp when the tag policy was last updated
+        :param pulumi.Input[Sequence[pulumi.Input['TagPolicyValueArgs']]] values: The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+               value must be unique. A policy without values defines a key-only governed tag
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -122,6 +140,9 @@ class _TagPolicyState:
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A description of the governed tag, such as its purpose or the meaning of its values
+        """
         return pulumi.get(self, "description")
 
     @description.setter
@@ -143,6 +164,9 @@ class _TagPolicyState:
     @_builtins.property
     @pulumi.getter(name="tagKey")
     def tag_key(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The tag key that this policy governs. Tag keys are case-sensitive
+        """
         return pulumi.get(self, "tag_key")
 
     @tag_key.setter
@@ -164,6 +188,10 @@ class _TagPolicyState:
     @_builtins.property
     @pulumi.getter
     def values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['TagPolicyValueArgs']]]]:
+        """
+        The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+        value must be unique. A policy without values defines a key-only governed tag
+        """
         return pulumi.get(self, "values")
 
     @values.setter
@@ -223,7 +251,11 @@ class TagPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] description: A description of the governed tag, such as its purpose or the meaning of its values
         :param pulumi.Input[Union['TagPolicyProviderConfigArgs', 'TagPolicyProviderConfigArgsDict', 'outputs.TagPolicyProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.str] tag_key: The tag key that this policy governs. Tag keys are case-sensitive
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TagPolicyValueArgs', 'TagPolicyValueArgsDict', 'outputs.TagPolicyValue']]]] values: The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+               value must be unique. A policy without values defines a key-only governed tag
         """
         ...
     @overload
@@ -330,8 +362,12 @@ class TagPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: (string) - Timestamp when the tag policy was created
+        :param pulumi.Input[_builtins.str] description: A description of the governed tag, such as its purpose or the meaning of its values
         :param pulumi.Input[Union['TagPolicyProviderConfigArgs', 'TagPolicyProviderConfigArgsDict', 'outputs.TagPolicyProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[_builtins.str] tag_key: The tag key that this policy governs. Tag keys are case-sensitive
         :param pulumi.Input[_builtins.str] update_time: (string) - Timestamp when the tag policy was last updated
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TagPolicyValueArgs', 'TagPolicyValueArgsDict', 'outputs.TagPolicyValue']]]] values: The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+               value must be unique. A policy without values defines a key-only governed tag
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -374,6 +410,9 @@ class TagPolicy(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        A description of the governed tag, such as its purpose or the meaning of its values
+        """
         return pulumi.get(self, "description")
 
     @_builtins.property
@@ -387,6 +426,9 @@ class TagPolicy(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="tagKey")
     def tag_key(self) -> pulumi.Output[_builtins.str]:
+        """
+        The tag key that this policy governs. Tag keys are case-sensitive
+        """
         return pulumi.get(self, "tag_key")
 
     @_builtins.property
@@ -400,5 +442,9 @@ class TagPolicy(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def values(self) -> pulumi.Output[Optional[Sequence['outputs.TagPolicyValue']]]:
+        """
+        The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+        value must be unique. A policy without values defines a key-only governed tag
+        """
         return pulumi.get(self, "values")
 

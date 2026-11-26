@@ -100,7 +100,8 @@ public final class PostgresDatabaseState extends com.pulumi.resources.ResourceAr
 
     /**
      * If true, update the database if it already exists instead of returning an
-     * error
+     * error. This requires `databaseId` to be set. Without `databaseId`, the request
+     * follows the normal create path and fails if the database name already exists
      * 
      */
     @Import(name="replaceExisting")
@@ -108,7 +109,8 @@ public final class PostgresDatabaseState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return If true, update the database if it already exists instead of returning an
-     * error
+     * error. This requires `databaseId` to be set. Without `databaseId`, the request
+     * follows the normal create path and fails if the database name already exists
      * 
      */
     public Optional<Output<Boolean>> replaceExisting() {
@@ -116,14 +118,22 @@ public final class PostgresDatabaseState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The desired state of the Database
+     * The desired state of the Database.
+     * 
+     * Read the resource&#39;s current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      * 
      */
     @Import(name="spec")
     private @Nullable Output<PostgresDatabaseSpecArgs> spec;
 
     /**
-     * @return The desired state of the Database
+     * @return The desired state of the Database.
+     * 
+     * Read the resource&#39;s current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      * 
      */
     public Optional<Output<PostgresDatabaseSpecArgs>> spec() {
@@ -303,7 +313,8 @@ public final class PostgresDatabaseState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param replaceExisting If true, update the database if it already exists instead of returning an
-         * error
+         * error. This requires `databaseId` to be set. Without `databaseId`, the request
+         * follows the normal create path and fails if the database name already exists
          * 
          * @return builder
          * 
@@ -315,7 +326,8 @@ public final class PostgresDatabaseState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param replaceExisting If true, update the database if it already exists instead of returning an
-         * error
+         * error. This requires `databaseId` to be set. Without `databaseId`, the request
+         * follows the normal create path and fails if the database name already exists
          * 
          * @return builder
          * 
@@ -325,7 +337,11 @@ public final class PostgresDatabaseState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param spec The desired state of the Database
+         * @param spec The desired state of the Database.
+         * 
+         * Read the resource&#39;s current values from `status`, rather than `spec`.
+         * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+         * unmanaged fields
          * 
          * @return builder
          * 
@@ -336,7 +352,11 @@ public final class PostgresDatabaseState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param spec The desired state of the Database
+         * @param spec The desired state of the Database.
+         * 
+         * Read the resource&#39;s current values from `status`, rather than `spec`.
+         * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+         * unmanaged fields
          * 
          * @return builder
          * 

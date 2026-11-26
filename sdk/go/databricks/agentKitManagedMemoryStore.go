@@ -32,7 +32,8 @@ type AgentKitManagedMemoryStore struct {
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
 	// with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-	// letter or digit
+	// letter or digit. It becomes the last segment of the store's `name` and cannot be changed
+	// after creation
 	ManagedMemoryStoreId pulumi.StringOutput `pulumi:"managedMemoryStoreId"`
 	// (string) - Resource name in the form `memory-stores/{managed_memory_store_id}`
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -96,7 +97,8 @@ type agentKitManagedMemoryStoreState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
 	// with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-	// letter or digit
+	// letter or digit. It becomes the last segment of the store's `name` and cannot be changed
+	// after creation
 	ManagedMemoryStoreId *string `pulumi:"managedMemoryStoreId"`
 	// (string) - Resource name in the form `memory-stores/{managed_memory_store_id}`
 	Name *string `pulumi:"name"`
@@ -128,7 +130,8 @@ type AgentKitManagedMemoryStoreState struct {
 	DisplayName pulumi.StringPtrInput
 	// Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
 	// with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-	// letter or digit
+	// letter or digit. It becomes the last segment of the store's `name` and cannot be changed
+	// after creation
 	ManagedMemoryStoreId pulumi.StringPtrInput
 	// (string) - Resource name in the form `memory-stores/{managed_memory_store_id}`
 	Name pulumi.StringPtrInput
@@ -164,7 +167,8 @@ type agentKitManagedMemoryStoreArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
 	// with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-	// letter or digit
+	// letter or digit. It becomes the last segment of the store's `name` and cannot be changed
+	// after creation
 	ManagedMemoryStoreId string `pulumi:"managedMemoryStoreId"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *AgentKitManagedMemoryStoreProviderConfig `pulumi:"providerConfig"`
@@ -180,7 +184,8 @@ type AgentKitManagedMemoryStoreArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
 	// with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-	// letter or digit
+	// letter or digit. It becomes the last segment of the store's `name` and cannot be changed
+	// after creation
 	ManagedMemoryStoreId pulumi.StringInput
 	// Configure the provider for management through account provider.
 	ProviderConfig AgentKitManagedMemoryStoreProviderConfigPtrInput
@@ -299,7 +304,8 @@ func (o AgentKitManagedMemoryStoreOutput) DisplayName() pulumi.StringPtrOutput {
 
 // Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
 // with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-// letter or digit
+// letter or digit. It becomes the last segment of the store's `name` and cannot be changed
+// after creation
 func (o AgentKitManagedMemoryStoreOutput) ManagedMemoryStoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AgentKitManagedMemoryStore) pulumi.StringOutput { return v.ManagedMemoryStoreId }).(pulumi.StringOutput)
 }

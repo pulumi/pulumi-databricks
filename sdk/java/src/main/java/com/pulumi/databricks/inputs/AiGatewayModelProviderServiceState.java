@@ -67,14 +67,14 @@ public final class AiGatewayModelProviderServiceState extends com.pulumi.resourc
     }
 
     /**
-     * (string) - Creator identity
+     * (string) - Username of the user who created the model provider service
      * 
      */
     @Import(name="createdBy")
     private @Nullable Output<String> createdBy;
 
     /**
-     * @return (string) - Creator identity
+     * @return (string) - Username of the user who created the model provider service
      * 
      */
     public Optional<Output<String>> createdBy() {
@@ -82,14 +82,14 @@ public final class AiGatewayModelProviderServiceState extends com.pulumi.resourc
     }
 
     /**
-     * (string) - Owner of the model provider service
+     * (string) - Username or group name of the model provider service owner
      * 
      */
     @Import(name="effectiveOwner")
     private @Nullable Output<String> effectiveOwner;
 
     /**
-     * @return (string) - Owner of the model provider service
+     * @return (string) - Username or group name of the model provider service owner
      * 
      */
     public Optional<Output<String>> effectiveOwner() {
@@ -118,14 +118,14 @@ public final class AiGatewayModelProviderServiceState extends com.pulumi.resourc
     }
 
     /**
-     * (string) - Metastore hosting the provider service
+     * (string) - Unique identifier of the metastore that contains the model provider service
      * 
      */
     @Import(name="metastoreId")
     private @Nullable Output<String> metastoreId;
 
     /**
-     * @return (string) - Metastore hosting the provider service
+     * @return (string) - Unique identifier of the metastore that contains the model provider service
      * 
      */
     public Optional<Output<String>> metastoreId() {
@@ -133,14 +133,20 @@ public final class AiGatewayModelProviderServiceState extends com.pulumi.resourc
     }
 
     /**
-     * Name for the model provider service, e.g. &#34;openaiProd&#34;
+     * Name of the model provider service within the parent schema. The name must
+     * not contain periods, spaces, forward slashes, percent signs, or control
+     * characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+     * characters. It is stored in lowercase
      * 
      */
     @Import(name="modelProviderServiceId")
     private @Nullable Output<String> modelProviderServiceId;
 
     /**
-     * @return Name for the model provider service, e.g. &#34;openaiProd&#34;
+     * @return Name of the model provider service within the parent schema. The name must
+     * not contain periods, spaces, forward slashes, percent signs, or control
+     * characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+     * characters. It is stored in lowercase
      * 
      */
     public Optional<Output<String>> modelProviderServiceId() {
@@ -151,8 +157,9 @@ public final class AiGatewayModelProviderServiceState extends com.pulumi.resourc
      * (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      * 
      */
     @Import(name="name")
@@ -162,8 +169,9 @@ public final class AiGatewayModelProviderServiceState extends com.pulumi.resourc
      * @return (string) - Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      * 
      */
     public Optional<Output<String>> name() {
@@ -220,14 +228,14 @@ public final class AiGatewayModelProviderServiceState extends com.pulumi.resourc
     }
 
     /**
-     * (string) - Identity of the last updater
+     * (string) - Username of the user who last updated the model provider service
      * 
      */
     @Import(name="updatedBy")
     private @Nullable Output<String> updatedBy;
 
     /**
-     * @return (string) - Identity of the last updater
+     * @return (string) - Username of the user who last updated the model provider service
      * 
      */
     public Optional<Output<String>> updatedBy() {
@@ -338,7 +346,7 @@ public final class AiGatewayModelProviderServiceState extends com.pulumi.resourc
         }
 
         /**
-         * @param createdBy (string) - Creator identity
+         * @param createdBy (string) - Username of the user who created the model provider service
          * 
          * @return builder
          * 
@@ -349,7 +357,7 @@ public final class AiGatewayModelProviderServiceState extends com.pulumi.resourc
         }
 
         /**
-         * @param createdBy (string) - Creator identity
+         * @param createdBy (string) - Username of the user who created the model provider service
          * 
          * @return builder
          * 
@@ -359,7 +367,7 @@ public final class AiGatewayModelProviderServiceState extends com.pulumi.resourc
         }
 
         /**
-         * @param effectiveOwner (string) - Owner of the model provider service
+         * @param effectiveOwner (string) - Username or group name of the model provider service owner
          * 
          * @return builder
          * 
@@ -370,7 +378,7 @@ public final class AiGatewayModelProviderServiceState extends com.pulumi.resourc
         }
 
         /**
-         * @param effectiveOwner (string) - Owner of the model provider service
+         * @param effectiveOwner (string) - Username or group name of the model provider service owner
          * 
          * @return builder
          * 
@@ -407,7 +415,7 @@ public final class AiGatewayModelProviderServiceState extends com.pulumi.resourc
         }
 
         /**
-         * @param metastoreId (string) - Metastore hosting the provider service
+         * @param metastoreId (string) - Unique identifier of the metastore that contains the model provider service
          * 
          * @return builder
          * 
@@ -418,7 +426,7 @@ public final class AiGatewayModelProviderServiceState extends com.pulumi.resourc
         }
 
         /**
-         * @param metastoreId (string) - Metastore hosting the provider service
+         * @param metastoreId (string) - Unique identifier of the metastore that contains the model provider service
          * 
          * @return builder
          * 
@@ -428,7 +436,10 @@ public final class AiGatewayModelProviderServiceState extends com.pulumi.resourc
         }
 
         /**
-         * @param modelProviderServiceId Name for the model provider service, e.g. &#34;openaiProd&#34;
+         * @param modelProviderServiceId Name of the model provider service within the parent schema. The name must
+         * not contain periods, spaces, forward slashes, percent signs, or control
+         * characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+         * characters. It is stored in lowercase
          * 
          * @return builder
          * 
@@ -439,7 +450,10 @@ public final class AiGatewayModelProviderServiceState extends com.pulumi.resourc
         }
 
         /**
-         * @param modelProviderServiceId Name for the model provider service, e.g. &#34;openaiProd&#34;
+         * @param modelProviderServiceId Name of the model provider service within the parent schema. The name must
+         * not contain periods, spaces, forward slashes, percent signs, or control
+         * characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+         * characters. It is stored in lowercase
          * 
          * @return builder
          * 
@@ -452,8 +466,9 @@ public final class AiGatewayModelProviderServiceState extends com.pulumi.resourc
          * @param name (string) - Resource name of the provider service.
          * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
          * Each `{...}` component is capped at 255 characters individually.
-         * Server-derived on Create from `parent` +
-         * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+         * The server derives the name on Create from
+         * `parent` and `modelProviderServiceId`; it is required and immutable on
+         * Update, Get, and Delete
          * 
          * @return builder
          * 
@@ -467,8 +482,9 @@ public final class AiGatewayModelProviderServiceState extends com.pulumi.resourc
          * @param name (string) - Resource name of the provider service.
          * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
          * Each `{...}` component is capped at 255 characters individually.
-         * Server-derived on Create from `parent` +
-         * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+         * The server derives the name on Create from
+         * `parent` and `modelProviderServiceId`; it is required and immutable on
+         * Update, Get, and Delete
          * 
          * @return builder
          * 
@@ -545,7 +561,7 @@ public final class AiGatewayModelProviderServiceState extends com.pulumi.resourc
         }
 
         /**
-         * @param updatedBy (string) - Identity of the last updater
+         * @param updatedBy (string) - Username of the user who last updated the model provider service
          * 
          * @return builder
          * 
@@ -556,7 +572,7 @@ public final class AiGatewayModelProviderServiceState extends com.pulumi.resourc
         }
 
         /**
-         * @param updatedBy (string) - Identity of the last updater
+         * @param updatedBy (string) - Username of the user who last updated the model provider service
          * 
          * @return builder
          * 

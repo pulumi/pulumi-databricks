@@ -28,7 +28,7 @@ public final class AiGatewayModelProviderServiceConfigInferenceTable {
      */
     private String parent;
     /**
-     * @return (string) - Resolved UC table for payload logs.
+     * @return (string) - Resource name of the Unity Catalog table that receives the payload logs.
      * Format: `tables/{catalog}.{schema}.{table}`
      * 
      */
@@ -63,7 +63,7 @@ public final class AiGatewayModelProviderServiceConfigInferenceTable {
         return this.parent;
     }
     /**
-     * @return (string) - Resolved UC table for payload logs.
+     * @return (string) - Resource name of the Unity Catalog table that receives the payload logs.
      * Format: `tables/{catalog}.{schema}.{table}`
      * 
      */

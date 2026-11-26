@@ -28,11 +28,11 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// (string) - Creator identity
+        /// (string) - Username of the user who created the model provider service
         /// </summary>
         public readonly string CreatedBy;
         /// <summary>
-        /// (string) - Owner of the model provider service
+        /// (string) - Username or group name of the model provider service owner
         /// </summary>
         public readonly string EffectiveOwner;
         /// <summary>
@@ -43,7 +43,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Etag;
         /// <summary>
-        /// (string) - Metastore hosting the provider service
+        /// (string) - Unique identifier of the metastore that contains the model provider service
         /// </summary>
         public readonly string MetastoreId;
         /// <summary>
@@ -62,7 +62,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string UpdateTime;
         /// <summary>
-        /// (string) - Identity of the last updater
+        /// (string) - Username of the user who last updated the model provider service
         /// </summary>
         public readonly string UpdatedBy;
 

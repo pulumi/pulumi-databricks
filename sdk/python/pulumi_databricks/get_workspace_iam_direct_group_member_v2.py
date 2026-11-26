@@ -61,7 +61,7 @@ class GetWorkspaceIamDirectGroupMemberV2Result:
     @pulumi.getter(name="displayName")
     def display_name(self) -> _builtins.str:
         """
-        (string) - Display name of the principal
+        (string) - The member's display name
         """
         return pulumi.get(self, "display_name")
 
@@ -69,7 +69,7 @@ class GetWorkspaceIamDirectGroupMemberV2Result:
     @pulumi.getter(name="externalId")
     def external_id(self) -> _builtins.str:
         """
-        (string) - The external ID of the principal in the customer's IdP
+        (string) - The ID of the member in your identity provider (IdP)
         """
         return pulumi.get(self, "external_id")
 
@@ -77,7 +77,7 @@ class GetWorkspaceIamDirectGroupMemberV2Result:
     @pulumi.getter(name="groupId")
     def group_id(self) -> _builtins.int:
         """
-        (integer) - The internal ID of the group this member belongs to
+        (integer) - The Databricks ID of the group
         """
         return pulumi.get(self, "group_id")
 
@@ -85,7 +85,7 @@ class GetWorkspaceIamDirectGroupMemberV2Result:
     @pulumi.getter(name="membershipSource")
     def membership_source(self) -> _builtins.str:
         """
-        (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+        (string) - Where the membership comes from. Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
         """
         return pulumi.get(self, "membership_source")
 
@@ -93,9 +93,9 @@ class GetWorkspaceIamDirectGroupMemberV2Result:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        (string) - The resource name of the group membership. The format depends on the API that returned it:
-        - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-        - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+        (string) - The resource name of the membership, in one of these formats:
+        - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+        - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
         """
         return pulumi.get(self, "name")
 
@@ -103,10 +103,9 @@ class GetWorkspaceIamDirectGroupMemberV2Result:
     @pulumi.getter
     def parent(self) -> _builtins.str:
         """
-        (string) - The resource name of the group that contains the membership. The format depends on the API
-        that returned it:
-        - Account-scoped: accounts/{account_id}/groups/{group_id}
-        - Workspace-scoped: groups/{group_id}
+        (string) - The resource name of the group, in one of these formats:
+        - Account APIs: `accounts/{account_id}/groups/{group_id}`
+        - Workspace APIs: `groups/{group_id}`
         """
         return pulumi.get(self, "parent")
 
@@ -114,7 +113,7 @@ class GetWorkspaceIamDirectGroupMemberV2Result:
     @pulumi.getter(name="principalId")
     def principal_id(self) -> _builtins.str:
         """
-        (integer) - Internal ID of the principal in Databricks
+        (integer) - The Databricks ID of the member
         """
         return pulumi.get(self, "principal_id")
 
@@ -122,7 +121,7 @@ class GetWorkspaceIamDirectGroupMemberV2Result:
     @pulumi.getter(name="principalType")
     def principal_type(self) -> _builtins.str:
         """
-        (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+        (string) - Whether the member is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
         """
         return pulumi.get(self, "principal_type")
 
@@ -153,7 +152,7 @@ def get_workspace_iam_direct_group_member_v2(name: Optional[_builtins.str] = Non
                                              provider_config: Optional[Union['GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamDirectGroupMemberV2ProviderConfigResult']] = None,
                                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceIamDirectGroupMemberV2Result:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
@@ -174,9 +173,9 @@ def get_workspace_iam_direct_group_member_v2(name: Optional[_builtins.str] = Non
     ```
 
 
-    :param _builtins.str name: The resource name of the group membership. The format depends on the API that returned it:
-           - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-           - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+    :param _builtins.str name: The resource name of the membership, in one of these formats:
+           - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+           - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
     :param Union['GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamDirectGroupMemberV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -199,7 +198,7 @@ def get_workspace_iam_direct_group_member_v2_output(name: pulumi.Input[Optional[
                                                     provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamDirectGroupMemberV2ProviderConfigResult']]]] = None,
                                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceIamDirectGroupMemberV2Result]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
@@ -220,9 +219,9 @@ def get_workspace_iam_direct_group_member_v2_output(name: pulumi.Input[Optional[
     ```
 
 
-    :param _builtins.str name: The resource name of the group membership. The format depends on the API that returned it:
-           - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-           - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+    :param _builtins.str name: The resource name of the membership, in one of these formats:
+           - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+           - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
     :param Union['GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgs', 'GetWorkspaceIamDirectGroupMemberV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamDirectGroupMemberV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()

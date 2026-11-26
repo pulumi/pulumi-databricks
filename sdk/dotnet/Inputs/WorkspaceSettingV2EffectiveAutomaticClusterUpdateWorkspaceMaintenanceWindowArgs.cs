@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Schedule anchored to a day of the week, either every week or on given weeks of the month
+        /// </summary>
         [Input("weekDayBasedSchedule")]
         public Input<Inputs.WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs>? WeekDayBasedSchedule { get; set; }
 

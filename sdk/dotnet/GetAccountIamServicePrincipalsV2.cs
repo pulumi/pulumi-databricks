@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetAccountIamServicePrincipalsV2
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountIamServicePrincipalsV2Result>("databricks:index/getAccountIamServicePrincipalsV2:getAccountIamServicePrincipalsV2", args ?? new GetAccountIamServicePrincipalsV2Args(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
@@ -76,7 +76,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountIamServicePrincipalsV2Result>("databricks:index/getAccountIamServicePrincipalsV2:getAccountIamServicePrincipalsV2", args ?? new GetAccountIamServicePrincipalsV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
@@ -112,21 +112,22 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamServicePrincipalsV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Optional. Allows filtering service principals by application id or external id
+        /// Filters service principals by `ApplicationId` or `ExternalId`, for example
+        /// `ApplicationId eq "&lt;application-id&gt;"`. Put the value in quotes
         /// </summary>
         [Input("filter")]
         public string? Filter { get; set; }
 
         /// <summary>
-        /// The maximum number of service principals to return. The service may return fewer than this value.
-        /// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+        /// The maximum number of service principals to return, up to 1000. The default is 1000. A page
+        /// can contain fewer service principals
         /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The parent resource name of the account whose service principals to list.
-        /// Format: accounts/{account_id}
+        /// The resource name of the account to list service principals in, in the format
+        /// `accounts/{account_id}`
         /// </summary>
         [Input("parent", required: true)]
         public string Parent { get; set; } = null!;
@@ -140,21 +141,22 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamServicePrincipalsV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Optional. Allows filtering service principals by application id or external id
+        /// Filters service principals by `ApplicationId` or `ExternalId`, for example
+        /// `ApplicationId eq "&lt;application-id&gt;"`. Put the value in quotes
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// The maximum number of service principals to return. The service may return fewer than this value.
-        /// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+        /// The maximum number of service principals to return, up to 1000. The default is 1000. A page
+        /// can contain fewer service principals
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// The parent resource name of the account whose service principals to list.
-        /// Format: accounts/{account_id}
+        /// The resource name of the account to list service principals in, in the format
+        /// `accounts/{account_id}`
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
@@ -172,8 +174,8 @@ namespace Pulumi.Databricks
         public readonly string? Filter;
         public readonly int? PageSize;
         /// <summary>
-        /// (string) - The resource name of the account that contains the service principal,
-        /// `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+        /// (string) - The resource name of the account that contains the service principal, in the format
+        /// `accounts/{account_id}`. Workspace APIs return the same format
         /// </summary>
         public readonly string Parent;
         public readonly ImmutableArray<Outputs.GetAccountIamServicePrincipalsV2ServicePrincipalResult> ServicePrincipals;

@@ -14,9 +14,17 @@ public final class AppSpaceResourceExperimentArgs extends com.pulumi.resources.R
 
     public static final AppSpaceResourceExperimentArgs Empty = new AppSpaceResourceExperimentArgs();
 
+    /**
+     * ID of the MLflow experiment
+     * 
+     */
     @Import(name="experimentId", required=true)
     private Output<String> experimentId;
 
+    /**
+     * @return ID of the MLflow experiment
+     * 
+     */
     public Output<String> experimentId() {
         return this.experimentId;
     }
@@ -53,11 +61,23 @@ public final class AppSpaceResourceExperimentArgs extends com.pulumi.resources.R
             $ = new AppSpaceResourceExperimentArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param experimentId ID of the MLflow experiment
+         * 
+         * @return builder
+         * 
+         */
         public Builder experimentId(Output<String> experimentId) {
             $.experimentId = experimentId;
             return this;
         }
 
+        /**
+         * @param experimentId ID of the MLflow experiment
+         * 
+         * @return builder
+         * 
+         */
         public Builder experimentId(String experimentId) {
             return experimentId(Output.of(experimentId));
         }

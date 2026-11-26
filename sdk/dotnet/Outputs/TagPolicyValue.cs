@@ -13,6 +13,9 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class TagPolicyValue
     {
+        /// <summary>
+        /// The value that can be assigned to the tag key. Values are case-sensitive
+        /// </summary>
         public readonly string Name;
 
         [OutputConstructor]

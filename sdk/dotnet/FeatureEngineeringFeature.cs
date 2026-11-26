@@ -198,6 +198,12 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// (string) - Output type in Databricks SQL DDL (e.g., "BIGINT", "DECIMAL(10,2)", "ARRAY&lt;STRING&gt;", "STRUCT&lt;name:STRING&gt;")
+        /// </summary>
+        [Output("outputTypeText")]
+        public Output<string> OutputTypeText { get; private set; } = null!;
+
+        /// <summary>
         /// Configure the provider for management through account provider.
         /// </summary>
         [Output("providerConfig")]
@@ -430,6 +436,12 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// (string) - Output type in Databricks SQL DDL (e.g., "BIGINT", "DECIMAL(10,2)", "ARRAY&lt;STRING&gt;", "STRUCT&lt;name:STRING&gt;")
+        /// </summary>
+        [Input("outputTypeText")]
+        public Input<string>? OutputTypeText { get; set; }
 
         /// <summary>
         /// Configure the provider for management through account provider.

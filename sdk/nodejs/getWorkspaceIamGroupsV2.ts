@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
@@ -42,17 +42,18 @@ export function getWorkspaceIamGroupsV2(args?: GetWorkspaceIamGroupsV2Args, opts
  */
 export interface GetWorkspaceIamGroupsV2Args {
     /**
-     * Optional. Allows filtering groups by group name or external id
+     * Filters groups by `groupName` or `externalId`, for example `groupName eq "Data engineers"`.
+     * Put the value in quotes
      */
     filter?: string;
     /**
-     * The maximum number of groups to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * The maximum number of groups to return, up to 1000. The default is 1000. A page can contain
+     * fewer groups
      */
     pageSize?: number;
     /**
-     * The resource name of the account to list groups in, `accounts/{account_id}`. Optional:
-     * defaults to the account of the calling workspace, and any other account is rejected
+     * The resource name of the account to list groups in, in the format `accounts/{account_id}`.
+     * Defaults to the account that contains this workspace. Any other account is rejected
      */
     parent?: string;
     /**
@@ -69,14 +70,14 @@ export interface GetWorkspaceIamGroupsV2Result {
     readonly groups: outputs.GetWorkspaceIamGroupsV2Group[];
     readonly pageSize?: number;
     /**
-     * (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * (string) - The resource name of the account that contains the group, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      */
     readonly parent?: string;
     readonly providerConfig?: outputs.GetWorkspaceIamGroupsV2ProviderConfig;
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
@@ -111,17 +112,18 @@ export function getWorkspaceIamGroupsV2Output(args?: GetWorkspaceIamGroupsV2Outp
  */
 export interface GetWorkspaceIamGroupsV2OutputArgs {
     /**
-     * Optional. Allows filtering groups by group name or external id
+     * Filters groups by `groupName` or `externalId`, for example `groupName eq "Data engineers"`.
+     * Put the value in quotes
      */
     filter?: pulumi.Input<string | undefined>;
     /**
-     * The maximum number of groups to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * The maximum number of groups to return, up to 1000. The default is 1000. A page can contain
+     * fewer groups
      */
     pageSize?: pulumi.Input<number | undefined>;
     /**
-     * The resource name of the account to list groups in, `accounts/{account_id}`. Optional:
-     * defaults to the account of the calling workspace, and any other account is rejected
+     * The resource name of the account to list groups in, in the format `accounts/{account_id}`.
+     * Defaults to the account that contains this workspace. Any other account is rejected
      */
     parent?: pulumi.Input<string | undefined>;
     /**

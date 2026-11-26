@@ -12,6 +12,18 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class VectorSearchEndpointScalingInfoArgs : global::Pulumi.ResourceArgs
     {
+        [Input("delayedReason")]
+        public Input<string>? DelayedReason { get; set; }
+
+        [Input("estimatedCompletionTimestamp")]
+        public Input<int>? EstimatedCompletionTimestamp { get; set; }
+
+        [Input("indexInitializationPercentage")]
+        public Input<int>? IndexInitializationPercentage { get; set; }
+
+        [Input("phase")]
+        public Input<string>? Phase { get; set; }
+
         [Input("requestedTargetQps")]
         public Input<int>? RequestedTargetQps { get; set; }
 
@@ -20,6 +32,9 @@ namespace Pulumi.Databricks.Inputs
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        [Input("targetQpsChangeAllowedAfterTimestamp")]
+        public Input<int>? TargetQpsChangeAllowedAfterTimestamp { get; set; }
 
         public VectorSearchEndpointScalingInfoArgs()
         {

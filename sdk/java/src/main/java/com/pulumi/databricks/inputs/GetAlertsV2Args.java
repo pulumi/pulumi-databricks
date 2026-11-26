@@ -16,9 +16,17 @@ public final class GetAlertsV2Args extends com.pulumi.resources.InvokeArgs {
 
     public static final GetAlertsV2Args Empty = new GetAlertsV2Args();
 
+    /**
+     * Maximum number of alerts to return per page. Values above 100 are coerced to 100
+     * 
+     */
     @Import(name="pageSize")
     private @Nullable Output<Integer> pageSize;
 
+    /**
+     * @return Maximum number of alerts to return per page. Values above 100 are coerced to 100
+     * 
+     */
     public Optional<Output<Integer>> pageSize() {
         return Optional.ofNullable(this.pageSize);
     }
@@ -63,11 +71,23 @@ public final class GetAlertsV2Args extends com.pulumi.resources.InvokeArgs {
             $ = new GetAlertsV2Args(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param pageSize Maximum number of alerts to return per page. Values above 100 are coerced to 100
+         * 
+         * @return builder
+         * 
+         */
         public Builder pageSize(@Nullable Output<Integer> pageSize) {
             $.pageSize = pageSize;
             return this;
         }
 
+        /**
+         * @param pageSize Maximum number of alerts to return per page. Values above 100 are coerced to 100
+         * 
+         * @return builder
+         * 
+         */
         public Builder pageSize(Integer pageSize) {
             return pageSize(Output.of(pageSize));
         }

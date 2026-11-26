@@ -21,7 +21,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  * 
@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * ### Project with Custom Settings
+ * ### Project with Custom Configuration
  * 
  * <pre>
  * {@code
@@ -325,14 +325,14 @@ public class PostgresProject extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The project ID chosen when the project was created. It is the final segment of `name`
      * 
      */
     @Export(name="projectId", refs={String.class}, tree="[0]")
     private Output<String> projectId;
 
     /**
-     * @return The part of the name, chosen by the user when the resource was created
+     * @return The project ID chosen when the project was created. It is the final segment of `name`
      * 
      */
     public Output<String> projectId() {
@@ -353,16 +353,22 @@ public class PostgresProject extends com.pulumi.resources.CustomResource {
         return this.providerConfig;
     }
     /**
-     * If true, permanently deletes the project (hard delete).
-     * If false or unset, performs a soft delete
+     * If true, permanently deletes the project and all of its data immediately. If false or unset, the
+     * project is soft-deleted: it stops accepting connections and is retained for 7 days, during which
+     * it can be restored with Undelete, and is then permanently deleted. Deleting an already
+     * soft-deleted project with `purge` set to true removes it immediately. See
+     * https://docs.databricks.com/aws/en/oltp/projects/manage-projects for details
      * 
      */
     @Export(name="purgeOnDelete", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> purgeOnDelete;
 
     /**
-     * @return If true, permanently deletes the project (hard delete).
-     * If false or unset, performs a soft delete
+     * @return If true, permanently deletes the project and all of its data immediately. If false or unset, the
+     * project is soft-deleted: it stops accepting connections and is retained for 7 days, during which
+     * it can be restored with Undelete, and is then permanently deleted. Deleting an already
+     * soft-deleted project with `purge` set to true removes it immediately. See
+     * https://docs.databricks.com/aws/en/oltp/projects/manage-projects for details
      * 
      */
     public Output<Optional<Boolean>> purgeOnDelete() {
@@ -385,42 +391,58 @@ public class PostgresProject extends com.pulumi.resources.CustomResource {
         return this.purgeTime;
     }
     /**
-     * The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
+     * The desired configuration of the project. The fields under `spec` are the ones that can be
+     * changed after creation, except `pgVersion`, which is fixed when the project is created. See
+     * `status` for the configuration that is currently in effect.
+     * 
+     * Read the resource&#39;s current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      * 
      */
     @Export(name="spec", refs={PostgresProjectSpec.class}, tree="[0]")
-    private Output<PostgresProjectSpec> spec;
+    private Output</* @Nullable */ PostgresProjectSpec> spec;
 
     /**
-     * @return The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
+     * @return The desired configuration of the project. The fields under `spec` are the ones that can be
+     * changed after creation, except `pgVersion`, which is fixed when the project is created. See
+     * `status` for the configuration that is currently in effect.
+     * 
+     * Read the resource&#39;s current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      * 
      */
-    public Output<PostgresProjectSpec> spec() {
-        return this.spec;
+    public Output<Optional<PostgresProjectSpec>> spec() {
+        return Codegen.optional(this.spec);
     }
     /**
-     * (ProjectStatus) - The current status of a Project
+     * (ProjectStatus) - The configuration and state of the project that are currently in effect, as reported by the
+     * system
      * 
      */
     @Export(name="status", refs={PostgresProjectStatus.class}, tree="[0]")
     private Output<PostgresProjectStatus> status;
 
     /**
-     * @return (ProjectStatus) - The current status of a Project
+     * @return (ProjectStatus) - The configuration and state of the project that are currently in effect, as reported by the
+     * system
      * 
      */
     public Output<PostgresProjectStatus> status() {
         return this.status;
     }
     /**
-     * (string) - System-generated unique ID for the project
+     * (string) - A system-generated UUID that identifies the project. Unlike `name`, it is not derived from the
+     * user-chosen project ID
      * 
      */
     @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
-     * @return (string) - System-generated unique ID for the project
+     * @return (string) - A system-generated UUID that identifies the project. Unlike `name`, it is not derived from the
+     * user-chosen project ID
      * 
      */
     public Output<String> uid() {

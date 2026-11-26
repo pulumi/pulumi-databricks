@@ -15,9 +15,21 @@ public final class WorkspaceSettingV2OperationalEmailCustomRecipientArgs extends
 
     public static final WorkspaceSettingV2OperationalEmailCustomRecipientArgs Empty = new WorkspaceSettingV2OperationalEmailCustomRecipientArgs();
 
+    /**
+     * Email address that receives this workspace&#39;s operational emails in addition to the workspace
+     * admins. Use a distribution list address to reach several people. An empty string clears the
+     * additional recipient
+     * 
+     */
     @Import(name="email")
     private @Nullable Output<String> email;
 
+    /**
+     * @return Email address that receives this workspace&#39;s operational emails in addition to the workspace
+     * admins. Use a distribution list address to reach several people. An empty string clears the
+     * additional recipient
+     * 
+     */
     public Optional<Output<String>> email() {
         return Optional.ofNullable(this.email);
     }
@@ -46,11 +58,27 @@ public final class WorkspaceSettingV2OperationalEmailCustomRecipientArgs extends
             $ = new WorkspaceSettingV2OperationalEmailCustomRecipientArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param email Email address that receives this workspace&#39;s operational emails in addition to the workspace
+         * admins. Use a distribution list address to reach several people. An empty string clears the
+         * additional recipient
+         * 
+         * @return builder
+         * 
+         */
         public Builder email(@Nullable Output<String> email) {
             $.email = email;
             return this;
         }
 
+        /**
+         * @param email Email address that receives this workspace&#39;s operational emails in addition to the workspace
+         * admins. Use a distribution list address to reach several people. An empty string clears the
+         * additional recipient
+         * 
+         * @return builder
+         * 
+         */
         public Builder email(String email) {
             return email(Output.of(email));
         }

@@ -31,9 +31,17 @@ public final class GetTagPolicyPlainArgs extends com.pulumi.resources.InvokeArgs
         return Optional.ofNullable(this.providerConfig);
     }
 
+    /**
+     * The tag key that this policy governs. Tag keys are case-sensitive
+     * 
+     */
     @Import(name="tagKey", required=true)
     private String tagKey;
 
+    /**
+     * @return The tag key that this policy governs. Tag keys are case-sensitive
+     * 
+     */
     public String tagKey() {
         return this.tagKey;
     }
@@ -74,6 +82,12 @@ public final class GetTagPolicyPlainArgs extends com.pulumi.resources.InvokeArgs
             return this;
         }
 
+        /**
+         * @param tagKey The tag key that this policy governs. Tag keys are case-sensitive
+         * 
+         * @return builder
+         * 
+         */
         public Builder tagKey(String tagKey) {
             $.tagKey = tagKey;
             return this;

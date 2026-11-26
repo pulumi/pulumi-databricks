@@ -60,7 +60,9 @@ public final class PostgresRoleArgs extends com.pulumi.resources.ResourceArgs {
      * Attributes omitted from the request retain their current values.
      * Set an attribute explicitly to false to disable it.
      * `identityType`, `authMethod`, and `postgresRole` retain their
-     * existing values; supplied values for these fields are ignored.
+     * existing values. Omit these fields or supply their current values.
+     * A differing supplied value returns INVALID_PARAMETER_VALUE and rejects
+     * the entire request, including changes to mutable fields.
      * `membershipRoles` is overwritten, not merged. Leaving
      * `membershipRoles` empty clears all of the role&#39;s existing memberships,
      * including `DATABRICKS_SUPERUSER`. Always send the complete desired list
@@ -79,7 +81,9 @@ public final class PostgresRoleArgs extends com.pulumi.resources.ResourceArgs {
      * Attributes omitted from the request retain their current values.
      * Set an attribute explicitly to false to disable it.
      * `identityType`, `authMethod`, and `postgresRole` retain their
-     * existing values; supplied values for these fields are ignored.
+     * existing values. Omit these fields or supply their current values.
+     * A differing supplied value returns INVALID_PARAMETER_VALUE and rejects
+     * the entire request, including changes to mutable fields.
      * `membershipRoles` is overwritten, not merged. Leaving
      * `membershipRoles` empty clears all of the role&#39;s existing memberships,
      * including `DATABRICKS_SUPERUSER`. Always send the complete desired list
@@ -106,14 +110,22 @@ public final class PostgresRoleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The spec contains the role configuration, including identity type, authentication method, and role attributes
+     * The spec contains the role configuration, including identity type, authentication method, and role attributes.
+     * 
+     * Read the resource&#39;s current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      * 
      */
     @Import(name="spec")
     private @Nullable Output<PostgresRoleSpecArgs> spec;
 
     /**
-     * @return The spec contains the role configuration, including identity type, authentication method, and role attributes
+     * @return The spec contains the role configuration, including identity type, authentication method, and role attributes.
+     * 
+     * Read the resource&#39;s current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      * 
      */
     public Optional<Output<PostgresRoleSpecArgs>> spec() {
@@ -201,7 +213,9 @@ public final class PostgresRoleArgs extends com.pulumi.resources.ResourceArgs {
          * Attributes omitted from the request retain their current values.
          * Set an attribute explicitly to false to disable it.
          * `identityType`, `authMethod`, and `postgresRole` retain their
-         * existing values; supplied values for these fields are ignored.
+         * existing values. Omit these fields or supply their current values.
+         * A differing supplied value returns INVALID_PARAMETER_VALUE and rejects
+         * the entire request, including changes to mutable fields.
          * `membershipRoles` is overwritten, not merged. Leaving
          * `membershipRoles` empty clears all of the role&#39;s existing memberships,
          * including `DATABRICKS_SUPERUSER`. Always send the complete desired list
@@ -224,7 +238,9 @@ public final class PostgresRoleArgs extends com.pulumi.resources.ResourceArgs {
          * Attributes omitted from the request retain their current values.
          * Set an attribute explicitly to false to disable it.
          * `identityType`, `authMethod`, and `postgresRole` retain their
-         * existing values; supplied values for these fields are ignored.
+         * existing values. Omit these fields or supply their current values.
+         * A differing supplied value returns INVALID_PARAMETER_VALUE and rejects
+         * the entire request, including changes to mutable fields.
          * `membershipRoles` is overwritten, not merged. Leaving
          * `membershipRoles` empty clears all of the role&#39;s existing memberships,
          * including `DATABRICKS_SUPERUSER`. Always send the complete desired list
@@ -259,7 +275,11 @@ public final class PostgresRoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spec The spec contains the role configuration, including identity type, authentication method, and role attributes
+         * @param spec The spec contains the role configuration, including identity type, authentication method, and role attributes.
+         * 
+         * Read the resource&#39;s current values from `status`, rather than `spec`.
+         * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+         * unmanaged fields
          * 
          * @return builder
          * 
@@ -270,7 +290,11 @@ public final class PostgresRoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spec The spec contains the role configuration, including identity type, authentication method, and role attributes
+         * @param spec The spec contains the role configuration, including identity type, authentication method, and role attributes.
+         * 
+         * Read the resource&#39;s current values from `status`, rather than `spec`.
+         * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+         * unmanaged fields
          * 
          * @return builder
          * 

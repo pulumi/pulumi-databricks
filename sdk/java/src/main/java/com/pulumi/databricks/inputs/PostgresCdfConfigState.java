@@ -148,6 +148,27 @@ public final class PostgresCdfConfigState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.schema);
     }
 
+    /**
+     * The service principal (application id) whose identity authorizes this
+     * change data feed&#39;s ongoing writes to Unity Catalog. When unset, writes are
+     * authorized as the creating identity. Changing it requires a new CdfConfig,
+     * which writes to new Delta tables
+     * 
+     */
+    @Import(name="servicePrincipal")
+    private @Nullable Output<String> servicePrincipal;
+
+    /**
+     * @return The service principal (application id) whose identity authorizes this
+     * change data feed&#39;s ongoing writes to Unity Catalog. When unset, writes are
+     * authorized as the creating identity. Changing it requires a new CdfConfig,
+     * which writes to new Delta tables
+     * 
+     */
+    public Optional<Output<String>> servicePrincipal() {
+        return Optional.ofNullable(this.servicePrincipal);
+    }
+
     private PostgresCdfConfigState() {}
 
     private PostgresCdfConfigState(PostgresCdfConfigState $) {
@@ -159,6 +180,7 @@ public final class PostgresCdfConfigState extends com.pulumi.resources.ResourceA
         this.postgresSchema = $.postgresSchema;
         this.providerConfig = $.providerConfig;
         this.schema = $.schema;
+        this.servicePrincipal = $.servicePrincipal;
     }
 
     public static Builder builder() {
@@ -357,6 +379,33 @@ public final class PostgresCdfConfigState extends com.pulumi.resources.ResourceA
          */
         public Builder schema(String schema) {
             return schema(Output.of(schema));
+        }
+
+        /**
+         * @param servicePrincipal The service principal (application id) whose identity authorizes this
+         * change data feed&#39;s ongoing writes to Unity Catalog. When unset, writes are
+         * authorized as the creating identity. Changing it requires a new CdfConfig,
+         * which writes to new Delta tables
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servicePrincipal(@Nullable Output<String> servicePrincipal) {
+            $.servicePrincipal = servicePrincipal;
+            return this;
+        }
+
+        /**
+         * @param servicePrincipal The service principal (application id) whose identity authorizes this
+         * change data feed&#39;s ongoing writes to Unity Catalog. When unset, writes are
+         * authorized as the creating identity. Changing it requires a new CdfConfig,
+         * which writes to new Delta tables
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servicePrincipal(String servicePrincipal) {
+            return servicePrincipal(Output.of(servicePrincipal));
         }
 
         public PostgresCdfConfigState build() {

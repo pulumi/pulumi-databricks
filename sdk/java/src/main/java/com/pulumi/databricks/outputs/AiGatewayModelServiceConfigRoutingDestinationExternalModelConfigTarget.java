@@ -23,9 +23,9 @@ public final class AiGatewayModelServiceConfigRoutingDestinationExternalModelCon
      */
     private @Nullable String endpointRoute;
     /**
-     * @return (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * @return (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      * 
      */
     private String model;
@@ -53,9 +53,9 @@ public final class AiGatewayModelServiceConfigRoutingDestinationExternalModelCon
         return Optional.ofNullable(this.endpointRoute);
     }
     /**
-     * @return (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-     * `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-     * Create/Update time
+     * @return (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+     * in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+     * Serving when the model service is created or updated
      * 
      */
     public String model() {

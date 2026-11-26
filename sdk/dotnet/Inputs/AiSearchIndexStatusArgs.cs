@@ -13,6 +13,12 @@ namespace Pulumi.Databricks.Inputs
     public sealed class AiSearchIndexStatusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// (string) - Lifecycle and ingestion state. An online index can still have a failed update. Possible values are: `DOWNLOADING`, `OFFLINE`, `OFFLINE_FAILED`, `ONLINE`, `ONLINE_CONTINUOUS_UPDATE`, `ONLINE_DIRECT_ACCESS`, `ONLINE_NO_PENDING_UPDATE`, `ONLINE_PIPELINE_FAILED`, `ONLINE_TRIGGERED_UPDATE`, `ONLINE_UPDATING_PIPELINE_RESOURCES`, `PROVISIONING`, `PROVISIONING_ENDPOINT`, `PROVISIONING_INDEX`, `PROVISIONING_INITIAL_SNAPSHOT`, `PROVISIONING_PIPELINE_RESOURCES`
+        /// </summary>
+        [Input("detailedState")]
+        public Input<string>? DetailedState { get; set; }
+
+        /// <summary>
         /// (string) - Index API URL used to perform operations on the index
         /// </summary>
         [Input("indexUrl")]
@@ -31,7 +37,8 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Message { get; set; }
 
         /// <summary>
-        /// (boolean) - Whether the index is ready for search
+        /// (boolean) - Whether the index can serve queries. After CreateIndex, poll GetIndex until true; message describes progress.
+        /// This does not guarantee freshness or update success; check DetailedState for update failures
         /// </summary>
         [Input("ready")]
         public Input<bool>? Ready { get; set; }

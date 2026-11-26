@@ -17,14 +17,14 @@ public final class NotificationDestinationConfigDatabricksAppTeamsArgs extends c
     public static final NotificationDestinationConfigDatabricksAppTeamsArgs Empty = new NotificationDestinationConfigDatabricksAppTeamsArgs();
 
     /**
-     * Slack channel ID for notifications.
+     * Teams channel ID notifications are posted to.
      * 
      */
     @Import(name="channelId")
     private @Nullable Output<String> channelId;
 
     /**
-     * @return Slack channel ID for notifications.
+     * @return Teams channel ID notifications are posted to.
      * 
      */
     public Optional<Output<String>> channelId() {
@@ -38,9 +38,17 @@ public final class NotificationDestinationConfigDatabricksAppTeamsArgs extends c
         return Optional.ofNullable(this.channelIdSet);
     }
 
+    /**
+     * Microsoft Entra group ID of the team that owns the channel.
+     * 
+     */
     @Import(name="teamId")
     private @Nullable Output<String> teamId;
 
+    /**
+     * @return Microsoft Entra group ID of the team that owns the channel.
+     * 
+     */
     public Optional<Output<String>> teamId() {
         return Optional.ofNullable(this.teamId);
     }
@@ -53,14 +61,14 @@ public final class NotificationDestinationConfigDatabricksAppTeamsArgs extends c
     }
 
     /**
-     * Tenant ID for Microsoft Teams App.
+     * Microsoft Entra tenant ID of the Microsoft 365 tenant the app is installed in.
      * 
      */
     @Import(name="tenantId")
     private @Nullable Output<String> tenantId;
 
     /**
-     * @return Tenant ID for Microsoft Teams App.
+     * @return Microsoft Entra tenant ID of the Microsoft 365 tenant the app is installed in.
      * 
      */
     public Optional<Output<String>> tenantId() {
@@ -104,7 +112,7 @@ public final class NotificationDestinationConfigDatabricksAppTeamsArgs extends c
         }
 
         /**
-         * @param channelId Slack channel ID for notifications.
+         * @param channelId Teams channel ID notifications are posted to.
          * 
          * @return builder
          * 
@@ -115,7 +123,7 @@ public final class NotificationDestinationConfigDatabricksAppTeamsArgs extends c
         }
 
         /**
-         * @param channelId Slack channel ID for notifications.
+         * @param channelId Teams channel ID notifications are posted to.
          * 
          * @return builder
          * 
@@ -133,11 +141,23 @@ public final class NotificationDestinationConfigDatabricksAppTeamsArgs extends c
             return channelIdSet(Output.of(channelIdSet));
         }
 
+        /**
+         * @param teamId Microsoft Entra group ID of the team that owns the channel.
+         * 
+         * @return builder
+         * 
+         */
         public Builder teamId(@Nullable Output<String> teamId) {
             $.teamId = teamId;
             return this;
         }
 
+        /**
+         * @param teamId Microsoft Entra group ID of the team that owns the channel.
+         * 
+         * @return builder
+         * 
+         */
         public Builder teamId(String teamId) {
             return teamId(Output.of(teamId));
         }
@@ -152,7 +172,7 @@ public final class NotificationDestinationConfigDatabricksAppTeamsArgs extends c
         }
 
         /**
-         * @param tenantId Tenant ID for Microsoft Teams App.
+         * @param tenantId Microsoft Entra tenant ID of the Microsoft 365 tenant the app is installed in.
          * 
          * @return builder
          * 
@@ -163,7 +183,7 @@ public final class NotificationDestinationConfigDatabricksAppTeamsArgs extends c
         }
 
         /**
-         * @param tenantId Tenant ID for Microsoft Teams App.
+         * @param tenantId Microsoft Entra tenant ID of the Microsoft 365 tenant the app is installed in.
          * 
          * @return builder
          * 

@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetSandboxStatus {
     /**
-     * @return (string) - Lifecycle state of the sandbox. Possible values are: `SANDBOX_STATE_PENDING`, `SANDBOX_STATE_RUNNING`, `SANDBOX_STATE_STOPPED`, `SANDBOX_STATE_STOPPING`
+     * @return (string) - Lifecycle state of the sandbox.
      * 
      */
     private String state;
 
     private GetSandboxStatus() {}
     /**
-     * @return (string) - Lifecycle state of the sandbox. Possible values are: `SANDBOX_STATE_PENDING`, `SANDBOX_STATE_RUNNING`, `SANDBOX_STATE_STOPPED`, `SANDBOX_STATE_STOPPING`
+     * @return (string) - Lifecycle state of the sandbox.
      * 
      */
     public String state() {

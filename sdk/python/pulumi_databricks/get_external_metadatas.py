@@ -91,7 +91,7 @@ def get_external_metadatas(page_size: Optional[_builtins.int] = None,
 
 
     :param _builtins.int page_size: Specifies the maximum number of external metadata objects to return in a single response.
-           The value must be less than or equal to 1000
+           The value must be less than or equal to 1000. Defaults to 1000 when omitted
     :param Union['GetExternalMetadatasProviderConfigArgs', 'GetExternalMetadatasProviderConfigArgsDict', 'outputs.GetExternalMetadatasProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -129,7 +129,7 @@ def get_external_metadatas_output(page_size: pulumi.Input[Optional[Optional[_bui
 
 
     :param _builtins.int page_size: Specifies the maximum number of external metadata objects to return in a single response.
-           The value must be less than or equal to 1000
+           The value must be less than or equal to 1000. Defaults to 1000 when omitted
     :param Union['GetExternalMetadatasProviderConfigArgs', 'GetExternalMetadatasProviderConfigArgsDict', 'outputs.GetExternalMetadatasProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()

@@ -18,9 +18,19 @@ public final class DatabaseDatabaseCatalogArgs extends com.pulumi.resources.Reso
 
     public static final DatabaseDatabaseCatalogArgs Empty = new DatabaseDatabaseCatalogArgs();
 
+    /**
+     * If true, the database named in databaseName is created in the instance when it does not already
+     * exist, with the calling user as its owner. Defaults to false
+     * 
+     */
     @Import(name="createDatabaseIfNotExists")
     private @Nullable Output<Boolean> createDatabaseIfNotExists;
 
+    /**
+     * @return If true, the database named in databaseName is created in the instance when it does not already
+     * exist, with the calling user as its owner. Defaults to false
+     * 
+     */
     public Optional<Output<Boolean>> createDatabaseIfNotExists() {
         return Optional.ofNullable(this.createDatabaseIfNotExists);
     }
@@ -41,14 +51,18 @@ public final class DatabaseDatabaseCatalogArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The name of the database (in an instance) associated with the catalog
+     * The name of the Postgres database in the instance that the catalog registers. The database must
+     * already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+     * databricks_system, template0 and template1 cannot be registered
      * 
      */
     @Import(name="databaseName", required=true)
     private Output<String> databaseName;
 
     /**
-     * @return The name of the database (in an instance) associated with the catalog
+     * @return The name of the Postgres database in the instance that the catalog registers. The database must
+     * already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+     * databricks_system, template0 and template1 cannot be registered
      * 
      */
     public Output<String> databaseName() {
@@ -56,14 +70,14 @@ public final class DatabaseDatabaseCatalogArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The name of the catalog in UC
+     * The name of the catalog in Unity Catalog
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the catalog in UC
+     * @return The name of the catalog in Unity Catalog
      * 
      */
     public Optional<Output<String>> name() {
@@ -113,11 +127,25 @@ public final class DatabaseDatabaseCatalogArgs extends com.pulumi.resources.Reso
             $ = new DatabaseDatabaseCatalogArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param createDatabaseIfNotExists If true, the database named in databaseName is created in the instance when it does not already
+         * exist, with the calling user as its owner. Defaults to false
+         * 
+         * @return builder
+         * 
+         */
         public Builder createDatabaseIfNotExists(@Nullable Output<Boolean> createDatabaseIfNotExists) {
             $.createDatabaseIfNotExists = createDatabaseIfNotExists;
             return this;
         }
 
+        /**
+         * @param createDatabaseIfNotExists If true, the database named in databaseName is created in the instance when it does not already
+         * exist, with the calling user as its owner. Defaults to false
+         * 
+         * @return builder
+         * 
+         */
         public Builder createDatabaseIfNotExists(Boolean createDatabaseIfNotExists) {
             return createDatabaseIfNotExists(Output.of(createDatabaseIfNotExists));
         }
@@ -144,7 +172,9 @@ public final class DatabaseDatabaseCatalogArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param databaseName The name of the database (in an instance) associated with the catalog
+         * @param databaseName The name of the Postgres database in the instance that the catalog registers. The database must
+         * already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+         * databricks_system, template0 and template1 cannot be registered
          * 
          * @return builder
          * 
@@ -155,7 +185,9 @@ public final class DatabaseDatabaseCatalogArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param databaseName The name of the database (in an instance) associated with the catalog
+         * @param databaseName The name of the Postgres database in the instance that the catalog registers. The database must
+         * already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+         * databricks_system, template0 and template1 cannot be registered
          * 
          * @return builder
          * 
@@ -165,7 +197,7 @@ public final class DatabaseDatabaseCatalogArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name The name of the catalog in UC
+         * @param name The name of the catalog in Unity Catalog
          * 
          * @return builder
          * 
@@ -176,7 +208,7 @@ public final class DatabaseDatabaseCatalogArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param name The name of the catalog in UC
+         * @param name The name of the catalog in Unity Catalog
          * 
          * @return builder
          * 

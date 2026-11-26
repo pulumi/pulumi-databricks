@@ -118,7 +118,7 @@ namespace Pulumi.Databricks
     public sealed class GetDatabaseInstancesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Upper bound for items returned. The maximum value is 100
+        /// Upper bound for items returned. Defaults to 100, which is also the maximum value
         /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
@@ -138,7 +138,7 @@ namespace Pulumi.Databricks
     public sealed class GetDatabaseInstancesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Upper bound for items returned. The maximum value is 100
+        /// Upper bound for items returned. Defaults to 100, which is also the maximum value
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }

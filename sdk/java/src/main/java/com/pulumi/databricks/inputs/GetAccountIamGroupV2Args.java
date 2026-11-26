@@ -15,18 +15,18 @@ public final class GetAccountIamGroupV2Args extends com.pulumi.resources.InvokeA
     public static final GetAccountIamGroupV2Args Empty = new GetAccountIamGroupV2Args();
 
     /**
-     * The resource name of the group. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The resource name of the group. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * @return The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      * 
      */
     public Output<String> name() {
@@ -58,9 +58,9 @@ public final class GetAccountIamGroupV2Args extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param name The resource name of the group. The format depends on the API that returned it:
-         * - Account-scoped: accounts/{account_id}/groups/{group_id}
-         * - Workspace-scoped: groups/{group_id}
+         * @param name The resource name of the group, in one of these formats:
+         * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+         * - Workspace APIs: `groups/{group_id}`
          * 
          * @return builder
          * 
@@ -71,9 +71,9 @@ public final class GetAccountIamGroupV2Args extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param name The resource name of the group. The format depends on the API that returned it:
-         * - Account-scoped: accounts/{account_id}/groups/{group_id}
-         * - Workspace-scoped: groups/{group_id}
+         * @param name The resource name of the group, in one of these formats:
+         * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+         * - Workspace APIs: `groups/{group_id}`
          * 
          * @return builder
          * 

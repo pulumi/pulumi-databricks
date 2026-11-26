@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  *
@@ -42,7 +42,7 @@ export function getPostgresEndpoints(args: GetPostgresEndpointsArgs, opts?: pulu
  */
 export interface GetPostgresEndpointsArgs {
     /**
-     * Upper bound for items returned. Cannot be negative
+     * Upper bound for the number of endpoints returned. If set, the value must be at least 10
      */
     pageSize?: number;
     /**
@@ -70,7 +70,7 @@ export interface GetPostgresEndpointsResult {
     readonly providerConfig?: outputs.GetPostgresEndpointsProviderConfig;
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  *
@@ -105,7 +105,7 @@ export function getPostgresEndpointsOutput(args: GetPostgresEndpointsOutputArgs,
  */
 export interface GetPostgresEndpointsOutputArgs {
     /**
-     * Upper bound for items returned. Cannot be negative
+     * Upper bound for the number of endpoints returned. If set, the value must be at least 10
      */
     pageSize?: pulumi.Input<number | undefined>;
     /**

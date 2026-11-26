@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetPostgresCatalog
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresCatalogResult>("databricks:index/getPostgresCatalog:getPostgresCatalog", args ?? new GetPostgresCatalogArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -80,7 +80,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresCatalogResult>("databricks:index/getPostgresCatalog:getPostgresCatalog", args ?? new GetPostgresCatalogInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -164,7 +164,8 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresCatalogResult
     {
         /// <summary>
-        /// (string) - The part of the name, chosen by the user when the resource was created
+        /// (string) - The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+        /// last segment of the name field
         /// </summary>
         public readonly string CatalogId;
         /// <summary>
@@ -177,7 +178,8 @@ namespace Pulumi.Databricks
         public readonly string Name;
         public readonly Outputs.GetPostgresCatalogProviderConfigResult? ProviderConfig;
         /// <summary>
-        /// (CatalogCatalogSpec) - The desired state of the Catalog
+        /// (CatalogCatalogSpec) - The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+        /// the catalog is created
         /// </summary>
         public readonly Outputs.GetPostgresCatalogSpecResult Spec;
         /// <summary>
@@ -185,7 +187,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetPostgresCatalogStatusResult Status;
         /// <summary>
-        /// (string) - System-generated unique identifier for the catalog
+        /// (string) - The immutable UUID that identifies the catalog, assigned when the catalog is created
         /// </summary>
         public readonly string Uid;
         /// <summary>

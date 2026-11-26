@@ -16,12 +16,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAlertV2Evaluation {
     /**
-     * @return (string) - Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
+     * @return (string) - Operator used for comparison in alert evaluation. The alert is triggered when the comparison of the source value with the threshold is true. `IS_NULL` and `IS_NOT_NULL` take no threshold. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      * 
      */
     private String comparisonOperator;
     /**
-     * @return (string) - Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+     * @return (string) - Alert state if result is empty. If not set, an empty result sets the state to `ERROR`. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      * 
      */
     private @Nullable String emptyResultState;
@@ -41,26 +41,26 @@ public final class GetAlertV2Evaluation {
      */
     private GetAlertV2EvaluationSource source;
     /**
-     * @return (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+     * @return (string) - Latest state of alert evaluation: `TRIGGERED` when the condition was met, `OK` when it was not, and `ERROR` when the evaluation failed. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      * 
      */
     private String state;
     /**
-     * @return (AlertV2Operand) - Threshold to user for alert evaluation, can be a column or a value
+     * @return (AlertV2Operand) - Threshold to compare the source column against, either another column or a fixed value. Not needed when `comparisonOperator` is `IS_NULL` or `IS_NOT_NULL`
      * 
      */
     private @Nullable GetAlertV2EvaluationThreshold threshold;
 
     private GetAlertV2Evaluation() {}
     /**
-     * @return (string) - Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
+     * @return (string) - Operator used for comparison in alert evaluation. The alert is triggered when the comparison of the source value with the threshold is true. `IS_NULL` and `IS_NOT_NULL` take no threshold. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
      * 
      */
     public String comparisonOperator() {
         return this.comparisonOperator;
     }
     /**
-     * @return (string) - Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+     * @return (string) - Alert state if result is empty. If not set, an empty result sets the state to `ERROR`. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      * 
      */
     public Optional<String> emptyResultState() {
@@ -88,14 +88,14 @@ public final class GetAlertV2Evaluation {
         return this.source;
     }
     /**
-     * @return (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+     * @return (string) - Latest state of alert evaluation: `TRIGGERED` when the condition was met, `OK` when it was not, and `ERROR` when the evaluation failed. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
      * 
      */
     public String state() {
         return this.state;
     }
     /**
-     * @return (AlertV2Operand) - Threshold to user for alert evaluation, can be a column or a value
+     * @return (AlertV2Operand) - Threshold to compare the source column against, either another column or a fixed value. Not needed when `comparisonOperator` is `IS_NULL` or `IS_NOT_NULL`
      * 
      */
     public Optional<GetAlertV2EvaluationThreshold> threshold() {

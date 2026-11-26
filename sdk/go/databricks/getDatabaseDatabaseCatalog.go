@@ -58,7 +58,7 @@ func LookupDatabaseDatabaseCatalog(ctx *pulumi.Context, args *LookupDatabaseData
 
 // A collection of arguments for invoking getDatabaseDatabaseCatalog.
 type LookupDatabaseDatabaseCatalogArgs struct {
-	// The name of the catalog in UC
+	// The name of the catalog in Unity Catalog
 	Name string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetDatabaseDatabaseCatalogProviderConfig `pulumi:"providerConfig"`
@@ -66,16 +66,19 @@ type LookupDatabaseDatabaseCatalogArgs struct {
 
 // A collection of values returned by getDatabaseDatabaseCatalog.
 type LookupDatabaseDatabaseCatalogResult struct {
-	// (boolean)
+	// (boolean) - If true, the database named in databaseName is created in the instance when it does not already
+	// exist, with the calling user as its owner. Defaults to false
 	CreateDatabaseIfNotExists bool `pulumi:"createDatabaseIfNotExists"`
 	// (string) - The name of the DatabaseInstance housing the database
 	DatabaseInstanceName string `pulumi:"databaseInstanceName"`
-	// (string) - The name of the database (in an instance) associated with the catalog
+	// (string) - The name of the Postgres database in the instance that the catalog registers. The database must
+	// already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+	// databricks_system, template0 and template1 cannot be registered
 	DatabaseName string `pulumi:"databaseName"`
-	// (string) - The name of the catalog in UC
+	// (string) - The name of the catalog in Unity Catalog
 	Name           string                                    `pulumi:"name"`
 	ProviderConfig *GetDatabaseDatabaseCatalogProviderConfig `pulumi:"providerConfig"`
-	// (string)
+	// (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
 	Uid string `pulumi:"uid"`
 }
 
@@ -86,7 +89,7 @@ func LookupDatabaseDatabaseCatalogOutput(ctx *pulumi.Context, args LookupDatabas
 
 // A collection of arguments for invoking getDatabaseDatabaseCatalog.
 type LookupDatabaseDatabaseCatalogOutputArgs struct {
-	// The name of the catalog in UC
+	// The name of the catalog in Unity Catalog
 	Name pulumi.StringInput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetDatabaseDatabaseCatalogProviderConfigPtrInput `pulumi:"providerConfig"`
@@ -111,7 +114,8 @@ func (o LookupDatabaseDatabaseCatalogResultOutput) ToLookupDatabaseDatabaseCatal
 	return o
 }
 
-// (boolean)
+// (boolean) - If true, the database named in databaseName is created in the instance when it does not already
+// exist, with the calling user as its owner. Defaults to false
 func (o LookupDatabaseDatabaseCatalogResultOutput) CreateDatabaseIfNotExists() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupDatabaseDatabaseCatalogResult) bool { return v.CreateDatabaseIfNotExists }).(pulumi.BoolOutput)
 }
@@ -121,12 +125,14 @@ func (o LookupDatabaseDatabaseCatalogResultOutput) DatabaseInstanceName() pulumi
 	return o.ApplyT(func(v LookupDatabaseDatabaseCatalogResult) string { return v.DatabaseInstanceName }).(pulumi.StringOutput)
 }
 
-// (string) - The name of the database (in an instance) associated with the catalog
+// (string) - The name of the Postgres database in the instance that the catalog registers. The database must
+// already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+// databricks_system, template0 and template1 cannot be registered
 func (o LookupDatabaseDatabaseCatalogResultOutput) DatabaseName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseDatabaseCatalogResult) string { return v.DatabaseName }).(pulumi.StringOutput)
 }
 
-// (string) - The name of the catalog in UC
+// (string) - The name of the catalog in Unity Catalog
 func (o LookupDatabaseDatabaseCatalogResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseDatabaseCatalogResult) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -137,7 +143,7 @@ func (o LookupDatabaseDatabaseCatalogResultOutput) ProviderConfig() GetDatabaseD
 	}).(GetDatabaseDatabaseCatalogProviderConfigPtrOutput)
 }
 
-// (string)
+// (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
 func (o LookupDatabaseDatabaseCatalogResultOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseDatabaseCatalogResult) string { return v.Uid }).(pulumi.StringOutput)
 }

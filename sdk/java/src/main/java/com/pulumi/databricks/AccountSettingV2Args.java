@@ -22,6 +22,7 @@ import com.pulumi.databricks.inputs.AccountSettingV2OperationalEmailCustomRecipi
 import com.pulumi.databricks.inputs.AccountSettingV2PersonalComputeArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2RestrictWorkspaceAdminsArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2StringValArgs;
+import com.pulumi.databricks.inputs.AccountSettingV2WorkspaceDashboardThemeArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2WorkspaceLabelArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -229,14 +230,14 @@ public final class AccountSettingV2Args extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Name of the setting
+     * Name of the setting. The settings metadata endpoint lists the names available at each scope
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the setting
+     * @return Name of the setting. The settings metadata endpoint lists the names available at each scope
      * 
      */
     public Optional<Output<String>> name() {
@@ -304,6 +305,21 @@ public final class AccountSettingV2Args extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+     * 
+     */
+    @Import(name="workspaceDashboardTheme")
+    private @Nullable Output<AccountSettingV2WorkspaceDashboardThemeArgs> workspaceDashboardTheme;
+
+    /**
+     * @return Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+     * 
+     */
+    public Optional<Output<AccountSettingV2WorkspaceDashboardThemeArgs>> workspaceDashboardTheme() {
+        return Optional.ofNullable(this.workspaceDashboardTheme);
+    }
+
+    /**
      * Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
      * 
      */
@@ -339,6 +355,7 @@ public final class AccountSettingV2Args extends com.pulumi.resources.ResourceArg
         this.personalCompute = $.personalCompute;
         this.restrictWorkspaceAdmins = $.restrictWorkspaceAdmins;
         this.stringVal = $.stringVal;
+        this.workspaceDashboardTheme = $.workspaceDashboardTheme;
         this.workspaceLabel = $.workspaceLabel;
     }
 
@@ -634,7 +651,7 @@ public final class AccountSettingV2Args extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Name of the setting
+         * @param name Name of the setting. The settings metadata endpoint lists the names available at each scope
          * 
          * @return builder
          * 
@@ -645,7 +662,7 @@ public final class AccountSettingV2Args extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Name of the setting
+         * @param name Name of the setting. The settings metadata endpoint lists the names available at each scope
          * 
          * @return builder
          * 
@@ -736,6 +753,27 @@ public final class AccountSettingV2Args extends com.pulumi.resources.ResourceArg
          */
         public Builder stringVal(AccountSettingV2StringValArgs stringVal) {
             return stringVal(Output.of(stringVal));
+        }
+
+        /**
+         * @param workspaceDashboardTheme Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceDashboardTheme(@Nullable Output<AccountSettingV2WorkspaceDashboardThemeArgs> workspaceDashboardTheme) {
+            $.workspaceDashboardTheme = workspaceDashboardTheme;
+            return this;
+        }
+
+        /**
+         * @param workspaceDashboardTheme Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceDashboardTheme(AccountSettingV2WorkspaceDashboardThemeArgs workspaceDashboardTheme) {
+            return workspaceDashboardTheme(Output.of(workspaceDashboardTheme));
         }
 
         /**

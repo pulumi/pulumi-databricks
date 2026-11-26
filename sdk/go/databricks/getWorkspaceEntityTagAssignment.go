@@ -99,7 +99,7 @@ type LookupWorkspaceEntityTagAssignmentResult struct {
 	ProviderConfig *GetWorkspaceEntityTagAssignmentProviderConfig `pulumi:"providerConfig"`
 	// (string) - The key of the tag. The characters , . : / - = and leading/trailing spaces are not allowed
 	TagKey string `pulumi:"tagKey"`
-	// (string) - The value of the tag
+	// (string) - The value of the tag. If the value is omitted, the tag is assigned with its key only
 	TagValue string `pulumi:"tagValue"`
 }
 
@@ -160,7 +160,7 @@ func (o LookupWorkspaceEntityTagAssignmentResultOutput) TagKey() pulumi.StringOu
 	return o.ApplyT(func(v LookupWorkspaceEntityTagAssignmentResult) string { return v.TagKey }).(pulumi.StringOutput)
 }
 
-// (string) - The value of the tag
+// (string) - The value of the tag. If the value is omitted, the tag is assigned with its key only
 func (o LookupWorkspaceEntityTagAssignmentResultOutput) TagValue() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceEntityTagAssignmentResult) string { return v.TagValue }).(pulumi.StringOutput)
 }

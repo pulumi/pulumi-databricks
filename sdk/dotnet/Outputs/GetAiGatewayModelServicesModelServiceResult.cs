@@ -28,11 +28,11 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// (string) - Creator identity
+        /// (string) - Username of the user who created the model service
         /// </summary>
         public readonly string CreatedBy;
         /// <summary>
-        /// (string) - Owner of the model service
+        /// (string) - Username or group name of the model service owner
         /// </summary>
         public readonly string EffectiveOwner;
         /// <summary>
@@ -43,11 +43,13 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Etag;
         /// <summary>
-        /// (string) - Metastore hosting the model service
+        /// (string) - Unique identifier of the metastore that contains the model service
         /// </summary>
         public readonly string MetastoreId;
         /// <summary>
-        /// (string) - User-facing label for this destination, used in routing references
+        /// (string) - Label that identifies this destination. Names are compared
+        /// case-insensitively and must be unique within the primary destinations and
+        /// within the fallback destinations
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -66,7 +68,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string UpdateTime;
         /// <summary>
-        /// (string) - Identity of the last updater
+        /// (string) - Username of the user who last updated the model service
         /// </summary>
         public readonly string UpdatedBy;
 

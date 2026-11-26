@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 //
@@ -78,7 +78,7 @@ type LookupPostgresDatabaseResult struct {
 	// Format: projects/{project_id}/branches/{branch_id}
 	Parent         string                             `pulumi:"parent"`
 	ProviderConfig *GetPostgresDatabaseProviderConfig `pulumi:"providerConfig"`
-	// (DatabaseDatabaseSpec) - The desired state of the Database
+	// (DatabaseDatabaseSpec) - The desired state of the Database.
 	Spec GetPostgresDatabaseSpec `pulumi:"spec"`
 	// (DatabaseDatabaseStatus) - The observed state of the Database
 	Status GetPostgresDatabaseStatus `pulumi:"status"`
@@ -145,7 +145,7 @@ func (o LookupPostgresDatabaseResultOutput) ProviderConfig() GetPostgresDatabase
 	return o.ApplyT(func(v LookupPostgresDatabaseResult) *GetPostgresDatabaseProviderConfig { return v.ProviderConfig }).(GetPostgresDatabaseProviderConfigPtrOutput)
 }
 
-// (DatabaseDatabaseSpec) - The desired state of the Database
+// (DatabaseDatabaseSpec) - The desired state of the Database.
 func (o LookupPostgresDatabaseResultOutput) Spec() GetPostgresDatabaseSpecOutput {
 	return o.ApplyT(func(v LookupPostgresDatabaseResult) GetPostgresDatabaseSpec { return v.Spec }).(GetPostgresDatabaseSpecOutput)
 }

@@ -23,7 +23,7 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// A list of column names in the input table the metric should be computed for.
-        /// Can use ``":table"`` to indicate that the metric needs information from multiple columns
+        /// Can use `":table"` to indicate that the metric needs information from multiple columns
         /// </summary>
         public InputList<string> InputColumns
         {
@@ -38,13 +38,17 @@ namespace Pulumi.Databricks.Inputs
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The output type of the custom metric
+        /// Specifies the Spark SQL data type of the metric value, either as a plain type name or as a JSON-encoded
+        /// StructField
         /// </summary>
         [Input("outputDataType", required: true)]
         public Input<string> OutputDataType { get; set; } = null!;
 
         /// <summary>
-        /// The type of the custom metric. Possible values are: `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT`
+        /// The type of the custom metric. `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE` metrics depend only on the
+        /// columns of the input table, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED` metrics depend only on previously
+        /// computed aggregate metrics, and `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT` metrics depend on previously computed
+        /// aggregate or derived metrics. Possible values are: `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT`
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

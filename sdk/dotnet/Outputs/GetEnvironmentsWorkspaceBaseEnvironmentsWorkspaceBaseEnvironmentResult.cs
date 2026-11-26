@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmentResult
     {
         /// <summary>
-        /// (string) - The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+        /// (string) - The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
         /// </summary>
         public readonly string BaseEnvironmentType;
         /// <summary>
@@ -31,7 +31,8 @@ namespace Pulumi.Databricks.Outputs
         public readonly string DisplayName;
         public readonly string EffectiveBaseEnvironmentType;
         /// <summary>
-        /// (string) - The WSFS or UC Volumes path to the environment YAML file
+        /// (string) - The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+        /// dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
         /// </summary>
         public readonly string Filepath;
         /// <summary>
@@ -43,12 +44,15 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string LastUpdatedUserId;
         /// <summary>
-        /// (string) - Status message providing additional details about the environment status
+        /// (string) - Status message providing additional details about the environment status.
+        /// When the status is `FAILED`, the message contains the build error
         /// </summary>
         public readonly string Message;
         /// <summary>
         /// (string) - The resource name of the workspace base environment.
         /// Format: workspace-base-environments/{workspace-base-environment}
+        /// The server ignores this field on create and builds the name from `WorkspaceBaseEnvironmentId`, or from
+        /// `DisplayName` plus a random suffix when no ID is given
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -56,11 +60,12 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmentProviderConfigResult? ProviderConfig;
         /// <summary>
-        /// (EnvironmentSpec) - The environment specification containing version and dependencies
+        /// (EnvironmentSpec) - The environment specification containing version and dependencies, read from the YAML file at `Filepath`
         /// </summary>
         public readonly Outputs.GetEnvironmentsWorkspaceBaseEnvironmentsWorkspaceBaseEnvironmentSpecResult Spec;
         /// <summary>
-        /// (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
+        /// (string) - The status of the materialized workspace base environment, which the server builds from the YAML file.
+        /// The status is `CREATED` once the build has succeeded. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
         /// </summary>
         public readonly string Status;
         /// <summary>

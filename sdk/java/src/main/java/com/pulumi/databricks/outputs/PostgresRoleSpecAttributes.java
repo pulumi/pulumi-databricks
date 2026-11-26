@@ -11,17 +11,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PostgresRoleSpecAttributes {
+    /**
+     * @return Whether the role bypasses every row-level security policy (the Postgres BYPASSRLS attribute)
+     * 
+     */
     private @Nullable Boolean bypassrls;
+    /**
+     * @return Whether the role can create databases (the Postgres CREATEDB attribute)
+     * 
+     */
     private @Nullable Boolean createdb;
+    /**
+     * @return Whether the role can create, alter and drop other roles (the Postgres CREATEROLE attribute)
+     * 
+     */
     private @Nullable Boolean createrole;
 
     private PostgresRoleSpecAttributes() {}
+    /**
+     * @return Whether the role bypasses every row-level security policy (the Postgres BYPASSRLS attribute)
+     * 
+     */
     public Optional<Boolean> bypassrls() {
         return Optional.ofNullable(this.bypassrls);
     }
+    /**
+     * @return Whether the role can create databases (the Postgres CREATEDB attribute)
+     * 
+     */
     public Optional<Boolean> createdb() {
         return Optional.ofNullable(this.createdb);
     }
+    /**
+     * @return Whether the role can create, alter and drop other roles (the Postgres CREATEROLE attribute)
+     * 
+     */
     public Optional<Boolean> createrole() {
         return Optional.ofNullable(this.createrole);
     }

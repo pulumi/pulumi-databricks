@@ -16,14 +16,14 @@ public final class RfaAccessRequestDestinationsDestinationSourceSecurableArgs ex
     public static final RfaAccessRequestDestinationsDestinationSourceSecurableArgs Empty = new RfaAccessRequestDestinationsDestinationSourceSecurableArgs();
 
     /**
-     * (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     * (string) - The full name of the securable, repeated from **securable**
      * 
      */
     @Import(name="fullName")
     private @Nullable Output<String> fullName;
 
     /**
-     * @return (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     * @return (string) - The full name of the securable, repeated from **securable**
      * 
      */
     public Optional<Output<String>> fullName() {
@@ -91,7 +91,7 @@ public final class RfaAccessRequestDestinationsDestinationSourceSecurableArgs ex
         }
 
         /**
-         * @param fullName (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+         * @param fullName (string) - The full name of the securable, repeated from **securable**
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class RfaAccessRequestDestinationsDestinationSourceSecurableArgs ex
         }
 
         /**
-         * @param fullName (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+         * @param fullName (string) - The full name of the securable, repeated from **securable**
          * 
          * @return builder
          * 

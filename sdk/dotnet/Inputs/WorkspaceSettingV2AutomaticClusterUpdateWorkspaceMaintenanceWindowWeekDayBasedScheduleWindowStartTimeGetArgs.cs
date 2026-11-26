@@ -12,9 +12,15 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTimeGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Hour of the day on a 24-hour clock
+        /// </summary>
         [Input("hours")]
         public Input<int>? Hours { get; set; }
 
+        /// <summary>
+        /// Minute of the hour
+        /// </summary>
         [Input("minutes")]
         public Input<int>? Minutes { get; set; }
 

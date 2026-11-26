@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetDatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncResult
     {
         /// <summary>
-        /// (DeltaTableSyncInfo)
+        /// (DeltaTableSyncInfo) - Identifies the position in the source Delta table at the time of the last successful sync
         /// </summary>
         public readonly Outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusLastSyncDeltaTableSyncInfoResult DeltaTableSyncInfo;
         /// <summary>

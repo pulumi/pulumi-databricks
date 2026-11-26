@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/account/iamv2)
 //
@@ -58,13 +58,13 @@ func GetAccountIamGroupsV2(ctx *pulumi.Context, args *GetAccountIamGroupsV2Args,
 
 // A collection of arguments for invoking getAccountIamGroupsV2.
 type GetAccountIamGroupsV2Args struct {
-	// Optional. Allows filtering groups by group name or external id
+	// Filters groups by `groupName` or `externalId`, for example `groupName eq "Data engineers"`.
+	// Put the value in quotes
 	Filter *string `pulumi:"filter"`
-	// The maximum number of groups to return. The service may return fewer than this value.
-	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+	// The maximum number of groups to return, up to 1000. The default is 1000. A page can contain
+	// fewer groups
 	PageSize *int `pulumi:"pageSize"`
-	// The parent resource name of the account whose groups to list.
-	// Format: accounts/{account_id}
+	// The resource name of the account to list groups in, in the format `accounts/{account_id}`
 	Parent string `pulumi:"parent"`
 }
 
@@ -73,8 +73,8 @@ type GetAccountIamGroupsV2Result struct {
 	Filter   *string                      `pulumi:"filter"`
 	Groups   []GetAccountIamGroupsV2Group `pulumi:"groups"`
 	PageSize *int                         `pulumi:"pageSize"`
-	// (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-	// account-scoped and workspace-scoped APIs return it
+	// (string) - The resource name of the account that contains the group, in the format
+	// `accounts/{account_id}`. Workspace APIs return the same format
 	Parent string `pulumi:"parent"`
 }
 
@@ -85,13 +85,13 @@ func GetAccountIamGroupsV2Output(ctx *pulumi.Context, args GetAccountIamGroupsV2
 
 // A collection of arguments for invoking getAccountIamGroupsV2.
 type GetAccountIamGroupsV2OutputArgs struct {
-	// Optional. Allows filtering groups by group name or external id
+	// Filters groups by `groupName` or `externalId`, for example `groupName eq "Data engineers"`.
+	// Put the value in quotes
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
-	// The maximum number of groups to return. The service may return fewer than this value.
-	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+	// The maximum number of groups to return, up to 1000. The default is 1000. A page can contain
+	// fewer groups
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
-	// The parent resource name of the account whose groups to list.
-	// Format: accounts/{account_id}
+	// The resource name of the account to list groups in, in the format `accounts/{account_id}`
 	Parent pulumi.StringInput `pulumi:"parent"`
 }
 
@@ -126,8 +126,8 @@ func (o GetAccountIamGroupsV2ResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetAccountIamGroupsV2Result) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
-// (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-// account-scoped and workspace-scoped APIs return it
+// (string) - The resource name of the account that contains the group, in the format
+// `accounts/{account_id}`. Workspace APIs return the same format
 func (o GetAccountIamGroupsV2ResultOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountIamGroupsV2Result) string { return v.Parent }).(pulumi.StringOutput)
 }

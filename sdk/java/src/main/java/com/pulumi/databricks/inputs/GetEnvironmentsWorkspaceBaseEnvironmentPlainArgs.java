@@ -19,6 +19,8 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentPlainArgs extends com.
     /**
      * The resource name of the workspace base environment.
      * Format: workspace-base-environments/{workspace-base-environment}
+     * The server ignores this field on create and builds the name from `workspaceBaseEnvironmentId`, or from
+     * `displayName` plus a random suffix when no ID is given
      * 
      */
     @Import(name="name", required=true)
@@ -27,6 +29,8 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentPlainArgs extends com.
     /**
      * @return The resource name of the workspace base environment.
      * Format: workspace-base-environments/{workspace-base-environment}
+     * The server ignores this field on create and builds the name from `workspaceBaseEnvironmentId`, or from
+     * `displayName` plus a random suffix when no ID is given
      * 
      */
     public String name() {
@@ -76,6 +80,8 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentPlainArgs extends com.
         /**
          * @param name The resource name of the workspace base environment.
          * Format: workspace-base-environments/{workspace-base-environment}
+         * The server ignores this field on create and builds the name from `workspaceBaseEnvironmentId`, or from
+         * `displayName` plus a random suffix when no ID is given
          * 
          * @return builder
          * 

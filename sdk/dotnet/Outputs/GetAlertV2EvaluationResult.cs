@@ -14,11 +14,11 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAlertV2EvaluationResult
     {
         /// <summary>
-        /// (string) - Operator used for comparison in alert evaluation. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
+        /// (string) - Operator used for comparison in alert evaluation. The alert is triggered when the comparison of the source value with the threshold is true. `IS_NULL` and `IS_NOT_NULL` take no threshold. Possible values are: `EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `IS_NOT_NULL`, `IS_NULL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `NOT_EQUAL`
         /// </summary>
         public readonly string ComparisonOperator;
         /// <summary>
-        /// (string) - Alert state if result is empty. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+        /// (string) - Alert state if result is empty. If not set, an empty result sets the state to `ERROR`. Please avoid setting this field to be `UNKNOWN` because `UNKNOWN` state is planned to be deprecated. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
         /// </summary>
         public readonly string? EmptyResultState;
         /// <summary>
@@ -34,11 +34,11 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetAlertV2EvaluationSourceResult Source;
         /// <summary>
-        /// (string) - Latest state of alert evaluation. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
+        /// (string) - Latest state of alert evaluation: `TRIGGERED` when the condition was met, `OK` when it was not, and `ERROR` when the evaluation failed. Possible values are: `ERROR`, `OK`, `TRIGGERED`, `UNKNOWN`
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// (AlertV2Operand) - Threshold to user for alert evaluation, can be a column or a value
+        /// (AlertV2Operand) - Threshold to compare the source column against, either another column or a fixed value. Not needed when `ComparisonOperator` is `IS_NULL` or `IS_NOT_NULL`
         /// </summary>
         public readonly Outputs.GetAlertV2EvaluationThresholdResult? Threshold;
 

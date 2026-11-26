@@ -14,40 +14,41 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkspaceIamExternalServicePrincipalV2Result {
     /**
-     * @return (string) - The parent account ID, from Databricks
+     * @return (string) - The ID of the account that contains the service principal
      * 
      */
     private String accountId;
     /**
-     * @return (string) - The activity status of the service principal in the Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * @return (string) - Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     private String accountSpStatus;
     /**
-     * @return (string) - Application ID of the service principal, from the customer&#39;s IdP
+     * @return (string) - The service principal&#39;s application ID, from your IdP
      * 
      */
     private String applicationId;
     /**
-     * @return (string) - Display name of the service principal, from the customer&#39;s IdP
+     * @return (string) - The service principal&#39;s display name, from your IdP
      * 
      */
     private String displayName;
     /**
-     * @return (string) - The external ID of the service principal in the customer&#39;s IdP
+     * @return (string) - The ID of the service principal in your IdP
      * 
      */
     private String externalServicePrincipalId;
     /**
-     * @return (string) - Internal servicePrincipalId of the service principal in Databricks
+     * @return (string) - The Databricks ID of the service principal. Use it as the `servicePrincipalId` in the
+     * service principal APIs
      * 
      */
     private String internalId;
     /**
-     * @return (string) - The resource name of the external service principal. The format depends on
-     * the API that returned it:
-     * - Account-scoped: accounts/{account_id}/external-service-principals/{external_service_principal_id}
-     * - Workspace-scoped: external-service-principals/{external_service_principal_id}
+     * @return (string) - The resource name of the external service principal, in one of these formats:
+     * - Account APIs:
+     *   `accounts/{account_id}/external-service-principals/{external_service_principal_id}`
+     * - Workspace APIs: `external-service-principals/{external_service_principal_id}`
      * 
      */
     private String name;
@@ -55,52 +56,53 @@ public final class GetWorkspaceIamExternalServicePrincipalV2Result {
 
     private GetWorkspaceIamExternalServicePrincipalV2Result() {}
     /**
-     * @return (string) - The parent account ID, from Databricks
+     * @return (string) - The ID of the account that contains the service principal
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return (string) - The activity status of the service principal in the Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * @return (string) - Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     public String accountSpStatus() {
         return this.accountSpStatus;
     }
     /**
-     * @return (string) - Application ID of the service principal, from the customer&#39;s IdP
+     * @return (string) - The service principal&#39;s application ID, from your IdP
      * 
      */
     public String applicationId() {
         return this.applicationId;
     }
     /**
-     * @return (string) - Display name of the service principal, from the customer&#39;s IdP
+     * @return (string) - The service principal&#39;s display name, from your IdP
      * 
      */
     public String displayName() {
         return this.displayName;
     }
     /**
-     * @return (string) - The external ID of the service principal in the customer&#39;s IdP
+     * @return (string) - The ID of the service principal in your IdP
      * 
      */
     public String externalServicePrincipalId() {
         return this.externalServicePrincipalId;
     }
     /**
-     * @return (string) - Internal servicePrincipalId of the service principal in Databricks
+     * @return (string) - The Databricks ID of the service principal. Use it as the `servicePrincipalId` in the
+     * service principal APIs
      * 
      */
     public String internalId() {
         return this.internalId;
     }
     /**
-     * @return (string) - The resource name of the external service principal. The format depends on
-     * the API that returned it:
-     * - Account-scoped: accounts/{account_id}/external-service-principals/{external_service_principal_id}
-     * - Workspace-scoped: external-service-principals/{external_service_principal_id}
+     * @return (string) - The resource name of the external service principal, in one of these formats:
+     * - Account APIs:
+     *   `accounts/{account_id}/external-service-principals/{external_service_principal_id}`
+     * - Workspace APIs: `external-service-principals/{external_service_principal_id}`
      * 
      */
     public String name() {

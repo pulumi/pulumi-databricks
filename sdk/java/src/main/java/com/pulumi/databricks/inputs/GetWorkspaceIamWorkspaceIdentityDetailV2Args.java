@@ -18,16 +18,16 @@ public final class GetWorkspaceIamWorkspaceIdentityDetailV2Args extends com.pulu
     public static final GetWorkspaceIamWorkspaceIdentityDetailV2Args Empty = new GetWorkspaceIamWorkspaceIdentityDetailV2Args();
 
     /**
-     * The resource name of the workspace identity detail.
-     * Format: principals/{principal_id}/workspace-identity-detail
+     * The resource name of the workspace identity detail, in the format
+     * `principals/{principal_id}/workspace-identity-detail`
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The resource name of the workspace identity detail.
-     * Format: principals/{principal_id}/workspace-identity-detail
+     * @return The resource name of the workspace identity detail, in the format
+     * `principals/{principal_id}/workspace-identity-detail`
      * 
      */
     public Output<String> name() {
@@ -75,8 +75,8 @@ public final class GetWorkspaceIamWorkspaceIdentityDetailV2Args extends com.pulu
         }
 
         /**
-         * @param name The resource name of the workspace identity detail.
-         * Format: principals/{principal_id}/workspace-identity-detail
+         * @param name The resource name of the workspace identity detail, in the format
+         * `principals/{principal_id}/workspace-identity-detail`
          * 
          * @return builder
          * 
@@ -87,8 +87,8 @@ public final class GetWorkspaceIamWorkspaceIdentityDetailV2Args extends com.pulu
         }
 
         /**
-         * @param name The resource name of the workspace identity detail.
-         * Format: principals/{principal_id}/workspace-identity-detail
+         * @param name The resource name of the workspace identity detail, in the format
+         * `principals/{principal_id}/workspace-identity-detail`
          * 
          * @return builder
          * 

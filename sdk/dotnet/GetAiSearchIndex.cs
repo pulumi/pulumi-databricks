@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetAiSearchIndex
     {
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
         /// 
@@ -43,7 +43,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAiSearchIndexResult>("databricks:index/getAiSearchIndex:getAiSearchIndex", args ?? new GetAiSearchIndexArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
         /// 
@@ -74,7 +74,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetAiSearchIndexResult>("databricks:index/getAiSearchIndex:getAiSearchIndex", args ?? new GetAiSearchIndexInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
         /// 
@@ -176,19 +176,25 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string Endpoint;
         /// <summary>
-        /// (string) - The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+        /// (string) - Subtype of the index. Use `HYBRID` for vector and hybrid search, or `FULL_TEXT` for
+        /// keyword-only search without embeddings; `VECTOR` is not a supported create value. Set on
+        /// create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
         /// </summary>
         public readonly string IndexSubtype;
         /// <summary>
-        /// (string) - Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+        /// (string) - Type of index. A `DELTA_SYNC` index is kept in sync with a source Delta table; a
+        /// `DIRECT_ACCESS` index holds rows that you write through UpsertData and RemoveData. Set on
+        /// create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
         /// </summary>
         public readonly string IndexType;
         /// <summary>
-        /// (string) - Name of the column
+        /// (string) - Name of the column that holds the precomputed embedding vectors
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (string) - Primary key of the index. Set on create and immutable thereafter
+        /// (string) - Name of the column that uniquely identifies each row. It must exist in the source table
+        /// (Delta Sync) or in `SchemaJson` (Direct Access) and cannot be the embedding source or vector
+        /// column. Set on create and immutable thereafter
         /// </summary>
         public readonly string PrimaryKey;
         public readonly Outputs.GetAiSearchIndexProviderConfigResult? ProviderConfig;

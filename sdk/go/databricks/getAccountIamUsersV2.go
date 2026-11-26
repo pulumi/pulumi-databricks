@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/account/iamv2)
 //
@@ -58,13 +58,13 @@ func GetAccountIamUsersV2(ctx *pulumi.Context, args *GetAccountIamUsersV2Args, o
 
 // A collection of arguments for invoking getAccountIamUsersV2.
 type GetAccountIamUsersV2Args struct {
-	// Optional. Allows filtering users by username or external id
+	// Filters users by `username` or `externalId`, for example
+	// `username eq "someone@example.com"`. Put the value in quotes
 	Filter *string `pulumi:"filter"`
-	// The maximum number of users to return. The service may return fewer than this value.
-	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+	// The maximum number of users to return, up to 1000. The default is 1000. A page can contain
+	// fewer users
 	PageSize *int `pulumi:"pageSize"`
-	// The parent resource name of the account whose users to list.
-	// Format: accounts/{account_id}
+	// The resource name of the account to list users in, in the format `accounts/{account_id}`
 	Parent string `pulumi:"parent"`
 }
 
@@ -72,8 +72,8 @@ type GetAccountIamUsersV2Args struct {
 type GetAccountIamUsersV2Result struct {
 	Filter   *string `pulumi:"filter"`
 	PageSize *int    `pulumi:"pageSize"`
-	// (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-	// account-scoped and workspace-scoped APIs return it
+	// (string) - The resource name of the account that contains the user, in the format
+	// `accounts/{account_id}`. Workspace APIs return the same format
 	Parent string                     `pulumi:"parent"`
 	Users  []GetAccountIamUsersV2User `pulumi:"users"`
 }
@@ -85,13 +85,13 @@ func GetAccountIamUsersV2Output(ctx *pulumi.Context, args GetAccountIamUsersV2Ou
 
 // A collection of arguments for invoking getAccountIamUsersV2.
 type GetAccountIamUsersV2OutputArgs struct {
-	// Optional. Allows filtering users by username or external id
+	// Filters users by `username` or `externalId`, for example
+	// `username eq "someone@example.com"`. Put the value in quotes
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
-	// The maximum number of users to return. The service may return fewer than this value.
-	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+	// The maximum number of users to return, up to 1000. The default is 1000. A page can contain
+	// fewer users
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
-	// The parent resource name of the account whose users to list.
-	// Format: accounts/{account_id}
+	// The resource name of the account to list users in, in the format `accounts/{account_id}`
 	Parent pulumi.StringInput `pulumi:"parent"`
 }
 
@@ -122,8 +122,8 @@ func (o GetAccountIamUsersV2ResultOutput) PageSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GetAccountIamUsersV2Result) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
-// (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-// account-scoped and workspace-scoped APIs return it
+// (string) - The resource name of the account that contains the user, in the format
+// `accounts/{account_id}`. Workspace APIs return the same format
 func (o GetAccountIamUsersV2ResultOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountIamUsersV2Result) string { return v.Parent }).(pulumi.StringOutput)
 }

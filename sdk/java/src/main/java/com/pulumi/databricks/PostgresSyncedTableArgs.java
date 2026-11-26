@@ -49,14 +49,16 @@ public final class PostgresSyncedTableArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The three-part Unity Catalog name of the synced table, in the format &#34;{catalog}.{schema}.{table}&#34;.
+     * It is the syncedTableId that was used to create the synced table and the last component of name
      * 
      */
     @Import(name="syncedTableId", required=true)
     private Output<String> syncedTableId;
 
     /**
-     * @return The part of the name, chosen by the user when the resource was created
+     * @return The three-part Unity Catalog name of the synced table, in the format &#34;{catalog}.{schema}.{table}&#34;.
+     * It is the syncedTableId that was used to create the synced table and the last component of name
      * 
      */
     public Output<String> syncedTableId() {
@@ -132,7 +134,8 @@ public final class PostgresSyncedTableArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param syncedTableId The part of the name, chosen by the user when the resource was created
+         * @param syncedTableId The three-part Unity Catalog name of the synced table, in the format &#34;{catalog}.{schema}.{table}&#34;.
+         * It is the syncedTableId that was used to create the synced table and the last component of name
          * 
          * @return builder
          * 
@@ -143,7 +146,8 @@ public final class PostgresSyncedTableArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param syncedTableId The part of the name, chosen by the user when the resource was created
+         * @param syncedTableId The three-part Unity Catalog name of the synced table, in the format &#34;{catalog}.{schema}.{table}&#34;.
+         * It is the syncedTableId that was used to create the synced table and the last component of name
          * 
          * @return builder
          * 

@@ -40,6 +40,8 @@ public final class GetNotificationDestinationsArgs extends com.pulumi.resources.
 
     /**
      * The type of the Notification Destination to filter by. Valid values are:
+     * * `DATABRICKS_APP_SLACK` - Filters Notification Destinations of type Databricks app in Slack.
+     * * `DATABRICKS_APP_TEAMS` - Filters Notification Destinations of type Databricks app in Microsoft Teams.
      * * `EMAIL` - Filters Notification Destinations of type Email.
      * * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
      * * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.
@@ -52,6 +54,8 @@ public final class GetNotificationDestinationsArgs extends com.pulumi.resources.
 
     /**
      * @return The type of the Notification Destination to filter by. Valid values are:
+     * * `DATABRICKS_APP_SLACK` - Filters Notification Destinations of type Databricks app in Slack.
+     * * `DATABRICKS_APP_TEAMS` - Filters Notification Destinations of type Databricks app in Microsoft Teams.
      * * `EMAIL` - Filters Notification Destinations of type Email.
      * * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
      * * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.
@@ -121,6 +125,8 @@ public final class GetNotificationDestinationsArgs extends com.pulumi.resources.
 
         /**
          * @param type The type of the Notification Destination to filter by. Valid values are:
+         * * `DATABRICKS_APP_SLACK` - Filters Notification Destinations of type Databricks app in Slack.
+         * * `DATABRICKS_APP_TEAMS` - Filters Notification Destinations of type Databricks app in Microsoft Teams.
          * * `EMAIL` - Filters Notification Destinations of type Email.
          * * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
          * * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.
@@ -137,6 +143,8 @@ public final class GetNotificationDestinationsArgs extends com.pulumi.resources.
 
         /**
          * @param type The type of the Notification Destination to filter by. Valid values are:
+         * * `DATABRICKS_APP_SLACK` - Filters Notification Destinations of type Databricks app in Slack.
+         * * `DATABRICKS_APP_TEAMS` - Filters Notification Destinations of type Databricks app in Microsoft Teams.
          * * `EMAIL` - Filters Notification Destinations of type Email.
          * * `MICROSOFT_TEAMS` - Filters Notification Destinations of type Microsoft Teams.
          * * `PAGERDUTY` - Filters Notification Destinations of type PagerDuty.

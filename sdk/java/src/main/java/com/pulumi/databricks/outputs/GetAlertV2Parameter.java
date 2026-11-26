@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAlertV2Parameter {
     /**
-     * @return (string)
+     * @return (string) - Name of the column in the query result
      * 
      */
     private String name;
@@ -24,14 +24,14 @@ public final class GetAlertV2Parameter {
      */
     private @Nullable String type;
     /**
-     * @return (AlertV2OperandValue)
+     * @return (AlertV2OperandValue) - Compare the source against a fixed value
      * 
      */
     private @Nullable String value;
 
     private GetAlertV2Parameter() {}
     /**
-     * @return (string)
+     * @return (string) - Name of the column in the query result
      * 
      */
     public String name() {
@@ -46,7 +46,7 @@ public final class GetAlertV2Parameter {
         return Optional.ofNullable(this.type);
     }
     /**
-     * @return (AlertV2OperandValue)
+     * @return (AlertV2OperandValue) - Compare the source against a fixed value
      * 
      */
     public Optional<String> value() {

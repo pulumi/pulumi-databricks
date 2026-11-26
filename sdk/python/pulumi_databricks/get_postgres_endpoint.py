@@ -69,7 +69,7 @@ class GetPostgresEndpointResult:
     @pulumi.getter(name="endpointId")
     def endpoint_id(self) -> _builtins.str:
         """
-        (string) - Part of the resource name
+        (string) - The endpoint ID, which is the final segment of the endpoint's resource name
         """
         return pulumi.get(self, "endpoint_id")
 
@@ -100,7 +100,8 @@ class GetPostgresEndpointResult:
     @pulumi.getter
     def spec(self) -> 'outputs.GetPostgresEndpointSpecResult':
         """
-        (EndpointSpec) - The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+        (EndpointSpec) - The desired configuration of the endpoint. Every field under `spec` except `endpoint_type` can be
+        changed after creation. See `status` for the configuration that is currently in effect.
         """
         return pulumi.get(self, "spec")
 
@@ -108,7 +109,8 @@ class GetPostgresEndpointResult:
     @pulumi.getter
     def status(self) -> 'outputs.GetPostgresEndpointStatusResult':
         """
-        (EndpointStatus) - Current operational status of the compute endpoint
+        (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+        system, including the hostnames to connect to
         """
         return pulumi.get(self, "status")
 
@@ -116,7 +118,8 @@ class GetPostgresEndpointResult:
     @pulumi.getter
     def uid(self) -> _builtins.str:
         """
-        (string) - System-generated unique ID for the endpoint
+        (string) - A system-generated ID that identifies the endpoint. Unlike `name`, it is not derived from the
+        user-chosen endpoint ID. The endpoint's connection hostnames are based on this ID
         """
         return pulumi.get(self, "uid")
 
@@ -150,7 +153,7 @@ def get_postgres_endpoint(name: Optional[_builtins.str] = None,
                           provider_config: Optional[Union['GetPostgresEndpointProviderConfigArgs', 'GetPostgresEndpointProviderConfigArgsDict', 'outputs.GetPostgresEndpointProviderConfigResult']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresEndpointResult:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -193,7 +196,7 @@ def get_postgres_endpoint_output(name: pulumi.Input[Optional[_builtins.str]] = N
                                  provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresEndpointProviderConfigArgs', 'GetPostgresEndpointProviderConfigArgsDict', 'outputs.GetPostgresEndpointProviderConfigResult']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresEndpointResult]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
  *
@@ -38,9 +38,8 @@ export function getAiSearchEndpoints(args: GetAiSearchEndpointsArgs, opts?: pulu
  */
 export interface GetAiSearchEndpointsArgs {
     /**
-     * Best-effort upper bound on the number of results to return. Honored as an upper
-     * bound by the shim: `pageSize` only narrows the legacy backend's response, never
-     * widens it, so the practical cap is `min(page_size, legacy_fixed_page_size)`
+     * Maximum number of endpoints to return in one page. The server applies its own page size
+     * limit, so a page can hold fewer endpoints than `pageSize` even when more remain
      */
     pageSize?: number;
     /**
@@ -64,7 +63,7 @@ export interface GetAiSearchEndpointsResult {
     readonly providerConfig?: outputs.GetAiSearchEndpointsProviderConfig;
 }
 /**
- * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
  *
@@ -95,9 +94,8 @@ export function getAiSearchEndpointsOutput(args: GetAiSearchEndpointsOutputArgs,
  */
 export interface GetAiSearchEndpointsOutputArgs {
     /**
-     * Best-effort upper bound on the number of results to return. Honored as an upper
-     * bound by the shim: `pageSize` only narrows the legacy backend's response, never
-     * widens it, so the practical cap is `min(page_size, legacy_fixed_page_size)`
+     * Maximum number of endpoints to return in one page. The server applies its own page size
+     * limit, so a page can hold fewer endpoints than `pageSize` even when more remain
      */
     pageSize?: pulumi.Input<number | undefined>;
     /**

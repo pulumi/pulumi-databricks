@@ -128,7 +128,8 @@ namespace Pulumi.Databricks
     public partial class DatabaseInstance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        /// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8". Must be set when
+        /// creating an instance
         /// </summary>
         [Output("capacity")]
         public Output<string?> Capacity { get; private set; } = null!;
@@ -153,13 +154,14 @@ namespace Pulumi.Databricks
         public Output<string> Creator { get; private set; } = null!;
 
         /// <summary>
-        /// Custom tags associated with the instance. This field is only included on create and update responses
+        /// Custom tags associated with the instance. This field is only included on create and update responses.
+        /// An instance can have at most 10 tags; keys must be unique ignoring case
         /// </summary>
         [Output("customTags")]
         public Output<ImmutableArray<Outputs.DatabaseInstanceCustomTag>> CustomTags { get; private set; } = null!;
 
         /// <summary>
-        /// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+        /// (string, deprecated) - Deprecated: this field always matches the value of capacity; read capacity instead.
         /// This is an output only field that contains the value computed from the input field combined with
         /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
@@ -231,13 +233,16 @@ namespace Pulumi.Databricks
         public Output<bool> EnablePgNativeLogin { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable secondaries to serve read-only traffic. Defaults to false
+        /// Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+        /// NodeCount greater than 1
         /// </summary>
         [Output("enableReadableSecondaries")]
         public Output<bool> EnableReadableSecondaries { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the instance. This is the unique identifier for the instance
+        /// The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+        /// characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+        /// consecutive hyphens
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -250,8 +255,9 @@ namespace Pulumi.Databricks
         public Output<int> NodeCount { get; private set; } = null!;
 
         /// <summary>
-        /// The ref of the parent instance. This is only available if the instance is
-        /// child instance.
+        /// The ref of the parent instance. This is only available if the instance is a
+        /// child instance. A child instance inherits CustomTags and UsagePolicyId from
+        /// its parent and cannot set them.
         /// Input: For specifying the parent instance to create a child instance. Optional.
         /// Output: Only populated if provided as input to create a child instance
         /// </summary>
@@ -271,8 +277,8 @@ namespace Pulumi.Databricks
         public Output<Outputs.DatabaseInstanceProviderConfig> ProviderConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
-        /// of false will throw a bad request
+        /// Deprecated: omitting the field or setting it to true hard deletes the instance. Setting it to
+        /// false returns a bad request
         /// </summary>
         [Output("purgeOnDelete")]
         public Output<bool?> PurgeOnDelete { get; private set; } = null!;
@@ -305,7 +311,9 @@ namespace Pulumi.Databricks
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to stop the instance. An input only param, see EffectiveStopped for the output
+        /// Whether to stop the instance. An input only param, see EffectiveStopped for the output. An
+        /// instance cannot be created in the stopped state; set this field on update to stop or start
+        /// the instance
         /// </summary>
         [Output("stopped")]
         public Output<bool> Stopped { get; private set; } = null!;
@@ -369,7 +377,8 @@ namespace Pulumi.Databricks
     public sealed class DatabaseInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        /// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8". Must be set when
+        /// creating an instance
         /// </summary>
         [Input("capacity")]
         public Input<string>? Capacity { get; set; }
@@ -378,7 +387,8 @@ namespace Pulumi.Databricks
         private InputList<Inputs.DatabaseInstanceCustomTagArgs>? _customTags;
 
         /// <summary>
-        /// Custom tags associated with the instance. This field is only included on create and update responses
+        /// Custom tags associated with the instance. This field is only included on create and update responses.
+        /// An instance can have at most 10 tags; keys must be unique ignoring case
         /// </summary>
         public InputList<Inputs.DatabaseInstanceCustomTagArgs> CustomTags
         {
@@ -393,13 +403,16 @@ namespace Pulumi.Databricks
         public Input<bool>? EnablePgNativeLogin { get; set; }
 
         /// <summary>
-        /// Whether to enable secondaries to serve read-only traffic. Defaults to false
+        /// Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+        /// NodeCount greater than 1
         /// </summary>
         [Input("enableReadableSecondaries")]
         public Input<bool>? EnableReadableSecondaries { get; set; }
 
         /// <summary>
-        /// The name of the instance. This is the unique identifier for the instance
+        /// The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+        /// characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+        /// consecutive hyphens
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -412,8 +425,9 @@ namespace Pulumi.Databricks
         public Input<int>? NodeCount { get; set; }
 
         /// <summary>
-        /// The ref of the parent instance. This is only available if the instance is
-        /// child instance.
+        /// The ref of the parent instance. This is only available if the instance is a
+        /// child instance. A child instance inherits CustomTags and UsagePolicyId from
+        /// its parent and cannot set them.
         /// Input: For specifying the parent instance to create a child instance. Optional.
         /// Output: Only populated if provided as input to create a child instance
         /// </summary>
@@ -427,8 +441,8 @@ namespace Pulumi.Databricks
         public Input<Inputs.DatabaseInstanceProviderConfigArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
-        /// of false will throw a bad request
+        /// Deprecated: omitting the field or setting it to true hard deletes the instance. Setting it to
+        /// false returns a bad request
         /// </summary>
         [Input("purgeOnDelete")]
         public Input<bool>? PurgeOnDelete { get; set; }
@@ -442,7 +456,9 @@ namespace Pulumi.Databricks
         public Input<int>? RetentionWindowInDays { get; set; }
 
         /// <summary>
-        /// Whether to stop the instance. An input only param, see EffectiveStopped for the output
+        /// Whether to stop the instance. An input only param, see EffectiveStopped for the output. An
+        /// instance cannot be created in the stopped state; set this field on update to stop or start
+        /// the instance
         /// </summary>
         [Input("stopped")]
         public Input<bool>? Stopped { get; set; }
@@ -462,7 +478,8 @@ namespace Pulumi.Databricks
     public sealed class DatabaseInstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        /// The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8". Must be set when
+        /// creating an instance
         /// </summary>
         [Input("capacity")]
         public Input<string>? Capacity { get; set; }
@@ -496,7 +513,8 @@ namespace Pulumi.Databricks
         private InputList<Inputs.DatabaseInstanceCustomTagGetArgs>? _customTags;
 
         /// <summary>
-        /// Custom tags associated with the instance. This field is only included on create and update responses
+        /// Custom tags associated with the instance. This field is only included on create and update responses.
+        /// An instance can have at most 10 tags; keys must be unique ignoring case
         /// </summary>
         public InputList<Inputs.DatabaseInstanceCustomTagGetArgs> CustomTags
         {
@@ -505,7 +523,7 @@ namespace Pulumi.Databricks
         }
 
         /// <summary>
-        /// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+        /// (string, deprecated) - Deprecated: this field always matches the value of capacity; read capacity instead.
         /// This is an output only field that contains the value computed from the input field combined with
         /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
@@ -583,13 +601,16 @@ namespace Pulumi.Databricks
         public Input<bool>? EnablePgNativeLogin { get; set; }
 
         /// <summary>
-        /// Whether to enable secondaries to serve read-only traffic. Defaults to false
+        /// Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+        /// NodeCount greater than 1
         /// </summary>
         [Input("enableReadableSecondaries")]
         public Input<bool>? EnableReadableSecondaries { get; set; }
 
         /// <summary>
-        /// The name of the instance. This is the unique identifier for the instance
+        /// The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+        /// characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+        /// consecutive hyphens
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -602,8 +623,9 @@ namespace Pulumi.Databricks
         public Input<int>? NodeCount { get; set; }
 
         /// <summary>
-        /// The ref of the parent instance. This is only available if the instance is
-        /// child instance.
+        /// The ref of the parent instance. This is only available if the instance is a
+        /// child instance. A child instance inherits CustomTags and UsagePolicyId from
+        /// its parent and cannot set them.
         /// Input: For specifying the parent instance to create a child instance. Optional.
         /// Output: Only populated if provided as input to create a child instance
         /// </summary>
@@ -623,8 +645,8 @@ namespace Pulumi.Databricks
         public Input<Inputs.DatabaseInstanceProviderConfigGetArgs>? ProviderConfig { get; set; }
 
         /// <summary>
-        /// Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
-        /// of false will throw a bad request
+        /// Deprecated: omitting the field or setting it to true hard deletes the instance. Setting it to
+        /// false returns a bad request
         /// </summary>
         [Input("purgeOnDelete")]
         public Input<bool>? PurgeOnDelete { get; set; }
@@ -657,7 +679,9 @@ namespace Pulumi.Databricks
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Whether to stop the instance. An input only param, see EffectiveStopped for the output
+        /// Whether to stop the instance. An input only param, see EffectiveStopped for the output. An
+        /// instance cannot be created in the stopped state; set this field on update to stop or start
+        /// the instance
         /// </summary>
         [Input("stopped")]
         public Input<bool>? Stopped { get; set; }

@@ -34,6 +34,10 @@ namespace Pulumi.Databricks.Inputs
 
         [Input("subscriptions")]
         private InputList<Inputs.AlertV2EvaluationNotificationSubscriptionGetArgs>? _subscriptions;
+
+        /// <summary>
+        /// Users and notification destinations that receive notifications
+        /// </summary>
         public InputList<Inputs.AlertV2EvaluationNotificationSubscriptionGetArgs> Subscriptions
         {
             get => _subscriptions ?? (_subscriptions = new InputList<Inputs.AlertV2EvaluationNotificationSubscriptionGetArgs>());

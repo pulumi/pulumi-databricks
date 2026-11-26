@@ -129,16 +129,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/dataClassificationCatalogConfig:DataClassificationCatalogConfig")
 public class DataClassificationCatalogConfig extends com.pulumi.resources.CustomResource {
     /**
-     * List of auto-tagging configurations for this catalog.
-     * Empty list means no auto-tagging is enabled
+     * Auto-tagging configurations that apply to this catalog. Each entry overrides the
+     * metastore-level auto-tagging setting for its classification tag; tags without an entry
+     * inherit the metastore-level setting
      * 
      */
     @Export(name="autoTagConfigs", refs={List.class,DataClassificationCatalogConfigAutoTagConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<DataClassificationCatalogConfigAutoTagConfig>> autoTagConfigs;
 
     /**
-     * @return List of auto-tagging configurations for this catalog.
-     * Empty list means no auto-tagging is enabled
+     * @return Auto-tagging configurations that apply to this catalog. Each entry overrides the
+     * metastore-level auto-tagging setting for its classification tag; tags without an entry
+     * inherit the metastore-level setting
      * 
      */
     public Output<Optional<List<DataClassificationCatalogConfigAutoTagConfig>>> autoTagConfigs() {
@@ -146,7 +148,8 @@ public class DataClassificationCatalogConfig extends com.pulumi.resources.Custom
     }
     /**
      * Schemas to exclude from the scan, each named relative to the parent catalog.
-     * If specified, all schemas except the specified ones will be scanned.
+     * If specified, all schemas except the specified ones will be scanned, including schemas
+     * created later.
      * Mutually exclusive with `includedSchemas`: only one may be set per request.
      * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      * 
@@ -156,7 +159,8 @@ public class DataClassificationCatalogConfig extends com.pulumi.resources.Custom
 
     /**
      * @return Schemas to exclude from the scan, each named relative to the parent catalog.
-     * If specified, all schemas except the specified ones will be scanned.
+     * If specified, all schemas except the specified ones will be scanned, including schemas
+     * created later.
      * Mutually exclusive with `includedSchemas`: only one may be set per request.
      * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      * 
@@ -166,7 +170,8 @@ public class DataClassificationCatalogConfig extends com.pulumi.resources.Custom
     }
     /**
      * Schemas to include in the scan, each named relative to the parent catalog.
-     * If specified, only listed schemas will be scanned.
+     * If specified, only listed schemas will be scanned. Schemas created later are not scanned
+     * until you add them to the list.
      * Mutually exclusive with `excludedSchemas`: only one may be set per request.
      * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      * 
@@ -176,7 +181,8 @@ public class DataClassificationCatalogConfig extends com.pulumi.resources.Custom
 
     /**
      * @return Schemas to include in the scan, each named relative to the parent catalog.
-     * If specified, only listed schemas will be scanned.
+     * If specified, only listed schemas will be scanned. Schemas created later are not scanned
+     * until you add them to the list.
      * Mutually exclusive with `excludedSchemas`: only one may be set per request.
      * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      * 
@@ -199,14 +205,14 @@ public class DataClassificationCatalogConfig extends com.pulumi.resources.Custom
         return this.name;
     }
     /**
-     * Parent resource in the format: catalogs/{catalog_name}
+     * Name of the catalog to enable, in the format catalogs/{catalog_name}
      * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
-     * @return Parent resource in the format: catalogs/{catalog_name}
+     * @return Name of the catalog to enable, in the format catalogs/{catalog_name}
      * 
      */
     public Output<String> parent() {

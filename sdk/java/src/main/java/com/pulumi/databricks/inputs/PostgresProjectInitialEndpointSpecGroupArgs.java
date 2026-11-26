@@ -19,7 +19,7 @@ public final class PostgresProjectInitialEndpointSpecGroupArgs extends com.pulum
 
     /**
      * Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
-     * size.max &gt; 1
+     * `max` is greater than 1. When enabled, the endpoint also reports a read-only host in `status.hosts`
      * 
      */
     @Import(name="enableReadableSecondaries")
@@ -27,7 +27,7 @@ public final class PostgresProjectInitialEndpointSpecGroupArgs extends com.pulum
 
     /**
      * @return Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
-     * size.max &gt; 1
+     * `max` is greater than 1. When enabled, the endpoint also reports a read-only host in `status.hosts`
      * 
      */
     public Optional<Output<Boolean>> enableReadableSecondaries() {
@@ -98,7 +98,7 @@ public final class PostgresProjectInitialEndpointSpecGroupArgs extends com.pulum
 
         /**
          * @param enableReadableSecondaries Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
-         * size.max &gt; 1
+         * `max` is greater than 1. When enabled, the endpoint also reports a read-only host in `status.hosts`
          * 
          * @return builder
          * 
@@ -110,7 +110,7 @@ public final class PostgresProjectInitialEndpointSpecGroupArgs extends com.pulum
 
         /**
          * @param enableReadableSecondaries Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
-         * size.max &gt; 1
+         * `max` is greater than 1. When enabled, the endpoint also reports a read-only host in `status.hosts`
          * 
          * @return builder
          * 

@@ -73,7 +73,8 @@ export class AgentKitManagedMemoryStore extends pulumi.CustomResource {
     /**
      * Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
      * with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-     * letter or digit
+     * letter or digit. It becomes the last segment of the store's `name` and cannot be changed
+     * after creation
      */
     declare public readonly managedMemoryStoreId: pulumi.Output<string>;
     /**
@@ -175,7 +176,8 @@ export interface AgentKitManagedMemoryStoreState {
     /**
      * Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
      * with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-     * letter or digit
+     * letter or digit. It becomes the last segment of the store's `name` and cannot be changed
+     * after creation
      */
     managedMemoryStoreId?: pulumi.Input<string | undefined>;
     /**
@@ -222,7 +224,8 @@ export interface AgentKitManagedMemoryStoreArgs {
     /**
      * Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
      * with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-     * letter or digit
+     * letter or digit. It becomes the last segment of the store's `name` and cannot be changed
+     * after creation
      */
     managedMemoryStoreId: pulumi.Input<string>;
     /**

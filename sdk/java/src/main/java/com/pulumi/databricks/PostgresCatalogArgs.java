@@ -19,14 +19,16 @@ public final class PostgresCatalogArgs extends com.pulumi.resources.ResourceArgs
     public static final PostgresCatalogArgs Empty = new PostgresCatalogArgs();
 
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+     * last segment of the name field
      * 
      */
     @Import(name="catalogId", required=true)
     private Output<String> catalogId;
 
     /**
-     * @return The part of the name, chosen by the user when the resource was created
+     * @return The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+     * last segment of the name field
      * 
      */
     public Output<String> catalogId() {
@@ -49,14 +51,16 @@ public final class PostgresCatalogArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The desired state of the Catalog
+     * The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+     * the catalog is created
      * 
      */
     @Import(name="spec")
     private @Nullable Output<PostgresCatalogSpecArgs> spec;
 
     /**
-     * @return The desired state of the Catalog
+     * @return The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+     * the catalog is created
      * 
      */
     public Optional<Output<PostgresCatalogSpecArgs>> spec() {
@@ -90,7 +94,8 @@ public final class PostgresCatalogArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param catalogId The part of the name, chosen by the user when the resource was created
+         * @param catalogId The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+         * last segment of the name field
          * 
          * @return builder
          * 
@@ -101,7 +106,8 @@ public final class PostgresCatalogArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param catalogId The part of the name, chosen by the user when the resource was created
+         * @param catalogId The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+         * last segment of the name field
          * 
          * @return builder
          * 
@@ -132,7 +138,8 @@ public final class PostgresCatalogArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param spec The desired state of the Catalog
+         * @param spec The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+         * the catalog is created
          * 
          * @return builder
          * 
@@ -143,7 +150,8 @@ public final class PostgresCatalogArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param spec The desired state of the Catalog
+         * @param spec The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+         * the catalog is created
          * 
          * @return builder
          * 

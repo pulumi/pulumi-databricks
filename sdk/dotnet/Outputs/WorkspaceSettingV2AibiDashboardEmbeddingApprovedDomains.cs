@@ -13,6 +13,11 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class WorkspaceSettingV2AibiDashboardEmbeddingApprovedDomains
     {
+        /// <summary>
+        /// Domains allowed to host embedded AI/BI dashboards. A leading wildcard allows every subdomain of a
+        /// domain. The list applies, and can only be changed, while the embedding access policy is
+        /// ALLOW_APPROVED_DOMAINS
+        /// </summary>
         public readonly ImmutableArray<string> ApprovedDomains;
 
         [OutputConstructor]

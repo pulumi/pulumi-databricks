@@ -47,6 +47,9 @@ export function getDataQualityMonitors(args?: GetDataQualityMonitorsArgs, opts?:
  * A collection of arguments for invoking getDataQualityMonitors.
  */
 export interface GetDataQualityMonitorsArgs {
+    /**
+     * The maximum number of monitors to return in one page
+     */
     pageSize?: number;
     /**
      * Configure the provider for management through account provider.
@@ -103,6 +106,9 @@ export function getDataQualityMonitorsOutput(args?: GetDataQualityMonitorsOutput
  * A collection of arguments for invoking getDataQualityMonitors.
  */
 export interface GetDataQualityMonitorsOutputArgs {
+    /**
+     * The maximum number of monitors to return in one page
+     */
     pageSize?: pulumi.Input<number | undefined>;
     /**
      * Configure the provider for management through account provider.

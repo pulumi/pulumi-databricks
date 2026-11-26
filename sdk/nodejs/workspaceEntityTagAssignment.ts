@@ -101,7 +101,7 @@ export class WorkspaceEntityTagAssignment extends pulumi.CustomResource {
      */
     declare public readonly tagKey: pulumi.Output<string>;
     /**
-     * The value of the tag
+     * The value of the tag. If the value is omitted, the tag is assigned with its key only
      */
     declare public readonly tagValue: pulumi.Output<string | undefined>;
 
@@ -166,7 +166,7 @@ export interface WorkspaceEntityTagAssignmentState {
      */
     tagKey?: pulumi.Input<string | undefined>;
     /**
-     * The value of the tag
+     * The value of the tag. If the value is omitted, the tag is assigned with its key only
      */
     tagValue?: pulumi.Input<string | undefined>;
 }
@@ -192,7 +192,7 @@ export interface WorkspaceEntityTagAssignmentArgs {
      */
     tagKey: pulumi.Input<string>;
     /**
-     * The value of the tag
+     * The value of the tag. If the value is omitted, the tag is assigned with its key only
      */
     tagValue?: pulumi.Input<string | undefined>;
 }

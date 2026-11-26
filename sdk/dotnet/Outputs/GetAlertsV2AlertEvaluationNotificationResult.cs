@@ -26,7 +26,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly int? RetriggerSeconds;
         /// <summary>
-        /// (list of AlertV2Subscription)
+        /// (list of AlertV2Subscription) - Users and notification destinations that receive notifications
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAlertsV2AlertEvaluationNotificationSubscriptionResult> Subscriptions;
 

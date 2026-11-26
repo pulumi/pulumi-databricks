@@ -21,7 +21,7 @@ public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigCu
     private @Nullable String apiKeyName;
     /**
      * @return (ModelProviderServiceConfigProviderSecret) - Secret value forwarded under the `apiKeyName` header on outbound
-     * requests. Supplied as inline plaintext via `ProviderSecret.plaintext`
+     * requests. Supply the value in `api_key_value.plaintext`
      * 
      */
     private @Nullable GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue apiKeyValue;
@@ -38,7 +38,7 @@ public final class GetAiGatewayModelProviderServicesModelProviderServiceConfigCu
     }
     /**
      * @return (ModelProviderServiceConfigProviderSecret) - Secret value forwarded under the `apiKeyName` header on outbound
-     * requests. Supplied as inline plaintext via `ProviderSecret.plaintext`
+     * requests. Supply the value in `api_key_value.plaintext`
      * 
      */
     public Optional<GetAiGatewayModelProviderServicesModelProviderServiceConfigCustomDirectHeaderAuthApiKeyValue> apiKeyValue() {

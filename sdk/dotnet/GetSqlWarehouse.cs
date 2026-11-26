@@ -337,7 +337,7 @@ namespace Pulumi.Databricks
         public string? State { get; set; }
 
         /// <summary>
-        /// Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+        /// Statement timeout in seconds for a warehouse; `0` means no warehouse override. Returns `0` if the API omits the field.
         /// </summary>
         [Input("statementTimeout")]
         public int? StatementTimeout { get; set; }
@@ -492,7 +492,7 @@ namespace Pulumi.Databricks
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+        /// Statement timeout in seconds for a warehouse; `0` means no warehouse override. Returns `0` if the API omits the field.
         /// </summary>
         [Input("statementTimeout")]
         public Input<int>? StatementTimeout { get; set; }
@@ -603,7 +603,7 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+        /// Statement timeout in seconds for a warehouse; `0` means no warehouse override. Returns `0` if the API omits the field.
         /// </summary>
         public readonly int StatementTimeout;
         /// <summary>

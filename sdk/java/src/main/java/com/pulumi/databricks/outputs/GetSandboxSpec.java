@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetSandboxSpec {
     /**
-     * @return (ComputeSpec) - Compute configuration (size, inactivity timeout) requested for the sandbox
+     * @return (ComputeSpec) - Compute settings requested for the sandbox, such as the inactivity timeout
      * 
      */
     private @Nullable GetSandboxSpecCompute compute;
     /**
-     * @return (EnvironmentSpec) - The execution environment to use for the sandbox
+     * @return (EnvironmentSpec) - Software environment for the sandbox, such as the container image it runs
      * 
      */
     private @Nullable GetSandboxSpecEnvironment environment;
 
     private GetSandboxSpec() {}
     /**
-     * @return (ComputeSpec) - Compute configuration (size, inactivity timeout) requested for the sandbox
+     * @return (ComputeSpec) - Compute settings requested for the sandbox, such as the inactivity timeout
      * 
      */
     public Optional<GetSandboxSpecCompute> compute() {
         return Optional.ofNullable(this.compute);
     }
     /**
-     * @return (EnvironmentSpec) - The execution environment to use for the sandbox
+     * @return (EnvironmentSpec) - Software environment for the sandbox, such as the container image it runs
      * 
      */
     public Optional<GetSandboxSpecEnvironment> environment() {

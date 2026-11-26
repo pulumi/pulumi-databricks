@@ -16,7 +16,8 @@ public final class GetAppSpacesSpaceResourceSecret {
      */
     private String key;
     /**
-     * @return (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * @return (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      * 
      */
     private String permission;
@@ -35,7 +36,8 @@ public final class GetAppSpacesSpaceResourceSecret {
         return this.key;
     }
     /**
-     * @return (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * @return (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      * 
      */
     public String permission() {

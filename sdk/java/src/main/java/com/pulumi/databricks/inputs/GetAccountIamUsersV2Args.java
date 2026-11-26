@@ -18,14 +18,16 @@ public final class GetAccountIamUsersV2Args extends com.pulumi.resources.InvokeA
     public static final GetAccountIamUsersV2Args Empty = new GetAccountIamUsersV2Args();
 
     /**
-     * Optional. Allows filtering users by username or external id
+     * Filters users by `username` or `externalId`, for example
+     * `username eq &#34;someone{@literal @}example.com&#34;`. Put the value in quotes
      * 
      */
     @Import(name="filter")
     private @Nullable Output<String> filter;
 
     /**
-     * @return Optional. Allows filtering users by username or external id
+     * @return Filters users by `username` or `externalId`, for example
+     * `username eq &#34;someone{@literal @}example.com&#34;`. Put the value in quotes
      * 
      */
     public Optional<Output<String>> filter() {
@@ -33,16 +35,16 @@ public final class GetAccountIamUsersV2Args extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The maximum number of users to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * The maximum number of users to return, up to 1000. The default is 1000. A page can contain
+     * fewer users
      * 
      */
     @Import(name="pageSize")
     private @Nullable Output<Integer> pageSize;
 
     /**
-     * @return The maximum number of users to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * @return The maximum number of users to return, up to 1000. The default is 1000. A page can contain
+     * fewer users
      * 
      */
     public Optional<Output<Integer>> pageSize() {
@@ -50,16 +52,14 @@ public final class GetAccountIamUsersV2Args extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The parent resource name of the account whose users to list.
-     * Format: accounts/{account_id}
+     * The resource name of the account to list users in, in the format `accounts/{account_id}`
      * 
      */
     @Import(name="parent", required=true)
     private Output<String> parent;
 
     /**
-     * @return The parent resource name of the account whose users to list.
-     * Format: accounts/{account_id}
+     * @return The resource name of the account to list users in, in the format `accounts/{account_id}`
      * 
      */
     public Output<String> parent() {
@@ -93,7 +93,8 @@ public final class GetAccountIamUsersV2Args extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param filter Optional. Allows filtering users by username or external id
+         * @param filter Filters users by `username` or `externalId`, for example
+         * `username eq &#34;someone{@literal @}example.com&#34;`. Put the value in quotes
          * 
          * @return builder
          * 
@@ -104,7 +105,8 @@ public final class GetAccountIamUsersV2Args extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param filter Optional. Allows filtering users by username or external id
+         * @param filter Filters users by `username` or `externalId`, for example
+         * `username eq &#34;someone{@literal @}example.com&#34;`. Put the value in quotes
          * 
          * @return builder
          * 
@@ -114,8 +116,8 @@ public final class GetAccountIamUsersV2Args extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param pageSize The maximum number of users to return. The service may return fewer than this value.
-         * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+         * @param pageSize The maximum number of users to return, up to 1000. The default is 1000. A page can contain
+         * fewer users
          * 
          * @return builder
          * 
@@ -126,8 +128,8 @@ public final class GetAccountIamUsersV2Args extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param pageSize The maximum number of users to return. The service may return fewer than this value.
-         * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+         * @param pageSize The maximum number of users to return, up to 1000. The default is 1000. A page can contain
+         * fewer users
          * 
          * @return builder
          * 
@@ -137,8 +139,7 @@ public final class GetAccountIamUsersV2Args extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param parent The parent resource name of the account whose users to list.
-         * Format: accounts/{account_id}
+         * @param parent The resource name of the account to list users in, in the format `accounts/{account_id}`
          * 
          * @return builder
          * 
@@ -149,8 +150,7 @@ public final class GetAccountIamUsersV2Args extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param parent The parent resource name of the account whose users to list.
-         * Format: accounts/{account_id}
+         * @param parent The resource name of the account to list users in, in the format `accounts/{account_id}`
          * 
          * @return builder
          * 

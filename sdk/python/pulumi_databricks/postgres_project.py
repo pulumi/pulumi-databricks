@@ -30,7 +30,7 @@ class PostgresProjectArgs:
         """
         The set of arguments for constructing a PostgresProject resource.
 
-        :param pulumi.Input[_builtins.str] project_id: The part of the name, chosen by the user when the resource was created
+        :param pulumi.Input[_builtins.str] project_id: The project ID chosen when the project was created. It is the final segment of `name`
         :param pulumi.Input['PostgresProjectInitialBranchSpecArgs'] initial_branch_spec: Configuration for the initial default branch created as part of project creation.
                Allows overriding branch protection. These settings only apply at creation time
                and do not affect resources created after project creation
@@ -39,9 +39,18 @@ class PostgresProjectArgs:
                configured. This field does not apply to any endpoints created after project creation. Use
                spec.default_endpoint_settings to configure default settings for endpoints created after project creation
         :param pulumi.Input['PostgresProjectProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently deletes the project (hard delete).
-               If false or unset, performs a soft delete
-        :param pulumi.Input['PostgresProjectSpecArgs'] spec: The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
+        :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently deletes the project and all of its data immediately. If false or unset, the
+               project is soft-deleted: it stops accepting connections and is retained for 7 days, during which
+               it can be restored with Undelete, and is then permanently deleted. Deleting an already
+               soft-deleted project with `purge` set to true removes it immediately. See
+               https://docs.databricks.com/aws/en/oltp/projects/manage-projects for details
+        :param pulumi.Input['PostgresProjectSpecArgs'] spec: The desired configuration of the project. The fields under `spec` are the ones that can be
+               changed after creation, except `pg_version`, which is fixed when the project is created. See
+               `status` for the configuration that is currently in effect.
+               
+               Read the resource's current values from `status`, rather than `spec`.
+               `spec` tracks field ownership for infrastructure-as-code tools and may omit
+               unmanaged fields
         """
         pulumi.set(__self__, "project_id", project_id)
         if initial_branch_spec is not None:
@@ -59,7 +68,7 @@ class PostgresProjectArgs:
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The part of the name, chosen by the user when the resource was created
+        The project ID chosen when the project was created. It is the final segment of `name`
         """
         return pulumi.get(self, "project_id")
 
@@ -112,8 +121,11 @@ class PostgresProjectArgs:
     @pulumi.getter(name="purgeOnDelete")
     def purge_on_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        If true, permanently deletes the project (hard delete).
-        If false or unset, performs a soft delete
+        If true, permanently deletes the project and all of its data immediately. If false or unset, the
+        project is soft-deleted: it stops accepting connections and is retained for 7 days, during which
+        it can be restored with Undelete, and is then permanently deleted. Deleting an already
+        soft-deleted project with `purge` set to true removes it immediately. See
+        https://docs.databricks.com/aws/en/oltp/projects/manage-projects for details
         """
         return pulumi.get(self, "purge_on_delete")
 
@@ -125,7 +137,13 @@ class PostgresProjectArgs:
     @pulumi.getter
     def spec(self) -> pulumi.Input[Optional['PostgresProjectSpecArgs']]:
         """
-        The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
+        The desired configuration of the project. The fields under `spec` are the ones that can be
+        changed after creation, except `pg_version`, which is fixed when the project is created. See
+        `status` for the configuration that is currently in effect.
+
+        Read the resource's current values from `status`, rather than `spec`.
+        `spec` tracks field ownership for infrastructure-as-code tools and may omit
+        unmanaged fields
         """
         return pulumi.get(self, "spec")
 
@@ -165,15 +183,26 @@ class _PostgresProjectState:
                spec.default_endpoint_settings to configure default settings for endpoints created after project creation
         :param pulumi.Input[_builtins.str] name: (string) - Output only. The full resource path of the project.
                Format: projects/{project_id}
-        :param pulumi.Input[_builtins.str] project_id: The part of the name, chosen by the user when the resource was created
+        :param pulumi.Input[_builtins.str] project_id: The project ID chosen when the project was created. It is the final segment of `name`
         :param pulumi.Input['PostgresProjectProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently deletes the project (hard delete).
-               If false or unset, performs a soft delete
+        :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently deletes the project and all of its data immediately. If false or unset, the
+               project is soft-deleted: it stops accepting connections and is retained for 7 days, during which
+               it can be restored with Undelete, and is then permanently deleted. Deleting an already
+               soft-deleted project with `purge` set to true removes it immediately. See
+               https://docs.databricks.com/aws/en/oltp/projects/manage-projects for details
         :param pulumi.Input[_builtins.str] purge_time: (string) - A timestamp indicating when the project is scheduled for permanent deletion.
                Empty if the project is not deleted, otherwise set to a timestamp in the future
-        :param pulumi.Input['PostgresProjectSpecArgs'] spec: The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
-        :param pulumi.Input['PostgresProjectStatusArgs'] status: (ProjectStatus) - The current status of a Project
-        :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the project
+        :param pulumi.Input['PostgresProjectSpecArgs'] spec: The desired configuration of the project. The fields under `spec` are the ones that can be
+               changed after creation, except `pg_version`, which is fixed when the project is created. See
+               `status` for the configuration that is currently in effect.
+               
+               Read the resource's current values from `status`, rather than `spec`.
+               `spec` tracks field ownership for infrastructure-as-code tools and may omit
+               unmanaged fields
+        :param pulumi.Input['PostgresProjectStatusArgs'] status: (ProjectStatus) - The configuration and state of the project that are currently in effect, as reported by the
+               system
+        :param pulumi.Input[_builtins.str] uid: (string) - A system-generated UUID that identifies the project. Unlike `name`, it is not derived from the
+               user-chosen project ID
         :param pulumi.Input[_builtins.str] update_time: (string) - A timestamp indicating when the project was last updated
         """
         if create_time is not None:
@@ -274,7 +303,7 @@ class _PostgresProjectState:
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The part of the name, chosen by the user when the resource was created
+        The project ID chosen when the project was created. It is the final segment of `name`
         """
         return pulumi.get(self, "project_id")
 
@@ -298,8 +327,11 @@ class _PostgresProjectState:
     @pulumi.getter(name="purgeOnDelete")
     def purge_on_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        If true, permanently deletes the project (hard delete).
-        If false or unset, performs a soft delete
+        If true, permanently deletes the project and all of its data immediately. If false or unset, the
+        project is soft-deleted: it stops accepting connections and is retained for 7 days, during which
+        it can be restored with Undelete, and is then permanently deleted. Deleting an already
+        soft-deleted project with `purge` set to true removes it immediately. See
+        https://docs.databricks.com/aws/en/oltp/projects/manage-projects for details
         """
         return pulumi.get(self, "purge_on_delete")
 
@@ -324,7 +356,13 @@ class _PostgresProjectState:
     @pulumi.getter
     def spec(self) -> pulumi.Input[Optional['PostgresProjectSpecArgs']]:
         """
-        The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
+        The desired configuration of the project. The fields under `spec` are the ones that can be
+        changed after creation, except `pg_version`, which is fixed when the project is created. See
+        `status` for the configuration that is currently in effect.
+
+        Read the resource's current values from `status`, rather than `spec`.
+        `spec` tracks field ownership for infrastructure-as-code tools and may omit
+        unmanaged fields
         """
         return pulumi.get(self, "spec")
 
@@ -336,7 +374,8 @@ class _PostgresProjectState:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional['PostgresProjectStatusArgs']]:
         """
-        (ProjectStatus) - The current status of a Project
+        (ProjectStatus) - The configuration and state of the project that are currently in effect, as reported by the
+        system
         """
         return pulumi.get(self, "status")
 
@@ -348,7 +387,8 @@ class _PostgresProjectState:
     @pulumi.getter
     def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - System-generated unique ID for the project
+        (string) - A system-generated UUID that identifies the project. Unlike `name`, it is not derived from the
+        user-chosen project ID
         """
         return pulumi.get(self, "uid")
 
@@ -383,7 +423,7 @@ class PostgresProject(pulumi.CustomResource):
                  spec: pulumi.Input[Optional[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict', 'outputs.PostgresProjectSpec']]] = None,
                  __props__=None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -403,7 +443,7 @@ class PostgresProject(pulumi.CustomResource):
             })
         ```
 
-        ### Project with Custom Settings
+        ### Project with Custom Configuration
 
         ```python
         import pulumi
@@ -496,11 +536,20 @@ class PostgresProject(pulumi.CustomResource):
                created project. If omitted, the initial endpoint created will have default settings, without high availability
                configured. This field does not apply to any endpoints created after project creation. Use
                spec.default_endpoint_settings to configure default settings for endpoints created after project creation
-        :param pulumi.Input[_builtins.str] project_id: The part of the name, chosen by the user when the resource was created
+        :param pulumi.Input[_builtins.str] project_id: The project ID chosen when the project was created. It is the final segment of `name`
         :param pulumi.Input[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict', 'outputs.PostgresProjectProviderConfig']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently deletes the project (hard delete).
-               If false or unset, performs a soft delete
-        :param pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict', 'outputs.PostgresProjectSpec']] spec: The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
+        :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently deletes the project and all of its data immediately. If false or unset, the
+               project is soft-deleted: it stops accepting connections and is retained for 7 days, during which
+               it can be restored with Undelete, and is then permanently deleted. Deleting an already
+               soft-deleted project with `purge` set to true removes it immediately. See
+               https://docs.databricks.com/aws/en/oltp/projects/manage-projects for details
+        :param pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict', 'outputs.PostgresProjectSpec']] spec: The desired configuration of the project. The fields under `spec` are the ones that can be
+               changed after creation, except `pg_version`, which is fixed when the project is created. See
+               `status` for the configuration that is currently in effect.
+               
+               Read the resource's current values from `status`, rather than `spec`.
+               `spec` tracks field ownership for infrastructure-as-code tools and may omit
+               unmanaged fields
         """
         ...
     @overload
@@ -509,7 +558,7 @@ class PostgresProject(pulumi.CustomResource):
                  args: PostgresProjectArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -529,7 +578,7 @@ class PostgresProject(pulumi.CustomResource):
             })
         ```
 
-        ### Project with Custom Settings
+        ### Project with Custom Configuration
 
         ```python
         import pulumi
@@ -700,15 +749,26 @@ class PostgresProject(pulumi.CustomResource):
                spec.default_endpoint_settings to configure default settings for endpoints created after project creation
         :param pulumi.Input[_builtins.str] name: (string) - Output only. The full resource path of the project.
                Format: projects/{project_id}
-        :param pulumi.Input[_builtins.str] project_id: The part of the name, chosen by the user when the resource was created
+        :param pulumi.Input[_builtins.str] project_id: The project ID chosen when the project was created. It is the final segment of `name`
         :param pulumi.Input[Union['PostgresProjectProviderConfigArgs', 'PostgresProjectProviderConfigArgsDict', 'outputs.PostgresProjectProviderConfig']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently deletes the project (hard delete).
-               If false or unset, performs a soft delete
+        :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently deletes the project and all of its data immediately. If false or unset, the
+               project is soft-deleted: it stops accepting connections and is retained for 7 days, during which
+               it can be restored with Undelete, and is then permanently deleted. Deleting an already
+               soft-deleted project with `purge` set to true removes it immediately. See
+               https://docs.databricks.com/aws/en/oltp/projects/manage-projects for details
         :param pulumi.Input[_builtins.str] purge_time: (string) - A timestamp indicating when the project is scheduled for permanent deletion.
                Empty if the project is not deleted, otherwise set to a timestamp in the future
-        :param pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict', 'outputs.PostgresProjectSpec']] spec: The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
-        :param pulumi.Input[Union['PostgresProjectStatusArgs', 'PostgresProjectStatusArgsDict', 'outputs.PostgresProjectStatus']] status: (ProjectStatus) - The current status of a Project
-        :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the project
+        :param pulumi.Input[Union['PostgresProjectSpecArgs', 'PostgresProjectSpecArgsDict', 'outputs.PostgresProjectSpec']] spec: The desired configuration of the project. The fields under `spec` are the ones that can be
+               changed after creation, except `pg_version`, which is fixed when the project is created. See
+               `status` for the configuration that is currently in effect.
+               
+               Read the resource's current values from `status`, rather than `spec`.
+               `spec` tracks field ownership for infrastructure-as-code tools and may omit
+               unmanaged fields
+        :param pulumi.Input[Union['PostgresProjectStatusArgs', 'PostgresProjectStatusArgsDict', 'outputs.PostgresProjectStatus']] status: (ProjectStatus) - The configuration and state of the project that are currently in effect, as reported by the
+               system
+        :param pulumi.Input[_builtins.str] uid: (string) - A system-generated UUID that identifies the project. Unlike `name`, it is not derived from the
+               user-chosen project ID
         :param pulumi.Input[_builtins.str] update_time: (string) - A timestamp indicating when the project was last updated
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -813,7 +873,7 @@ class PostgresProject(pulumi.CustomResource):
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The part of the name, chosen by the user when the resource was created
+        The project ID chosen when the project was created. It is the final segment of `name`
         """
         return pulumi.get(self, "project_id")
 
@@ -829,8 +889,11 @@ class PostgresProject(pulumi.CustomResource):
     @pulumi.getter(name="purgeOnDelete")
     def purge_on_delete(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        If true, permanently deletes the project (hard delete).
-        If false or unset, performs a soft delete
+        If true, permanently deletes the project and all of its data immediately. If false or unset, the
+        project is soft-deleted: it stops accepting connections and is retained for 7 days, during which
+        it can be restored with Undelete, and is then permanently deleted. Deleting an already
+        soft-deleted project with `purge` set to true removes it immediately. See
+        https://docs.databricks.com/aws/en/oltp/projects/manage-projects for details
         """
         return pulumi.get(self, "purge_on_delete")
 
@@ -845,9 +908,15 @@ class PostgresProject(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> pulumi.Output['outputs.PostgresProjectSpec']:
+    def spec(self) -> pulumi.Output[Optional['outputs.PostgresProjectSpec']]:
         """
-        The spec contains the project configuration, including display_name, pg_version (Postgres version), history_retention_duration, and default_endpoint_settings
+        The desired configuration of the project. The fields under `spec` are the ones that can be
+        changed after creation, except `pg_version`, which is fixed when the project is created. See
+        `status` for the configuration that is currently in effect.
+
+        Read the resource's current values from `status`, rather than `spec`.
+        `spec` tracks field ownership for infrastructure-as-code tools and may omit
+        unmanaged fields
         """
         return pulumi.get(self, "spec")
 
@@ -855,7 +924,8 @@ class PostgresProject(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output['outputs.PostgresProjectStatus']:
         """
-        (ProjectStatus) - The current status of a Project
+        (ProjectStatus) - The configuration and state of the project that are currently in effect, as reported by the
+        system
         """
         return pulumi.get(self, "status")
 
@@ -863,7 +933,8 @@ class PostgresProject(pulumi.CustomResource):
     @pulumi.getter
     def uid(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - System-generated unique ID for the project
+        (string) - A system-generated UUID that identifies the project. Unlike `name`, it is not derived from the
+        user-chosen project ID
         """
         return pulumi.get(self, "uid")
 

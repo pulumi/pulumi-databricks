@@ -92,10 +92,10 @@ class _RfaAccessRequestDestinationsState:
         :param pulumi.Input['RfaAccessRequestDestinationsDestinationSourceSecurableArgs'] destination_source_securable: (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
                is set directly on the securable) or the nearest parent securable with destinations set
         :param pulumi.Input[Sequence[pulumi.Input['RfaAccessRequestDestinationsDestinationArgs']]] destinations: The access request destinations for the securable
-        :param pulumi.Input[_builtins.str] full_name: (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+        :param pulumi.Input[_builtins.str] full_name: (string) - The full name of the securable, repeated from **securable**
         :param pulumi.Input['RfaAccessRequestDestinationsProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input['RfaAccessRequestDestinationsSecurableArgs'] securable: The securable for which the access request destinations are being modified or read
-        :param pulumi.Input[_builtins.str] securable_type: (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+        :param pulumi.Input[_builtins.str] securable_type: (string) - The type of the securable, repeated from **securable** as a plain string
         """
         if are_any_destinations_hidden is not None:
             pulumi.set(__self__, "are_any_destinations_hidden", are_any_destinations_hidden)
@@ -154,7 +154,7 @@ class _RfaAccessRequestDestinationsState:
     @pulumi.getter(name="fullName")
     def full_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+        (string) - The full name of the securable, repeated from **securable**
         """
         return pulumi.get(self, "full_name")
 
@@ -190,7 +190,7 @@ class _RfaAccessRequestDestinationsState:
     @pulumi.getter(name="securableType")
     def securable_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+        (string) - The type of the securable, repeated from **securable** as a plain string
         """
         return pulumi.get(self, "securable_type")
 
@@ -378,10 +378,10 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
         :param pulumi.Input[Union['RfaAccessRequestDestinationsDestinationSourceSecurableArgs', 'RfaAccessRequestDestinationsDestinationSourceSecurableArgsDict', 'outputs.RfaAccessRequestDestinationsDestinationSourceSecurable']] destination_source_securable: (Securable) - The source securable from which the destinations are inherited. Either the same value as securable (if destination
                is set directly on the securable) or the nearest parent securable with destinations set
         :param pulumi.Input[Sequence[pulumi.Input[Union['RfaAccessRequestDestinationsDestinationArgs', 'RfaAccessRequestDestinationsDestinationArgsDict', 'outputs.RfaAccessRequestDestinationsDestination']]]] destinations: The access request destinations for the securable
-        :param pulumi.Input[_builtins.str] full_name: (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+        :param pulumi.Input[_builtins.str] full_name: (string) - The full name of the securable, repeated from **securable**
         :param pulumi.Input[Union['RfaAccessRequestDestinationsProviderConfigArgs', 'RfaAccessRequestDestinationsProviderConfigArgsDict', 'outputs.RfaAccessRequestDestinationsProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[Union['RfaAccessRequestDestinationsSecurableArgs', 'RfaAccessRequestDestinationsSecurableArgsDict', 'outputs.RfaAccessRequestDestinationsSecurable']] securable: The securable for which the access request destinations are being modified or read
-        :param pulumi.Input[_builtins.str] securable_type: (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+        :param pulumi.Input[_builtins.str] securable_type: (string) - The type of the securable, repeated from **securable** as a plain string
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -446,7 +446,7 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
     @pulumi.getter(name="fullName")
     def full_name(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+        (string) - The full name of the securable, repeated from **securable**
         """
         return pulumi.get(self, "full_name")
 
@@ -470,7 +470,7 @@ class RfaAccessRequestDestinations(pulumi.CustomResource):
     @pulumi.getter(name="securableType")
     def securable_type(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+        (string) - The type of the securable, repeated from **securable** as a plain string
         """
         return pulumi.get(self, "securable_type")
 

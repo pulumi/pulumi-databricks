@@ -674,7 +674,7 @@ public class MwsWorkspaces extends com.pulumi.resources.CustomResource {
         return this.gcpWorkspaceSa;
     }
     /**
-     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
+     * @deprecated gke_config is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.145.0/docs/guides/gcp-workspace#creating-a-databricks-workspace
      * 
      */
     @Deprecated

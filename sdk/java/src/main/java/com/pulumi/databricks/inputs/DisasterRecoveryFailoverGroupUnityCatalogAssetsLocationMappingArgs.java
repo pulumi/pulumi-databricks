@@ -34,14 +34,16 @@ public final class DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappin
     }
 
     /**
-     * URI for each region. Each entry maps a region name to a storage URI
+     * The storage URI of this location in each region, with exactly one entry per region of the
+     * failover group
      * 
      */
     @Import(name="uriByRegions", required=true)
     private Output<List<DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArgs>> uriByRegions;
 
     /**
-     * @return URI for each region. Each entry maps a region name to a storage URI
+     * @return The storage URI of this location in each region, with exactly one entry per region of the
+     * failover group
      * 
      */
     public Output<List<DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegionArgs>> uriByRegions() {
@@ -97,7 +99,8 @@ public final class DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappin
         }
 
         /**
-         * @param uriByRegions URI for each region. Each entry maps a region name to a storage URI
+         * @param uriByRegions The storage URI of this location in each region, with exactly one entry per region of the
+         * failover group
          * 
          * @return builder
          * 
@@ -108,7 +111,8 @@ public final class DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappin
         }
 
         /**
-         * @param uriByRegions URI for each region. Each entry maps a region name to a storage URI
+         * @param uriByRegions The storage URI of this location in each region, with exactly one entry per region of the
+         * failover group
          * 
          * @return builder
          * 
@@ -118,7 +122,8 @@ public final class DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappin
         }
 
         /**
-         * @param uriByRegions URI for each region. Each entry maps a region name to a storage URI
+         * @param uriByRegions The storage URI of this location in each region, with exactly one entry per region of the
+         * failover group
          * 
          * @return builder
          * 

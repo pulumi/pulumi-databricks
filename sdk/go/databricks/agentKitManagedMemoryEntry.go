@@ -35,15 +35,18 @@ type AgentKitManagedMemoryEntry struct {
 	// Memory store that will contain the entry, in the form
 	// `memory-stores/{managed_memory_store_id}`
 	Parent pulumi.StringOutput `pulumi:"parent"`
-	// Absolute, case-sensitive path identifying the entry within its actor and optional session.
+	// Absolute, case-sensitive path identifying the entry within its actor and, until the
+	// deprecated `sessionId` is ignored, its optional session.
 	// Paths must begin with `/` and must not contain empty, `.` or `..` segments
 	Path pulumi.StringOutput `pulumi:"path"`
 	// Configure the provider for management through account provider.
 	ProviderConfig AgentKitManagedMemoryEntryProviderConfigOutput `pulumi:"providerConfig"`
-	// Optional identifier for the session associated with this memory entry. When omitted, the
+	// Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+	// ignore this field on writes and omit it from responses. Until then, an omitted value means the
 	// entry applies across the actor's sessions
 	SessionId pulumi.StringPtrOutput `pulumi:"sessionId"`
-	// Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+	// Which writer created this entry. Caller sets this on Create; immutable after creation.
+	// The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
 	SourceType pulumi.StringPtrOutput `pulumi:"sourceType"`
 	// (string) - Time when the entry was last updated
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -105,15 +108,18 @@ type agentKitManagedMemoryEntryState struct {
 	// Memory store that will contain the entry, in the form
 	// `memory-stores/{managed_memory_store_id}`
 	Parent *string `pulumi:"parent"`
-	// Absolute, case-sensitive path identifying the entry within its actor and optional session.
+	// Absolute, case-sensitive path identifying the entry within its actor and, until the
+	// deprecated `sessionId` is ignored, its optional session.
 	// Paths must begin with `/` and must not contain empty, `.` or `..` segments
 	Path *string `pulumi:"path"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *AgentKitManagedMemoryEntryProviderConfig `pulumi:"providerConfig"`
-	// Optional identifier for the session associated with this memory entry. When omitted, the
+	// Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+	// ignore this field on writes and omit it from responses. Until then, an omitted value means the
 	// entry applies across the actor's sessions
 	SessionId *string `pulumi:"sessionId"`
-	// Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+	// Which writer created this entry. Caller sets this on Create; immutable after creation.
+	// The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
 	SourceType *string `pulumi:"sourceType"`
 	// (string) - Time when the entry was last updated
 	UpdateTime *string `pulumi:"updateTime"`
@@ -137,15 +143,18 @@ type AgentKitManagedMemoryEntryState struct {
 	// Memory store that will contain the entry, in the form
 	// `memory-stores/{managed_memory_store_id}`
 	Parent pulumi.StringPtrInput
-	// Absolute, case-sensitive path identifying the entry within its actor and optional session.
+	// Absolute, case-sensitive path identifying the entry within its actor and, until the
+	// deprecated `sessionId` is ignored, its optional session.
 	// Paths must begin with `/` and must not contain empty, `.` or `..` segments
 	Path pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig AgentKitManagedMemoryEntryProviderConfigPtrInput
-	// Optional identifier for the session associated with this memory entry. When omitted, the
+	// Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+	// ignore this field on writes and omit it from responses. Until then, an omitted value means the
 	// entry applies across the actor's sessions
 	SessionId pulumi.StringPtrInput
-	// Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+	// Which writer created this entry. Caller sets this on Create; immutable after creation.
+	// The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
 	SourceType pulumi.StringPtrInput
 	// (string) - Time when the entry was last updated
 	UpdateTime pulumi.StringPtrInput
@@ -173,15 +182,18 @@ type agentKitManagedMemoryEntryArgs struct {
 	// Memory store that will contain the entry, in the form
 	// `memory-stores/{managed_memory_store_id}`
 	Parent string `pulumi:"parent"`
-	// Absolute, case-sensitive path identifying the entry within its actor and optional session.
+	// Absolute, case-sensitive path identifying the entry within its actor and, until the
+	// deprecated `sessionId` is ignored, its optional session.
 	// Paths must begin with `/` and must not contain empty, `.` or `..` segments
 	Path string `pulumi:"path"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *AgentKitManagedMemoryEntryProviderConfig `pulumi:"providerConfig"`
-	// Optional identifier for the session associated with this memory entry. When omitted, the
+	// Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+	// ignore this field on writes and omit it from responses. Until then, an omitted value means the
 	// entry applies across the actor's sessions
 	SessionId *string `pulumi:"sessionId"`
-	// Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+	// Which writer created this entry. Caller sets this on Create; immutable after creation.
+	// The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
 	SourceType *string `pulumi:"sourceType"`
 }
 
@@ -198,15 +210,18 @@ type AgentKitManagedMemoryEntryArgs struct {
 	// Memory store that will contain the entry, in the form
 	// `memory-stores/{managed_memory_store_id}`
 	Parent pulumi.StringInput
-	// Absolute, case-sensitive path identifying the entry within its actor and optional session.
+	// Absolute, case-sensitive path identifying the entry within its actor and, until the
+	// deprecated `sessionId` is ignored, its optional session.
 	// Paths must begin with `/` and must not contain empty, `.` or `..` segments
 	Path pulumi.StringInput
 	// Configure the provider for management through account provider.
 	ProviderConfig AgentKitManagedMemoryEntryProviderConfigPtrInput
-	// Optional identifier for the session associated with this memory entry. When omitted, the
+	// Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+	// ignore this field on writes and omit it from responses. Until then, an omitted value means the
 	// entry applies across the actor's sessions
 	SessionId pulumi.StringPtrInput
-	// Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+	// Which writer created this entry. Caller sets this on Create; immutable after creation.
+	// The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
 	SourceType pulumi.StringPtrInput
 }
 
@@ -335,7 +350,8 @@ func (o AgentKitManagedMemoryEntryOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *AgentKitManagedMemoryEntry) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
 
-// Absolute, case-sensitive path identifying the entry within its actor and optional session.
+// Absolute, case-sensitive path identifying the entry within its actor and, until the
+// deprecated `sessionId` is ignored, its optional session.
 // Paths must begin with `/` and must not contain empty, `.` or `..` segments
 func (o AgentKitManagedMemoryEntryOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v *AgentKitManagedMemoryEntry) pulumi.StringOutput { return v.Path }).(pulumi.StringOutput)
@@ -348,13 +364,15 @@ func (o AgentKitManagedMemoryEntryOutput) ProviderConfig() AgentKitManagedMemory
 	}).(AgentKitManagedMemoryEntryProviderConfigOutput)
 }
 
-// Optional identifier for the session associated with this memory entry. When omitted, the
+// Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+// ignore this field on writes and omit it from responses. Until then, an omitted value means the
 // entry applies across the actor's sessions
 func (o AgentKitManagedMemoryEntryOutput) SessionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AgentKitManagedMemoryEntry) pulumi.StringPtrOutput { return v.SessionId }).(pulumi.StringPtrOutput)
 }
 
-// Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+// Which writer created this entry. Caller sets this on Create; immutable after creation.
+// The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
 func (o AgentKitManagedMemoryEntryOutput) SourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AgentKitManagedMemoryEntry) pulumi.StringPtrOutput { return v.SourceType }).(pulumi.StringPtrOutput)
 }

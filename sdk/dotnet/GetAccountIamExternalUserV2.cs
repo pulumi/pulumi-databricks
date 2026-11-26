@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetAccountIamExternalUserV2
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
@@ -48,7 +48,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountIamExternalUserV2Result>("databricks:index/getAccountIamExternalUserV2:getAccountIamExternalUserV2", args ?? new GetAccountIamExternalUserV2Args(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
@@ -84,7 +84,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountIamExternalUserV2Result>("databricks:index/getAccountIamExternalUserV2:getAccountIamExternalUserV2", args ?? new GetAccountIamExternalUserV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/account/iamv2)
         /// 
@@ -124,10 +124,9 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamExternalUserV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The resource name of the external user. The format depends on the API that
-        /// returned it:
-        /// - Account-scoped: accounts/{account_id}/external-users/{external_user_id}
-        /// - Workspace-scoped: external-users/{external_user_id}
+        /// The resource name of the external user, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/external-users/{external_user_id}`
+        /// - Workspace APIs: `external-users/{external_user_id}`
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -141,10 +140,9 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamExternalUserV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The resource name of the external user. The format depends on the API that
-        /// returned it:
-        /// - Account-scoped: accounts/{account_id}/external-users/{external_user_id}
-        /// - Workspace-scoped: external-users/{external_user_id}
+        /// The resource name of the external user, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/external-users/{external_user_id}`
+        /// - Workspace APIs: `external-users/{external_user_id}`
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -160,38 +158,37 @@ namespace Pulumi.Databricks
     public sealed class GetAccountIamExternalUserV2Result
     {
         /// <summary>
-        /// (string) - The parent account ID, from Databricks
+        /// (string) - The ID of the account that contains the user
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// (string) - The activity status of the user in the Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+        /// (string) - Whether the user is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
         /// </summary>
         public readonly string AccountUserStatus;
         /// <summary>
-        /// (string) - Display name of the user from the customer's IdP
+        /// (string) - The user's given and family names from your IdP, separated by a space
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// (string) - The external ID of the user in the customer's IdP
+        /// (string) - The ID of the user in your IdP
         /// </summary>
         public readonly string ExternalUserId;
         /// <summary>
-        /// (FullName) - The full name of the user, from the customer's IdP
+        /// (FullName) - The user's name, from your IdP
         /// </summary>
         public readonly Outputs.GetAccountIamExternalUserV2FullNameResult FullName;
         /// <summary>
-        /// (string) - Internal userId of the user in Databricks
+        /// (string) - The Databricks ID of the user. Use it as the `UserId` in the user APIs
         /// </summary>
         public readonly string InternalId;
         /// <summary>
-        /// (string) - The resource name of the external user. The format depends on the API that
-        /// returned it:
-        /// - Account-scoped: accounts/{account_id}/external-users/{external_user_id}
-        /// - Workspace-scoped: external-users/{external_user_id}
+        /// (string) - The resource name of the external user, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/external-users/{external_user_id}`
+        /// - Workspace APIs: `external-users/{external_user_id}`
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (string) - Username/email of the user, from Databricks
+        /// (string) - The user's username, which is their email address
         /// </summary>
         public readonly string Username;
 

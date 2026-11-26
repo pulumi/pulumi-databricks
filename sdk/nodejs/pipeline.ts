@@ -239,6 +239,7 @@ export class Pipeline extends pulumi.CustomResource {
      * The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
      */
     declare public readonly target: pulumi.Output<string | undefined>;
+    declare public readonly testing: pulumi.Output<outputs.PipelineTesting | undefined>;
     declare public readonly trigger: pulumi.Output<outputs.PipelineTrigger | undefined>;
     /**
      * URL of the Lakeflow Declarative Pipeline on the given workspace.
@@ -299,6 +300,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["storage"] = state?.storage;
             resourceInputs["tags"] = state?.tags;
             resourceInputs["target"] = state?.target;
+            resourceInputs["testing"] = state?.testing;
             resourceInputs["trigger"] = state?.trigger;
             resourceInputs["url"] = state?.url;
             resourceInputs["usagePolicyId"] = state?.usagePolicyId;
@@ -344,6 +346,7 @@ export class Pipeline extends pulumi.CustomResource {
             resourceInputs["storage"] = args?.storage;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["target"] = args?.target;
+            resourceInputs["testing"] = args?.testing;
             resourceInputs["trigger"] = args?.trigger;
             resourceInputs["url"] = args?.url;
             resourceInputs["usagePolicyId"] = args?.usagePolicyId;
@@ -469,6 +472,7 @@ export interface PipelineState {
      * The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
      */
     target?: pulumi.Input<string | undefined>;
+    testing?: pulumi.Input<inputs.PipelineTesting | undefined>;
     trigger?: pulumi.Input<inputs.PipelineTrigger | undefined>;
     /**
      * URL of the Lakeflow Declarative Pipeline on the given workspace.
@@ -593,6 +597,7 @@ export interface PipelineArgs {
      * The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
      */
     target?: pulumi.Input<string | undefined>;
+    testing?: pulumi.Input<inputs.PipelineTesting | undefined>;
     trigger?: pulumi.Input<inputs.PipelineTrigger | undefined>;
     /**
      * URL of the Lakeflow Declarative Pipeline on the given workspace.

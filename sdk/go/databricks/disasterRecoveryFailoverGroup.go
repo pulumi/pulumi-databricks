@@ -77,10 +77,12 @@ type DisasterRecoveryFailoverGroup struct {
 	// Client-provided identifier for the failover group. Used to construct the
 	// resource name as {parent}/failover-groups/{failover_group_id}
 	FailoverGroupId pulumi.StringOutput `pulumi:"failoverGroupId"`
-	// (boolean) - True if errors currently block the replication point
+	// (boolean) - True when replication errors are preventing the replication point from advancing.
+	// Populated only while the failover group is INITIAL_REPLICATION or ACTIVE; the blocking
+	// errors are listed in the system.replication.states system table
 	HasReplicationPointBlockingErrors pulumi.BoolOutput `pulumi:"hasReplicationPointBlockingErrors"`
 	// Initial primary region. Used only in Create requests to set the starting
-	// primary region. Not returned in responses
+	// primary region, and must be one of the regions in `regions`. Not returned in responses
 	InitialPrimaryRegion pulumi.StringOutput `pulumi:"initialPrimaryRegion"`
 	// (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
 	InitialReplicationProgress DisasterRecoveryFailoverGroupInitialReplicationProgressOutput `pulumi:"initialReplicationProgress"`
@@ -89,17 +91,28 @@ type DisasterRecoveryFailoverGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent resource. Format: accounts/{account_id}
 	Parent pulumi.StringOutput `pulumi:"parent"`
-	// List of all regions participating in this failover group
+	// The two cloud regions that participate in this failover group, the primary and the
+	// secondary. Each workspace set contains one workspace in each region
 	Regions pulumi.StringArrayOutput `pulumi:"regions"`
-	// (string) - The latest point in time to which data has been replicated
+	// (string) - The most recent point in time up to which all in-scope assets have been replicated to the
+	// secondary region. Data written after this point might not exist in the secondary yet and
+	// can be lost in an unplanned failover. When both Unity Catalog and workspace assets are
+	// replicated, this is the older of the two replication points. Not populated until the
+	// first replication point exists, and not populated in ListFailoverGroups responses
 	ReplicationPoint pulumi.StringOutput `pulumi:"replicationPoint"`
-	// (string) - Aggregate state of the failover group. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
+	// (string) - Aggregate state of the failover group across Unity Catalog and workspace asset
+	// replication. The group is INITIAL_REPLICATION until it has a replication point, ACTIVE
+	// while replication is in steady state and failover is available, and FAILING_OVER while a
+	// failover is in progress; the `*_FAILED` values mean that the last operation did not
+	// complete. Not populated in ListFailoverGroups responses. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
 	State pulumi.StringOutput `pulumi:"state"`
-	// Unity Catalog replication configuration
+	// Unity Catalog replication configuration: the catalogs to replicate and the storage
+	// location mappings for their data. Omit it to replicate workspace assets only
 	UnityCatalogAssets DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput `pulumi:"unityCatalogAssets"`
 	// (string) - Time at which this failover group was last modified
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Workspace sets, each containing workspaces that replicate to each other
+	// Workspace sets, each containing workspaces that replicate to each other. A failover group
+	// currently supports exactly one workspace set
 	WorkspaceSets DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput `pulumi:"workspaceSets"`
 }
 
@@ -158,10 +171,12 @@ type disasterRecoveryFailoverGroupState struct {
 	// Client-provided identifier for the failover group. Used to construct the
 	// resource name as {parent}/failover-groups/{failover_group_id}
 	FailoverGroupId *string `pulumi:"failoverGroupId"`
-	// (boolean) - True if errors currently block the replication point
+	// (boolean) - True when replication errors are preventing the replication point from advancing.
+	// Populated only while the failover group is INITIAL_REPLICATION or ACTIVE; the blocking
+	// errors are listed in the system.replication.states system table
 	HasReplicationPointBlockingErrors *bool `pulumi:"hasReplicationPointBlockingErrors"`
 	// Initial primary region. Used only in Create requests to set the starting
-	// primary region. Not returned in responses
+	// primary region, and must be one of the regions in `regions`. Not returned in responses
 	InitialPrimaryRegion *string `pulumi:"initialPrimaryRegion"`
 	// (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
 	InitialReplicationProgress *DisasterRecoveryFailoverGroupInitialReplicationProgress `pulumi:"initialReplicationProgress"`
@@ -170,17 +185,28 @@ type disasterRecoveryFailoverGroupState struct {
 	Name *string `pulumi:"name"`
 	// The parent resource. Format: accounts/{account_id}
 	Parent *string `pulumi:"parent"`
-	// List of all regions participating in this failover group
+	// The two cloud regions that participate in this failover group, the primary and the
+	// secondary. Each workspace set contains one workspace in each region
 	Regions []string `pulumi:"regions"`
-	// (string) - The latest point in time to which data has been replicated
+	// (string) - The most recent point in time up to which all in-scope assets have been replicated to the
+	// secondary region. Data written after this point might not exist in the secondary yet and
+	// can be lost in an unplanned failover. When both Unity Catalog and workspace assets are
+	// replicated, this is the older of the two replication points. Not populated until the
+	// first replication point exists, and not populated in ListFailoverGroups responses
 	ReplicationPoint *string `pulumi:"replicationPoint"`
-	// (string) - Aggregate state of the failover group. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
+	// (string) - Aggregate state of the failover group across Unity Catalog and workspace asset
+	// replication. The group is INITIAL_REPLICATION until it has a replication point, ACTIVE
+	// while replication is in steady state and failover is available, and FAILING_OVER while a
+	// failover is in progress; the `*_FAILED` values mean that the last operation did not
+	// complete. Not populated in ListFailoverGroups responses. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
 	State *string `pulumi:"state"`
-	// Unity Catalog replication configuration
+	// Unity Catalog replication configuration: the catalogs to replicate and the storage
+	// location mappings for their data. Omit it to replicate workspace assets only
 	UnityCatalogAssets *DisasterRecoveryFailoverGroupUnityCatalogAssets `pulumi:"unityCatalogAssets"`
 	// (string) - Time at which this failover group was last modified
 	UpdateTime *string `pulumi:"updateTime"`
-	// Workspace sets, each containing workspaces that replicate to each other
+	// Workspace sets, each containing workspaces that replicate to each other. A failover group
+	// currently supports exactly one workspace set
 	WorkspaceSets []DisasterRecoveryFailoverGroupWorkspaceSet `pulumi:"workspaceSets"`
 }
 
@@ -195,10 +221,12 @@ type DisasterRecoveryFailoverGroupState struct {
 	// Client-provided identifier for the failover group. Used to construct the
 	// resource name as {parent}/failover-groups/{failover_group_id}
 	FailoverGroupId pulumi.StringPtrInput
-	// (boolean) - True if errors currently block the replication point
+	// (boolean) - True when replication errors are preventing the replication point from advancing.
+	// Populated only while the failover group is INITIAL_REPLICATION or ACTIVE; the blocking
+	// errors are listed in the system.replication.states system table
 	HasReplicationPointBlockingErrors pulumi.BoolPtrInput
 	// Initial primary region. Used only in Create requests to set the starting
-	// primary region. Not returned in responses
+	// primary region, and must be one of the regions in `regions`. Not returned in responses
 	InitialPrimaryRegion pulumi.StringPtrInput
 	// (InitialReplicationProgress) - Initial replication progress of all in-scope assets. Set only when the FailoverGroup is in INITIAL_REPLICATION state
 	InitialReplicationProgress DisasterRecoveryFailoverGroupInitialReplicationProgressPtrInput
@@ -207,17 +235,28 @@ type DisasterRecoveryFailoverGroupState struct {
 	Name pulumi.StringPtrInput
 	// The parent resource. Format: accounts/{account_id}
 	Parent pulumi.StringPtrInput
-	// List of all regions participating in this failover group
+	// The two cloud regions that participate in this failover group, the primary and the
+	// secondary. Each workspace set contains one workspace in each region
 	Regions pulumi.StringArrayInput
-	// (string) - The latest point in time to which data has been replicated
+	// (string) - The most recent point in time up to which all in-scope assets have been replicated to the
+	// secondary region. Data written after this point might not exist in the secondary yet and
+	// can be lost in an unplanned failover. When both Unity Catalog and workspace assets are
+	// replicated, this is the older of the two replication points. Not populated until the
+	// first replication point exists, and not populated in ListFailoverGroups responses
 	ReplicationPoint pulumi.StringPtrInput
-	// (string) - Aggregate state of the failover group. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
+	// (string) - Aggregate state of the failover group across Unity Catalog and workspace asset
+	// replication. The group is INITIAL_REPLICATION until it has a replication point, ACTIVE
+	// while replication is in steady state and failover is available, and FAILING_OVER while a
+	// failover is in progress; the `*_FAILED` values mean that the last operation did not
+	// complete. Not populated in ListFailoverGroups responses. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
 	State pulumi.StringPtrInput
-	// Unity Catalog replication configuration
+	// Unity Catalog replication configuration: the catalogs to replicate and the storage
+	// location mappings for their data. Omit it to replicate workspace assets only
 	UnityCatalogAssets DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrInput
 	// (string) - Time at which this failover group was last modified
 	UpdateTime pulumi.StringPtrInput
-	// Workspace sets, each containing workspaces that replicate to each other
+	// Workspace sets, each containing workspaces that replicate to each other. A failover group
+	// currently supports exactly one workspace set
 	WorkspaceSets DisasterRecoveryFailoverGroupWorkspaceSetArrayInput
 }
 
@@ -236,15 +275,18 @@ type disasterRecoveryFailoverGroupArgs struct {
 	// resource name as {parent}/failover-groups/{failover_group_id}
 	FailoverGroupId string `pulumi:"failoverGroupId"`
 	// Initial primary region. Used only in Create requests to set the starting
-	// primary region. Not returned in responses
+	// primary region, and must be one of the regions in `regions`. Not returned in responses
 	InitialPrimaryRegion string `pulumi:"initialPrimaryRegion"`
 	// The parent resource. Format: accounts/{account_id}
 	Parent string `pulumi:"parent"`
-	// List of all regions participating in this failover group
+	// The two cloud regions that participate in this failover group, the primary and the
+	// secondary. Each workspace set contains one workspace in each region
 	Regions []string `pulumi:"regions"`
-	// Unity Catalog replication configuration
+	// Unity Catalog replication configuration: the catalogs to replicate and the storage
+	// location mappings for their data. Omit it to replicate workspace assets only
 	UnityCatalogAssets *DisasterRecoveryFailoverGroupUnityCatalogAssets `pulumi:"unityCatalogAssets"`
-	// Workspace sets, each containing workspaces that replicate to each other
+	// Workspace sets, each containing workspaces that replicate to each other. A failover group
+	// currently supports exactly one workspace set
 	WorkspaceSets []DisasterRecoveryFailoverGroupWorkspaceSet `pulumi:"workspaceSets"`
 }
 
@@ -254,15 +296,18 @@ type DisasterRecoveryFailoverGroupArgs struct {
 	// resource name as {parent}/failover-groups/{failover_group_id}
 	FailoverGroupId pulumi.StringInput
 	// Initial primary region. Used only in Create requests to set the starting
-	// primary region. Not returned in responses
+	// primary region, and must be one of the regions in `regions`. Not returned in responses
 	InitialPrimaryRegion pulumi.StringInput
 	// The parent resource. Format: accounts/{account_id}
 	Parent pulumi.StringInput
-	// List of all regions participating in this failover group
+	// The two cloud regions that participate in this failover group, the primary and the
+	// secondary. Each workspace set contains one workspace in each region
 	Regions pulumi.StringArrayInput
-	// Unity Catalog replication configuration
+	// Unity Catalog replication configuration: the catalogs to replicate and the storage
+	// location mappings for their data. Omit it to replicate workspace assets only
 	UnityCatalogAssets DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrInput
-	// Workspace sets, each containing workspaces that replicate to each other
+	// Workspace sets, each containing workspaces that replicate to each other. A failover group
+	// currently supports exactly one workspace set
 	WorkspaceSets DisasterRecoveryFailoverGroupWorkspaceSetArrayInput
 }
 
@@ -375,13 +420,15 @@ func (o DisasterRecoveryFailoverGroupOutput) FailoverGroupId() pulumi.StringOutp
 	return o.ApplyT(func(v *DisasterRecoveryFailoverGroup) pulumi.StringOutput { return v.FailoverGroupId }).(pulumi.StringOutput)
 }
 
-// (boolean) - True if errors currently block the replication point
+// (boolean) - True when replication errors are preventing the replication point from advancing.
+// Populated only while the failover group is INITIAL_REPLICATION or ACTIVE; the blocking
+// errors are listed in the system.replication.states system table
 func (o DisasterRecoveryFailoverGroupOutput) HasReplicationPointBlockingErrors() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DisasterRecoveryFailoverGroup) pulumi.BoolOutput { return v.HasReplicationPointBlockingErrors }).(pulumi.BoolOutput)
 }
 
 // Initial primary region. Used only in Create requests to set the starting
-// primary region. Not returned in responses
+// primary region, and must be one of the regions in `regions`. Not returned in responses
 func (o DisasterRecoveryFailoverGroupOutput) InitialPrimaryRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v *DisasterRecoveryFailoverGroup) pulumi.StringOutput { return v.InitialPrimaryRegion }).(pulumi.StringOutput)
 }
@@ -404,22 +451,32 @@ func (o DisasterRecoveryFailoverGroupOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *DisasterRecoveryFailoverGroup) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }
 
-// List of all regions participating in this failover group
+// The two cloud regions that participate in this failover group, the primary and the
+// secondary. Each workspace set contains one workspace in each region
 func (o DisasterRecoveryFailoverGroupOutput) Regions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DisasterRecoveryFailoverGroup) pulumi.StringArrayOutput { return v.Regions }).(pulumi.StringArrayOutput)
 }
 
-// (string) - The latest point in time to which data has been replicated
+// (string) - The most recent point in time up to which all in-scope assets have been replicated to the
+// secondary region. Data written after this point might not exist in the secondary yet and
+// can be lost in an unplanned failover. When both Unity Catalog and workspace assets are
+// replicated, this is the older of the two replication points. Not populated until the
+// first replication point exists, and not populated in ListFailoverGroups responses
 func (o DisasterRecoveryFailoverGroupOutput) ReplicationPoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *DisasterRecoveryFailoverGroup) pulumi.StringOutput { return v.ReplicationPoint }).(pulumi.StringOutput)
 }
 
-// (string) - Aggregate state of the failover group. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
+// (string) - Aggregate state of the failover group across Unity Catalog and workspace asset
+// replication. The group is INITIAL_REPLICATION until it has a replication point, ACTIVE
+// while replication is in steady state and failover is available, and FAILING_OVER while a
+// failover is in progress; the `*_FAILED` values mean that the last operation did not
+// complete. Not populated in ListFailoverGroups responses. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
 func (o DisasterRecoveryFailoverGroupOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *DisasterRecoveryFailoverGroup) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// Unity Catalog replication configuration
+// Unity Catalog replication configuration: the catalogs to replicate and the storage
+// location mappings for their data. Omit it to replicate workspace assets only
 func (o DisasterRecoveryFailoverGroupOutput) UnityCatalogAssets() DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput {
 	return o.ApplyT(func(v *DisasterRecoveryFailoverGroup) DisasterRecoveryFailoverGroupUnityCatalogAssetsPtrOutput {
 		return v.UnityCatalogAssets
@@ -431,7 +488,8 @@ func (o DisasterRecoveryFailoverGroupOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *DisasterRecoveryFailoverGroup) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// Workspace sets, each containing workspaces that replicate to each other
+// Workspace sets, each containing workspaces that replicate to each other. A failover group
+// currently supports exactly one workspace set
 func (o DisasterRecoveryFailoverGroupOutput) WorkspaceSets() DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput {
 	return o.ApplyT(func(v *DisasterRecoveryFailoverGroup) DisasterRecoveryFailoverGroupWorkspaceSetArrayOutput {
 		return v.WorkspaceSets

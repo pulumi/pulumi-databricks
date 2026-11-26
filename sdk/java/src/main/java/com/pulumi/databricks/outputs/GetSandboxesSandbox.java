@@ -27,7 +27,7 @@ public final class GetSandboxesSandbox {
      */
     private String displayName;
     /**
-     * @return (SandboxMetadata) - Metadata associated with the sandbox
+     * @return (SandboxMetadata) - Tags and other metadata associated with the sandbox
      * 
      */
     private GetSandboxesSandboxMetadata metadata;
@@ -74,7 +74,7 @@ public final class GetSandboxesSandbox {
         return this.displayName;
     }
     /**
-     * @return (SandboxMetadata) - Metadata associated with the sandbox
+     * @return (SandboxMetadata) - Tags and other metadata associated with the sandbox
      * 
      */
     public GetSandboxesSandboxMetadata metadata() {

@@ -78,7 +78,7 @@ class GetWorkspaceEntityTagAssignmentResult:
     @pulumi.getter(name="tagValue")
     def tag_value(self) -> _builtins.str:
         """
-        (string) - The value of the tag
+        (string) - The value of the tag. If the value is omitted, the tag is assigned with its key only
         """
         return pulumi.get(self, "tag_value")
 

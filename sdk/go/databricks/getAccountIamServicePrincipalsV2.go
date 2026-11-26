@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/account/iamv2)
 //
@@ -58,13 +58,14 @@ func GetAccountIamServicePrincipalsV2(ctx *pulumi.Context, args *GetAccountIamSe
 
 // A collection of arguments for invoking getAccountIamServicePrincipalsV2.
 type GetAccountIamServicePrincipalsV2Args struct {
-	// Optional. Allows filtering service principals by application id or external id
+	// Filters service principals by `applicationId` or `externalId`, for example
+	// `applicationId eq "<application-id>"`. Put the value in quotes
 	Filter *string `pulumi:"filter"`
-	// The maximum number of service principals to return. The service may return fewer than this value.
-	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+	// The maximum number of service principals to return, up to 1000. The default is 1000. A page
+	// can contain fewer service principals
 	PageSize *int `pulumi:"pageSize"`
-	// The parent resource name of the account whose service principals to list.
-	// Format: accounts/{account_id}
+	// The resource name of the account to list service principals in, in the format
+	// `accounts/{account_id}`
 	Parent string `pulumi:"parent"`
 }
 
@@ -72,8 +73,8 @@ type GetAccountIamServicePrincipalsV2Args struct {
 type GetAccountIamServicePrincipalsV2Result struct {
 	Filter   *string `pulumi:"filter"`
 	PageSize *int    `pulumi:"pageSize"`
-	// (string) - The resource name of the account that contains the service principal,
-	// `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+	// (string) - The resource name of the account that contains the service principal, in the format
+	// `accounts/{account_id}`. Workspace APIs return the same format
 	Parent            string                                             `pulumi:"parent"`
 	ServicePrincipals []GetAccountIamServicePrincipalsV2ServicePrincipal `pulumi:"servicePrincipals"`
 }
@@ -85,13 +86,14 @@ func GetAccountIamServicePrincipalsV2Output(ctx *pulumi.Context, args GetAccount
 
 // A collection of arguments for invoking getAccountIamServicePrincipalsV2.
 type GetAccountIamServicePrincipalsV2OutputArgs struct {
-	// Optional. Allows filtering service principals by application id or external id
+	// Filters service principals by `applicationId` or `externalId`, for example
+	// `applicationId eq "<application-id>"`. Put the value in quotes
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
-	// The maximum number of service principals to return. The service may return fewer than this value.
-	// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+	// The maximum number of service principals to return, up to 1000. The default is 1000. A page
+	// can contain fewer service principals
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
-	// The parent resource name of the account whose service principals to list.
-	// Format: accounts/{account_id}
+	// The resource name of the account to list service principals in, in the format
+	// `accounts/{account_id}`
 	Parent pulumi.StringInput `pulumi:"parent"`
 }
 
@@ -122,8 +124,8 @@ func (o GetAccountIamServicePrincipalsV2ResultOutput) PageSize() pulumi.IntPtrOu
 	return o.ApplyT(func(v GetAccountIamServicePrincipalsV2Result) *int { return v.PageSize }).(pulumi.IntPtrOutput)
 }
 
-// (string) - The resource name of the account that contains the service principal,
-// `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+// (string) - The resource name of the account that contains the service principal, in the format
+// `accounts/{account_id}`. Workspace APIs return the same format
 func (o GetAccountIamServicePrincipalsV2ResultOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountIamServicePrincipalsV2Result) string { return v.Parent }).(pulumi.StringOutput)
 }

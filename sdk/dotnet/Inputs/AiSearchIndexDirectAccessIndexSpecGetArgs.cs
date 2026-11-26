@@ -29,9 +29,10 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
-        /// The schema of the index in JSON format. Supported types are `Integer`, `Long`,
-        /// `Float`, `Double`, `Boolean`, `String`, `Date`, `Timestamp`. Supported types for
-        /// vector columns: `array&lt;float&gt;`, `array&lt;double&gt;`
+        /// The schema of the index in JSON format, mapping each column name to its type. Supported
+        /// types are `Integer`, `Long`, `Float`, `Double`, `Boolean`, `String`, `Date`, `Timestamp`.
+        /// Supported types for vector columns: `array&lt;float&gt;`, `array&lt;double&gt;`. The schema must include
+        /// the primary key column and the embedding vector column
         /// </summary>
         [Input("schemaJson")]
         public Input<string>? SchemaJson { get; set; }

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
  *
@@ -75,19 +75,25 @@ export interface GetAiSearchIndexResult {
      */
     readonly endpoint: string;
     /**
-     * (string) - The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+     * (string) - Subtype of the index. Use `HYBRID` for vector and hybrid search, or `FULL_TEXT` for
+     * keyword-only search without embeddings; `VECTOR` is not a supported create value. Set on
+     * create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
      */
     readonly indexSubtype: string;
     /**
-     * (string) - Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+     * (string) - Type of index. A `DELTA_SYNC` index is kept in sync with a source Delta table; a
+     * `DIRECT_ACCESS` index holds rows that you write through UpsertData and RemoveData. Set on
+     * create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
      */
     readonly indexType: string;
     /**
-     * (string) - Name of the column
+     * (string) - Name of the column that holds the precomputed embedding vectors
      */
     readonly name: string;
     /**
-     * (string) - Primary key of the index. Set on create and immutable thereafter
+     * (string) - Name of the column that uniquely identifies each row. It must exist in the source table
+     * (Delta Sync) or in `schemaJson` (Direct Access) and cannot be the embedding source or vector
+     * column. Set on create and immutable thereafter
      */
     readonly primaryKey: string;
     readonly providerConfig?: outputs.GetAiSearchIndexProviderConfig;
@@ -97,7 +103,7 @@ export interface GetAiSearchIndexResult {
     readonly status: outputs.GetAiSearchIndexStatus;
 }
 /**
- * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
  *

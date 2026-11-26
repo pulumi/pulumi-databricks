@@ -116,9 +116,11 @@ type EnvironmentsDefaultWorkspaceBaseEnvironment struct {
 	pulumi.CustomResourceState
 
 	// The default workspace base environment for CPU compute.
+	// If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
 	// Format: workspace-base-environments/{workspace_base_environment}
 	CpuWorkspaceBaseEnvironment pulumi.StringPtrOutput `pulumi:"cpuWorkspaceBaseEnvironment"`
 	// The default workspace base environment for GPU compute.
+	// If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
 	// Format: workspace-base-environments/{workspace_base_environment}
 	GpuWorkspaceBaseEnvironment pulumi.StringPtrOutput `pulumi:"gpuWorkspaceBaseEnvironment"`
 	// (string) - The resource name of this singleton resource.
@@ -159,9 +161,11 @@ func GetEnvironmentsDefaultWorkspaceBaseEnvironment(ctx *pulumi.Context,
 // Input properties used for looking up and filtering EnvironmentsDefaultWorkspaceBaseEnvironment resources.
 type environmentsDefaultWorkspaceBaseEnvironmentState struct {
 	// The default workspace base environment for CPU compute.
+	// If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
 	// Format: workspace-base-environments/{workspace_base_environment}
 	CpuWorkspaceBaseEnvironment *string `pulumi:"cpuWorkspaceBaseEnvironment"`
 	// The default workspace base environment for GPU compute.
+	// If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
 	// Format: workspace-base-environments/{workspace_base_environment}
 	GpuWorkspaceBaseEnvironment *string `pulumi:"gpuWorkspaceBaseEnvironment"`
 	// (string) - The resource name of this singleton resource.
@@ -173,9 +177,11 @@ type environmentsDefaultWorkspaceBaseEnvironmentState struct {
 
 type EnvironmentsDefaultWorkspaceBaseEnvironmentState struct {
 	// The default workspace base environment for CPU compute.
+	// If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
 	// Format: workspace-base-environments/{workspace_base_environment}
 	CpuWorkspaceBaseEnvironment pulumi.StringPtrInput
 	// The default workspace base environment for GPU compute.
+	// If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
 	// Format: workspace-base-environments/{workspace_base_environment}
 	GpuWorkspaceBaseEnvironment pulumi.StringPtrInput
 	// (string) - The resource name of this singleton resource.
@@ -197,9 +203,11 @@ func EnvironmentsDefaultWorkspaceBaseEnvironmentExists(ctx *pulumi.Context,
 
 type environmentsDefaultWorkspaceBaseEnvironmentArgs struct {
 	// The default workspace base environment for CPU compute.
+	// If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
 	// Format: workspace-base-environments/{workspace_base_environment}
 	CpuWorkspaceBaseEnvironment *string `pulumi:"cpuWorkspaceBaseEnvironment"`
 	// The default workspace base environment for GPU compute.
+	// If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
 	// Format: workspace-base-environments/{workspace_base_environment}
 	GpuWorkspaceBaseEnvironment *string `pulumi:"gpuWorkspaceBaseEnvironment"`
 	// Configure the provider for management through account provider.
@@ -209,9 +217,11 @@ type environmentsDefaultWorkspaceBaseEnvironmentArgs struct {
 // The set of arguments for constructing a EnvironmentsDefaultWorkspaceBaseEnvironment resource.
 type EnvironmentsDefaultWorkspaceBaseEnvironmentArgs struct {
 	// The default workspace base environment for CPU compute.
+	// If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
 	// Format: workspace-base-environments/{workspace_base_environment}
 	CpuWorkspaceBaseEnvironment pulumi.StringPtrInput
 	// The default workspace base environment for GPU compute.
+	// If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
 	// Format: workspace-base-environments/{workspace_base_environment}
 	GpuWorkspaceBaseEnvironment pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
@@ -306,6 +316,7 @@ func (o EnvironmentsDefaultWorkspaceBaseEnvironmentOutput) ToEnvironmentsDefault
 }
 
 // The default workspace base environment for CPU compute.
+// If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
 // Format: workspace-base-environments/{workspace_base_environment}
 func (o EnvironmentsDefaultWorkspaceBaseEnvironmentOutput) CpuWorkspaceBaseEnvironment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentsDefaultWorkspaceBaseEnvironment) pulumi.StringPtrOutput {
@@ -314,6 +325,7 @@ func (o EnvironmentsDefaultWorkspaceBaseEnvironmentOutput) CpuWorkspaceBaseEnvir
 }
 
 // The default workspace base environment for GPU compute.
+// If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
 // Format: workspace-base-environments/{workspace_base_environment}
 func (o EnvironmentsDefaultWorkspaceBaseEnvironmentOutput) GpuWorkspaceBaseEnvironment() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnvironmentsDefaultWorkspaceBaseEnvironment) pulumi.StringPtrOutput {

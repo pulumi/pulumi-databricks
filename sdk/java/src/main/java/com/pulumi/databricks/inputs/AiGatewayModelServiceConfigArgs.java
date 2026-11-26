@@ -19,14 +19,16 @@ public final class AiGatewayModelServiceConfigArgs extends com.pulumi.resources.
     public static final AiGatewayModelServiceConfigArgs Empty = new AiGatewayModelServiceConfigArgs();
 
     /**
-     * Inference table configuration for payload logging
+     * Configuration for logging request and response payloads to a Unity
+     * Catalog inference table. Omit this field to leave payload logging off
      * 
      */
     @Import(name="inferenceTable")
     private @Nullable Output<AiGatewayModelServiceConfigInferenceTableArgs> inferenceTable;
 
     /**
-     * @return Inference table configuration for payload logging
+     * @return Configuration for logging request and response payloads to a Unity
+     * Catalog inference table. Omit this field to leave payload logging off
      * 
      */
     public Optional<Output<AiGatewayModelServiceConfigInferenceTableArgs>> inferenceTable() {
@@ -49,14 +51,16 @@ public final class AiGatewayModelServiceConfigArgs extends com.pulumi.resources.
     }
 
     /**
-     * Routing configuration: destinations and fallback
+     * Routing configuration: the primary destinations that receive traffic and
+     * the fallback destinations tried when a primary destination fails
      * 
      */
     @Import(name="routing")
     private @Nullable Output<AiGatewayModelServiceConfigRoutingArgs> routing;
 
     /**
-     * @return Routing configuration: destinations and fallback
+     * @return Routing configuration: the primary destinations that receive traffic and
+     * the fallback destinations tried when a primary destination fails
      * 
      */
     public Optional<Output<AiGatewayModelServiceConfigRoutingArgs>> routing() {
@@ -90,7 +94,8 @@ public final class AiGatewayModelServiceConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param inferenceTable Inference table configuration for payload logging
+         * @param inferenceTable Configuration for logging request and response payloads to a Unity
+         * Catalog inference table. Omit this field to leave payload logging off
          * 
          * @return builder
          * 
@@ -101,7 +106,8 @@ public final class AiGatewayModelServiceConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param inferenceTable Inference table configuration for payload logging
+         * @param inferenceTable Configuration for logging request and response payloads to a Unity
+         * Catalog inference table. Omit this field to leave payload logging off
          * 
          * @return builder
          * 
@@ -142,7 +148,8 @@ public final class AiGatewayModelServiceConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param routing Routing configuration: destinations and fallback
+         * @param routing Routing configuration: the primary destinations that receive traffic and
+         * the fallback destinations tried when a primary destination fails
          * 
          * @return builder
          * 
@@ -153,7 +160,8 @@ public final class AiGatewayModelServiceConfigArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param routing Routing configuration: destinations and fallback
+         * @param routing Routing configuration: the primary destinations that receive traffic and
+         * the fallback destinations tried when a primary destination fails
          * 
          * @return builder
          * 

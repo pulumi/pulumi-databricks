@@ -277,14 +277,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/databaseSyncedDatabaseTable:DatabaseSyncedDatabaseTable")
 public class DatabaseSyncedDatabaseTable extends com.pulumi.resources.CustomResource {
     /**
-     * (SyncedTableStatus) - Synced Table data synchronization status
+     * (SyncedTableStatus) - Reports the status of the data synchronization pipeline that keeps this table in sync with its
+     * source, including the pipeline ID and the position of the last successful sync
      * 
      */
     @Export(name="dataSynchronizationStatus", refs={DatabaseSyncedDatabaseTableDataSynchronizationStatus.class}, tree="[0]")
     private Output<DatabaseSyncedDatabaseTableDataSynchronizationStatus> dataSynchronizationStatus;
 
     /**
-     * @return (SyncedTableStatus) - Synced Table data synchronization status
+     * @return (SyncedTableStatus) - Reports the status of the data synchronization pipeline that keeps this table in sync with its
+     * source, including the pipeline ID and the position of the last successful sync
      * 
      */
     public Output<DatabaseSyncedDatabaseTableDataSynchronizationStatus> dataSynchronizationStatus() {
@@ -311,8 +313,8 @@ public class DatabaseSyncedDatabaseTable extends com.pulumi.resources.CustomReso
         return this.databaseInstanceName;
     }
     /**
-     * (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-     * tables inside database catalogs is inferred database instance associated with the catalog.
+     * (string) - The name of the database instance that this table is registered to. This field is always returned; for
+     * tables inside database catalogs it is the database instance associated with the catalog.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      * 
@@ -321,8 +323,8 @@ public class DatabaseSyncedDatabaseTable extends com.pulumi.resources.CustomReso
     private Output<String> effectiveDatabaseInstanceName;
 
     /**
-     * @return (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-     * tables inside database catalogs is inferred database instance associated with the catalog.
+     * @return (string) - The name of the database instance that this table is registered to. This field is always returned; for
+     * tables inside database catalogs it is the database instance associated with the catalog.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      * 
@@ -358,7 +360,7 @@ public class DatabaseSyncedDatabaseTable extends com.pulumi.resources.CustomReso
      * 
      * When creating a synced table in a standard catalog, this field is required.
      * In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-     * Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
+     * If this database does not exist yet, it is created when `createDatabaseObjectsIfMissing` in `spec` is true
      * 
      */
     @Export(name="logicalDatabaseName", refs={String.class}, tree="[0]")
@@ -374,7 +376,7 @@ public class DatabaseSyncedDatabaseTable extends com.pulumi.resources.CustomReso
      * 
      * When creating a synced table in a standard catalog, this field is required.
      * In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-     * Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
+     * If this database does not exist yet, it is created when `createDatabaseObjectsIfMissing` in `spec` is true
      * 
      */
     public Output<String> logicalDatabaseName() {
@@ -408,9 +410,17 @@ public class DatabaseSyncedDatabaseTable extends com.pulumi.resources.CustomReso
     public Output<DatabaseSyncedDatabaseTableProviderConfig> providerConfig() {
         return this.providerConfig;
     }
+    /**
+     * Specifies the source table, the key columns and how the data synchronization pipeline runs
+     * 
+     */
     @Export(name="spec", refs={DatabaseSyncedDatabaseTableSpec.class}, tree="[0]")
     private Output</* @Nullable */ DatabaseSyncedDatabaseTableSpec> spec;
 
+    /**
+     * @return Specifies the source table, the key columns and how the data synchronization pipeline runs
+     * 
+     */
     public Output<Optional<DatabaseSyncedDatabaseTableSpec>> spec() {
         return Codegen.optional(this.spec);
     }

@@ -15,42 +15,48 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAiSearchIndexesIndexDirectAccessIndexSpec {
     /**
-     * @return (list of EmbeddingSourceColumn) - The columns that contain the embedding source
+     * @return (list of EmbeddingSourceColumn) - Columns that contain the text to embed, each with the model endpoint that computes its
+     * embeddings
      * 
      */
     private @Nullable List<GetAiSearchIndexesIndexDirectAccessIndexSpecEmbeddingSourceColumn> embeddingSourceColumns;
     /**
-     * @return (list of EmbeddingVectorColumn) - The columns that contain the embedding vectors
+     * @return (list of EmbeddingVectorColumn) - Columns that hold precomputed embedding vectors. A single vector column is supported, and it
+     * cannot be the primary key
      * 
      */
     private @Nullable List<GetAiSearchIndexesIndexDirectAccessIndexSpecEmbeddingVectorColumn> embeddingVectorColumns;
     /**
-     * @return (string) - The schema of the index in JSON format. Supported types are `integer`, `long`,
-     * `float`, `double`, `boolean`, `string`, `date`, `timestamp`. Supported types for
-     * vector columns: `array&lt;float&gt;`, `array&lt;double&gt;`
+     * @return (string) - The schema of the index in JSON format, mapping each column name to its type. Supported
+     * types are `integer`, `long`, `float`, `double`, `boolean`, `string`, `date`, `timestamp`.
+     * Supported types for vector columns: `array&lt;float&gt;`, `array&lt;double&gt;`. The schema must include
+     * the primary key column and the embedding vector column
      * 
      */
     private @Nullable String schemaJson;
 
     private GetAiSearchIndexesIndexDirectAccessIndexSpec() {}
     /**
-     * @return (list of EmbeddingSourceColumn) - The columns that contain the embedding source
+     * @return (list of EmbeddingSourceColumn) - Columns that contain the text to embed, each with the model endpoint that computes its
+     * embeddings
      * 
      */
     public List<GetAiSearchIndexesIndexDirectAccessIndexSpecEmbeddingSourceColumn> embeddingSourceColumns() {
         return this.embeddingSourceColumns == null ? List.of() : this.embeddingSourceColumns;
     }
     /**
-     * @return (list of EmbeddingVectorColumn) - The columns that contain the embedding vectors
+     * @return (list of EmbeddingVectorColumn) - Columns that hold precomputed embedding vectors. A single vector column is supported, and it
+     * cannot be the primary key
      * 
      */
     public List<GetAiSearchIndexesIndexDirectAccessIndexSpecEmbeddingVectorColumn> embeddingVectorColumns() {
         return this.embeddingVectorColumns == null ? List.of() : this.embeddingVectorColumns;
     }
     /**
-     * @return (string) - The schema of the index in JSON format. Supported types are `integer`, `long`,
-     * `float`, `double`, `boolean`, `string`, `date`, `timestamp`. Supported types for
-     * vector columns: `array&lt;float&gt;`, `array&lt;double&gt;`
+     * @return (string) - The schema of the index in JSON format, mapping each column name to its type. Supported
+     * types are `integer`, `long`, `float`, `double`, `boolean`, `string`, `date`, `timestamp`.
+     * Supported types for vector columns: `array&lt;float&gt;`, `array&lt;double&gt;`. The schema must include
+     * the primary key column and the embedding vector column
      * 
      */
     public Optional<String> schemaJson() {

@@ -20,14 +20,14 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
     public static final PostgresEndpointArgs Empty = new PostgresEndpointArgs();
 
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
      * 
      */
     @Import(name="endpointId", required=true)
     private Output<String> endpointId;
 
     /**
-     * @return The part of the name, chosen by the user when the resource was created
+     * @return The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
      * 
      */
     public Output<String> endpointId() {
@@ -67,14 +67,18 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * If true, update the endpoint if it already exists instead of returning an error
+     * If true, update the endpoint if it already exists instead of returning an error. The request&#39;s
+     * `spec.endpoint_type` must match the existing endpoint&#39;s type, and the other `spec` fields are applied
+     * as an update. Use this to configure the read-write endpoint that was created together with the branch
      * 
      */
     @Import(name="replaceExisting")
     private @Nullable Output<Boolean> replaceExisting;
 
     /**
-     * @return If true, update the endpoint if it already exists instead of returning an error
+     * @return If true, update the endpoint if it already exists instead of returning an error. The request&#39;s
+     * `spec.endpoint_type` must match the existing endpoint&#39;s type, and the other `spec` fields are applied
+     * as an update. Use this to configure the read-write endpoint that was created together with the branch
      * 
      */
     public Optional<Output<Boolean>> replaceExisting() {
@@ -82,14 +86,24 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+     * The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+     * changed after creation. See `status` for the configuration that is currently in effect.
+     * 
+     * Read the resource&#39;s current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      * 
      */
     @Import(name="spec")
     private @Nullable Output<PostgresEndpointSpecArgs> spec;
 
     /**
-     * @return The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+     * @return The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+     * changed after creation. See `status` for the configuration that is currently in effect.
+     * 
+     * Read the resource&#39;s current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      * 
      */
     public Optional<Output<PostgresEndpointSpecArgs>> spec() {
@@ -125,7 +139,7 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param endpointId The part of the name, chosen by the user when the resource was created
+         * @param endpointId The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
          * 
          * @return builder
          * 
@@ -136,7 +150,7 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param endpointId The part of the name, chosen by the user when the resource was created
+         * @param endpointId The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
          * 
          * @return builder
          * 
@@ -190,7 +204,9 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param replaceExisting If true, update the endpoint if it already exists instead of returning an error
+         * @param replaceExisting If true, update the endpoint if it already exists instead of returning an error. The request&#39;s
+         * `spec.endpoint_type` must match the existing endpoint&#39;s type, and the other `spec` fields are applied
+         * as an update. Use this to configure the read-write endpoint that was created together with the branch
          * 
          * @return builder
          * 
@@ -201,7 +217,9 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param replaceExisting If true, update the endpoint if it already exists instead of returning an error
+         * @param replaceExisting If true, update the endpoint if it already exists instead of returning an error. The request&#39;s
+         * `spec.endpoint_type` must match the existing endpoint&#39;s type, and the other `spec` fields are applied
+         * as an update. Use this to configure the read-write endpoint that was created together with the branch
          * 
          * @return builder
          * 
@@ -211,7 +229,12 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param spec The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+         * @param spec The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+         * changed after creation. See `status` for the configuration that is currently in effect.
+         * 
+         * Read the resource&#39;s current values from `status`, rather than `spec`.
+         * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+         * unmanaged fields
          * 
          * @return builder
          * 
@@ -222,7 +245,12 @@ public final class PostgresEndpointArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param spec The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+         * @param spec The desired configuration of the endpoint. Every field under `spec` except `endpointType` can be
+         * changed after creation. See `status` for the configuration that is currently in effect.
+         * 
+         * Read the resource&#39;s current values from `status`, rather than `spec`.
+         * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+         * unmanaged fields
          * 
          * @return builder
          * 

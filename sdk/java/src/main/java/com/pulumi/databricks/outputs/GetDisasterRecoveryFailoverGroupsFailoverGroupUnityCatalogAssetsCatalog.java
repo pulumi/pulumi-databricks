@@ -11,14 +11,16 @@ import java.util.Objects;
 @CustomType
 public final class GetDisasterRecoveryFailoverGroupsFailoverGroupUnityCatalogAssetsCatalog {
     /**
-     * @return (string) - Resource name for this workspace set
+     * @return (string) - Identifier of the workspace set, unique within the failover group and referenced by
+     * unity_catalog_assets.data_replication_workspace_set. Cannot be changed after creation
      * 
      */
     private String name;
 
     private GetDisasterRecoveryFailoverGroupsFailoverGroupUnityCatalogAssetsCatalog() {}
     /**
-     * @return (string) - Resource name for this workspace set
+     * @return (string) - Identifier of the workspace set, unique within the failover group and referenced by
+     * unity_catalog_assets.data_replication_workspace_set. Cannot be changed after creation
      * 
      */
     public String name() {

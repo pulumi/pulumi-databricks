@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/account/iamv2)
  *
@@ -69,30 +69,33 @@ export class AccountIamGroupV2 extends pulumi.CustomResource {
     }
 
     /**
-     * (string) - The parent account ID for group in Databricks
+     * (string) - The ID of the account that contains the group
      */
     declare public /*out*/ readonly accountId: pulumi.Output<string>;
     /**
-     * ExternalId of the group in the customer's IdP
+     * The ID of the group in your identity provider (IdP)
      */
     declare public readonly externalId: pulumi.Output<string | undefined>;
     /**
-     * (string) - Internal group ID of the group in Databricks
+     * (string) - The Databricks ID of the group. It is a numeric string that Databricks assigns when the group
+     * is created, and it is the `{group_id}` segment of `name`
      */
     declare public /*out*/ readonly groupId: pulumi.Output<string>;
     /**
-     * Display name of the group
+     * The display name of the group. It must be unique in the account, must not be blank, and must be
+     * shorter than 255 characters. Databricks trims surrounding whitespace. You can't use the name of a
+     * group that Databricks manages, such as `admins` or `users`
      */
     declare public readonly groupName: pulumi.Output<string | undefined>;
     /**
-     * (string) - The resource name of the group. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * (string) - The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
-     * The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * The resource name of the account that contains the group, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      */
     declare public readonly parent: pulumi.Output<string>;
 
@@ -137,30 +140,33 @@ export class AccountIamGroupV2 extends pulumi.CustomResource {
  */
 export interface AccountIamGroupV2State {
     /**
-     * (string) - The parent account ID for group in Databricks
+     * (string) - The ID of the account that contains the group
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
-     * ExternalId of the group in the customer's IdP
+     * The ID of the group in your identity provider (IdP)
      */
     externalId?: pulumi.Input<string | undefined>;
     /**
-     * (string) - Internal group ID of the group in Databricks
+     * (string) - The Databricks ID of the group. It is a numeric string that Databricks assigns when the group
+     * is created, and it is the `{group_id}` segment of `name`
      */
     groupId?: pulumi.Input<string | undefined>;
     /**
-     * Display name of the group
+     * The display name of the group. It must be unique in the account, must not be blank, and must be
+     * shorter than 255 characters. Databricks trims surrounding whitespace. You can't use the name of a
+     * group that Databricks manages, such as `admins` or `users`
      */
     groupName?: pulumi.Input<string | undefined>;
     /**
-     * (string) - The resource name of the group. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * (string) - The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * The resource name of the account that contains the group, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      */
     parent?: pulumi.Input<string | undefined>;
 }
@@ -170,16 +176,18 @@ export interface AccountIamGroupV2State {
  */
 export interface AccountIamGroupV2Args {
     /**
-     * ExternalId of the group in the customer's IdP
+     * The ID of the group in your identity provider (IdP)
      */
     externalId?: pulumi.Input<string | undefined>;
     /**
-     * Display name of the group
+     * The display name of the group. It must be unique in the account, must not be blank, and must be
+     * shorter than 255 characters. Databricks trims surrounding whitespace. You can't use the name of a
+     * group that Databricks manages, such as `admins` or `users`
      */
     groupName?: pulumi.Input<string | undefined>;
     /**
-     * The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * The resource name of the account that contains the group, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      */
     parent: pulumi.Input<string>;
 }

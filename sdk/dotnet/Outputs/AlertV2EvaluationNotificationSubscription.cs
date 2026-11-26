@@ -13,7 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AlertV2EvaluationNotificationSubscription
     {
+        /// <summary>
+        /// ID of the notification destination to notify, as returned by the Notification Destinations API
+        /// </summary>
         public readonly string? DestinationId;
+        /// <summary>
+        /// Email address of the workspace user to notify
+        /// </summary>
         public readonly string? UserEmail;
 
         [OutputConstructor]

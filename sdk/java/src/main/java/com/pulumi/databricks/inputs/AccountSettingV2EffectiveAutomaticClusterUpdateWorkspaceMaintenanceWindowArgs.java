@@ -15,9 +15,17 @@ public final class AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaint
 
     public static final AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs Empty = new AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs();
 
+    /**
+     * Schedule anchored to a day of the week, either every week or on given weeks of the month
+     * 
+     */
     @Import(name="weekDayBasedSchedule")
     private @Nullable Output<AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs> weekDayBasedSchedule;
 
+    /**
+     * @return Schedule anchored to a day of the week, either every week or on given weeks of the month
+     * 
+     */
     public Optional<Output<AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs>> weekDayBasedSchedule() {
         return Optional.ofNullable(this.weekDayBasedSchedule);
     }
@@ -46,11 +54,23 @@ public final class AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaint
             $ = new AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param weekDayBasedSchedule Schedule anchored to a day of the week, either every week or on given weeks of the month
+         * 
+         * @return builder
+         * 
+         */
         public Builder weekDayBasedSchedule(@Nullable Output<AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs> weekDayBasedSchedule) {
             $.weekDayBasedSchedule = weekDayBasedSchedule;
             return this;
         }
 
+        /**
+         * @param weekDayBasedSchedule Schedule anchored to a day of the week, either every week or on given weeks of the month
+         * 
+         * @return builder
+         * 
+         */
         public Builder weekDayBasedSchedule(AccountSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs weekDayBasedSchedule) {
             return weekDayBasedSchedule(Output.of(weekDayBasedSchedule));
         }

@@ -11,6 +11,8 @@ import * as utilities from "./utilities";
  *
  * > This resource can only be used with a workspace-level provider!
  *
+ * > **Note** Write-Only argument `optionsWo` is available to supply sensitive options (such as `password`, `clientSecret`, private keys or certificates) without storing them in the Pulumi state. Write-Only arguments are supported in HashiCorp Pulumi 1.11.0 and later. Learn more.
+ *
  * Lakehouse Federation is the query federation platform for Databricks. Databricks uses Unity Catalog to manage query federation. To make a dataset available for read-only querying using Lakehouse Federation, you create the following:
  *
  * - A connection, a securable object in Unity Catalog that specifies a path and credentials for accessing an external database system.
@@ -169,6 +171,29 @@ import * as utilities from "./utilities";
  *     },
  * });
  * ```
+ *
+ * Create a connection to a MySQL database without storing credentials in the Pulumi state
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as databricks from "@pulumi/databricks";
+ *
+ * const mysql = new databricks.Connection("mysql", {
+ *     name: "mysql_connection",
+ *     connectionType: "MYSQL",
+ *     options: {
+ *         host: "test.mysql.database.azure.com",
+ *         port: "3306",
+ *     },
+ *     optionsWo: JSON.stringify({
+ *         user: mysqlUser,
+ *         password: mysqlPassword,
+ *     }),
+ *     optionsWoVersion: 1,
+ * });
+ * ```
+ *
+ * Create a Kafka connection using mTLS, with the client private key and other credentials read from an ephemeral resource, so they are never stored in the plan or state
  */
 export class Connection extends pulumi.CustomResource {
     /**
@@ -254,6 +279,17 @@ export class Connection extends pulumi.CustomResource {
      */
     declare public readonly options: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only, JSON-encoded map of credential options (use `jsonencode()`) that are merged into `options` when the connection is created or updated, but never stored in the Pulumi state. Supported keys are `user`, `password`, `personalAccessToken`, `accessToken`, `clientSecret`, `pemPrivateKey`, `pemKeyPassphrase`, `OAuthPvtKey`, `GoogleServiceAccountKeyJson`, `bearerToken`, `sslKeystoreKey`, `sslKeyPassword`, `schemaRegistryApiSecret`, plus any key ending in `password`, `passphrase`, `secret`, `token`, `apiKey`, `privateKey`, `sslKey`, `keystoreKey`, `certificate`, `certificates` or `certificateChain` (case-insensitive), e.g. `clientPrivateKey`, `userProvidedServerCertificate` or `sslKeystoreCertificateChain`. Other options, such as `host`, `tokenEndpoint` or `trustServerCertificate`, must be set in `options`. A key can't be set in both `options` and `optionsWo`, or in both `optionsWo` and `secrets`. Requires Pulumi 1.11.0 or later and must be used together with `optionsWoVersion`.
+     *
+     * > Pulumi can't detect changes made outside of Pulumi to options set in `optionsWo`, as their values aren't stored in the state. Changing `optionsWo` alone doesn't show up in the plan either: increment `optionsWoVersion` to apply it.
+     */
+    declare public readonly optionsWo: pulumi.Output<string | undefined>;
+    /**
+     * Use together with `optionsWo` to trigger an update. Increment this value (starting at 1) when an update to `optionsWo` is required.
+     */
+    declare public readonly optionsWoVersion: pulumi.Output<number | undefined>;
+    /**
      * Username of current owner of the connection.
      */
     declare public readonly owner: pulumi.Output<string>;
@@ -277,6 +313,9 @@ export class Connection extends pulumi.CustomResource {
      * If the connection is read only. Change forces creation of a new resource.
      */
     declare public readonly readOnly: pulumi.Output<boolean>;
+    /**
+     * A map of option names to Unity Catalog secret names in the format `{catalog}.{schema}.{secret}`. When the connection is used, each secret's value is supplied as the value of that option. A key can't appear in both `options` and `secrets`. The connection creator and owner need the `READ_SECRET` privilege on every referenced secret.
+     */
     declare public readonly secrets: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Securable type.
@@ -319,6 +358,8 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["metastoreId"] = state?.metastoreId;
             resourceInputs["name"] = state?.name;
             resourceInputs["options"] = state?.options;
+            resourceInputs["optionsWo"] = state?.optionsWo;
+            resourceInputs["optionsWoVersion"] = state?.optionsWoVersion;
             resourceInputs["owner"] = state?.owner;
             resourceInputs["parent"] = state?.parent;
             resourceInputs["properties"] = state?.properties;
@@ -337,6 +378,8 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["environmentSettings"] = args?.environmentSettings;
             resourceInputs["name"] = args?.name;
             resourceInputs["options"] = args?.options ? pulumi.secret(args.options) : undefined;
+            resourceInputs["optionsWo"] = args?.optionsWo ? pulumi.secret(args.optionsWo) : undefined;
+            resourceInputs["optionsWoVersion"] = args?.optionsWoVersion;
             resourceInputs["owner"] = args?.owner;
             resourceInputs["parent"] = args?.parent;
             resourceInputs["properties"] = args?.properties;
@@ -356,7 +399,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["url"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["options"] };
+        const secretOpts = { additionalSecretOutputs: ["options", "optionsWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Connection.__pulumiType, name, resourceInputs, opts);
     }
@@ -411,6 +454,17 @@ export interface ConnectionState {
      */
     options?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only, JSON-encoded map of credential options (use `jsonencode()`) that are merged into `options` when the connection is created or updated, but never stored in the Pulumi state. Supported keys are `user`, `password`, `personalAccessToken`, `accessToken`, `clientSecret`, `pemPrivateKey`, `pemKeyPassphrase`, `OAuthPvtKey`, `GoogleServiceAccountKeyJson`, `bearerToken`, `sslKeystoreKey`, `sslKeyPassword`, `schemaRegistryApiSecret`, plus any key ending in `password`, `passphrase`, `secret`, `token`, `apiKey`, `privateKey`, `sslKey`, `keystoreKey`, `certificate`, `certificates` or `certificateChain` (case-insensitive), e.g. `clientPrivateKey`, `userProvidedServerCertificate` or `sslKeystoreCertificateChain`. Other options, such as `host`, `tokenEndpoint` or `trustServerCertificate`, must be set in `options`. A key can't be set in both `options` and `optionsWo`, or in both `optionsWo` and `secrets`. Requires Pulumi 1.11.0 or later and must be used together with `optionsWoVersion`.
+     *
+     * > Pulumi can't detect changes made outside of Pulumi to options set in `optionsWo`, as their values aren't stored in the state. Changing `optionsWo` alone doesn't show up in the plan either: increment `optionsWoVersion` to apply it.
+     */
+    optionsWo?: pulumi.Input<string | undefined>;
+    /**
+     * Use together with `optionsWo` to trigger an update. Increment this value (starting at 1) when an update to `optionsWo` is required.
+     */
+    optionsWoVersion?: pulumi.Input<number | undefined>;
+    /**
      * Username of current owner of the connection.
      */
     owner?: pulumi.Input<string | undefined>;
@@ -434,6 +488,9 @@ export interface ConnectionState {
      * If the connection is read only. Change forces creation of a new resource.
      */
     readOnly?: pulumi.Input<boolean | undefined>;
+    /**
+     * A map of option names to Unity Catalog secret names in the format `{catalog}.{schema}.{secret}`. When the connection is used, each secret's value is supplied as the value of that option. A key can't appear in both `options` and `secrets`. The connection creator and owner need the `READ_SECRET` privilege on every referenced secret.
+     */
     secrets?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Securable type.
@@ -478,6 +535,17 @@ export interface ConnectionArgs {
      */
     options?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only, JSON-encoded map of credential options (use `jsonencode()`) that are merged into `options` when the connection is created or updated, but never stored in the Pulumi state. Supported keys are `user`, `password`, `personalAccessToken`, `accessToken`, `clientSecret`, `pemPrivateKey`, `pemKeyPassphrase`, `OAuthPvtKey`, `GoogleServiceAccountKeyJson`, `bearerToken`, `sslKeystoreKey`, `sslKeyPassword`, `schemaRegistryApiSecret`, plus any key ending in `password`, `passphrase`, `secret`, `token`, `apiKey`, `privateKey`, `sslKey`, `keystoreKey`, `certificate`, `certificates` or `certificateChain` (case-insensitive), e.g. `clientPrivateKey`, `userProvidedServerCertificate` or `sslKeystoreCertificateChain`. Other options, such as `host`, `tokenEndpoint` or `trustServerCertificate`, must be set in `options`. A key can't be set in both `options` and `optionsWo`, or in both `optionsWo` and `secrets`. Requires Pulumi 1.11.0 or later and must be used together with `optionsWoVersion`.
+     *
+     * > Pulumi can't detect changes made outside of Pulumi to options set in `optionsWo`, as their values aren't stored in the state. Changing `optionsWo` alone doesn't show up in the plan either: increment `optionsWoVersion` to apply it.
+     */
+    optionsWo?: pulumi.Input<string | undefined>;
+    /**
+     * Use together with `optionsWo` to trigger an update. Increment this value (starting at 1) when an update to `optionsWo` is required.
+     */
+    optionsWoVersion?: pulumi.Input<number | undefined>;
+    /**
      * Username of current owner of the connection.
      */
     owner?: pulumi.Input<string | undefined>;
@@ -497,5 +565,8 @@ export interface ConnectionArgs {
      * If the connection is read only. Change forces creation of a new resource.
      */
     readOnly?: pulumi.Input<boolean | undefined>;
+    /**
+     * A map of option names to Unity Catalog secret names in the format `{catalog}.{schema}.{secret}`. When the connection is used, each secret's value is supplied as the value of that option. A key can't appear in both `options` and `secrets`. The connection creator and owner need the `READ_SECRET` privilege on every referenced secret.
+     */
     secrets?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

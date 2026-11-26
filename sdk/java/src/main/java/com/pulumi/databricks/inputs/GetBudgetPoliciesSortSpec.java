@@ -31,14 +31,14 @@ public final class GetBudgetPoliciesSortSpec extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The filed to sort by. Possible values are: `POLICY_NAME`
+     * The field to sort by. If unspecified, policies are sorted by name. Possible values are: `POLICY_NAME`
      * 
      */
     @Import(name="field")
     private @Nullable String field;
 
     /**
-     * @return The filed to sort by. Possible values are: `POLICY_NAME`
+     * @return The field to sort by. If unspecified, policies are sorted by name. Possible values are: `POLICY_NAME`
      * 
      */
     public Optional<String> field() {
@@ -82,7 +82,7 @@ public final class GetBudgetPoliciesSortSpec extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param field The filed to sort by. Possible values are: `POLICY_NAME`
+         * @param field The field to sort by. If unspecified, policies are sorted by name. Possible values are: `POLICY_NAME`
          * 
          * @return builder
          * 

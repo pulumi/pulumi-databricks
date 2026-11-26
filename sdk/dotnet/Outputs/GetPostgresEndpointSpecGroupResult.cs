@@ -14,8 +14,8 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetPostgresEndpointSpecGroupResult
     {
         /// <summary>
-        /// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
-        /// by specifying size.max &gt; 1
+        /// (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if the endpoint has more than
+        /// one compute (`Max` greater than 1)
         /// </summary>
         public readonly bool? EnableReadableSecondaries;
         /// <summary>

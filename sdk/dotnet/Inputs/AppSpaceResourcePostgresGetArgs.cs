@@ -12,6 +12,10 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class AppSpaceResourcePostgresGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Resource name of the Lakebase Autoscaling branch, in the form
+        /// `projects/{project}/branches/{branch}`
+        /// </summary>
         [Input("branch")]
         public Input<string>? Branch { get; set; }
 

@@ -12,14 +12,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPostgresEndpointsEndpointStatusSettings {
     /**
-     * @return (object) - A raw representation of Postgres settings
+     * @return (object) - Postgres server parameters to set on the compute endpoint, keyed by parameter name. Each value is
+     * given as a string
      * 
      */
     private @Nullable Map<String,String> pgSettings;
 
     private GetPostgresEndpointsEndpointStatusSettings() {}
     /**
-     * @return (object) - A raw representation of Postgres settings
+     * @return (object) - Postgres server parameters to set on the compute endpoint, keyed by parameter name. Each value is
+     * given as a string
      * 
      */
     public Map<String,String> pgSettings() {

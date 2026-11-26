@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPostgresRolesRole {
     /**
-     * @return (string)
+     * @return (string) - A timestamp indicating when the role was created
      * 
      */
     private String createTime;
@@ -43,7 +43,7 @@ public final class GetPostgresRolesRole {
      */
     private String roleId;
     /**
-     * @return (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes
+     * @return (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes.
      * 
      */
     private GetPostgresRolesRoleSpec spec;
@@ -53,14 +53,14 @@ public final class GetPostgresRolesRole {
      */
     private GetPostgresRolesRoleStatus status;
     /**
-     * @return (string)
+     * @return (string) - A timestamp indicating when the role was last updated
      * 
      */
     private String updateTime;
 
     private GetPostgresRolesRole() {}
     /**
-     * @return (string)
+     * @return (string) - A timestamp indicating when the role was created
      * 
      */
     public String createTime() {
@@ -97,7 +97,7 @@ public final class GetPostgresRolesRole {
         return this.roleId;
     }
     /**
-     * @return (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes
+     * @return (RoleRoleSpec) - The spec contains the role configuration, including identity type, authentication method, and role attributes.
      * 
      */
     public GetPostgresRolesRoleSpec spec() {
@@ -111,7 +111,7 @@ public final class GetPostgresRolesRole {
         return this.status;
     }
     /**
-     * @return (string)
+     * @return (string) - A timestamp indicating when the role was last updated
      * 
      */
     public String updateTime() {

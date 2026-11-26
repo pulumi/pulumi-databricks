@@ -15,19 +15,20 @@ namespace Pulumi.Databricks.Outputs
     {
         public readonly ImmutableArray<string> Granularities;
         /// <summary>
-        /// Column for the label
+        /// Column containing the ground truth for the model's predictions
         /// </summary>
         public readonly string? LabelColumn;
         /// <summary>
-        /// Column for the model identifier
+        /// Column containing the ID of the model that produced each prediction. A slice is created automatically for
+        /// each distinct model ID
         /// </summary>
         public readonly string ModelIdColumn;
         /// <summary>
-        /// Column for the prediction
+        /// Column containing the model's predicted values
         /// </summary>
         public readonly string PredictionColumn;
         /// <summary>
-        /// Problem type the model aims to solve. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
+        /// The type of problem the model solves. It determines which model quality metrics are computed. Possible values are: `INFERENCE_PROBLEM_TYPE_CLASSIFICATION`, `INFERENCE_PROBLEM_TYPE_REGRESSION`
         /// </summary>
         public readonly string ProblemType;
         public readonly string TimestampColumn;

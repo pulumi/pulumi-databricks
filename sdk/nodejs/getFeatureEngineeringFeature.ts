@@ -106,6 +106,10 @@ export interface GetFeatureEngineeringFeatureResult {
      * backwards compatibility but is deprecated; migrate to dot notation
      */
     readonly name: string;
+    /**
+     * (string) - Output type in Databricks SQL DDL (e.g., "BIGINT", "DECIMAL(10,2)", "ARRAY<STRING>", "STRUCT<name:STRING>")
+     */
+    readonly outputTypeText: string;
     readonly providerConfig?: outputs.GetFeatureEngineeringFeatureProviderConfig;
     /**
      * (string) - Name of parent schema relative to its parent catalog

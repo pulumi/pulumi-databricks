@@ -196,7 +196,8 @@ export class DatabaseSyncedDatabaseTable extends pulumi.CustomResource {
     }
 
     /**
-     * (SyncedTableStatus) - Synced Table data synchronization status
+     * (SyncedTableStatus) - Reports the status of the data synchronization pipeline that keeps this table in sync with its
+     * source, including the pipeline ID and the position of the last successful sync
      */
     declare public /*out*/ readonly dataSynchronizationStatus: pulumi.Output<outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatus>;
     /**
@@ -207,8 +208,8 @@ export class DatabaseSyncedDatabaseTable extends pulumi.CustomResource {
      */
     declare public readonly databaseInstanceName: pulumi.Output<string>;
     /**
-     * (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-     * tables inside database catalogs is inferred database instance associated with the catalog.
+     * (string) - The name of the database instance that this table is registered to. This field is always returned; for
+     * tables inside database catalogs it is the database instance associated with the catalog.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      */
@@ -229,7 +230,7 @@ export class DatabaseSyncedDatabaseTable extends pulumi.CustomResource {
      *
      * When creating a synced table in a standard catalog, this field is required.
      * In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-     * Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
+     * If this database does not exist yet, it is created when `createDatabaseObjectsIfMissing` in `spec` is true
      */
     declare public readonly logicalDatabaseName: pulumi.Output<string>;
     /**
@@ -240,6 +241,9 @@ export class DatabaseSyncedDatabaseTable extends pulumi.CustomResource {
      * Configure the provider for management through account provider.
      */
     declare public readonly providerConfig: pulumi.Output<outputs.DatabaseSyncedDatabaseTableProviderConfig>;
+    /**
+     * Specifies the source table, the key columns and how the data synchronization pipeline runs
+     */
     declare public readonly spec: pulumi.Output<outputs.DatabaseSyncedDatabaseTableSpec | undefined>;
     /**
      * (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
@@ -292,7 +296,8 @@ export class DatabaseSyncedDatabaseTable extends pulumi.CustomResource {
  */
 export interface DatabaseSyncedDatabaseTableState {
     /**
-     * (SyncedTableStatus) - Synced Table data synchronization status
+     * (SyncedTableStatus) - Reports the status of the data synchronization pipeline that keeps this table in sync with its
+     * source, including the pipeline ID and the position of the last successful sync
      */
     dataSynchronizationStatus?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableDataSynchronizationStatus | undefined>;
     /**
@@ -303,8 +308,8 @@ export interface DatabaseSyncedDatabaseTableState {
      */
     databaseInstanceName?: pulumi.Input<string | undefined>;
     /**
-     * (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-     * tables inside database catalogs is inferred database instance associated with the catalog.
+     * (string) - The name of the database instance that this table is registered to. This field is always returned; for
+     * tables inside database catalogs it is the database instance associated with the catalog.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      */
@@ -325,7 +330,7 @@ export interface DatabaseSyncedDatabaseTableState {
      *
      * When creating a synced table in a standard catalog, this field is required.
      * In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-     * Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
+     * If this database does not exist yet, it is created when `createDatabaseObjectsIfMissing` in `spec` is true
      */
     logicalDatabaseName?: pulumi.Input<string | undefined>;
     /**
@@ -336,6 +341,9 @@ export interface DatabaseSyncedDatabaseTableState {
      * Configure the provider for management through account provider.
      */
     providerConfig?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableProviderConfig | undefined>;
+    /**
+     * Specifies the source table, the key columns and how the data synchronization pipeline runs
+     */
     spec?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableSpec | undefined>;
     /**
      * (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
@@ -366,7 +374,7 @@ export interface DatabaseSyncedDatabaseTableArgs {
      *
      * When creating a synced table in a standard catalog, this field is required.
      * In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-     * Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
+     * If this database does not exist yet, it is created when `createDatabaseObjectsIfMissing` in `spec` is true
      */
     logicalDatabaseName?: pulumi.Input<string | undefined>;
     /**
@@ -377,5 +385,8 @@ export interface DatabaseSyncedDatabaseTableArgs {
      * Configure the provider for management through account provider.
      */
     providerConfig?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableProviderConfig | undefined>;
+    /**
+     * Specifies the source table, the key columns and how the data synchronization pipeline runs
+     */
     spec?: pulumi.Input<inputs.DatabaseSyncedDatabaseTableSpec | undefined>;
 }

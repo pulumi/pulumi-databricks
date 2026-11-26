@@ -25,6 +25,9 @@ namespace Pulumi.Databricks.Outputs
         /// Setting this value to 1 allows the alert to send a notification on every evaluation where the condition is met, effectively making it always retrigger for notification purposes
         /// </summary>
         public readonly int? RetriggerSeconds;
+        /// <summary>
+        /// Users and notification destinations that receive notifications
+        /// </summary>
         public readonly ImmutableArray<Outputs.AlertV2EvaluationNotificationSubscription> Subscriptions;
 
         [OutputConstructor]

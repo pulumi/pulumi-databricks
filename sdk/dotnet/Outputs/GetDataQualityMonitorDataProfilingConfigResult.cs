@@ -14,23 +14,25 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetDataQualityMonitorDataProfilingConfigResult
     {
         /// <summary>
-        /// (string) - Field for specifying the absolute path to a custom directory to store data-monitoring
-        /// assets. Normally prepopulated to a default user location via UI and Python APIs
+        /// (string) - The absolute workspace path of the directory where the monitor's assets, such as
+        /// the dashboard, are stored. The UI and the Python APIs normally prepopulate a default user location
         /// </summary>
         public readonly string? AssetsDir;
         /// <summary>
-        /// (string) - Baseline table name.
-        /// Baseline data is used to compute drift from the data in the monitored `TableName`.
-        /// The baseline table and the monitored table shall have the same schema
+        /// (string) - The fully qualified name of a baseline table. Format: `catalog.schema.table_name`.
+        /// Drift metrics compare the monitored table against the baseline data, so the two tables must have the same
+        /// schema
         /// </summary>
         public readonly string? BaselineTableName;
         /// <summary>
-        /// (list of DataProfilingCustomMetric) - Custom metrics
+        /// (list of DataProfilingCustomMetric) - Custom metrics to compute in addition to the built-in ones. See
+        /// [custom metrics](https://docs.databricks.com/aws/en/data-governance/unity-catalog/data-quality-monitoring/data-profiling/custom-metrics)
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDataQualityMonitorDataProfilingConfigCustomMetricResult> CustomMetrics;
         /// <summary>
-        /// (string) - Id of dashboard that visualizes the computed metrics.
-        /// This can be empty if the monitor is in PENDING state
+        /// (string) - The ID of the dashboard that visualizes the computed metrics. It is empty while
+        /// the monitor is pending, when the dashboard was skipped with `SkipBuiltinDashboard`, or when the caller is in
+        /// a different workspace from the one where the monitor was created
         /// </summary>
         public readonly string DashboardId;
         /// <summary>
@@ -42,7 +44,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string EffectiveWarehouseId;
         /// <summary>
-        /// (InferenceLogConfig) - `Analysis Configuration` for monitoring inference log tables
+        /// (InferenceLogConfig) - Profiles an inference log table, which stores the requests and predictions of a model. Metrics are
+        /// computed per time window and include model quality metrics
         /// </summary>
         public readonly Outputs.GetDataQualityMonitorDataProfilingConfigInferenceLogResult? InferenceLog;
         /// <summary>
@@ -56,15 +59,17 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly int MonitorVersion;
         /// <summary>
-        /// (string) - Unity Catalog table to monitor. Format: `catalog.schema.table_name`
+        /// (string) - The fully qualified name of the monitored table. Format: `catalog.schema.table_name`
         /// </summary>
         public readonly string MonitoredTableName;
         /// <summary>
-        /// (NotificationSettings) - Field for specifying notification settings
+        /// (NotificationSettings) - Who to notify about this monitor's refreshes. Only `OnFailure` with
+        /// `EmailAddresses` is supported here
         /// </summary>
         public readonly Outputs.GetDataQualityMonitorDataProfilingConfigNotificationSettingsResult? NotificationSettings;
         /// <summary>
-        /// (string) - ID of the schema where output tables are created
+        /// (string) - The UUID of the Unity Catalog schema where the profile and drift metrics tables
+        /// are created
         /// </summary>
         public readonly string OutputSchemaId;
         /// <summary>
@@ -72,7 +77,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string ProfileMetricsTableName;
         /// <summary>
-        /// (CronSchedule) - The cron schedule
+        /// (CronSchedule) - The schedule on which the monitor refreshes its metrics. Refreshes can also be
+        /// triggered on demand through the Refresh resource
         /// </summary>
         public readonly Outputs.GetDataQualityMonitorDataProfilingConfigScheduleResult? Schedule;
         /// <summary>
@@ -82,27 +88,32 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// (list of string) - List of column expressions to slice data with for targeted analysis. The data is grouped by
         /// each expression independently, resulting in a separate slice for each predicate and its
-        /// complements. For example `slicing_exprs=[“col_1”, “col_2 &gt; 10”]` will generate the following
+        /// complements. For example `slicing_exprs=["Col1", "Col2 " pulumi-lang-go="&gt; 10"]` will generate the following
         /// slices: two slices for `Col2 &gt; 10` (True and False), and one slice per unique value in
         /// `Col1`. For high-cardinality columns, only the top 100 unique values by frequency will
         /// generate slices
         /// </summary>
         public readonly ImmutableArray<string> SlicingExprs;
         /// <summary>
-        /// (SnapshotConfig) - `Analysis Configuration` for monitoring snapshot tables
+        /// (SnapshotConfig) - Profiles the full contents of the table. Metrics are computed over all rows at each refresh
         /// </summary>
         public readonly Outputs.GetDataQualityMonitorDataProfilingConfigSnapshotResult? Snapshot;
         /// <summary>
-        /// (string) - The data profiling monitor status. Possible values are: `DATA_PROFILING_STATUS_ACTIVE`, `DATA_PROFILING_STATUS_DELETE_PENDING`, `DATA_PROFILING_STATUS_ERROR`, `DATA_PROFILING_STATUS_FAILED`, `DATA_PROFILING_STATUS_PENDING`
+        /// (string) - The status of the monitor. `DATA_PROFILING_STATUS_PENDING` means the monitor's
+        /// assets are being created or updated. `DATA_PROFILING_STATUS_ACTIVE` means the monitor is ready and can be
+        /// refreshed. `DATA_PROFILING_STATUS_FAILED` and `DATA_PROFILING_STATUS_ERROR` mean the monitor is not
+        /// operational, and `LatestMonitorFailureMessage` describes the cause when one was recorded.
+        /// `DATA_PROFILING_STATUS_DELETE_PENDING` means the monitor is being deleted. Possible values are: `DATA_PROFILING_STATUS_ACTIVE`, `DATA_PROFILING_STATUS_DELETE_PENDING`, `DATA_PROFILING_STATUS_ERROR`, `DATA_PROFILING_STATUS_FAILED`, `DATA_PROFILING_STATUS_PENDING`
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// (TimeSeriesConfig) - `Analysis Configuration` for monitoring time series tables
+        /// (TimeSeriesConfig) - Profiles a time series table. Metrics are computed per time window, as defined by `TimestampColumn`
+        /// and `Granularities`
         /// </summary>
         public readonly Outputs.GetDataQualityMonitorDataProfilingConfigTimeSeriesResult? TimeSeries;
         /// <summary>
-        /// (string) - Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
-        /// warehouse will be used
+        /// (string) - The ID of the SQL warehouse used to create the dashboard. If not specified, the first running warehouse the
+        /// caller can access is used
         /// </summary>
         public readonly string WarehouseId;
 

@@ -128,7 +128,8 @@ public class AgentKitManagedMemoryEntry extends com.pulumi.resources.CustomResou
         return this.parent;
     }
     /**
-     * Absolute, case-sensitive path identifying the entry within its actor and optional session.
+     * Absolute, case-sensitive path identifying the entry within its actor and, until the
+     * deprecated `sessionId` is ignored, its optional session.
      * Paths must begin with `/` and must not contain empty, `.` or `..` segments
      * 
      */
@@ -136,7 +137,8 @@ public class AgentKitManagedMemoryEntry extends com.pulumi.resources.CustomResou
     private Output<String> path;
 
     /**
-     * @return Absolute, case-sensitive path identifying the entry within its actor and optional session.
+     * @return Absolute, case-sensitive path identifying the entry within its actor and, until the
+     * deprecated `sessionId` is ignored, its optional session.
      * Paths must begin with `/` and must not contain empty, `.` or `..` segments
      * 
      */
@@ -158,7 +160,8 @@ public class AgentKitManagedMemoryEntry extends com.pulumi.resources.CustomResou
         return this.providerConfig;
     }
     /**
-     * Optional identifier for the session associated with this memory entry. When omitted, the
+     * Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+     * ignore this field on writes and omit it from responses. Until then, an omitted value means the
      * entry applies across the actor&#39;s sessions
      * 
      */
@@ -166,7 +169,8 @@ public class AgentKitManagedMemoryEntry extends com.pulumi.resources.CustomResou
     private Output</* @Nullable */ String> sessionId;
 
     /**
-     * @return Optional identifier for the session associated with this memory entry. When omitted, the
+     * @return Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+     * ignore this field on writes and omit it from responses. Until then, an omitted value means the
      * entry applies across the actor&#39;s sessions
      * 
      */
@@ -174,14 +178,16 @@ public class AgentKitManagedMemoryEntry extends com.pulumi.resources.CustomResou
         return Codegen.optional(this.sessionId);
     }
     /**
-     * Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+     * Which writer created this entry. Caller sets this on Create; immutable after creation.
+     * The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
      * 
      */
     @Export(name="sourceType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceType;
 
     /**
-     * @return Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+     * @return Which writer created this entry. Caller sets this on Create; immutable after creation.
+     * The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
      * 
      */
     public Output<Optional<String>> sourceType() {

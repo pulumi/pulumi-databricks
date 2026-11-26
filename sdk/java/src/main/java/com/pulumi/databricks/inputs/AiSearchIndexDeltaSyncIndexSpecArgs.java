@@ -20,18 +20,18 @@ public final class AiSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.resour
     public static final AiSearchIndexDeltaSyncIndexSpecArgs Empty = new AiSearchIndexDeltaSyncIndexSpecArgs();
 
     /**
-     * [Optional] Select the columns to sync with the index. If left blank, all columns
-     * from the source table are synced. The primary key column and embedding source or
-     * vector column are always synced
+     * Columns of the source table to include in the index. When empty, all columns are synced. The
+     * primary key and the embedding source or vector column are always synced. Only synced columns
+     * can be returned in query results or used in filters
      * 
      */
     @Import(name="columnsToSyncs")
     private @Nullable Output<List<String>> columnsToSyncs;
 
     /**
-     * @return [Optional] Select the columns to sync with the index. If left blank, all columns
-     * from the source table are synced. The primary key column and embedding source or
-     * vector column are always synced
+     * @return Columns of the source table to include in the index. When empty, all columns are synced. The
+     * primary key and the embedding source or vector column are always synced. Only synced columns
+     * can be returned in query results or used in filters
      * 
      */
     public Optional<Output<List<String>>> columnsToSyncs() {
@@ -53,14 +53,18 @@ public final class AiSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.resour
     }
 
     /**
-     * [Optional] Name of the Delta table to sync the index contents and computed embeddings to
+     * Three-level name of a Delta table to write the synced rows and computed embeddings to. It
+     * applies only when embeddings are computed from `embeddingSourceColumns`, and the table must
+     * not already exist
      * 
      */
     @Import(name="embeddingWritebackTable")
     private @Nullable Output<String> embeddingWritebackTable;
 
     /**
-     * @return [Optional] Name of the Delta table to sync the index contents and computed embeddings to
+     * @return Three-level name of a Delta table to write the synced rows and computed embeddings to. It
+     * applies only when embeddings are computed from `embeddingSourceColumns`, and the table must
+     * not already exist
      * 
      */
     public Optional<Output<String>> embeddingWritebackTable() {
@@ -83,22 +87,18 @@ public final class AiSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.resour
     }
 
     /**
-     * Pipeline execution mode. Required on create — the backend rejects an unset value.
-     * Storage Optimized endpoints accept only `TRIGGERED`; Standard endpoints accept both.
-     * No explicit `stage` — a REQUIRED field staged below its service would be dropped from
-     * combined specs while remaining in `required`, tripping the OpenAPI required-vs-properties
-     * consistency check. The field inherits the service&#39;s launch stage. Possible values are: `CONTINUOUS`, `TRIGGERED`
+     * Sync mode of the pipeline that keeps the index up to date. `TRIGGERED` syncs at creation and
+     * then each time SyncIndex is called; `CONTINUOUS` processes source changes as they arrive.
+     * Storage Optimized endpoints accept only `TRIGGERED`, and an unset value is rejected. Possible values are: `CONTINUOUS`, `TRIGGERED`
      * 
      */
     @Import(name="pipelineType", required=true)
     private Output<String> pipelineType;
 
     /**
-     * @return Pipeline execution mode. Required on create — the backend rejects an unset value.
-     * Storage Optimized endpoints accept only `TRIGGERED`; Standard endpoints accept both.
-     * No explicit `stage` — a REQUIRED field staged below its service would be dropped from
-     * combined specs while remaining in `required`, tripping the OpenAPI required-vs-properties
-     * consistency check. The field inherits the service&#39;s launch stage. Possible values are: `CONTINUOUS`, `TRIGGERED`
+     * @return Sync mode of the pipeline that keeps the index up to date. `TRIGGERED` syncs at creation and
+     * then each time SyncIndex is called; `CONTINUOUS` processes source changes as they arrive.
+     * Storage Optimized endpoints accept only `TRIGGERED`, and an unset value is rejected. Possible values are: `CONTINUOUS`, `TRIGGERED`
      * 
      */
     public Output<String> pipelineType() {
@@ -106,14 +106,14 @@ public final class AiSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.resour
     }
 
     /**
-     * The full name of the source Delta table
+     * Three-level Unity Catalog name of the source Delta table, in the form `catalog.schema.table`
      * 
      */
     @Import(name="sourceTable")
     private @Nullable Output<String> sourceTable;
 
     /**
-     * @return The full name of the source Delta table
+     * @return Three-level Unity Catalog name of the source Delta table, in the form `catalog.schema.table`
      * 
      */
     public Optional<Output<String>> sourceTable() {
@@ -151,9 +151,9 @@ public final class AiSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.resour
         }
 
         /**
-         * @param columnsToSyncs [Optional] Select the columns to sync with the index. If left blank, all columns
-         * from the source table are synced. The primary key column and embedding source or
-         * vector column are always synced
+         * @param columnsToSyncs Columns of the source table to include in the index. When empty, all columns are synced. The
+         * primary key and the embedding source or vector column are always synced. Only synced columns
+         * can be returned in query results or used in filters
          * 
          * @return builder
          * 
@@ -164,9 +164,9 @@ public final class AiSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.resour
         }
 
         /**
-         * @param columnsToSyncs [Optional] Select the columns to sync with the index. If left blank, all columns
-         * from the source table are synced. The primary key column and embedding source or
-         * vector column are always synced
+         * @param columnsToSyncs Columns of the source table to include in the index. When empty, all columns are synced. The
+         * primary key and the embedding source or vector column are always synced. Only synced columns
+         * can be returned in query results or used in filters
          * 
          * @return builder
          * 
@@ -176,9 +176,9 @@ public final class AiSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.resour
         }
 
         /**
-         * @param columnsToSyncs [Optional] Select the columns to sync with the index. If left blank, all columns
-         * from the source table are synced. The primary key column and embedding source or
-         * vector column are always synced
+         * @param columnsToSyncs Columns of the source table to include in the index. When empty, all columns are synced. The
+         * primary key and the embedding source or vector column are always synced. Only synced columns
+         * can be returned in query results or used in filters
          * 
          * @return builder
          * 
@@ -214,7 +214,9 @@ public final class AiSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.resour
         }
 
         /**
-         * @param embeddingWritebackTable [Optional] Name of the Delta table to sync the index contents and computed embeddings to
+         * @param embeddingWritebackTable Three-level name of a Delta table to write the synced rows and computed embeddings to. It
+         * applies only when embeddings are computed from `embeddingSourceColumns`, and the table must
+         * not already exist
          * 
          * @return builder
          * 
@@ -225,7 +227,9 @@ public final class AiSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.resour
         }
 
         /**
-         * @param embeddingWritebackTable [Optional] Name of the Delta table to sync the index contents and computed embeddings to
+         * @param embeddingWritebackTable Three-level name of a Delta table to write the synced rows and computed embeddings to. It
+         * applies only when embeddings are computed from `embeddingSourceColumns`, and the table must
+         * not already exist
          * 
          * @return builder
          * 
@@ -256,11 +260,9 @@ public final class AiSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.resour
         }
 
         /**
-         * @param pipelineType Pipeline execution mode. Required on create — the backend rejects an unset value.
-         * Storage Optimized endpoints accept only `TRIGGERED`; Standard endpoints accept both.
-         * No explicit `stage` — a REQUIRED field staged below its service would be dropped from
-         * combined specs while remaining in `required`, tripping the OpenAPI required-vs-properties
-         * consistency check. The field inherits the service&#39;s launch stage. Possible values are: `CONTINUOUS`, `TRIGGERED`
+         * @param pipelineType Sync mode of the pipeline that keeps the index up to date. `TRIGGERED` syncs at creation and
+         * then each time SyncIndex is called; `CONTINUOUS` processes source changes as they arrive.
+         * Storage Optimized endpoints accept only `TRIGGERED`, and an unset value is rejected. Possible values are: `CONTINUOUS`, `TRIGGERED`
          * 
          * @return builder
          * 
@@ -271,11 +273,9 @@ public final class AiSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.resour
         }
 
         /**
-         * @param pipelineType Pipeline execution mode. Required on create — the backend rejects an unset value.
-         * Storage Optimized endpoints accept only `TRIGGERED`; Standard endpoints accept both.
-         * No explicit `stage` — a REQUIRED field staged below its service would be dropped from
-         * combined specs while remaining in `required`, tripping the OpenAPI required-vs-properties
-         * consistency check. The field inherits the service&#39;s launch stage. Possible values are: `CONTINUOUS`, `TRIGGERED`
+         * @param pipelineType Sync mode of the pipeline that keeps the index up to date. `TRIGGERED` syncs at creation and
+         * then each time SyncIndex is called; `CONTINUOUS` processes source changes as they arrive.
+         * Storage Optimized endpoints accept only `TRIGGERED`, and an unset value is rejected. Possible values are: `CONTINUOUS`, `TRIGGERED`
          * 
          * @return builder
          * 
@@ -285,7 +285,7 @@ public final class AiSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.resour
         }
 
         /**
-         * @param sourceTable The full name of the source Delta table
+         * @param sourceTable Three-level Unity Catalog name of the source Delta table, in the form `catalog.schema.table`
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class AiSearchIndexDeltaSyncIndexSpecArgs extends com.pulumi.resour
         }
 
         /**
-         * @param sourceTable The full name of the source Delta table
+         * @param sourceTable Three-level Unity Catalog name of the source Delta table, in the form `catalog.schema.table`
          * 
          * @return builder
          * 

@@ -52,7 +52,7 @@ class GetWorkspaceIamExternalGroupV2Result:
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.str:
         """
-        (string) - The parent account ID, from Databricks
+        (string) - The ID of the account that contains the group
         """
         return pulumi.get(self, "account_id")
 
@@ -60,7 +60,7 @@ class GetWorkspaceIamExternalGroupV2Result:
     @pulumi.getter(name="displayName")
     def display_name(self) -> _builtins.str:
         """
-        (string) - Display name of the group from the customer's IdP
+        (string) - The name of the group, from your IdP. It's the same as the group's `group_name`
         """
         return pulumi.get(self, "display_name")
 
@@ -68,7 +68,7 @@ class GetWorkspaceIamExternalGroupV2Result:
     @pulumi.getter(name="externalGroupId")
     def external_group_id(self) -> _builtins.str:
         """
-        (string) - The external ID of the group in the customer's IdP
+        (string) - The ID of the group in your IdP
         """
         return pulumi.get(self, "external_group_id")
 
@@ -76,7 +76,7 @@ class GetWorkspaceIamExternalGroupV2Result:
     @pulumi.getter(name="internalId")
     def internal_id(self) -> _builtins.str:
         """
-        (string) - Internal groupId of the group in Databricks
+        (string) - The Databricks ID of the group. Use it as the `group_id` in the group APIs
         """
         return pulumi.get(self, "internal_id")
 
@@ -84,10 +84,9 @@ class GetWorkspaceIamExternalGroupV2Result:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        (string) - The resource name of the external group. The format depends on the API that
-        returned it:
-        - Account-scoped: accounts/{account_id}/external-groups/{external_group_id}
-        - Workspace-scoped: external-groups/{external_group_id}
+        (string) - The resource name of the external group, in one of these formats:
+        - Account APIs: `accounts/{account_id}/external-groups/{external_group_id}`
+        - Workspace APIs: `external-groups/{external_group_id}`
         """
         return pulumi.get(self, "name")
 
@@ -115,7 +114,7 @@ def get_workspace_iam_external_group_v2(name: Optional[_builtins.str] = None,
                                         provider_config: Optional[Union['GetWorkspaceIamExternalGroupV2ProviderConfigArgs', 'GetWorkspaceIamExternalGroupV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamExternalGroupV2ProviderConfigResult']] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceIamExternalGroupV2Result:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
@@ -142,10 +141,9 @@ def get_workspace_iam_external_group_v2(name: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str name: The resource name of the external group. The format depends on the API that
-           returned it:
-           - Account-scoped: accounts/{account_id}/external-groups/{external_group_id}
-           - Workspace-scoped: external-groups/{external_group_id}
+    :param _builtins.str name: The resource name of the external group, in one of these formats:
+           - Account APIs: `accounts/{account_id}/external-groups/{external_group_id}`
+           - Workspace APIs: `external-groups/{external_group_id}`
     :param Union['GetWorkspaceIamExternalGroupV2ProviderConfigArgs', 'GetWorkspaceIamExternalGroupV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamExternalGroupV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -165,7 +163,7 @@ def get_workspace_iam_external_group_v2_output(name: pulumi.Input[Optional[_buil
                                                provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamExternalGroupV2ProviderConfigArgs', 'GetWorkspaceIamExternalGroupV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamExternalGroupV2ProviderConfigResult']]]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceIamExternalGroupV2Result]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
@@ -192,10 +190,9 @@ def get_workspace_iam_external_group_v2_output(name: pulumi.Input[Optional[_buil
     ```
 
 
-    :param _builtins.str name: The resource name of the external group. The format depends on the API that
-           returned it:
-           - Account-scoped: accounts/{account_id}/external-groups/{external_group_id}
-           - Workspace-scoped: external-groups/{external_group_id}
+    :param _builtins.str name: The resource name of the external group, in one of these formats:
+           - Account APIs: `accounts/{account_id}/external-groups/{external_group_id}`
+           - Workspace APIs: `external-groups/{external_group_id}`
     :param Union['GetWorkspaceIamExternalGroupV2ProviderConfigArgs', 'GetWorkspaceIamExternalGroupV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamExternalGroupV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()

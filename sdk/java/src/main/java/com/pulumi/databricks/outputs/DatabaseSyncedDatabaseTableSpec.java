@@ -24,7 +24,8 @@ public final class DatabaseSyncedDatabaseTableSpec {
     private @Nullable Boolean acceleratedSync;
     /**
      * @return If true, the synced table&#39;s logical database and schema resources in PG
-     * will be created if they do not already exist
+     * will be created if they do not already exist. The request fails if this is false and the database
+     * or schema does not exist
      * 
      */
     private @Nullable Boolean createDatabaseObjectsIfMissing;
@@ -48,12 +49,18 @@ public final class DatabaseSyncedDatabaseTableSpec {
      */
     private @Nullable DatabaseSyncedDatabaseTableSpecNewPipelineSpec newPipelineSpec;
     /**
-     * @return Primary Key columns to be used for data insert/update in the destination
+     * @return The primary key columns are used to insert and update rows in the destination table. At least one
+     * column is required. Rows whose primary key columns contain null values are not synced, and the primary
+     * key cannot be changed after the table is created
      * 
      */
     private @Nullable List<String> primaryKeyColumns;
     /**
-     * @return Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+     * @return Specifies the scheduling policy of the underlying pipeline. With CONTINUOUS, the pipeline keeps running and
+     * applies source changes as they happen. With TRIGGERED and SNAPSHOT, the pipeline stops after the
+     * initial load and syncs again only when it is run (manually, on a schedule or from a job); TRIGGERED
+     * applies source changes incrementally, while SNAPSHOT copies the full source table on every run.
+     * CONTINUOUS and TRIGGERED require the source table to provide a change data feed. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
      * 
      */
     private @Nullable String schedulingPolicy;
@@ -63,7 +70,9 @@ public final class DatabaseSyncedDatabaseTableSpec {
      */
     private @Nullable String sourceTableFullName;
     /**
-     * @return Time series key to deduplicate (tie-break) rows with the same primary key
+     * @return The time series key deduplicates (tie-breaks) rows with the same primary key. When primary key values
+     * can repeat in the source table, the synced table keeps only the row with the latest value of this
+     * column for each primary key. The key cannot be changed after the table is created
      * 
      */
     private @Nullable String timeseriesKey;
@@ -86,7 +95,8 @@ public final class DatabaseSyncedDatabaseTableSpec {
     }
     /**
      * @return If true, the synced table&#39;s logical database and schema resources in PG
-     * will be created if they do not already exist
+     * will be created if they do not already exist. The request fails if this is false and the database
+     * or schema does not exist
      * 
      */
     public Optional<Boolean> createDatabaseObjectsIfMissing() {
@@ -116,14 +126,20 @@ public final class DatabaseSyncedDatabaseTableSpec {
         return Optional.ofNullable(this.newPipelineSpec);
     }
     /**
-     * @return Primary Key columns to be used for data insert/update in the destination
+     * @return The primary key columns are used to insert and update rows in the destination table. At least one
+     * column is required. Rows whose primary key columns contain null values are not synced, and the primary
+     * key cannot be changed after the table is created
      * 
      */
     public List<String> primaryKeyColumns() {
         return this.primaryKeyColumns == null ? List.of() : this.primaryKeyColumns;
     }
     /**
-     * @return Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+     * @return Specifies the scheduling policy of the underlying pipeline. With CONTINUOUS, the pipeline keeps running and
+     * applies source changes as they happen. With TRIGGERED and SNAPSHOT, the pipeline stops after the
+     * initial load and syncs again only when it is run (manually, on a schedule or from a job); TRIGGERED
+     * applies source changes incrementally, while SNAPSHOT copies the full source table on every run.
+     * CONTINUOUS and TRIGGERED require the source table to provide a change data feed. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
      * 
      */
     public Optional<String> schedulingPolicy() {
@@ -137,7 +153,9 @@ public final class DatabaseSyncedDatabaseTableSpec {
         return Optional.ofNullable(this.sourceTableFullName);
     }
     /**
-     * @return Time series key to deduplicate (tie-break) rows with the same primary key
+     * @return The time series key deduplicates (tie-breaks) rows with the same primary key. When primary key values
+     * can repeat in the source table, the synced table keeps only the row with the latest value of this
+     * column for each primary key. The key cannot be changed after the table is created
      * 
      */
     public Optional<String> timeseriesKey() {

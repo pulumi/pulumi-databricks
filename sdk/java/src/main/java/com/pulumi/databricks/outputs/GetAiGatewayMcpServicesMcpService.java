@@ -32,12 +32,12 @@ public final class GetAiGatewayMcpServicesMcpService {
      */
     private String createTime;
     /**
-     * @return (string) - Creator identity
+     * @return (string) - Username or service principal application ID of the principal that created the MCP service
      * 
      */
     private String createdBy;
     /**
-     * @return (string) - Owner of the MCP service
+     * @return (string) - Username, group name, or service principal application ID of the MCP service owner
      * 
      */
     private String effectiveOwner;
@@ -50,7 +50,7 @@ public final class GetAiGatewayMcpServicesMcpService {
      */
     private String etag;
     /**
-     * @return (string) - Metastore hosting the MCP service
+     * @return (string) - Unique identifier of the metastore that contains the MCP service
      * 
      */
     private String metastoreId;
@@ -71,7 +71,8 @@ public final class GetAiGatewayMcpServicesMcpService {
      */
     private String updateTime;
     /**
-     * @return (string) - Identity of the last updater
+     * @return (string) - Username or service principal application ID of the principal that last updated the MCP
+     * service
      * 
      */
     private String updatedBy;
@@ -101,14 +102,14 @@ public final class GetAiGatewayMcpServicesMcpService {
         return this.createTime;
     }
     /**
-     * @return (string) - Creator identity
+     * @return (string) - Username or service principal application ID of the principal that created the MCP service
      * 
      */
     public String createdBy() {
         return this.createdBy;
     }
     /**
-     * @return (string) - Owner of the MCP service
+     * @return (string) - Username, group name, or service principal application ID of the MCP service owner
      * 
      */
     public String effectiveOwner() {
@@ -125,7 +126,7 @@ public final class GetAiGatewayMcpServicesMcpService {
         return this.etag;
     }
     /**
-     * @return (string) - Metastore hosting the MCP service
+     * @return (string) - Unique identifier of the metastore that contains the MCP service
      * 
      */
     public String metastoreId() {
@@ -154,7 +155,8 @@ public final class GetAiGatewayMcpServicesMcpService {
         return this.updateTime;
     }
     /**
-     * @return (string) - Identity of the last updater
+     * @return (string) - Username or service principal application ID of the principal that last updated the MCP
+     * service
      * 
      */
     public String updatedBy() {

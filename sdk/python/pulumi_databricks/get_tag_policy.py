@@ -63,7 +63,7 @@ class GetTagPolicyResult:
     @pulumi.getter
     def description(self) -> _builtins.str:
         """
-        (string)
+        (string) - A description of the governed tag, such as its purpose or the meaning of its values
         """
         return pulumi.get(self, "description")
 
@@ -71,7 +71,7 @@ class GetTagPolicyResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        (string)
+        (string) - The unique identifier of the tag policy, generated when the policy is created
         """
         return pulumi.get(self, "id")
 
@@ -84,7 +84,7 @@ class GetTagPolicyResult:
     @pulumi.getter(name="tagKey")
     def tag_key(self) -> _builtins.str:
         """
-        (string)
+        (string) - The tag key that this policy governs. Tag keys are case-sensitive
         """
         return pulumi.get(self, "tag_key")
 
@@ -100,7 +100,8 @@ class GetTagPolicyResult:
     @pulumi.getter
     def values(self) -> Sequence['outputs.GetTagPolicyValueResult']:
         """
-        (list of Value)
+        (list of Value) - The allowed values of the governed tag. Only these values can be assigned to the tag key, and each
+        value must be unique. A policy without values defines a key-only governed tag
         """
         return pulumi.get(self, "values")
 
@@ -152,6 +153,7 @@ def get_tag_policy(provider_config: Optional[Union['GetTagPolicyProviderConfigAr
 
 
     :param Union['GetTagPolicyProviderConfigArgs', 'GetTagPolicyProviderConfigArgsDict', 'outputs.GetTagPolicyProviderConfigResult'] provider_config: Configure the provider for management through account provider.
+    :param _builtins.str tag_key: The tag key that this policy governs. Tag keys are case-sensitive
     """
     __args__ = dict()
     __args__['providerConfig'] = provider_config
@@ -199,6 +201,7 @@ def get_tag_policy_output(provider_config: pulumi.Input[Optional[Optional[Union[
 
 
     :param Union['GetTagPolicyProviderConfigArgs', 'GetTagPolicyProviderConfigArgsDict', 'outputs.GetTagPolicyProviderConfigResult'] provider_config: Configure the provider for management through account provider.
+    :param _builtins.str tag_key: The tag key that this policy governs. Tag keys are case-sensitive
     """
     __args__ = dict()
     __args__['providerConfig'] = provider_config

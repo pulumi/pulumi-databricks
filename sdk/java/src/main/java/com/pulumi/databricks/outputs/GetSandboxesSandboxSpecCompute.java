@@ -12,14 +12,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetSandboxesSandboxSpecCompute {
     /**
-     * @return (string) - Idle duration after which the sandbox is automatically terminated
+     * @return (string) - Idle time after which the sandbox is automatically stopped. Unset or 0 disables inactivity
+     * auto-stop. Negative values are rejected. Can be changed on an existing sandbox with
+     * UpdateSandbox
      * 
      */
     private @Nullable String inactivityTimeout;
 
     private GetSandboxesSandboxSpecCompute() {}
     /**
-     * @return (string) - Idle duration after which the sandbox is automatically terminated
+     * @return (string) - Idle time after which the sandbox is automatically stopped. Unset or 0 disables inactivity
+     * auto-stop. Negative values are rejected. Can be changed on an existing sandbox with
+     * UpdateSandbox
      * 
      */
     public Optional<String> inactivityTimeout() {

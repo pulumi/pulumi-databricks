@@ -15,7 +15,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDatabaseDatabaseCatalogResult {
     /**
-     * @return (boolean)
+     * @return (boolean) - If true, the database named in databaseName is created in the instance when it does not already
+     * exist, with the calling user as its owner. Defaults to false
      * 
      */
     private Boolean createDatabaseIfNotExists;
@@ -25,25 +26,28 @@ public final class GetDatabaseDatabaseCatalogResult {
      */
     private String databaseInstanceName;
     /**
-     * @return (string) - The name of the database (in an instance) associated with the catalog
+     * @return (string) - The name of the Postgres database in the instance that the catalog registers. The database must
+     * already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+     * databricks_system, template0 and template1 cannot be registered
      * 
      */
     private String databaseName;
     /**
-     * @return (string) - The name of the catalog in UC
+     * @return (string) - The name of the catalog in Unity Catalog
      * 
      */
     private String name;
     private @Nullable GetDatabaseDatabaseCatalogProviderConfig providerConfig;
     /**
-     * @return (string)
+     * @return (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
      * 
      */
     private String uid;
 
     private GetDatabaseDatabaseCatalogResult() {}
     /**
-     * @return (boolean)
+     * @return (boolean) - If true, the database named in databaseName is created in the instance when it does not already
+     * exist, with the calling user as its owner. Defaults to false
      * 
      */
     public Boolean createDatabaseIfNotExists() {
@@ -57,14 +61,16 @@ public final class GetDatabaseDatabaseCatalogResult {
         return this.databaseInstanceName;
     }
     /**
-     * @return (string) - The name of the database (in an instance) associated with the catalog
+     * @return (string) - The name of the Postgres database in the instance that the catalog registers. The database must
+     * already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+     * databricks_system, template0 and template1 cannot be registered
      * 
      */
     public String databaseName() {
         return this.databaseName;
     }
     /**
-     * @return (string) - The name of the catalog in UC
+     * @return (string) - The name of the catalog in Unity Catalog
      * 
      */
     public String name() {
@@ -74,7 +80,7 @@ public final class GetDatabaseDatabaseCatalogResult {
         return Optional.ofNullable(this.providerConfig);
     }
     /**
-     * @return (string)
+     * @return (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
      * 
      */
     public String uid() {

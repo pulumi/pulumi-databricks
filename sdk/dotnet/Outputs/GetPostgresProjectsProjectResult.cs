@@ -41,7 +41,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (string) - Part of the resource name
+        /// (string) - The project ID, which is the final segment of the project's resource name
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
@@ -54,15 +54,19 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string PurgeTime;
         /// <summary>
-        /// (ProjectSpec) - The spec contains the project configuration, including display_name, PgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
+        /// (ProjectSpec) - The desired configuration of the project. The fields under `Spec` are the ones that can be
+        /// changed after creation, except `PgVersion`, which is fixed when the project is created. See
+        /// `Status` for the configuration that is currently in effect.
         /// </summary>
         public readonly Outputs.GetPostgresProjectsProjectSpecResult Spec;
         /// <summary>
-        /// (ProjectStatus) - The current status of a Project
+        /// (ProjectStatus) - The configuration and state of the project that are currently in effect, as reported by the
+        /// system
         /// </summary>
         public readonly Outputs.GetPostgresProjectsProjectStatusResult Status;
         /// <summary>
-        /// (string) - System-generated unique ID for the project
+        /// (string) - A system-generated UUID that identifies the project. Unlike `Name`, it is not derived from the
+        /// user-chosen project ID
         /// </summary>
         public readonly string Uid;
         /// <summary>

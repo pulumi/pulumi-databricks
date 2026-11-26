@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetPostgresSyncedTable
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresSyncedTableResult>("databricks:index/getPostgresSyncedTable:getPostgresSyncedTable", args ?? new GetPostgresSyncedTableArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -80,7 +80,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresSyncedTableResult>("databricks:index/getPostgresSyncedTable:getPostgresSyncedTable", args ?? new GetPostgresSyncedTableInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -118,12 +118,12 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresSyncedTableArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Output only. The Full resource name of the synced table in Postgres
-        /// where (catalog, schema, table) are the UC entity names.
+        /// The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+        /// names of the synced table.
         /// 
-        /// Format "synced_tables/{catalog}.{schema}.{table}"
+        /// Format: "synced_tables/{catalog}.{schema}.{table}".
         /// 
-        /// For the corresponding source table in the Unity catalog look for the "SourceTableFullName" attribute
+        /// For the corresponding source table in Unity Catalog, look for the "SourceTableFullName" attribute
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -143,12 +143,12 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresSyncedTableInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Output only. The Full resource name of the synced table in Postgres
-        /// where (catalog, schema, table) are the UC entity names.
+        /// The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+        /// names of the synced table.
         /// 
-        /// Format "synced_tables/{catalog}.{schema}.{table}"
+        /// Format: "synced_tables/{catalog}.{schema}.{table}".
         /// 
-        /// For the corresponding source table in the Unity catalog look for the "SourceTableFullName" attribute
+        /// For the corresponding source table in Unity Catalog, look for the "SourceTableFullName" attribute
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -170,12 +170,12 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresSyncedTableResult
     {
         /// <summary>
-        /// (string)
+        /// (string) - The time when the synced table was created
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// (string) - Output only. The Full resource name of the synced table in Postgres
-        /// where (catalog, schema, table) are the UC entity names.
+        /// (string) - The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+        /// names of the synced table.
         /// </summary>
         public readonly string Name;
         public readonly Outputs.GetPostgresSyncedTableProviderConfigResult? ProviderConfig;
@@ -188,7 +188,8 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly Outputs.GetPostgresSyncedTableStatusResult Status;
         /// <summary>
-        /// (string) - The part of the name, chosen by the user when the resource was created
+        /// (string) - The three-part Unity Catalog name of the synced table, in the format "{catalog}.{schema}.{table}".
+        /// It is the SyncedTableId that was used to create the synced table and the last component of name
         /// </summary>
         public readonly string SyncedTableId;
         /// <summary>

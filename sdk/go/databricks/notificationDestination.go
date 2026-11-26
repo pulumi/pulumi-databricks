@@ -82,6 +82,69 @@ import (
 //	}
 //
 // ```
+// `Databricks app in Slack` notification destination (the Databricks app must already be installed in your Slack workspace and connected to your Databricks workspace):
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewNotificationDestination(ctx, "ndresource", &databricks.NotificationDestinationArgs{
+//				DisplayName: pulumi.String("Notification Destination"),
+//				Config: &databricks.NotificationDestinationConfigArgs{
+//					DatabricksAppSlack: &databricks.NotificationDestinationConfigDatabricksAppSlackArgs{
+//						TeamId:    pulumi.String("T0123456789"),
+//						ChannelId: pulumi.String("C0123456789"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// `Databricks app in Microsoft Teams` notification destination (the Databricks app must already be installed in your Microsoft 365 tenant and connected to your Databricks workspace):
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-databricks/sdk/go/databricks"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := databricks.NewNotificationDestination(ctx, "ndresource", &databricks.NotificationDestinationArgs{
+//				DisplayName: pulumi.String("Notification Destination"),
+//				Config: &databricks.NotificationDestinationConfigArgs{
+//					DatabricksAppTeams: &databricks.NotificationDestinationConfigDatabricksAppTeamsArgs{
+//						TenantId:  pulumi.String("00000000-0000-0000-0000-000000000000"),
+//						TeamId:    pulumi.String("00000000-0000-0000-0000-000000000000"),
+//						ChannelId: pulumi.String("19:abc123@thread.tacv2"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // `PagerDuty` notification destination:
 //
 // ```go

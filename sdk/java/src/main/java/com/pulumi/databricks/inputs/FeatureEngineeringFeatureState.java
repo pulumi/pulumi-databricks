@@ -183,6 +183,21 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
     }
 
     /**
+     * (string) - Output type in Databricks SQL DDL (e.g., &#34;BIGINT&#34;, &#34;DECIMAL(10,2)&#34;, &#34;ARRAY&lt;STRING&gt;&#34;, &#34;STRUCT&lt;name:STRING&gt;&#34;)
+     * 
+     */
+    @Import(name="outputTypeText")
+    private @Nullable Output<String> outputTypeText;
+
+    /**
+     * @return (string) - Output type in Databricks SQL DDL (e.g., &#34;BIGINT&#34;, &#34;DECIMAL(10,2)&#34;, &#34;ARRAY&lt;STRING&gt;&#34;, &#34;STRUCT&lt;name:STRING&gt;&#34;)
+     * 
+     */
+    public Optional<Output<String>> outputTypeText() {
+        return Optional.ofNullable(this.outputTypeText);
+    }
+
+    /**
      * Configure the provider for management through account provider.
      * 
      */
@@ -267,6 +282,7 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
         this.inputs = $.inputs;
         this.lineageContext = $.lineageContext;
         this.name = $.name;
+        this.outputTypeText = $.outputTypeText;
         this.providerConfig = $.providerConfig;
         this.schemaName = $.schemaName;
         this.source = $.source;
@@ -522,6 +538,27 @@ public final class FeatureEngineeringFeatureState extends com.pulumi.resources.R
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param outputTypeText (string) - Output type in Databricks SQL DDL (e.g., &#34;BIGINT&#34;, &#34;DECIMAL(10,2)&#34;, &#34;ARRAY&lt;STRING&gt;&#34;, &#34;STRUCT&lt;name:STRING&gt;&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outputTypeText(@Nullable Output<String> outputTypeText) {
+            $.outputTypeText = outputTypeText;
+            return this;
+        }
+
+        /**
+         * @param outputTypeText (string) - Output type in Databricks SQL DDL (e.g., &#34;BIGINT&#34;, &#34;DECIMAL(10,2)&#34;, &#34;ARRAY&lt;STRING&gt;&#34;, &#34;STRUCT&lt;name:STRING&gt;&#34;)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder outputTypeText(String outputTypeText) {
+            return outputTypeText(Output.of(outputTypeText));
         }
 
         /**

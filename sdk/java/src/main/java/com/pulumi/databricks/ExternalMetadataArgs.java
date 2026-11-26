@@ -20,14 +20,16 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
     public static final ExternalMetadataArgs Empty = new ExternalMetadataArgs();
 
     /**
-     * List of columns associated with the external metadata object
+     * Names of the columns of the object, used for column-level mappings in external lineage relationships.
+     * Column names must be unique within the list, and the combined size of all column names is limited
      * 
      */
     @Import(name="columns")
     private @Nullable Output<List<String>> columns;
 
     /**
-     * @return List of columns associated with the external metadata object
+     * @return Names of the columns of the object, used for column-level mappings in external lineage relationships.
+     * Column names must be unique within the list, and the combined size of all column names is limited
      * 
      */
     public Optional<Output<List<String>>> columns() {
@@ -35,14 +37,14 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * User-provided free-form text description
+     * User-provided free-form text description of the object. The description must not exceed 5000 characters
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return User-provided free-form text description
+     * @return User-provided free-form text description of the object. The description must not exceed 5000 characters
      * 
      */
     public Optional<Output<String>> description() {
@@ -50,14 +52,16 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Type of entity within the external system
+     * Type of the object within the external system, such as a table, a report, or a dashboard. The value is
+     * free-form text of at most 255 characters
      * 
      */
     @Import(name="entityType", required=true)
     private Output<String> entityType;
 
     /**
-     * @return Type of entity within the external system
+     * @return Type of the object within the external system, such as a table, a report, or a dashboard. The value is
+     * free-form text of at most 255 characters
      * 
      */
     public Output<String> entityType() {
@@ -65,14 +69,20 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Name of the external metadata object
+     * Name of the external metadata object. The name is unique within the metastore, must follow the
+     * [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+     * and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+     * refer to the object by this name
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the external metadata object
+     * @return Name of the external metadata object. The name is unique within the metastore, must follow the
+     * [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+     * and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+     * refer to the object by this name
      * 
      */
     public Optional<Output<String>> name() {
@@ -80,14 +90,16 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Owner of the external metadata object
+     * Owner of the external metadata object. Defaults to the creator. To change the owner, send an update whose
+     * update mask includes `owner`
      * 
      */
     @Import(name="owner")
     private @Nullable Output<String> owner;
 
     /**
-     * @return Owner of the external metadata object
+     * @return Owner of the external metadata object. Defaults to the creator. To change the owner, send an update whose
+     * update mask includes `owner`
      * 
      */
     public Optional<Output<String>> owner() {
@@ -95,14 +107,16 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A map of key-value properties attached to the external metadata object
+     * Key-value properties attached to the object. Keys and values must be non-empty, and the combined length
+     * of all keys and values must not exceed 5000 characters
      * 
      */
     @Import(name="properties")
     private @Nullable Output<Map<String,String>> properties;
 
     /**
-     * @return A map of key-value properties attached to the external metadata object
+     * @return Key-value properties attached to the object. Keys and values must be non-empty, and the combined length
+     * of all keys and values must not exceed 5000 characters
      * 
      */
     public Optional<Output<Map<String,String>>> properties() {
@@ -125,14 +139,14 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+     * Type of the external system that holds the object. Use `OTHER` for a system that is not in the list. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
      * 
      */
     @Import(name="systemType", required=true)
     private Output<String> systemType;
 
     /**
-     * @return Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+     * @return Type of the external system that holds the object. Use `OTHER` for a system that is not in the list. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
      * 
      */
     public Output<String> systemType() {
@@ -140,14 +154,16 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * URL associated with the external metadata object
+     * URL of the object in the external system. When set, lineage graph viewers can follow it to the external
+     * asset. The URL must not exceed 2048 characters
      * 
      */
     @Import(name="url")
     private @Nullable Output<String> url;
 
     /**
-     * @return URL associated with the external metadata object
+     * @return URL of the object in the external system. When set, lineage graph viewers can follow it to the external
+     * asset. The URL must not exceed 2048 characters
      * 
      */
     public Optional<Output<String>> url() {
@@ -187,7 +203,8 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param columns List of columns associated with the external metadata object
+         * @param columns Names of the columns of the object, used for column-level mappings in external lineage relationships.
+         * Column names must be unique within the list, and the combined size of all column names is limited
          * 
          * @return builder
          * 
@@ -198,7 +215,8 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param columns List of columns associated with the external metadata object
+         * @param columns Names of the columns of the object, used for column-level mappings in external lineage relationships.
+         * Column names must be unique within the list, and the combined size of all column names is limited
          * 
          * @return builder
          * 
@@ -208,7 +226,8 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param columns List of columns associated with the external metadata object
+         * @param columns Names of the columns of the object, used for column-level mappings in external lineage relationships.
+         * Column names must be unique within the list, and the combined size of all column names is limited
          * 
          * @return builder
          * 
@@ -218,7 +237,7 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description User-provided free-form text description
+         * @param description User-provided free-form text description of the object. The description must not exceed 5000 characters
          * 
          * @return builder
          * 
@@ -229,7 +248,7 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param description User-provided free-form text description
+         * @param description User-provided free-form text description of the object. The description must not exceed 5000 characters
          * 
          * @return builder
          * 
@@ -239,7 +258,8 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param entityType Type of entity within the external system
+         * @param entityType Type of the object within the external system, such as a table, a report, or a dashboard. The value is
+         * free-form text of at most 255 characters
          * 
          * @return builder
          * 
@@ -250,7 +270,8 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param entityType Type of entity within the external system
+         * @param entityType Type of the object within the external system, such as a table, a report, or a dashboard. The value is
+         * free-form text of at most 255 characters
          * 
          * @return builder
          * 
@@ -260,7 +281,10 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Name of the external metadata object
+         * @param name Name of the external metadata object. The name is unique within the metastore, must follow the
+         * [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+         * and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+         * refer to the object by this name
          * 
          * @return builder
          * 
@@ -271,7 +295,10 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Name of the external metadata object
+         * @param name Name of the external metadata object. The name is unique within the metastore, must follow the
+         * [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+         * and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+         * refer to the object by this name
          * 
          * @return builder
          * 
@@ -281,7 +308,8 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param owner Owner of the external metadata object
+         * @param owner Owner of the external metadata object. Defaults to the creator. To change the owner, send an update whose
+         * update mask includes `owner`
          * 
          * @return builder
          * 
@@ -292,7 +320,8 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param owner Owner of the external metadata object
+         * @param owner Owner of the external metadata object. Defaults to the creator. To change the owner, send an update whose
+         * update mask includes `owner`
          * 
          * @return builder
          * 
@@ -302,7 +331,8 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param properties A map of key-value properties attached to the external metadata object
+         * @param properties Key-value properties attached to the object. Keys and values must be non-empty, and the combined length
+         * of all keys and values must not exceed 5000 characters
          * 
          * @return builder
          * 
@@ -313,7 +343,8 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param properties A map of key-value properties attached to the external metadata object
+         * @param properties Key-value properties attached to the object. Keys and values must be non-empty, and the combined length
+         * of all keys and values must not exceed 5000 characters
          * 
          * @return builder
          * 
@@ -344,7 +375,7 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param systemType Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+         * @param systemType Type of the external system that holds the object. Use `OTHER` for a system that is not in the list. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
          * 
          * @return builder
          * 
@@ -355,7 +386,7 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param systemType Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+         * @param systemType Type of the external system that holds the object. Use `OTHER` for a system that is not in the list. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
          * 
          * @return builder
          * 
@@ -365,7 +396,8 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param url URL associated with the external metadata object
+         * @param url URL of the object in the external system. When set, lineage graph viewers can follow it to the external
+         * asset. The URL must not exceed 2048 characters
          * 
          * @return builder
          * 
@@ -376,7 +408,8 @@ public final class ExternalMetadataArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param url URL associated with the external metadata object
+         * @param url URL of the object in the external system. When set, lineage graph viewers can follow it to the external
+         * asset. The URL must not exceed 2048 characters
          * 
          * @return builder
          * 

@@ -41,7 +41,7 @@ export function getDatabaseDatabaseCatalog(args: GetDatabaseDatabaseCatalogArgs,
  */
 export interface GetDatabaseDatabaseCatalogArgs {
     /**
-     * The name of the catalog in UC
+     * The name of the catalog in Unity Catalog
      */
     name: string;
     /**
@@ -55,7 +55,8 @@ export interface GetDatabaseDatabaseCatalogArgs {
  */
 export interface GetDatabaseDatabaseCatalogResult {
     /**
-     * (boolean)
+     * (boolean) - If true, the database named in databaseName is created in the instance when it does not already
+     * exist, with the calling user as its owner. Defaults to false
      */
     readonly createDatabaseIfNotExists: boolean;
     /**
@@ -63,16 +64,18 @@ export interface GetDatabaseDatabaseCatalogResult {
      */
     readonly databaseInstanceName: string;
     /**
-     * (string) - The name of the database (in an instance) associated with the catalog
+     * (string) - The name of the Postgres database in the instance that the catalog registers. The database must
+     * already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+     * databricks_system, template0 and template1 cannot be registered
      */
     readonly databaseName: string;
     /**
-     * (string) - The name of the catalog in UC
+     * (string) - The name of the catalog in Unity Catalog
      */
     readonly name: string;
     readonly providerConfig?: outputs.GetDatabaseDatabaseCatalogProviderConfig;
     /**
-     * (string)
+     * (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
      */
     readonly uid: string;
 }
@@ -111,7 +114,7 @@ export function getDatabaseDatabaseCatalogOutput(args: GetDatabaseDatabaseCatalo
  */
 export interface GetDatabaseDatabaseCatalogOutputArgs {
     /**
-     * The name of the catalog in UC
+     * The name of the catalog in Unity Catalog
      */
     name: pulumi.Input<string>;
     /**

@@ -30,7 +30,7 @@ public final class GetAlertsV2AlertEvaluationNotification {
      */
     private @Nullable Integer retriggerSeconds;
     /**
-     * @return (list of AlertV2Subscription)
+     * @return (list of AlertV2Subscription) - Users and notification destinations that receive notifications
      * 
      */
     private @Nullable List<GetAlertsV2AlertEvaluationNotificationSubscription> subscriptions;
@@ -59,7 +59,7 @@ public final class GetAlertsV2AlertEvaluationNotification {
         return Optional.ofNullable(this.retriggerSeconds);
     }
     /**
-     * @return (list of AlertV2Subscription)
+     * @return (list of AlertV2Subscription) - Users and notification destinations that receive notifications
      * 
      */
     public List<GetAlertsV2AlertEvaluationNotificationSubscription> subscriptions() {

@@ -318,6 +318,20 @@ public class FeatureEngineeringFeature extends com.pulumi.resources.CustomResour
         return this.name;
     }
     /**
+     * (string) - Output type in Databricks SQL DDL (e.g., &#34;BIGINT&#34;, &#34;DECIMAL(10,2)&#34;, &#34;ARRAY&lt;STRING&gt;&#34;, &#34;STRUCT&lt;name:STRING&gt;&#34;)
+     * 
+     */
+    @Export(name="outputTypeText", refs={String.class}, tree="[0]")
+    private Output<String> outputTypeText;
+
+    /**
+     * @return (string) - Output type in Databricks SQL DDL (e.g., &#34;BIGINT&#34;, &#34;DECIMAL(10,2)&#34;, &#34;ARRAY&lt;STRING&gt;&#34;, &#34;STRUCT&lt;name:STRING&gt;&#34;)
+     * 
+     */
+    public Output<String> outputTypeText() {
+        return this.outputTypeText;
+    }
+    /**
      * Configure the provider for management through account provider.
      * 
      */

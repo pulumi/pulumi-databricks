@@ -34,14 +34,14 @@ public final class GenieAgentDefinitionDataSourcesArgs extends com.pulumi.resour
     }
 
     /**
-     * Unity Catalog tables, views, and metric views, in the order they were added
+     * Unity Catalog tables, views, and metric views, sorted by `identifier`
      * 
      */
     @Import(name="tables")
     private @Nullable Output<List<GenieAgentDefinitionDataSourcesTableArgs>> tables;
 
     /**
-     * @return Unity Catalog tables, views, and metric views, in the order they were added
+     * @return Unity Catalog tables, views, and metric views, sorted by `identifier`
      * 
      */
     public Optional<Output<List<GenieAgentDefinitionDataSourcesTableArgs>>> tables() {
@@ -49,14 +49,14 @@ public final class GenieAgentDefinitionDataSourcesArgs extends com.pulumi.resour
     }
 
     /**
-     * Unity Catalog volumes, in the order they were added
+     * Unity Catalog volumes, sorted by `path`
      * 
      */
     @Import(name="volumes")
     private @Nullable Output<List<GenieAgentDefinitionDataSourcesVolumeArgs>> volumes;
 
     /**
-     * @return Unity Catalog volumes, in the order they were added
+     * @return Unity Catalog volumes, sorted by `path`
      * 
      */
     public Optional<Output<List<GenieAgentDefinitionDataSourcesVolumeArgs>>> volumes() {
@@ -121,7 +121,7 @@ public final class GenieAgentDefinitionDataSourcesArgs extends com.pulumi.resour
         }
 
         /**
-         * @param tables Unity Catalog tables, views, and metric views, in the order they were added
+         * @param tables Unity Catalog tables, views, and metric views, sorted by `identifier`
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class GenieAgentDefinitionDataSourcesArgs extends com.pulumi.resour
         }
 
         /**
-         * @param tables Unity Catalog tables, views, and metric views, in the order they were added
+         * @param tables Unity Catalog tables, views, and metric views, sorted by `identifier`
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class GenieAgentDefinitionDataSourcesArgs extends com.pulumi.resour
         }
 
         /**
-         * @param tables Unity Catalog tables, views, and metric views, in the order they were added
+         * @param tables Unity Catalog tables, views, and metric views, sorted by `identifier`
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class GenieAgentDefinitionDataSourcesArgs extends com.pulumi.resour
         }
 
         /**
-         * @param volumes Unity Catalog volumes, in the order they were added
+         * @param volumes Unity Catalog volumes, sorted by `path`
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class GenieAgentDefinitionDataSourcesArgs extends com.pulumi.resour
         }
 
         /**
-         * @param volumes Unity Catalog volumes, in the order they were added
+         * @param volumes Unity Catalog volumes, sorted by `path`
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class GenieAgentDefinitionDataSourcesArgs extends com.pulumi.resour
         }
 
         /**
-         * @param volumes Unity Catalog volumes, in the order they were added
+         * @param volumes Unity Catalog volumes, sorted by `path`
          * 
          * @return builder
          * 

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  *
@@ -56,7 +56,8 @@ export interface GetPostgresCatalogArgs {
  */
 export interface GetPostgresCatalogResult {
     /**
-     * (string) - The part of the name, chosen by the user when the resource was created
+     * (string) - The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+     * last segment of the name field
      */
     readonly catalogId: string;
     /**
@@ -69,7 +70,8 @@ export interface GetPostgresCatalogResult {
     readonly name: string;
     readonly providerConfig?: outputs.GetPostgresCatalogProviderConfig;
     /**
-     * (CatalogCatalogSpec) - The desired state of the Catalog
+     * (CatalogCatalogSpec) - The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+     * the catalog is created
      */
     readonly spec: outputs.GetPostgresCatalogSpec;
     /**
@@ -77,7 +79,7 @@ export interface GetPostgresCatalogResult {
      */
     readonly status: outputs.GetPostgresCatalogStatus;
     /**
-     * (string) - System-generated unique identifier for the catalog
+     * (string) - The immutable UUID that identifies the catalog, assigned when the catalog is created
      */
     readonly uid: string;
     /**
@@ -86,7 +88,7 @@ export interface GetPostgresCatalogResult {
     readonly updateTime: string;
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  *

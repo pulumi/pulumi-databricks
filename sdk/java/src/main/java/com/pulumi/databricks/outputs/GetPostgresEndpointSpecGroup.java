@@ -14,8 +14,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPostgresEndpointSpecGroup {
     /**
-     * @return (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
-     * by specifying size.max &gt; 1
+     * @return (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if the endpoint has more than
+     * one compute (`max` greater than 1)
      * 
      */
     private @Nullable Boolean enableReadableSecondaries;
@@ -35,8 +35,8 @@ public final class GetPostgresEndpointSpecGroup {
 
     private GetPostgresEndpointSpecGroup() {}
     /**
-     * @return (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if read replicas are configured
-     * by specifying size.max &gt; 1
+     * @return (boolean) - Whether read-only connections to read-write endpoints are allowed. Only relevant if the endpoint has more than
+     * one compute (`max` greater than 1)
      * 
      */
     public Optional<Boolean> enableReadableSecondaries() {

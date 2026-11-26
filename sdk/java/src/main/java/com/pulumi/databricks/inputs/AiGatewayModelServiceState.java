@@ -68,14 +68,14 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
     }
 
     /**
-     * (string) - Creator identity
+     * (string) - Username of the user who created the model service
      * 
      */
     @Import(name="createdBy")
     private @Nullable Output<String> createdBy;
 
     /**
-     * @return (string) - Creator identity
+     * @return (string) - Username of the user who created the model service
      * 
      */
     public Optional<Output<String>> createdBy() {
@@ -83,14 +83,14 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
     }
 
     /**
-     * (string) - Owner of the model service
+     * (string) - Username or group name of the model service owner
      * 
      */
     @Import(name="effectiveOwner")
     private @Nullable Output<String> effectiveOwner;
 
     /**
-     * @return (string) - Owner of the model service
+     * @return (string) - Username or group name of the model service owner
      * 
      */
     public Optional<Output<String>> effectiveOwner() {
@@ -119,14 +119,14 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
     }
 
     /**
-     * (string) - Metastore hosting the model service
+     * (string) - Unique identifier of the metastore that contains the model service
      * 
      */
     @Import(name="metastoreId")
     private @Nullable Output<String> metastoreId;
 
     /**
-     * @return (string) - Metastore hosting the model service
+     * @return (string) - Unique identifier of the metastore that contains the model service
      * 
      */
     public Optional<Output<String>> metastoreId() {
@@ -134,14 +134,18 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
     }
 
     /**
-     * Name for the model service, e.g. &#34;myModelService&#34;
+     * Name of the model service within the parent schema. The name must not
+     * contain periods, spaces, forward slashes, percent signs, or control characters,
+     * and it is stored in lowercase
      * 
      */
     @Import(name="modelServiceId")
     private @Nullable Output<String> modelServiceId;
 
     /**
-     * @return Name for the model service, e.g. &#34;myModelService&#34;
+     * @return Name of the model service within the parent schema. The name must not
+     * contain periods, spaces, forward slashes, percent signs, or control characters,
+     * and it is stored in lowercase
      * 
      */
     public Optional<Output<String>> modelServiceId() {
@@ -152,8 +156,9 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
      * (string) - Resource name of the model service.
      * Format: `model-services/{catalog}.{schema}.{model_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      * 
      */
     @Import(name="name")
@@ -163,8 +168,9 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
      * @return (string) - Resource name of the model service.
      * Format: `model-services/{catalog}.{schema}.{model_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      * 
      */
     public Optional<Output<String>> name() {
@@ -242,14 +248,14 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
     }
 
     /**
-     * (string) - Identity of the last updater
+     * (string) - Username of the user who last updated the model service
      * 
      */
     @Import(name="updatedBy")
     private @Nullable Output<String> updatedBy;
 
     /**
-     * @return (string) - Identity of the last updater
+     * @return (string) - Username of the user who last updated the model service
      * 
      */
     public Optional<Output<String>> updatedBy() {
@@ -361,7 +367,7 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param createdBy (string) - Creator identity
+         * @param createdBy (string) - Username of the user who created the model service
          * 
          * @return builder
          * 
@@ -372,7 +378,7 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param createdBy (string) - Creator identity
+         * @param createdBy (string) - Username of the user who created the model service
          * 
          * @return builder
          * 
@@ -382,7 +388,7 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param effectiveOwner (string) - Owner of the model service
+         * @param effectiveOwner (string) - Username or group name of the model service owner
          * 
          * @return builder
          * 
@@ -393,7 +399,7 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param effectiveOwner (string) - Owner of the model service
+         * @param effectiveOwner (string) - Username or group name of the model service owner
          * 
          * @return builder
          * 
@@ -430,7 +436,7 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param metastoreId (string) - Metastore hosting the model service
+         * @param metastoreId (string) - Unique identifier of the metastore that contains the model service
          * 
          * @return builder
          * 
@@ -441,7 +447,7 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param metastoreId (string) - Metastore hosting the model service
+         * @param metastoreId (string) - Unique identifier of the metastore that contains the model service
          * 
          * @return builder
          * 
@@ -451,7 +457,9 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param modelServiceId Name for the model service, e.g. &#34;myModelService&#34;
+         * @param modelServiceId Name of the model service within the parent schema. The name must not
+         * contain periods, spaces, forward slashes, percent signs, or control characters,
+         * and it is stored in lowercase
          * 
          * @return builder
          * 
@@ -462,7 +470,9 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param modelServiceId Name for the model service, e.g. &#34;myModelService&#34;
+         * @param modelServiceId Name of the model service within the parent schema. The name must not
+         * contain periods, spaces, forward slashes, percent signs, or control characters,
+         * and it is stored in lowercase
          * 
          * @return builder
          * 
@@ -475,8 +485,9 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
          * @param name (string) - Resource name of the model service.
          * Format: `model-services/{catalog}.{schema}.{model_service}`.
          * Each `{...}` component is capped at 255 characters individually.
-         * Server-derived on Create from `parent` +
-         * `modelServiceId`; required and immutable on Update/Get/Delete
+         * The server derives the name on Create from
+         * `parent` and `modelServiceId`; it is required and immutable on Update,
+         * Get, and Delete
          * 
          * @return builder
          * 
@@ -490,8 +501,9 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
          * @param name (string) - Resource name of the model service.
          * Format: `model-services/{catalog}.{schema}.{model_service}`.
          * Each `{...}` component is capped at 255 characters individually.
-         * Server-derived on Create from `parent` +
-         * `modelServiceId`; required and immutable on Update/Get/Delete
+         * The server derives the name on Create from
+         * `parent` and `modelServiceId`; it is required and immutable on Update,
+         * Get, and Delete
          * 
          * @return builder
          * 
@@ -608,7 +620,7 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param updatedBy (string) - Identity of the last updater
+         * @param updatedBy (string) - Username of the user who last updated the model service
          * 
          * @return builder
          * 
@@ -619,7 +631,7 @@ public final class AiGatewayModelServiceState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param updatedBy (string) - Identity of the last updater
+         * @param updatedBy (string) - Username of the user who last updated the model service
          * 
          * @return builder
          * 

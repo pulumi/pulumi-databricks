@@ -18,14 +18,14 @@ public final class DataQualityMonitorAnomalyDetectionConfigArgs extends com.pulu
     public static final DataQualityMonitorAnomalyDetectionConfigArgs Empty = new DataQualityMonitorAnomalyDetectionConfigArgs();
 
     /**
-     * List of fully qualified table names to exclude from anomaly detection
+     * List of fully qualified table names to exclude from anomaly detection. Format: `catalog.schema.table_name`
      * 
      */
     @Import(name="excludedTableFullNames")
     private @Nullable Output<List<String>> excludedTableFullNames;
 
     /**
-     * @return List of fully qualified table names to exclude from anomaly detection
+     * @return List of fully qualified table names to exclude from anomaly detection. Format: `catalog.schema.table_name`
      * 
      */
     public Optional<Output<List<String>>> excludedTableFullNames() {
@@ -65,7 +65,7 @@ public final class DataQualityMonitorAnomalyDetectionConfigArgs extends com.pulu
         }
 
         /**
-         * @param excludedTableFullNames List of fully qualified table names to exclude from anomaly detection
+         * @param excludedTableFullNames List of fully qualified table names to exclude from anomaly detection. Format: `catalog.schema.table_name`
          * 
          * @return builder
          * 
@@ -76,7 +76,7 @@ public final class DataQualityMonitorAnomalyDetectionConfigArgs extends com.pulu
         }
 
         /**
-         * @param excludedTableFullNames List of fully qualified table names to exclude from anomaly detection
+         * @param excludedTableFullNames List of fully qualified table names to exclude from anomaly detection. Format: `catalog.schema.table_name`
          * 
          * @return builder
          * 
@@ -86,7 +86,7 @@ public final class DataQualityMonitorAnomalyDetectionConfigArgs extends com.pulu
         }
 
         /**
-         * @param excludedTableFullNames List of fully qualified table names to exclude from anomaly detection
+         * @param excludedTableFullNames List of fully qualified table names to exclude from anomaly detection. Format: `catalog.schema.table_name`
          * 
          * @return builder
          * 

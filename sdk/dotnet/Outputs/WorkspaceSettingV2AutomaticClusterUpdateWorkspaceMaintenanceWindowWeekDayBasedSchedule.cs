@@ -14,13 +14,17 @@ namespace Pulumi.Databricks.Outputs
     public sealed class WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule
     {
         /// <summary>
-        /// Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
+        /// Day of the week on which the maintenance window starts. Possible values are: `FRIDAY`, `MONDAY`, `SATURDAY`, `SUNDAY`, `THURSDAY`, `TUESDAY`, `WEDNESDAY`
         /// </summary>
         public readonly string? DayOfWeek;
         /// <summary>
-        /// Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
+        /// How often the maintenance window occurs: every week, or only on the listed occurrences of
+        /// the day of the week within each month. Possible values are: `EVERY_WEEK`, `FIRST_AND_THIRD_OF_MONTH`, `FIRST_OF_MONTH`, `FOURTH_OF_MONTH`, `SECOND_AND_FOURTH_OF_MONTH`, `SECOND_OF_MONTH`, `THIRD_OF_MONTH`
         /// </summary>
         public readonly string? Frequency;
+        /// <summary>
+        /// Time of day, in UTC, at which the maintenance window starts
+        /// </summary>
         public readonly Outputs.WorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime? WindowStartTime;
 
         [OutputConstructor]

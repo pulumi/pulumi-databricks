@@ -18,7 +18,7 @@ public final class DataQualityMonitorDataProfilingConfigCustomMetric {
     private String definition;
     /**
      * @return A list of column names in the input table the metric should be computed for.
-     * Can use ``&#34;:table&#34;`` to indicate that the metric needs information from multiple columns
+     * Can use `&#34;:table&#34;` to indicate that the metric needs information from multiple columns
      * 
      */
     private List<String> inputColumns;
@@ -28,12 +28,16 @@ public final class DataQualityMonitorDataProfilingConfigCustomMetric {
      */
     private String name;
     /**
-     * @return The output type of the custom metric
+     * @return Specifies the Spark SQL data type of the metric value, either as a plain type name or as a JSON-encoded
+     * StructField
      * 
      */
     private String outputDataType;
     /**
-     * @return The type of the custom metric. Possible values are: `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT`
+     * @return The type of the custom metric. `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE` metrics depend only on the
+     * columns of the input table, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED` metrics depend only on previously
+     * computed aggregate metrics, and `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT` metrics depend on previously computed
+     * aggregate or derived metrics. Possible values are: `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT`
      * 
      */
     private String type;
@@ -48,7 +52,7 @@ public final class DataQualityMonitorDataProfilingConfigCustomMetric {
     }
     /**
      * @return A list of column names in the input table the metric should be computed for.
-     * Can use ``&#34;:table&#34;`` to indicate that the metric needs information from multiple columns
+     * Can use `&#34;:table&#34;` to indicate that the metric needs information from multiple columns
      * 
      */
     public List<String> inputColumns() {
@@ -62,14 +66,18 @@ public final class DataQualityMonitorDataProfilingConfigCustomMetric {
         return this.name;
     }
     /**
-     * @return The output type of the custom metric
+     * @return Specifies the Spark SQL data type of the metric value, either as a plain type name or as a JSON-encoded
+     * StructField
      * 
      */
     public String outputDataType() {
         return this.outputDataType;
     }
     /**
-     * @return The type of the custom metric. Possible values are: `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT`
+     * @return The type of the custom metric. `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE` metrics depend only on the
+     * columns of the input table, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED` metrics depend only on previously
+     * computed aggregate metrics, and `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT` metrics depend on previously computed
+     * aggregate or derived metrics. Possible values are: `DATA_PROFILING_CUSTOM_METRIC_TYPE_AGGREGATE`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DERIVED`, `DATA_PROFILING_CUSTOM_METRIC_TYPE_DRIFT`
      * 
      */
     public String type() {

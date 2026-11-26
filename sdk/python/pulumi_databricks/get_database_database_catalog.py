@@ -52,7 +52,8 @@ class GetDatabaseDatabaseCatalogResult:
     @pulumi.getter(name="createDatabaseIfNotExists")
     def create_database_if_not_exists(self) -> _builtins.bool:
         """
-        (boolean)
+        (boolean) - If true, the database named in database_name is created in the instance when it does not already
+        exist, with the calling user as its owner. Defaults to false
         """
         return pulumi.get(self, "create_database_if_not_exists")
 
@@ -68,7 +69,9 @@ class GetDatabaseDatabaseCatalogResult:
     @pulumi.getter(name="databaseName")
     def database_name(self) -> _builtins.str:
         """
-        (string) - The name of the database (in an instance) associated with the catalog
+        (string) - The name of the Postgres database in the instance that the catalog registers. The database must
+        already exist unless create_database_if_not_exists is true. The system databases postgres,
+        databricks_system, template0 and template1 cannot be registered
         """
         return pulumi.get(self, "database_name")
 
@@ -76,7 +79,7 @@ class GetDatabaseDatabaseCatalogResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        (string) - The name of the catalog in UC
+        (string) - The name of the catalog in Unity Catalog
         """
         return pulumi.get(self, "name")
 
@@ -89,7 +92,7 @@ class GetDatabaseDatabaseCatalogResult:
     @pulumi.getter
     def uid(self) -> _builtins.str:
         """
-        (string)
+        (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
         """
         return pulumi.get(self, "uid")
 
@@ -132,7 +135,7 @@ def get_database_database_catalog(name: Optional[_builtins.str] = None,
     ```
 
 
-    :param _builtins.str name: The name of the catalog in UC
+    :param _builtins.str name: The name of the catalog in Unity Catalog
     :param Union['GetDatabaseDatabaseCatalogProviderConfigArgs', 'GetDatabaseDatabaseCatalogProviderConfigArgsDict', 'outputs.GetDatabaseDatabaseCatalogProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -172,7 +175,7 @@ def get_database_database_catalog_output(name: pulumi.Input[Optional[_builtins.s
     ```
 
 
-    :param _builtins.str name: The name of the catalog in UC
+    :param _builtins.str name: The name of the catalog in Unity Catalog
     :param Union['GetDatabaseDatabaseCatalogProviderConfigArgs', 'GetDatabaseDatabaseCatalogProviderConfigArgsDict', 'outputs.GetDatabaseDatabaseCatalogProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()

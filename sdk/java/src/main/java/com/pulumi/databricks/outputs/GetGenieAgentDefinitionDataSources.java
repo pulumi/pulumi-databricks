@@ -19,12 +19,12 @@ public final class GetGenieAgentDefinitionDataSources {
      */
     private @Nullable List<GetGenieAgentDefinitionDataSourcesMcpConnection> mcpConnections;
     /**
-     * @return (list of GenieAgentTable) - Unity Catalog tables, views, and metric views, in the order they were added
+     * @return (list of GenieAgentTable) - Unity Catalog tables, views, and metric views, sorted by `identifier`
      * 
      */
     private @Nullable List<GetGenieAgentDefinitionDataSourcesTable> tables;
     /**
-     * @return (list of GenieAgentVolume) - Unity Catalog volumes, in the order they were added
+     * @return (list of GenieAgentVolume) - Unity Catalog volumes, sorted by `path`
      * 
      */
     private @Nullable List<GetGenieAgentDefinitionDataSourcesVolume> volumes;
@@ -38,14 +38,14 @@ public final class GetGenieAgentDefinitionDataSources {
         return this.mcpConnections == null ? List.of() : this.mcpConnections;
     }
     /**
-     * @return (list of GenieAgentTable) - Unity Catalog tables, views, and metric views, in the order they were added
+     * @return (list of GenieAgentTable) - Unity Catalog tables, views, and metric views, sorted by `identifier`
      * 
      */
     public List<GetGenieAgentDefinitionDataSourcesTable> tables() {
         return this.tables == null ? List.of() : this.tables;
     }
     /**
-     * @return (list of GenieAgentVolume) - Unity Catalog volumes, in the order they were added
+     * @return (list of GenieAgentVolume) - Unity Catalog volumes, sorted by `path`
      * 
      */
     public List<GetGenieAgentDefinitionDataSourcesVolume> volumes() {

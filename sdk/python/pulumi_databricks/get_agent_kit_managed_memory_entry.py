@@ -106,7 +106,8 @@ class GetAgentKitManagedMemoryEntryResult:
     @pulumi.getter
     def path(self) -> _builtins.str:
         """
-        (string) - Absolute, case-sensitive path identifying the entry within its actor and optional session.
+        (string) - Absolute, case-sensitive path identifying the entry within its actor and, until the
+        deprecated `session_id` is ignored, its optional session.
         Paths must begin with `/` and must not contain empty, `.` or `..` segments
         """
         return pulumi.get(self, "path")
@@ -120,7 +121,8 @@ class GetAgentKitManagedMemoryEntryResult:
     @pulumi.getter(name="sessionId")
     def session_id(self) -> _builtins.str:
         """
-        (string) - Optional identifier for the session associated with this memory entry. When omitted, the
+        (string, deprecated) - Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+        ignore this field on writes and omit it from responses. Until then, an omitted value means the
         entry applies across the actor's sessions
         """
         return pulumi.get(self, "session_id")
@@ -129,7 +131,8 @@ class GetAgentKitManagedMemoryEntryResult:
     @pulumi.getter(name="sourceType")
     def source_type(self) -> _builtins.str:
         """
-        (string) - Which writer created this entry. Caller sets this on Create; immutable after creation. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
+        (string) - Which writer created this entry. Caller sets this on Create; immutable after creation.
+        The server may store an omitted or UNSPECIFIED value as AGENT. Possible values are: `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_AGENT`, `MANAGED_MEMORY_ENTRY_SOURCE_TYPE_DREAMER`
         """
         return pulumi.get(self, "source_type")
 

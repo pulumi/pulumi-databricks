@@ -14,7 +14,8 @@ namespace Pulumi.Databricks.Outputs
     public sealed class PostgresEndpointStatusSettings
     {
         /// <summary>
-        /// A raw representation of Postgres settings
+        /// Postgres server parameters to set on the compute endpoint, keyed by parameter name. Each value is
+        /// given as a string
         /// </summary>
         public readonly ImmutableDictionary<string, string>? PgSettings;
 

@@ -61,6 +61,7 @@ class PipelineArgs:
                  storage: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target: pulumi.Input[Optional[_builtins.str]] = None,
+                 testing: pulumi.Input[Optional['PipelineTestingArgs']] = None,
                  trigger: pulumi.Input[Optional['PipelineTriggerArgs']] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None):
@@ -173,6 +174,8 @@ class PipelineArgs:
             pulumi.set(__self__, "tags", tags)
         if target is not None:
             pulumi.set(__self__, "target", target)
+        if testing is not None:
+            pulumi.set(__self__, "testing", testing)
         if trigger is not None:
             pulumi.set(__self__, "trigger", trigger)
         if url is not None:
@@ -614,6 +617,15 @@ class PipelineArgs:
 
     @_builtins.property
     @pulumi.getter
+    def testing(self) -> pulumi.Input[Optional['PipelineTestingArgs']]:
+        return pulumi.get(self, "testing")
+
+    @testing.setter
+    def testing(self, value: pulumi.Input[Optional['PipelineTestingArgs']]):
+        pulumi.set(self, "testing", value)
+
+    @_builtins.property
+    @pulumi.getter
     def trigger(self) -> pulumi.Input[Optional['PipelineTriggerArgs']]:
         return pulumi.get(self, "trigger")
 
@@ -686,6 +698,7 @@ class _PipelineState:
                  storage: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target: pulumi.Input[Optional[_builtins.str]] = None,
+                 testing: pulumi.Input[Optional['PipelineTestingArgs']] = None,
                  trigger: pulumi.Input[Optional['PipelineTriggerArgs']] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None):
@@ -798,6 +811,8 @@ class _PipelineState:
             pulumi.set(__self__, "tags", tags)
         if target is not None:
             pulumi.set(__self__, "target", target)
+        if testing is not None:
+            pulumi.set(__self__, "testing", testing)
         if trigger is not None:
             pulumi.set(__self__, "trigger", trigger)
         if url is not None:
@@ -1239,6 +1254,15 @@ class _PipelineState:
 
     @_builtins.property
     @pulumi.getter
+    def testing(self) -> pulumi.Input[Optional['PipelineTestingArgs']]:
+        return pulumi.get(self, "testing")
+
+    @testing.setter
+    def testing(self, value: pulumi.Input[Optional['PipelineTestingArgs']]):
+        pulumi.set(self, "testing", value)
+
+    @_builtins.property
+    @pulumi.getter
     def trigger(self) -> pulumi.Input[Optional['PipelineTriggerArgs']]:
         return pulumi.get(self, "trigger")
 
@@ -1314,6 +1338,7 @@ class Pipeline(pulumi.CustomResource):
                  storage: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target: pulumi.Input[Optional[_builtins.str]] = None,
+                 testing: pulumi.Input[Optional[Union['PipelineTestingArgs', 'PipelineTestingArgsDict', 'outputs.PipelineTesting']]] = None,
                  trigger: pulumi.Input[Optional[Union['PipelineTriggerArgs', 'PipelineTriggerArgsDict', 'outputs.PipelineTrigger']]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1571,6 +1596,7 @@ class Pipeline(pulumi.CustomResource):
                  storage: pulumi.Input[Optional[_builtins.str]] = None,
                  tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  target: pulumi.Input[Optional[_builtins.str]] = None,
+                 testing: pulumi.Input[Optional[Union['PipelineTestingArgs', 'PipelineTestingArgsDict', 'outputs.PipelineTesting']]] = None,
                  trigger: pulumi.Input[Optional[Union['PipelineTriggerArgs', 'PipelineTriggerArgsDict', 'outputs.PipelineTrigger']]] = None,
                  url: pulumi.Input[Optional[_builtins.str]] = None,
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1623,6 +1649,7 @@ class Pipeline(pulumi.CustomResource):
             __props__.__dict__["storage"] = storage
             __props__.__dict__["tags"] = tags
             __props__.__dict__["target"] = target
+            __props__.__dict__["testing"] = testing
             __props__.__dict__["trigger"] = trigger
             __props__.__dict__["url"] = url
             __props__.__dict__["usage_policy_id"] = usage_policy_id
@@ -1676,6 +1703,7 @@ class Pipeline(pulumi.CustomResource):
             storage: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             target: pulumi.Input[Optional[_builtins.str]] = None,
+            testing: pulumi.Input[Optional[Union['PipelineTestingArgs', 'PipelineTestingArgsDict', 'outputs.PipelineTesting']]] = None,
             trigger: pulumi.Input[Optional[Union['PipelineTriggerArgs', 'PipelineTriggerArgsDict', 'outputs.PipelineTrigger']]] = None,
             url: pulumi.Input[Optional[_builtins.str]] = None,
             usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Pipeline':
@@ -1756,6 +1784,7 @@ class Pipeline(pulumi.CustomResource):
         __props__.__dict__["storage"] = storage
         __props__.__dict__["tags"] = tags
         __props__.__dict__["target"] = target
+        __props__.__dict__["testing"] = testing
         __props__.__dict__["trigger"] = trigger
         __props__.__dict__["url"] = url
         __props__.__dict__["usage_policy_id"] = usage_policy_id
@@ -1804,6 +1833,7 @@ class Pipeline(pulumi.CustomResource):
             storage: pulumi.Input[Optional[_builtins.str]] = None,
             tags: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             target: pulumi.Input[Optional[_builtins.str]] = None,
+            testing: pulumi.Input[Optional[Union['PipelineTestingArgs', 'PipelineTestingArgsDict', 'outputs.PipelineTesting']]] = None,
             trigger: pulumi.Input[Optional[Union['PipelineTriggerArgs', 'PipelineTriggerArgsDict', 'outputs.PipelineTrigger']]] = None,
             url: pulumi.Input[Optional[_builtins.str]] = None,
             usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
@@ -1848,6 +1878,7 @@ class Pipeline(pulumi.CustomResource):
         __props__["storage"] = storage
         __props__["tags"] = tags
         __props__["target"] = target
+        __props__["testing"] = testing
         __props__["trigger"] = trigger
         __props__["url"] = url
         __props__["usagePolicyId"] = usage_policy_id
@@ -2124,6 +2155,11 @@ class Pipeline(pulumi.CustomResource):
         The name of a database (in either the Hive metastore or in a UC catalog) for persisting pipeline output data. Configuring the target setting allows you to view and query the pipeline output data from the Databricks UI.
         """
         return pulumi.get(self, "target")
+
+    @_builtins.property
+    @pulumi.getter
+    def testing(self) -> pulumi.Output[Optional['outputs.PipelineTesting']]:
+        return pulumi.get(self, "testing")
 
     @_builtins.property
     @pulumi.getter

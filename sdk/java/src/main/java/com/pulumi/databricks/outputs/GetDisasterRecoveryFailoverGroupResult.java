@@ -32,13 +32,15 @@ public final class GetDisasterRecoveryFailoverGroupResult {
      */
     private String etag;
     /**
-     * @return (boolean) - True if errors currently block the replication point
+     * @return (boolean) - True when replication errors are preventing the replication point from advancing.
+     * Populated only while the failover group is INITIAL_REPLICATION or ACTIVE; the blocking
+     * errors are listed in the system.replication.states system table
      * 
      */
     private Boolean hasReplicationPointBlockingErrors;
     /**
      * @return (string) - Initial primary region. Used only in Create requests to set the starting
-     * primary region. Not returned in responses
+     * primary region, and must be one of the regions in `regions`. Not returned in responses
      * 
      */
     private String initialPrimaryRegion;
@@ -48,27 +50,38 @@ public final class GetDisasterRecoveryFailoverGroupResult {
      */
     private GetDisasterRecoveryFailoverGroupInitialReplicationProgress initialReplicationProgress;
     /**
-     * @return (string) - Resource name for this workspace set
+     * @return (string) - Identifier of the workspace set, unique within the failover group and referenced by
+     * unity_catalog_assets.data_replication_workspace_set. Cannot be changed after creation
      * 
      */
     private String name;
     /**
-     * @return (list of string) - List of all regions participating in this failover group
+     * @return (list of string) - The two cloud regions that participate in this failover group, the primary and the
+     * secondary. Each workspace set contains one workspace in each region
      * 
      */
     private List<String> regions;
     /**
-     * @return (string) - The latest point in time to which data has been replicated
+     * @return (string) - The most recent point in time up to which all in-scope assets have been replicated to the
+     * secondary region. Data written after this point might not exist in the secondary yet and
+     * can be lost in an unplanned failover. When both Unity Catalog and workspace assets are
+     * replicated, this is the older of the two replication points. Not populated until the
+     * first replication point exists, and not populated in ListFailoverGroups responses
      * 
      */
     private String replicationPoint;
     /**
-     * @return (string) - Aggregate state of the failover group. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
+     * @return (string) - Aggregate state of the failover group across Unity Catalog and workspace asset
+     * replication. The group is INITIAL_REPLICATION until it has a replication point, ACTIVE
+     * while replication is in steady state and failover is available, and FAILING_OVER while a
+     * failover is in progress; the `*_FAILED` values mean that the last operation did not
+     * complete. Not populated in ListFailoverGroups responses. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
      * 
      */
     private String state;
     /**
-     * @return (UcReplicationConfig) - Unity Catalog replication configuration
+     * @return (UcReplicationConfig) - Unity Catalog replication configuration: the catalogs to replicate and the storage
+     * location mappings for their data. Omit it to replicate workspace assets only
      * 
      */
     private GetDisasterRecoveryFailoverGroupUnityCatalogAssets unityCatalogAssets;
@@ -78,7 +91,8 @@ public final class GetDisasterRecoveryFailoverGroupResult {
      */
     private String updateTime;
     /**
-     * @return (list of WorkspaceSet) - Workspace sets, each containing workspaces that replicate to each other
+     * @return (list of WorkspaceSet) - Workspace sets, each containing workspaces that replicate to each other. A failover group
+     * currently supports exactly one workspace set
      * 
      */
     private List<GetDisasterRecoveryFailoverGroupWorkspaceSet> workspaceSets;
@@ -107,7 +121,9 @@ public final class GetDisasterRecoveryFailoverGroupResult {
         return this.etag;
     }
     /**
-     * @return (boolean) - True if errors currently block the replication point
+     * @return (boolean) - True when replication errors are preventing the replication point from advancing.
+     * Populated only while the failover group is INITIAL_REPLICATION or ACTIVE; the blocking
+     * errors are listed in the system.replication.states system table
      * 
      */
     public Boolean hasReplicationPointBlockingErrors() {
@@ -115,7 +131,7 @@ public final class GetDisasterRecoveryFailoverGroupResult {
     }
     /**
      * @return (string) - Initial primary region. Used only in Create requests to set the starting
-     * primary region. Not returned in responses
+     * primary region, and must be one of the regions in `regions`. Not returned in responses
      * 
      */
     public String initialPrimaryRegion() {
@@ -129,35 +145,46 @@ public final class GetDisasterRecoveryFailoverGroupResult {
         return this.initialReplicationProgress;
     }
     /**
-     * @return (string) - Resource name for this workspace set
+     * @return (string) - Identifier of the workspace set, unique within the failover group and referenced by
+     * unity_catalog_assets.data_replication_workspace_set. Cannot be changed after creation
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return (list of string) - List of all regions participating in this failover group
+     * @return (list of string) - The two cloud regions that participate in this failover group, the primary and the
+     * secondary. Each workspace set contains one workspace in each region
      * 
      */
     public List<String> regions() {
         return this.regions;
     }
     /**
-     * @return (string) - The latest point in time to which data has been replicated
+     * @return (string) - The most recent point in time up to which all in-scope assets have been replicated to the
+     * secondary region. Data written after this point might not exist in the secondary yet and
+     * can be lost in an unplanned failover. When both Unity Catalog and workspace assets are
+     * replicated, this is the older of the two replication points. Not populated until the
+     * first replication point exists, and not populated in ListFailoverGroups responses
      * 
      */
     public String replicationPoint() {
         return this.replicationPoint;
     }
     /**
-     * @return (string) - Aggregate state of the failover group. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
+     * @return (string) - Aggregate state of the failover group across Unity Catalog and workspace asset
+     * replication. The group is INITIAL_REPLICATION until it has a replication point, ACTIVE
+     * while replication is in steady state and failover is available, and FAILING_OVER while a
+     * failover is in progress; the `*_FAILED` values mean that the last operation did not
+     * complete. Not populated in ListFailoverGroups responses. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
      * 
      */
     public String state() {
         return this.state;
     }
     /**
-     * @return (UcReplicationConfig) - Unity Catalog replication configuration
+     * @return (UcReplicationConfig) - Unity Catalog replication configuration: the catalogs to replicate and the storage
+     * location mappings for their data. Omit it to replicate workspace assets only
      * 
      */
     public GetDisasterRecoveryFailoverGroupUnityCatalogAssets unityCatalogAssets() {
@@ -171,7 +198,8 @@ public final class GetDisasterRecoveryFailoverGroupResult {
         return this.updateTime;
     }
     /**
-     * @return (list of WorkspaceSet) - Workspace sets, each containing workspaces that replicate to each other
+     * @return (list of WorkspaceSet) - Workspace sets, each containing workspaces that replicate to each other. A failover group
+     * currently supports exactly one workspace set
      * 
      */
     public List<GetDisasterRecoveryFailoverGroupWorkspaceSet> workspaceSets() {

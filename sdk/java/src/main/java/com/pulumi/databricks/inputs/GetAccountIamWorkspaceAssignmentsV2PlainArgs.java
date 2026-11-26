@@ -17,16 +17,16 @@ public final class GetAccountIamWorkspaceAssignmentsV2PlainArgs extends com.pulu
     public static final GetAccountIamWorkspaceAssignmentsV2PlainArgs Empty = new GetAccountIamWorkspaceAssignmentsV2PlainArgs();
 
     /**
-     * The maximum number of workspace assignments to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * The maximum number of assignments to return, up to 1000. The default is 1000. A page can
+     * contain fewer assignments
      * 
      */
     @Import(name="pageSize")
     private @Nullable Integer pageSize;
 
     /**
-     * @return The maximum number of workspace assignments to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * @return The maximum number of assignments to return, up to 1000. The default is 1000. A page can
+     * contain fewer assignments
      * 
      */
     public Optional<Integer> pageSize() {
@@ -34,16 +34,16 @@ public final class GetAccountIamWorkspaceAssignmentsV2PlainArgs extends com.pulu
     }
 
     /**
-     * The parent resource name of the workspace whose assignments to list.
-     * Format: accounts/{account_id}/workspaces/{workspace_id}
+     * The resource name of the workspace, in the format
+     * `accounts/{account_id}/workspaces/{workspace_id}`
      * 
      */
     @Import(name="parent", required=true)
     private String parent;
 
     /**
-     * @return The parent resource name of the workspace whose assignments to list.
-     * Format: accounts/{account_id}/workspaces/{workspace_id}
+     * @return The resource name of the workspace, in the format
+     * `accounts/{account_id}/workspaces/{workspace_id}`
      * 
      */
     public String parent() {
@@ -76,8 +76,8 @@ public final class GetAccountIamWorkspaceAssignmentsV2PlainArgs extends com.pulu
         }
 
         /**
-         * @param pageSize The maximum number of workspace assignments to return. The service may return fewer than this value.
-         * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+         * @param pageSize The maximum number of assignments to return, up to 1000. The default is 1000. A page can
+         * contain fewer assignments
          * 
          * @return builder
          * 
@@ -88,8 +88,8 @@ public final class GetAccountIamWorkspaceAssignmentsV2PlainArgs extends com.pulu
         }
 
         /**
-         * @param parent The parent resource name of the workspace whose assignments to list.
-         * Format: accounts/{account_id}/workspaces/{workspace_id}
+         * @param parent The resource name of the workspace, in the format
+         * `accounts/{account_id}/workspaces/{workspace_id}`
          * 
          * @return builder
          * 

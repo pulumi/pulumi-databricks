@@ -111,14 +111,14 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The project ID chosen when the project was created. It is the final segment of `name`
      * 
      */
     @Import(name="projectId")
     private @Nullable Output<String> projectId;
 
     /**
-     * @return The part of the name, chosen by the user when the resource was created
+     * @return The project ID chosen when the project was created. It is the final segment of `name`
      * 
      */
     public Optional<Output<String>> projectId() {
@@ -141,16 +141,22 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * If true, permanently deletes the project (hard delete).
-     * If false or unset, performs a soft delete
+     * If true, permanently deletes the project and all of its data immediately. If false or unset, the
+     * project is soft-deleted: it stops accepting connections and is retained for 7 days, during which
+     * it can be restored with Undelete, and is then permanently deleted. Deleting an already
+     * soft-deleted project with `purge` set to true removes it immediately. See
+     * https://docs.databricks.com/aws/en/oltp/projects/manage-projects for details
      * 
      */
     @Import(name="purgeOnDelete")
     private @Nullable Output<Boolean> purgeOnDelete;
 
     /**
-     * @return If true, permanently deletes the project (hard delete).
-     * If false or unset, performs a soft delete
+     * @return If true, permanently deletes the project and all of its data immediately. If false or unset, the
+     * project is soft-deleted: it stops accepting connections and is retained for 7 days, during which
+     * it can be restored with Undelete, and is then permanently deleted. Deleting an already
+     * soft-deleted project with `purge` set to true removes it immediately. See
+     * https://docs.databricks.com/aws/en/oltp/projects/manage-projects for details
      * 
      */
     public Optional<Output<Boolean>> purgeOnDelete() {
@@ -175,14 +181,26 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
+     * The desired configuration of the project. The fields under `spec` are the ones that can be
+     * changed after creation, except `pgVersion`, which is fixed when the project is created. See
+     * `status` for the configuration that is currently in effect.
+     * 
+     * Read the resource&#39;s current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      * 
      */
     @Import(name="spec")
     private @Nullable Output<PostgresProjectSpecArgs> spec;
 
     /**
-     * @return The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
+     * @return The desired configuration of the project. The fields under `spec` are the ones that can be
+     * changed after creation, except `pgVersion`, which is fixed when the project is created. See
+     * `status` for the configuration that is currently in effect.
+     * 
+     * Read the resource&#39;s current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      * 
      */
     public Optional<Output<PostgresProjectSpecArgs>> spec() {
@@ -190,14 +208,16 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * (ProjectStatus) - The current status of a Project
+     * (ProjectStatus) - The configuration and state of the project that are currently in effect, as reported by the
+     * system
      * 
      */
     @Import(name="status")
     private @Nullable Output<PostgresProjectStatusArgs> status;
 
     /**
-     * @return (ProjectStatus) - The current status of a Project
+     * @return (ProjectStatus) - The configuration and state of the project that are currently in effect, as reported by the
+     * system
      * 
      */
     public Optional<Output<PostgresProjectStatusArgs>> status() {
@@ -205,14 +225,16 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * (string) - System-generated unique ID for the project
+     * (string) - A system-generated UUID that identifies the project. Unlike `name`, it is not derived from the
+     * user-chosen project ID
      * 
      */
     @Import(name="uid")
     private @Nullable Output<String> uid;
 
     /**
-     * @return (string) - System-generated unique ID for the project
+     * @return (string) - A system-generated UUID that identifies the project. Unlike `name`, it is not derived from the
+     * user-chosen project ID
      * 
      */
     public Optional<Output<String>> uid() {
@@ -390,7 +412,7 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param projectId The part of the name, chosen by the user when the resource was created
+         * @param projectId The project ID chosen when the project was created. It is the final segment of `name`
          * 
          * @return builder
          * 
@@ -401,7 +423,7 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param projectId The part of the name, chosen by the user when the resource was created
+         * @param projectId The project ID chosen when the project was created. It is the final segment of `name`
          * 
          * @return builder
          * 
@@ -432,8 +454,11 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param purgeOnDelete If true, permanently deletes the project (hard delete).
-         * If false or unset, performs a soft delete
+         * @param purgeOnDelete If true, permanently deletes the project and all of its data immediately. If false or unset, the
+         * project is soft-deleted: it stops accepting connections and is retained for 7 days, during which
+         * it can be restored with Undelete, and is then permanently deleted. Deleting an already
+         * soft-deleted project with `purge` set to true removes it immediately. See
+         * https://docs.databricks.com/aws/en/oltp/projects/manage-projects for details
          * 
          * @return builder
          * 
@@ -444,8 +469,11 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param purgeOnDelete If true, permanently deletes the project (hard delete).
-         * If false or unset, performs a soft delete
+         * @param purgeOnDelete If true, permanently deletes the project and all of its data immediately. If false or unset, the
+         * project is soft-deleted: it stops accepting connections and is retained for 7 days, during which
+         * it can be restored with Undelete, and is then permanently deleted. Deleting an already
+         * soft-deleted project with `purge` set to true removes it immediately. See
+         * https://docs.databricks.com/aws/en/oltp/projects/manage-projects for details
          * 
          * @return builder
          * 
@@ -478,7 +506,13 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param spec The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
+         * @param spec The desired configuration of the project. The fields under `spec` are the ones that can be
+         * changed after creation, except `pgVersion`, which is fixed when the project is created. See
+         * `status` for the configuration that is currently in effect.
+         * 
+         * Read the resource&#39;s current values from `status`, rather than `spec`.
+         * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+         * unmanaged fields
          * 
          * @return builder
          * 
@@ -489,7 +523,13 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param spec The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
+         * @param spec The desired configuration of the project. The fields under `spec` are the ones that can be
+         * changed after creation, except `pgVersion`, which is fixed when the project is created. See
+         * `status` for the configuration that is currently in effect.
+         * 
+         * Read the resource&#39;s current values from `status`, rather than `spec`.
+         * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+         * unmanaged fields
          * 
          * @return builder
          * 
@@ -499,7 +539,8 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param status (ProjectStatus) - The current status of a Project
+         * @param status (ProjectStatus) - The configuration and state of the project that are currently in effect, as reported by the
+         * system
          * 
          * @return builder
          * 
@@ -510,7 +551,8 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param status (ProjectStatus) - The current status of a Project
+         * @param status (ProjectStatus) - The configuration and state of the project that are currently in effect, as reported by the
+         * system
          * 
          * @return builder
          * 
@@ -520,7 +562,8 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param uid (string) - System-generated unique ID for the project
+         * @param uid (string) - A system-generated UUID that identifies the project. Unlike `name`, it is not derived from the
+         * user-chosen project ID
          * 
          * @return builder
          * 
@@ -531,7 +574,8 @@ public final class PostgresProjectState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param uid (string) - System-generated unique ID for the project
+         * @param uid (string) - A system-generated UUID that identifies the project. Unlike `name`, it is not derived from the
+         * user-chosen project ID
          * 
          * @return builder
          * 

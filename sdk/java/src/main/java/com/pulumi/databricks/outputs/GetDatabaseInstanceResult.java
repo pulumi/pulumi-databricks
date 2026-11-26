@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDatabaseInstanceResult {
     /**
-     * @return (string) - The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
+     * @return (string) - The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;. Must be set when
+     * creating an instance
      * 
      */
     private String capacity;
@@ -42,12 +43,13 @@ public final class GetDatabaseInstanceResult {
      */
     private String creator;
     /**
-     * @return (list of CustomTag) - Custom tags associated with the instance. This field is only included on create and update responses
+     * @return (list of CustomTag) - Custom tags associated with the instance. This field is only included on create and update responses.
+     * An instance can have at most 10 tags; keys must be unique ignoring case
      * 
      */
     private List<GetDatabaseInstanceCustomTag> customTags;
     /**
-     * @return (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+     * @return (string, deprecated) - Deprecated: this field always matches the value of capacity; read capacity instead.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      * 
@@ -110,7 +112,8 @@ public final class GetDatabaseInstanceResult {
      */
     private Boolean enablePgNativeLogin;
     /**
-     * @return (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+     * @return (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+     * nodeCount greater than 1
      * 
      */
     private Boolean enableReadableSecondaries;
@@ -126,8 +129,9 @@ public final class GetDatabaseInstanceResult {
      */
     private Integer nodeCount;
     /**
-     * @return (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
-     * child instance.
+     * @return (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is a
+     * child instance. A child instance inherits customTags and usagePolicyId from
+     * its parent and cannot set them.
      * Input: For specifying the parent instance to create a child instance. Optional.
      * Output: Only populated if provided as input to create a child instance
      * 
@@ -163,7 +167,9 @@ public final class GetDatabaseInstanceResult {
      */
     private String state;
     /**
-     * @return (boolean) - Whether to stop the instance. An input only param, see effectiveStopped for the output
+     * @return (boolean) - Whether to stop the instance. An input only param, see effectiveStopped for the output. An
+     * instance cannot be created in the stopped state; set this field on update to stop or start
+     * the instance
      * 
      */
     private Boolean stopped;
@@ -180,7 +186,8 @@ public final class GetDatabaseInstanceResult {
 
     private GetDatabaseInstanceResult() {}
     /**
-     * @return (string) - The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
+     * @return (string) - The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;. Must be set when
+     * creating an instance
      * 
      */
     public String capacity() {
@@ -209,14 +216,15 @@ public final class GetDatabaseInstanceResult {
         return this.creator;
     }
     /**
-     * @return (list of CustomTag) - Custom tags associated with the instance. This field is only included on create and update responses
+     * @return (list of CustomTag) - Custom tags associated with the instance. This field is only included on create and update responses.
+     * An instance can have at most 10 tags; keys must be unique ignoring case
      * 
      */
     public List<GetDatabaseInstanceCustomTag> customTags() {
         return this.customTags;
     }
     /**
-     * @return (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+     * @return (string, deprecated) - Deprecated: this field always matches the value of capacity; read capacity instead.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      * 
@@ -297,7 +305,8 @@ public final class GetDatabaseInstanceResult {
         return this.enablePgNativeLogin;
     }
     /**
-     * @return (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+     * @return (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+     * nodeCount greater than 1
      * 
      */
     public Boolean enableReadableSecondaries() {
@@ -319,8 +328,9 @@ public final class GetDatabaseInstanceResult {
         return this.nodeCount;
     }
     /**
-     * @return (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
-     * child instance.
+     * @return (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is a
+     * child instance. A child instance inherits customTags and usagePolicyId from
+     * its parent and cannot set them.
      * Input: For specifying the parent instance to create a child instance. Optional.
      * Output: Only populated if provided as input to create a child instance
      * 
@@ -370,7 +380,9 @@ public final class GetDatabaseInstanceResult {
         return this.state;
     }
     /**
-     * @return (boolean) - Whether to stop the instance. An input only param, see effectiveStopped for the output
+     * @return (boolean) - Whether to stop the instance. An input only param, see effectiveStopped for the output. An
+     * instance cannot be created in the stopped state; set this field on update to stop or start
+     * the instance
      * 
      */
     public Boolean stopped() {

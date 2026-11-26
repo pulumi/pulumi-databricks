@@ -16,9 +16,21 @@ public final class AccountSettingV2EffectiveAllowedAppsUserApiScopesArgs extends
 
     public static final AccountSettingV2EffectiveAllowedAppsUserApiScopesArgs Empty = new AccountSettingV2EffectiveAllowedAppsUserApiScopesArgs();
 
+    /**
+     * OAuth scopes that app developers can request when an app acts on behalf of a user. A list with
+     * the single entry * allows every supported scope and cannot be combined with other scopes. An
+     * empty list disables user authorization for apps
+     * 
+     */
     @Import(name="allowedScopes")
     private @Nullable Output<List<String>> allowedScopes;
 
+    /**
+     * @return OAuth scopes that app developers can request when an app acts on behalf of a user. A list with
+     * the single entry * allows every supported scope and cannot be combined with other scopes. An
+     * empty list disables user authorization for apps
+     * 
+     */
     public Optional<Output<List<String>>> allowedScopes() {
         return Optional.ofNullable(this.allowedScopes);
     }
@@ -47,15 +59,39 @@ public final class AccountSettingV2EffectiveAllowedAppsUserApiScopesArgs extends
             $ = new AccountSettingV2EffectiveAllowedAppsUserApiScopesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allowedScopes OAuth scopes that app developers can request when an app acts on behalf of a user. A list with
+         * the single entry * allows every supported scope and cannot be combined with other scopes. An
+         * empty list disables user authorization for apps
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedScopes(@Nullable Output<List<String>> allowedScopes) {
             $.allowedScopes = allowedScopes;
             return this;
         }
 
+        /**
+         * @param allowedScopes OAuth scopes that app developers can request when an app acts on behalf of a user. A list with
+         * the single entry * allows every supported scope and cannot be combined with other scopes. An
+         * empty list disables user authorization for apps
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedScopes(List<String> allowedScopes) {
             return allowedScopes(Output.of(allowedScopes));
         }
 
+        /**
+         * @param allowedScopes OAuth scopes that app developers can request when an app acts on behalf of a user. A list with
+         * the single entry * allows every supported scope and cannot be combined with other scopes. An
+         * empty list disables user authorization for apps
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedScopes(String... allowedScopes) {
             return allowedScopes(List.of(allowedScopes));
         }

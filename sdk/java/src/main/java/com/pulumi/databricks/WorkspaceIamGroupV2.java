@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  * 
@@ -65,90 +65,96 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/workspaceIamGroupV2:WorkspaceIamGroupV2")
 public class WorkspaceIamGroupV2 extends com.pulumi.resources.CustomResource {
     /**
-     * (string) - The parent account ID for group in Databricks
+     * (string) - The ID of the account that contains the group
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return (string) - The parent account ID for group in Databricks
+     * @return (string) - The ID of the account that contains the group
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * ExternalId of the group in the customer&#39;s IdP
+     * The ID of the group in your identity provider (IdP)
      * 
      */
     @Export(name="externalId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> externalId;
 
     /**
-     * @return ExternalId of the group in the customer&#39;s IdP
+     * @return The ID of the group in your identity provider (IdP)
      * 
      */
     public Output<Optional<String>> externalId() {
         return Codegen.optional(this.externalId);
     }
     /**
-     * (string) - Internal group ID of the group in Databricks
+     * (string) - The Databricks ID of the group. It is a numeric string that Databricks assigns when the group
+     * is created, and it is the `{group_id}` segment of `name`
      * 
      */
     @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
-     * @return (string) - Internal group ID of the group in Databricks
+     * @return (string) - The Databricks ID of the group. It is a numeric string that Databricks assigns when the group
+     * is created, and it is the `{group_id}` segment of `name`
      * 
      */
     public Output<String> groupId() {
         return this.groupId;
     }
     /**
-     * Display name of the group
+     * The display name of the group. It must be unique in the account, must not be blank, and must be
+     * shorter than 255 characters. Databricks trims surrounding whitespace. You can&#39;t use the name of a
+     * group that Databricks manages, such as `admins` or `users`
      * 
      */
     @Export(name="groupName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> groupName;
 
     /**
-     * @return Display name of the group
+     * @return The display name of the group. It must be unique in the account, must not be blank, and must be
+     * shorter than 255 characters. Databricks trims surrounding whitespace. You can&#39;t use the name of a
+     * group that Databricks manages, such as `admins` or `users`
      * 
      */
     public Output<Optional<String>> groupName() {
         return Codegen.optional(this.groupName);
     }
     /**
-     * (string) - The resource name of the group. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * (string) - The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return (string) - The resource name of the group. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * @return (string) - The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * (string) - The resource name of the account that contains the group, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
-     * @return (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * @return (string) - The resource name of the account that contains the group, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      * 
      */
     public Output<String> parent() {

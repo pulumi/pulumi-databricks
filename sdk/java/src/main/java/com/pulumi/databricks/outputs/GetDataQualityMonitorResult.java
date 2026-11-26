@@ -16,13 +16,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDataQualityMonitorResult {
     /**
-     * @return (AnomalyDetectionConfig) - Anomaly Detection Configuration, applicable to `schema` object types
+     * @return (AnomalyDetectionConfig) - Anomaly detection settings. Required when `objectType` is `schema`. When reading a `table` monitor, this holds
+     * the settings of the parent schema&#39;s monitor if the schema has one
      * 
      */
     private GetDataQualityMonitorAnomalyDetectionConfig anomalyDetectionConfig;
     /**
-     * @return (DataProfilingConfig) - Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-     * must be present
+     * @return (DataProfilingConfig) - Data profiling settings. Required when `objectType` is `table`. Exactly one of `inferenceLog`, `timeSeries`
+     * or `snapshot` must be set
      * 
      */
     private GetDataQualityMonitorDataProfilingConfig dataProfilingConfig;
@@ -40,15 +41,16 @@ public final class GetDataQualityMonitorResult {
 
     private GetDataQualityMonitorResult() {}
     /**
-     * @return (AnomalyDetectionConfig) - Anomaly Detection Configuration, applicable to `schema` object types
+     * @return (AnomalyDetectionConfig) - Anomaly detection settings. Required when `objectType` is `schema`. When reading a `table` monitor, this holds
+     * the settings of the parent schema&#39;s monitor if the schema has one
      * 
      */
     public GetDataQualityMonitorAnomalyDetectionConfig anomalyDetectionConfig() {
         return this.anomalyDetectionConfig;
     }
     /**
-     * @return (DataProfilingConfig) - Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-     * must be present
+     * @return (DataProfilingConfig) - Data profiling settings. Required when `objectType` is `table`. Exactly one of `inferenceLog`, `timeSeries`
+     * or `snapshot` must be set
      * 
      */
     public GetDataQualityMonitorDataProfilingConfig dataProfilingConfig() {

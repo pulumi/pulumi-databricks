@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetPostgresSyncedTableStatusLastSync {
     /**
-     * @return (DeltaTableSyncInfo)
+     * @return (DeltaTableSyncInfo) - The source Delta table version that the last successful sync read
      * 
      */
     private GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfo deltaTableSyncInfo;
@@ -33,7 +33,7 @@ public final class GetPostgresSyncedTableStatusLastSync {
 
     private GetPostgresSyncedTableStatusLastSync() {}
     /**
-     * @return (DeltaTableSyncInfo)
+     * @return (DeltaTableSyncInfo) - The source Delta table version that the last successful sync read
      * 
      */
     public GetPostgresSyncedTableStatusLastSyncDeltaTableSyncInfo deltaTableSyncInfo() {

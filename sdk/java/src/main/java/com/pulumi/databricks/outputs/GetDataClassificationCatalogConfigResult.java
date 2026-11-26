@@ -18,14 +18,16 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDataClassificationCatalogConfigResult {
     /**
-     * @return (list of AutoTaggingConfig) - List of auto-tagging configurations for this catalog.
-     * Empty list means no auto-tagging is enabled
+     * @return (list of AutoTaggingConfig) - Auto-tagging configurations that apply to this catalog. Each entry overrides the
+     * metastore-level auto-tagging setting for its classification tag; tags without an entry
+     * inherit the metastore-level setting
      * 
      */
     private List<GetDataClassificationCatalogConfigAutoTagConfig> autoTagConfigs;
     /**
      * @return (CatalogConfigSchemaNames) - Schemas to exclude from the scan, each named relative to the parent catalog.
-     * If specified, all schemas except the specified ones will be scanned.
+     * If specified, all schemas except the specified ones will be scanned, including schemas
+     * created later.
      * Mutually exclusive with `includedSchemas`: only one may be set per request.
      * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      * 
@@ -33,7 +35,8 @@ public final class GetDataClassificationCatalogConfigResult {
     private GetDataClassificationCatalogConfigExcludedSchemas excludedSchemas;
     /**
      * @return (CatalogConfigSchemaNames) - Schemas to include in the scan, each named relative to the parent catalog.
-     * If specified, only listed schemas will be scanned.
+     * If specified, only listed schemas will be scanned. Schemas created later are not scanned
+     * until you add them to the list.
      * Mutually exclusive with `excludedSchemas`: only one may be set per request.
      * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      * 
@@ -48,8 +51,9 @@ public final class GetDataClassificationCatalogConfigResult {
 
     private GetDataClassificationCatalogConfigResult() {}
     /**
-     * @return (list of AutoTaggingConfig) - List of auto-tagging configurations for this catalog.
-     * Empty list means no auto-tagging is enabled
+     * @return (list of AutoTaggingConfig) - Auto-tagging configurations that apply to this catalog. Each entry overrides the
+     * metastore-level auto-tagging setting for its classification tag; tags without an entry
+     * inherit the metastore-level setting
      * 
      */
     public List<GetDataClassificationCatalogConfigAutoTagConfig> autoTagConfigs() {
@@ -57,7 +61,8 @@ public final class GetDataClassificationCatalogConfigResult {
     }
     /**
      * @return (CatalogConfigSchemaNames) - Schemas to exclude from the scan, each named relative to the parent catalog.
-     * If specified, all schemas except the specified ones will be scanned.
+     * If specified, all schemas except the specified ones will be scanned, including schemas
+     * created later.
      * Mutually exclusive with `includedSchemas`: only one may be set per request.
      * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      * 
@@ -67,7 +72,8 @@ public final class GetDataClassificationCatalogConfigResult {
     }
     /**
      * @return (CatalogConfigSchemaNames) - Schemas to include in the scan, each named relative to the parent catalog.
-     * If specified, only listed schemas will be scanned.
+     * If specified, only listed schemas will be scanned. Schemas created later are not scanned
+     * until you add them to the list.
      * Mutually exclusive with `excludedSchemas`: only one may be set per request.
      * If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
      * 

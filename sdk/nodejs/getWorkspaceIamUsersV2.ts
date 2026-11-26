@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
@@ -42,17 +42,18 @@ export function getWorkspaceIamUsersV2(args?: GetWorkspaceIamUsersV2Args, opts?:
  */
 export interface GetWorkspaceIamUsersV2Args {
     /**
-     * Optional. Allows filtering users by username or external id
+     * Filters users by `username` or `externalId`, for example
+     * `username eq "someone@example.com"`. Put the value in quotes
      */
     filter?: string;
     /**
-     * The maximum number of users to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * The maximum number of users to return, up to 1000. The default is 1000. A page can contain
+     * fewer users
      */
     pageSize?: number;
     /**
-     * The resource name of the account to list users in, `accounts/{account_id}`. Optional:
-     * defaults to the account of the calling workspace, and any other account is rejected
+     * The resource name of the account to list users in, in the format `accounts/{account_id}`.
+     * Defaults to the account that contains this workspace. Any other account is rejected
      */
     parent?: string;
     /**
@@ -68,15 +69,15 @@ export interface GetWorkspaceIamUsersV2Result {
     readonly filter?: string;
     readonly pageSize?: number;
     /**
-     * (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * (string) - The resource name of the account that contains the user, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      */
     readonly parent?: string;
     readonly providerConfig?: outputs.GetWorkspaceIamUsersV2ProviderConfig;
     readonly users: outputs.GetWorkspaceIamUsersV2User[];
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  *
@@ -111,17 +112,18 @@ export function getWorkspaceIamUsersV2Output(args?: GetWorkspaceIamUsersV2Output
  */
 export interface GetWorkspaceIamUsersV2OutputArgs {
     /**
-     * Optional. Allows filtering users by username or external id
+     * Filters users by `username` or `externalId`, for example
+     * `username eq "someone@example.com"`. Put the value in quotes
      */
     filter?: pulumi.Input<string | undefined>;
     /**
-     * The maximum number of users to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * The maximum number of users to return, up to 1000. The default is 1000. A page can contain
+     * fewer users
      */
     pageSize?: pulumi.Input<number | undefined>;
     /**
-     * The resource name of the account to list users in, `accounts/{account_id}`. Optional:
-     * defaults to the account of the calling workspace, and any other account is rejected
+     * The resource name of the account to list users in, in the format `accounts/{account_id}`.
+     * Defaults to the account that contains this workspace. Any other account is rejected
      */
     parent?: pulumi.Input<string | undefined>;
     /**

@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusLastSync {
     /**
-     * @return (DeltaTableSyncInfo)
+     * @return (DeltaTableSyncInfo) - Identifies the position in the source Delta table at the time of the last successful sync
      * 
      */
     private GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusLastSyncDeltaTableSyncInfo deltaTableSyncInfo;
@@ -33,7 +33,7 @@ public final class GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronization
 
     private GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusLastSync() {}
     /**
-     * @return (DeltaTableSyncInfo)
+     * @return (DeltaTableSyncInfo) - Identifies the position in the source Delta table at the time of the last successful sync
      * 
      */
     public GetDatabaseSyncedDatabaseTablesSyncedTableDataSynchronizationStatusLastSyncDeltaTableSyncInfo deltaTableSyncInfo() {

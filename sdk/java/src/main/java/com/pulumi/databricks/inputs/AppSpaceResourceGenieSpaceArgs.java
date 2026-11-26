@@ -38,9 +38,17 @@ public final class AppSpaceResourceGenieSpaceArgs extends com.pulumi.resources.R
         return this.permission;
     }
 
+    /**
+     * ID of the Genie space
+     * 
+     */
     @Import(name="spaceId", required=true)
     private Output<String> spaceId;
 
+    /**
+     * @return ID of the Genie space
+     * 
+     */
     public Output<String> spaceId() {
         return this.spaceId;
     }
@@ -103,11 +111,23 @@ public final class AppSpaceResourceGenieSpaceArgs extends com.pulumi.resources.R
             return permission(Output.of(permission));
         }
 
+        /**
+         * @param spaceId ID of the Genie space
+         * 
+         * @return builder
+         * 
+         */
         public Builder spaceId(Output<String> spaceId) {
             $.spaceId = spaceId;
             return this;
         }
 
+        /**
+         * @param spaceId ID of the Genie space
+         * 
+         * @return builder
+         * 
+         */
         public Builder spaceId(String spaceId) {
             return spaceId(Output.of(spaceId));
         }

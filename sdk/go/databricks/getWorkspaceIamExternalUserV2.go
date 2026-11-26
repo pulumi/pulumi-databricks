@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 //
@@ -65,10 +65,9 @@ func GetWorkspaceIamExternalUserV2(ctx *pulumi.Context, args *GetWorkspaceIamExt
 
 // A collection of arguments for invoking getWorkspaceIamExternalUserV2.
 type GetWorkspaceIamExternalUserV2Args struct {
-	// The resource name of the external user. The format depends on the API that
-	// returned it:
-	// - Account-scoped: accounts/{account_id}/external-users/{external_user_id}
-	// - Workspace-scoped: external-users/{external_user_id}
+	// The resource name of the external user, in one of these formats:
+	// - Account APIs: `accounts/{account_id}/external-users/{external_user_id}`
+	// - Workspace APIs: `external-users/{external_user_id}`
 	Name string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetWorkspaceIamExternalUserV2ProviderConfig `pulumi:"providerConfig"`
@@ -76,25 +75,24 @@ type GetWorkspaceIamExternalUserV2Args struct {
 
 // A collection of values returned by getWorkspaceIamExternalUserV2.
 type GetWorkspaceIamExternalUserV2Result struct {
-	// (string) - The parent account ID, from Databricks
+	// (string) - The ID of the account that contains the user
 	AccountId string `pulumi:"accountId"`
-	// (string) - The activity status of the user in the Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+	// (string) - Whether the user is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
 	AccountUserStatus string `pulumi:"accountUserStatus"`
-	// (string) - Display name of the user from the customer's IdP
+	// (string) - The user's given and family names from your IdP, separated by a space
 	DisplayName string `pulumi:"displayName"`
-	// (string) - The external ID of the user in the customer's IdP
+	// (string) - The ID of the user in your IdP
 	ExternalUserId string `pulumi:"externalUserId"`
-	// (FullName) - The full name of the user, from the customer's IdP
+	// (FullName) - The user's name, from your IdP
 	FullName GetWorkspaceIamExternalUserV2FullName `pulumi:"fullName"`
-	// (string) - Internal userId of the user in Databricks
+	// (string) - The Databricks ID of the user. Use it as the `userId` in the user APIs
 	InternalId string `pulumi:"internalId"`
-	// (string) - The resource name of the external user. The format depends on the API that
-	// returned it:
-	// - Account-scoped: accounts/{account_id}/external-users/{external_user_id}
-	// - Workspace-scoped: external-users/{external_user_id}
+	// (string) - The resource name of the external user, in one of these formats:
+	// - Account APIs: `accounts/{account_id}/external-users/{external_user_id}`
+	// - Workspace APIs: `external-users/{external_user_id}`
 	Name           string                                       `pulumi:"name"`
 	ProviderConfig *GetWorkspaceIamExternalUserV2ProviderConfig `pulumi:"providerConfig"`
-	// (string) - Username/email of the user, from Databricks
+	// (string) - The user's username, which is their email address
 	Username string `pulumi:"username"`
 }
 
@@ -105,10 +103,9 @@ func GetWorkspaceIamExternalUserV2Output(ctx *pulumi.Context, args GetWorkspaceI
 
 // A collection of arguments for invoking getWorkspaceIamExternalUserV2.
 type GetWorkspaceIamExternalUserV2OutputArgs struct {
-	// The resource name of the external user. The format depends on the API that
-	// returned it:
-	// - Account-scoped: accounts/{account_id}/external-users/{external_user_id}
-	// - Workspace-scoped: external-users/{external_user_id}
+	// The resource name of the external user, in one of these formats:
+	// - Account APIs: `accounts/{account_id}/external-users/{external_user_id}`
+	// - Workspace APIs: `external-users/{external_user_id}`
 	Name pulumi.StringInput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetWorkspaceIamExternalUserV2ProviderConfigPtrInput `pulumi:"providerConfig"`
@@ -133,40 +130,39 @@ func (o GetWorkspaceIamExternalUserV2ResultOutput) ToGetWorkspaceIamExternalUser
 	return o
 }
 
-// (string) - The parent account ID, from Databricks
+// (string) - The ID of the account that contains the user
 func (o GetWorkspaceIamExternalUserV2ResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceIamExternalUserV2Result) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// (string) - The activity status of the user in the Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+// (string) - Whether the user is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
 func (o GetWorkspaceIamExternalUserV2ResultOutput) AccountUserStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceIamExternalUserV2Result) string { return v.AccountUserStatus }).(pulumi.StringOutput)
 }
 
-// (string) - Display name of the user from the customer's IdP
+// (string) - The user's given and family names from your IdP, separated by a space
 func (o GetWorkspaceIamExternalUserV2ResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceIamExternalUserV2Result) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// (string) - The external ID of the user in the customer's IdP
+// (string) - The ID of the user in your IdP
 func (o GetWorkspaceIamExternalUserV2ResultOutput) ExternalUserId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceIamExternalUserV2Result) string { return v.ExternalUserId }).(pulumi.StringOutput)
 }
 
-// (FullName) - The full name of the user, from the customer's IdP
+// (FullName) - The user's name, from your IdP
 func (o GetWorkspaceIamExternalUserV2ResultOutput) FullName() GetWorkspaceIamExternalUserV2FullNameOutput {
 	return o.ApplyT(func(v GetWorkspaceIamExternalUserV2Result) GetWorkspaceIamExternalUserV2FullName { return v.FullName }).(GetWorkspaceIamExternalUserV2FullNameOutput)
 }
 
-// (string) - Internal userId of the user in Databricks
+// (string) - The Databricks ID of the user. Use it as the `userId` in the user APIs
 func (o GetWorkspaceIamExternalUserV2ResultOutput) InternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceIamExternalUserV2Result) string { return v.InternalId }).(pulumi.StringOutput)
 }
 
-// (string) - The resource name of the external user. The format depends on the API that
-// returned it:
-// - Account-scoped: accounts/{account_id}/external-users/{external_user_id}
-// - Workspace-scoped: external-users/{external_user_id}
+// (string) - The resource name of the external user, in one of these formats:
+// - Account APIs: `accounts/{account_id}/external-users/{external_user_id}`
+// - Workspace APIs: `external-users/{external_user_id}`
 func (o GetWorkspaceIamExternalUserV2ResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceIamExternalUserV2Result) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -177,7 +173,7 @@ func (o GetWorkspaceIamExternalUserV2ResultOutput) ProviderConfig() GetWorkspace
 	}).(GetWorkspaceIamExternalUserV2ProviderConfigPtrOutput)
 }
 
-// (string) - Username/email of the user, from Databricks
+// (string) - The user's username, which is their email address
 func (o GetWorkspaceIamExternalUserV2ResultOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GetWorkspaceIamExternalUserV2Result) string { return v.Username }).(pulumi.StringOutput)
 }

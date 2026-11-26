@@ -41,7 +41,7 @@ export function getExternalMetadatas(args?: GetExternalMetadatasArgs, opts?: pul
 export interface GetExternalMetadatasArgs {
     /**
      * Specifies the maximum number of external metadata objects to return in a single response.
-     * The value must be less than or equal to 1000
+     * The value must be less than or equal to 1000. Defaults to 1000 when omitted
      */
     pageSize?: number;
     /**
@@ -93,7 +93,7 @@ export function getExternalMetadatasOutput(args?: GetExternalMetadatasOutputArgs
 export interface GetExternalMetadatasOutputArgs {
     /**
      * Specifies the maximum number of external metadata objects to return in a single response.
-     * The value must be less than or equal to 1000
+     * The value must be less than or equal to 1000. Defaults to 1000 when omitted
      */
     pageSize?: pulumi.Input<number | undefined>;
     /**

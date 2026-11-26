@@ -127,6 +127,13 @@ export class PostgresCdfConfig extends pulumi.CustomResource {
      * Set at creation; the CdfConfig is immutable
      */
     declare public readonly schema: pulumi.Output<string>;
+    /**
+     * The service principal (application id) whose identity authorizes this
+     * change data feed's ongoing writes to Unity Catalog. When unset, writes are
+     * authorized as the creating identity. Changing it requires a new CdfConfig,
+     * which writes to new Delta tables
+     */
+    declare public readonly servicePrincipal: pulumi.Output<string | undefined>;
 
     /**
      * Create a PostgresCdfConfig resource with the given unique name, arguments, and options.
@@ -149,6 +156,7 @@ export class PostgresCdfConfig extends pulumi.CustomResource {
             resourceInputs["postgresSchema"] = state?.postgresSchema;
             resourceInputs["providerConfig"] = state?.providerConfig;
             resourceInputs["schema"] = state?.schema;
+            resourceInputs["servicePrincipal"] = state?.servicePrincipal;
         } else {
             const args = argsOrState as PostgresCdfConfigArgs | undefined;
             if (args?.catalog === undefined && !opts.urn) {
@@ -169,6 +177,7 @@ export class PostgresCdfConfig extends pulumi.CustomResource {
             resourceInputs["postgresSchema"] = args?.postgresSchema;
             resourceInputs["providerConfig"] = args?.providerConfig;
             resourceInputs["schema"] = args?.schema;
+            resourceInputs["servicePrincipal"] = args?.servicePrincipal;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
@@ -219,6 +228,13 @@ export interface PostgresCdfConfigState {
      * Set at creation; the CdfConfig is immutable
      */
     schema?: pulumi.Input<string | undefined>;
+    /**
+     * The service principal (application id) whose identity authorizes this
+     * change data feed's ongoing writes to Unity Catalog. When unset, writes are
+     * authorized as the creating identity. Changing it requires a new CdfConfig,
+     * which writes to new Delta tables
+     */
+    servicePrincipal?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -254,4 +270,11 @@ export interface PostgresCdfConfigArgs {
      * Set at creation; the CdfConfig is immutable
      */
     schema: pulumi.Input<string>;
+    /**
+     * The service principal (application id) whose identity authorizes this
+     * change data feed's ongoing writes to Unity Catalog. When unset, writes are
+     * authorized as the creating identity. Changing it requires a new CdfConfig,
+     * which writes to new Delta tables
+     */
+    servicePrincipal?: pulumi.Input<string | undefined>;
 }

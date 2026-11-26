@@ -52,7 +52,7 @@ class GetWorkspaceIamWorkspaceIdentityDetailV2Result:
     @pulumi.getter(name="assignmentType")
     def assignment_type(self) -> _builtins.str:
         """
-        (string) - The type of assignment the principal has to the workspace (direct or indirect). Possible values are: `DIRECT`, `INDIRECT`
+        (string) - Whether the principal is assigned to the workspace directly or has access through a group. Possible values are: `DIRECT`, `INDIRECT`
         """
         return pulumi.get(self, "assignment_type")
 
@@ -60,8 +60,8 @@ class GetWorkspaceIamWorkspaceIdentityDetailV2Result:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        (string) - The resource name of the workspace identity detail.
-        Format: principals/{principal_id}/workspace-identity-detail
+        (string) - The resource name of the workspace identity detail, in the format
+        `principals/{principal_id}/workspace-identity-detail`
         """
         return pulumi.get(self, "name")
 
@@ -69,7 +69,7 @@ class GetWorkspaceIamWorkspaceIdentityDetailV2Result:
     @pulumi.getter(name="principalId")
     def principal_id(self) -> _builtins.str:
         """
-        (integer) - The internal ID of the principal (user/sp/group) in Databricks
+        (integer) - The Databricks ID of the user, service principal, or group
         """
         return pulumi.get(self, "principal_id")
 
@@ -77,7 +77,7 @@ class GetWorkspaceIamWorkspaceIdentityDetailV2Result:
     @pulumi.getter(name="principalType")
     def principal_type(self) -> _builtins.str:
         """
-        (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+        (string) - Whether the principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
         """
         return pulumi.get(self, "principal_type")
 
@@ -90,7 +90,7 @@ class GetWorkspaceIamWorkspaceIdentityDetailV2Result:
     @pulumi.getter(name="workspaceIdentityStatus")
     def workspace_identity_status(self) -> _builtins.str:
         """
-        (string) - The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
+        (string) - Whether the principal is active in the workspace. Groups are always `ACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
         """
         return pulumi.get(self, "workspace_identity_status")
 
@@ -113,7 +113,7 @@ def get_workspace_iam_workspace_identity_detail_v2(name: Optional[_builtins.str]
                                                    provider_config: Optional[Union['GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs', 'GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfigResult']] = None,
                                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkspaceIamWorkspaceIdentityDetailV2Result:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
@@ -131,8 +131,8 @@ def get_workspace_iam_workspace_identity_detail_v2(name: Optional[_builtins.str]
     ```
 
 
-    :param _builtins.str name: The resource name of the workspace identity detail.
-           Format: principals/{principal_id}/workspace-identity-detail
+    :param _builtins.str name: The resource name of the workspace identity detail, in the format
+           `principals/{principal_id}/workspace-identity-detail`
     :param Union['GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs', 'GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -152,7 +152,7 @@ def get_workspace_iam_workspace_identity_detail_v2_output(name: pulumi.Input[Opt
                                                           provider_config: pulumi.Input[Optional[Optional[Union['GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs', 'GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfigResult']]]] = None,
                                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkspaceIamWorkspaceIdentityDetailV2Result]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
 
@@ -170,8 +170,8 @@ def get_workspace_iam_workspace_identity_detail_v2_output(name: pulumi.Input[Opt
     ```
 
 
-    :param _builtins.str name: The resource name of the workspace identity detail.
-           Format: principals/{principal_id}/workspace-identity-detail
+    :param _builtins.str name: The resource name of the workspace identity detail, in the format
+           `principals/{principal_id}/workspace-identity-detail`
     :param Union['GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgs', 'GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfigArgsDict', 'outputs.GetWorkspaceIamWorkspaceIdentityDetailV2ProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()

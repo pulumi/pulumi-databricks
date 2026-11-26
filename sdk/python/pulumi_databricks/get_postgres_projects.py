@@ -80,7 +80,7 @@ def get_postgres_projects(page_size: Optional[_builtins.int] = None,
                           show_deleted: Optional[_builtins.bool] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresProjectsResult:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -99,7 +99,8 @@ def get_postgres_projects(page_size: Optional[_builtins.int] = None,
     ```
 
 
-    :param _builtins.int page_size: Upper bound for items returned. Cannot be negative. The maximum value is 100
+    :param _builtins.int page_size: Upper bound for the number of projects returned. Cannot be negative. Values above the maximum
+           page size are reduced to that maximum
     :param Union['GetPostgresProjectsProviderConfigArgs', 'GetPostgresProjectsProviderConfigArgsDict', 'outputs.GetPostgresProjectsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.bool show_deleted: Whether to include soft-deleted projects in the response.
            When true, soft-deleted projects are included alongside active projects.
@@ -122,7 +123,7 @@ def get_postgres_projects_output(page_size: pulumi.Input[Optional[Optional[_buil
                                  show_deleted: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresProjectsResult]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -141,7 +142,8 @@ def get_postgres_projects_output(page_size: pulumi.Input[Optional[Optional[_buil
     ```
 
 
-    :param _builtins.int page_size: Upper bound for items returned. Cannot be negative. The maximum value is 100
+    :param _builtins.int page_size: Upper bound for the number of projects returned. Cannot be negative. Values above the maximum
+           page size are reduced to that maximum
     :param Union['GetPostgresProjectsProviderConfigArgs', 'GetPostgresProjectsProviderConfigArgsDict', 'outputs.GetPostgresProjectsProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     :param _builtins.bool show_deleted: Whether to include soft-deleted projects in the response.
            When true, soft-deleted projects are included alongside active projects.

@@ -6,6 +6,7 @@ package com.pulumi.databricks.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureSourceFeatureViewSource;
+import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureSourceIcebergTableSource;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureSourceKafkaSource;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureSourceLateness;
 import com.pulumi.databricks.outputs.GetFeatureEngineeringFeaturesFeatureSourceRequestSource;
@@ -27,6 +28,11 @@ public final class GetFeatureEngineeringFeaturesFeatureSource {
      * 
      */
     private @Nullable GetFeatureEngineeringFeaturesFeatureSourceFeatureViewSource featureViewSource;
+    /**
+     * @return (IcebergTableSource) - A Unity Catalog managed or foreign Iceberg table source
+     * 
+     */
+    private @Nullable GetFeatureEngineeringFeaturesFeatureSourceIcebergTableSource icebergTableSource;
     /**
      * @return (KafkaSource) - A Kafka stream data source
      * 
@@ -68,6 +74,13 @@ public final class GetFeatureEngineeringFeaturesFeatureSource {
      */
     public Optional<GetFeatureEngineeringFeaturesFeatureSourceFeatureViewSource> featureViewSource() {
         return Optional.ofNullable(this.featureViewSource);
+    }
+    /**
+     * @return (IcebergTableSource) - A Unity Catalog managed or foreign Iceberg table source
+     * 
+     */
+    public Optional<GetFeatureEngineeringFeaturesFeatureSourceIcebergTableSource> icebergTableSource() {
+        return Optional.ofNullable(this.icebergTableSource);
     }
     /**
      * @return (KafkaSource) - A Kafka stream data source
@@ -117,6 +130,7 @@ public final class GetFeatureEngineeringFeaturesFeatureSource {
     public static final class Builder {
         private @Nullable GetFeatureEngineeringFeaturesFeatureSourceDeltaTableSource deltaTableSource;
         private @Nullable GetFeatureEngineeringFeaturesFeatureSourceFeatureViewSource featureViewSource;
+        private @Nullable GetFeatureEngineeringFeaturesFeatureSourceIcebergTableSource icebergTableSource;
         private @Nullable GetFeatureEngineeringFeaturesFeatureSourceKafkaSource kafkaSource;
         private @Nullable GetFeatureEngineeringFeaturesFeatureSourceLateness lateness;
         private @Nullable GetFeatureEngineeringFeaturesFeatureSourceRequestSource requestSource;
@@ -127,6 +141,7 @@ public final class GetFeatureEngineeringFeaturesFeatureSource {
     	      Objects.requireNonNull(defaults);
     	      this.deltaTableSource = defaults.deltaTableSource;
     	      this.featureViewSource = defaults.featureViewSource;
+    	      this.icebergTableSource = defaults.icebergTableSource;
     	      this.kafkaSource = defaults.kafkaSource;
     	      this.lateness = defaults.lateness;
     	      this.requestSource = defaults.requestSource;
@@ -144,6 +159,12 @@ public final class GetFeatureEngineeringFeaturesFeatureSource {
         public Builder featureViewSource(@Nullable GetFeatureEngineeringFeaturesFeatureSourceFeatureViewSource featureViewSource) {
 
             this.featureViewSource = featureViewSource;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder icebergTableSource(@Nullable GetFeatureEngineeringFeaturesFeatureSourceIcebergTableSource icebergTableSource) {
+
+            this.icebergTableSource = icebergTableSource;
             return this;
         }
         @CustomType.Setter
@@ -180,6 +201,7 @@ public final class GetFeatureEngineeringFeaturesFeatureSource {
             final var _resultValue = new GetFeatureEngineeringFeaturesFeatureSource();
             _resultValue.deltaTableSource = deltaTableSource;
             _resultValue.featureViewSource = featureViewSource;
+            _resultValue.icebergTableSource = icebergTableSource;
             _resultValue.kafkaSource = kafkaSource;
             _resultValue.lateness = lateness;
             _resultValue.requestSource = requestSource;

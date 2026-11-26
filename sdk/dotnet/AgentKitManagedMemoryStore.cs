@@ -48,7 +48,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
         /// with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-        /// letter or digit
+        /// letter or digit. It becomes the last segment of the store's `Name` and cannot be changed
+        /// after creation
         /// </summary>
         [Output("managedMemoryStoreId")]
         public Output<string> ManagedMemoryStoreId { get; private set; } = null!;
@@ -153,7 +154,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
         /// with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-        /// letter or digit
+        /// letter or digit. It becomes the last segment of the store's `Name` and cannot be changed
+        /// after creation
         /// </summary>
         [Input("managedMemoryStoreId", required: true)]
         public Input<string> ManagedMemoryStoreId { get; set; } = null!;
@@ -203,7 +205,8 @@ namespace Pulumi.Databricks
         /// <summary>
         /// Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
         /// with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-        /// letter or digit
+        /// letter or digit. It becomes the last segment of the store's `Name` and cannot be changed
+        /// after creation
         /// </summary>
         [Input("managedMemoryStoreId")]
         public Input<string>? ManagedMemoryStoreId { get; set; }

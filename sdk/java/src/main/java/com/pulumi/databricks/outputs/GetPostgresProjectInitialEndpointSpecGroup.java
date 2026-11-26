@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 public final class GetPostgresProjectInitialEndpointSpecGroup {
     /**
      * @return (boolean) - Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
-     * size.max &gt; 1
+     * `max` is greater than 1. When enabled, the endpoint also reports a read-only host in `status.hosts`
      * 
      */
     private @Nullable Boolean enableReadableSecondaries;
@@ -36,7 +36,7 @@ public final class GetPostgresProjectInitialEndpointSpecGroup {
     private GetPostgresProjectInitialEndpointSpecGroup() {}
     /**
      * @return (boolean) - Whether to allow read-only connections to read-write endpoints. Only relevant for read-write endpoints where
-     * size.max &gt; 1
+     * `max` is greater than 1. When enabled, the endpoint also reports a read-only host in `status.hosts`
      * 
      */
     public Optional<Boolean> enableReadableSecondaries() {

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceDeltaTableSourceArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceFeatureViewSourceArgs;
+import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceIcebergTableSourceArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceKafkaSourceArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceLatenessArgs;
 import com.pulumi.databricks.inputs.FeatureEngineeringFeatureSourceRequestSourceArgs;
@@ -49,6 +50,21 @@ public final class FeatureEngineeringFeatureSourceArgs extends com.pulumi.resour
      */
     public Optional<Output<FeatureEngineeringFeatureSourceFeatureViewSourceArgs>> featureViewSource() {
         return Optional.ofNullable(this.featureViewSource);
+    }
+
+    /**
+     * A Unity Catalog managed or foreign Iceberg table source
+     * 
+     */
+    @Import(name="icebergTableSource")
+    private @Nullable Output<FeatureEngineeringFeatureSourceIcebergTableSourceArgs> icebergTableSource;
+
+    /**
+     * @return A Unity Catalog managed or foreign Iceberg table source
+     * 
+     */
+    public Optional<Output<FeatureEngineeringFeatureSourceIcebergTableSourceArgs>> icebergTableSource() {
+        return Optional.ofNullable(this.icebergTableSource);
     }
 
     /**
@@ -133,6 +149,7 @@ public final class FeatureEngineeringFeatureSourceArgs extends com.pulumi.resour
     private FeatureEngineeringFeatureSourceArgs(FeatureEngineeringFeatureSourceArgs $) {
         this.deltaTableSource = $.deltaTableSource;
         this.featureViewSource = $.featureViewSource;
+        this.icebergTableSource = $.icebergTableSource;
         this.kafkaSource = $.kafkaSource;
         this.lateness = $.lateness;
         this.requestSource = $.requestSource;
@@ -198,6 +215,27 @@ public final class FeatureEngineeringFeatureSourceArgs extends com.pulumi.resour
          */
         public Builder featureViewSource(FeatureEngineeringFeatureSourceFeatureViewSourceArgs featureViewSource) {
             return featureViewSource(Output.of(featureViewSource));
+        }
+
+        /**
+         * @param icebergTableSource A Unity Catalog managed or foreign Iceberg table source
+         * 
+         * @return builder
+         * 
+         */
+        public Builder icebergTableSource(@Nullable Output<FeatureEngineeringFeatureSourceIcebergTableSourceArgs> icebergTableSource) {
+            $.icebergTableSource = icebergTableSource;
+            return this;
+        }
+
+        /**
+         * @param icebergTableSource A Unity Catalog managed or foreign Iceberg table source
+         * 
+         * @return builder
+         * 
+         */
+        public Builder icebergTableSource(FeatureEngineeringFeatureSourceIcebergTableSourceArgs icebergTableSource) {
+            return icebergTableSource(Output.of(icebergTableSource));
         }
 
         /**

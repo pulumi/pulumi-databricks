@@ -18,16 +18,16 @@ public final class GetAccountIamDirectGroupMembersV2Args extends com.pulumi.reso
     public static final GetAccountIamDirectGroupMembersV2Args Empty = new GetAccountIamDirectGroupMembersV2Args();
 
     /**
-     * The maximum number of members to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * The maximum number of members to return, up to 1000. The default is 1000. A page can contain
+     * fewer members
      * 
      */
     @Import(name="pageSize")
     private @Nullable Output<Integer> pageSize;
 
     /**
-     * @return The maximum number of members to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * @return The maximum number of members to return, up to 1000. The default is 1000. A page can contain
+     * fewer members
      * 
      */
     public Optional<Output<Integer>> pageSize() {
@@ -35,16 +35,14 @@ public final class GetAccountIamDirectGroupMembersV2Args extends com.pulumi.reso
     }
 
     /**
-     * The parent resource name of the group whose direct members to list.
-     * Format: accounts/{account_id}/groups/{group_id}
+     * The resource name of the group, in the format `accounts/{account_id}/groups/{group_id}`
      * 
      */
     @Import(name="parent", required=true)
     private Output<String> parent;
 
     /**
-     * @return The parent resource name of the group whose direct members to list.
-     * Format: accounts/{account_id}/groups/{group_id}
+     * @return The resource name of the group, in the format `accounts/{account_id}/groups/{group_id}`
      * 
      */
     public Output<String> parent() {
@@ -77,8 +75,8 @@ public final class GetAccountIamDirectGroupMembersV2Args extends com.pulumi.reso
         }
 
         /**
-         * @param pageSize The maximum number of members to return. The service may return fewer than this value.
-         * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+         * @param pageSize The maximum number of members to return, up to 1000. The default is 1000. A page can contain
+         * fewer members
          * 
          * @return builder
          * 
@@ -89,8 +87,8 @@ public final class GetAccountIamDirectGroupMembersV2Args extends com.pulumi.reso
         }
 
         /**
-         * @param pageSize The maximum number of members to return. The service may return fewer than this value.
-         * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+         * @param pageSize The maximum number of members to return, up to 1000. The default is 1000. A page can contain
+         * fewer members
          * 
          * @return builder
          * 
@@ -100,8 +98,7 @@ public final class GetAccountIamDirectGroupMembersV2Args extends com.pulumi.reso
         }
 
         /**
-         * @param parent The parent resource name of the group whose direct members to list.
-         * Format: accounts/{account_id}/groups/{group_id}
+         * @param parent The resource name of the group, in the format `accounts/{account_id}/groups/{group_id}`
          * 
          * @return builder
          * 
@@ -112,8 +109,7 @@ public final class GetAccountIamDirectGroupMembersV2Args extends com.pulumi.reso
         }
 
         /**
-         * @param parent The parent resource name of the group whose direct members to list.
-         * Format: accounts/{account_id}/groups/{group_id}
+         * @param parent The resource name of the group, in the format `accounts/{account_id}/groups/{group_id}`
          * 
          * @return builder
          * 

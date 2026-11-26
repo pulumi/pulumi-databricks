@@ -23,12 +23,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAppSpacesSpaceResource {
     /**
-     * @return (AppResourceApp)
+     * @return (AppResourceApp) - Another app in the workspace that this app is granted access to
      * 
      */
     private @Nullable GetAppSpacesSpaceResourceApp app;
     /**
-     * @return (string)
+     * @return (string) - Resource name of the database within the branch, in the form
+     * `projects/{project}/branches/{branch}/databases/{database}`
      * 
      */
     private @Nullable GetAppSpacesSpaceResourceDatabase database;
@@ -38,17 +39,17 @@ public final class GetAppSpacesSpaceResource {
      */
     private @Nullable String description;
     /**
-     * @return (AppResourceExperiment)
+     * @return (AppResourceExperiment) - MLflow experiment the app is granted access to
      * 
      */
     private @Nullable GetAppSpacesSpaceResourceExperiment experiment;
     /**
-     * @return (AppResourceGenieSpace)
+     * @return (AppResourceGenieSpace) - Genie space the app is granted access to
      * 
      */
     private @Nullable GetAppSpacesSpaceResourceGenieSpace genieSpace;
     /**
-     * @return (AppResourceJob)
+     * @return (AppResourceJob) - Lakeflow job the app is granted access to
      * 
      */
     private @Nullable GetAppSpacesSpaceResourceJob job;
@@ -58,41 +59,43 @@ public final class GetAppSpacesSpaceResource {
      */
     private String name;
     /**
-     * @return (AppResourcePostgres)
+     * @return (AppResourcePostgres) - Lakebase Autoscaling Postgres database the app is granted access to
      * 
      */
     private @Nullable GetAppSpacesSpaceResourcePostgres postgres;
     /**
-     * @return (AppResourceSecret)
+     * @return (AppResourceSecret) - Secret the app is granted access to
      * 
      */
     private @Nullable GetAppSpacesSpaceResourceSecret secret;
     /**
-     * @return (AppResourceServingEndpoint)
+     * @return (AppResourceServingEndpoint) - Model serving endpoint the app is granted access to
      * 
      */
     private @Nullable GetAppSpacesSpaceResourceServingEndpoint servingEndpoint;
     /**
-     * @return (AppResourceSqlWarehouse)
+     * @return (AppResourceSqlWarehouse) - SQL warehouse the app is granted access to
      * 
      */
     private @Nullable GetAppSpacesSpaceResourceSqlWarehouse sqlWarehouse;
     /**
-     * @return (AppResourceUcSecurable)
+     * @return (AppResourceUcSecurable) - Unity Catalog securable (volume, table, function, connection or model service) the app is
+     * granted a privilege on
      * 
      */
     private @Nullable GetAppSpacesSpaceResourceUcSecurable ucSecurable;
 
     private GetAppSpacesSpaceResource() {}
     /**
-     * @return (AppResourceApp)
+     * @return (AppResourceApp) - Another app in the workspace that this app is granted access to
      * 
      */
     public Optional<GetAppSpacesSpaceResourceApp> app() {
         return Optional.ofNullable(this.app);
     }
     /**
-     * @return (string)
+     * @return (string) - Resource name of the database within the branch, in the form
+     * `projects/{project}/branches/{branch}/databases/{database}`
      * 
      */
     public Optional<GetAppSpacesSpaceResourceDatabase> database() {
@@ -106,21 +109,21 @@ public final class GetAppSpacesSpaceResource {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return (AppResourceExperiment)
+     * @return (AppResourceExperiment) - MLflow experiment the app is granted access to
      * 
      */
     public Optional<GetAppSpacesSpaceResourceExperiment> experiment() {
         return Optional.ofNullable(this.experiment);
     }
     /**
-     * @return (AppResourceGenieSpace)
+     * @return (AppResourceGenieSpace) - Genie space the app is granted access to
      * 
      */
     public Optional<GetAppSpacesSpaceResourceGenieSpace> genieSpace() {
         return Optional.ofNullable(this.genieSpace);
     }
     /**
-     * @return (AppResourceJob)
+     * @return (AppResourceJob) - Lakeflow job the app is granted access to
      * 
      */
     public Optional<GetAppSpacesSpaceResourceJob> job() {
@@ -134,35 +137,36 @@ public final class GetAppSpacesSpaceResource {
         return this.name;
     }
     /**
-     * @return (AppResourcePostgres)
+     * @return (AppResourcePostgres) - Lakebase Autoscaling Postgres database the app is granted access to
      * 
      */
     public Optional<GetAppSpacesSpaceResourcePostgres> postgres() {
         return Optional.ofNullable(this.postgres);
     }
     /**
-     * @return (AppResourceSecret)
+     * @return (AppResourceSecret) - Secret the app is granted access to
      * 
      */
     public Optional<GetAppSpacesSpaceResourceSecret> secret() {
         return Optional.ofNullable(this.secret);
     }
     /**
-     * @return (AppResourceServingEndpoint)
+     * @return (AppResourceServingEndpoint) - Model serving endpoint the app is granted access to
      * 
      */
     public Optional<GetAppSpacesSpaceResourceServingEndpoint> servingEndpoint() {
         return Optional.ofNullable(this.servingEndpoint);
     }
     /**
-     * @return (AppResourceSqlWarehouse)
+     * @return (AppResourceSqlWarehouse) - SQL warehouse the app is granted access to
      * 
      */
     public Optional<GetAppSpacesSpaceResourceSqlWarehouse> sqlWarehouse() {
         return Optional.ofNullable(this.sqlWarehouse);
     }
     /**
-     * @return (AppResourceUcSecurable)
+     * @return (AppResourceUcSecurable) - Unity Catalog securable (volume, table, function, connection or model service) the app is
+     * granted a privilege on
      * 
      */
     public Optional<GetAppSpacesSpaceResourceUcSecurable> ucSecurable() {

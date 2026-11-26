@@ -71,7 +71,7 @@ public final class GetPostgresProjectsProjectStatus {
      */
     private Integer pgVersion;
     /**
-     * @return (string) - Part of the resource name
+     * @return (string) - The project ID, which is the final segment of the project&#39;s resource name
      * 
      */
     private String projectId;
@@ -160,7 +160,7 @@ public final class GetPostgresProjectsProjectStatus {
         return this.pgVersion;
     }
     /**
-     * @return (string) - Part of the resource name
+     * @return (string) - The project ID, which is the final segment of the project&#39;s resource name
      * 
      */
     public String projectId() {

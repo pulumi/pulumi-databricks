@@ -13,7 +13,8 @@ namespace Pulumi.Databricks.Inputs
     public sealed class DataQualityMonitorDataProfilingConfigNotificationSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Destinations to send notifications on failure/timeout
+        /// Recipients to notify when a refresh of the monitor fails or times out. Only supported on table
+        /// monitors, via `DataProfilingConfig`, and only `EmailAddresses` is accepted there
         /// </summary>
         [Input("onFailure")]
         public Input<Inputs.DataQualityMonitorDataProfilingConfigNotificationSettingsOnFailureArgs>? OnFailure { get; set; }

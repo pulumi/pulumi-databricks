@@ -14,14 +14,14 @@ public final class GetWorkspaceIamWorkspaceAssignmentV2ProviderConfig extends co
     public static final GetWorkspaceIamWorkspaceAssignmentV2ProviderConfig Empty = new GetWorkspaceIamWorkspaceAssignmentV2ProviderConfig();
 
     /**
-     * (integer) - The workspace ID where the principal is assigned
+     * (integer) - The ID of the workspace
      * 
      */
     @Import(name="workspaceId", required=true)
     private String workspaceId;
 
     /**
-     * @return (integer) - The workspace ID where the principal is assigned
+     * @return (integer) - The ID of the workspace
      * 
      */
     public String workspaceId() {
@@ -53,7 +53,7 @@ public final class GetWorkspaceIamWorkspaceAssignmentV2ProviderConfig extends co
         }
 
         /**
-         * @param workspaceId (integer) - The workspace ID where the principal is assigned
+         * @param workspaceId (integer) - The ID of the workspace
          * 
          * @return builder
          * 

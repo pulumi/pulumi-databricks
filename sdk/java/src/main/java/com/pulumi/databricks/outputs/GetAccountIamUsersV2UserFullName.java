@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAccountIamUsersV2UserFullName {
     /**
-     * @return (string)
+     * @return (string) - The user&#39;s family (last) name
      * 
      */
     private @Nullable String familyName;
     /**
-     * @return (string)
+     * @return (string) - The user&#39;s given (first) name
      * 
      */
     private @Nullable String givenName;
 
     private GetAccountIamUsersV2UserFullName() {}
     /**
-     * @return (string)
+     * @return (string) - The user&#39;s family (last) name
      * 
      */
     public Optional<String> familyName() {
         return Optional.ofNullable(this.familyName);
     }
     /**
-     * @return (string)
+     * @return (string) - The user&#39;s given (first) name
      * 
      */
     public Optional<String> givenName() {

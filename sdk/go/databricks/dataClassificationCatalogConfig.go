@@ -107,22 +107,25 @@ import (
 type DataClassificationCatalogConfig struct {
 	pulumi.CustomResourceState
 
-	// List of auto-tagging configurations for this catalog.
-	// Empty list means no auto-tagging is enabled
+	// Auto-tagging configurations that apply to this catalog. Each entry overrides the
+	// metastore-level auto-tagging setting for its classification tag; tags without an entry
+	// inherit the metastore-level setting
 	AutoTagConfigs DataClassificationCatalogConfigAutoTagConfigArrayOutput `pulumi:"autoTagConfigs"`
 	// Schemas to exclude from the scan, each named relative to the parent catalog.
-	// If specified, all schemas except the specified ones will be scanned.
+	// If specified, all schemas except the specified ones will be scanned, including schemas
+	// created later.
 	// Mutually exclusive with `includedSchemas`: only one may be set per request.
 	// If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
 	ExcludedSchemas DataClassificationCatalogConfigExcludedSchemasPtrOutput `pulumi:"excludedSchemas"`
 	// Schemas to include in the scan, each named relative to the parent catalog.
-	// If specified, only listed schemas will be scanned.
+	// If specified, only listed schemas will be scanned. Schemas created later are not scanned
+	// until you add them to the list.
 	// Mutually exclusive with `excludedSchemas`: only one may be set per request.
 	// If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
 	IncludedSchemas DataClassificationCatalogConfigIncludedSchemasPtrOutput `pulumi:"includedSchemas"`
 	// (string) - Resource name in the format: catalogs/{catalog_name}/config
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Parent resource in the format: catalogs/{catalog_name}
+	// Name of the catalog to enable, in the format catalogs/{catalog_name}
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig DataClassificationCatalogConfigProviderConfigOutput `pulumi:"providerConfig"`
@@ -161,44 +164,50 @@ func GetDataClassificationCatalogConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DataClassificationCatalogConfig resources.
 type dataClassificationCatalogConfigState struct {
-	// List of auto-tagging configurations for this catalog.
-	// Empty list means no auto-tagging is enabled
+	// Auto-tagging configurations that apply to this catalog. Each entry overrides the
+	// metastore-level auto-tagging setting for its classification tag; tags without an entry
+	// inherit the metastore-level setting
 	AutoTagConfigs []DataClassificationCatalogConfigAutoTagConfig `pulumi:"autoTagConfigs"`
 	// Schemas to exclude from the scan, each named relative to the parent catalog.
-	// If specified, all schemas except the specified ones will be scanned.
+	// If specified, all schemas except the specified ones will be scanned, including schemas
+	// created later.
 	// Mutually exclusive with `includedSchemas`: only one may be set per request.
 	// If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
 	ExcludedSchemas *DataClassificationCatalogConfigExcludedSchemas `pulumi:"excludedSchemas"`
 	// Schemas to include in the scan, each named relative to the parent catalog.
-	// If specified, only listed schemas will be scanned.
+	// If specified, only listed schemas will be scanned. Schemas created later are not scanned
+	// until you add them to the list.
 	// Mutually exclusive with `excludedSchemas`: only one may be set per request.
 	// If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
 	IncludedSchemas *DataClassificationCatalogConfigIncludedSchemas `pulumi:"includedSchemas"`
 	// (string) - Resource name in the format: catalogs/{catalog_name}/config
 	Name *string `pulumi:"name"`
-	// Parent resource in the format: catalogs/{catalog_name}
+	// Name of the catalog to enable, in the format catalogs/{catalog_name}
 	Parent *string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *DataClassificationCatalogConfigProviderConfig `pulumi:"providerConfig"`
 }
 
 type DataClassificationCatalogConfigState struct {
-	// List of auto-tagging configurations for this catalog.
-	// Empty list means no auto-tagging is enabled
+	// Auto-tagging configurations that apply to this catalog. Each entry overrides the
+	// metastore-level auto-tagging setting for its classification tag; tags without an entry
+	// inherit the metastore-level setting
 	AutoTagConfigs DataClassificationCatalogConfigAutoTagConfigArrayInput
 	// Schemas to exclude from the scan, each named relative to the parent catalog.
-	// If specified, all schemas except the specified ones will be scanned.
+	// If specified, all schemas except the specified ones will be scanned, including schemas
+	// created later.
 	// Mutually exclusive with `includedSchemas`: only one may be set per request.
 	// If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
 	ExcludedSchemas DataClassificationCatalogConfigExcludedSchemasPtrInput
 	// Schemas to include in the scan, each named relative to the parent catalog.
-	// If specified, only listed schemas will be scanned.
+	// If specified, only listed schemas will be scanned. Schemas created later are not scanned
+	// until you add them to the list.
 	// Mutually exclusive with `excludedSchemas`: only one may be set per request.
 	// If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
 	IncludedSchemas DataClassificationCatalogConfigIncludedSchemasPtrInput
 	// (string) - Resource name in the format: catalogs/{catalog_name}/config
 	Name pulumi.StringPtrInput
-	// Parent resource in the format: catalogs/{catalog_name}
+	// Name of the catalog to enable, in the format catalogs/{catalog_name}
 	Parent pulumi.StringPtrInput
 	// Configure the provider for management through account provider.
 	ProviderConfig DataClassificationCatalogConfigProviderConfigPtrInput
@@ -215,20 +224,23 @@ func DataClassificationCatalogConfigExists(ctx *pulumi.Context,
 }
 
 type dataClassificationCatalogConfigArgs struct {
-	// List of auto-tagging configurations for this catalog.
-	// Empty list means no auto-tagging is enabled
+	// Auto-tagging configurations that apply to this catalog. Each entry overrides the
+	// metastore-level auto-tagging setting for its classification tag; tags without an entry
+	// inherit the metastore-level setting
 	AutoTagConfigs []DataClassificationCatalogConfigAutoTagConfig `pulumi:"autoTagConfigs"`
 	// Schemas to exclude from the scan, each named relative to the parent catalog.
-	// If specified, all schemas except the specified ones will be scanned.
+	// If specified, all schemas except the specified ones will be scanned, including schemas
+	// created later.
 	// Mutually exclusive with `includedSchemas`: only one may be set per request.
 	// If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
 	ExcludedSchemas *DataClassificationCatalogConfigExcludedSchemas `pulumi:"excludedSchemas"`
 	// Schemas to include in the scan, each named relative to the parent catalog.
-	// If specified, only listed schemas will be scanned.
+	// If specified, only listed schemas will be scanned. Schemas created later are not scanned
+	// until you add them to the list.
 	// Mutually exclusive with `excludedSchemas`: only one may be set per request.
 	// If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
 	IncludedSchemas *DataClassificationCatalogConfigIncludedSchemas `pulumi:"includedSchemas"`
-	// Parent resource in the format: catalogs/{catalog_name}
+	// Name of the catalog to enable, in the format catalogs/{catalog_name}
 	Parent string `pulumi:"parent"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *DataClassificationCatalogConfigProviderConfig `pulumi:"providerConfig"`
@@ -236,20 +248,23 @@ type dataClassificationCatalogConfigArgs struct {
 
 // The set of arguments for constructing a DataClassificationCatalogConfig resource.
 type DataClassificationCatalogConfigArgs struct {
-	// List of auto-tagging configurations for this catalog.
-	// Empty list means no auto-tagging is enabled
+	// Auto-tagging configurations that apply to this catalog. Each entry overrides the
+	// metastore-level auto-tagging setting for its classification tag; tags without an entry
+	// inherit the metastore-level setting
 	AutoTagConfigs DataClassificationCatalogConfigAutoTagConfigArrayInput
 	// Schemas to exclude from the scan, each named relative to the parent catalog.
-	// If specified, all schemas except the specified ones will be scanned.
+	// If specified, all schemas except the specified ones will be scanned, including schemas
+	// created later.
 	// Mutually exclusive with `includedSchemas`: only one may be set per request.
 	// If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
 	ExcludedSchemas DataClassificationCatalogConfigExcludedSchemasPtrInput
 	// Schemas to include in the scan, each named relative to the parent catalog.
-	// If specified, only listed schemas will be scanned.
+	// If specified, only listed schemas will be scanned. Schemas created later are not scanned
+	// until you add them to the list.
 	// Mutually exclusive with `excludedSchemas`: only one may be set per request.
 	// If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
 	IncludedSchemas DataClassificationCatalogConfigIncludedSchemasPtrInput
-	// Parent resource in the format: catalogs/{catalog_name}
+	// Name of the catalog to enable, in the format catalogs/{catalog_name}
 	Parent pulumi.StringInput
 	// Configure the provider for management through account provider.
 	ProviderConfig DataClassificationCatalogConfigProviderConfigPtrInput
@@ -342,8 +357,9 @@ func (o DataClassificationCatalogConfigOutput) ToDataClassificationCatalogConfig
 	return o
 }
 
-// List of auto-tagging configurations for this catalog.
-// Empty list means no auto-tagging is enabled
+// Auto-tagging configurations that apply to this catalog. Each entry overrides the
+// metastore-level auto-tagging setting for its classification tag; tags without an entry
+// inherit the metastore-level setting
 func (o DataClassificationCatalogConfigOutput) AutoTagConfigs() DataClassificationCatalogConfigAutoTagConfigArrayOutput {
 	return o.ApplyT(func(v *DataClassificationCatalogConfig) DataClassificationCatalogConfigAutoTagConfigArrayOutput {
 		return v.AutoTagConfigs
@@ -351,7 +367,8 @@ func (o DataClassificationCatalogConfigOutput) AutoTagConfigs() DataClassificati
 }
 
 // Schemas to exclude from the scan, each named relative to the parent catalog.
-// If specified, all schemas except the specified ones will be scanned.
+// If specified, all schemas except the specified ones will be scanned, including schemas
+// created later.
 // Mutually exclusive with `includedSchemas`: only one may be set per request.
 // If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
 func (o DataClassificationCatalogConfigOutput) ExcludedSchemas() DataClassificationCatalogConfigExcludedSchemasPtrOutput {
@@ -361,7 +378,8 @@ func (o DataClassificationCatalogConfigOutput) ExcludedSchemas() DataClassificat
 }
 
 // Schemas to include in the scan, each named relative to the parent catalog.
-// If specified, only listed schemas will be scanned.
+// If specified, only listed schemas will be scanned. Schemas created later are not scanned
+// until you add them to the list.
 // Mutually exclusive with `excludedSchemas`: only one may be set per request.
 // If neither `includedSchemas` nor `excludedSchemas` is set, all schemas are scanned
 func (o DataClassificationCatalogConfigOutput) IncludedSchemas() DataClassificationCatalogConfigIncludedSchemasPtrOutput {
@@ -375,7 +393,7 @@ func (o DataClassificationCatalogConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataClassificationCatalogConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Parent resource in the format: catalogs/{catalog_name}
+// Name of the catalog to enable, in the format catalogs/{catalog_name}
 func (o DataClassificationCatalogConfigOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataClassificationCatalogConfig) pulumi.StringOutput { return v.Parent }).(pulumi.StringOutput)
 }

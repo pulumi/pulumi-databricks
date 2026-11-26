@@ -67,14 +67,14 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (string) - Creator identity
+     * (string) - Username or service principal application ID of the principal that created the MCP service
      * 
      */
     @Import(name="createdBy")
     private @Nullable Output<String> createdBy;
 
     /**
-     * @return (string) - Creator identity
+     * @return (string) - Username or service principal application ID of the principal that created the MCP service
      * 
      */
     public Optional<Output<String>> createdBy() {
@@ -82,14 +82,14 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (string) - Owner of the MCP service
+     * (string) - Username, group name, or service principal application ID of the MCP service owner
      * 
      */
     @Import(name="effectiveOwner")
     private @Nullable Output<String> effectiveOwner;
 
     /**
-     * @return (string) - Owner of the MCP service
+     * @return (string) - Username, group name, or service principal application ID of the MCP service owner
      * 
      */
     public Optional<Output<String>> effectiveOwner() {
@@ -118,14 +118,18 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Name for the MCP service, e.g. &#34;myMcpService&#34;
+     * Name of the MCP service within the parent schema. The name must not
+     * contain periods, spaces, forward slashes, percent signs, or control characters,
+     * and it is stored in lowercase
      * 
      */
     @Import(name="mcpServiceId")
     private @Nullable Output<String> mcpServiceId;
 
     /**
-     * @return Name for the MCP service, e.g. &#34;myMcpService&#34;
+     * @return Name of the MCP service within the parent schema. The name must not
+     * contain periods, spaces, forward slashes, percent signs, or control characters,
+     * and it is stored in lowercase
      * 
      */
     public Optional<Output<String>> mcpServiceId() {
@@ -133,14 +137,14 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (string) - Metastore hosting the MCP service
+     * (string) - Unique identifier of the metastore that contains the MCP service
      * 
      */
     @Import(name="metastoreId")
     private @Nullable Output<String> metastoreId;
 
     /**
-     * @return (string) - Metastore hosting the MCP service
+     * @return (string) - Unique identifier of the metastore that contains the MCP service
      * 
      */
     public Optional<Output<String>> metastoreId() {
@@ -151,8 +155,9 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
      * (string) - Resource name of the MCP service.
      * Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `mcpServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `mcpServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      * 
      */
     @Import(name="name")
@@ -162,8 +167,9 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
      * @return (string) - Resource name of the MCP service.
      * Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `mcpServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `mcpServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      * 
      */
     public Optional<Output<String>> name() {
@@ -220,14 +226,16 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (string) - Identity of the last updater
+     * (string) - Username or service principal application ID of the principal that last updated the MCP
+     * service
      * 
      */
     @Import(name="updatedBy")
     private @Nullable Output<String> updatedBy;
 
     /**
-     * @return (string) - Identity of the last updater
+     * @return (string) - Username or service principal application ID of the principal that last updated the MCP
+     * service
      * 
      */
     public Optional<Output<String>> updatedBy() {
@@ -338,7 +346,7 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param createdBy (string) - Creator identity
+         * @param createdBy (string) - Username or service principal application ID of the principal that created the MCP service
          * 
          * @return builder
          * 
@@ -349,7 +357,7 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param createdBy (string) - Creator identity
+         * @param createdBy (string) - Username or service principal application ID of the principal that created the MCP service
          * 
          * @return builder
          * 
@@ -359,7 +367,7 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param effectiveOwner (string) - Owner of the MCP service
+         * @param effectiveOwner (string) - Username, group name, or service principal application ID of the MCP service owner
          * 
          * @return builder
          * 
@@ -370,7 +378,7 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param effectiveOwner (string) - Owner of the MCP service
+         * @param effectiveOwner (string) - Username, group name, or service principal application ID of the MCP service owner
          * 
          * @return builder
          * 
@@ -407,7 +415,9 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param mcpServiceId Name for the MCP service, e.g. &#34;myMcpService&#34;
+         * @param mcpServiceId Name of the MCP service within the parent schema. The name must not
+         * contain periods, spaces, forward slashes, percent signs, or control characters,
+         * and it is stored in lowercase
          * 
          * @return builder
          * 
@@ -418,7 +428,9 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param mcpServiceId Name for the MCP service, e.g. &#34;myMcpService&#34;
+         * @param mcpServiceId Name of the MCP service within the parent schema. The name must not
+         * contain periods, spaces, forward slashes, percent signs, or control characters,
+         * and it is stored in lowercase
          * 
          * @return builder
          * 
@@ -428,7 +440,7 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param metastoreId (string) - Metastore hosting the MCP service
+         * @param metastoreId (string) - Unique identifier of the metastore that contains the MCP service
          * 
          * @return builder
          * 
@@ -439,7 +451,7 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param metastoreId (string) - Metastore hosting the MCP service
+         * @param metastoreId (string) - Unique identifier of the metastore that contains the MCP service
          * 
          * @return builder
          * 
@@ -452,8 +464,9 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
          * @param name (string) - Resource name of the MCP service.
          * Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
          * Each `{...}` component is capped at 255 characters individually.
-         * Server-derived on Create from `parent` +
-         * `mcpServiceId`; required and immutable on Update/Get/Delete
+         * The server derives the name on Create from
+         * `parent` and `mcpServiceId`; it is required and immutable on Update,
+         * Get, and Delete
          * 
          * @return builder
          * 
@@ -467,8 +480,9 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
          * @param name (string) - Resource name of the MCP service.
          * Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
          * Each `{...}` component is capped at 255 characters individually.
-         * Server-derived on Create from `parent` +
-         * `mcpServiceId`; required and immutable on Update/Get/Delete
+         * The server derives the name on Create from
+         * `parent` and `mcpServiceId`; it is required and immutable on Update,
+         * Get, and Delete
          * 
          * @return builder
          * 
@@ -545,7 +559,8 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param updatedBy (string) - Identity of the last updater
+         * @param updatedBy (string) - Username or service principal application ID of the principal that last updated the MCP
+         * service
          * 
          * @return builder
          * 
@@ -556,7 +571,8 @@ public final class AiGatewayMcpServiceState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param updatedBy (string) - Identity of the last updater
+         * @param updatedBy (string) - Username or service principal application ID of the principal that last updated the MCP
+         * service
          * 
          * @return builder
          * 

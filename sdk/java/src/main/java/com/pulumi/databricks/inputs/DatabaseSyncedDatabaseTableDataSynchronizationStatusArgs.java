@@ -20,9 +20,19 @@ public final class DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs exte
 
     public static final DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs Empty = new DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs();
 
+    /**
+     * Provides detailed status for an online table with the CONTINUOUS scheduling policy. It is populated when
+     * detailedState is SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE or SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES
+     * 
+     */
     @Import(name="continuousUpdateStatus")
     private @Nullable Output<DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusArgs> continuousUpdateStatus;
 
+    /**
+     * @return Provides detailed status for an online table with the CONTINUOUS scheduling policy. It is populated when
+     * detailedState is SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE or SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES
+     * 
+     */
     public Optional<Output<DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusArgs>> continuousUpdateStatus() {
         return Optional.ofNullable(this.continuousUpdateStatus);
     }
@@ -42,9 +52,19 @@ public final class DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs exte
         return Optional.ofNullable(this.detailedState);
     }
 
+    /**
+     * Provides detailed status for a table whose data synchronization pipeline has failed. It is populated when
+     * detailedState is SYNCED_TABLE_OFFLINE_FAILED or SYNCED_TABLE_ONLINE_PIPELINE_FAILED
+     * 
+     */
     @Import(name="failedStatus")
     private @Nullable Output<DatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatusArgs> failedStatus;
 
+    /**
+     * @return Provides detailed status for a table whose data synchronization pipeline has failed. It is populated when
+     * detailedState is SYNCED_TABLE_OFFLINE_FAILED or SYNCED_TABLE_ONLINE_PIPELINE_FAILED
+     * 
+     */
     public Optional<Output<DatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatusArgs>> failedStatus() {
         return Optional.ofNullable(this.failedStatus);
     }
@@ -96,16 +116,38 @@ public final class DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs exte
         return Optional.ofNullable(this.pipelineId);
     }
 
+    /**
+     * Provides detailed status while the table is being provisioned. It is populated when detailedState is
+     * SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES or SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT
+     * 
+     */
     @Import(name="provisioningStatus")
     private @Nullable Output<DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusArgs> provisioningStatus;
 
+    /**
+     * @return Provides detailed status while the table is being provisioned. It is populated when detailedState is
+     * SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES or SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT
+     * 
+     */
     public Optional<Output<DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusArgs>> provisioningStatus() {
         return Optional.ofNullable(this.provisioningStatus);
     }
 
+    /**
+     * Provides detailed status for an online table with the TRIGGERED or SNAPSHOT scheduling policy. It is
+     * populated when detailedState is SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE, SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE
+     * or SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES
+     * 
+     */
     @Import(name="triggeredUpdateStatus")
     private @Nullable Output<DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusArgs> triggeredUpdateStatus;
 
+    /**
+     * @return Provides detailed status for an online table with the TRIGGERED or SNAPSHOT scheduling policy. It is
+     * populated when detailedState is SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE, SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE
+     * or SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES
+     * 
+     */
     public Optional<Output<DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusArgs>> triggeredUpdateStatus() {
         return Optional.ofNullable(this.triggeredUpdateStatus);
     }
@@ -141,11 +183,25 @@ public final class DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs exte
             $ = new DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param continuousUpdateStatus Provides detailed status for an online table with the CONTINUOUS scheduling policy. It is populated when
+         * detailedState is SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE or SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES
+         * 
+         * @return builder
+         * 
+         */
         public Builder continuousUpdateStatus(@Nullable Output<DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusArgs> continuousUpdateStatus) {
             $.continuousUpdateStatus = continuousUpdateStatus;
             return this;
         }
 
+        /**
+         * @param continuousUpdateStatus Provides detailed status for an online table with the CONTINUOUS scheduling policy. It is populated when
+         * detailedState is SYNCED_TABLE_ONLINE_CONTINUOUS_UPDATE or SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES
+         * 
+         * @return builder
+         * 
+         */
         public Builder continuousUpdateStatus(DatabaseSyncedDatabaseTableDataSynchronizationStatusContinuousUpdateStatusArgs continuousUpdateStatus) {
             return continuousUpdateStatus(Output.of(continuousUpdateStatus));
         }
@@ -171,11 +227,25 @@ public final class DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs exte
             return detailedState(Output.of(detailedState));
         }
 
+        /**
+         * @param failedStatus Provides detailed status for a table whose data synchronization pipeline has failed. It is populated when
+         * detailedState is SYNCED_TABLE_OFFLINE_FAILED or SYNCED_TABLE_ONLINE_PIPELINE_FAILED
+         * 
+         * @return builder
+         * 
+         */
         public Builder failedStatus(@Nullable Output<DatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatusArgs> failedStatus) {
             $.failedStatus = failedStatus;
             return this;
         }
 
+        /**
+         * @param failedStatus Provides detailed status for a table whose data synchronization pipeline has failed. It is populated when
+         * detailedState is SYNCED_TABLE_OFFLINE_FAILED or SYNCED_TABLE_ONLINE_PIPELINE_FAILED
+         * 
+         * @return builder
+         * 
+         */
         public Builder failedStatus(DatabaseSyncedDatabaseTableDataSynchronizationStatusFailedStatusArgs failedStatus) {
             return failedStatus(Output.of(failedStatus));
         }
@@ -245,20 +315,50 @@ public final class DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs exte
             return pipelineId(Output.of(pipelineId));
         }
 
+        /**
+         * @param provisioningStatus Provides detailed status while the table is being provisioned. It is populated when detailedState is
+         * SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES or SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisioningStatus(@Nullable Output<DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusArgs> provisioningStatus) {
             $.provisioningStatus = provisioningStatus;
             return this;
         }
 
+        /**
+         * @param provisioningStatus Provides detailed status while the table is being provisioned. It is populated when detailedState is
+         * SYNCED_TABLE_PROVISIONING_PIPELINE_RESOURCES or SYNCED_TABLE_PROVISIONING_INITIAL_SNAPSHOT
+         * 
+         * @return builder
+         * 
+         */
         public Builder provisioningStatus(DatabaseSyncedDatabaseTableDataSynchronizationStatusProvisioningStatusArgs provisioningStatus) {
             return provisioningStatus(Output.of(provisioningStatus));
         }
 
+        /**
+         * @param triggeredUpdateStatus Provides detailed status for an online table with the TRIGGERED or SNAPSHOT scheduling policy. It is
+         * populated when detailedState is SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE, SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE
+         * or SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES
+         * 
+         * @return builder
+         * 
+         */
         public Builder triggeredUpdateStatus(@Nullable Output<DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusArgs> triggeredUpdateStatus) {
             $.triggeredUpdateStatus = triggeredUpdateStatus;
             return this;
         }
 
+        /**
+         * @param triggeredUpdateStatus Provides detailed status for an online table with the TRIGGERED or SNAPSHOT scheduling policy. It is
+         * populated when detailedState is SYNCED_TABLE_ONLINE_TRIGGERED_UPDATE, SYNCED_TABLE_ONLINE_NO_PENDING_UPDATE
+         * or SYNCED_TABLE_ONLINE_UPDATING_PIPELINE_RESOURCES
+         * 
+         * @return builder
+         * 
+         */
         public Builder triggeredUpdateStatus(DatabaseSyncedDatabaseTableDataSynchronizationStatusTriggeredUpdateStatusArgs triggeredUpdateStatus) {
             return triggeredUpdateStatus(Output.of(triggeredUpdateStatus));
         }

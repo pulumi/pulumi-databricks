@@ -14,18 +14,18 @@ public final class GetAccountIamUserV2PlainArgs extends com.pulumi.resources.Inv
     public static final GetAccountIamUserV2PlainArgs Empty = new GetAccountIamUserV2PlainArgs();
 
     /**
-     * The resource name of the user. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/users/{user_id}
-     * - Workspace-scoped: users/{user_id}
+     * The resource name of the user, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/users/{user_id}`
+     * - Workspace APIs: `users/{user_id}`
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return The resource name of the user. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/users/{user_id}
-     * - Workspace-scoped: users/{user_id}
+     * @return The resource name of the user, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/users/{user_id}`
+     * - Workspace APIs: `users/{user_id}`
      * 
      */
     public String name() {
@@ -57,9 +57,9 @@ public final class GetAccountIamUserV2PlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param name The resource name of the user. The format depends on the API that returned it:
-         * - Account-scoped: accounts/{account_id}/users/{user_id}
-         * - Workspace-scoped: users/{user_id}
+         * @param name The resource name of the user, in one of these formats:
+         * - Account APIs: `accounts/{account_id}/users/{user_id}`
+         * - Workspace APIs: `users/{user_id}`
          * 
          * @return builder
          * 

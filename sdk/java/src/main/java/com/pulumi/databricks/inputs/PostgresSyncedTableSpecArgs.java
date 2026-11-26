@@ -40,18 +40,24 @@ public final class PostgresSyncedTableSpecArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The full resource name the branch associated with the table.
+     * The full resource name of the branch that contains the synced table.
      * 
-     * Format: &#34;projects/{project_id}/branches/{branch_id}&#34;
+     * Format: &#34;projects/{project_id}/branches/{branch_id}&#34;.
+     * 
+     * A value must be specified when creating a synced table inside a standard catalog. Inside a
+     * Lakebase catalog it can be omitted, and if specified it must match the branch of that catalog
      * 
      */
     @Import(name="branch")
     private @Nullable Output<String> branch;
 
     /**
-     * @return The full resource name the branch associated with the table.
+     * @return The full resource name of the branch that contains the synced table.
      * 
-     * Format: &#34;projects/{project_id}/branches/{branch_id}&#34;
+     * Format: &#34;projects/{project_id}/branches/{branch_id}&#34;.
+     * 
+     * A value must be specified when creating a synced table inside a standard catalog. Inside a
+     * Lakebase catalog it can be omitted, and if specified it must match the branch of that catalog
      * 
      */
     public Optional<Output<String>> branch() {
@@ -82,20 +88,22 @@ public final class PostgresSyncedTableSpecArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * ID of an existing pipeline to bin-pack this synced table into.
+     * ID of an existing pipeline to bin-pack this synced table into. The pipeline must be a synced
+     * table pipeline that runs continuously if and only if schedulingPolicy is CONTINUOUS.
      * At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
-     * The pipeline used for the synced table is returned via the top level pipelineId attribute
+     * The pipeline used for the synced table is returned in status.pipeline_id
      * 
      */
     @Import(name="existingPipelineId")
     private @Nullable Output<String> existingPipelineId;
 
     /**
-     * @return ID of an existing pipeline to bin-pack this synced table into.
+     * @return ID of an existing pipeline to bin-pack this synced table into. The pipeline must be a synced
+     * table pipeline that runs continuously if and only if schedulingPolicy is CONTINUOUS.
      * At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
-     * The pipeline used for the synced table is returned via the top level pipelineId attribute
+     * The pipeline used for the synced table is returned in status.pipeline_id
      * 
      */
     public Optional<Output<String>> existingPipelineId() {
@@ -121,7 +129,7 @@ public final class PostgresSyncedTableSpecArgs extends com.pulumi.resources.Reso
      * Specification for creating a new pipeline.
      * At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
-     * The pipeline used for the synced table is returned via the top level pipelineId attribute
+     * The pipeline used for the synced table is returned in status.pipeline_id
      * 
      */
     @Import(name="newPipelineSpec")
@@ -131,7 +139,7 @@ public final class PostgresSyncedTableSpecArgs extends com.pulumi.resources.Reso
      * @return Specification for creating a new pipeline.
      * At most one of existingPipelineId and newPipelineSpec should be defined.
      * 
-     * The pipeline used for the synced table is returned via the top level pipelineId attribute
+     * The pipeline used for the synced table is returned in status.pipeline_id
      * 
      */
     public Optional<Output<PostgresSyncedTableSpecNewPipelineSpecArgs>> newPipelineSpec() {
@@ -139,24 +147,18 @@ public final class PostgresSyncedTableSpecArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The Postgres database name where the synced table will be created in.
-     * 
-     * If this synced table is created inside a Lakebase Catalog, this attribute can be omitted on creation and is inferred
-     * from the postgresDatabase associated with the Lakebase Catalog. If specified when inside a Lakebase Catalog, the value must match.
-     * 
-     * A value must be specified when creating a synced table inside a Standard Catalog
+     * The name of the Postgres database where the synced table is created. A value must be specified
+     * on creation. If the synced table is created inside a Lakebase catalog, the value must match the
+     * Postgres database of that catalog
      * 
      */
     @Import(name="postgresDatabase")
     private @Nullable Output<String> postgresDatabase;
 
     /**
-     * @return The Postgres database name where the synced table will be created in.
-     * 
-     * If this synced table is created inside a Lakebase Catalog, this attribute can be omitted on creation and is inferred
-     * from the postgresDatabase associated with the Lakebase Catalog. If specified when inside a Lakebase Catalog, the value must match.
-     * 
-     * A value must be specified when creating a synced table inside a Standard Catalog
+     * @return The name of the Postgres database where the synced table is created. A value must be specified
+     * on creation. If the synced table is created inside a Lakebase catalog, the value must match the
+     * Postgres database of that catalog
      * 
      */
     public Optional<Output<String>> postgresDatabase() {
@@ -164,14 +166,16 @@ public final class PostgresSyncedTableSpecArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Primary Key columns to be used for data insert/update in the destination
+     * Primary Key columns to be used for data insert/update in the destination. At least one column
+     * must be specified
      * 
      */
     @Import(name="primaryKeyColumns")
     private @Nullable Output<List<String>> primaryKeyColumns;
 
     /**
-     * @return Primary Key columns to be used for data insert/update in the destination
+     * @return Primary Key columns to be used for data insert/update in the destination. At least one column
+     * must be specified
      * 
      */
     public Optional<Output<List<String>>> primaryKeyColumns() {
@@ -179,14 +183,16 @@ public final class PostgresSyncedTableSpecArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+     * Scheduling policy of the underlying pipeline. A value must be specified on creation. See
+     * https://docs.databricks.com/aws/en/oltp/projects/sync-tables for how to choose a sync mode. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
      * 
      */
     @Import(name="schedulingPolicy")
     private @Nullable Output<String> schedulingPolicy;
 
     /**
-     * @return Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+     * @return Scheduling policy of the underlying pipeline. A value must be specified on creation. See
+     * https://docs.databricks.com/aws/en/oltp/projects/sync-tables for how to choose a sync mode. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
      * 
      */
     public Optional<Output<String>> schedulingPolicy() {
@@ -311,9 +317,12 @@ public final class PostgresSyncedTableSpecArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param branch The full resource name the branch associated with the table.
+         * @param branch The full resource name of the branch that contains the synced table.
          * 
-         * Format: &#34;projects/{project_id}/branches/{branch_id}&#34;
+         * Format: &#34;projects/{project_id}/branches/{branch_id}&#34;.
+         * 
+         * A value must be specified when creating a synced table inside a standard catalog. Inside a
+         * Lakebase catalog it can be omitted, and if specified it must match the branch of that catalog
          * 
          * @return builder
          * 
@@ -324,9 +333,12 @@ public final class PostgresSyncedTableSpecArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param branch The full resource name the branch associated with the table.
+         * @param branch The full resource name of the branch that contains the synced table.
          * 
-         * Format: &#34;projects/{project_id}/branches/{branch_id}&#34;
+         * Format: &#34;projects/{project_id}/branches/{branch_id}&#34;.
+         * 
+         * A value must be specified when creating a synced table inside a standard catalog. Inside a
+         * Lakebase catalog it can be omitted, and if specified it must match the branch of that catalog
          * 
          * @return builder
          * 
@@ -365,10 +377,11 @@ public final class PostgresSyncedTableSpecArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param existingPipelineId ID of an existing pipeline to bin-pack this synced table into.
+         * @param existingPipelineId ID of an existing pipeline to bin-pack this synced table into. The pipeline must be a synced
+         * table pipeline that runs continuously if and only if schedulingPolicy is CONTINUOUS.
          * At most one of existingPipelineId and newPipelineSpec should be defined.
          * 
-         * The pipeline used for the synced table is returned via the top level pipelineId attribute
+         * The pipeline used for the synced table is returned in status.pipeline_id
          * 
          * @return builder
          * 
@@ -379,10 +392,11 @@ public final class PostgresSyncedTableSpecArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param existingPipelineId ID of an existing pipeline to bin-pack this synced table into.
+         * @param existingPipelineId ID of an existing pipeline to bin-pack this synced table into. The pipeline must be a synced
+         * table pipeline that runs continuously if and only if schedulingPolicy is CONTINUOUS.
          * At most one of existingPipelineId and newPipelineSpec should be defined.
          * 
-         * The pipeline used for the synced table is returned via the top level pipelineId attribute
+         * The pipeline used for the synced table is returned in status.pipeline_id
          * 
          * @return builder
          * 
@@ -426,7 +440,7 @@ public final class PostgresSyncedTableSpecArgs extends com.pulumi.resources.Reso
          * @param newPipelineSpec Specification for creating a new pipeline.
          * At most one of existingPipelineId and newPipelineSpec should be defined.
          * 
-         * The pipeline used for the synced table is returned via the top level pipelineId attribute
+         * The pipeline used for the synced table is returned in status.pipeline_id
          * 
          * @return builder
          * 
@@ -440,7 +454,7 @@ public final class PostgresSyncedTableSpecArgs extends com.pulumi.resources.Reso
          * @param newPipelineSpec Specification for creating a new pipeline.
          * At most one of existingPipelineId and newPipelineSpec should be defined.
          * 
-         * The pipeline used for the synced table is returned via the top level pipelineId attribute
+         * The pipeline used for the synced table is returned in status.pipeline_id
          * 
          * @return builder
          * 
@@ -450,12 +464,9 @@ public final class PostgresSyncedTableSpecArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param postgresDatabase The Postgres database name where the synced table will be created in.
-         * 
-         * If this synced table is created inside a Lakebase Catalog, this attribute can be omitted on creation and is inferred
-         * from the postgresDatabase associated with the Lakebase Catalog. If specified when inside a Lakebase Catalog, the value must match.
-         * 
-         * A value must be specified when creating a synced table inside a Standard Catalog
+         * @param postgresDatabase The name of the Postgres database where the synced table is created. A value must be specified
+         * on creation. If the synced table is created inside a Lakebase catalog, the value must match the
+         * Postgres database of that catalog
          * 
          * @return builder
          * 
@@ -466,12 +477,9 @@ public final class PostgresSyncedTableSpecArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param postgresDatabase The Postgres database name where the synced table will be created in.
-         * 
-         * If this synced table is created inside a Lakebase Catalog, this attribute can be omitted on creation and is inferred
-         * from the postgresDatabase associated with the Lakebase Catalog. If specified when inside a Lakebase Catalog, the value must match.
-         * 
-         * A value must be specified when creating a synced table inside a Standard Catalog
+         * @param postgresDatabase The name of the Postgres database where the synced table is created. A value must be specified
+         * on creation. If the synced table is created inside a Lakebase catalog, the value must match the
+         * Postgres database of that catalog
          * 
          * @return builder
          * 
@@ -481,7 +489,8 @@ public final class PostgresSyncedTableSpecArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param primaryKeyColumns Primary Key columns to be used for data insert/update in the destination
+         * @param primaryKeyColumns Primary Key columns to be used for data insert/update in the destination. At least one column
+         * must be specified
          * 
          * @return builder
          * 
@@ -492,7 +501,8 @@ public final class PostgresSyncedTableSpecArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param primaryKeyColumns Primary Key columns to be used for data insert/update in the destination
+         * @param primaryKeyColumns Primary Key columns to be used for data insert/update in the destination. At least one column
+         * must be specified
          * 
          * @return builder
          * 
@@ -502,7 +512,8 @@ public final class PostgresSyncedTableSpecArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param primaryKeyColumns Primary Key columns to be used for data insert/update in the destination
+         * @param primaryKeyColumns Primary Key columns to be used for data insert/update in the destination. At least one column
+         * must be specified
          * 
          * @return builder
          * 
@@ -512,7 +523,8 @@ public final class PostgresSyncedTableSpecArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param schedulingPolicy Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+         * @param schedulingPolicy Scheduling policy of the underlying pipeline. A value must be specified on creation. See
+         * https://docs.databricks.com/aws/en/oltp/projects/sync-tables for how to choose a sync mode. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
          * 
          * @return builder
          * 
@@ -523,7 +535,8 @@ public final class PostgresSyncedTableSpecArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param schedulingPolicy Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+         * @param schedulingPolicy Scheduling policy of the underlying pipeline. A value must be specified on creation. See
+         * https://docs.databricks.com/aws/en/oltp/projects/sync-tables for how to choose a sync mode. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
          * 
          * @return builder
          * 

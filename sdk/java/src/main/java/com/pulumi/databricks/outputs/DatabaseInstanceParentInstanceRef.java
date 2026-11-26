@@ -41,7 +41,9 @@ public final class DatabaseInstanceParentInstanceRef {
      */
     private @Nullable String lsn;
     /**
-     * @return The name of the instance. This is the unique identifier for the instance
+     * @return The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+     * characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+     * consecutive hyphens
      * 
      */
     private @Nullable String name;
@@ -88,7 +90,9 @@ public final class DatabaseInstanceParentInstanceRef {
         return Optional.ofNullable(this.lsn);
     }
     /**
-     * @return The name of the instance. This is the unique identifier for the instance
+     * @return The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+     * characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+     * consecutive hyphens
      * 
      */
     public Optional<String> name() {

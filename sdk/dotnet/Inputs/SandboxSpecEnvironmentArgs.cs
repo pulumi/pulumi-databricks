@@ -13,9 +13,10 @@ namespace Pulumi.Databricks.Inputs
     public sealed class SandboxSpecEnvironmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Unity Catalog container image to use for the sandbox environment
-        /// (for example, `catalog.schema.folder.image:tag`). See
-        /// [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
+        /// The Unity Catalog container image to run the sandbox from, in the form
+        /// `catalog.schema.artifact:tag`, or `catalog.schema.artifact@sha256:&lt;digest&gt;` to pin an
+        /// exact version. When omitted, the sandbox runs the default sandbox image. See
+        /// [custom images](https://docs.databricks.com/en/compute/serverless/sandbox-custom-image)
         /// </summary>
         [Input("imageUri")]
         public Input<string>? ImageUri { get; set; }

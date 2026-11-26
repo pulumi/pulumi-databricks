@@ -18,7 +18,7 @@ public final class GetExternalMetadatasArgs extends com.pulumi.resources.InvokeA
 
     /**
      * Specifies the maximum number of external metadata objects to return in a single response.
-     * The value must be less than or equal to 1000
+     * The value must be less than or equal to 1000. Defaults to 1000 when omitted
      * 
      */
     @Import(name="pageSize")
@@ -26,7 +26,7 @@ public final class GetExternalMetadatasArgs extends com.pulumi.resources.InvokeA
 
     /**
      * @return Specifies the maximum number of external metadata objects to return in a single response.
-     * The value must be less than or equal to 1000
+     * The value must be less than or equal to 1000. Defaults to 1000 when omitted
      * 
      */
     public Optional<Output<Integer>> pageSize() {
@@ -75,7 +75,7 @@ public final class GetExternalMetadatasArgs extends com.pulumi.resources.InvokeA
 
         /**
          * @param pageSize Specifies the maximum number of external metadata objects to return in a single response.
-         * The value must be less than or equal to 1000
+         * The value must be less than or equal to 1000. Defaults to 1000 when omitted
          * 
          * @return builder
          * 
@@ -87,7 +87,7 @@ public final class GetExternalMetadatasArgs extends com.pulumi.resources.InvokeA
 
         /**
          * @param pageSize Specifies the maximum number of external metadata objects to return in a single response.
-         * The value must be less than or equal to 1000
+         * The value must be less than or equal to 1000. Defaults to 1000 when omitted
          * 
          * @return builder
          * 

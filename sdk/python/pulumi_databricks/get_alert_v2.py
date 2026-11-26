@@ -99,7 +99,8 @@ class GetAlertV2Result:
     @pulumi.getter(name="customDescription")
     def custom_description(self) -> _builtins.str:
         """
-        (string) - Custom description for the alert. Interpreted according to `custom_template_format`
+        (string) - Custom description for the alert, used as the notification body. Interpreted according to `custom_template_format`.
+        The available template variables are listed at https://docs.databricks.com/aws/en/sql/user/alerts/create#notification-templates
         """
         return pulumi.get(self, "custom_description")
 
@@ -107,7 +108,7 @@ class GetAlertV2Result:
     @pulumi.getter(name="customSummary")
     def custom_summary(self) -> _builtins.str:
         """
-        (string) - Custom summary for the alert. Interpreted according to `custom_template_format`
+        (string) - Custom summary for the alert, used as the notification subject. Interpreted according to `custom_template_format`
         """
         return pulumi.get(self, "custom_summary")
 
@@ -141,7 +142,7 @@ class GetAlertV2Result:
     @pulumi.getter
     def evaluation(self) -> 'outputs.GetAlertV2EvaluationResult':
         """
-        (AlertV2Evaluation)
+        (AlertV2Evaluation) - Condition evaluated against the query result, and who is notified when it is met
         """
         return pulumi.get(self, "evaluation")
 
@@ -157,7 +158,7 @@ class GetAlertV2Result:
     @pulumi.getter(name="lifecycleState")
     def lifecycle_state(self) -> _builtins.str:
         """
-        (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
+        (string) - Indicates whether the alert is active (`ACTIVE`) or has been moved to the trash (`DELETED`). Possible values are: `ACTIVE`, `DELETED`
         """
         return pulumi.get(self, "lifecycle_state")
 
@@ -214,9 +215,9 @@ class GetAlertV2Result:
     @pulumi.getter(name="runAsUserName")
     def run_as_user_name(self) -> _builtins.str:
         """
-        (string, deprecated) - The run as username or application ID of service principal.
-        On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-        Deprecated: Use `run_as` field instead. This field will be removed in a future release
+        (string, deprecated) - Deprecated: Use `run_as` field instead. This field will be removed in a future release.
+        The run as username or application ID of service principal.
+        On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
         """
         return pulumi.get(self, "run_as_user_name")
 
@@ -224,7 +225,7 @@ class GetAlertV2Result:
     @pulumi.getter
     def schedule(self) -> 'outputs.GetAlertV2ScheduleResult':
         """
-        (CronSchedule)
+        (CronSchedule) - Schedule on which the alert runs its query and evaluates the condition
         """
         return pulumi.get(self, "schedule")
 

@@ -112,7 +112,7 @@ namespace Pulumi.Databricks
     public sealed class GetDatabaseDatabaseCatalogArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the catalog in UC
+        /// The name of the catalog in Unity Catalog
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -132,7 +132,7 @@ namespace Pulumi.Databricks
     public sealed class GetDatabaseDatabaseCatalogInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the catalog in UC
+        /// The name of the catalog in Unity Catalog
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -154,7 +154,8 @@ namespace Pulumi.Databricks
     public sealed class GetDatabaseDatabaseCatalogResult
     {
         /// <summary>
-        /// (boolean)
+        /// (boolean) - If true, the database named in DatabaseName is created in the instance when it does not already
+        /// exist, with the calling user as its owner. Defaults to false
         /// </summary>
         public readonly bool CreateDatabaseIfNotExists;
         /// <summary>
@@ -162,16 +163,18 @@ namespace Pulumi.Databricks
         /// </summary>
         public readonly string DatabaseInstanceName;
         /// <summary>
-        /// (string) - The name of the database (in an instance) associated with the catalog
+        /// (string) - The name of the Postgres database in the instance that the catalog registers. The database must
+        /// already exist unless CreateDatabaseIfNotExists is true. The system databases postgres,
+        /// databricks_system, template0 and template1 cannot be registered
         /// </summary>
         public readonly string DatabaseName;
         /// <summary>
-        /// (string) - The name of the catalog in UC
+        /// (string) - The name of the catalog in Unity Catalog
         /// </summary>
         public readonly string Name;
         public readonly Outputs.GetDatabaseDatabaseCatalogProviderConfigResult? ProviderConfig;
         /// <summary>
-        /// (string)
+        /// (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
         /// </summary>
         public readonly string Uid;
 

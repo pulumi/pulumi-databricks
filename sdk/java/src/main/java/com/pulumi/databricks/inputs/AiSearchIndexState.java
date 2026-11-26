@@ -82,20 +82,18 @@ public final class AiSearchIndexState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The user-supplied Unity Catalog table name for the Index, per AIP-133. The server
-     * composes the full `Index.name` as `{parent}/indexes/{index_id}`. AIP-133 does not
-     * list `indexId` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-     * wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
+     * Three-level Unity Catalog table name for the new index, in the form `catalog.schema.name`.
+     * The server composes the full `Index.name` as `{parent}/indexes/{index_id}` and rejects an
+     * empty value
      * 
      */
     @Import(name="indexId")
     private @Nullable Output<String> indexId;
 
     /**
-     * @return The user-supplied Unity Catalog table name for the Index, per AIP-133. The server
-     * composes the full `Index.name` as `{parent}/indexes/{index_id}`. AIP-133 does not
-     * list `indexId` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-     * wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
+     * @return Three-level Unity Catalog table name for the new index, in the form `catalog.schema.name`.
+     * The server composes the full `Index.name` as `{parent}/indexes/{index_id}` and rejects an
+     * empty value
      * 
      */
     public Optional<Output<String>> indexId() {
@@ -103,14 +101,18 @@ public final class AiSearchIndexState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+     * Subtype of the index. Use `HYBRID` for vector and hybrid search, or `FULL_TEXT` for
+     * keyword-only search without embeddings; `VECTOR` is not a supported create value. Set on
+     * create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
      * 
      */
     @Import(name="indexSubtype")
     private @Nullable Output<String> indexSubtype;
 
     /**
-     * @return The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+     * @return Subtype of the index. Use `HYBRID` for vector and hybrid search, or `FULL_TEXT` for
+     * keyword-only search without embeddings; `VECTOR` is not a supported create value. Set on
+     * create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
      * 
      */
     public Optional<Output<String>> indexSubtype() {
@@ -118,14 +120,18 @@ public final class AiSearchIndexState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+     * Type of index. A `DELTA_SYNC` index is kept in sync with a source Delta table; a
+     * `DIRECT_ACCESS` index holds rows that you write through UpsertData and RemoveData. Set on
+     * create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
      * 
      */
     @Import(name="indexType")
     private @Nullable Output<String> indexType;
 
     /**
-     * @return Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+     * @return Type of index. A `DELTA_SYNC` index is kept in sync with a source Delta table; a
+     * `DIRECT_ACCESS` index holds rows that you write through UpsertData and RemoveData. Set on
+     * create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
      * 
      */
     public Optional<Output<String>> indexType() {
@@ -173,14 +179,18 @@ public final class AiSearchIndexState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Primary key of the index. Set on create and immutable thereafter
+     * Name of the column that uniquely identifies each row. It must exist in the source table
+     * (Delta Sync) or in `schemaJson` (Direct Access) and cannot be the embedding source or vector
+     * column. Set on create and immutable thereafter
      * 
      */
     @Import(name="primaryKey")
     private @Nullable Output<String> primaryKey;
 
     /**
-     * @return Primary key of the index. Set on create and immutable thereafter
+     * @return Name of the column that uniquely identifies each row. It must exist in the source table
+     * (Delta Sync) or in `schemaJson` (Direct Access) and cannot be the embedding source or vector
+     * column. Set on create and immutable thereafter
      * 
      */
     public Optional<Output<String>> primaryKey() {
@@ -339,10 +349,9 @@ public final class AiSearchIndexState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param indexId The user-supplied Unity Catalog table name for the Index, per AIP-133. The server
-         * composes the full `Index.name` as `{parent}/indexes/{index_id}`. AIP-133 does not
-         * list `indexId` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-         * wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
+         * @param indexId Three-level Unity Catalog table name for the new index, in the form `catalog.schema.name`.
+         * The server composes the full `Index.name` as `{parent}/indexes/{index_id}` and rejects an
+         * empty value
          * 
          * @return builder
          * 
@@ -353,10 +362,9 @@ public final class AiSearchIndexState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param indexId The user-supplied Unity Catalog table name for the Index, per AIP-133. The server
-         * composes the full `Index.name` as `{parent}/indexes/{index_id}`. AIP-133 does not
-         * list `indexId` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-         * wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
+         * @param indexId Three-level Unity Catalog table name for the new index, in the form `catalog.schema.name`.
+         * The server composes the full `Index.name` as `{parent}/indexes/{index_id}` and rejects an
+         * empty value
          * 
          * @return builder
          * 
@@ -366,7 +374,9 @@ public final class AiSearchIndexState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param indexSubtype The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+         * @param indexSubtype Subtype of the index. Use `HYBRID` for vector and hybrid search, or `FULL_TEXT` for
+         * keyword-only search without embeddings; `VECTOR` is not a supported create value. Set on
+         * create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
          * 
          * @return builder
          * 
@@ -377,7 +387,9 @@ public final class AiSearchIndexState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param indexSubtype The subtype of the index. Set on create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
+         * @param indexSubtype Subtype of the index. Use `HYBRID` for vector and hybrid search, or `FULL_TEXT` for
+         * keyword-only search without embeddings; `VECTOR` is not a supported create value. Set on
+         * create and immutable thereafter. Possible values are: `FULL_TEXT`, `HYBRID`, `VECTOR`
          * 
          * @return builder
          * 
@@ -387,7 +399,9 @@ public final class AiSearchIndexState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param indexType Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+         * @param indexType Type of index. A `DELTA_SYNC` index is kept in sync with a source Delta table; a
+         * `DIRECT_ACCESS` index holds rows that you write through UpsertData and RemoveData. Set on
+         * create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
          * 
          * @return builder
          * 
@@ -398,7 +412,9 @@ public final class AiSearchIndexState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param indexType Type of index. Required on create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
+         * @param indexType Type of index. A `DELTA_SYNC` index is kept in sync with a source Delta table; a
+         * `DIRECT_ACCESS` index holds rows that you write through UpsertData and RemoveData. Set on
+         * create and immutable thereafter. Possible values are: `DELTA_SYNC`, `DIRECT_ACCESS`
          * 
          * @return builder
          * 
@@ -460,7 +476,9 @@ public final class AiSearchIndexState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param primaryKey Primary key of the index. Set on create and immutable thereafter
+         * @param primaryKey Name of the column that uniquely identifies each row. It must exist in the source table
+         * (Delta Sync) or in `schemaJson` (Direct Access) and cannot be the embedding source or vector
+         * column. Set on create and immutable thereafter
          * 
          * @return builder
          * 
@@ -471,7 +489,9 @@ public final class AiSearchIndexState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param primaryKey Primary key of the index. Set on create and immutable thereafter
+         * @param primaryKey Name of the column that uniquely identifies each row. It must exist in the source table
+         * (Delta Sync) or in `schemaJson` (Direct Access) and cannot be the embedding source or vector
+         * column. Set on create and immutable thereafter
          * 
          * @return builder
          * 

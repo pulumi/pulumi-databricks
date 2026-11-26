@@ -27,13 +27,14 @@ class AccountIamServicePrincipalV2Args:
         """
         The set of arguments for constructing a AccountIamServicePrincipalV2 resource.
 
-        :param pulumi.Input[_builtins.str] account_sp_status: The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
-        :param pulumi.Input[_builtins.str] display_name: Display name of the service principal
-        :param pulumi.Input[_builtins.str] parent: The resource name of the account that contains the service principal,
-               `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
-        :param pulumi.Input[_builtins.str] application_id: (string) - Application ID of the service principal. Set at creation time and cannot be changed
-               afterwards; when omitted, the server generates one
-        :param pulumi.Input[_builtins.str] external_id: ExternalId of the service principal in the customer's IdP
+        :param pulumi.Input[_builtins.str] account_sp_status: Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
+        :param pulumi.Input[_builtins.str] display_name: The service principal's display name
+        :param pulumi.Input[_builtins.str] parent: The resource name of the account that contains the service principal, in the format
+               `accounts/{account_id}`. Workspace APIs return the same format
+        :param pulumi.Input[_builtins.str] application_id: (string) - The service principal's application ID, a UUID. If you don't set it when you create the
+               service principal, Databricks generates one. It must be unique in the account and can't be
+               changed
+        :param pulumi.Input[_builtins.str] external_id: The ID of the service principal in your identity provider (IdP)
         """
         pulumi.set(__self__, "account_sp_status", account_sp_status)
         pulumi.set(__self__, "display_name", display_name)
@@ -47,7 +48,7 @@ class AccountIamServicePrincipalV2Args:
     @pulumi.getter(name="accountSpStatus")
     def account_sp_status(self) -> pulumi.Input[_builtins.str]:
         """
-        The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+        Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
         """
         return pulumi.get(self, "account_sp_status")
 
@@ -59,7 +60,7 @@ class AccountIamServicePrincipalV2Args:
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[_builtins.str]:
         """
-        Display name of the service principal
+        The service principal's display name
         """
         return pulumi.get(self, "display_name")
 
@@ -71,8 +72,8 @@ class AccountIamServicePrincipalV2Args:
     @pulumi.getter
     def parent(self) -> pulumi.Input[_builtins.str]:
         """
-        The resource name of the account that contains the service principal,
-        `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+        The resource name of the account that contains the service principal, in the format
+        `accounts/{account_id}`. Workspace APIs return the same format
         """
         return pulumi.get(self, "parent")
 
@@ -84,8 +85,9 @@ class AccountIamServicePrincipalV2Args:
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - Application ID of the service principal. Set at creation time and cannot be changed
-        afterwards; when omitted, the server generates one
+        (string) - The service principal's application ID, a UUID. If you don't set it when you create the
+        service principal, Databricks generates one. It must be unique in the account and can't be
+        changed
         """
         return pulumi.get(self, "application_id")
 
@@ -97,7 +99,7 @@ class AccountIamServicePrincipalV2Args:
     @pulumi.getter(name="externalId")
     def external_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        ExternalId of the service principal in the customer's IdP
+        The ID of the service principal in your identity provider (IdP)
         """
         return pulumi.get(self, "external_id")
 
@@ -120,18 +122,19 @@ class _AccountIamServicePrincipalV2State:
         """
         Input properties used for looking up and filtering AccountIamServicePrincipalV2 resources.
 
-        :param pulumi.Input[_builtins.str] account_id: (string) - The parent account ID for the service principal in Databricks
-        :param pulumi.Input[_builtins.str] account_sp_status: The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
-        :param pulumi.Input[_builtins.str] application_id: (string) - Application ID of the service principal. Set at creation time and cannot be changed
-               afterwards; when omitted, the server generates one
-        :param pulumi.Input[_builtins.str] display_name: Display name of the service principal
-        :param pulumi.Input[_builtins.str] external_id: ExternalId of the service principal in the customer's IdP
-        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the service principal. The format depends on the API that returned it:
-               - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-               - Workspace-scoped: service-principals/{service_principal_id}
-        :param pulumi.Input[_builtins.str] parent: The resource name of the account that contains the service principal,
-               `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
-        :param pulumi.Input[_builtins.str] service_principal_id: (string) - Internal service principal ID of the service principal in Databricks
+        :param pulumi.Input[_builtins.str] account_id: (string) - The ID of the account that contains the service principal
+        :param pulumi.Input[_builtins.str] account_sp_status: Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
+        :param pulumi.Input[_builtins.str] application_id: (string) - The service principal's application ID, a UUID. If you don't set it when you create the
+               service principal, Databricks generates one. It must be unique in the account and can't be
+               changed
+        :param pulumi.Input[_builtins.str] display_name: The service principal's display name
+        :param pulumi.Input[_builtins.str] external_id: The ID of the service principal in your identity provider (IdP)
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the service principal, in one of these formats:
+               - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+               - Workspace APIs: `service-principals/{service_principal_id}`
+        :param pulumi.Input[_builtins.str] parent: The resource name of the account that contains the service principal, in the format
+               `accounts/{account_id}`. Workspace APIs return the same format
+        :param pulumi.Input[_builtins.str] service_principal_id: (string) - The Databricks ID of the service principal
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -154,7 +157,7 @@ class _AccountIamServicePrincipalV2State:
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - The parent account ID for the service principal in Databricks
+        (string) - The ID of the account that contains the service principal
         """
         return pulumi.get(self, "account_id")
 
@@ -166,7 +169,7 @@ class _AccountIamServicePrincipalV2State:
     @pulumi.getter(name="accountSpStatus")
     def account_sp_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+        Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
         """
         return pulumi.get(self, "account_sp_status")
 
@@ -178,8 +181,9 @@ class _AccountIamServicePrincipalV2State:
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - Application ID of the service principal. Set at creation time and cannot be changed
-        afterwards; when omitted, the server generates one
+        (string) - The service principal's application ID, a UUID. If you don't set it when you create the
+        service principal, Databricks generates one. It must be unique in the account and can't be
+        changed
         """
         return pulumi.get(self, "application_id")
 
@@ -191,7 +195,7 @@ class _AccountIamServicePrincipalV2State:
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Display name of the service principal
+        The service principal's display name
         """
         return pulumi.get(self, "display_name")
 
@@ -203,7 +207,7 @@ class _AccountIamServicePrincipalV2State:
     @pulumi.getter(name="externalId")
     def external_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        ExternalId of the service principal in the customer's IdP
+        The ID of the service principal in your identity provider (IdP)
         """
         return pulumi.get(self, "external_id")
 
@@ -215,9 +219,9 @@ class _AccountIamServicePrincipalV2State:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - The resource name of the service principal. The format depends on the API that returned it:
-        - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-        - Workspace-scoped: service-principals/{service_principal_id}
+        (string) - The resource name of the service principal, in one of these formats:
+        - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+        - Workspace APIs: `service-principals/{service_principal_id}`
         """
         return pulumi.get(self, "name")
 
@@ -229,8 +233,8 @@ class _AccountIamServicePrincipalV2State:
     @pulumi.getter
     def parent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The resource name of the account that contains the service principal,
-        `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+        The resource name of the account that contains the service principal, in the format
+        `accounts/{account_id}`. Workspace APIs return the same format
         """
         return pulumi.get(self, "parent")
 
@@ -242,7 +246,7 @@ class _AccountIamServicePrincipalV2State:
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - Internal service principal ID of the service principal in Databricks
+        (string) - The Databricks ID of the service principal
         """
         return pulumi.get(self, "service_principal_id")
 
@@ -264,7 +268,7 @@ class AccountIamServicePrincipalV2(pulumi.CustomResource):
                  parent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/account/iamv2)
 
@@ -291,13 +295,14 @@ class AccountIamServicePrincipalV2(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_sp_status: The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
-        :param pulumi.Input[_builtins.str] application_id: (string) - Application ID of the service principal. Set at creation time and cannot be changed
-               afterwards; when omitted, the server generates one
-        :param pulumi.Input[_builtins.str] display_name: Display name of the service principal
-        :param pulumi.Input[_builtins.str] external_id: ExternalId of the service principal in the customer's IdP
-        :param pulumi.Input[_builtins.str] parent: The resource name of the account that contains the service principal,
-               `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+        :param pulumi.Input[_builtins.str] account_sp_status: Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
+        :param pulumi.Input[_builtins.str] application_id: (string) - The service principal's application ID, a UUID. If you don't set it when you create the
+               service principal, Databricks generates one. It must be unique in the account and can't be
+               changed
+        :param pulumi.Input[_builtins.str] display_name: The service principal's display name
+        :param pulumi.Input[_builtins.str] external_id: The ID of the service principal in your identity provider (IdP)
+        :param pulumi.Input[_builtins.str] parent: The resource name of the account that contains the service principal, in the format
+               `accounts/{account_id}`. Workspace APIs return the same format
         """
         ...
     @overload
@@ -306,7 +311,7 @@ class AccountIamServicePrincipalV2(pulumi.CustomResource):
                  args: AccountIamServicePrincipalV2Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/account/iamv2)
 
@@ -399,18 +404,19 @@ class AccountIamServicePrincipalV2(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] account_id: (string) - The parent account ID for the service principal in Databricks
-        :param pulumi.Input[_builtins.str] account_sp_status: The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
-        :param pulumi.Input[_builtins.str] application_id: (string) - Application ID of the service principal. Set at creation time and cannot be changed
-               afterwards; when omitted, the server generates one
-        :param pulumi.Input[_builtins.str] display_name: Display name of the service principal
-        :param pulumi.Input[_builtins.str] external_id: ExternalId of the service principal in the customer's IdP
-        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the service principal. The format depends on the API that returned it:
-               - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-               - Workspace-scoped: service-principals/{service_principal_id}
-        :param pulumi.Input[_builtins.str] parent: The resource name of the account that contains the service principal,
-               `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
-        :param pulumi.Input[_builtins.str] service_principal_id: (string) - Internal service principal ID of the service principal in Databricks
+        :param pulumi.Input[_builtins.str] account_id: (string) - The ID of the account that contains the service principal
+        :param pulumi.Input[_builtins.str] account_sp_status: Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
+        :param pulumi.Input[_builtins.str] application_id: (string) - The service principal's application ID, a UUID. If you don't set it when you create the
+               service principal, Databricks generates one. It must be unique in the account and can't be
+               changed
+        :param pulumi.Input[_builtins.str] display_name: The service principal's display name
+        :param pulumi.Input[_builtins.str] external_id: The ID of the service principal in your identity provider (IdP)
+        :param pulumi.Input[_builtins.str] name: (string) - The resource name of the service principal, in one of these formats:
+               - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+               - Workspace APIs: `service-principals/{service_principal_id}`
+        :param pulumi.Input[_builtins.str] parent: The resource name of the account that contains the service principal, in the format
+               `accounts/{account_id}`. Workspace APIs return the same format
+        :param pulumi.Input[_builtins.str] service_principal_id: (string) - The Databricks ID of the service principal
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -452,7 +458,7 @@ class AccountIamServicePrincipalV2(pulumi.CustomResource):
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - The parent account ID for the service principal in Databricks
+        (string) - The ID of the account that contains the service principal
         """
         return pulumi.get(self, "account_id")
 
@@ -460,7 +466,7 @@ class AccountIamServicePrincipalV2(pulumi.CustomResource):
     @pulumi.getter(name="accountSpStatus")
     def account_sp_status(self) -> pulumi.Output[_builtins.str]:
         """
-        The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+        Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
         """
         return pulumi.get(self, "account_sp_status")
 
@@ -468,8 +474,9 @@ class AccountIamServicePrincipalV2(pulumi.CustomResource):
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - Application ID of the service principal. Set at creation time and cannot be changed
-        afterwards; when omitted, the server generates one
+        (string) - The service principal's application ID, a UUID. If you don't set it when you create the
+        service principal, Databricks generates one. It must be unique in the account and can't be
+        changed
         """
         return pulumi.get(self, "application_id")
 
@@ -477,7 +484,7 @@ class AccountIamServicePrincipalV2(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Display name of the service principal
+        The service principal's display name
         """
         return pulumi.get(self, "display_name")
 
@@ -485,7 +492,7 @@ class AccountIamServicePrincipalV2(pulumi.CustomResource):
     @pulumi.getter(name="externalId")
     def external_id(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        ExternalId of the service principal in the customer's IdP
+        The ID of the service principal in your identity provider (IdP)
         """
         return pulumi.get(self, "external_id")
 
@@ -493,9 +500,9 @@ class AccountIamServicePrincipalV2(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - The resource name of the service principal. The format depends on the API that returned it:
-        - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-        - Workspace-scoped: service-principals/{service_principal_id}
+        (string) - The resource name of the service principal, in one of these formats:
+        - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+        - Workspace APIs: `service-principals/{service_principal_id}`
         """
         return pulumi.get(self, "name")
 
@@ -503,8 +510,8 @@ class AccountIamServicePrincipalV2(pulumi.CustomResource):
     @pulumi.getter
     def parent(self) -> pulumi.Output[_builtins.str]:
         """
-        The resource name of the account that contains the service principal,
-        `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+        The resource name of the account that contains the service principal, in the format
+        `accounts/{account_id}`. Workspace APIs return the same format
         """
         return pulumi.get(self, "parent")
 
@@ -512,7 +519,7 @@ class AccountIamServicePrincipalV2(pulumi.CustomResource):
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - Internal service principal ID of the service principal in Databricks
+        (string) - The Databricks ID of the service principal
         """
         return pulumi.get(self, "service_principal_id")
 

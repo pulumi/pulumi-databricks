@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 //
@@ -77,7 +77,7 @@ type LookupPostgresBranchResult struct {
 	// Format: projects/{project_id}
 	Parent         string                           `pulumi:"parent"`
 	ProviderConfig *GetPostgresBranchProviderConfig `pulumi:"providerConfig"`
-	// (BranchSpec) - The spec contains the branch configuration
+	// (BranchSpec) - The spec contains the branch configuration.
 	Spec GetPostgresBranchSpec `pulumi:"spec"`
 	// (BranchStatus) - The current status of a Branch
 	Status GetPostgresBranchStatus `pulumi:"status"`
@@ -146,7 +146,7 @@ func (o LookupPostgresBranchResultOutput) ProviderConfig() GetPostgresBranchProv
 	return o.ApplyT(func(v LookupPostgresBranchResult) *GetPostgresBranchProviderConfig { return v.ProviderConfig }).(GetPostgresBranchProviderConfigPtrOutput)
 }
 
-// (BranchSpec) - The spec contains the branch configuration
+// (BranchSpec) - The spec contains the branch configuration.
 func (o LookupPostgresBranchResultOutput) Spec() GetPostgresBranchSpecOutput {
 	return o.ApplyT(func(v LookupPostgresBranchResult) GetPostgresBranchSpec { return v.Spec }).(GetPostgresBranchSpecOutput)
 }

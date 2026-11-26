@@ -29,6 +29,9 @@ namespace Pulumi.Databricks.Inputs
         [Input("environmentVersion")]
         public string? EnvironmentVersion { get; set; }
 
+        [Input("imageUri")]
+        public string? ImageUri { get; set; }
+
         [Input("javaDependencies")]
         private List<string>? _javaDependencies;
         public List<string> JavaDependencies

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
     /// 
@@ -46,54 +46,53 @@ namespace Pulumi.Databricks
     public partial class WorkspaceIamDirectGroupMemberV2 : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (string) - Display name of the principal
+        /// (string) - The member's display name
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The external ID of the principal in the customer's IdP
+        /// (string) - The ID of the member in your identity provider (IdP)
         /// </summary>
         [Output("externalId")]
         public Output<string> ExternalId { get; private set; } = null!;
 
         /// <summary>
-        /// (integer) - The internal ID of the group this member belongs to
+        /// (integer) - The Databricks ID of the group
         /// </summary>
         [Output("groupId")]
         public Output<int> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+        /// (string) - Where the membership comes from. Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
         /// </summary>
         [Output("membershipSource")]
         public Output<string> MembershipSource { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The resource name of the group membership. The format depends on the API that returned it:
-        /// - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-        /// - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+        /// (string) - The resource name of the membership, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+        /// - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the group that contains the membership. The format depends on the API
-        /// that returned it:
-        /// - Account-scoped: accounts/{account_id}/groups/{group_id}
-        /// - Workspace-scoped: groups/{group_id}
+        /// The resource name of the group, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/groups/{group_id}`
+        /// - Workspace APIs: `groups/{group_id}`
         /// </summary>
         [Output("parent")]
         public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
-        /// Internal ID of the principal in Databricks
+        /// The Databricks ID of the member
         /// </summary>
         [Output("principalId")]
         public Output<string> PrincipalId { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+        /// (string) - Whether the member is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
         /// </summary>
         [Output("principalType")]
         public Output<string> PrincipalType { get; private set; } = null!;
@@ -151,22 +150,21 @@ namespace Pulumi.Databricks
     public sealed class WorkspaceIamDirectGroupMemberV2Args : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (integer) - The internal ID of the group this member belongs to
+        /// (integer) - The Databricks ID of the group
         /// </summary>
         [Input("groupId")]
         public Input<int>? GroupId { get; set; }
 
         /// <summary>
-        /// The resource name of the group that contains the membership. The format depends on the API
-        /// that returned it:
-        /// - Account-scoped: accounts/{account_id}/groups/{group_id}
-        /// - Workspace-scoped: groups/{group_id}
+        /// The resource name of the group, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/groups/{group_id}`
+        /// - Workspace APIs: `groups/{group_id}`
         /// </summary>
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;
 
         /// <summary>
-        /// Internal ID of the principal in Databricks
+        /// The Databricks ID of the member
         /// </summary>
         [Input("principalId", required: true)]
         public Input<string> PrincipalId { get; set; } = null!;
@@ -186,54 +184,53 @@ namespace Pulumi.Databricks
     public sealed class WorkspaceIamDirectGroupMemberV2State : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (string) - Display name of the principal
+        /// (string) - The member's display name
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// (string) - The external ID of the principal in the customer's IdP
+        /// (string) - The ID of the member in your identity provider (IdP)
         /// </summary>
         [Input("externalId")]
         public Input<string>? ExternalId { get; set; }
 
         /// <summary>
-        /// (integer) - The internal ID of the group this member belongs to
+        /// (integer) - The Databricks ID of the group
         /// </summary>
         [Input("groupId")]
         public Input<int>? GroupId { get; set; }
 
         /// <summary>
-        /// (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+        /// (string) - Where the membership comes from. Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
         /// </summary>
         [Input("membershipSource")]
         public Input<string>? MembershipSource { get; set; }
 
         /// <summary>
-        /// (string) - The resource name of the group membership. The format depends on the API that returned it:
-        /// - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-        /// - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+        /// (string) - The resource name of the membership, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+        /// - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The resource name of the group that contains the membership. The format depends on the API
-        /// that returned it:
-        /// - Account-scoped: accounts/{account_id}/groups/{group_id}
-        /// - Workspace-scoped: groups/{group_id}
+        /// The resource name of the group, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/groups/{group_id}`
+        /// - Workspace APIs: `groups/{group_id}`
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
         /// <summary>
-        /// Internal ID of the principal in Databricks
+        /// The Databricks ID of the member
         /// </summary>
         [Input("principalId")]
         public Input<string>? PrincipalId { get; set; }
 
         /// <summary>
-        /// (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+        /// (string) - Whether the member is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
         /// </summary>
         [Input("principalType")]
         public Input<string>? PrincipalType { get; set; }

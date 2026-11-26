@@ -52,10 +52,9 @@ class GetAccountIamDirectGroupMembersV2Result:
     @pulumi.getter
     def parent(self) -> _builtins.str:
         """
-        (string) - The resource name of the group that contains the membership. The format depends on the API
-        that returned it:
-        - Account-scoped: accounts/{account_id}/groups/{group_id}
-        - Workspace-scoped: groups/{group_id}
+        (string) - The resource name of the group, in one of these formats:
+        - Account APIs: `accounts/{account_id}/groups/{group_id}`
+        - Workspace APIs: `groups/{group_id}`
         """
         return pulumi.get(self, "parent")
 
@@ -75,7 +74,7 @@ def get_account_iam_direct_group_members_v2(page_size: Optional[_builtins.int] =
                                             parent: Optional[_builtins.str] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccountIamDirectGroupMembersV2Result:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/iamv2)
 
@@ -95,10 +94,9 @@ def get_account_iam_direct_group_members_v2(page_size: Optional[_builtins.int] =
     ```
 
 
-    :param _builtins.int page_size: The maximum number of members to return. The service may return fewer than this value.
-           If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
-    :param _builtins.str parent: The parent resource name of the group whose direct members to list.
-           Format: accounts/{account_id}/groups/{group_id}
+    :param _builtins.int page_size: The maximum number of members to return, up to 1000. The default is 1000. A page can contain
+           fewer members
+    :param _builtins.str parent: The resource name of the group, in the format `accounts/{account_id}/groups/{group_id}`
     """
     __args__ = dict()
     __args__['pageSize'] = page_size
@@ -114,7 +112,7 @@ def get_account_iam_direct_group_members_v2_output(page_size: pulumi.Input[Optio
                                                    parent: pulumi.Input[Optional[_builtins.str]] = None,
                                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountIamDirectGroupMembersV2Result]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/account/iamv2)
 
@@ -134,10 +132,9 @@ def get_account_iam_direct_group_members_v2_output(page_size: pulumi.Input[Optio
     ```
 
 
-    :param _builtins.int page_size: The maximum number of members to return. The service may return fewer than this value.
-           If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
-    :param _builtins.str parent: The parent resource name of the group whose direct members to list.
-           Format: accounts/{account_id}/groups/{group_id}
+    :param _builtins.int page_size: The maximum number of members to return, up to 1000. The default is 1000. A page can contain
+           fewer members
+    :param _builtins.str parent: The resource name of the group, in the format `accounts/{account_id}/groups/{group_id}`
     """
     __args__ = dict()
     __args__['pageSize'] = page_size

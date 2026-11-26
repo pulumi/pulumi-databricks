@@ -16,9 +16,9 @@ namespace Pulumi.Databricks.Inputs
         private InputList<string>? _destinationIds;
 
         /// <summary>
-        /// The notification-destination IDs (Slack / Teams / webhook) to send the notification to. The
-        /// destinations must already exist in the workspace; a workspace admin creates them. A maximum of
-        /// 25 destination IDs is supported.
+        /// The notification-destination IDs (Slack / Teams / webhook / Asana / ServiceNow / AWS
+        /// EventBridge) to send the notification to. The destinations must already exist in the
+        /// workspace; a workspace admin creates them. A maximum of 25 destination IDs is supported.
         /// Only supported on schema monitors, via `AnomalyDetectionConfig`; rejected on table monitors
         /// </summary>
         public InputList<string> DestinationIds
@@ -44,7 +44,8 @@ namespace Pulumi.Databricks.Inputs
         private InputList<string>? _emailAddresses;
 
         /// <summary>
-        /// The list of email addresses to send the notification to. A maximum of 5 email addresses is supported
+        /// The list of email addresses to send the notification to. A maximum of 5 email addresses is supported.
+        /// Only supported on table monitors, via `DataProfilingConfig`; rejected on schema monitors
         /// </summary>
         public InputList<string> EmailAddresses
         {

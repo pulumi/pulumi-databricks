@@ -48,14 +48,14 @@ public final class WorkspaceIamWorkspaceIdentityDetailV2Args extends com.pulumi.
     }
 
     /**
-     * The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
+     * Whether the principal is active in the workspace. Groups are always `ACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     @Import(name="workspaceIdentityStatus")
     private @Nullable Output<String> workspaceIdentityStatus;
 
     /**
-     * @return The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
+     * @return Whether the principal is active in the workspace. Groups are always `ACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     public Optional<Output<String>> workspaceIdentityStatus() {
@@ -131,7 +131,7 @@ public final class WorkspaceIamWorkspaceIdentityDetailV2Args extends com.pulumi.
         }
 
         /**
-         * @param workspaceIdentityStatus The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
+         * @param workspaceIdentityStatus Whether the principal is active in the workspace. Groups are always `ACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
          * 
          * @return builder
          * 
@@ -142,7 +142,7 @@ public final class WorkspaceIamWorkspaceIdentityDetailV2Args extends com.pulumi.
         }
 
         /**
-         * @param workspaceIdentityStatus The activity status of an identity in a Databricks workspace. Possible values are: `ACTIVE`, `INACTIVE`
+         * @param workspaceIdentityStatus Whether the principal is active in the workspace. Groups are always `ACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
          * 
          * @return builder
          * 

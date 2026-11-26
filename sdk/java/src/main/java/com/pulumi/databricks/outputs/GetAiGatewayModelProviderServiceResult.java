@@ -32,12 +32,12 @@ public final class GetAiGatewayModelProviderServiceResult {
      */
     private String createTime;
     /**
-     * @return (string) - Creator identity
+     * @return (string) - Username of the user who created the model provider service
      * 
      */
     private String createdBy;
     /**
-     * @return (string) - Owner of the model provider service
+     * @return (string) - Username or group name of the model provider service owner
      * 
      */
     private String effectiveOwner;
@@ -50,7 +50,7 @@ public final class GetAiGatewayModelProviderServiceResult {
      */
     private String etag;
     /**
-     * @return (string) - Metastore hosting the provider service
+     * @return (string) - Unique identifier of the metastore that contains the model provider service
      * 
      */
     private String metastoreId;
@@ -69,7 +69,7 @@ public final class GetAiGatewayModelProviderServiceResult {
      */
     private String updateTime;
     /**
-     * @return (string) - Identity of the last updater
+     * @return (string) - Username of the user who last updated the model provider service
      * 
      */
     private String updatedBy;
@@ -99,14 +99,14 @@ public final class GetAiGatewayModelProviderServiceResult {
         return this.createTime;
     }
     /**
-     * @return (string) - Creator identity
+     * @return (string) - Username of the user who created the model provider service
      * 
      */
     public String createdBy() {
         return this.createdBy;
     }
     /**
-     * @return (string) - Owner of the model provider service
+     * @return (string) - Username or group name of the model provider service owner
      * 
      */
     public String effectiveOwner() {
@@ -123,7 +123,7 @@ public final class GetAiGatewayModelProviderServiceResult {
         return this.etag;
     }
     /**
-     * @return (string) - Metastore hosting the provider service
+     * @return (string) - Unique identifier of the metastore that contains the model provider service
      * 
      */
     public String metastoreId() {
@@ -150,7 +150,7 @@ public final class GetAiGatewayModelProviderServiceResult {
         return this.updateTime;
     }
     /**
-     * @return (string) - Identity of the last updater
+     * @return (string) - Username of the user who last updated the model provider service
      * 
      */
     public String updatedBy() {

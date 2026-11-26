@@ -16,13 +16,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPostgresSyncedTableResult {
     /**
-     * @return (string)
+     * @return (string) - The time when the synced table was created
      * 
      */
     private String createTime;
     /**
-     * @return (string) - Output only. The Full resource name of the synced table in Postgres
-     * where (catalog, schema, table) are the UC entity names.
+     * @return (string) - The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+     * names of the synced table.
      * 
      */
     private String name;
@@ -38,7 +38,8 @@ public final class GetPostgresSyncedTableResult {
      */
     private GetPostgresSyncedTableStatus status;
     /**
-     * @return (string) - The part of the name, chosen by the user when the resource was created
+     * @return (string) - The three-part Unity Catalog name of the synced table, in the format &#34;{catalog}.{schema}.{table}&#34;.
+     * It is the syncedTableId that was used to create the synced table and the last component of name
      * 
      */
     private String syncedTableId;
@@ -50,15 +51,15 @@ public final class GetPostgresSyncedTableResult {
 
     private GetPostgresSyncedTableResult() {}
     /**
-     * @return (string)
+     * @return (string) - The time when the synced table was created
      * 
      */
     public String createTime() {
         return this.createTime;
     }
     /**
-     * @return (string) - Output only. The Full resource name of the synced table in Postgres
-     * where (catalog, schema, table) are the UC entity names.
+     * @return (string) - The full resource name of the synced table, where (catalog, schema, table) are the Unity Catalog
+     * names of the synced table.
      * 
      */
     public String name() {
@@ -82,7 +83,8 @@ public final class GetPostgresSyncedTableResult {
         return this.status;
     }
     /**
-     * @return (string) - The part of the name, chosen by the user when the resource was created
+     * @return (string) - The three-part Unity Catalog name of the synced table, in the format &#34;{catalog}.{schema}.{table}&#34;.
+     * It is the syncedTableId that was used to create the synced table and the last component of name
      * 
      */
     public String syncedTableId() {

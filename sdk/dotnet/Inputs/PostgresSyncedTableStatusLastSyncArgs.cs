@@ -13,7 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class PostgresSyncedTableStatusLastSyncArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (DeltaTableSyncInfo)
+        /// (DeltaTableSyncInfo) - The source Delta table version that the last successful sync read
         /// </summary>
         [Input("deltaTableSyncInfo")]
         public Input<Inputs.PostgresSyncedTableStatusLastSyncDeltaTableSyncInfoArgs>? DeltaTableSyncInfo { get; set; }

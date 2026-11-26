@@ -32,7 +32,7 @@ public final class MwsNetworksGcpNetworkInfoArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.145.0/docs/guides/gcp-workspace#creating-a-vpc
      * 
      */
     @Deprecated
@@ -40,7 +40,7 @@ public final class MwsNetworksGcpNetworkInfoArgs extends com.pulumi.resources.Re
     private @Nullable Output<String> podIpRangeName;
 
     /**
-     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.145.0/docs/guides/gcp-workspace#creating-a-vpc
      * 
      */
     @Deprecated
@@ -49,7 +49,7 @@ public final class MwsNetworksGcpNetworkInfoArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.145.0/docs/guides/gcp-workspace#creating-a-vpc
      * 
      */
     @Deprecated
@@ -57,7 +57,7 @@ public final class MwsNetworksGcpNetworkInfoArgs extends com.pulumi.resources.Re
     private @Nullable Output<String> serviceIpRangeName;
 
     /**
-     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-vpc
+     * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.145.0/docs/guides/gcp-workspace#creating-a-vpc
      * 
      */
     @Deprecated
@@ -163,7 +163,7 @@ public final class MwsNetworksGcpNetworkInfoArgs extends com.pulumi.resources.Re
         /**
          * @return builder
          * 
-         * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-vpc
+         * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.145.0/docs/guides/gcp-workspace#creating-a-vpc
          * 
          */
         @Deprecated
@@ -175,7 +175,7 @@ public final class MwsNetworksGcpNetworkInfoArgs extends com.pulumi.resources.Re
         /**
          * @return builder
          * 
-         * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-vpc
+         * @deprecated gcp_network_info.pod_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.145.0/docs/guides/gcp-workspace#creating-a-vpc
          * 
          */
         @Deprecated
@@ -186,7 +186,7 @@ public final class MwsNetworksGcpNetworkInfoArgs extends com.pulumi.resources.Re
         /**
          * @return builder
          * 
-         * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-vpc
+         * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.145.0/docs/guides/gcp-workspace#creating-a-vpc
          * 
          */
         @Deprecated
@@ -198,7 +198,7 @@ public final class MwsNetworksGcpNetworkInfoArgs extends com.pulumi.resources.Re
         /**
          * @return builder
          * 
-         * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.141.0/docs/guides/gcp-workspace#creating-a-vpc
+         * @deprecated gcp_network_info.service_ip_range_name is deprecated and will be removed in a future release. For more information, review the documentation at https://registry.terraform.io/providers/databricks/databricks/1.145.0/docs/guides/gcp-workspace#creating-a-vpc
          * 
          */
         @Deprecated

@@ -13,7 +13,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetDataQualityMonitorDataProfilingConfigNotificationSettings {
     /**
-     * @return (NotificationDestination) - Destinations to send notifications on failure/timeout
+     * @return (NotificationDestination) - Recipients to notify when a refresh of the monitor fails or times out. Only supported on table
+     * monitors, via `dataProfilingConfig`, and only `emailAddresses` is accepted there
      * 
      */
     private @Nullable GetDataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure onFailure;
@@ -27,7 +28,8 @@ public final class GetDataQualityMonitorDataProfilingConfigNotificationSettings 
 
     private GetDataQualityMonitorDataProfilingConfigNotificationSettings() {}
     /**
-     * @return (NotificationDestination) - Destinations to send notifications on failure/timeout
+     * @return (NotificationDestination) - Recipients to notify when a refresh of the monitor fails or times out. Only supported on table
+     * monitors, via `dataProfilingConfig`, and only `emailAddresses` is accepted there
      * 
      */
     public Optional<GetDataQualityMonitorDataProfilingConfigNotificationSettingsOnFailure> onFailure() {

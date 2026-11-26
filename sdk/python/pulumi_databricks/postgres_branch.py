@@ -39,7 +39,11 @@ class PostgresBranchArgs:
         :param pulumi.Input['PostgresBranchProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently delete the branch; if false, soft delete
         :param pulumi.Input[_builtins.bool] replace_existing: If true, update the branch if it already exists instead of returning an error
-        :param pulumi.Input['PostgresBranchSpecArgs'] spec: The spec contains the branch configuration
+        :param pulumi.Input['PostgresBranchSpecArgs'] spec: The spec contains the branch configuration.
+               
+               Read the resource's current values from `status`, rather than `spec`.
+               `spec` tracks field ownership for infrastructure-as-code tools and may omit
+               unmanaged fields
         """
         pulumi.set(__self__, "branch_id", branch_id)
         pulumi.set(__self__, "parent", parent)
@@ -120,7 +124,11 @@ class PostgresBranchArgs:
     @pulumi.getter
     def spec(self) -> pulumi.Input[Optional['PostgresBranchSpecArgs']]:
         """
-        The spec contains the branch configuration
+        The spec contains the branch configuration.
+
+        Read the resource's current values from `status`, rather than `spec`.
+        `spec` tracks field ownership for infrastructure-as-code tools and may omit
+        unmanaged fields
         """
         return pulumi.get(self, "spec")
 
@@ -158,7 +166,11 @@ class _PostgresBranchState:
         :param pulumi.Input['PostgresBranchProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently delete the branch; if false, soft delete
         :param pulumi.Input[_builtins.bool] replace_existing: If true, update the branch if it already exists instead of returning an error
-        :param pulumi.Input['PostgresBranchSpecArgs'] spec: The spec contains the branch configuration
+        :param pulumi.Input['PostgresBranchSpecArgs'] spec: The spec contains the branch configuration.
+               
+               Read the resource's current values from `status`, rather than `spec`.
+               `spec` tracks field ownership for infrastructure-as-code tools and may omit
+               unmanaged fields
         :param pulumi.Input['PostgresBranchStatusArgs'] status: (BranchStatus) - The current status of a Branch
         :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the branch
         :param pulumi.Input[_builtins.str] update_time: (string) - A timestamp indicating when the branch was last updated
@@ -279,7 +291,11 @@ class _PostgresBranchState:
     @pulumi.getter
     def spec(self) -> pulumi.Input[Optional['PostgresBranchSpecArgs']]:
         """
-        The spec contains the branch configuration
+        The spec contains the branch configuration.
+
+        Read the resource's current values from `status`, rather than `spec`.
+        `spec` tracks field ownership for infrastructure-as-code tools and may omit
+        unmanaged fields
         """
         return pulumi.get(self, "spec")
 
@@ -338,7 +354,7 @@ class PostgresBranch(pulumi.CustomResource):
                  spec: pulumi.Input[Optional[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict', 'outputs.PostgresBranchSpec']]] = None,
                  __props__=None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -348,7 +364,7 @@ class PostgresBranch(pulumi.CustomResource):
 
         A root branch named `production` is implicitly created for every project. Since Pulumi is declarative, managing an already-existing resource requires `replace_existing = true`: it lets Pulumi represent the implicitly created branch in Pulumi state and immediately apply the provided configuration to it. Support for providing a custom `branch_id` will be available in later versions.
 
-        Pulumi uses this resource exclusively for managing updates. It does not control creation or deletion of the branch itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual branch is unaffected, because its lifecycle is currently controlled by the parent project. The only way to remove the actual branch is to delete the project it belongs to.
+        For this implicitly created root Branch, Pulumi manages updates only. It does not control creation or deletion of the branch itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual branch is unaffected, because its lifecycle is currently controlled by the parent project. The only way to remove the actual branch is to delete the project it belongs to.
 
         ```python
         import pulumi
@@ -400,7 +416,9 @@ class PostgresBranch(pulumi.CustomResource):
             })
         ```
 
-        ### Branch with Expiration (TTL)
+        ### <a id="branch-with-expiration-ttl"></a>Branch with an Absolute Expiration
+
+        Prefer to use a fixed future `expire_time` instead of relative `ttl`. Reapplying a relative TTL recalculates the deadline from the update time and can extend the branch's lifetime. Replace the example timestamp with your intended deadline.
 
         ```python
         import pulumi
@@ -410,7 +428,7 @@ class PostgresBranch(pulumi.CustomResource):
             branch_id="temp-feature-test",
             parent=this["name"],
             spec={
-                "ttl": "604800s",
+                "expire_time": "2030-01-01T00:00:00Z",
             })
         ```
 
@@ -443,7 +461,11 @@ class PostgresBranch(pulumi.CustomResource):
         :param pulumi.Input[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict', 'outputs.PostgresBranchProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently delete the branch; if false, soft delete
         :param pulumi.Input[_builtins.bool] replace_existing: If true, update the branch if it already exists instead of returning an error
-        :param pulumi.Input[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict', 'outputs.PostgresBranchSpec']] spec: The spec contains the branch configuration
+        :param pulumi.Input[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict', 'outputs.PostgresBranchSpec']] spec: The spec contains the branch configuration.
+               
+               Read the resource's current values from `status`, rather than `spec`.
+               `spec` tracks field ownership for infrastructure-as-code tools and may omit
+               unmanaged fields
         """
         ...
     @overload
@@ -452,7 +474,7 @@ class PostgresBranch(pulumi.CustomResource):
                  args: PostgresBranchArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -462,7 +484,7 @@ class PostgresBranch(pulumi.CustomResource):
 
         A root branch named `production` is implicitly created for every project. Since Pulumi is declarative, managing an already-existing resource requires `replace_existing = true`: it lets Pulumi represent the implicitly created branch in Pulumi state and immediately apply the provided configuration to it. Support for providing a custom `branch_id` will be available in later versions.
 
-        Pulumi uses this resource exclusively for managing updates. It does not control creation or deletion of the branch itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual branch is unaffected, because its lifecycle is currently controlled by the parent project. The only way to remove the actual branch is to delete the project it belongs to.
+        For this implicitly created root Branch, Pulumi manages updates only. It does not control creation or deletion of the branch itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual branch is unaffected, because its lifecycle is currently controlled by the parent project. The only way to remove the actual branch is to delete the project it belongs to.
 
         ```python
         import pulumi
@@ -514,7 +536,9 @@ class PostgresBranch(pulumi.CustomResource):
             })
         ```
 
-        ### Branch with Expiration (TTL)
+        ### <a id="branch-with-expiration-ttl"></a>Branch with an Absolute Expiration
+
+        Prefer to use a fixed future `expire_time` instead of relative `ttl`. Reapplying a relative TTL recalculates the deadline from the update time and can extend the branch's lifetime. Replace the example timestamp with your intended deadline.
 
         ```python
         import pulumi
@@ -524,7 +548,7 @@ class PostgresBranch(pulumi.CustomResource):
             branch_id="temp-feature-test",
             parent=this["name"],
             spec={
-                "ttl": "604800s",
+                "expire_time": "2030-01-01T00:00:00Z",
             })
         ```
 
@@ -631,7 +655,11 @@ class PostgresBranch(pulumi.CustomResource):
         :param pulumi.Input[Union['PostgresBranchProviderConfigArgs', 'PostgresBranchProviderConfigArgsDict', 'outputs.PostgresBranchProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] purge_on_delete: If true, permanently delete the branch; if false, soft delete
         :param pulumi.Input[_builtins.bool] replace_existing: If true, update the branch if it already exists instead of returning an error
-        :param pulumi.Input[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict', 'outputs.PostgresBranchSpec']] spec: The spec contains the branch configuration
+        :param pulumi.Input[Union['PostgresBranchSpecArgs', 'PostgresBranchSpecArgsDict', 'outputs.PostgresBranchSpec']] spec: The spec contains the branch configuration.
+               
+               Read the resource's current values from `status`, rather than `spec`.
+               `spec` tracks field ownership for infrastructure-as-code tools and may omit
+               unmanaged fields
         :param pulumi.Input[Union['PostgresBranchStatusArgs', 'PostgresBranchStatusArgsDict', 'outputs.PostgresBranchStatus']] status: (BranchStatus) - The current status of a Branch
         :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the branch
         :param pulumi.Input[_builtins.str] update_time: (string) - A timestamp indicating when the branch was last updated
@@ -744,9 +772,13 @@ class PostgresBranch(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> pulumi.Output['outputs.PostgresBranchSpec']:
+    def spec(self) -> pulumi.Output[Optional['outputs.PostgresBranchSpec']]:
         """
-        The spec contains the branch configuration
+        The spec contains the branch configuration.
+
+        Read the resource's current values from `status`, rather than `spec`.
+        `spec` tracks field ownership for infrastructure-as-code tools and may omit
+        unmanaged fields
         """
         return pulumi.get(self, "spec")
 

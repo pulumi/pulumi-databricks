@@ -53,6 +53,14 @@ public final class GetPostgresCdfConfigsCdfConfig {
      * 
      */
     private String schema;
+    /**
+     * @return (string) - The service principal (application id) whose identity authorizes this
+     * change data feed&#39;s ongoing writes to Unity Catalog. When unset, writes are
+     * authorized as the creating identity. Changing it requires a new CdfConfig,
+     * which writes to new Delta tables
+     * 
+     */
+    private String servicePrincipal;
 
     private GetPostgresCdfConfigsCdfConfig() {}
     /**
@@ -109,6 +117,16 @@ public final class GetPostgresCdfConfigsCdfConfig {
     public String schema() {
         return this.schema;
     }
+    /**
+     * @return (string) - The service principal (application id) whose identity authorizes this
+     * change data feed&#39;s ongoing writes to Unity Catalog. When unset, writes are
+     * authorized as the creating identity. Changing it requires a new CdfConfig,
+     * which writes to new Delta tables
+     * 
+     */
+    public String servicePrincipal() {
+        return this.servicePrincipal;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -126,6 +144,7 @@ public final class GetPostgresCdfConfigsCdfConfig {
         private String postgresSchema;
         private @Nullable GetPostgresCdfConfigsCdfConfigProviderConfig providerConfig;
         private String schema;
+        private String servicePrincipal;
         public Builder() {}
         public Builder(GetPostgresCdfConfigsCdfConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -136,6 +155,7 @@ public final class GetPostgresCdfConfigsCdfConfig {
     	      this.postgresSchema = defaults.postgresSchema;
     	      this.providerConfig = defaults.providerConfig;
     	      this.schema = defaults.schema;
+    	      this.servicePrincipal = defaults.servicePrincipal;
         }
 
         @CustomType.Setter
@@ -192,6 +212,14 @@ public final class GetPostgresCdfConfigsCdfConfig {
             this.schema = schema;
             return this;
         }
+        @CustomType.Setter
+        public Builder servicePrincipal(String servicePrincipal) {
+            if (servicePrincipal == null) {
+              throw new MissingRequiredPropertyException("GetPostgresCdfConfigsCdfConfig", "servicePrincipal");
+            }
+            this.servicePrincipal = servicePrincipal;
+            return this;
+        }
         public GetPostgresCdfConfigsCdfConfig build() {
             final var _resultValue = new GetPostgresCdfConfigsCdfConfig();
             _resultValue.catalog = catalog;
@@ -201,6 +229,7 @@ public final class GetPostgresCdfConfigsCdfConfig {
             _resultValue.postgresSchema = postgresSchema;
             _resultValue.providerConfig = providerConfig;
             _resultValue.schema = schema;
+            _resultValue.servicePrincipal = servicePrincipal;
             return _resultValue;
         }
     }

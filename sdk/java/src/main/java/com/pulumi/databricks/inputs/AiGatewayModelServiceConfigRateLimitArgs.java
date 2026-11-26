@@ -54,14 +54,14 @@ public final class AiGatewayModelServiceConfigRateLimitArgs extends com.pulumi.r
     }
 
     /**
-     * Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     * Interval after which the request and token counters reset. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
      * 
      */
     @Import(name="renewalPeriod", required=true)
     private Output<String> renewalPeriod;
 
     /**
-     * @return Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+     * @return Interval after which the request and token counters reset. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
      * 
      */
     public Output<String> renewalPeriod() {
@@ -179,7 +179,7 @@ public final class AiGatewayModelServiceConfigRateLimitArgs extends com.pulumi.r
         }
 
         /**
-         * @param renewalPeriod Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+         * @param renewalPeriod Interval after which the request and token counters reset. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class AiGatewayModelServiceConfigRateLimitArgs extends com.pulumi.r
         }
 
         /**
-         * @param renewalPeriod Renewal period. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
+         * @param renewalPeriod Interval after which the request and token counters reset. Possible values are: `RATE_LIMIT_RENEWAL_PERIOD_HOUR`, `RATE_LIMIT_RENEWAL_PERIOD_MINUTE`
          * 
          * @return builder
          * 

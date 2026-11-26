@@ -135,14 +135,22 @@ public final class PostgresBranchState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The spec contains the branch configuration
+     * The spec contains the branch configuration.
+     * 
+     * Read the resource&#39;s current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      * 
      */
     @Import(name="spec")
     private @Nullable Output<PostgresBranchSpecArgs> spec;
 
     /**
-     * @return The spec contains the branch configuration
+     * @return The spec contains the branch configuration.
+     * 
+     * Read the resource&#39;s current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      * 
      */
     public Optional<Output<PostgresBranchSpecArgs>> spec() {
@@ -386,7 +394,11 @@ public final class PostgresBranchState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param spec The spec contains the branch configuration
+         * @param spec The spec contains the branch configuration.
+         * 
+         * Read the resource&#39;s current values from `status`, rather than `spec`.
+         * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+         * unmanaged fields
          * 
          * @return builder
          * 
@@ -397,7 +409,11 @@ public final class PostgresBranchState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param spec The spec contains the branch configuration
+         * @param spec The spec contains the branch configuration.
+         * 
+         * Read the resource&#39;s current values from `status`, rather than `spec`.
+         * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+         * unmanaged fields
          * 
          * @return builder
          * 

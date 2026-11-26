@@ -71,13 +71,13 @@ namespace Pulumi.Databricks
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - Creator identity
+        /// (string) - Username or service principal application ID of the principal that created the MCP service
         /// </summary>
         [Output("createdBy")]
         public Output<string> CreatedBy { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - Owner of the MCP service
+        /// (string) - Username, group name, or service principal application ID of the MCP service owner
         /// </summary>
         [Output("effectiveOwner")]
         public Output<string> EffectiveOwner { get; private set; } = null!;
@@ -92,13 +92,15 @@ namespace Pulumi.Databricks
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// Name for the MCP service, e.g. "MyMcpService"
+        /// Name of the MCP service within the parent schema. The name must not
+        /// contain periods, spaces, forward slashes, percent signs, or control characters,
+        /// and it is stored in lowercase
         /// </summary>
         [Output("mcpServiceId")]
         public Output<string> McpServiceId { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - Metastore hosting the MCP service
+        /// (string) - Unique identifier of the metastore that contains the MCP service
         /// </summary>
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
@@ -107,8 +109,9 @@ namespace Pulumi.Databricks
         /// (string) - Resource name of the MCP service.
         /// Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
         /// Each `{...}` component is capped at 255 characters individually.
-        /// Server-derived on Create from `Parent` +
-        /// `McpServiceId`; required and immutable on Update/Get/Delete
+        /// The server derives the name on Create from
+        /// `Parent` and `McpServiceId`; it is required and immutable on Update,
+        /// Get, and Delete
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -134,7 +137,8 @@ namespace Pulumi.Databricks
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - Identity of the last updater
+        /// (string) - Username or service principal application ID of the principal that last updated the MCP
+        /// service
         /// </summary>
         [Output("updatedBy")]
         public Output<string> UpdatedBy { get; private set; } = null!;
@@ -200,7 +204,9 @@ namespace Pulumi.Databricks
         public Input<Inputs.AiGatewayMcpServiceConfigArgs>? Config { get; set; }
 
         /// <summary>
-        /// Name for the MCP service, e.g. "MyMcpService"
+        /// Name of the MCP service within the parent schema. The name must not
+        /// contain periods, spaces, forward slashes, percent signs, or control characters,
+        /// and it is stored in lowercase
         /// </summary>
         [Input("mcpServiceId", required: true)]
         public Input<string> McpServiceId { get; set; } = null!;
@@ -248,13 +254,13 @@ namespace Pulumi.Databricks
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// (string) - Creator identity
+        /// (string) - Username or service principal application ID of the principal that created the MCP service
         /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
         /// <summary>
-        /// (string) - Owner of the MCP service
+        /// (string) - Username, group name, or service principal application ID of the MCP service owner
         /// </summary>
         [Input("effectiveOwner")]
         public Input<string>? EffectiveOwner { get; set; }
@@ -269,13 +275,15 @@ namespace Pulumi.Databricks
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// Name for the MCP service, e.g. "MyMcpService"
+        /// Name of the MCP service within the parent schema. The name must not
+        /// contain periods, spaces, forward slashes, percent signs, or control characters,
+        /// and it is stored in lowercase
         /// </summary>
         [Input("mcpServiceId")]
         public Input<string>? McpServiceId { get; set; }
 
         /// <summary>
-        /// (string) - Metastore hosting the MCP service
+        /// (string) - Unique identifier of the metastore that contains the MCP service
         /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
@@ -284,8 +292,9 @@ namespace Pulumi.Databricks
         /// (string) - Resource name of the MCP service.
         /// Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
         /// Each `{...}` component is capped at 255 characters individually.
-        /// Server-derived on Create from `Parent` +
-        /// `McpServiceId`; required and immutable on Update/Get/Delete
+        /// The server derives the name on Create from
+        /// `Parent` and `McpServiceId`; it is required and immutable on Update,
+        /// Get, and Delete
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -311,7 +320,8 @@ namespace Pulumi.Databricks
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
-        /// (string) - Identity of the last updater
+        /// (string) - Username or service principal application ID of the principal that last updated the MCP
+        /// service
         /// </summary>
         [Input("updatedBy")]
         public Input<string>? UpdatedBy { get; set; }

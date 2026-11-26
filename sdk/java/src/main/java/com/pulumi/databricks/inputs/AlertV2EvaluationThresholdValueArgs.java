@@ -17,23 +17,47 @@ public final class AlertV2EvaluationThresholdValueArgs extends com.pulumi.resour
 
     public static final AlertV2EvaluationThresholdValueArgs Empty = new AlertV2EvaluationThresholdValueArgs();
 
+    /**
+     * Boolean threshold, for boolean columns
+     * 
+     */
     @Import(name="boolValue")
     private @Nullable Output<Boolean> boolValue;
 
+    /**
+     * @return Boolean threshold, for boolean columns
+     * 
+     */
     public Optional<Output<Boolean>> boolValue() {
         return Optional.ofNullable(this.boolValue);
     }
 
+    /**
+     * Numeric threshold, for numeric columns
+     * 
+     */
     @Import(name="doubleValue")
     private @Nullable Output<Double> doubleValue;
 
+    /**
+     * @return Numeric threshold, for numeric columns
+     * 
+     */
     public Optional<Output<Double>> doubleValue() {
         return Optional.ofNullable(this.doubleValue);
     }
 
+    /**
+     * String threshold, for string or timestamp columns
+     * 
+     */
     @Import(name="stringValue")
     private @Nullable Output<String> stringValue;
 
+    /**
+     * @return String threshold, for string or timestamp columns
+     * 
+     */
     public Optional<Output<String>> stringValue() {
         return Optional.ofNullable(this.stringValue);
     }
@@ -64,29 +88,65 @@ public final class AlertV2EvaluationThresholdValueArgs extends com.pulumi.resour
             $ = new AlertV2EvaluationThresholdValueArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param boolValue Boolean threshold, for boolean columns
+         * 
+         * @return builder
+         * 
+         */
         public Builder boolValue(@Nullable Output<Boolean> boolValue) {
             $.boolValue = boolValue;
             return this;
         }
 
+        /**
+         * @param boolValue Boolean threshold, for boolean columns
+         * 
+         * @return builder
+         * 
+         */
         public Builder boolValue(Boolean boolValue) {
             return boolValue(Output.of(boolValue));
         }
 
+        /**
+         * @param doubleValue Numeric threshold, for numeric columns
+         * 
+         * @return builder
+         * 
+         */
         public Builder doubleValue(@Nullable Output<Double> doubleValue) {
             $.doubleValue = doubleValue;
             return this;
         }
 
+        /**
+         * @param doubleValue Numeric threshold, for numeric columns
+         * 
+         * @return builder
+         * 
+         */
         public Builder doubleValue(Double doubleValue) {
             return doubleValue(Output.of(doubleValue));
         }
 
+        /**
+         * @param stringValue String threshold, for string or timestamp columns
+         * 
+         * @return builder
+         * 
+         */
         public Builder stringValue(@Nullable Output<String> stringValue) {
             $.stringValue = stringValue;
             return this;
         }
 
+        /**
+         * @param stringValue String threshold, for string or timestamp columns
+         * 
+         * @return builder
+         * 
+         */
         public Builder stringValue(String stringValue) {
             return stringValue(Output.of(stringValue));
         }

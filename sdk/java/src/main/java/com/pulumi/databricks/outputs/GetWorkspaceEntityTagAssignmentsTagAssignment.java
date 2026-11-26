@@ -34,7 +34,7 @@ public final class GetWorkspaceEntityTagAssignmentsTagAssignment {
      */
     private String tagKey;
     /**
-     * @return (string) - The value of the tag
+     * @return (string) - The value of the tag. If the value is omitted, the tag is assigned with its key only
      * 
      */
     private String tagValue;
@@ -69,7 +69,7 @@ public final class GetWorkspaceEntityTagAssignmentsTagAssignment {
         return this.tagKey;
     }
     /**
-     * @return (string) - The value of the tag
+     * @return (string) - The value of the tag. If the value is omitted, the tag is assigned with its key only
      * 
      */
     public String tagValue() {

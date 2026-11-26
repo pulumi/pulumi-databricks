@@ -14,15 +14,16 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAppSpaceResourceDatabaseResult
     {
         /// <summary>
-        /// (string)
+        /// (string) - Name of the database within the instance
         /// </summary>
         public readonly string DatabaseName;
         /// <summary>
-        /// (string)
+        /// (string) - Name of the Lakebase database instance
         /// </summary>
         public readonly string InstanceName;
         /// <summary>
-        /// (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+        /// (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+        /// type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
         /// </summary>
         public readonly string Permission;
 

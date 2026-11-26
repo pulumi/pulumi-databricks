@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/account/iamv2)
  *
@@ -72,45 +72,43 @@ export class AccountIamWorkspaceAssignmentV2 extends pulumi.CustomResource {
     }
 
     /**
-     * (string) - The account ID parent of the workspace where the principal is assigned
+     * (string) - The ID of the account that contains the workspace
      */
     declare public /*out*/ readonly accountId: pulumi.Output<string>;
     /**
-     * (list of string) - Every entitlement the principal holds in this workspace, whether granted directly or through
-     * group membership. Get responses populate this field. List responses leave it empty
+     * (list of string) - Every entitlement the principal has in the workspace, granted directly or through a group. List
+     * responses leave it empty
      */
     declare public /*out*/ readonly effectiveEntitlements: pulumi.Output<string[]>;
     /**
-     * Entitlements granted directly to the principal on this workspace. This is the only
-     * client-settable field. Create and update manage exactly this set, including entitlements the
-     * principal also holds through a group.
-     * List responses leave this field empty. Get a single principal to read its entitlements
+     * The entitlements granted directly by this assignment. Create and update set exactly this list,
+     * even if the principal also gets some of these entitlements through a group. List responses
+     * leave it empty
      */
     declare public readonly entitlements: pulumi.Output<string[] | undefined>;
     /**
-     * (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
-     * - Workspace-scoped: workspace-assignments/{principal_id}
+     * (string) - The resource name of the assignment, in one of these formats:
+     * - Account APIs:
+     *   `accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}`
+     * - Workspace APIs: `workspace-assignments/{principal_id}`
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
-     * The resource name of the workspace that contains the assignment,
-     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
-     * APIs return it
+     * The resource name of the workspace, in the format
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Workspace APIs return the same format
      */
     declare public readonly parent: pulumi.Output<string>;
     /**
-     * The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
-     * created and cannot be changed afterwards; to assign a different principal, create a new
-     * assignment
+     * The Databricks ID of the assigned user, service principal, or group. It can't be changed after
+     * the assignment is created
      */
     declare public readonly principalId: pulumi.Output<string>;
     /**
-     * (string) - The type of the principal (user/service principal/group) that is assigned. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * (string) - Whether the assigned principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      */
     declare public /*out*/ readonly principalType: pulumi.Output<string>;
     /**
-     * (integer) - The workspace ID where the principal is assigned
+     * (integer) - The ID of the workspace
      */
     declare public readonly workspaceId: pulumi.Output<string>;
 
@@ -162,45 +160,43 @@ export class AccountIamWorkspaceAssignmentV2 extends pulumi.CustomResource {
  */
 export interface AccountIamWorkspaceAssignmentV2State {
     /**
-     * (string) - The account ID parent of the workspace where the principal is assigned
+     * (string) - The ID of the account that contains the workspace
      */
     accountId?: pulumi.Input<string | undefined>;
     /**
-     * (list of string) - Every entitlement the principal holds in this workspace, whether granted directly or through
-     * group membership. Get responses populate this field. List responses leave it empty
+     * (list of string) - Every entitlement the principal has in the workspace, granted directly or through a group. List
+     * responses leave it empty
      */
     effectiveEntitlements?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * Entitlements granted directly to the principal on this workspace. This is the only
-     * client-settable field. Create and update manage exactly this set, including entitlements the
-     * principal also holds through a group.
-     * List responses leave this field empty. Get a single principal to read its entitlements
+     * The entitlements granted directly by this assignment. Create and update set exactly this list,
+     * even if the principal also gets some of these entitlements through a group. List responses
+     * leave it empty
      */
     entitlements?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
-     * - Workspace-scoped: workspace-assignments/{principal_id}
+     * (string) - The resource name of the assignment, in one of these formats:
+     * - Account APIs:
+     *   `accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}`
+     * - Workspace APIs: `workspace-assignments/{principal_id}`
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The resource name of the workspace that contains the assignment,
-     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
-     * APIs return it
+     * The resource name of the workspace, in the format
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Workspace APIs return the same format
      */
     parent?: pulumi.Input<string | undefined>;
     /**
-     * The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
-     * created and cannot be changed afterwards; to assign a different principal, create a new
-     * assignment
+     * The Databricks ID of the assigned user, service principal, or group. It can't be changed after
+     * the assignment is created
      */
     principalId?: pulumi.Input<string | undefined>;
     /**
-     * (string) - The type of the principal (user/service principal/group) that is assigned. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * (string) - Whether the assigned principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      */
     principalType?: pulumi.Input<string | undefined>;
     /**
-     * (integer) - The workspace ID where the principal is assigned
+     * (integer) - The ID of the workspace
      */
     workspaceId?: pulumi.Input<string | undefined>;
 }
@@ -210,26 +206,23 @@ export interface AccountIamWorkspaceAssignmentV2State {
  */
 export interface AccountIamWorkspaceAssignmentV2Args {
     /**
-     * Entitlements granted directly to the principal on this workspace. This is the only
-     * client-settable field. Create and update manage exactly this set, including entitlements the
-     * principal also holds through a group.
-     * List responses leave this field empty. Get a single principal to read its entitlements
+     * The entitlements granted directly by this assignment. Create and update set exactly this list,
+     * even if the principal also gets some of these entitlements through a group. List responses
+     * leave it empty
      */
     entitlements?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The resource name of the workspace that contains the assignment,
-     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
-     * APIs return it
+     * The resource name of the workspace, in the format
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Workspace APIs return the same format
      */
     parent: pulumi.Input<string>;
     /**
-     * The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
-     * created and cannot be changed afterwards; to assign a different principal, create a new
-     * assignment
+     * The Databricks ID of the assigned user, service principal, or group. It can't be changed after
+     * the assignment is created
      */
     principalId: pulumi.Input<string>;
     /**
-     * (integer) - The workspace ID where the principal is assigned
+     * (integer) - The ID of the workspace
      */
     workspaceId?: pulumi.Input<string | undefined>;
 }

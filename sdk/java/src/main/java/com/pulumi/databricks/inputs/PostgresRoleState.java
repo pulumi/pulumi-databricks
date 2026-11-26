@@ -20,14 +20,14 @@ public final class PostgresRoleState extends com.pulumi.resources.ResourceArgs {
     public static final PostgresRoleState Empty = new PostgresRoleState();
 
     /**
-     * (string)
+     * (string) - A timestamp indicating when the role was created
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return (string)
+     * @return (string) - A timestamp indicating when the role was created
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -92,7 +92,9 @@ public final class PostgresRoleState extends com.pulumi.resources.ResourceArgs {
      * Attributes omitted from the request retain their current values.
      * Set an attribute explicitly to false to disable it.
      * `identityType`, `authMethod`, and `postgresRole` retain their
-     * existing values; supplied values for these fields are ignored.
+     * existing values. Omit these fields or supply their current values.
+     * A differing supplied value returns INVALID_PARAMETER_VALUE and rejects
+     * the entire request, including changes to mutable fields.
      * `membershipRoles` is overwritten, not merged. Leaving
      * `membershipRoles` empty clears all of the role&#39;s existing memberships,
      * including `DATABRICKS_SUPERUSER`. Always send the complete desired list
@@ -111,7 +113,9 @@ public final class PostgresRoleState extends com.pulumi.resources.ResourceArgs {
      * Attributes omitted from the request retain their current values.
      * Set an attribute explicitly to false to disable it.
      * `identityType`, `authMethod`, and `postgresRole` retain their
-     * existing values; supplied values for these fields are ignored.
+     * existing values. Omit these fields or supply their current values.
+     * A differing supplied value returns INVALID_PARAMETER_VALUE and rejects
+     * the entire request, including changes to mutable fields.
      * `membershipRoles` is overwritten, not merged. Leaving
      * `membershipRoles` empty clears all of the role&#39;s existing memberships,
      * including `DATABRICKS_SUPERUSER`. Always send the complete desired list
@@ -138,14 +142,22 @@ public final class PostgresRoleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The spec contains the role configuration, including identity type, authentication method, and role attributes
+     * The spec contains the role configuration, including identity type, authentication method, and role attributes.
+     * 
+     * Read the resource&#39;s current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      * 
      */
     @Import(name="spec")
     private @Nullable Output<PostgresRoleSpecArgs> spec;
 
     /**
-     * @return The spec contains the role configuration, including identity type, authentication method, and role attributes
+     * @return The spec contains the role configuration, including identity type, authentication method, and role attributes.
+     * 
+     * Read the resource&#39;s current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      * 
      */
     public Optional<Output<PostgresRoleSpecArgs>> spec() {
@@ -168,14 +180,14 @@ public final class PostgresRoleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (string)
+     * (string) - A timestamp indicating when the role was last updated
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return (string)
+     * @return (string) - A timestamp indicating when the role was last updated
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -215,7 +227,7 @@ public final class PostgresRoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime (string)
+         * @param createTime (string) - A timestamp indicating when the role was created
          * 
          * @return builder
          * 
@@ -226,7 +238,7 @@ public final class PostgresRoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createTime (string)
+         * @param createTime (string) - A timestamp indicating when the role was created
          * 
          * @return builder
          * 
@@ -311,7 +323,9 @@ public final class PostgresRoleState extends com.pulumi.resources.ResourceArgs {
          * Attributes omitted from the request retain their current values.
          * Set an attribute explicitly to false to disable it.
          * `identityType`, `authMethod`, and `postgresRole` retain their
-         * existing values; supplied values for these fields are ignored.
+         * existing values. Omit these fields or supply their current values.
+         * A differing supplied value returns INVALID_PARAMETER_VALUE and rejects
+         * the entire request, including changes to mutable fields.
          * `membershipRoles` is overwritten, not merged. Leaving
          * `membershipRoles` empty clears all of the role&#39;s existing memberships,
          * including `DATABRICKS_SUPERUSER`. Always send the complete desired list
@@ -334,7 +348,9 @@ public final class PostgresRoleState extends com.pulumi.resources.ResourceArgs {
          * Attributes omitted from the request retain their current values.
          * Set an attribute explicitly to false to disable it.
          * `identityType`, `authMethod`, and `postgresRole` retain their
-         * existing values; supplied values for these fields are ignored.
+         * existing values. Omit these fields or supply their current values.
+         * A differing supplied value returns INVALID_PARAMETER_VALUE and rejects
+         * the entire request, including changes to mutable fields.
          * `membershipRoles` is overwritten, not merged. Leaving
          * `membershipRoles` empty clears all of the role&#39;s existing memberships,
          * including `DATABRICKS_SUPERUSER`. Always send the complete desired list
@@ -369,7 +385,11 @@ public final class PostgresRoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spec The spec contains the role configuration, including identity type, authentication method, and role attributes
+         * @param spec The spec contains the role configuration, including identity type, authentication method, and role attributes.
+         * 
+         * Read the resource&#39;s current values from `status`, rather than `spec`.
+         * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+         * unmanaged fields
          * 
          * @return builder
          * 
@@ -380,7 +400,11 @@ public final class PostgresRoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param spec The spec contains the role configuration, including identity type, authentication method, and role attributes
+         * @param spec The spec contains the role configuration, including identity type, authentication method, and role attributes.
+         * 
+         * Read the resource&#39;s current values from `status`, rather than `spec`.
+         * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+         * unmanaged fields
          * 
          * @return builder
          * 
@@ -411,7 +435,7 @@ public final class PostgresRoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime (string)
+         * @param updateTime (string) - A timestamp indicating when the role was last updated
          * 
          * @return builder
          * 
@@ -422,7 +446,7 @@ public final class PostgresRoleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateTime (string)
+         * @param updateTime (string) - A timestamp indicating when the role was last updated
          * 
          * @return builder
          * 

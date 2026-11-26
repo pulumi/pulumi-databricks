@@ -14,7 +14,8 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetDatabaseInstancesDatabaseInstanceResult
     {
         /// <summary>
-        /// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8"
+        /// (string) - The sku of the instance. Valid values are "CU_1", "CU_2", "CU_4", "CU_8". Must be set when
+        /// creating an instance
         /// </summary>
         public readonly string Capacity;
         /// <summary>
@@ -31,11 +32,12 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Creator;
         /// <summary>
-        /// (list of CustomTag) - Custom tags associated with the instance. This field is only included on create and update responses
+        /// (list of CustomTag) - Custom tags associated with the instance. This field is only included on create and update responses.
+        /// An instance can have at most 10 tags; keys must be unique ignoring case
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesDatabaseInstanceCustomTagResult> CustomTags;
         /// <summary>
-        /// (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+        /// (string, deprecated) - Deprecated: this field always matches the value of capacity; read capacity instead.
         /// This is an output only field that contains the value computed from the input field combined with
         /// server side defaults. Use the field without the effective_ prefix to set the value
         /// </summary>
@@ -89,7 +91,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly bool EnablePgNativeLogin;
         /// <summary>
-        /// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false
+        /// (boolean) - Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+        /// NodeCount greater than 1
         /// </summary>
         public readonly bool EnableReadableSecondaries;
         /// <summary>
@@ -102,8 +105,9 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly int NodeCount;
         /// <summary>
-        /// (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is
-        /// child instance.
+        /// (DatabaseInstanceRef) - The ref of the parent instance. This is only available if the instance is a
+        /// child instance. A child instance inherits CustomTags and UsagePolicyId from
+        /// its parent and cannot set them.
         /// Input: For specifying the parent instance to create a child instance. Optional.
         /// Output: Only populated if provided as input to create a child instance
         /// </summary>
@@ -136,7 +140,9 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// (boolean) - Whether to stop the instance. An input only param, see EffectiveStopped for the output
+        /// (boolean) - Whether to stop the instance. An input only param, see EffectiveStopped for the output. An
+        /// instance cannot be created in the stopped state; set this field on update to stop or start
+        /// the instance
         /// </summary>
         public readonly bool Stopped;
         /// <summary>

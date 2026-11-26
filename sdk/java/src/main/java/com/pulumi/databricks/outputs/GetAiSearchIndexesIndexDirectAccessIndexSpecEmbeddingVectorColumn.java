@@ -13,26 +13,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAiSearchIndexesIndexDirectAccessIndexSpecEmbeddingVectorColumn {
     /**
-     * @return (integer) - Dimension of the embedding vector
+     * @return (integer) - Number of elements in each embedding vector. It must be positive
      * 
      */
     private @Nullable Integer embeddingDimension;
     /**
-     * @return (string) - Name of the column
+     * @return (string) - Name of the column that holds the precomputed embedding vectors
      * 
      */
     private @Nullable String name;
 
     private GetAiSearchIndexesIndexDirectAccessIndexSpecEmbeddingVectorColumn() {}
     /**
-     * @return (integer) - Dimension of the embedding vector
+     * @return (integer) - Number of elements in each embedding vector. It must be positive
      * 
      */
     public Optional<Integer> embeddingDimension() {
         return Optional.ofNullable(this.embeddingDimension);
     }
     /**
-     * @return (string) - Name of the column
+     * @return (string) - Name of the column that holds the precomputed embedding vectors
      * 
      */
     public Optional<String> name() {

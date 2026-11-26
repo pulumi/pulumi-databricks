@@ -14,14 +14,17 @@ namespace Pulumi.Databricks.Outputs
     public sealed class NotificationDestinationConfigDatabricksAppTeams
     {
         /// <summary>
-        /// Slack channel ID for notifications.
+        /// Teams channel ID notifications are posted to.
         /// </summary>
         public readonly string? ChannelId;
         public readonly bool? ChannelIdSet;
+        /// <summary>
+        /// Microsoft Entra group ID of the team that owns the channel.
+        /// </summary>
         public readonly string? TeamId;
         public readonly bool? TeamIdSet;
         /// <summary>
-        /// Tenant ID for Microsoft Teams App.
+        /// Microsoft Entra tenant ID of the Microsoft 365 tenant the app is installed in.
         /// </summary>
         public readonly string? TenantId;
         public readonly bool? TenantIdSet;

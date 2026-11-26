@@ -30,7 +30,8 @@ class AgentKitManagedMemoryStoreArgs:
 
         :param pulumi.Input[_builtins.str] managed_memory_store_id: Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
                with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-               letter or digit
+               letter or digit. It becomes the last segment of the store's `name` and cannot be changed
+               after creation
         :param pulumi.Input[_builtins.str] description: Human-readable description of the memory store
         :param pulumi.Input[_builtins.str] display_name: Deprecated compatibility alias for the caller-provided memory store ID. Canonical
                clients provide the ID through `CreateMemoryStoreRequest.managed_memory_store_id` and use
@@ -51,7 +52,8 @@ class AgentKitManagedMemoryStoreArgs:
         """
         Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
         with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-        letter or digit
+        letter or digit. It becomes the last segment of the store's `name` and cannot be changed
+        after creation
         """
         return pulumi.get(self, "managed_memory_store_id")
 
@@ -125,7 +127,8 @@ class _AgentKitManagedMemoryStoreState:
                `name` as the resource identifier
         :param pulumi.Input[_builtins.str] managed_memory_store_id: Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
                with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-               letter or digit
+               letter or digit. It becomes the last segment of the store's `name` and cannot be changed
+               after creation
         :param pulumi.Input[_builtins.str] name: (string) - Resource name in the form `memory-stores/{managed_memory_store_id}`
         :param pulumi.Input[_builtins.str] owner_user_id: (string, deprecated) - Deprecated alias for `creator_user_id`. This identifies the original creator, not a
                transferable owner. Use `creator_user_id` instead
@@ -215,7 +218,8 @@ class _AgentKitManagedMemoryStoreState:
         """
         Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
         with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-        letter or digit
+        letter or digit. It becomes the last segment of the store's `name` and cannot be changed
+        after creation
         """
         return pulumi.get(self, "managed_memory_store_id")
 
@@ -322,7 +326,8 @@ class AgentKitManagedMemoryStore(pulumi.CustomResource):
                `name` as the resource identifier
         :param pulumi.Input[_builtins.str] managed_memory_store_id: Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
                with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-               letter or digit
+               letter or digit. It becomes the last segment of the store's `name` and cannot be changed
+               after creation
         :param pulumi.Input[Union['AgentKitManagedMemoryStoreProviderConfigArgs', 'AgentKitManagedMemoryStoreProviderConfigArgsDict', 'outputs.AgentKitManagedMemoryStoreProviderConfig']] provider_config: Configure the provider for management through account provider.
         """
         ...
@@ -416,7 +421,8 @@ class AgentKitManagedMemoryStore(pulumi.CustomResource):
                `name` as the resource identifier
         :param pulumi.Input[_builtins.str] managed_memory_store_id: Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
                with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-               letter or digit
+               letter or digit. It becomes the last segment of the store's `name` and cannot be changed
+               after creation
         :param pulumi.Input[_builtins.str] name: (string) - Resource name in the form `memory-stores/{managed_memory_store_id}`
         :param pulumi.Input[_builtins.str] owner_user_id: (string, deprecated) - Deprecated alias for `creator_user_id`. This identifies the original creator, not a
                transferable owner. Use `creator_user_id` instead
@@ -512,7 +518,8 @@ class AgentKitManagedMemoryStore(pulumi.CustomResource):
         """
         Caller-provided, workspace-unique memory store ID. It must be 3-56 characters, begin
         with a lowercase letter, contain only lowercase letters, digits, and hyphens, and end with a
-        letter or digit
+        letter or digit. It becomes the last segment of the store's `name` and cannot be changed
+        after creation
         """
         return pulumi.get(self, "managed_memory_store_id")
 

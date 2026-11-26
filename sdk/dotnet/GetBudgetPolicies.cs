@@ -117,7 +117,8 @@ namespace Pulumi.Databricks
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The sort specification
+        /// How to sort the returned policies. If unspecified, policies are sorted by name in ascending
+        /// order
         /// </summary>
         [Input("sortSpec")]
         public Inputs.GetBudgetPoliciesSortSpecArgs? SortSpec { get; set; }
@@ -145,7 +146,8 @@ namespace Pulumi.Databricks
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// The sort specification
+        /// How to sort the returned policies. If unspecified, policies are sorted by name in ascending
+        /// order
         /// </summary>
         [Input("sortSpec")]
         public Input<Inputs.GetBudgetPoliciesSortSpecInputArgs>? SortSpec { get; set; }

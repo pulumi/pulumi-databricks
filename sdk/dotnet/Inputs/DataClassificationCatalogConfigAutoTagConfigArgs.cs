@@ -20,7 +20,9 @@ namespace Pulumi.Databricks.Inputs
 
         /// <summary>
         /// The Classification Tag. For built-in classes this is a system tag (e.g., "class.name",
-        /// "class.location"); for custom classes it is a user-defined governance tag key
+        /// "class.location"); for custom classes it is a user-defined governance tag key. The built-in
+        /// tags are listed at
+        /// https://docs.databricks.com/aws/en/data-governance/unity-catalog/data-classification-tags
         /// </summary>
         [Input("classificationTag", required: true)]
         public Input<string> ClassificationTag { get; set; } = null!;

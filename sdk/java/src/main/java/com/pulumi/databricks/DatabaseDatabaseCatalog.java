@@ -142,9 +142,19 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="databricks:index/databaseDatabaseCatalog:DatabaseDatabaseCatalog")
 public class DatabaseDatabaseCatalog extends com.pulumi.resources.CustomResource {
+    /**
+     * If true, the database named in databaseName is created in the instance when it does not already
+     * exist, with the calling user as its owner. Defaults to false
+     * 
+     */
     @Export(name="createDatabaseIfNotExists", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> createDatabaseIfNotExists;
 
+    /**
+     * @return If true, the database named in databaseName is created in the instance when it does not already
+     * exist, with the calling user as its owner. Defaults to false
+     * 
+     */
     public Output<Boolean> createDatabaseIfNotExists() {
         return this.createDatabaseIfNotExists;
     }
@@ -163,28 +173,32 @@ public class DatabaseDatabaseCatalog extends com.pulumi.resources.CustomResource
         return this.databaseInstanceName;
     }
     /**
-     * The name of the database (in an instance) associated with the catalog
+     * The name of the Postgres database in the instance that the catalog registers. The database must
+     * already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+     * databricks_system, template0 and template1 cannot be registered
      * 
      */
     @Export(name="databaseName", refs={String.class}, tree="[0]")
     private Output<String> databaseName;
 
     /**
-     * @return The name of the database (in an instance) associated with the catalog
+     * @return The name of the Postgres database in the instance that the catalog registers. The database must
+     * already exist unless createDatabaseIfNotExists is true. The system databases postgres,
+     * databricks_system, template0 and template1 cannot be registered
      * 
      */
     public Output<String> databaseName() {
         return this.databaseName;
     }
     /**
-     * The name of the catalog in UC
+     * The name of the catalog in Unity Catalog
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the catalog in UC
+     * @return The name of the catalog in Unity Catalog
      * 
      */
     public Output<String> name() {
@@ -205,14 +219,14 @@ public class DatabaseDatabaseCatalog extends com.pulumi.resources.CustomResource
         return this.providerConfig;
     }
     /**
-     * (string)
+     * (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
      * 
      */
     @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**
-     * @return (string)
+     * @return (string) - An immutable UUID identifier for the catalog, assigned when the catalog is created
      * 
      */
     public Output<String> uid() {

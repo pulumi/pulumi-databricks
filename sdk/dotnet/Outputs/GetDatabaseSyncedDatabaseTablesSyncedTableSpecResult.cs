@@ -21,7 +21,8 @@ namespace Pulumi.Databricks.Outputs
         public readonly bool AcceleratedSync;
         /// <summary>
         /// (boolean) - If true, the synced table's logical database and schema resources in PG
-        /// will be created if they do not already exist
+        /// will be created if they do not already exist. The request fails if this is false and the database
+        /// or schema does not exist
         /// </summary>
         public readonly bool CreateDatabaseObjectsIfMissing;
         /// <summary>
@@ -33,11 +34,17 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetDatabaseSyncedDatabaseTablesSyncedTableSpecNewPipelineSpecResult NewPipelineSpec;
         /// <summary>
-        /// (list of string) - Primary Key columns to be used for data insert/update in the destination
+        /// (list of string) - The primary key columns are used to insert and update rows in the destination table. At least one
+        /// column is required. Rows whose primary key columns contain null values are not synced, and the primary
+        /// key cannot be changed after the table is created
         /// </summary>
         public readonly ImmutableArray<string> PrimaryKeyColumns;
         /// <summary>
-        /// (string) - Scheduling policy of the underlying pipeline. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
+        /// (string) - Specifies the scheduling policy of the underlying pipeline. With CONTINUOUS, the pipeline keeps running and
+        /// applies source changes as they happen. With TRIGGERED and SNAPSHOT, the pipeline stops after the
+        /// initial load and syncs again only when it is run (manually, on a schedule or from a job); TRIGGERED
+        /// applies source changes incrementally, while SNAPSHOT copies the full source table on every run.
+        /// CONTINUOUS and TRIGGERED require the source table to provide a change data feed. Possible values are: `CONTINUOUS`, `SNAPSHOT`, `TRIGGERED`
         /// </summary>
         public readonly string? SchedulingPolicy;
         /// <summary>
@@ -45,7 +52,9 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? SourceTableFullName;
         /// <summary>
-        /// (string) - Time series key to deduplicate (tie-break) rows with the same primary key
+        /// (string) - The time series key deduplicates (tie-breaks) rows with the same primary key. When primary key values
+        /// can repeat in the source table, the synced table keeps only the row with the latest value of this
+        /// column for each primary key. The key cannot be changed after the table is created
         /// </summary>
         public readonly string? TimeseriesKey;
         /// <summary>

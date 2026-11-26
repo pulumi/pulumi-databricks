@@ -18,6 +18,7 @@ import com.pulumi.databricks.inputs.PipelineNotificationArgs;
 import com.pulumi.databricks.inputs.PipelineProviderConfigArgs;
 import com.pulumi.databricks.inputs.PipelineRestartWindowArgs;
 import com.pulumi.databricks.inputs.PipelineRunAsArgs;
+import com.pulumi.databricks.inputs.PipelineTestingArgs;
 import com.pulumi.databricks.inputs.PipelineTriggerArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -505,6 +506,13 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.target);
     }
 
+    @Import(name="testing")
+    private @Nullable Output<PipelineTestingArgs> testing;
+
+    public Optional<Output<PipelineTestingArgs>> testing() {
+        return Optional.ofNullable(this.testing);
+    }
+
     @Import(name="trigger")
     private @Nullable Output<PipelineTriggerArgs> trigger;
 
@@ -577,6 +585,7 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         this.storage = $.storage;
         this.tags = $.tags;
         this.target = $.target;
+        this.testing = $.testing;
         this.trigger = $.trigger;
         this.url = $.url;
         this.usagePolicyId = $.usagePolicyId;
@@ -1274,6 +1283,15 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder target(String target) {
             return target(Output.of(target));
+        }
+
+        public Builder testing(@Nullable Output<PipelineTestingArgs> testing) {
+            $.testing = testing;
+            return this;
+        }
+
+        public Builder testing(PipelineTestingArgs testing) {
+            return testing(Output.of(testing));
         }
 
         public Builder trigger(@Nullable Output<PipelineTriggerArgs> trigger) {

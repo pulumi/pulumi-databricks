@@ -33,6 +33,7 @@ from .app import *
 from .app_space import *
 from .apps_settings_custom_template import *
 from .artifact_allowlist import *
+from .assume_group_restricted_sharing_group import *
 from .automatic_cluster_update_workspace_setting import *
 from .budget import *
 from .budget_policy import *
@@ -116,6 +117,8 @@ from .get_app_spaces import *
 from .get_apps import *
 from .get_apps_settings_custom_template import *
 from .get_apps_settings_custom_templates import *
+from .get_assume_group_restricted_sharing_group import *
+from .get_assume_group_restricted_sharing_groups import *
 from .get_aws_assume_role_policy import *
 from .get_aws_bucket_policy import *
 from .get_aws_cross_account_policy import *
@@ -177,6 +180,22 @@ from .get_knowledge_assistant import *
 from .get_knowledge_assistant_knowledge_source import *
 from .get_knowledge_assistant_knowledge_sources import *
 from .get_knowledge_assistants import *
+from .get_lakewatch_alert_config import *
+from .get_lakewatch_builtin_parser import *
+from .get_lakewatch_builtin_parser_version import *
+from .get_lakewatch_builtin_parser_versions import *
+from .get_lakewatch_builtin_parsers import *
+from .get_lakewatch_common_config import *
+from .get_lakewatch_datasource import *
+from .get_lakewatch_datasource_config import *
+from .get_lakewatch_datasources import *
+from .get_lakewatch_parser import *
+from .get_lakewatch_parser_version import *
+from .get_lakewatch_parser_versions import *
+from .get_lakewatch_parsers import *
+from .get_lakewatch_rule import *
+from .get_lakewatch_rule_config import *
+from .get_lakewatch_rules import *
 from .get_materialized_features_feature_tag import *
 from .get_materialized_features_feature_tags import *
 from .get_metastore import *
@@ -290,6 +309,14 @@ from .job import *
 from .knowledge_assistant import *
 from .knowledge_assistant_knowledge_source import *
 from .lakehouse_monitor import *
+from .lakewatch_alert_config import *
+from .lakewatch_common_config import *
+from .lakewatch_datasource import *
+from .lakewatch_datasource_config import *
+from .lakewatch_parser import *
+from .lakewatch_parser_version import *
+from .lakewatch_rule import *
+from .lakewatch_rule_config import *
 from .library import *
 from .materialized_features_feature_tag import *
 from .metastore import *
@@ -616,6 +643,14 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/artifactAllowlist:ArtifactAllowlist": "ArtifactAllowlist"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/assumeGroupRestrictedSharingGroup",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/assumeGroupRestrictedSharingGroup:AssumeGroupRestrictedSharingGroup": "AssumeGroupRestrictedSharingGroup"
   }
  },
  {
@@ -1040,6 +1075,70 @@ _utilities.register(
   "fqn": "pulumi_databricks",
   "classes": {
    "databricks:index/lakehouseMonitor:LakehouseMonitor": "LakehouseMonitor"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/lakewatchAlertConfig",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/lakewatchAlertConfig:LakewatchAlertConfig": "LakewatchAlertConfig"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/lakewatchCommonConfig",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/lakewatchCommonConfig:LakewatchCommonConfig": "LakewatchCommonConfig"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/lakewatchDatasource",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/lakewatchDatasource:LakewatchDatasource": "LakewatchDatasource"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/lakewatchDatasourceConfig",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/lakewatchDatasourceConfig:LakewatchDatasourceConfig": "LakewatchDatasourceConfig"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/lakewatchParser",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/lakewatchParser:LakewatchParser": "LakewatchParser"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/lakewatchParserVersion",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/lakewatchParserVersion:LakewatchParserVersion": "LakewatchParserVersion"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/lakewatchRule",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/lakewatchRule:LakewatchRule": "LakewatchRule"
+  }
+ },
+ {
+  "pkg": "databricks",
+  "mod": "index/lakewatchRuleConfig",
+  "fqn": "pulumi_databricks",
+  "classes": {
+   "databricks:index/lakewatchRuleConfig:LakewatchRuleConfig": "LakewatchRuleConfig"
   }
  },
  {

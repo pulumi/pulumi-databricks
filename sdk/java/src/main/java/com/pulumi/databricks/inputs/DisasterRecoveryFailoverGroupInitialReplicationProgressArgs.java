@@ -16,14 +16,16 @@ public final class DisasterRecoveryFailoverGroupInitialReplicationProgressArgs e
     public static final DisasterRecoveryFailoverGroupInitialReplicationProgressArgs Empty = new DisasterRecoveryFailoverGroupInitialReplicationProgressArgs();
 
     /**
-     * (integer) - Percent complete, 0-100
+     * (integer) - Percentage of in-scope assets replicated so far, from 0 to 100. Stays below 100 while
+     * errors block the first replication point
      * 
      */
     @Import(name="completed")
     private @Nullable Output<Integer> completed;
 
     /**
-     * @return (integer) - Percent complete, 0-100
+     * @return (integer) - Percentage of in-scope assets replicated so far, from 0 to 100. Stays below 100 while
+     * errors block the first replication point
      * 
      */
     public Optional<Output<Integer>> completed() {
@@ -55,7 +57,8 @@ public final class DisasterRecoveryFailoverGroupInitialReplicationProgressArgs e
         }
 
         /**
-         * @param completed (integer) - Percent complete, 0-100
+         * @param completed (integer) - Percentage of in-scope assets replicated so far, from 0 to 100. Stays below 100 while
+         * errors block the first replication point
          * 
          * @return builder
          * 
@@ -66,7 +69,8 @@ public final class DisasterRecoveryFailoverGroupInitialReplicationProgressArgs e
         }
 
         /**
-         * @param completed (integer) - Percent complete, 0-100
+         * @param completed (integer) - Percentage of in-scope assets replicated so far, from 0 to 100. Stays below 100 while
+         * errors block the first replication point
          * 
          * @return builder
          * 

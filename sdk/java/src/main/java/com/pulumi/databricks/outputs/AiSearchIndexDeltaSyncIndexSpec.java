@@ -16,16 +16,18 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiSearchIndexDeltaSyncIndexSpec {
     /**
-     * @return [Optional] Select the columns to sync with the index. If left blank, all columns
-     * from the source table are synced. The primary key column and embedding source or
-     * vector column are always synced
+     * @return Columns of the source table to include in the index. When empty, all columns are synced. The
+     * primary key and the embedding source or vector column are always synced. Only synced columns
+     * can be returned in query results or used in filters
      * 
      */
     private @Nullable List<String> columnsToSyncs;
     private @Nullable List<AiSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn> embeddingSourceColumns;
     private @Nullable List<AiSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn> embeddingVectorColumns;
     /**
-     * @return [Optional] Name of the Delta table to sync the index contents and computed embeddings to
+     * @return Three-level name of a Delta table to write the synced rows and computed embeddings to. It
+     * applies only when embeddings are computed from `embeddingSourceColumns`, and the table must
+     * not already exist
      * 
      */
     private @Nullable String embeddingWritebackTable;
@@ -35,25 +37,23 @@ public final class AiSearchIndexDeltaSyncIndexSpec {
      */
     private @Nullable String pipelineId;
     /**
-     * @return Pipeline execution mode. Required on create — the backend rejects an unset value.
-     * Storage Optimized endpoints accept only `TRIGGERED`; Standard endpoints accept both.
-     * No explicit `stage` — a REQUIRED field staged below its service would be dropped from
-     * combined specs while remaining in `required`, tripping the OpenAPI required-vs-properties
-     * consistency check. The field inherits the service&#39;s launch stage. Possible values are: `CONTINUOUS`, `TRIGGERED`
+     * @return Sync mode of the pipeline that keeps the index up to date. `TRIGGERED` syncs at creation and
+     * then each time SyncIndex is called; `CONTINUOUS` processes source changes as they arrive.
+     * Storage Optimized endpoints accept only `TRIGGERED`, and an unset value is rejected. Possible values are: `CONTINUOUS`, `TRIGGERED`
      * 
      */
     private String pipelineType;
     /**
-     * @return The full name of the source Delta table
+     * @return Three-level Unity Catalog name of the source Delta table, in the form `catalog.schema.table`
      * 
      */
     private @Nullable String sourceTable;
 
     private AiSearchIndexDeltaSyncIndexSpec() {}
     /**
-     * @return [Optional] Select the columns to sync with the index. If left blank, all columns
-     * from the source table are synced. The primary key column and embedding source or
-     * vector column are always synced
+     * @return Columns of the source table to include in the index. When empty, all columns are synced. The
+     * primary key and the embedding source or vector column are always synced. Only synced columns
+     * can be returned in query results or used in filters
      * 
      */
     public List<String> columnsToSyncs() {
@@ -66,7 +66,9 @@ public final class AiSearchIndexDeltaSyncIndexSpec {
         return this.embeddingVectorColumns == null ? List.of() : this.embeddingVectorColumns;
     }
     /**
-     * @return [Optional] Name of the Delta table to sync the index contents and computed embeddings to
+     * @return Three-level name of a Delta table to write the synced rows and computed embeddings to. It
+     * applies only when embeddings are computed from `embeddingSourceColumns`, and the table must
+     * not already exist
      * 
      */
     public Optional<String> embeddingWritebackTable() {
@@ -80,18 +82,16 @@ public final class AiSearchIndexDeltaSyncIndexSpec {
         return Optional.ofNullable(this.pipelineId);
     }
     /**
-     * @return Pipeline execution mode. Required on create — the backend rejects an unset value.
-     * Storage Optimized endpoints accept only `TRIGGERED`; Standard endpoints accept both.
-     * No explicit `stage` — a REQUIRED field staged below its service would be dropped from
-     * combined specs while remaining in `required`, tripping the OpenAPI required-vs-properties
-     * consistency check. The field inherits the service&#39;s launch stage. Possible values are: `CONTINUOUS`, `TRIGGERED`
+     * @return Sync mode of the pipeline that keeps the index up to date. `TRIGGERED` syncs at creation and
+     * then each time SyncIndex is called; `CONTINUOUS` processes source changes as they arrive.
+     * Storage Optimized endpoints accept only `TRIGGERED`, and an unset value is rejected. Possible values are: `CONTINUOUS`, `TRIGGERED`
      * 
      */
     public String pipelineType() {
         return this.pipelineType;
     }
     /**
-     * @return The full name of the source Delta table
+     * @return Three-level Unity Catalog name of the source Delta table, in the form `catalog.schema.table`
      * 
      */
     public Optional<String> sourceTable() {

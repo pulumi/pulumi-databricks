@@ -33,18 +33,20 @@ public final class AiSearchIndexDirectAccessIndexSpecArgs extends com.pulumi.res
     }
 
     /**
-     * The schema of the index in JSON format. Supported types are `integer`, `long`,
-     * `float`, `double`, `boolean`, `string`, `date`, `timestamp`. Supported types for
-     * vector columns: `array&lt;float&gt;`, `array&lt;double&gt;`
+     * The schema of the index in JSON format, mapping each column name to its type. Supported
+     * types are `integer`, `long`, `float`, `double`, `boolean`, `string`, `date`, `timestamp`.
+     * Supported types for vector columns: `array&lt;float&gt;`, `array&lt;double&gt;`. The schema must include
+     * the primary key column and the embedding vector column
      * 
      */
     @Import(name="schemaJson")
     private @Nullable Output<String> schemaJson;
 
     /**
-     * @return The schema of the index in JSON format. Supported types are `integer`, `long`,
-     * `float`, `double`, `boolean`, `string`, `date`, `timestamp`. Supported types for
-     * vector columns: `array&lt;float&gt;`, `array&lt;double&gt;`
+     * @return The schema of the index in JSON format, mapping each column name to its type. Supported
+     * types are `integer`, `long`, `float`, `double`, `boolean`, `string`, `date`, `timestamp`.
+     * Supported types for vector columns: `array&lt;float&gt;`, `array&lt;double&gt;`. The schema must include
+     * the primary key column and the embedding vector column
      * 
      */
     public Optional<Output<String>> schemaJson() {
@@ -104,9 +106,10 @@ public final class AiSearchIndexDirectAccessIndexSpecArgs extends com.pulumi.res
         }
 
         /**
-         * @param schemaJson The schema of the index in JSON format. Supported types are `integer`, `long`,
-         * `float`, `double`, `boolean`, `string`, `date`, `timestamp`. Supported types for
-         * vector columns: `array&lt;float&gt;`, `array&lt;double&gt;`
+         * @param schemaJson The schema of the index in JSON format, mapping each column name to its type. Supported
+         * types are `integer`, `long`, `float`, `double`, `boolean`, `string`, `date`, `timestamp`.
+         * Supported types for vector columns: `array&lt;float&gt;`, `array&lt;double&gt;`. The schema must include
+         * the primary key column and the embedding vector column
          * 
          * @return builder
          * 
@@ -117,9 +120,10 @@ public final class AiSearchIndexDirectAccessIndexSpecArgs extends com.pulumi.res
         }
 
         /**
-         * @param schemaJson The schema of the index in JSON format. Supported types are `integer`, `long`,
-         * `float`, `double`, `boolean`, `string`, `date`, `timestamp`. Supported types for
-         * vector columns: `array&lt;float&gt;`, `array&lt;double&gt;`
+         * @param schemaJson The schema of the index in JSON format, mapping each column name to its type. Supported
+         * types are `integer`, `long`, `float`, `double`, `boolean`, `string`, `date`, `timestamp`.
+         * Supported types for vector columns: `array&lt;float&gt;`, `array&lt;double&gt;`. The schema must include
+         * the primary key column and the embedding vector column
          * 
          * @return builder
          * 

@@ -61,7 +61,8 @@ class GetDatabaseSyncedDatabaseTableResult:
     @pulumi.getter(name="dataSynchronizationStatus")
     def data_synchronization_status(self) -> 'outputs.GetDatabaseSyncedDatabaseTableDataSynchronizationStatusResult':
         """
-        (SyncedTableStatus) - Synced Table data synchronization status
+        (SyncedTableStatus) - Reports the status of the data synchronization pipeline that keeps this table in sync with its
+        source, including the pipeline ID and the position of the last successful sync
         """
         return pulumi.get(self, "data_synchronization_status")
 
@@ -80,8 +81,8 @@ class GetDatabaseSyncedDatabaseTableResult:
     @pulumi.getter(name="effectiveDatabaseInstanceName")
     def effective_database_instance_name(self) -> _builtins.str:
         """
-        (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-        tables inside database catalogs is inferred database instance associated with the catalog.
+        (string) - The name of the database instance that this table is registered to. This field is always returned; for
+        tables inside database catalogs it is the database instance associated with the catalog.
         This is an output only field that contains the value computed from the input field combined with
         server side defaults. Use the field without the effective_ prefix to set the value
         """
@@ -122,7 +123,7 @@ class GetDatabaseSyncedDatabaseTableResult:
     @pulumi.getter
     def spec(self) -> 'outputs.GetDatabaseSyncedDatabaseTableSpecResult':
         """
-        (SyncedTableSpec)
+        (SyncedTableSpec) - Specifies the source table, the key columns and how the data synchronization pipeline runs
         """
         return pulumi.get(self, "spec")
 

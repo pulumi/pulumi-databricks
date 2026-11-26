@@ -15,7 +15,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AiGatewayModelServiceConfig {
     /**
-     * @return Inference table configuration for payload logging
+     * @return Configuration for logging request and response payloads to a Unity
+     * Catalog inference table. Omit this field to leave payload logging off
      * 
      */
     private @Nullable AiGatewayModelServiceConfigInferenceTable inferenceTable;
@@ -25,14 +26,16 @@ public final class AiGatewayModelServiceConfig {
      */
     private @Nullable List<AiGatewayModelServiceConfigRateLimit> rateLimits;
     /**
-     * @return Routing configuration: destinations and fallback
+     * @return Routing configuration: the primary destinations that receive traffic and
+     * the fallback destinations tried when a primary destination fails
      * 
      */
     private @Nullable AiGatewayModelServiceConfigRouting routing;
 
     private AiGatewayModelServiceConfig() {}
     /**
-     * @return Inference table configuration for payload logging
+     * @return Configuration for logging request and response payloads to a Unity
+     * Catalog inference table. Omit this field to leave payload logging off
      * 
      */
     public Optional<AiGatewayModelServiceConfigInferenceTable> inferenceTable() {
@@ -46,7 +49,8 @@ public final class AiGatewayModelServiceConfig {
         return this.rateLimits == null ? List.of() : this.rateLimits;
     }
     /**
-     * @return Routing configuration: destinations and fallback
+     * @return Routing configuration: the primary destinations that receive traffic and
+     * the fallback destinations tried when a primary destination fails
      * 
      */
     public Optional<AiGatewayModelServiceConfigRouting> routing() {

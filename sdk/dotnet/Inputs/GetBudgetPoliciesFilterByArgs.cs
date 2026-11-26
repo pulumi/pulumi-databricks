@@ -13,8 +13,7 @@ namespace Pulumi.Databricks.Inputs
     public sealed class GetBudgetPoliciesFilterByInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The policy creator user id to be filtered on.
-        /// If unspecified, all policies will be returned
+        /// Deprecated: This field is ignored. Creator filtering will be removed in a future version
         /// </summary>
         [Input("creatorUserId")]
         public Input<int>? CreatorUserId { get; set; }

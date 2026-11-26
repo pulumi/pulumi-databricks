@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  *
@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * ### Project with Custom Settings
+ * ### Project with Custom Configuration
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -184,7 +184,7 @@ export class PostgresProject extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The project ID chosen when the project was created. It is the final segment of `name`
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
@@ -192,8 +192,11 @@ export class PostgresProject extends pulumi.CustomResource {
      */
     declare public readonly providerConfig: pulumi.Output<outputs.PostgresProjectProviderConfig>;
     /**
-     * If true, permanently deletes the project (hard delete).
-     * If false or unset, performs a soft delete
+     * If true, permanently deletes the project and all of its data immediately. If false or unset, the
+     * project is soft-deleted: it stops accepting connections and is retained for 7 days, during which
+     * it can be restored with Undelete, and is then permanently deleted. Deleting an already
+     * soft-deleted project with `purge` set to true removes it immediately. See
+     * https://docs.databricks.com/aws/en/oltp/projects/manage-projects for details
      */
     declare public readonly purgeOnDelete: pulumi.Output<boolean | undefined>;
     /**
@@ -202,15 +205,23 @@ export class PostgresProject extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly purgeTime: pulumi.Output<string>;
     /**
-     * The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
+     * The desired configuration of the project. The fields under `spec` are the ones that can be
+     * changed after creation, except `pgVersion`, which is fixed when the project is created. See
+     * `status` for the configuration that is currently in effect.
+     *
+     * Read the resource's current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      */
-    declare public readonly spec: pulumi.Output<outputs.PostgresProjectSpec>;
+    declare public readonly spec: pulumi.Output<outputs.PostgresProjectSpec | undefined>;
     /**
-     * (ProjectStatus) - The current status of a Project
+     * (ProjectStatus) - The configuration and state of the project that are currently in effect, as reported by the
+     * system
      */
     declare public /*out*/ readonly status: pulumi.Output<outputs.PostgresProjectStatus>;
     /**
-     * (string) - System-generated unique ID for the project
+     * (string) - A system-generated UUID that identifies the project. Unlike `name`, it is not derived from the
+     * user-chosen project ID
      */
     declare public /*out*/ readonly uid: pulumi.Output<string>;
     /**
@@ -300,7 +311,7 @@ export interface PostgresProjectState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The project ID chosen when the project was created. It is the final segment of `name`
      */
     projectId?: pulumi.Input<string | undefined>;
     /**
@@ -308,8 +319,11 @@ export interface PostgresProjectState {
      */
     providerConfig?: pulumi.Input<inputs.PostgresProjectProviderConfig | undefined>;
     /**
-     * If true, permanently deletes the project (hard delete).
-     * If false or unset, performs a soft delete
+     * If true, permanently deletes the project and all of its data immediately. If false or unset, the
+     * project is soft-deleted: it stops accepting connections and is retained for 7 days, during which
+     * it can be restored with Undelete, and is then permanently deleted. Deleting an already
+     * soft-deleted project with `purge` set to true removes it immediately. See
+     * https://docs.databricks.com/aws/en/oltp/projects/manage-projects for details
      */
     purgeOnDelete?: pulumi.Input<boolean | undefined>;
     /**
@@ -318,15 +332,23 @@ export interface PostgresProjectState {
      */
     purgeTime?: pulumi.Input<string | undefined>;
     /**
-     * The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
+     * The desired configuration of the project. The fields under `spec` are the ones that can be
+     * changed after creation, except `pgVersion`, which is fixed when the project is created. See
+     * `status` for the configuration that is currently in effect.
+     *
+     * Read the resource's current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      */
     spec?: pulumi.Input<inputs.PostgresProjectSpec | undefined>;
     /**
-     * (ProjectStatus) - The current status of a Project
+     * (ProjectStatus) - The configuration and state of the project that are currently in effect, as reported by the
+     * system
      */
     status?: pulumi.Input<inputs.PostgresProjectStatus | undefined>;
     /**
-     * (string) - System-generated unique ID for the project
+     * (string) - A system-generated UUID that identifies the project. Unlike `name`, it is not derived from the
+     * user-chosen project ID
      */
     uid?: pulumi.Input<string | undefined>;
     /**
@@ -353,7 +375,7 @@ export interface PostgresProjectArgs {
      */
     initialEndpointSpec?: pulumi.Input<inputs.PostgresProjectInitialEndpointSpec | undefined>;
     /**
-     * The part of the name, chosen by the user when the resource was created
+     * The project ID chosen when the project was created. It is the final segment of `name`
      */
     projectId: pulumi.Input<string>;
     /**
@@ -361,12 +383,21 @@ export interface PostgresProjectArgs {
      */
     providerConfig?: pulumi.Input<inputs.PostgresProjectProviderConfig | undefined>;
     /**
-     * If true, permanently deletes the project (hard delete).
-     * If false or unset, performs a soft delete
+     * If true, permanently deletes the project and all of its data immediately. If false or unset, the
+     * project is soft-deleted: it stops accepting connections and is retained for 7 days, during which
+     * it can be restored with Undelete, and is then permanently deleted. Deleting an already
+     * soft-deleted project with `purge` set to true removes it immediately. See
+     * https://docs.databricks.com/aws/en/oltp/projects/manage-projects for details
      */
     purgeOnDelete?: pulumi.Input<boolean | undefined>;
     /**
-     * The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
+     * The desired configuration of the project. The fields under `spec` are the ones that can be
+     * changed after creation, except `pgVersion`, which is fixed when the project is created. See
+     * `status` for the configuration that is currently in effect.
+     *
+     * Read the resource's current values from `status`, rather than `spec`.
+     * `spec` tracks field ownership for infrastructure-as-code tools and may omit
+     * unmanaged fields
      */
     spec?: pulumi.Input<inputs.PostgresProjectSpec | undefined>;
 }

@@ -17,14 +17,16 @@ public final class GetWorkspaceIamGroupsV2PlainArgs extends com.pulumi.resources
     public static final GetWorkspaceIamGroupsV2PlainArgs Empty = new GetWorkspaceIamGroupsV2PlainArgs();
 
     /**
-     * Optional. Allows filtering groups by group name or external id
+     * Filters groups by `groupName` or `externalId`, for example `groupName eq &#34;Data engineers&#34;`.
+     * Put the value in quotes
      * 
      */
     @Import(name="filter")
     private @Nullable String filter;
 
     /**
-     * @return Optional. Allows filtering groups by group name or external id
+     * @return Filters groups by `groupName` or `externalId`, for example `groupName eq &#34;Data engineers&#34;`.
+     * Put the value in quotes
      * 
      */
     public Optional<String> filter() {
@@ -32,16 +34,16 @@ public final class GetWorkspaceIamGroupsV2PlainArgs extends com.pulumi.resources
     }
 
     /**
-     * The maximum number of groups to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * The maximum number of groups to return, up to 1000. The default is 1000. A page can contain
+     * fewer groups
      * 
      */
     @Import(name="pageSize")
     private @Nullable Integer pageSize;
 
     /**
-     * @return The maximum number of groups to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * @return The maximum number of groups to return, up to 1000. The default is 1000. A page can contain
+     * fewer groups
      * 
      */
     public Optional<Integer> pageSize() {
@@ -49,16 +51,16 @@ public final class GetWorkspaceIamGroupsV2PlainArgs extends com.pulumi.resources
     }
 
     /**
-     * The resource name of the account to list groups in, `accounts/{account_id}`. Optional:
-     * defaults to the account of the calling workspace, and any other account is rejected
+     * The resource name of the account to list groups in, in the format `accounts/{account_id}`.
+     * Defaults to the account that contains this workspace. Any other account is rejected
      * 
      */
     @Import(name="parent")
     private @Nullable String parent;
 
     /**
-     * @return The resource name of the account to list groups in, `accounts/{account_id}`. Optional:
-     * defaults to the account of the calling workspace, and any other account is rejected
+     * @return The resource name of the account to list groups in, in the format `accounts/{account_id}`.
+     * Defaults to the account that contains this workspace. Any other account is rejected
      * 
      */
     public Optional<String> parent() {
@@ -108,7 +110,8 @@ public final class GetWorkspaceIamGroupsV2PlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param filter Optional. Allows filtering groups by group name or external id
+         * @param filter Filters groups by `groupName` or `externalId`, for example `groupName eq &#34;Data engineers&#34;`.
+         * Put the value in quotes
          * 
          * @return builder
          * 
@@ -119,8 +122,8 @@ public final class GetWorkspaceIamGroupsV2PlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param pageSize The maximum number of groups to return. The service may return fewer than this value.
-         * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+         * @param pageSize The maximum number of groups to return, up to 1000. The default is 1000. A page can contain
+         * fewer groups
          * 
          * @return builder
          * 
@@ -131,8 +134,8 @@ public final class GetWorkspaceIamGroupsV2PlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param parent The resource name of the account to list groups in, `accounts/{account_id}`. Optional:
-         * defaults to the account of the calling workspace, and any other account is rejected
+         * @param parent The resource name of the account to list groups in, in the format `accounts/{account_id}`.
+         * Defaults to the account that contains this workspace. Any other account is rejected
          * 
          * @return builder
          * 

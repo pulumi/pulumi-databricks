@@ -88,7 +88,7 @@ export class EnvironmentsWorkspaceBaseEnvironment extends pulumi.CustomResource 
     }
 
     /**
-     * The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+     * The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
      */
     declare public readonly baseEnvironmentType: pulumi.Output<string | undefined>;
     /**
@@ -105,7 +105,8 @@ export class EnvironmentsWorkspaceBaseEnvironment extends pulumi.CustomResource 
     declare public readonly displayName: pulumi.Output<string>;
     declare public /*out*/ readonly effectiveBaseEnvironmentType: pulumi.Output<string>;
     /**
-     * The WSFS or UC Volumes path to the environment YAML file
+     * The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+     * dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
      */
     declare public readonly filepath: pulumi.Output<string | undefined>;
     /**
@@ -117,12 +118,15 @@ export class EnvironmentsWorkspaceBaseEnvironment extends pulumi.CustomResource 
      */
     declare public /*out*/ readonly lastUpdatedUserId: pulumi.Output<string>;
     /**
-     * (string) - Status message providing additional details about the environment status
+     * (string) - Status message providing additional details about the environment status.
+     * When the status is `FAILED`, the message contains the build error
      */
     declare public /*out*/ readonly message: pulumi.Output<string>;
     /**
      * (string) - The resource name of the workspace base environment.
      * Format: workspace-base-environments/{workspace-base-environment}
+     * The server ignores this field on create and builds the name from `workspaceBaseEnvironmentId`, or from
+     * `displayName` plus a random suffix when no ID is given
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -130,11 +134,12 @@ export class EnvironmentsWorkspaceBaseEnvironment extends pulumi.CustomResource 
      */
     declare public readonly providerConfig: pulumi.Output<outputs.EnvironmentsWorkspaceBaseEnvironmentProviderConfig>;
     /**
-     * (EnvironmentSpec) - The environment specification containing version and dependencies
+     * (EnvironmentSpec) - The environment specification containing version and dependencies, read from the YAML file at `filepath`
      */
     declare public /*out*/ readonly spec: pulumi.Output<outputs.EnvironmentsWorkspaceBaseEnvironmentSpec>;
     /**
-     * (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
+     * (string) - The status of the materialized workspace base environment, which the server builds from the YAML file.
+     * The status is `CREATED` once the build has succeeded. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
@@ -207,7 +212,7 @@ export class EnvironmentsWorkspaceBaseEnvironment extends pulumi.CustomResource 
  */
 export interface EnvironmentsWorkspaceBaseEnvironmentState {
     /**
-     * The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+     * The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
      */
     baseEnvironmentType?: pulumi.Input<string | undefined>;
     /**
@@ -224,7 +229,8 @@ export interface EnvironmentsWorkspaceBaseEnvironmentState {
     displayName?: pulumi.Input<string | undefined>;
     effectiveBaseEnvironmentType?: pulumi.Input<string | undefined>;
     /**
-     * The WSFS or UC Volumes path to the environment YAML file
+     * The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+     * dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
      */
     filepath?: pulumi.Input<string | undefined>;
     /**
@@ -236,12 +242,15 @@ export interface EnvironmentsWorkspaceBaseEnvironmentState {
      */
     lastUpdatedUserId?: pulumi.Input<string | undefined>;
     /**
-     * (string) - Status message providing additional details about the environment status
+     * (string) - Status message providing additional details about the environment status.
+     * When the status is `FAILED`, the message contains the build error
      */
     message?: pulumi.Input<string | undefined>;
     /**
      * (string) - The resource name of the workspace base environment.
      * Format: workspace-base-environments/{workspace-base-environment}
+     * The server ignores this field on create and builds the name from `workspaceBaseEnvironmentId`, or from
+     * `displayName` plus a random suffix when no ID is given
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -249,11 +258,12 @@ export interface EnvironmentsWorkspaceBaseEnvironmentState {
      */
     providerConfig?: pulumi.Input<inputs.EnvironmentsWorkspaceBaseEnvironmentProviderConfig | undefined>;
     /**
-     * (EnvironmentSpec) - The environment specification containing version and dependencies
+     * (EnvironmentSpec) - The environment specification containing version and dependencies, read from the YAML file at `filepath`
      */
     spec?: pulumi.Input<inputs.EnvironmentsWorkspaceBaseEnvironmentSpec | undefined>;
     /**
-     * (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
+     * (string) - The status of the materialized workspace base environment, which the server builds from the YAML file.
+     * The status is `CREATED` once the build has succeeded. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
      */
     status?: pulumi.Input<string | undefined>;
     /**
@@ -273,7 +283,7 @@ export interface EnvironmentsWorkspaceBaseEnvironmentState {
  */
 export interface EnvironmentsWorkspaceBaseEnvironmentArgs {
     /**
-     * The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+     * The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
      */
     baseEnvironmentType?: pulumi.Input<string | undefined>;
     /**
@@ -281,7 +291,8 @@ export interface EnvironmentsWorkspaceBaseEnvironmentArgs {
      */
     displayName: pulumi.Input<string>;
     /**
-     * The WSFS or UC Volumes path to the environment YAML file
+     * The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+     * dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
      */
     filepath?: pulumi.Input<string | undefined>;
     /**

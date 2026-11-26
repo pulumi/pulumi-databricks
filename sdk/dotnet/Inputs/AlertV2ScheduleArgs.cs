@@ -13,13 +13,13 @@ namespace Pulumi.Databricks.Inputs
     public sealed class AlertV2ScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicate whether this schedule is paused or not. Possible values are: `PAUSED`, `UNPAUSED`
+        /// Indicates whether this schedule is paused. While paused, the alert is not evaluated. Possible values are: `PAUSED`, `UNPAUSED`
         /// </summary>
         [Input("pauseStatus")]
         public Input<string>? PauseStatus { get; set; }
 
         /// <summary>
-        /// A cron expression using quartz syntax that specifies the schedule for this pipeline.
+        /// A cron expression using quartz syntax that specifies the schedule for this alert.
         /// Should use the quartz format described here: http://www.quartz-scheduler.org/documentation/quartz-2.1.7/tutorials/tutorial-lesson-06.html
         /// </summary>
         [Input("quartzCronSchedule", required: true)]

@@ -47,6 +47,7 @@ class GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult:
     def cpu_workspace_base_environment(self) -> _builtins.str:
         """
         (string) - The default workspace base environment for CPU compute.
+        If unset, CPU compute defaults to the Databricks Standard base environment (Standard Latest).
         Format: workspace-base-environments/{workspace_base_environment}
         """
         return pulumi.get(self, "cpu_workspace_base_environment")
@@ -56,6 +57,7 @@ class GetEnvironmentsDefaultWorkspaceBaseEnvironmentResult:
     def gpu_workspace_base_environment(self) -> _builtins.str:
         """
         (string) - The default workspace base environment for GPU compute.
+        If unset, GPU compute defaults to the Databricks Standard base environment (Standard Latest).
         Format: workspace-base-environments/{workspace_base_environment}
         """
         return pulumi.get(self, "gpu_workspace_base_environment")

@@ -58,7 +58,10 @@ func LookupExternalMetadata(ctx *pulumi.Context, args *LookupExternalMetadataArg
 
 // A collection of arguments for invoking getExternalMetadata.
 type LookupExternalMetadataArgs struct {
-	// Name of the external metadata object
+	// Name of the external metadata object. The name is unique within the metastore, must follow the
+	// [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+	// and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+	// refer to the object by this name
 	Name string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetExternalMetadataProviderConfig `pulumi:"providerConfig"`
@@ -66,34 +69,42 @@ type LookupExternalMetadataArgs struct {
 
 // A collection of values returned by getExternalMetadata.
 type LookupExternalMetadataResult struct {
-	// (list of string) - List of columns associated with the external metadata object
+	// (list of string) - Names of the columns of the object, used for column-level mappings in external lineage relationships.
+	// Column names must be unique within the list, and the combined size of all column names is limited
 	Columns []string `pulumi:"columns"`
 	// (string) - Time at which this external metadata object was created
 	CreateTime string `pulumi:"createTime"`
 	// (string) - Username of external metadata object creator
 	CreatedBy string `pulumi:"createdBy"`
-	// (string) - User-provided free-form text description
+	// (string) - User-provided free-form text description of the object. The description must not exceed 5000 characters
 	Description string `pulumi:"description"`
-	// (string) - Type of entity within the external system
+	// (string) - Type of the object within the external system, such as a table, a report, or a dashboard. The value is
+	// free-form text of at most 255 characters
 	EntityType string `pulumi:"entityType"`
-	// (string) - Unique identifier of the external metadata object
+	// (string) - Unique identifier of the external metadata object. The ID is a UUID that the system assigns on creation
 	Id string `pulumi:"id"`
 	// (string) - Unique identifier of parent metastore
 	MetastoreId string `pulumi:"metastoreId"`
-	// (string) - Name of the external metadata object
+	// (string) - Name of the external metadata object. The name is unique within the metastore, must follow the
+	// [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+	// and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+	// refer to the object by this name
 	Name string `pulumi:"name"`
-	// (string) - Owner of the external metadata object
+	// (string) - Owner of the external metadata object. Defaults to the creator. To change the owner, send an update whose
+	// update mask includes `owner`
 	Owner string `pulumi:"owner"`
-	// (object) - A map of key-value properties attached to the external metadata object
+	// (object) - Key-value properties attached to the object. Keys and values must be non-empty, and the combined length
+	// of all keys and values must not exceed 5000 characters
 	Properties     map[string]string                  `pulumi:"properties"`
 	ProviderConfig *GetExternalMetadataProviderConfig `pulumi:"providerConfig"`
-	// (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+	// (string) - Type of the external system that holds the object. Use `OTHER` for a system that is not in the list. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
 	SystemType string `pulumi:"systemType"`
 	// (string) - Time at which this external metadata object was last modified
 	UpdateTime string `pulumi:"updateTime"`
 	// (string) - Username of user who last modified external metadata object
 	UpdatedBy string `pulumi:"updatedBy"`
-	// (string) - URL associated with the external metadata object
+	// (string) - URL of the object in the external system. When set, lineage graph viewers can follow it to the external
+	// asset. The URL must not exceed 2048 characters
 	Url string `pulumi:"url"`
 }
 
@@ -104,7 +115,10 @@ func LookupExternalMetadataOutput(ctx *pulumi.Context, args LookupExternalMetada
 
 // A collection of arguments for invoking getExternalMetadata.
 type LookupExternalMetadataOutputArgs struct {
-	// Name of the external metadata object
+	// Name of the external metadata object. The name is unique within the metastore, must follow the
+	// [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+	// and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+	// refer to the object by this name
 	Name pulumi.StringInput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetExternalMetadataProviderConfigPtrInput `pulumi:"providerConfig"`
@@ -129,7 +143,8 @@ func (o LookupExternalMetadataResultOutput) ToLookupExternalMetadataResultOutput
 	return o
 }
 
-// (list of string) - List of columns associated with the external metadata object
+// (list of string) - Names of the columns of the object, used for column-level mappings in external lineage relationships.
+// Column names must be unique within the list, and the combined size of all column names is limited
 func (o LookupExternalMetadataResultOutput) Columns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupExternalMetadataResult) []string { return v.Columns }).(pulumi.StringArrayOutput)
 }
@@ -144,17 +159,18 @@ func (o LookupExternalMetadataResultOutput) CreatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExternalMetadataResult) string { return v.CreatedBy }).(pulumi.StringOutput)
 }
 
-// (string) - User-provided free-form text description
+// (string) - User-provided free-form text description of the object. The description must not exceed 5000 characters
 func (o LookupExternalMetadataResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExternalMetadataResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (string) - Type of entity within the external system
+// (string) - Type of the object within the external system, such as a table, a report, or a dashboard. The value is
+// free-form text of at most 255 characters
 func (o LookupExternalMetadataResultOutput) EntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExternalMetadataResult) string { return v.EntityType }).(pulumi.StringOutput)
 }
 
-// (string) - Unique identifier of the external metadata object
+// (string) - Unique identifier of the external metadata object. The ID is a UUID that the system assigns on creation
 func (o LookupExternalMetadataResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExternalMetadataResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -164,17 +180,22 @@ func (o LookupExternalMetadataResultOutput) MetastoreId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExternalMetadataResult) string { return v.MetastoreId }).(pulumi.StringOutput)
 }
 
-// (string) - Name of the external metadata object
+// (string) - Name of the external metadata object. The name is unique within the metastore, must follow the
+// [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+// and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+// refer to the object by this name
 func (o LookupExternalMetadataResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExternalMetadataResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (string) - Owner of the external metadata object
+// (string) - Owner of the external metadata object. Defaults to the creator. To change the owner, send an update whose
+// update mask includes `owner`
 func (o LookupExternalMetadataResultOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExternalMetadataResult) string { return v.Owner }).(pulumi.StringOutput)
 }
 
-// (object) - A map of key-value properties attached to the external metadata object
+// (object) - Key-value properties attached to the object. Keys and values must be non-empty, and the combined length
+// of all keys and values must not exceed 5000 characters
 func (o LookupExternalMetadataResultOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupExternalMetadataResult) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
 }
@@ -183,7 +204,7 @@ func (o LookupExternalMetadataResultOutput) ProviderConfig() GetExternalMetadata
 	return o.ApplyT(func(v LookupExternalMetadataResult) *GetExternalMetadataProviderConfig { return v.ProviderConfig }).(GetExternalMetadataProviderConfigPtrOutput)
 }
 
-// (string) - Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+// (string) - Type of the external system that holds the object. Use `OTHER` for a system that is not in the list. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
 func (o LookupExternalMetadataResultOutput) SystemType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExternalMetadataResult) string { return v.SystemType }).(pulumi.StringOutput)
 }
@@ -198,7 +219,8 @@ func (o LookupExternalMetadataResultOutput) UpdatedBy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExternalMetadataResult) string { return v.UpdatedBy }).(pulumi.StringOutput)
 }
 
-// (string) - URL associated with the external metadata object
+// (string) - URL of the object in the external system. When set, lineage graph viewers can follow it to the external
+// asset. The URL must not exceed 2048 characters
 func (o LookupExternalMetadataResultOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupExternalMetadataResult) string { return v.Url }).(pulumi.StringOutput)
 }

@@ -29,12 +29,19 @@ class PostgresEndpointArgs:
         """
         The set of arguments for constructing a PostgresEndpoint resource.
 
-        :param pulumi.Input[_builtins.str] endpoint_id: The part of the name, chosen by the user when the resource was created
+        :param pulumi.Input[_builtins.str] endpoint_id: The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
         :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint (API resource hierarchy).
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input['PostgresEndpointProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.bool] replace_existing: If true, update the endpoint if it already exists instead of returning an error
-        :param pulumi.Input['PostgresEndpointSpecArgs'] spec: The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+        :param pulumi.Input[_builtins.bool] replace_existing: If true, update the endpoint if it already exists instead of returning an error. The request's
+               `spec.endpoint_type` must match the existing endpoint's type, and the other `spec` fields are applied
+               as an update. Use this to configure the read-write endpoint that was created together with the branch
+        :param pulumi.Input['PostgresEndpointSpecArgs'] spec: The desired configuration of the endpoint. Every field under `spec` except `endpoint_type` can be
+               changed after creation. See `status` for the configuration that is currently in effect.
+               
+               Read the resource's current values from `status`, rather than `spec`.
+               `spec` tracks field ownership for infrastructure-as-code tools and may omit
+               unmanaged fields
         """
         pulumi.set(__self__, "endpoint_id", endpoint_id)
         pulumi.set(__self__, "parent", parent)
@@ -49,7 +56,7 @@ class PostgresEndpointArgs:
     @pulumi.getter(name="endpointId")
     def endpoint_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The part of the name, chosen by the user when the resource was created
+        The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
         """
         return pulumi.get(self, "endpoint_id")
 
@@ -86,7 +93,9 @@ class PostgresEndpointArgs:
     @pulumi.getter(name="replaceExisting")
     def replace_existing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        If true, update the endpoint if it already exists instead of returning an error
+        If true, update the endpoint if it already exists instead of returning an error. The request's
+        `spec.endpoint_type` must match the existing endpoint's type, and the other `spec` fields are applied
+        as an update. Use this to configure the read-write endpoint that was created together with the branch
         """
         return pulumi.get(self, "replace_existing")
 
@@ -98,7 +107,12 @@ class PostgresEndpointArgs:
     @pulumi.getter
     def spec(self) -> pulumi.Input[Optional['PostgresEndpointSpecArgs']]:
         """
-        The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+        The desired configuration of the endpoint. Every field under `spec` except `endpoint_type` can be
+        changed after creation. See `status` for the configuration that is currently in effect.
+
+        Read the resource's current values from `status`, rather than `spec`.
+        `spec` tracks field ownership for infrastructure-as-code tools and may omit
+        unmanaged fields
         """
         return pulumi.get(self, "spec")
 
@@ -124,16 +138,25 @@ class _PostgresEndpointState:
         Input properties used for looking up and filtering PostgresEndpoint resources.
 
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the compute endpoint was created
-        :param pulumi.Input[_builtins.str] endpoint_id: The part of the name, chosen by the user when the resource was created
+        :param pulumi.Input[_builtins.str] endpoint_id: The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
         :param pulumi.Input[_builtins.str] name: (string) - Output only. The full resource path of the endpoint.
                Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
         :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint (API resource hierarchy).
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input['PostgresEndpointProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.bool] replace_existing: If true, update the endpoint if it already exists instead of returning an error
-        :param pulumi.Input['PostgresEndpointSpecArgs'] spec: The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
-        :param pulumi.Input['PostgresEndpointStatusArgs'] status: (EndpointStatus) - Current operational status of the compute endpoint
-        :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the endpoint
+        :param pulumi.Input[_builtins.bool] replace_existing: If true, update the endpoint if it already exists instead of returning an error. The request's
+               `spec.endpoint_type` must match the existing endpoint's type, and the other `spec` fields are applied
+               as an update. Use this to configure the read-write endpoint that was created together with the branch
+        :param pulumi.Input['PostgresEndpointSpecArgs'] spec: The desired configuration of the endpoint. Every field under `spec` except `endpoint_type` can be
+               changed after creation. See `status` for the configuration that is currently in effect.
+               
+               Read the resource's current values from `status`, rather than `spec`.
+               `spec` tracks field ownership for infrastructure-as-code tools and may omit
+               unmanaged fields
+        :param pulumi.Input['PostgresEndpointStatusArgs'] status: (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+               system, including the hostnames to connect to
+        :param pulumi.Input[_builtins.str] uid: (string) - A system-generated ID that identifies the endpoint. Unlike `name`, it is not derived from the
+               user-chosen endpoint ID. The endpoint's connection hostnames are based on this ID
         :param pulumi.Input[_builtins.str] update_time: (string) - A timestamp indicating when the compute endpoint was last updated
         """
         if create_time is not None:
@@ -173,7 +196,7 @@ class _PostgresEndpointState:
     @pulumi.getter(name="endpointId")
     def endpoint_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The part of the name, chosen by the user when the resource was created
+        The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
         """
         return pulumi.get(self, "endpoint_id")
 
@@ -223,7 +246,9 @@ class _PostgresEndpointState:
     @pulumi.getter(name="replaceExisting")
     def replace_existing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        If true, update the endpoint if it already exists instead of returning an error
+        If true, update the endpoint if it already exists instead of returning an error. The request's
+        `spec.endpoint_type` must match the existing endpoint's type, and the other `spec` fields are applied
+        as an update. Use this to configure the read-write endpoint that was created together with the branch
         """
         return pulumi.get(self, "replace_existing")
 
@@ -235,7 +260,12 @@ class _PostgresEndpointState:
     @pulumi.getter
     def spec(self) -> pulumi.Input[Optional['PostgresEndpointSpecArgs']]:
         """
-        The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+        The desired configuration of the endpoint. Every field under `spec` except `endpoint_type` can be
+        changed after creation. See `status` for the configuration that is currently in effect.
+
+        Read the resource's current values from `status`, rather than `spec`.
+        `spec` tracks field ownership for infrastructure-as-code tools and may omit
+        unmanaged fields
         """
         return pulumi.get(self, "spec")
 
@@ -247,7 +277,8 @@ class _PostgresEndpointState:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional['PostgresEndpointStatusArgs']]:
         """
-        (EndpointStatus) - Current operational status of the compute endpoint
+        (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+        system, including the hostnames to connect to
         """
         return pulumi.get(self, "status")
 
@@ -259,7 +290,8 @@ class _PostgresEndpointState:
     @pulumi.getter
     def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - System-generated unique ID for the endpoint
+        (string) - A system-generated ID that identifies the endpoint. Unlike `name`, it is not derived from the
+        user-chosen endpoint ID. The endpoint's connection hostnames are based on this ID
         """
         return pulumi.get(self, "uid")
 
@@ -293,7 +325,7 @@ class PostgresEndpoint(pulumi.CustomResource):
                  spec: pulumi.Input[Optional[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict', 'outputs.PostgresEndpointSpec']]] = None,
                  __props__=None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -303,7 +335,7 @@ class PostgresEndpoint(pulumi.CustomResource):
 
         A read-write endpoint named `primary` is implicitly created for every branch. Since Pulumi is declarative, managing an already-existing resource requires `replace_existing = true`: it lets Pulumi represent the implicitly created endpoint in Pulumi state and immediately apply the provided configuration to it. Support for providing a custom `endpoint_id` will be available in later versions.
 
-        Pulumi uses this resource exclusively for managing updates. It does not control creation or deletion of the endpoint itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual endpoint is unaffected, because its lifecycle is controlled by the parent branch. The only way to remove the actual endpoint is to delete the branch it belongs to. If you don't want to delete the parent branch and are concerned about the cost, use the `disabled` or `suspend_timeout_duration` fields in `spec`.
+        For this implicitly created read-write Endpoint, Pulumi manages updates only. It does not control creation or deletion of the endpoint itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual endpoint is unaffected, because its lifecycle is controlled by the parent branch. The only way to remove the actual endpoint is to delete the branch it belongs to. If you don't want to delete the parent branch and are concerned about the cost, use the `disabled` or `suspend_timeout_duration` fields in `spec`.
 
         ```python
         import pulumi
@@ -378,7 +410,8 @@ class PostgresEndpoint(pulumi.CustomResource):
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
                 "disabled": True,
-            })
+            },
+            replace_existing=True)
         ```
 
         ### Endpoint with No Suspension
@@ -388,12 +421,13 @@ class PostgresEndpoint(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         always_on = databricks.PostgresEndpoint("always_on",
-            endpoint_id="always-on",
+            endpoint_id="primary",
             parent=dev["name"],
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
                 "no_suspension": True,
-            })
+            },
+            replace_existing=True)
         ```
 
         ### High Availability Endpoint
@@ -505,12 +539,19 @@ class PostgresEndpoint(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] endpoint_id: The part of the name, chosen by the user when the resource was created
+        :param pulumi.Input[_builtins.str] endpoint_id: The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
         :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint (API resource hierarchy).
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict', 'outputs.PostgresEndpointProviderConfig']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.bool] replace_existing: If true, update the endpoint if it already exists instead of returning an error
-        :param pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict', 'outputs.PostgresEndpointSpec']] spec: The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+        :param pulumi.Input[_builtins.bool] replace_existing: If true, update the endpoint if it already exists instead of returning an error. The request's
+               `spec.endpoint_type` must match the existing endpoint's type, and the other `spec` fields are applied
+               as an update. Use this to configure the read-write endpoint that was created together with the branch
+        :param pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict', 'outputs.PostgresEndpointSpec']] spec: The desired configuration of the endpoint. Every field under `spec` except `endpoint_type` can be
+               changed after creation. See `status` for the configuration that is currently in effect.
+               
+               Read the resource's current values from `status`, rather than `spec`.
+               `spec` tracks field ownership for infrastructure-as-code tools and may omit
+               unmanaged fields
         """
         ...
     @overload
@@ -519,7 +560,7 @@ class PostgresEndpoint(pulumi.CustomResource):
                  args: PostgresEndpointArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -529,7 +570,7 @@ class PostgresEndpoint(pulumi.CustomResource):
 
         A read-write endpoint named `primary` is implicitly created for every branch. Since Pulumi is declarative, managing an already-existing resource requires `replace_existing = true`: it lets Pulumi represent the implicitly created endpoint in Pulumi state and immediately apply the provided configuration to it. Support for providing a custom `endpoint_id` will be available in later versions.
 
-        Pulumi uses this resource exclusively for managing updates. It does not control creation or deletion of the endpoint itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual endpoint is unaffected, because its lifecycle is controlled by the parent branch. The only way to remove the actual endpoint is to delete the branch it belongs to. If you don't want to delete the parent branch and are concerned about the cost, use the `disabled` or `suspend_timeout_duration` fields in `spec`.
+        For this implicitly created read-write Endpoint, Pulumi manages updates only. It does not control creation or deletion of the endpoint itself. Removing the resource from your Pulumi configuration only removes it from Pulumi state; the actual endpoint is unaffected, because its lifecycle is controlled by the parent branch. The only way to remove the actual endpoint is to delete the branch it belongs to. If you don't want to delete the parent branch and are concerned about the cost, use the `disabled` or `suspend_timeout_duration` fields in `spec`.
 
         ```python
         import pulumi
@@ -604,7 +645,8 @@ class PostgresEndpoint(pulumi.CustomResource):
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
                 "disabled": True,
-            })
+            },
+            replace_existing=True)
         ```
 
         ### Endpoint with No Suspension
@@ -614,12 +656,13 @@ class PostgresEndpoint(pulumi.CustomResource):
         import pulumi_databricks as databricks
 
         always_on = databricks.PostgresEndpoint("always_on",
-            endpoint_id="always-on",
+            endpoint_id="primary",
             parent=dev["name"],
             spec={
                 "endpoint_type": "ENDPOINT_TYPE_READ_WRITE",
                 "no_suspension": True,
-            })
+            },
+            replace_existing=True)
         ```
 
         ### High Availability Endpoint
@@ -800,16 +843,25 @@ class PostgresEndpoint(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the compute endpoint was created
-        :param pulumi.Input[_builtins.str] endpoint_id: The part of the name, chosen by the user when the resource was created
+        :param pulumi.Input[_builtins.str] endpoint_id: The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
         :param pulumi.Input[_builtins.str] name: (string) - Output only. The full resource path of the endpoint.
                Format: projects/{project_id}/branches/{branch_id}/endpoints/{endpoint_id}
         :param pulumi.Input[_builtins.str] parent: The branch containing this endpoint (API resource hierarchy).
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[Union['PostgresEndpointProviderConfigArgs', 'PostgresEndpointProviderConfigArgsDict', 'outputs.PostgresEndpointProviderConfig']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.bool] replace_existing: If true, update the endpoint if it already exists instead of returning an error
-        :param pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict', 'outputs.PostgresEndpointSpec']] spec: The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
-        :param pulumi.Input[Union['PostgresEndpointStatusArgs', 'PostgresEndpointStatusArgsDict', 'outputs.PostgresEndpointStatus']] status: (EndpointStatus) - Current operational status of the compute endpoint
-        :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique ID for the endpoint
+        :param pulumi.Input[_builtins.bool] replace_existing: If true, update the endpoint if it already exists instead of returning an error. The request's
+               `spec.endpoint_type` must match the existing endpoint's type, and the other `spec` fields are applied
+               as an update. Use this to configure the read-write endpoint that was created together with the branch
+        :param pulumi.Input[Union['PostgresEndpointSpecArgs', 'PostgresEndpointSpecArgsDict', 'outputs.PostgresEndpointSpec']] spec: The desired configuration of the endpoint. Every field under `spec` except `endpoint_type` can be
+               changed after creation. See `status` for the configuration that is currently in effect.
+               
+               Read the resource's current values from `status`, rather than `spec`.
+               `spec` tracks field ownership for infrastructure-as-code tools and may omit
+               unmanaged fields
+        :param pulumi.Input[Union['PostgresEndpointStatusArgs', 'PostgresEndpointStatusArgsDict', 'outputs.PostgresEndpointStatus']] status: (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+               system, including the hostnames to connect to
+        :param pulumi.Input[_builtins.str] uid: (string) - A system-generated ID that identifies the endpoint. Unlike `name`, it is not derived from the
+               user-chosen endpoint ID. The endpoint's connection hostnames are based on this ID
         :param pulumi.Input[_builtins.str] update_time: (string) - A timestamp indicating when the compute endpoint was last updated
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -866,7 +918,7 @@ class PostgresEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="endpointId")
     def endpoint_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The part of the name, chosen by the user when the resource was created
+        The endpoint ID chosen when the endpoint was created. It is the final segment of `name`
         """
         return pulumi.get(self, "endpoint_id")
 
@@ -900,15 +952,22 @@ class PostgresEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="replaceExisting")
     def replace_existing(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
-        If true, update the endpoint if it already exists instead of returning an error
+        If true, update the endpoint if it already exists instead of returning an error. The request's
+        `spec.endpoint_type` must match the existing endpoint's type, and the other `spec` fields are applied
+        as an update. Use this to configure the read-write endpoint that was created together with the branch
         """
         return pulumi.get(self, "replace_existing")
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> pulumi.Output['outputs.PostgresEndpointSpec']:
+    def spec(self) -> pulumi.Output[Optional['outputs.PostgresEndpointSpec']]:
         """
-        The spec contains the compute endpoint configuration, including autoscaling limits, suspend timeout, and disabled state
+        The desired configuration of the endpoint. Every field under `spec` except `endpoint_type` can be
+        changed after creation. See `status` for the configuration that is currently in effect.
+
+        Read the resource's current values from `status`, rather than `spec`.
+        `spec` tracks field ownership for infrastructure-as-code tools and may omit
+        unmanaged fields
         """
         return pulumi.get(self, "spec")
 
@@ -916,7 +975,8 @@ class PostgresEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output['outputs.PostgresEndpointStatus']:
         """
-        (EndpointStatus) - Current operational status of the compute endpoint
+        (EndpointStatus) - The configuration and state of the endpoint that are currently in effect, as reported by the
+        system, including the hostnames to connect to
         """
         return pulumi.get(self, "status")
 
@@ -924,7 +984,8 @@ class PostgresEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def uid(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - System-generated unique ID for the endpoint
+        (string) - A system-generated ID that identifies the endpoint. Unlike `name`, it is not derived from the
+        user-chosen endpoint ID. The endpoint's connection hostnames are based on this ID
         """
         return pulumi.get(self, "uid")
 

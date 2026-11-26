@@ -15,11 +15,11 @@ import (
 //
 // [API Documentation](https://docs.databricks.com/api/workspace/settingsv2)
 //
-// This data source can be used to get a single account setting.
+// This data source can be used to get a single workspace setting.
 //
 // ## Example Usage
 //
-// Referring to a setting by id
+// Referring to a setting by name
 // ```go
 // package main
 //
@@ -34,9 +34,6 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databricks.GetWorkspaceSettingV2(ctx, &databricks.LookupWorkspaceSettingV2Args{
 //				Name: "llm_proxy_partner_powered",
-//				BooleanVal: map[string]bool{
-//					"value": false,
-//				},
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -58,7 +55,7 @@ func LookupWorkspaceSettingV2(ctx *pulumi.Context, args *LookupWorkspaceSettingV
 
 // A collection of arguments for invoking getWorkspaceSettingV2.
 type LookupWorkspaceSettingV2Args struct {
-	// Name of the setting
+	// Name of the setting. The settings metadata endpoint lists the names available at each scope
 	Name string `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig *GetWorkspaceSettingV2ProviderConfig `pulumi:"providerConfig"`
@@ -100,11 +97,13 @@ type LookupWorkspaceSettingV2Result struct {
 	EffectiveRestrictWorkspaceAdmins GetWorkspaceSettingV2EffectiveRestrictWorkspaceAdmins `pulumi:"effectiveRestrictWorkspaceAdmins"`
 	// (StringMessage) - Effective setting value for string type setting. This is the final effective value of setting. To set a value use string_val
 	EffectiveStringVal GetWorkspaceSettingV2EffectiveStringVal `pulumi:"effectiveStringVal"`
+	// (DashboardTheme) - Effective setting value for the workspaceDashboardTheme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+	EffectiveWorkspaceDashboardTheme GetWorkspaceSettingV2EffectiveWorkspaceDashboardTheme `pulumi:"effectiveWorkspaceDashboardTheme"`
 	// (WorkspaceLabelMessage) - Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
 	EffectiveWorkspaceLabel GetWorkspaceSettingV2EffectiveWorkspaceLabel `pulumi:"effectiveWorkspaceLabel"`
 	// (IntegerMessage) - Setting value for integer type setting. This is the setting value set by consumers, check effectiveIntegerVal for final setting value
 	IntegerVal GetWorkspaceSettingV2IntegerVal `pulumi:"integerVal"`
-	// (string) - Name of the setting
+	// (string) - Name of the setting. The settings metadata endpoint lists the names available at each scope
 	Name string `pulumi:"name"`
 	// (OperationalEmailCustomRecipientMessage) - Setting value for operationalEmailCustomRecipient setting. This is the setting value set by consumers, check effectiveOperationalEmailCustomRecipient for final setting value
 	OperationalEmailCustomRecipient GetWorkspaceSettingV2OperationalEmailCustomRecipient `pulumi:"operationalEmailCustomRecipient"`
@@ -115,6 +114,8 @@ type LookupWorkspaceSettingV2Result struct {
 	RestrictWorkspaceAdmins GetWorkspaceSettingV2RestrictWorkspaceAdmins `pulumi:"restrictWorkspaceAdmins"`
 	// (StringMessage) - Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
 	StringVal GetWorkspaceSettingV2StringVal `pulumi:"stringVal"`
+	// (DashboardTheme) - Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+	WorkspaceDashboardTheme GetWorkspaceSettingV2WorkspaceDashboardTheme `pulumi:"workspaceDashboardTheme"`
 	// (WorkspaceLabelMessage) - Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
 	WorkspaceLabel GetWorkspaceSettingV2WorkspaceLabel `pulumi:"workspaceLabel"`
 }
@@ -126,7 +127,7 @@ func LookupWorkspaceSettingV2Output(ctx *pulumi.Context, args LookupWorkspaceSet
 
 // A collection of arguments for invoking getWorkspaceSettingV2.
 type LookupWorkspaceSettingV2OutputArgs struct {
-	// Name of the setting
+	// Name of the setting. The settings metadata endpoint lists the names available at each scope
 	Name pulumi.StringInput `pulumi:"name"`
 	// Configure the provider for management through account provider.
 	ProviderConfig GetWorkspaceSettingV2ProviderConfigPtrInput `pulumi:"providerConfig"`
@@ -268,6 +269,13 @@ func (o LookupWorkspaceSettingV2ResultOutput) EffectiveStringVal() GetWorkspaceS
 	}).(GetWorkspaceSettingV2EffectiveStringValOutput)
 }
 
+// (DashboardTheme) - Effective setting value for the workspaceDashboardTheme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+func (o LookupWorkspaceSettingV2ResultOutput) EffectiveWorkspaceDashboardTheme() GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeOutput {
+	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2EffectiveWorkspaceDashboardTheme {
+		return v.EffectiveWorkspaceDashboardTheme
+	}).(GetWorkspaceSettingV2EffectiveWorkspaceDashboardThemeOutput)
+}
+
 // (WorkspaceLabelMessage) - Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
 func (o LookupWorkspaceSettingV2ResultOutput) EffectiveWorkspaceLabel() GetWorkspaceSettingV2EffectiveWorkspaceLabelOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2EffectiveWorkspaceLabel {
@@ -280,7 +288,7 @@ func (o LookupWorkspaceSettingV2ResultOutput) IntegerVal() GetWorkspaceSettingV2
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2IntegerVal { return v.IntegerVal }).(GetWorkspaceSettingV2IntegerValOutput)
 }
 
-// (string) - Name of the setting
+// (string) - Name of the setting. The settings metadata endpoint lists the names available at each scope
 func (o LookupWorkspaceSettingV2ResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -311,6 +319,13 @@ func (o LookupWorkspaceSettingV2ResultOutput) RestrictWorkspaceAdmins() GetWorks
 // (StringMessage) - Setting value for string type setting. This is the setting value set by consumers, check effectiveStringVal for final setting value
 func (o LookupWorkspaceSettingV2ResultOutput) StringVal() GetWorkspaceSettingV2StringValOutput {
 	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2StringVal { return v.StringVal }).(GetWorkspaceSettingV2StringValOutput)
+}
+
+// (DashboardTheme) - Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+func (o LookupWorkspaceSettingV2ResultOutput) WorkspaceDashboardTheme() GetWorkspaceSettingV2WorkspaceDashboardThemeOutput {
+	return o.ApplyT(func(v LookupWorkspaceSettingV2Result) GetWorkspaceSettingV2WorkspaceDashboardTheme {
+		return v.WorkspaceDashboardTheme
+	}).(GetWorkspaceSettingV2WorkspaceDashboardThemeOutput)
 }
 
 // (WorkspaceLabelMessage) - Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value

@@ -89,14 +89,18 @@ public final class DatabaseInstanceChildInstanceRefArgs extends com.pulumi.resou
     }
 
     /**
-     * The name of the instance. This is the unique identifier for the instance
+     * The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+     * characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+     * consecutive hyphens
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the instance. This is the unique identifier for the instance
+     * @return The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+     * characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+     * consecutive hyphens
      * 
      */
     public Optional<Output<String>> name() {
@@ -238,7 +242,9 @@ public final class DatabaseInstanceChildInstanceRefArgs extends com.pulumi.resou
         }
 
         /**
-         * @param name The name of the instance. This is the unique identifier for the instance
+         * @param name The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+         * characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+         * consecutive hyphens
          * 
          * @return builder
          * 
@@ -249,7 +255,9 @@ public final class DatabaseInstanceChildInstanceRefArgs extends com.pulumi.resou
         }
 
         /**
-         * @param name The name of the instance. This is the unique identifier for the instance
+         * @param name The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+         * characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+         * consecutive hyphens
          * 
          * @return builder
          * 

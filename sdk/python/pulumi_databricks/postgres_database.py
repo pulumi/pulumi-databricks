@@ -34,8 +34,13 @@ class PostgresDatabaseArgs:
         :param pulumi.Input[_builtins.str] database_id: (string) - Part of the resource name
         :param pulumi.Input['PostgresDatabaseProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] replace_existing: If true, update the database if it already exists instead of returning an
-               error
-        :param pulumi.Input['PostgresDatabaseSpecArgs'] spec: The desired state of the Database
+               error. This requires `database_id` to be set. Without `database_id`, the request
+               follows the normal create path and fails if the database name already exists
+        :param pulumi.Input['PostgresDatabaseSpecArgs'] spec: The desired state of the Database.
+               
+               Read the resource's current values from `status`, rather than `spec`.
+               `spec` tracks field ownership for infrastructure-as-code tools and may omit
+               unmanaged fields
         """
         pulumi.set(__self__, "parent", parent)
         if database_id is not None:
@@ -89,7 +94,8 @@ class PostgresDatabaseArgs:
     def replace_existing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, update the database if it already exists instead of returning an
-        error
+        error. This requires `database_id` to be set. Without `database_id`, the request
+        follows the normal create path and fails if the database name already exists
         """
         return pulumi.get(self, "replace_existing")
 
@@ -101,7 +107,11 @@ class PostgresDatabaseArgs:
     @pulumi.getter
     def spec(self) -> pulumi.Input[Optional['PostgresDatabaseSpecArgs']]:
         """
-        The desired state of the Database
+        The desired state of the Database.
+
+        Read the resource's current values from `status`, rather than `spec`.
+        `spec` tracks field ownership for infrastructure-as-code tools and may omit
+        unmanaged fields
         """
         return pulumi.get(self, "spec")
 
@@ -133,8 +143,13 @@ class _PostgresDatabaseState:
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input['PostgresDatabaseProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] replace_existing: If true, update the database if it already exists instead of returning an
-               error
-        :param pulumi.Input['PostgresDatabaseSpecArgs'] spec: The desired state of the Database
+               error. This requires `database_id` to be set. Without `database_id`, the request
+               follows the normal create path and fails if the database name already exists
+        :param pulumi.Input['PostgresDatabaseSpecArgs'] spec: The desired state of the Database.
+               
+               Read the resource's current values from `status`, rather than `spec`.
+               `spec` tracks field ownership for infrastructure-as-code tools and may omit
+               unmanaged fields
         :param pulumi.Input['PostgresDatabaseStatusArgs'] status: (DatabaseDatabaseStatus) - The observed state of the Database
         :param pulumi.Input[_builtins.str] update_time: (string) - A timestamp indicating when the database was last updated
         """
@@ -224,7 +239,8 @@ class _PostgresDatabaseState:
     def replace_existing(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, update the database if it already exists instead of returning an
-        error
+        error. This requires `database_id` to be set. Without `database_id`, the request
+        follows the normal create path and fails if the database name already exists
         """
         return pulumi.get(self, "replace_existing")
 
@@ -236,7 +252,11 @@ class _PostgresDatabaseState:
     @pulumi.getter
     def spec(self) -> pulumi.Input[Optional['PostgresDatabaseSpecArgs']]:
         """
-        The desired state of the Database
+        The desired state of the Database.
+
+        Read the resource's current values from `status`, rather than `spec`.
+        `spec` tracks field ownership for infrastructure-as-code tools and may omit
+        unmanaged fields
         """
         return pulumi.get(self, "spec")
 
@@ -282,7 +302,7 @@ class PostgresDatabase(pulumi.CustomResource):
                  spec: pulumi.Input[Optional[Union['PostgresDatabaseSpecArgs', 'PostgresDatabaseSpecArgsDict', 'outputs.PostgresDatabaseSpec']]] = None,
                  __props__=None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -292,9 +312,9 @@ class PostgresDatabase(pulumi.CustomResource):
 
         A database named `databricks-postgres` (Postgres name `databricks_postgres`) is implicitly created on every branch. Since Pulumi is declarative, managing an already-existing resource requires `replace_existing = true`: it lets Pulumi represent the implicitly created database in Pulumi state and immediately apply the provided configuration to it.
 
-        `replace_existing = true` only affects the initial adoption. Once the database is in Pulumi state, it is managed like any other resource: removing it from your configuration and applying **deletes the actual database** (and its data), not just the state entry. This is unlike `PostgresBranch`, whose deletion is instead controlled by its parent project. To stop managing the database without deleting it, remove it from state with `terraform state rm` before removing it from your configuration.
+        `replace_existing = true` only affects the initial adoption. After the database is in Pulumi state, it is managed like any other resource: removing it from your configuration and running `pulumi up` **deletes the actual database** (and its data), not just the state entry. This is unlike the implicitly created root Branch, whose deletion is controlled by its parent Project. To stop managing the database without deleting it, remove it from state with `terraform state rm` before removing it from your configuration.
 
-        `spec.role` is optional: omit it to keep the database's existing owner (as shown below). When you do set it — to change ownership — it must reference a role in the same branch, written as `<branch-name>/roles/<role_id>`.
+        Include `spec.role` in a non-null Pulumi spec. To preserve ownership, use the current owner's full Role resource name from the same branch, written as `<branch-name>/roles/<role_id>`.
 
         ```python
         import pulumi
@@ -318,6 +338,7 @@ class PostgresDatabase(pulumi.CustomResource):
             parent=production.name,
             spec={
                 "postgres_database": "databricks_postgres",
+                "role": "projects/my-project/branches/production/roles/jane-doe",
             },
             replace_existing=True)
         ```
@@ -344,13 +365,14 @@ class PostgresDatabase(pulumi.CustomResource):
             parent=child.name,
             spec={
                 "postgres_database": "databricks_postgres",
+                "role": child.name.apply(lambda name: f"{name}/roles/jane-doe"),
             },
             replace_existing=True)
         ```
 
         ### Database Owned by a Specific Role
 
-        Assign ownership to a role you manage alongside the database. The Postgres database will be created with the specified role as its owner.
+        `spec.role` is required when creating a database and must reference a role in the same branch.
 
         ```python
         import pulumi
@@ -384,6 +406,7 @@ class PostgresDatabase(pulumi.CustomResource):
             parent=main["name"],
             spec={
                 "postgres_database": "analytics_v2",
+                "role": "projects/my-project/branches/main/roles/app-owner",
             })
         ```
 
@@ -444,8 +467,13 @@ class PostgresDatabase(pulumi.CustomResource):
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[Union['PostgresDatabaseProviderConfigArgs', 'PostgresDatabaseProviderConfigArgsDict', 'outputs.PostgresDatabaseProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] replace_existing: If true, update the database if it already exists instead of returning an
-               error
-        :param pulumi.Input[Union['PostgresDatabaseSpecArgs', 'PostgresDatabaseSpecArgsDict', 'outputs.PostgresDatabaseSpec']] spec: The desired state of the Database
+               error. This requires `database_id` to be set. Without `database_id`, the request
+               follows the normal create path and fails if the database name already exists
+        :param pulumi.Input[Union['PostgresDatabaseSpecArgs', 'PostgresDatabaseSpecArgsDict', 'outputs.PostgresDatabaseSpec']] spec: The desired state of the Database.
+               
+               Read the resource's current values from `status`, rather than `spec`.
+               `spec` tracks field ownership for infrastructure-as-code tools and may omit
+               unmanaged fields
         """
         ...
     @overload
@@ -454,7 +482,7 @@ class PostgresDatabase(pulumi.CustomResource):
                  args: PostgresDatabaseArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -464,9 +492,9 @@ class PostgresDatabase(pulumi.CustomResource):
 
         A database named `databricks-postgres` (Postgres name `databricks_postgres`) is implicitly created on every branch. Since Pulumi is declarative, managing an already-existing resource requires `replace_existing = true`: it lets Pulumi represent the implicitly created database in Pulumi state and immediately apply the provided configuration to it.
 
-        `replace_existing = true` only affects the initial adoption. Once the database is in Pulumi state, it is managed like any other resource: removing it from your configuration and applying **deletes the actual database** (and its data), not just the state entry. This is unlike `PostgresBranch`, whose deletion is instead controlled by its parent project. To stop managing the database without deleting it, remove it from state with `terraform state rm` before removing it from your configuration.
+        `replace_existing = true` only affects the initial adoption. After the database is in Pulumi state, it is managed like any other resource: removing it from your configuration and running `pulumi up` **deletes the actual database** (and its data), not just the state entry. This is unlike the implicitly created root Branch, whose deletion is controlled by its parent Project. To stop managing the database without deleting it, remove it from state with `terraform state rm` before removing it from your configuration.
 
-        `spec.role` is optional: omit it to keep the database's existing owner (as shown below). When you do set it — to change ownership — it must reference a role in the same branch, written as `<branch-name>/roles/<role_id>`.
+        Include `spec.role` in a non-null Pulumi spec. To preserve ownership, use the current owner's full Role resource name from the same branch, written as `<branch-name>/roles/<role_id>`.
 
         ```python
         import pulumi
@@ -490,6 +518,7 @@ class PostgresDatabase(pulumi.CustomResource):
             parent=production.name,
             spec={
                 "postgres_database": "databricks_postgres",
+                "role": "projects/my-project/branches/production/roles/jane-doe",
             },
             replace_existing=True)
         ```
@@ -516,13 +545,14 @@ class PostgresDatabase(pulumi.CustomResource):
             parent=child.name,
             spec={
                 "postgres_database": "databricks_postgres",
+                "role": child.name.apply(lambda name: f"{name}/roles/jane-doe"),
             },
             replace_existing=True)
         ```
 
         ### Database Owned by a Specific Role
 
-        Assign ownership to a role you manage alongside the database. The Postgres database will be created with the specified role as its owner.
+        `spec.role` is required when creating a database and must reference a role in the same branch.
 
         ```python
         import pulumi
@@ -556,6 +586,7 @@ class PostgresDatabase(pulumi.CustomResource):
             parent=main["name"],
             spec={
                 "postgres_database": "analytics_v2",
+                "role": "projects/my-project/branches/main/roles/app-owner",
             })
         ```
 
@@ -683,8 +714,13 @@ class PostgresDatabase(pulumi.CustomResource):
                Format: projects/{project_id}/branches/{branch_id}
         :param pulumi.Input[Union['PostgresDatabaseProviderConfigArgs', 'PostgresDatabaseProviderConfigArgsDict', 'outputs.PostgresDatabaseProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.bool] replace_existing: If true, update the database if it already exists instead of returning an
-               error
-        :param pulumi.Input[Union['PostgresDatabaseSpecArgs', 'PostgresDatabaseSpecArgsDict', 'outputs.PostgresDatabaseSpec']] spec: The desired state of the Database
+               error. This requires `database_id` to be set. Without `database_id`, the request
+               follows the normal create path and fails if the database name already exists
+        :param pulumi.Input[Union['PostgresDatabaseSpecArgs', 'PostgresDatabaseSpecArgsDict', 'outputs.PostgresDatabaseSpec']] spec: The desired state of the Database.
+               
+               Read the resource's current values from `status`, rather than `spec`.
+               `spec` tracks field ownership for infrastructure-as-code tools and may omit
+               unmanaged fields
         :param pulumi.Input[Union['PostgresDatabaseStatusArgs', 'PostgresDatabaseStatusArgsDict', 'outputs.PostgresDatabaseStatus']] status: (DatabaseDatabaseStatus) - The observed state of the Database
         :param pulumi.Input[_builtins.str] update_time: (string) - A timestamp indicating when the database was last updated
         """
@@ -774,15 +810,20 @@ class PostgresDatabase(pulumi.CustomResource):
     def replace_existing(self) -> pulumi.Output[Optional[_builtins.bool]]:
         """
         If true, update the database if it already exists instead of returning an
-        error
+        error. This requires `database_id` to be set. Without `database_id`, the request
+        follows the normal create path and fails if the database name already exists
         """
         return pulumi.get(self, "replace_existing")
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> pulumi.Output['outputs.PostgresDatabaseSpec']:
+    def spec(self) -> pulumi.Output[Optional['outputs.PostgresDatabaseSpec']]:
         """
-        The desired state of the Database
+        The desired state of the Database.
+
+        Read the resource's current values from `status`, rather than `spec`.
+        `spec` tracks field ownership for infrastructure-as-code tools and may omit
+        unmanaged fields
         """
         return pulumi.get(self, "spec")
 

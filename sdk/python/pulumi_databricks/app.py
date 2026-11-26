@@ -36,13 +36,16 @@ class AppArgs:
                  source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
                  space: pulumi.Input[Optional[_builtins.str]] = None,
                  telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]] = None,
+                 thumbnail_path: pulumi.Input[Optional[_builtins.str]] = None,
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a App resource.
 
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
-        :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
+        :param pulumi.Input[_builtins.int] compute_max_instances: Maximum number of app instances the app is configured to run. Must be set together with `compute_min_instances`. Omitting both disables horizontal scaling.
+        :param pulumi.Input[_builtins.int] compute_min_instances: Minimum number of app instances the app is configured to run. Must be set together with `compute_max_instances`.
+        :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`. If omitted, the app uses `MEDIUM`.
         :param pulumi.Input[_builtins.str] description: The description of the app.
         :param pulumi.Input['AppGitRepositoryArgs'] git_repository: Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
         :param pulumi.Input['AppGitSourceArgs'] git_source: The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `git_repository` (see below).
@@ -50,6 +53,9 @@ class AppArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AppResourceArgs']]] resources: A list of resources that the app have access to.
         :param pulumi.Input[_builtins.str] source_code_path: Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
         :param pulumi.Input[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]] telemetry_export_destinations: A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
+        :param pulumi.Input[_builtins.str] thumbnail_path: Path to a local PNG or JPEG file of at most 250 KB to show as the app's thumbnail in the Apps UI. The provider checks the file the way the Apps UI does and rejects other files at plan time, or at apply time if the file doesn't exist yet when Pulumi plans, for example because another resource writes it. The image can't be read back from the service, so the provider keeps the file's MD5 hash in `thumbnail_md5` and uploads the file again when its content changes; changes made to the thumbnail outside of Pulumi aren't detected. Removing the argument deletes the thumbnail.
+               
+               > Updates apply the whole configuration: an argument removed from the configuration is cleared or reset to its default, even if it was set outside Pulumi. Enabling or disabling horizontal scaling (`compute_min_instances`/`compute_max_instances`) cannot be combined with a change to `compute_size` or `git_repository` in the same apply.
         :param pulumi.Input[_builtins.str] usage_policy_id: The Usage Policy ID set for this resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_api_scopes: A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
         """
@@ -83,6 +89,8 @@ class AppArgs:
             pulumi.set(__self__, "space", space)
         if telemetry_export_destinations is not None:
             pulumi.set(__self__, "telemetry_export_destinations", telemetry_export_destinations)
+        if thumbnail_path is not None:
+            pulumi.set(__self__, "thumbnail_path", thumbnail_path)
         if usage_policy_id is not None:
             pulumi.set(__self__, "usage_policy_id", usage_policy_id)
         if user_api_scopes is not None:
@@ -103,6 +111,9 @@ class AppArgs:
     @_builtins.property
     @pulumi.getter(name="computeMaxInstances")
     def compute_max_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of app instances the app is configured to run. Must be set together with `compute_min_instances`. Omitting both disables horizontal scaling.
+        """
         return pulumi.get(self, "compute_max_instances")
 
     @compute_max_instances.setter
@@ -112,6 +123,9 @@ class AppArgs:
     @_builtins.property
     @pulumi.getter(name="computeMinInstances")
     def compute_min_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Minimum number of app instances the app is configured to run. Must be set together with `compute_max_instances`.
+        """
         return pulumi.get(self, "compute_min_instances")
 
     @compute_min_instances.setter
@@ -122,7 +136,7 @@ class AppArgs:
     @pulumi.getter(name="computeSize")
     def compute_size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
+        A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`. If omitted, the app uses `MEDIUM`.
         """
         return pulumi.get(self, "compute_size")
 
@@ -251,6 +265,20 @@ class AppArgs:
         pulumi.set(self, "telemetry_export_destinations", value)
 
     @_builtins.property
+    @pulumi.getter(name="thumbnailPath")
+    def thumbnail_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Path to a local PNG or JPEG file of at most 250 KB to show as the app's thumbnail in the Apps UI. The provider checks the file the way the Apps UI does and rejects other files at plan time, or at apply time if the file doesn't exist yet when Pulumi plans, for example because another resource writes it. The image can't be read back from the service, so the provider keeps the file's MD5 hash in `thumbnail_md5` and uploads the file again when its content changes; changes made to the thumbnail outside of Pulumi aren't detected. Removing the argument deletes the thumbnail.
+
+        > Updates apply the whole configuration: an argument removed from the configuration is cleared or reset to its default, even if it was set outside Pulumi. Enabling or disabling horizontal scaling (`compute_min_instances`/`compute_max_instances`) cannot be combined with a change to `compute_size` or `git_repository` in the same apply.
+        """
+        return pulumi.get(self, "thumbnail_path")
+
+    @thumbnail_path.setter
+    def thumbnail_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "thumbnail_path", value)
+
+    @_builtins.property
     @pulumi.getter(name="usagePolicyId")
     def usage_policy_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -291,6 +319,7 @@ class _AppState:
                  default_source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 effective_resources: pulumi.Input[Optional[Sequence[pulumi.Input['AppEffectiveResourceArgs']]]] = None,
                  effective_usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  effective_user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  forward_user_access_token: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -309,6 +338,8 @@ class _AppState:
                  source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
                  space: pulumi.Input[Optional[_builtins.str]] = None,
                  telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]]] = None,
+                 thumbnail_md5: pulumi.Input[Optional[_builtins.str]] = None,
+                 thumbnail_path: pulumi.Input[Optional[_builtins.str]] = None,
                  thumbnail_url: pulumi.Input[Optional[_builtins.str]] = None,
                  update_time: pulumi.Input[Optional[_builtins.str]] = None,
                  updater: pulumi.Input[Optional[_builtins.str]] = None,
@@ -321,7 +352,9 @@ class _AppState:
         :param pulumi.Input['AppActiveDeploymentArgs'] active_deployment: attribute - the active deployment of the app. A deployment is considered active when it has been deployed to the app compute.
         :param pulumi.Input['AppAppStatusArgs'] app_status: attribute
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
-        :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
+        :param pulumi.Input[_builtins.int] compute_max_instances: Maximum number of app instances the app is configured to run. Must be set together with `compute_min_instances`. Omitting both disables horizontal scaling.
+        :param pulumi.Input[_builtins.int] compute_min_instances: Minimum number of app instances the app is configured to run. Must be set together with `compute_max_instances`.
+        :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`. If omitted, the app uses `MEDIUM`.
         :param pulumi.Input['AppComputeStatusArgs'] compute_status: attribute
         :param pulumi.Input[_builtins.str] create_time: The creation time of the deployment.
         :param pulumi.Input[_builtins.str] creator: The email of the user that created the deployment.
@@ -342,6 +375,10 @@ class _AppState:
         :param pulumi.Input[_builtins.str] service_principal_name: name of the app service principal
         :param pulumi.Input[_builtins.str] source_code_path: Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
         :param pulumi.Input[Sequence[pulumi.Input['AppTelemetryExportDestinationArgs']]] telemetry_export_destinations: A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
+        :param pulumi.Input[_builtins.str] thumbnail_md5: The MD5 hash of the file in `thumbnail_path` that was last uploaded as the app's thumbnail.
+        :param pulumi.Input[_builtins.str] thumbnail_path: Path to a local PNG or JPEG file of at most 250 KB to show as the app's thumbnail in the Apps UI. The provider checks the file the way the Apps UI does and rejects other files at plan time, or at apply time if the file doesn't exist yet when Pulumi plans, for example because another resource writes it. The image can't be read back from the service, so the provider keeps the file's MD5 hash in `thumbnail_md5` and uploads the file again when its content changes; changes made to the thumbnail outside of Pulumi aren't detected. Removing the argument deletes the thumbnail.
+               
+               > Updates apply the whole configuration: an argument removed from the configuration is cleared or reset to its default, even if it was set outside Pulumi. Enabling or disabling horizontal scaling (`compute_min_instances`/`compute_max_instances`) cannot be combined with a change to `compute_size` or `git_repository` in the same apply.
         :param pulumi.Input[_builtins.str] thumbnail_url: The URL of the thumbnail image for the app.
         :param pulumi.Input[_builtins.str] update_time: The update time of the deployment.
         :param pulumi.Input[_builtins.str] updater: The email of the user that last updated the app.
@@ -375,6 +412,8 @@ class _AppState:
             pulumi.set(__self__, "description", description)
         if effective_budget_policy_id is not None:
             pulumi.set(__self__, "effective_budget_policy_id", effective_budget_policy_id)
+        if effective_resources is not None:
+            pulumi.set(__self__, "effective_resources", effective_resources)
         if effective_usage_policy_id is not None:
             pulumi.set(__self__, "effective_usage_policy_id", effective_usage_policy_id)
         if effective_user_api_scopes is not None:
@@ -411,6 +450,10 @@ class _AppState:
             pulumi.set(__self__, "space", space)
         if telemetry_export_destinations is not None:
             pulumi.set(__self__, "telemetry_export_destinations", telemetry_export_destinations)
+        if thumbnail_md5 is not None:
+            pulumi.set(__self__, "thumbnail_md5", thumbnail_md5)
+        if thumbnail_path is not None:
+            pulumi.set(__self__, "thumbnail_path", thumbnail_path)
         if thumbnail_url is not None:
             pulumi.set(__self__, "thumbnail_url", thumbnail_url)
         if update_time is not None:
@@ -463,6 +506,9 @@ class _AppState:
     @_builtins.property
     @pulumi.getter(name="computeMaxInstances")
     def compute_max_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Maximum number of app instances the app is configured to run. Must be set together with `compute_min_instances`. Omitting both disables horizontal scaling.
+        """
         return pulumi.get(self, "compute_max_instances")
 
     @compute_max_instances.setter
@@ -472,6 +518,9 @@ class _AppState:
     @_builtins.property
     @pulumi.getter(name="computeMinInstances")
     def compute_min_instances(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Minimum number of app instances the app is configured to run. Must be set together with `compute_max_instances`.
+        """
         return pulumi.get(self, "compute_min_instances")
 
     @compute_min_instances.setter
@@ -482,7 +531,7 @@ class _AppState:
     @pulumi.getter(name="computeSize")
     def compute_size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
+        A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`. If omitted, the app uses `MEDIUM`.
         """
         return pulumi.get(self, "compute_size")
 
@@ -570,6 +619,15 @@ class _AppState:
     @effective_budget_policy_id.setter
     def effective_budget_policy_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "effective_budget_policy_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveResources")
+    def effective_resources(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['AppEffectiveResourceArgs']]]]:
+        return pulumi.get(self, "effective_resources")
+
+    @effective_resources.setter
+    def effective_resources(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['AppEffectiveResourceArgs']]]]):
+        pulumi.set(self, "effective_resources", value)
 
     @_builtins.property
     @pulumi.getter(name="effectiveUsagePolicyId")
@@ -776,6 +834,32 @@ class _AppState:
         pulumi.set(self, "telemetry_export_destinations", value)
 
     @_builtins.property
+    @pulumi.getter(name="thumbnailMd5")
+    def thumbnail_md5(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The MD5 hash of the file in `thumbnail_path` that was last uploaded as the app's thumbnail.
+        """
+        return pulumi.get(self, "thumbnail_md5")
+
+    @thumbnail_md5.setter
+    def thumbnail_md5(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "thumbnail_md5", value)
+
+    @_builtins.property
+    @pulumi.getter(name="thumbnailPath")
+    def thumbnail_path(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Path to a local PNG or JPEG file of at most 250 KB to show as the app's thumbnail in the Apps UI. The provider checks the file the way the Apps UI does and rejects other files at plan time, or at apply time if the file doesn't exist yet when Pulumi plans, for example because another resource writes it. The image can't be read back from the service, so the provider keeps the file's MD5 hash in `thumbnail_md5` and uploads the file again when its content changes; changes made to the thumbnail outside of Pulumi aren't detected. Removing the argument deletes the thumbnail.
+
+        > Updates apply the whole configuration: an argument removed from the configuration is cleared or reset to its default, even if it was set outside Pulumi. Enabling or disabling horizontal scaling (`compute_min_instances`/`compute_max_instances`) cannot be combined with a change to `compute_size` or `git_repository` in the same apply.
+        """
+        return pulumi.get(self, "thumbnail_path")
+
+    @thumbnail_path.setter
+    def thumbnail_path(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "thumbnail_path", value)
+
+    @_builtins.property
     @pulumi.getter(name="thumbnailUrl")
     def thumbnail_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -869,6 +953,7 @@ class App(pulumi.CustomResource):
                  source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
                  space: pulumi.Input[Optional[_builtins.str]] = None,
                  telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict', 'outputs.AppTelemetryExportDestination']]]]] = None,
+                 thumbnail_path: pulumi.Input[Optional[_builtins.str]] = None,
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -913,20 +998,13 @@ class App(pulumi.CustomResource):
             ])
         ```
 
-        ## Related Resources
-
-        The following resources are used in the same context:
-
-        * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
-        * ModelServing to serve this model on a Databricks serving endpoint.
-        * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
-        * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
-
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
-        :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
+        :param pulumi.Input[_builtins.int] compute_max_instances: Maximum number of app instances the app is configured to run. Must be set together with `compute_min_instances`. Omitting both disables horizontal scaling.
+        :param pulumi.Input[_builtins.int] compute_min_instances: Minimum number of app instances the app is configured to run. Must be set together with `compute_max_instances`.
+        :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`. If omitted, the app uses `MEDIUM`.
         :param pulumi.Input[_builtins.str] description: The description of the app.
         :param pulumi.Input[Union['AppGitRepositoryArgs', 'AppGitRepositoryArgsDict', 'outputs.AppGitRepository']] git_repository: Git repository configuration for app deployments (see below). When specified, deployments can reference code from this repository by providing only the git reference (branch, tag, or commit).
         :param pulumi.Input[Union['AppGitSourceArgs', 'AppGitSourceArgsDict', 'outputs.AppGitSource']] git_source: The Git source to deploy from, specifying the reference to check out and an optional path to the app source code within the repository configured in `git_repository` (see below).
@@ -934,6 +1012,9 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppResourceArgs', 'AppResourceArgsDict', 'outputs.AppResource']]]] resources: A list of resources that the app have access to.
         :param pulumi.Input[_builtins.str] source_code_path: Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict', 'outputs.AppTelemetryExportDestination']]]] telemetry_export_destinations: A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
+        :param pulumi.Input[_builtins.str] thumbnail_path: Path to a local PNG or JPEG file of at most 250 KB to show as the app's thumbnail in the Apps UI. The provider checks the file the way the Apps UI does and rejects other files at plan time, or at apply time if the file doesn't exist yet when Pulumi plans, for example because another resource writes it. The image can't be read back from the service, so the provider keeps the file's MD5 hash in `thumbnail_md5` and uploads the file again when its content changes; changes made to the thumbnail outside of Pulumi aren't detected. Removing the argument deletes the thumbnail.
+               
+               > Updates apply the whole configuration: an argument removed from the configuration is cleared or reset to its default, even if it was set outside Pulumi. Enabling or disabling horizontal scaling (`compute_min_instances`/`compute_max_instances`) cannot be combined with a change to `compute_size` or `git_repository` in the same apply.
         :param pulumi.Input[_builtins.str] usage_policy_id: The Usage Policy ID set for this resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] user_api_scopes: A list of api scopes granted to the user access token.  See [REST API docs](https://docs.databricks.com/api/workspace/api/scopes) for full list of supported scopes.
         """
@@ -984,15 +1065,6 @@ class App(pulumi.CustomResource):
             ])
         ```
 
-        ## Related Resources
-
-        The following resources are used in the same context:
-
-        * SqlEndpoint to manage Databricks SQL [Endpoints](https://docs.databricks.com/sql/admin/sql-endpoints.html).
-        * ModelServing to serve this model on a Databricks serving endpoint.
-        * Secret to manage [secrets](https://docs.databricks.com/security/secrets/index.html#secrets-user-guide) in Databricks workspace.
-        * Job to manage [Databricks Jobs](https://docs.databricks.com/jobs.html) to run non-interactive code.
-
 
         :param str resource_name: The name of the resource.
         :param AppArgs args: The arguments to use to populate this resource's properties.
@@ -1024,6 +1096,7 @@ class App(pulumi.CustomResource):
                  source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
                  space: pulumi.Input[Optional[_builtins.str]] = None,
                  telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict', 'outputs.AppTelemetryExportDestination']]]]] = None,
+                 thumbnail_path: pulumi.Input[Optional[_builtins.str]] = None,
                  usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
@@ -1050,6 +1123,7 @@ class App(pulumi.CustomResource):
             __props__.__dict__["source_code_path"] = source_code_path
             __props__.__dict__["space"] = space
             __props__.__dict__["telemetry_export_destinations"] = telemetry_export_destinations
+            __props__.__dict__["thumbnail_path"] = thumbnail_path
             __props__.__dict__["usage_policy_id"] = usage_policy_id
             __props__.__dict__["user_api_scopes"] = user_api_scopes
             __props__.__dict__["active_deployment"] = None
@@ -1060,6 +1134,7 @@ class App(pulumi.CustomResource):
             __props__.__dict__["default_git_source"] = None
             __props__.__dict__["default_source_code_path"] = None
             __props__.__dict__["effective_budget_policy_id"] = None
+            __props__.__dict__["effective_resources"] = None
             __props__.__dict__["effective_usage_policy_id"] = None
             __props__.__dict__["effective_user_api_scopes"] = None
             __props__.__dict__["oauth2_app_client_id"] = None
@@ -1068,6 +1143,7 @@ class App(pulumi.CustomResource):
             __props__.__dict__["service_principal_client_id"] = None
             __props__.__dict__["service_principal_id"] = None
             __props__.__dict__["service_principal_name"] = None
+            __props__.__dict__["thumbnail_md5"] = None
             __props__.__dict__["thumbnail_url"] = None
             __props__.__dict__["update_time"] = None
             __props__.__dict__["updater"] = None
@@ -1095,6 +1171,7 @@ class App(pulumi.CustomResource):
             default_source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppEffectiveResourceArgs', 'AppEffectiveResourceArgsDict', 'outputs.AppEffectiveResource']]]]] = None,
             effective_usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             effective_user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             forward_user_access_token: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1113,6 +1190,8 @@ class App(pulumi.CustomResource):
             source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
             space: pulumi.Input[Optional[_builtins.str]] = None,
             telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict', 'outputs.AppTelemetryExportDestination']]]]] = None,
+            thumbnail_md5: pulumi.Input[Optional[_builtins.str]] = None,
+            thumbnail_path: pulumi.Input[Optional[_builtins.str]] = None,
             thumbnail_url: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             updater: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1129,7 +1208,9 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[Union['AppActiveDeploymentArgs', 'AppActiveDeploymentArgsDict', 'outputs.AppActiveDeployment']] active_deployment: attribute - the active deployment of the app. A deployment is considered active when it has been deployed to the app compute.
         :param pulumi.Input[Union['AppAppStatusArgs', 'AppAppStatusArgsDict', 'outputs.AppAppStatus']] app_status: attribute
         :param pulumi.Input[_builtins.str] budget_policy_id: The Budget Policy ID set for this resource.
-        :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
+        :param pulumi.Input[_builtins.int] compute_max_instances: Maximum number of app instances the app is configured to run. Must be set together with `compute_min_instances`. Omitting both disables horizontal scaling.
+        :param pulumi.Input[_builtins.int] compute_min_instances: Minimum number of app instances the app is configured to run. Must be set together with `compute_max_instances`.
+        :param pulumi.Input[_builtins.str] compute_size: A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`. If omitted, the app uses `MEDIUM`.
         :param pulumi.Input[Union['AppComputeStatusArgs', 'AppComputeStatusArgsDict', 'outputs.AppComputeStatus']] compute_status: attribute
         :param pulumi.Input[_builtins.str] create_time: The creation time of the deployment.
         :param pulumi.Input[_builtins.str] creator: The email of the user that created the deployment.
@@ -1150,6 +1231,10 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] service_principal_name: name of the app service principal
         :param pulumi.Input[_builtins.str] source_code_path: Workspace filesystem path of the source code to deploy from, as an alternative to Git-based deployment (`git_repository`/`git_source`). This value is not returned by the service; the workspace path of the last active deployment is exported as `default_source_code_path`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict', 'outputs.AppTelemetryExportDestination']]]] telemetry_export_destinations: A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
+        :param pulumi.Input[_builtins.str] thumbnail_md5: The MD5 hash of the file in `thumbnail_path` that was last uploaded as the app's thumbnail.
+        :param pulumi.Input[_builtins.str] thumbnail_path: Path to a local PNG or JPEG file of at most 250 KB to show as the app's thumbnail in the Apps UI. The provider checks the file the way the Apps UI does and rejects other files at plan time, or at apply time if the file doesn't exist yet when Pulumi plans, for example because another resource writes it. The image can't be read back from the service, so the provider keeps the file's MD5 hash in `thumbnail_md5` and uploads the file again when its content changes; changes made to the thumbnail outside of Pulumi aren't detected. Removing the argument deletes the thumbnail.
+               
+               > Updates apply the whole configuration: an argument removed from the configuration is cleared or reset to its default, even if it was set outside Pulumi. Enabling or disabling horizontal scaling (`compute_min_instances`/`compute_max_instances`) cannot be combined with a change to `compute_size` or `git_repository` in the same apply.
         :param pulumi.Input[_builtins.str] thumbnail_url: The URL of the thumbnail image for the app.
         :param pulumi.Input[_builtins.str] update_time: The update time of the deployment.
         :param pulumi.Input[_builtins.str] updater: The email of the user that last updated the app.
@@ -1174,6 +1259,7 @@ class App(pulumi.CustomResource):
         __props__.__dict__["default_source_code_path"] = default_source_code_path
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_budget_policy_id"] = effective_budget_policy_id
+        __props__.__dict__["effective_resources"] = effective_resources
         __props__.__dict__["effective_usage_policy_id"] = effective_usage_policy_id
         __props__.__dict__["effective_user_api_scopes"] = effective_user_api_scopes
         __props__.__dict__["forward_user_access_token"] = forward_user_access_token
@@ -1192,6 +1278,8 @@ class App(pulumi.CustomResource):
         __props__.__dict__["source_code_path"] = source_code_path
         __props__.__dict__["space"] = space
         __props__.__dict__["telemetry_export_destinations"] = telemetry_export_destinations
+        __props__.__dict__["thumbnail_md5"] = thumbnail_md5
+        __props__.__dict__["thumbnail_path"] = thumbnail_path
         __props__.__dict__["thumbnail_url"] = thumbnail_url
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["updater"] = updater
@@ -1216,6 +1304,7 @@ class App(pulumi.CustomResource):
             default_source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             effective_budget_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            effective_resources: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppEffectiveResourceArgs', 'AppEffectiveResourceArgsDict', 'outputs.AppEffectiveResource']]]]] = None,
             effective_usage_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             effective_user_api_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             forward_user_access_token: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1234,6 +1323,8 @@ class App(pulumi.CustomResource):
             source_code_path: pulumi.Input[Optional[_builtins.str]] = None,
             space: pulumi.Input[Optional[_builtins.str]] = None,
             telemetry_export_destinations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AppTelemetryExportDestinationArgs', 'AppTelemetryExportDestinationArgsDict', 'outputs.AppTelemetryExportDestination']]]]] = None,
+            thumbnail_md5: pulumi.Input[Optional[_builtins.str]] = None,
+            thumbnail_path: pulumi.Input[Optional[_builtins.str]] = None,
             thumbnail_url: pulumi.Input[Optional[_builtins.str]] = None,
             update_time: pulumi.Input[Optional[_builtins.str]] = None,
             updater: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1254,6 +1345,7 @@ class App(pulumi.CustomResource):
         __props__["defaultSourceCodePath"] = default_source_code_path
         __props__["description"] = description
         __props__["effectiveBudgetPolicyId"] = effective_budget_policy_id
+        __props__["effectiveResources"] = effective_resources
         __props__["effectiveUsagePolicyId"] = effective_usage_policy_id
         __props__["effectiveUserApiScopes"] = effective_user_api_scopes
         __props__["forwardUserAccessToken"] = forward_user_access_token
@@ -1272,6 +1364,8 @@ class App(pulumi.CustomResource):
         __props__["sourceCodePath"] = source_code_path
         __props__["space"] = space
         __props__["telemetryExportDestinations"] = telemetry_export_destinations
+        __props__["thumbnailMd5"] = thumbnail_md5
+        __props__["thumbnailPath"] = thumbnail_path
         __props__["thumbnailUrl"] = thumbnail_url
         __props__["updateTime"] = update_time
         __props__["updater"] = updater
@@ -1307,18 +1401,24 @@ class App(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="computeMaxInstances")
     def compute_max_instances(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Maximum number of app instances the app is configured to run. Must be set together with `compute_min_instances`. Omitting both disables horizontal scaling.
+        """
         return pulumi.get(self, "compute_max_instances")
 
     @_builtins.property
     @pulumi.getter(name="computeMinInstances")
     def compute_min_instances(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        Minimum number of app instances the app is configured to run. Must be set together with `compute_max_instances`.
+        """
         return pulumi.get(self, "compute_min_instances")
 
     @_builtins.property
     @pulumi.getter(name="computeSize")
     def compute_size(self) -> pulumi.Output[_builtins.str]:
         """
-        A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`.
+        A string specifying compute size for the App. Possible values are `MEDIUM`, `LARGE`. If omitted, the app uses `MEDIUM`.
         """
         return pulumi.get(self, "compute_size")
 
@@ -1374,6 +1474,11 @@ class App(pulumi.CustomResource):
         The effective budget policy ID.
         """
         return pulumi.get(self, "effective_budget_policy_id")
+
+    @_builtins.property
+    @pulumi.getter(name="effectiveResources")
+    def effective_resources(self) -> pulumi.Output[Sequence['outputs.AppEffectiveResource']]:
+        return pulumi.get(self, "effective_resources")
 
     @_builtins.property
     @pulumi.getter(name="effectiveUsagePolicyId")
@@ -1506,6 +1611,24 @@ class App(pulumi.CustomResource):
         A list of destinations to which the app's telemetry (logs, metrics, traces) is exported (see below).
         """
         return pulumi.get(self, "telemetry_export_destinations")
+
+    @_builtins.property
+    @pulumi.getter(name="thumbnailMd5")
+    def thumbnail_md5(self) -> pulumi.Output[_builtins.str]:
+        """
+        The MD5 hash of the file in `thumbnail_path` that was last uploaded as the app's thumbnail.
+        """
+        return pulumi.get(self, "thumbnail_md5")
+
+    @_builtins.property
+    @pulumi.getter(name="thumbnailPath")
+    def thumbnail_path(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Path to a local PNG or JPEG file of at most 250 KB to show as the app's thumbnail in the Apps UI. The provider checks the file the way the Apps UI does and rejects other files at plan time, or at apply time if the file doesn't exist yet when Pulumi plans, for example because another resource writes it. The image can't be read back from the service, so the provider keeps the file's MD5 hash in `thumbnail_md5` and uploads the file again when its content changes; changes made to the thumbnail outside of Pulumi aren't detected. Removing the argument deletes the thumbnail.
+
+        > Updates apply the whole configuration: an argument removed from the configuration is cleared or reset to its default, even if it was set outside Pulumi. Enabling or disabling horizontal scaling (`compute_min_instances`/`compute_max_instances`) cannot be combined with a change to `compute_size` or `git_repository` in the same apply.
+        """
+        return pulumi.get(self, "thumbnail_path")
 
     @_builtins.property
     @pulumi.getter(name="thumbnailUrl")

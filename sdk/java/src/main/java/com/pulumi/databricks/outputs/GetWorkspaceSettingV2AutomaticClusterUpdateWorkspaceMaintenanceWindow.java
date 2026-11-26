@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow {
     /**
-     * @return (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+     * @return (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule) - Schedule anchored to a day of the week, either every week or on given weeks of the month
      * 
      */
     private @Nullable GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule weekDayBasedSchedule;
 
     private GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindow() {}
     /**
-     * @return (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule)
+     * @return (ClusterAutoRestartMessageMaintenanceWindowWeekDayBasedSchedule) - Schedule anchored to a day of the week, either every week or on given weeks of the month
      * 
      */
     public Optional<GetWorkspaceSettingV2AutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedSchedule> weekDayBasedSchedule() {

@@ -56,6 +56,7 @@ namespace Pulumi.Databricks.Outputs
         /// The effective budget policy ID.
         /// </summary>
         public readonly string EffectiveBudgetPolicyId;
+        public readonly ImmutableArray<Outputs.GetAppsAppEffectiveResourceResult> EffectiveResources;
         /// <summary>
         /// The effective usage policy ID.
         /// </summary>
@@ -171,6 +172,8 @@ namespace Pulumi.Databricks.Outputs
 
             string effectiveBudgetPolicyId,
 
+            ImmutableArray<Outputs.GetAppsAppEffectiveResourceResult> effectiveResources,
+
             string effectiveUsagePolicyId,
 
             ImmutableArray<string> effectiveUserApiScopes,
@@ -230,6 +233,7 @@ namespace Pulumi.Databricks.Outputs
             DefaultSourceCodePath = defaultSourceCodePath;
             Description = description;
             EffectiveBudgetPolicyId = effectiveBudgetPolicyId;
+            EffectiveResources = effectiveResources;
             EffectiveUsagePolicyId = effectiveUsagePolicyId;
             EffectiveUserApiScopes = effectiveUserApiScopes;
             ForwardUserAccessToken = forwardUserAccessToken;

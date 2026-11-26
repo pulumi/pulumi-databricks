@@ -14,30 +14,31 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetWorkspaceIamUsersV2UserResult
     {
         /// <summary>
-        /// (string) - The accountId parent of the user in Databricks
+        /// (string) - The ID of the account that contains the user
         /// </summary>
         public readonly string AccountId;
         /// <summary>
-        /// (string) - The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+        /// (string) - Whether the user is active in the account. New users are active unless you set this to
+        /// `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
         /// </summary>
         public readonly string AccountUserStatus;
         /// <summary>
-        /// (string) - ExternalId of the user in the customer's IdP
+        /// (string) - The ID of the user in your identity provider (IdP)
         /// </summary>
         public readonly string ExternalId;
         /// <summary>
-        /// (UserFullName)
+        /// (UserFullName) - The user's name
         /// </summary>
         public readonly Outputs.GetWorkspaceIamUsersV2UserFullNameResult FullName;
         /// <summary>
-        /// (string) - The resource name of the user. The format depends on the API that returned it:
-        /// - Account-scoped: accounts/{account_id}/users/{user_id}
-        /// - Workspace-scoped: users/{user_id}
+        /// (string) - The resource name of the user, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/users/{user_id}`
+        /// - Workspace APIs: `users/{user_id}`
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The resource name of the account to list users in, `accounts/{account_id}`. Optional:
-        /// defaults to the account of the calling workspace, and any other account is rejected
+        /// The resource name of the account to list users in, in the format `accounts/{account_id}`.
+        /// Defaults to the account that contains this workspace. Any other account is rejected
         /// </summary>
         public readonly string Parent;
         /// <summary>
@@ -45,11 +46,12 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly Outputs.GetWorkspaceIamUsersV2UserProviderConfigResult? ProviderConfig;
         /// <summary>
-        /// (string) - Internal userId of the user in Databricks
+        /// (string) - The Databricks ID of the user
         /// </summary>
         public readonly string UserId;
         /// <summary>
-        /// (string) - Username/email of the user
+        /// (string) - The user's username, which is their email address. It can't be changed after the user is
+        /// created
         /// </summary>
         public readonly string Username;
 

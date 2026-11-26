@@ -119,28 +119,28 @@ public class AiGatewayMcpService extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * (string) - Creator identity
+     * (string) - Username or service principal application ID of the principal that created the MCP service
      * 
      */
     @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
     /**
-     * @return (string) - Creator identity
+     * @return (string) - Username or service principal application ID of the principal that created the MCP service
      * 
      */
     public Output<String> createdBy() {
         return this.createdBy;
     }
     /**
-     * (string) - Owner of the MCP service
+     * (string) - Username, group name, or service principal application ID of the MCP service owner
      * 
      */
     @Export(name="effectiveOwner", refs={String.class}, tree="[0]")
     private Output<String> effectiveOwner;
 
     /**
-     * @return (string) - Owner of the MCP service
+     * @return (string) - Username, group name, or service principal application ID of the MCP service owner
      * 
      */
     public Output<String> effectiveOwner() {
@@ -167,28 +167,32 @@ public class AiGatewayMcpService extends com.pulumi.resources.CustomResource {
         return this.etag;
     }
     /**
-     * Name for the MCP service, e.g. &#34;myMcpService&#34;
+     * Name of the MCP service within the parent schema. The name must not
+     * contain periods, spaces, forward slashes, percent signs, or control characters,
+     * and it is stored in lowercase
      * 
      */
     @Export(name="mcpServiceId", refs={String.class}, tree="[0]")
     private Output<String> mcpServiceId;
 
     /**
-     * @return Name for the MCP service, e.g. &#34;myMcpService&#34;
+     * @return Name of the MCP service within the parent schema. The name must not
+     * contain periods, spaces, forward slashes, percent signs, or control characters,
+     * and it is stored in lowercase
      * 
      */
     public Output<String> mcpServiceId() {
         return this.mcpServiceId;
     }
     /**
-     * (string) - Metastore hosting the MCP service
+     * (string) - Unique identifier of the metastore that contains the MCP service
      * 
      */
     @Export(name="metastoreId", refs={String.class}, tree="[0]")
     private Output<String> metastoreId;
 
     /**
-     * @return (string) - Metastore hosting the MCP service
+     * @return (string) - Unique identifier of the metastore that contains the MCP service
      * 
      */
     public Output<String> metastoreId() {
@@ -198,8 +202,9 @@ public class AiGatewayMcpService extends com.pulumi.resources.CustomResource {
      * (string) - Resource name of the MCP service.
      * Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `mcpServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `mcpServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
@@ -209,8 +214,9 @@ public class AiGatewayMcpService extends com.pulumi.resources.CustomResource {
      * @return (string) - Resource name of the MCP service.
      * Format: `mcp-services/{catalog}.{schema}.{mcp_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `mcpServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `mcpServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      * 
      */
     public Output<String> name() {
@@ -263,14 +269,16 @@ public class AiGatewayMcpService extends com.pulumi.resources.CustomResource {
         return this.updateTime;
     }
     /**
-     * (string) - Identity of the last updater
+     * (string) - Username or service principal application ID of the principal that last updated the MCP
+     * service
      * 
      */
     @Export(name="updatedBy", refs={String.class}, tree="[0]")
     private Output<String> updatedBy;
 
     /**
-     * @return (string) - Identity of the last updater
+     * @return (string) - Username or service principal application ID of the principal that last updated the MCP
+     * service
      * 
      */
     public Output<String> updatedBy() {

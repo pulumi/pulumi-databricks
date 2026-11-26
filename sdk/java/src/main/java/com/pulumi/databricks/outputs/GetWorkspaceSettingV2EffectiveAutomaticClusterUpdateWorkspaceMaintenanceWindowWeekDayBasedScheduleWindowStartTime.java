@@ -12,26 +12,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime {
     /**
-     * @return (integer)
+     * @return (integer) - Hour of the day on a 24-hour clock
      * 
      */
     private @Nullable Integer hours;
     /**
-     * @return (integer)
+     * @return (integer) - Minute of the hour
      * 
      */
     private @Nullable Integer minutes;
 
     private GetWorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleWindowStartTime() {}
     /**
-     * @return (integer)
+     * @return (integer) - Hour of the day on a 24-hour clock
      * 
      */
     public Optional<Integer> hours() {
         return Optional.ofNullable(this.hours);
     }
     /**
-     * @return (integer)
+     * @return (integer) - Minute of the hour
      * 
      */
     public Optional<Integer> minutes() {

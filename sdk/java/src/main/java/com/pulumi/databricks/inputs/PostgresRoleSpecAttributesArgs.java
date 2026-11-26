@@ -15,23 +15,47 @@ public final class PostgresRoleSpecAttributesArgs extends com.pulumi.resources.R
 
     public static final PostgresRoleSpecAttributesArgs Empty = new PostgresRoleSpecAttributesArgs();
 
+    /**
+     * Whether the role bypasses every row-level security policy (the Postgres BYPASSRLS attribute)
+     * 
+     */
     @Import(name="bypassrls")
     private @Nullable Output<Boolean> bypassrls;
 
+    /**
+     * @return Whether the role bypasses every row-level security policy (the Postgres BYPASSRLS attribute)
+     * 
+     */
     public Optional<Output<Boolean>> bypassrls() {
         return Optional.ofNullable(this.bypassrls);
     }
 
+    /**
+     * Whether the role can create databases (the Postgres CREATEDB attribute)
+     * 
+     */
     @Import(name="createdb")
     private @Nullable Output<Boolean> createdb;
 
+    /**
+     * @return Whether the role can create databases (the Postgres CREATEDB attribute)
+     * 
+     */
     public Optional<Output<Boolean>> createdb() {
         return Optional.ofNullable(this.createdb);
     }
 
+    /**
+     * Whether the role can create, alter and drop other roles (the Postgres CREATEROLE attribute)
+     * 
+     */
     @Import(name="createrole")
     private @Nullable Output<Boolean> createrole;
 
+    /**
+     * @return Whether the role can create, alter and drop other roles (the Postgres CREATEROLE attribute)
+     * 
+     */
     public Optional<Output<Boolean>> createrole() {
         return Optional.ofNullable(this.createrole);
     }
@@ -62,29 +86,65 @@ public final class PostgresRoleSpecAttributesArgs extends com.pulumi.resources.R
             $ = new PostgresRoleSpecAttributesArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param bypassrls Whether the role bypasses every row-level security policy (the Postgres BYPASSRLS attribute)
+         * 
+         * @return builder
+         * 
+         */
         public Builder bypassrls(@Nullable Output<Boolean> bypassrls) {
             $.bypassrls = bypassrls;
             return this;
         }
 
+        /**
+         * @param bypassrls Whether the role bypasses every row-level security policy (the Postgres BYPASSRLS attribute)
+         * 
+         * @return builder
+         * 
+         */
         public Builder bypassrls(Boolean bypassrls) {
             return bypassrls(Output.of(bypassrls));
         }
 
+        /**
+         * @param createdb Whether the role can create databases (the Postgres CREATEDB attribute)
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdb(@Nullable Output<Boolean> createdb) {
             $.createdb = createdb;
             return this;
         }
 
+        /**
+         * @param createdb Whether the role can create databases (the Postgres CREATEDB attribute)
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdb(Boolean createdb) {
             return createdb(Output.of(createdb));
         }
 
+        /**
+         * @param createrole Whether the role can create, alter and drop other roles (the Postgres CREATEROLE attribute)
+         * 
+         * @return builder
+         * 
+         */
         public Builder createrole(@Nullable Output<Boolean> createrole) {
             $.createrole = createrole;
             return this;
         }
 
+        /**
+         * @param createrole Whether the role can create, alter and drop other roles (the Postgres CREATEROLE attribute)
+         * 
+         * @return builder
+         * 
+         */
         public Builder createrole(Boolean createrole) {
             return createrole(Output.of(createrole));
         }

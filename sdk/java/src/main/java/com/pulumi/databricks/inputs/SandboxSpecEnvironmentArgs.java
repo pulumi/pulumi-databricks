@@ -16,18 +16,20 @@ public final class SandboxSpecEnvironmentArgs extends com.pulumi.resources.Resou
     public static final SandboxSpecEnvironmentArgs Empty = new SandboxSpecEnvironmentArgs();
 
     /**
-     * The Unity Catalog container image to use for the sandbox environment
-     * (for example, `catalog.schema.folder.image:tag`). See
-     * [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
+     * The Unity Catalog container image to run the sandbox from, in the form
+     * `catalog.schema.artifact:tag`, or `catalog.schema.artifact{@literal @}sha256:&lt;digest&gt;` to pin an
+     * exact version. When omitted, the sandbox runs the default sandbox image. See
+     * [custom images](https://docs.databricks.com/en/compute/serverless/sandbox-custom-image)
      * 
      */
     @Import(name="imageUri")
     private @Nullable Output<String> imageUri;
 
     /**
-     * @return The Unity Catalog container image to use for the sandbox environment
-     * (for example, `catalog.schema.folder.image:tag`). See
-     * [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
+     * @return The Unity Catalog container image to run the sandbox from, in the form
+     * `catalog.schema.artifact:tag`, or `catalog.schema.artifact{@literal @}sha256:&lt;digest&gt;` to pin an
+     * exact version. When omitted, the sandbox runs the default sandbox image. See
+     * [custom images](https://docs.databricks.com/en/compute/serverless/sandbox-custom-image)
      * 
      */
     public Optional<Output<String>> imageUri() {
@@ -59,9 +61,10 @@ public final class SandboxSpecEnvironmentArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param imageUri The Unity Catalog container image to use for the sandbox environment
-         * (for example, `catalog.schema.folder.image:tag`). See
-         * [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
+         * @param imageUri The Unity Catalog container image to run the sandbox from, in the form
+         * `catalog.schema.artifact:tag`, or `catalog.schema.artifact{@literal @}sha256:&lt;digest&gt;` to pin an
+         * exact version. When omitted, the sandbox runs the default sandbox image. See
+         * [custom images](https://docs.databricks.com/en/compute/serverless/sandbox-custom-image)
          * 
          * @return builder
          * 
@@ -72,9 +75,10 @@ public final class SandboxSpecEnvironmentArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param imageUri The Unity Catalog container image to use for the sandbox environment
-         * (for example, `catalog.schema.folder.image:tag`). See
-         * [Artifact Registry](https://docs.databricks.com/en/artifact-registry/)
+         * @param imageUri The Unity Catalog container image to run the sandbox from, in the form
+         * `catalog.schema.artifact:tag`, or `catalog.schema.artifact{@literal @}sha256:&lt;digest&gt;` to pin an
+         * exact version. When omitted, the sandbox runs the default sandbox image. See
+         * [custom images](https://docs.databricks.com/en/compute/serverless/sandbox-custom-image)
          * 
          * @return builder
          * 

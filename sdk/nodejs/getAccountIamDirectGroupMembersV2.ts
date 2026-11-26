@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/account/iamv2)
  *
@@ -41,13 +41,12 @@ export function getAccountIamDirectGroupMembersV2(args: GetAccountIamDirectGroup
  */
 export interface GetAccountIamDirectGroupMembersV2Args {
     /**
-     * The maximum number of members to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * The maximum number of members to return, up to 1000. The default is 1000. A page can contain
+     * fewer members
      */
     pageSize?: number;
     /**
-     * The parent resource name of the group whose direct members to list.
-     * Format: accounts/{account_id}/groups/{group_id}
+     * The resource name of the group, in the format `accounts/{account_id}/groups/{group_id}`
      */
     parent: string;
 }
@@ -59,15 +58,14 @@ export interface GetAccountIamDirectGroupMembersV2Result {
     readonly directGroupMembers: outputs.GetAccountIamDirectGroupMembersV2DirectGroupMember[];
     readonly pageSize?: number;
     /**
-     * (string) - The resource name of the group that contains the membership. The format depends on the API
-     * that returned it:
-     * - Account-scoped: accounts/{account_id}/groups/{group_id}
-     * - Workspace-scoped: groups/{group_id}
+     * (string) - The resource name of the group, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/groups/{group_id}`
+     * - Workspace APIs: `groups/{group_id}`
      */
     readonly parent: string;
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/account/iamv2)
  *
@@ -101,13 +99,12 @@ export function getAccountIamDirectGroupMembersV2Output(args: GetAccountIamDirec
  */
 export interface GetAccountIamDirectGroupMembersV2OutputArgs {
     /**
-     * The maximum number of members to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * The maximum number of members to return, up to 1000. The default is 1000. A page can contain
+     * fewer members
      */
     pageSize?: pulumi.Input<number | undefined>;
     /**
-     * The parent resource name of the group whose direct members to list.
-     * Format: accounts/{account_id}/groups/{group_id}
+     * The resource name of the group, in the format `accounts/{account_id}/groups/{group_id}`
      */
     parent: pulumi.Input<string>;
 }

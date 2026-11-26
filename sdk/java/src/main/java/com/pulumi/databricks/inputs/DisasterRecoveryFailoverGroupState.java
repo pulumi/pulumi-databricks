@@ -85,14 +85,18 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
     }
 
     /**
-     * (boolean) - True if errors currently block the replication point
+     * (boolean) - True when replication errors are preventing the replication point from advancing.
+     * Populated only while the failover group is INITIAL_REPLICATION or ACTIVE; the blocking
+     * errors are listed in the system.replication.states system table
      * 
      */
     @Import(name="hasReplicationPointBlockingErrors")
     private @Nullable Output<Boolean> hasReplicationPointBlockingErrors;
 
     /**
-     * @return (boolean) - True if errors currently block the replication point
+     * @return (boolean) - True when replication errors are preventing the replication point from advancing.
+     * Populated only while the failover group is INITIAL_REPLICATION or ACTIVE; the blocking
+     * errors are listed in the system.replication.states system table
      * 
      */
     public Optional<Output<Boolean>> hasReplicationPointBlockingErrors() {
@@ -101,7 +105,7 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
 
     /**
      * Initial primary region. Used only in Create requests to set the starting
-     * primary region. Not returned in responses
+     * primary region, and must be one of the regions in `regions`. Not returned in responses
      * 
      */
     @Import(name="initialPrimaryRegion")
@@ -109,7 +113,7 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
 
     /**
      * @return Initial primary region. Used only in Create requests to set the starting
-     * primary region. Not returned in responses
+     * primary region, and must be one of the regions in `regions`. Not returned in responses
      * 
      */
     public Optional<Output<String>> initialPrimaryRegion() {
@@ -164,14 +168,16 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
     }
 
     /**
-     * List of all regions participating in this failover group
+     * The two cloud regions that participate in this failover group, the primary and the
+     * secondary. Each workspace set contains one workspace in each region
      * 
      */
     @Import(name="regions")
     private @Nullable Output<List<String>> regions;
 
     /**
-     * @return List of all regions participating in this failover group
+     * @return The two cloud regions that participate in this failover group, the primary and the
+     * secondary. Each workspace set contains one workspace in each region
      * 
      */
     public Optional<Output<List<String>>> regions() {
@@ -179,14 +185,22 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
     }
 
     /**
-     * (string) - The latest point in time to which data has been replicated
+     * (string) - The most recent point in time up to which all in-scope assets have been replicated to the
+     * secondary region. Data written after this point might not exist in the secondary yet and
+     * can be lost in an unplanned failover. When both Unity Catalog and workspace assets are
+     * replicated, this is the older of the two replication points. Not populated until the
+     * first replication point exists, and not populated in ListFailoverGroups responses
      * 
      */
     @Import(name="replicationPoint")
     private @Nullable Output<String> replicationPoint;
 
     /**
-     * @return (string) - The latest point in time to which data has been replicated
+     * @return (string) - The most recent point in time up to which all in-scope assets have been replicated to the
+     * secondary region. Data written after this point might not exist in the secondary yet and
+     * can be lost in an unplanned failover. When both Unity Catalog and workspace assets are
+     * replicated, this is the older of the two replication points. Not populated until the
+     * first replication point exists, and not populated in ListFailoverGroups responses
      * 
      */
     public Optional<Output<String>> replicationPoint() {
@@ -194,14 +208,22 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
     }
 
     /**
-     * (string) - Aggregate state of the failover group. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
+     * (string) - Aggregate state of the failover group across Unity Catalog and workspace asset
+     * replication. The group is INITIAL_REPLICATION until it has a replication point, ACTIVE
+     * while replication is in steady state and failover is available, and FAILING_OVER while a
+     * failover is in progress; the `*_FAILED` values mean that the last operation did not
+     * complete. Not populated in ListFailoverGroups responses. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return (string) - Aggregate state of the failover group. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
+     * @return (string) - Aggregate state of the failover group across Unity Catalog and workspace asset
+     * replication. The group is INITIAL_REPLICATION until it has a replication point, ACTIVE
+     * while replication is in steady state and failover is available, and FAILING_OVER while a
+     * failover is in progress; the `*_FAILED` values mean that the last operation did not
+     * complete. Not populated in ListFailoverGroups responses. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
      * 
      */
     public Optional<Output<String>> state() {
@@ -209,14 +231,16 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
     }
 
     /**
-     * Unity Catalog replication configuration
+     * Unity Catalog replication configuration: the catalogs to replicate and the storage
+     * location mappings for their data. Omit it to replicate workspace assets only
      * 
      */
     @Import(name="unityCatalogAssets")
     private @Nullable Output<DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs> unityCatalogAssets;
 
     /**
-     * @return Unity Catalog replication configuration
+     * @return Unity Catalog replication configuration: the catalogs to replicate and the storage
+     * location mappings for their data. Omit it to replicate workspace assets only
      * 
      */
     public Optional<Output<DisasterRecoveryFailoverGroupUnityCatalogAssetsArgs>> unityCatalogAssets() {
@@ -239,14 +263,16 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
     }
 
     /**
-     * Workspace sets, each containing workspaces that replicate to each other
+     * Workspace sets, each containing workspaces that replicate to each other. A failover group
+     * currently supports exactly one workspace set
      * 
      */
     @Import(name="workspaceSets")
     private @Nullable Output<List<DisasterRecoveryFailoverGroupWorkspaceSetArgs>> workspaceSets;
 
     /**
-     * @return Workspace sets, each containing workspaces that replicate to each other
+     * @return Workspace sets, each containing workspaces that replicate to each other. A failover group
+     * currently supports exactly one workspace set
      * 
      */
     public Optional<Output<List<DisasterRecoveryFailoverGroupWorkspaceSetArgs>>> workspaceSets() {
@@ -380,7 +406,9 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
         }
 
         /**
-         * @param hasReplicationPointBlockingErrors (boolean) - True if errors currently block the replication point
+         * @param hasReplicationPointBlockingErrors (boolean) - True when replication errors are preventing the replication point from advancing.
+         * Populated only while the failover group is INITIAL_REPLICATION or ACTIVE; the blocking
+         * errors are listed in the system.replication.states system table
          * 
          * @return builder
          * 
@@ -391,7 +419,9 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
         }
 
         /**
-         * @param hasReplicationPointBlockingErrors (boolean) - True if errors currently block the replication point
+         * @param hasReplicationPointBlockingErrors (boolean) - True when replication errors are preventing the replication point from advancing.
+         * Populated only while the failover group is INITIAL_REPLICATION or ACTIVE; the blocking
+         * errors are listed in the system.replication.states system table
          * 
          * @return builder
          * 
@@ -402,7 +432,7 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
 
         /**
          * @param initialPrimaryRegion Initial primary region. Used only in Create requests to set the starting
-         * primary region. Not returned in responses
+         * primary region, and must be one of the regions in `regions`. Not returned in responses
          * 
          * @return builder
          * 
@@ -414,7 +444,7 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
 
         /**
          * @param initialPrimaryRegion Initial primary region. Used only in Create requests to set the starting
-         * primary region. Not returned in responses
+         * primary region, and must be one of the regions in `regions`. Not returned in responses
          * 
          * @return builder
          * 
@@ -489,7 +519,8 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
         }
 
         /**
-         * @param regions List of all regions participating in this failover group
+         * @param regions The two cloud regions that participate in this failover group, the primary and the
+         * secondary. Each workspace set contains one workspace in each region
          * 
          * @return builder
          * 
@@ -500,7 +531,8 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
         }
 
         /**
-         * @param regions List of all regions participating in this failover group
+         * @param regions The two cloud regions that participate in this failover group, the primary and the
+         * secondary. Each workspace set contains one workspace in each region
          * 
          * @return builder
          * 
@@ -510,7 +542,8 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
         }
 
         /**
-         * @param regions List of all regions participating in this failover group
+         * @param regions The two cloud regions that participate in this failover group, the primary and the
+         * secondary. Each workspace set contains one workspace in each region
          * 
          * @return builder
          * 
@@ -520,7 +553,11 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
         }
 
         /**
-         * @param replicationPoint (string) - The latest point in time to which data has been replicated
+         * @param replicationPoint (string) - The most recent point in time up to which all in-scope assets have been replicated to the
+         * secondary region. Data written after this point might not exist in the secondary yet and
+         * can be lost in an unplanned failover. When both Unity Catalog and workspace assets are
+         * replicated, this is the older of the two replication points. Not populated until the
+         * first replication point exists, and not populated in ListFailoverGroups responses
          * 
          * @return builder
          * 
@@ -531,7 +568,11 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
         }
 
         /**
-         * @param replicationPoint (string) - The latest point in time to which data has been replicated
+         * @param replicationPoint (string) - The most recent point in time up to which all in-scope assets have been replicated to the
+         * secondary region. Data written after this point might not exist in the secondary yet and
+         * can be lost in an unplanned failover. When both Unity Catalog and workspace assets are
+         * replicated, this is the older of the two replication points. Not populated until the
+         * first replication point exists, and not populated in ListFailoverGroups responses
          * 
          * @return builder
          * 
@@ -541,7 +582,11 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
         }
 
         /**
-         * @param state (string) - Aggregate state of the failover group. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
+         * @param state (string) - Aggregate state of the failover group across Unity Catalog and workspace asset
+         * replication. The group is INITIAL_REPLICATION until it has a replication point, ACTIVE
+         * while replication is in steady state and failover is available, and FAILING_OVER while a
+         * failover is in progress; the `*_FAILED` values mean that the last operation did not
+         * complete. Not populated in ListFailoverGroups responses. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
          * 
          * @return builder
          * 
@@ -552,7 +597,11 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
         }
 
         /**
-         * @param state (string) - Aggregate state of the failover group. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
+         * @param state (string) - Aggregate state of the failover group across Unity Catalog and workspace asset
+         * replication. The group is INITIAL_REPLICATION until it has a replication point, ACTIVE
+         * while replication is in steady state and failover is available, and FAILING_OVER while a
+         * failover is in progress; the `*_FAILED` values mean that the last operation did not
+         * complete. Not populated in ListFailoverGroups responses. Possible values are: `ACTIVE`, `CREATING`, `CREATION_FAILED`, `DELETING`, `DELETION_FAILED`, `FAILING_OVER`, `FAILOVER_FAILED`, `INITIAL_REPLICATION`
          * 
          * @return builder
          * 
@@ -562,7 +611,8 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
         }
 
         /**
-         * @param unityCatalogAssets Unity Catalog replication configuration
+         * @param unityCatalogAssets Unity Catalog replication configuration: the catalogs to replicate and the storage
+         * location mappings for their data. Omit it to replicate workspace assets only
          * 
          * @return builder
          * 
@@ -573,7 +623,8 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
         }
 
         /**
-         * @param unityCatalogAssets Unity Catalog replication configuration
+         * @param unityCatalogAssets Unity Catalog replication configuration: the catalogs to replicate and the storage
+         * location mappings for their data. Omit it to replicate workspace assets only
          * 
          * @return builder
          * 
@@ -604,7 +655,8 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
         }
 
         /**
-         * @param workspaceSets Workspace sets, each containing workspaces that replicate to each other
+         * @param workspaceSets Workspace sets, each containing workspaces that replicate to each other. A failover group
+         * currently supports exactly one workspace set
          * 
          * @return builder
          * 
@@ -615,7 +667,8 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
         }
 
         /**
-         * @param workspaceSets Workspace sets, each containing workspaces that replicate to each other
+         * @param workspaceSets Workspace sets, each containing workspaces that replicate to each other. A failover group
+         * currently supports exactly one workspace set
          * 
          * @return builder
          * 
@@ -625,7 +678,8 @@ public final class DisasterRecoveryFailoverGroupState extends com.pulumi.resourc
         }
 
         /**
-         * @param workspaceSets Workspace sets, each containing workspaces that replicate to each other
+         * @param workspaceSets Workspace sets, each containing workspaces that replicate to each other. A failover group
+         * currently supports exactly one workspace set
          * 
          * @return builder
          * 

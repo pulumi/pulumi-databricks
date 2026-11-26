@@ -14,7 +14,8 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetDisasterRecoveryFailoverGroupInitialReplicationProgressResult
     {
         /// <summary>
-        /// (integer) - Percent complete, 0-100
+        /// (integer) - Percentage of in-scope assets replicated so far, from 0 to 100. Stays below 100 while
+        /// errors block the first replication point
         /// </summary>
         public readonly int Completed;
 

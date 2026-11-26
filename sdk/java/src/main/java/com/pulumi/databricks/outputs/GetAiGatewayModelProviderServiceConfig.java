@@ -34,27 +34,33 @@ public final class GetAiGatewayModelProviderServiceConfig {
      */
     private @Nullable Boolean allowAllTargets;
     /**
-     * @return (ModelProviderServiceConfigAmazonBedrockProviderConfig)
+     * @return (ModelProviderServiceConfigAmazonBedrockProviderConfig) - Configuration for Amazon Bedrock. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`
      * 
      */
     private @Nullable GetAiGatewayModelProviderServiceConfigAmazonBedrock amazonBedrock;
     /**
-     * @return (ModelProviderServiceConfigAnthropicProviderConfig)
+     * @return (ModelProviderServiceConfigAnthropicProviderConfig) - Configuration for Anthropic. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`
      * 
      */
     private @Nullable GetAiGatewayModelProviderServiceConfigAnthropic anthropic;
     /**
-     * @return (ModelProviderServiceConfigAzureOpenAiProviderConfig)
+     * @return (ModelProviderServiceConfigAzureOpenAiProviderConfig) - Configuration for Azure OpenAI. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`
      * 
      */
     private @Nullable GetAiGatewayModelProviderServiceConfigAzureOpenai azureOpenai;
     /**
-     * @return (ModelProviderServiceConfigAmazonBedrockProviderConfig)
+     * @return (ModelProviderServiceConfigAmazonBedrockProviderConfig) - Configuration for Amazon Bedrock Mantle, with the same fields as
+     * `amazonBedrock`. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`
      * 
      */
     private @Nullable GetAiGatewayModelProviderServiceConfigBedrockMantle bedrockMantle;
     /**
-     * @return (ModelProviderServiceConfigCustomProviderConfig)
+     * @return (ModelProviderServiceConfigCustomProviderConfig) - Configuration for a custom OpenAI-compatible provider. Set this field when
+     * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`
      * 
      */
     private @Nullable GetAiGatewayModelProviderServiceConfigCustom custom;
@@ -85,7 +91,8 @@ public final class GetAiGatewayModelProviderServiceConfig {
      */
     private @Nullable Boolean forwardUnmanagedPaths;
     /**
-     * @return (ModelProviderServiceConfigGeminiEnterpriseProviderConfig)
+     * @return (ModelProviderServiceConfigGeminiEnterpriseProviderConfig) - Configuration for Google Gemini Enterprise. Set this field when
+     * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`
      * 
      */
     private @Nullable GetAiGatewayModelProviderServiceConfigGeminiEnterprise geminiEnterprise;
@@ -97,12 +104,14 @@ public final class GetAiGatewayModelProviderServiceConfig {
      */
     private @Nullable GetAiGatewayModelProviderServiceConfigInferenceTable inferenceTable;
     /**
-     * @return (ModelProviderServiceConfigMicrosoftFoundryProviderConfig)
+     * @return (ModelProviderServiceConfigMicrosoftFoundryProviderConfig) - Configuration for Microsoft Foundry. Set this field when
+     * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`
      * 
      */
     private @Nullable GetAiGatewayModelProviderServiceConfigMicrosoftFoundry microsoftFoundry;
     /**
-     * @return (ModelProviderServiceConfigOpenAiProviderConfig)
+     * @return (ModelProviderServiceConfigOpenAiProviderConfig) - Configuration for OpenAI. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
      * 
      */
     private @Nullable GetAiGatewayModelProviderServiceConfigOpenai openai;
@@ -149,35 +158,41 @@ public final class GetAiGatewayModelProviderServiceConfig {
         return Optional.ofNullable(this.allowAllTargets);
     }
     /**
-     * @return (ModelProviderServiceConfigAmazonBedrockProviderConfig)
+     * @return (ModelProviderServiceConfigAmazonBedrockProviderConfig) - Configuration for Amazon Bedrock. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_AMAZON_BEDROCK`
      * 
      */
     public Optional<GetAiGatewayModelProviderServiceConfigAmazonBedrock> amazonBedrock() {
         return Optional.ofNullable(this.amazonBedrock);
     }
     /**
-     * @return (ModelProviderServiceConfigAnthropicProviderConfig)
+     * @return (ModelProviderServiceConfigAnthropicProviderConfig) - Configuration for Anthropic. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_ANTHROPIC`
      * 
      */
     public Optional<GetAiGatewayModelProviderServiceConfigAnthropic> anthropic() {
         return Optional.ofNullable(this.anthropic);
     }
     /**
-     * @return (ModelProviderServiceConfigAzureOpenAiProviderConfig)
+     * @return (ModelProviderServiceConfigAzureOpenAiProviderConfig) - Configuration for Azure OpenAI. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_AZURE_OPENAI`
      * 
      */
     public Optional<GetAiGatewayModelProviderServiceConfigAzureOpenai> azureOpenai() {
         return Optional.ofNullable(this.azureOpenai);
     }
     /**
-     * @return (ModelProviderServiceConfigAmazonBedrockProviderConfig)
+     * @return (ModelProviderServiceConfigAmazonBedrockProviderConfig) - Configuration for Amazon Bedrock Mantle, with the same fields as
+     * `amazonBedrock`. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_BEDROCK_MANTLE`
      * 
      */
     public Optional<GetAiGatewayModelProviderServiceConfigBedrockMantle> bedrockMantle() {
         return Optional.ofNullable(this.bedrockMantle);
     }
     /**
-     * @return (ModelProviderServiceConfigCustomProviderConfig)
+     * @return (ModelProviderServiceConfigCustomProviderConfig) - Configuration for a custom OpenAI-compatible provider. Set this field when
+     * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_CUSTOM`
      * 
      */
     public Optional<GetAiGatewayModelProviderServiceConfigCustom> custom() {
@@ -216,7 +231,8 @@ public final class GetAiGatewayModelProviderServiceConfig {
         return Optional.ofNullable(this.forwardUnmanagedPaths);
     }
     /**
-     * @return (ModelProviderServiceConfigGeminiEnterpriseProviderConfig)
+     * @return (ModelProviderServiceConfigGeminiEnterpriseProviderConfig) - Configuration for Google Gemini Enterprise. Set this field when
+     * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_GEMINI_ENTERPRISE`
      * 
      */
     public Optional<GetAiGatewayModelProviderServiceConfigGeminiEnterprise> geminiEnterprise() {
@@ -232,14 +248,16 @@ public final class GetAiGatewayModelProviderServiceConfig {
         return Optional.ofNullable(this.inferenceTable);
     }
     /**
-     * @return (ModelProviderServiceConfigMicrosoftFoundryProviderConfig)
+     * @return (ModelProviderServiceConfigMicrosoftFoundryProviderConfig) - Configuration for Microsoft Foundry. Set this field when
+     * `providerType` is `EXTERNAL_MODEL_PROVIDER_TYPE_MICROSOFT_FOUNDRY`
      * 
      */
     public Optional<GetAiGatewayModelProviderServiceConfigMicrosoftFoundry> microsoftFoundry() {
         return Optional.ofNullable(this.microsoftFoundry);
     }
     /**
-     * @return (ModelProviderServiceConfigOpenAiProviderConfig)
+     * @return (ModelProviderServiceConfigOpenAiProviderConfig) - Configuration for OpenAI. Set this field when `providerType` is
+     * `EXTERNAL_MODEL_PROVIDER_TYPE_OPENAI`
      * 
      */
     public Optional<GetAiGatewayModelProviderServiceConfigOpenai> openai() {

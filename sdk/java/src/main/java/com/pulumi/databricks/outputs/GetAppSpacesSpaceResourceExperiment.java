@@ -11,26 +11,28 @@ import java.util.Objects;
 @CustomType
 public final class GetAppSpacesSpaceResourceExperiment {
     /**
-     * @return (string)
+     * @return (string) - ID of the MLflow experiment
      * 
      */
     private String experimentId;
     /**
-     * @return (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * @return (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      * 
      */
     private String permission;
 
     private GetAppSpacesSpaceResourceExperiment() {}
     /**
-     * @return (string)
+     * @return (string) - ID of the MLflow experiment
      * 
      */
     public String experimentId() {
         return this.experimentId;
     }
     /**
-     * @return (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * @return (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      * 
      */
     public String permission() {

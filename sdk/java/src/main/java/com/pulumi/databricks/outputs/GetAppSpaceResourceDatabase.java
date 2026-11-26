@@ -11,38 +11,40 @@ import java.util.Objects;
 @CustomType
 public final class GetAppSpaceResourceDatabase {
     /**
-     * @return (string)
+     * @return (string) - Name of the database within the instance
      * 
      */
     private String databaseName;
     /**
-     * @return (string)
+     * @return (string) - Name of the Lakebase database instance
      * 
      */
     private String instanceName;
     /**
-     * @return (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * @return (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      * 
      */
     private String permission;
 
     private GetAppSpaceResourceDatabase() {}
     /**
-     * @return (string)
+     * @return (string) - Name of the database within the instance
      * 
      */
     public String databaseName() {
         return this.databaseName;
     }
     /**
-     * @return (string)
+     * @return (string) - Name of the Lakebase database instance
      * 
      */
     public String instanceName() {
         return this.instanceName;
     }
     /**
-     * @return (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * @return (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      * 
      */
     public String permission() {

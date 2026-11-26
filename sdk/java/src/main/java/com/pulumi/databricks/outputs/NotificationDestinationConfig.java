@@ -17,7 +17,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NotificationDestinationConfig {
+    /**
+     * @return The configuration for a Slack channel reached through the Databricks app. The app must already be installed in the Slack workspace and connected to the Databricks workspace. It must contain the following:
+     * 
+     */
     private @Nullable NotificationDestinationConfigDatabricksAppSlack databricksAppSlack;
+    /**
+     * @return The configuration for a Microsoft Teams channel reached through the Databricks app. The app must already be installed in the Microsoft 365 tenant and connected to the Databricks workspace. It must contain the following:
+     * 
+     */
     private @Nullable NotificationDestinationConfigDatabricksAppTeams databricksAppTeams;
     /**
      * @return The email configuration of the Notification Destination. It must contain the following:
@@ -46,9 +54,17 @@ public final class NotificationDestinationConfig {
     private @Nullable NotificationDestinationConfigSlack slack;
 
     private NotificationDestinationConfig() {}
+    /**
+     * @return The configuration for a Slack channel reached through the Databricks app. The app must already be installed in the Slack workspace and connected to the Databricks workspace. It must contain the following:
+     * 
+     */
     public Optional<NotificationDestinationConfigDatabricksAppSlack> databricksAppSlack() {
         return Optional.ofNullable(this.databricksAppSlack);
     }
+    /**
+     * @return The configuration for a Microsoft Teams channel reached through the Databricks app. The app must already be installed in the Microsoft 365 tenant and connected to the Databricks workspace. It must contain the following:
+     * 
+     */
     public Optional<NotificationDestinationConfigDatabricksAppTeams> databricksAppTeams() {
         return Optional.ofNullable(this.databricksAppTeams);
     }

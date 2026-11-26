@@ -12,6 +12,7 @@ import com.pulumi.databricks.Utilities;
 import com.pulumi.databricks.inputs.GitCredentialState;
 import com.pulumi.databricks.outputs.GitCredentialProviderConfig;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +24,8 @@ import javax.annotation.Nullable;
  * This resource allows you to manage credentials for [Databricks Repos](https://docs.databricks.com/repos.html) using [Git Credentials API](https://docs.databricks.com/dev-tools/api/latest/gitcredentials.html).
  * 
  * &gt; This resource can only be used with a workspace-level provider!
+ * 
+ * &gt; **Note** Write-Only argument `personalAccessTokenWo` is available to use in place of `personalAccessToken`. Write-Only arguments are supported in HashiCorp Pulumi 1.11.0 and later. Learn more.
  * 
  * ## Example Usage
  * 
@@ -56,6 +59,44 @@ import javax.annotation.Nullable;
  *             .gitUsername("myuser")
  *             .gitProvider("azureDevOpsServices")
  *             .personalAccessToken("sometoken")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Git credential that uses a write-only personal access token
+ * 
+ * Use `personalAccessTokenWo` to avoid storing the token in the Pulumi state. The value can come from an ephemeral resource or a variable. Increment `personalAccessTokenWoVersion` whenever the token needs to be updated:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.databricks.GitCredential;
+ * import com.pulumi.databricks.GitCredentialArgs;
+ * import java.util.ArrayList;
+ * import java.util.Arrays;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var ado = new GitCredential("ado", GitCredentialArgs.builder()
+ *             .gitUsername("myuser")
+ *             .gitProvider("azureDevOpsServices")
+ *             .personalAccessTokenWo(adoPat)
+ *             .personalAccessTokenWoVersion(1)
  *             .build());
  * 
  *     }
@@ -230,18 +271,48 @@ public class GitCredential extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+     * The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `personalAccessTokenWo`.
      * 
      */
     @Export(name="personalAccessToken", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> personalAccessToken;
 
     /**
-     * @return The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+     * @return The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it&#39;s sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `personalAccessTokenWo`.
      * 
      */
     public Output<Optional<String>> personalAccessToken() {
         return Codegen.optional(this.personalAccessToken);
+    }
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only alternative to `personalAccessToken`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `personalAccessTokenWoVersion`. When set, `personalAccessToken` is not sourced from environment variables, and a token previously stored in `personalAccessToken` is removed from the state.
+     * 
+     */
+    @Export(name="personalAccessTokenWo", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> personalAccessTokenWo;
+
+    /**
+     * @return **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only alternative to `personalAccessToken`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `personalAccessTokenWoVersion`. When set, `personalAccessToken` is not sourced from environment variables, and a token previously stored in `personalAccessToken` is removed from the state.
+     * 
+     */
+    public Output<Optional<String>> personalAccessTokenWo() {
+        return Codegen.optional(this.personalAccessTokenWo);
+    }
+    /**
+     * Use together with `personalAccessTokenWo` to trigger an update. Increment this value (starting at 1) when an update to `personalAccessTokenWo` is required.
+     * 
+     */
+    @Export(name="personalAccessTokenWoVersion", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> personalAccessTokenWoVersion;
+
+    /**
+     * @return Use together with `personalAccessTokenWo` to trigger an update. Increment this value (starting at 1) when an update to `personalAccessTokenWo` is required.
+     * 
+     */
+    public Output<Optional<Integer>> personalAccessTokenWoVersion() {
+        return Codegen.optional(this.personalAccessTokenWoVersion);
     }
     /**
      * The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
@@ -312,7 +383,8 @@ public class GitCredential extends com.pulumi.resources.CustomResource {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .additionalSecretOutputs(List.of(
-                "personalAccessToken"
+                "personalAccessToken",
+                "personalAccessTokenWo"
             ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);

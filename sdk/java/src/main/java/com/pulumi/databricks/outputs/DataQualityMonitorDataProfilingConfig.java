@@ -22,20 +22,21 @@ import javax.annotation.Nullable;
 @CustomType
 public final class DataQualityMonitorDataProfilingConfig {
     /**
-     * @return Field for specifying the absolute path to a custom directory to store data-monitoring
-     * assets. Normally prepopulated to a default user location via UI and Python APIs
+     * @return The absolute workspace path of the directory where the monitor&#39;s assets, such as
+     * the dashboard, are stored. The UI and the Python APIs normally prepopulate a default user location
      * 
      */
     private @Nullable String assetsDir;
     /**
-     * @return Baseline table name.
-     * Baseline data is used to compute drift from the data in the monitored `tableName`.
-     * The baseline table and the monitored table shall have the same schema
+     * @return The fully qualified name of a baseline table. Format: `catalog.schema.table_name`.
+     * Drift metrics compare the monitored table against the baseline data, so the two tables must have the same
+     * schema
      * 
      */
     private @Nullable String baselineTableName;
     /**
-     * @return Custom metrics
+     * @return Custom metrics to compute in addition to the built-in ones. See
+     * [custom metrics](https://docs.databricks.com/aws/en/data-governance/unity-catalog/data-quality-monitoring/data-profiling/custom-metrics)
      * 
      */
     private @Nullable List<DataQualityMonitorDataProfilingConfigCustomMetric> customMetrics;
@@ -43,7 +44,8 @@ public final class DataQualityMonitorDataProfilingConfig {
     private @Nullable String driftMetricsTableName;
     private @Nullable String effectiveWarehouseId;
     /**
-     * @return `Analysis Configuration` for monitoring inference log tables
+     * @return Profiles an inference log table, which stores the requests and predictions of a model. Metrics are
+     * computed per time window and include model quality metrics
      * 
      */
     private @Nullable DataQualityMonitorDataProfilingConfigInferenceLog inferenceLog;
@@ -52,13 +54,15 @@ public final class DataQualityMonitorDataProfilingConfig {
     private @Nullable String monitoredTableName;
     private @Nullable DataQualityMonitorDataProfilingConfigNotificationSettings notificationSettings;
     /**
-     * @return ID of the schema where output tables are created
+     * @return The UUID of the Unity Catalog schema where the profile and drift metrics tables
+     * are created
      * 
      */
     private String outputSchemaId;
     private @Nullable String profileMetricsTableName;
     /**
-     * @return The cron schedule
+     * @return The schedule on which the monitor refreshes its metrics. Refreshes can also be
+     * triggered on demand through the Refresh resource
      * 
      */
     private @Nullable DataQualityMonitorDataProfilingConfigSchedule schedule;
@@ -70,7 +74,7 @@ public final class DataQualityMonitorDataProfilingConfig {
     /**
      * @return List of column expressions to slice data with for targeted analysis. The data is grouped by
      * each expression independently, resulting in a separate slice for each predicate and its
-     * complements. For example `slicing_exprs=[“col_1”, “col_2 &gt; 10”]` will generate the following
+     * complements. For example `slicing_exprs=[&#34;col1&#34;, &#34;col2 &#34; pulumi-lang-hcl=&#34;&gt; 10&#34;]` will generate the following
      * slices: two slices for `col2 &gt; 10` (True and False), and one slice per unique value in
      * `col1`. For high-cardinality columns, only the top 100 unique values by frequency will
      * generate slices
@@ -78,43 +82,45 @@ public final class DataQualityMonitorDataProfilingConfig {
      */
     private @Nullable List<String> slicingExprs;
     /**
-     * @return `Analysis Configuration` for monitoring snapshot tables
+     * @return Profiles the full contents of the table. Metrics are computed over all rows at each refresh
      * 
      */
     private @Nullable DataQualityMonitorDataProfilingConfigSnapshot snapshot;
     private @Nullable String status;
     /**
-     * @return `Analysis Configuration` for monitoring time series tables
+     * @return Profiles a time series table. Metrics are computed per time window, as defined by `timestampColumn`
+     * and `granularities`
      * 
      */
     private @Nullable DataQualityMonitorDataProfilingConfigTimeSeries timeSeries;
     /**
-     * @return Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
-     * warehouse will be used
+     * @return The ID of the SQL warehouse used to create the dashboard. If not specified, the first running warehouse the
+     * caller can access is used
      * 
      */
     private @Nullable String warehouseId;
 
     private DataQualityMonitorDataProfilingConfig() {}
     /**
-     * @return Field for specifying the absolute path to a custom directory to store data-monitoring
-     * assets. Normally prepopulated to a default user location via UI and Python APIs
+     * @return The absolute workspace path of the directory where the monitor&#39;s assets, such as
+     * the dashboard, are stored. The UI and the Python APIs normally prepopulate a default user location
      * 
      */
     public Optional<String> assetsDir() {
         return Optional.ofNullable(this.assetsDir);
     }
     /**
-     * @return Baseline table name.
-     * Baseline data is used to compute drift from the data in the monitored `tableName`.
-     * The baseline table and the monitored table shall have the same schema
+     * @return The fully qualified name of a baseline table. Format: `catalog.schema.table_name`.
+     * Drift metrics compare the monitored table against the baseline data, so the two tables must have the same
+     * schema
      * 
      */
     public Optional<String> baselineTableName() {
         return Optional.ofNullable(this.baselineTableName);
     }
     /**
-     * @return Custom metrics
+     * @return Custom metrics to compute in addition to the built-in ones. See
+     * [custom metrics](https://docs.databricks.com/aws/en/data-governance/unity-catalog/data-quality-monitoring/data-profiling/custom-metrics)
      * 
      */
     public List<DataQualityMonitorDataProfilingConfigCustomMetric> customMetrics() {
@@ -130,7 +136,8 @@ public final class DataQualityMonitorDataProfilingConfig {
         return Optional.ofNullable(this.effectiveWarehouseId);
     }
     /**
-     * @return `Analysis Configuration` for monitoring inference log tables
+     * @return Profiles an inference log table, which stores the requests and predictions of a model. Metrics are
+     * computed per time window and include model quality metrics
      * 
      */
     public Optional<DataQualityMonitorDataProfilingConfigInferenceLog> inferenceLog() {
@@ -149,7 +156,8 @@ public final class DataQualityMonitorDataProfilingConfig {
         return Optional.ofNullable(this.notificationSettings);
     }
     /**
-     * @return ID of the schema where output tables are created
+     * @return The UUID of the Unity Catalog schema where the profile and drift metrics tables
+     * are created
      * 
      */
     public String outputSchemaId() {
@@ -159,7 +167,8 @@ public final class DataQualityMonitorDataProfilingConfig {
         return Optional.ofNullable(this.profileMetricsTableName);
     }
     /**
-     * @return The cron schedule
+     * @return The schedule on which the monitor refreshes its metrics. Refreshes can also be
+     * triggered on demand through the Refresh resource
      * 
      */
     public Optional<DataQualityMonitorDataProfilingConfigSchedule> schedule() {
@@ -175,7 +184,7 @@ public final class DataQualityMonitorDataProfilingConfig {
     /**
      * @return List of column expressions to slice data with for targeted analysis. The data is grouped by
      * each expression independently, resulting in a separate slice for each predicate and its
-     * complements. For example `slicing_exprs=[“col_1”, “col_2 &gt; 10”]` will generate the following
+     * complements. For example `slicing_exprs=[&#34;col1&#34;, &#34;col2 &#34; pulumi-lang-hcl=&#34;&gt; 10&#34;]` will generate the following
      * slices: two slices for `col2 &gt; 10` (True and False), and one slice per unique value in
      * `col1`. For high-cardinality columns, only the top 100 unique values by frequency will
      * generate slices
@@ -185,7 +194,7 @@ public final class DataQualityMonitorDataProfilingConfig {
         return this.slicingExprs == null ? List.of() : this.slicingExprs;
     }
     /**
-     * @return `Analysis Configuration` for monitoring snapshot tables
+     * @return Profiles the full contents of the table. Metrics are computed over all rows at each refresh
      * 
      */
     public Optional<DataQualityMonitorDataProfilingConfigSnapshot> snapshot() {
@@ -195,15 +204,16 @@ public final class DataQualityMonitorDataProfilingConfig {
         return Optional.ofNullable(this.status);
     }
     /**
-     * @return `Analysis Configuration` for monitoring time series tables
+     * @return Profiles a time series table. Metrics are computed per time window, as defined by `timestampColumn`
+     * and `granularities`
      * 
      */
     public Optional<DataQualityMonitorDataProfilingConfigTimeSeries> timeSeries() {
         return Optional.ofNullable(this.timeSeries);
     }
     /**
-     * @return Optional argument to specify the warehouse for dashboard creation. If not specified, the first running
-     * warehouse will be used
+     * @return The ID of the SQL warehouse used to create the dashboard. If not specified, the first running warehouse the
+     * caller can access is used
      * 
      */
     public Optional<String> warehouseId() {

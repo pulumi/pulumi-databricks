@@ -40,13 +40,19 @@ class PostgresRoleArgs:
                Attributes omitted from the request retain their current values.
                Set an attribute explicitly to false to disable it.
                `identity_type`, `auth_method`, and `postgres_role` retain their
-               existing values; supplied values for these fields are ignored.
+               existing values. Omit these fields or supply their current values.
+               A differing supplied value returns INVALID_PARAMETER_VALUE and rejects
+               the entire request, including changes to mutable fields.
                `membership_roles` is overwritten, not merged. Leaving
                `membership_roles` empty clears all of the role's existing memberships,
                including `DATABRICKS_SUPERUSER`. Always send the complete desired list
                of memberships when using this field
         :param pulumi.Input[_builtins.str] role_id: (string) - Part of the resource name
-        :param pulumi.Input['PostgresRoleSpecArgs'] spec: The spec contains the role configuration, including identity type, authentication method, and role attributes
+        :param pulumi.Input['PostgresRoleSpecArgs'] spec: The spec contains the role configuration, including identity type, authentication method, and role attributes.
+               
+               Read the resource's current values from `status`, rather than `spec`.
+               `spec` tracks field ownership for infrastructure-as-code tools and may omit
+               unmanaged fields
         """
         pulumi.set(__self__, "parent", parent)
         if provider_config is not None:
@@ -95,7 +101,9 @@ class PostgresRoleArgs:
         Attributes omitted from the request retain their current values.
         Set an attribute explicitly to false to disable it.
         `identity_type`, `auth_method`, and `postgres_role` retain their
-        existing values; supplied values for these fields are ignored.
+        existing values. Omit these fields or supply their current values.
+        A differing supplied value returns INVALID_PARAMETER_VALUE and rejects
+        the entire request, including changes to mutable fields.
         `membership_roles` is overwritten, not merged. Leaving
         `membership_roles` empty clears all of the role's existing memberships,
         including `DATABRICKS_SUPERUSER`. Always send the complete desired list
@@ -123,7 +131,11 @@ class PostgresRoleArgs:
     @pulumi.getter
     def spec(self) -> pulumi.Input[Optional['PostgresRoleSpecArgs']]:
         """
-        The spec contains the role configuration, including identity type, authentication method, and role attributes
+        The spec contains the role configuration, including identity type, authentication method, and role attributes.
+
+        Read the resource's current values from `status`, rather than `spec`.
+        `spec` tracks field ownership for infrastructure-as-code tools and may omit
+        unmanaged fields
         """
         return pulumi.get(self, "spec")
 
@@ -147,7 +159,7 @@ class _PostgresRoleState:
         """
         Input properties used for looking up and filtering PostgresRole resources.
 
-        :param pulumi.Input[_builtins.str] create_time: (string)
+        :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the role was created
         :param pulumi.Input[_builtins.str] name: (string) - Output only. The full resource path of the role.
                Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
         :param pulumi.Input[_builtins.str] parent: The Branch where this Role exists.
@@ -161,15 +173,21 @@ class _PostgresRoleState:
                Attributes omitted from the request retain their current values.
                Set an attribute explicitly to false to disable it.
                `identity_type`, `auth_method`, and `postgres_role` retain their
-               existing values; supplied values for these fields are ignored.
+               existing values. Omit these fields or supply their current values.
+               A differing supplied value returns INVALID_PARAMETER_VALUE and rejects
+               the entire request, including changes to mutable fields.
                `membership_roles` is overwritten, not merged. Leaving
                `membership_roles` empty clears all of the role's existing memberships,
                including `DATABRICKS_SUPERUSER`. Always send the complete desired list
                of memberships when using this field
         :param pulumi.Input[_builtins.str] role_id: (string) - Part of the resource name
-        :param pulumi.Input['PostgresRoleSpecArgs'] spec: The spec contains the role configuration, including identity type, authentication method, and role attributes
+        :param pulumi.Input['PostgresRoleSpecArgs'] spec: The spec contains the role configuration, including identity type, authentication method, and role attributes.
+               
+               Read the resource's current values from `status`, rather than `spec`.
+               `spec` tracks field ownership for infrastructure-as-code tools and may omit
+               unmanaged fields
         :param pulumi.Input['PostgresRoleStatusArgs'] status: (RoleRoleStatus) - Current status of the role, including its identity type, authentication method, and role attributes
-        :param pulumi.Input[_builtins.str] update_time: (string)
+        :param pulumi.Input[_builtins.str] update_time: (string) - A timestamp indicating when the role was last updated
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -194,7 +212,7 @@ class _PostgresRoleState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string)
+        (string) - A timestamp indicating when the role was created
         """
         return pulumi.get(self, "create_time")
 
@@ -252,7 +270,9 @@ class _PostgresRoleState:
         Attributes omitted from the request retain their current values.
         Set an attribute explicitly to false to disable it.
         `identity_type`, `auth_method`, and `postgres_role` retain their
-        existing values; supplied values for these fields are ignored.
+        existing values. Omit these fields or supply their current values.
+        A differing supplied value returns INVALID_PARAMETER_VALUE and rejects
+        the entire request, including changes to mutable fields.
         `membership_roles` is overwritten, not merged. Leaving
         `membership_roles` empty clears all of the role's existing memberships,
         including `DATABRICKS_SUPERUSER`. Always send the complete desired list
@@ -280,7 +300,11 @@ class _PostgresRoleState:
     @pulumi.getter
     def spec(self) -> pulumi.Input[Optional['PostgresRoleSpecArgs']]:
         """
-        The spec contains the role configuration, including identity type, authentication method, and role attributes
+        The spec contains the role configuration, including identity type, authentication method, and role attributes.
+
+        Read the resource's current values from `status`, rather than `spec`.
+        `spec` tracks field ownership for infrastructure-as-code tools and may omit
+        unmanaged fields
         """
         return pulumi.get(self, "spec")
 
@@ -304,7 +328,7 @@ class _PostgresRoleState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string)
+        (string) - A timestamp indicating when the role was last updated
         """
         return pulumi.get(self, "update_time")
 
@@ -326,7 +350,7 @@ class PostgresRole(pulumi.CustomResource):
                  spec: pulumi.Input[Optional[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict', 'outputs.PostgresRoleSpec']]] = None,
                  __props__=None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -341,9 +365,9 @@ class PostgresRole(pulumi.CustomResource):
 
         If you're unsure of the exact value, find the role in the Lakebase UI (or list the branch's roles with the Postgres API) and read its `role_id` rather than deriving it by hand. Since Pulumi is declarative, managing an already-existing resource requires `replace_existing = true`: it lets Pulumi represent the implicitly created role in Pulumi state and immediately apply the provided configuration to it.
 
-        `replace_existing = true` only affects the initial adoption. Once the role is in Pulumi state, it is managed like any other resource: removing it from your configuration and applying **deletes the actual role**, not just the state entry. This is unlike `PostgresBranch`, whose deletion is instead controlled by its parent project. To stop managing the role without deleting it, remove it from state with `terraform state rm` before removing it from your configuration — this is also required for the implicit owner role, which cannot be deleted while it still owns objects on the branch.
+        `replace_existing = true` only affects the initial adoption. After the role is in Pulumi state, it is managed like any other resource: removing it from your configuration and running `pulumi up` **deletes the actual role**, not just the state entry. This is unlike the implicitly created root Branch, whose deletion is controlled by its parent Project. To stop managing the role without deleting it, remove it from state with `terraform state rm` before removing it from your configuration — this is also required for the implicit owner role, which cannot be deleted while it still owns objects on the branch.
 
-        `spec.membership_roles` overwrites the role's memberships on every apply. The list you provide fully replaces the previous one, it isn't merged. Keep `DATABRICKS_SUPERUSER` in the list; leaving it out removes all of the role's memberships.
+        When Pulumi updates a Role with a non-null spec, `spec.membership_roles` replaces its memberships. The list you provide fully replaces the previous one, it isn't merged. Keep `DATABRICKS_SUPERUSER` in the list; leaving it out removes all of the role's memberships.
 
         ```python
         import pulumi
@@ -521,13 +545,19 @@ class PostgresRole(pulumi.CustomResource):
                Attributes omitted from the request retain their current values.
                Set an attribute explicitly to false to disable it.
                `identity_type`, `auth_method`, and `postgres_role` retain their
-               existing values; supplied values for these fields are ignored.
+               existing values. Omit these fields or supply their current values.
+               A differing supplied value returns INVALID_PARAMETER_VALUE and rejects
+               the entire request, including changes to mutable fields.
                `membership_roles` is overwritten, not merged. Leaving
                `membership_roles` empty clears all of the role's existing memberships,
                including `DATABRICKS_SUPERUSER`. Always send the complete desired list
                of memberships when using this field
         :param pulumi.Input[_builtins.str] role_id: (string) - Part of the resource name
-        :param pulumi.Input[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict', 'outputs.PostgresRoleSpec']] spec: The spec contains the role configuration, including identity type, authentication method, and role attributes
+        :param pulumi.Input[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict', 'outputs.PostgresRoleSpec']] spec: The spec contains the role configuration, including identity type, authentication method, and role attributes.
+               
+               Read the resource's current values from `status`, rather than `spec`.
+               `spec` tracks field ownership for infrastructure-as-code tools and may omit
+               unmanaged fields
         """
         ...
     @overload
@@ -536,7 +566,7 @@ class PostgresRole(pulumi.CustomResource):
                  args: PostgresRoleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -551,9 +581,9 @@ class PostgresRole(pulumi.CustomResource):
 
         If you're unsure of the exact value, find the role in the Lakebase UI (or list the branch's roles with the Postgres API) and read its `role_id` rather than deriving it by hand. Since Pulumi is declarative, managing an already-existing resource requires `replace_existing = true`: it lets Pulumi represent the implicitly created role in Pulumi state and immediately apply the provided configuration to it.
 
-        `replace_existing = true` only affects the initial adoption. Once the role is in Pulumi state, it is managed like any other resource: removing it from your configuration and applying **deletes the actual role**, not just the state entry. This is unlike `PostgresBranch`, whose deletion is instead controlled by its parent project. To stop managing the role without deleting it, remove it from state with `terraform state rm` before removing it from your configuration — this is also required for the implicit owner role, which cannot be deleted while it still owns objects on the branch.
+        `replace_existing = true` only affects the initial adoption. After the role is in Pulumi state, it is managed like any other resource: removing it from your configuration and running `pulumi up` **deletes the actual role**, not just the state entry. This is unlike the implicitly created root Branch, whose deletion is controlled by its parent Project. To stop managing the role without deleting it, remove it from state with `terraform state rm` before removing it from your configuration — this is also required for the implicit owner role, which cannot be deleted while it still owns objects on the branch.
 
-        `spec.membership_roles` overwrites the role's memberships on every apply. The list you provide fully replaces the previous one, it isn't merged. Keep `DATABRICKS_SUPERUSER` in the list; leaving it out removes all of the role's memberships.
+        When Pulumi updates a Role with a non-null spec, `spec.membership_roles` replaces its memberships. The list you provide fully replaces the previous one, it isn't merged. Keep `DATABRICKS_SUPERUSER` in the list; leaving it out removes all of the role's memberships.
 
         ```python
         import pulumi
@@ -784,7 +814,7 @@ class PostgresRole(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] create_time: (string)
+        :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the role was created
         :param pulumi.Input[_builtins.str] name: (string) - Output only. The full resource path of the role.
                Format: projects/{project_id}/branches/{branch_id}/roles/{role_id}
         :param pulumi.Input[_builtins.str] parent: The Branch where this Role exists.
@@ -798,15 +828,21 @@ class PostgresRole(pulumi.CustomResource):
                Attributes omitted from the request retain their current values.
                Set an attribute explicitly to false to disable it.
                `identity_type`, `auth_method`, and `postgres_role` retain their
-               existing values; supplied values for these fields are ignored.
+               existing values. Omit these fields or supply their current values.
+               A differing supplied value returns INVALID_PARAMETER_VALUE and rejects
+               the entire request, including changes to mutable fields.
                `membership_roles` is overwritten, not merged. Leaving
                `membership_roles` empty clears all of the role's existing memberships,
                including `DATABRICKS_SUPERUSER`. Always send the complete desired list
                of memberships when using this field
         :param pulumi.Input[_builtins.str] role_id: (string) - Part of the resource name
-        :param pulumi.Input[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict', 'outputs.PostgresRoleSpec']] spec: The spec contains the role configuration, including identity type, authentication method, and role attributes
+        :param pulumi.Input[Union['PostgresRoleSpecArgs', 'PostgresRoleSpecArgsDict', 'outputs.PostgresRoleSpec']] spec: The spec contains the role configuration, including identity type, authentication method, and role attributes.
+               
+               Read the resource's current values from `status`, rather than `spec`.
+               `spec` tracks field ownership for infrastructure-as-code tools and may omit
+               unmanaged fields
         :param pulumi.Input[Union['PostgresRoleStatusArgs', 'PostgresRoleStatusArgsDict', 'outputs.PostgresRoleStatus']] status: (RoleRoleStatus) - Current status of the role, including its identity type, authentication method, and role attributes
-        :param pulumi.Input[_builtins.str] update_time: (string)
+        :param pulumi.Input[_builtins.str] update_time: (string) - A timestamp indicating when the role was last updated
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -851,7 +887,7 @@ class PostgresRole(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[_builtins.str]:
         """
-        (string)
+        (string) - A timestamp indicating when the role was created
         """
         return pulumi.get(self, "create_time")
 
@@ -893,7 +929,9 @@ class PostgresRole(pulumi.CustomResource):
         Attributes omitted from the request retain their current values.
         Set an attribute explicitly to false to disable it.
         `identity_type`, `auth_method`, and `postgres_role` retain their
-        existing values; supplied values for these fields are ignored.
+        existing values. Omit these fields or supply their current values.
+        A differing supplied value returns INVALID_PARAMETER_VALUE and rejects
+        the entire request, including changes to mutable fields.
         `membership_roles` is overwritten, not merged. Leaving
         `membership_roles` empty clears all of the role's existing memberships,
         including `DATABRICKS_SUPERUSER`. Always send the complete desired list
@@ -911,9 +949,13 @@ class PostgresRole(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def spec(self) -> pulumi.Output['outputs.PostgresRoleSpec']:
+    def spec(self) -> pulumi.Output[Optional['outputs.PostgresRoleSpec']]:
         """
-        The spec contains the role configuration, including identity type, authentication method, and role attributes
+        The spec contains the role configuration, including identity type, authentication method, and role attributes.
+
+        Read the resource's current values from `status`, rather than `spec`.
+        `spec` tracks field ownership for infrastructure-as-code tools and may omit
+        unmanaged fields
         """
         return pulumi.get(self, "spec")
 
@@ -929,7 +971,7 @@ class PostgresRole(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[_builtins.str]:
         """
-        (string)
+        (string) - A timestamp indicating when the role was last updated
         """
         return pulumi.get(self, "update_time")
 

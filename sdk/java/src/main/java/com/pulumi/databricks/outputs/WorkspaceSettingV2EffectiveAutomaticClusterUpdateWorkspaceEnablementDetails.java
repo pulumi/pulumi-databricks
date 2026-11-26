@@ -17,7 +17,8 @@ public final class WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEna
      */
     private @Nullable Boolean forcedForComplianceMode;
     /**
-     * @return The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     * @return The feature is unavailable because the workspace does not have the Enhanced Security and
+     * Compliance entitlement
      * 
      */
     private @Nullable Boolean unavailableForDisabledEntitlement;
@@ -36,7 +37,8 @@ public final class WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceEna
         return Optional.ofNullable(this.forcedForComplianceMode);
     }
     /**
-     * @return The feature is unavailable if the corresponding entitlement disabled (see getShieldEntitlementEnable)
+     * @return The feature is unavailable because the workspace does not have the Enhanced Security and
+     * Compliance entitlement
      * 
      */
     public Optional<Boolean> unavailableForDisabledEntitlement() {

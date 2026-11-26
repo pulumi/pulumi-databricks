@@ -18,14 +18,14 @@ public final class WorkspaceIamUserV2State extends com.pulumi.resources.Resource
     public static final WorkspaceIamUserV2State Empty = new WorkspaceIamUserV2State();
 
     /**
-     * (string) - The accountId parent of the user in Databricks
+     * (string) - The ID of the account that contains the user
      * 
      */
     @Import(name="accountId")
     private @Nullable Output<String> accountId;
 
     /**
-     * @return (string) - The accountId parent of the user in Databricks
+     * @return (string) - The ID of the account that contains the user
      * 
      */
     public Optional<Output<String>> accountId() {
@@ -33,14 +33,16 @@ public final class WorkspaceIamUserV2State extends com.pulumi.resources.Resource
     }
 
     /**
-     * The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * Whether the user is active in the account. New users are active unless you set this to
+     * `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     @Import(name="accountUserStatus")
     private @Nullable Output<String> accountUserStatus;
 
     /**
-     * @return The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * @return Whether the user is active in the account. New users are active unless you set this to
+     * `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     public Optional<Output<String>> accountUserStatus() {
@@ -48,40 +50,48 @@ public final class WorkspaceIamUserV2State extends com.pulumi.resources.Resource
     }
 
     /**
-     * ExternalId of the user in the customer&#39;s IdP
+     * The ID of the user in your identity provider (IdP)
      * 
      */
     @Import(name="externalId")
     private @Nullable Output<String> externalId;
 
     /**
-     * @return ExternalId of the user in the customer&#39;s IdP
+     * @return The ID of the user in your identity provider (IdP)
      * 
      */
     public Optional<Output<String>> externalId() {
         return Optional.ofNullable(this.externalId);
     }
 
+    /**
+     * The user&#39;s name
+     * 
+     */
     @Import(name="fullName")
     private @Nullable Output<WorkspaceIamUserV2FullNameArgs> fullName;
 
+    /**
+     * @return The user&#39;s name
+     * 
+     */
     public Optional<Output<WorkspaceIamUserV2FullNameArgs>> fullName() {
         return Optional.ofNullable(this.fullName);
     }
 
     /**
-     * (string) - The resource name of the user. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/users/{user_id}
-     * - Workspace-scoped: users/{user_id}
+     * (string) - The resource name of the user, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/users/{user_id}`
+     * - Workspace APIs: `users/{user_id}`
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return (string) - The resource name of the user. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/users/{user_id}
-     * - Workspace-scoped: users/{user_id}
+     * @return (string) - The resource name of the user, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/users/{user_id}`
+     * - Workspace APIs: `users/{user_id}`
      * 
      */
     public Optional<Output<String>> name() {
@@ -89,16 +99,16 @@ public final class WorkspaceIamUserV2State extends com.pulumi.resources.Resource
     }
 
     /**
-     * (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * (string) - The resource name of the account that contains the user, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      * 
      */
     @Import(name="parent")
     private @Nullable Output<String> parent;
 
     /**
-     * @return (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-     * account-scoped and workspace-scoped APIs return it
+     * @return (string) - The resource name of the account that contains the user, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      * 
      */
     public Optional<Output<String>> parent() {
@@ -121,14 +131,14 @@ public final class WorkspaceIamUserV2State extends com.pulumi.resources.Resource
     }
 
     /**
-     * (string) - Internal userId of the user in Databricks
+     * (string) - The Databricks ID of the user
      * 
      */
     @Import(name="userId")
     private @Nullable Output<String> userId;
 
     /**
-     * @return (string) - Internal userId of the user in Databricks
+     * @return (string) - The Databricks ID of the user
      * 
      */
     public Optional<Output<String>> userId() {
@@ -136,14 +146,16 @@ public final class WorkspaceIamUserV2State extends com.pulumi.resources.Resource
     }
 
     /**
-     * Username/email of the user
+     * The user&#39;s username, which is their email address. It can&#39;t be changed after the user is
+     * created
      * 
      */
     @Import(name="username")
     private @Nullable Output<String> username;
 
     /**
-     * @return Username/email of the user
+     * @return The user&#39;s username, which is their email address. It can&#39;t be changed after the user is
+     * created
      * 
      */
     public Optional<Output<String>> username() {
@@ -183,7 +195,7 @@ public final class WorkspaceIamUserV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountId (string) - The accountId parent of the user in Databricks
+         * @param accountId (string) - The ID of the account that contains the user
          * 
          * @return builder
          * 
@@ -194,7 +206,7 @@ public final class WorkspaceIamUserV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountId (string) - The accountId parent of the user in Databricks
+         * @param accountId (string) - The ID of the account that contains the user
          * 
          * @return builder
          * 
@@ -204,7 +216,8 @@ public final class WorkspaceIamUserV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountUserStatus The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+         * @param accountUserStatus Whether the user is active in the account. New users are active unless you set this to
+         * `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
          * 
          * @return builder
          * 
@@ -215,7 +228,8 @@ public final class WorkspaceIamUserV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param accountUserStatus The activity status of a user in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+         * @param accountUserStatus Whether the user is active in the account. New users are active unless you set this to
+         * `INACTIVE`. Possible values are: `ACTIVE`, `INACTIVE`
          * 
          * @return builder
          * 
@@ -225,7 +239,7 @@ public final class WorkspaceIamUserV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param externalId ExternalId of the user in the customer&#39;s IdP
+         * @param externalId The ID of the user in your identity provider (IdP)
          * 
          * @return builder
          * 
@@ -236,7 +250,7 @@ public final class WorkspaceIamUserV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param externalId ExternalId of the user in the customer&#39;s IdP
+         * @param externalId The ID of the user in your identity provider (IdP)
          * 
          * @return builder
          * 
@@ -245,19 +259,31 @@ public final class WorkspaceIamUserV2State extends com.pulumi.resources.Resource
             return externalId(Output.of(externalId));
         }
 
+        /**
+         * @param fullName The user&#39;s name
+         * 
+         * @return builder
+         * 
+         */
         public Builder fullName(@Nullable Output<WorkspaceIamUserV2FullNameArgs> fullName) {
             $.fullName = fullName;
             return this;
         }
 
+        /**
+         * @param fullName The user&#39;s name
+         * 
+         * @return builder
+         * 
+         */
         public Builder fullName(WorkspaceIamUserV2FullNameArgs fullName) {
             return fullName(Output.of(fullName));
         }
 
         /**
-         * @param name (string) - The resource name of the user. The format depends on the API that returned it:
-         * - Account-scoped: accounts/{account_id}/users/{user_id}
-         * - Workspace-scoped: users/{user_id}
+         * @param name (string) - The resource name of the user, in one of these formats:
+         * - Account APIs: `accounts/{account_id}/users/{user_id}`
+         * - Workspace APIs: `users/{user_id}`
          * 
          * @return builder
          * 
@@ -268,9 +294,9 @@ public final class WorkspaceIamUserV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param name (string) - The resource name of the user. The format depends on the API that returned it:
-         * - Account-scoped: accounts/{account_id}/users/{user_id}
-         * - Workspace-scoped: users/{user_id}
+         * @param name (string) - The resource name of the user, in one of these formats:
+         * - Account APIs: `accounts/{account_id}/users/{user_id}`
+         * - Workspace APIs: `users/{user_id}`
          * 
          * @return builder
          * 
@@ -280,8 +306,8 @@ public final class WorkspaceIamUserV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param parent (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-         * account-scoped and workspace-scoped APIs return it
+         * @param parent (string) - The resource name of the account that contains the user, in the format
+         * `accounts/{account_id}`. Workspace APIs return the same format
          * 
          * @return builder
          * 
@@ -292,8 +318,8 @@ public final class WorkspaceIamUserV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param parent (string) - The resource name of the account that contains the user, `accounts/{account_id}`. Both the
-         * account-scoped and workspace-scoped APIs return it
+         * @param parent (string) - The resource name of the account that contains the user, in the format
+         * `accounts/{account_id}`. Workspace APIs return the same format
          * 
          * @return builder
          * 
@@ -324,7 +350,7 @@ public final class WorkspaceIamUserV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param userId (string) - Internal userId of the user in Databricks
+         * @param userId (string) - The Databricks ID of the user
          * 
          * @return builder
          * 
@@ -335,7 +361,7 @@ public final class WorkspaceIamUserV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param userId (string) - Internal userId of the user in Databricks
+         * @param userId (string) - The Databricks ID of the user
          * 
          * @return builder
          * 
@@ -345,7 +371,8 @@ public final class WorkspaceIamUserV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param username Username/email of the user
+         * @param username The user&#39;s username, which is their email address. It can&#39;t be changed after the user is
+         * created
          * 
          * @return builder
          * 
@@ -356,7 +383,8 @@ public final class WorkspaceIamUserV2State extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param username Username/email of the user
+         * @param username The user&#39;s username, which is their email address. It can&#39;t be changed after the user is
+         * created
          * 
          * @return builder
          * 

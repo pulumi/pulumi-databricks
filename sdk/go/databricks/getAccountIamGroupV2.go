@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/account/iamv2)
 //
@@ -58,28 +58,31 @@ func LookupAccountIamGroupV2(ctx *pulumi.Context, args *LookupAccountIamGroupV2A
 
 // A collection of arguments for invoking getAccountIamGroupV2.
 type LookupAccountIamGroupV2Args struct {
-	// The resource name of the group. The format depends on the API that returned it:
-	// - Account-scoped: accounts/{account_id}/groups/{group_id}
-	// - Workspace-scoped: groups/{group_id}
+	// The resource name of the group, in one of these formats:
+	// - Account APIs: `accounts/{account_id}/groups/{group_id}`
+	// - Workspace APIs: `groups/{group_id}`
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getAccountIamGroupV2.
 type LookupAccountIamGroupV2Result struct {
-	// (string) - The parent account ID for group in Databricks
+	// (string) - The ID of the account that contains the group
 	AccountId string `pulumi:"accountId"`
-	// (string) - ExternalId of the group in the customer's IdP
+	// (string) - The ID of the group in your identity provider (IdP)
 	ExternalId string `pulumi:"externalId"`
-	// (string) - Internal group ID of the group in Databricks
+	// (string) - The Databricks ID of the group. It is a numeric string that Databricks assigns when the group
+	// is created, and it is the `{group_id}` segment of `name`
 	GroupId string `pulumi:"groupId"`
-	// (string) - Display name of the group
+	// (string) - The display name of the group. It must be unique in the account, must not be blank, and must be
+	// shorter than 255 characters. Databricks trims surrounding whitespace. You can't use the name of a
+	// group that Databricks manages, such as `admins` or `users`
 	GroupName string `pulumi:"groupName"`
-	// (string) - The resource name of the group. The format depends on the API that returned it:
-	// - Account-scoped: accounts/{account_id}/groups/{group_id}
-	// - Workspace-scoped: groups/{group_id}
+	// (string) - The resource name of the group, in one of these formats:
+	// - Account APIs: `accounts/{account_id}/groups/{group_id}`
+	// - Workspace APIs: `groups/{group_id}`
 	Name string `pulumi:"name"`
-	// (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-	// account-scoped and workspace-scoped APIs return it
+	// (string) - The resource name of the account that contains the group, in the format
+	// `accounts/{account_id}`. Workspace APIs return the same format
 	Parent string `pulumi:"parent"`
 }
 
@@ -90,9 +93,9 @@ func LookupAccountIamGroupV2Output(ctx *pulumi.Context, args LookupAccountIamGro
 
 // A collection of arguments for invoking getAccountIamGroupV2.
 type LookupAccountIamGroupV2OutputArgs struct {
-	// The resource name of the group. The format depends on the API that returned it:
-	// - Account-scoped: accounts/{account_id}/groups/{group_id}
-	// - Workspace-scoped: groups/{group_id}
+	// The resource name of the group, in one of these formats:
+	// - Account APIs: `accounts/{account_id}/groups/{group_id}`
+	// - Workspace APIs: `groups/{group_id}`
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -115,35 +118,38 @@ func (o LookupAccountIamGroupV2ResultOutput) ToLookupAccountIamGroupV2ResultOutp
 	return o
 }
 
-// (string) - The parent account ID for group in Databricks
+// (string) - The ID of the account that contains the group
 func (o LookupAccountIamGroupV2ResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountIamGroupV2Result) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// (string) - ExternalId of the group in the customer's IdP
+// (string) - The ID of the group in your identity provider (IdP)
 func (o LookupAccountIamGroupV2ResultOutput) ExternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountIamGroupV2Result) string { return v.ExternalId }).(pulumi.StringOutput)
 }
 
-// (string) - Internal group ID of the group in Databricks
+// (string) - The Databricks ID of the group. It is a numeric string that Databricks assigns when the group
+// is created, and it is the `{group_id}` segment of `name`
 func (o LookupAccountIamGroupV2ResultOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountIamGroupV2Result) string { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// (string) - Display name of the group
+// (string) - The display name of the group. It must be unique in the account, must not be blank, and must be
+// shorter than 255 characters. Databricks trims surrounding whitespace. You can't use the name of a
+// group that Databricks manages, such as `admins` or `users`
 func (o LookupAccountIamGroupV2ResultOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountIamGroupV2Result) string { return v.GroupName }).(pulumi.StringOutput)
 }
 
-// (string) - The resource name of the group. The format depends on the API that returned it:
-// - Account-scoped: accounts/{account_id}/groups/{group_id}
-// - Workspace-scoped: groups/{group_id}
+// (string) - The resource name of the group, in one of these formats:
+// - Account APIs: `accounts/{account_id}/groups/{group_id}`
+// - Workspace APIs: `groups/{group_id}`
 func (o LookupAccountIamGroupV2ResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountIamGroupV2Result) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-// account-scoped and workspace-scoped APIs return it
+// (string) - The resource name of the account that contains the group, in the format
+// `accounts/{account_id}`. Workspace APIs return the same format
 func (o LookupAccountIamGroupV2ResultOutput) Parent() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccountIamGroupV2Result) string { return v.Parent }).(pulumi.StringOutput)
 }

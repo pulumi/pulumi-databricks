@@ -14,6 +14,10 @@ namespace Pulumi.Databricks.Outputs
     public sealed class AppSpaceResourceUcSecurable
     {
         public readonly string Permission;
+        /// <summary>
+        /// Full name of the Unity Catalog securable. For volumes, tables and functions this is the
+        /// three-level catalog.schema.object name
+        /// </summary>
         public readonly string SecurableFullName;
         /// <summary>
         /// (string) - The securable kind from Unity Catalog.
@@ -21,7 +25,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? SecurableKind;
         /// <summary>
-        /// Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
+        /// Kind of Unity Catalog securable that `SecurableFullName` refers to. Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
         /// </summary>
         public readonly string SecurableType;
 

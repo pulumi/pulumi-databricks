@@ -15,9 +15,17 @@ public final class WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMai
 
     public static final WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs Empty = new WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs();
 
+    /**
+     * Schedule anchored to a day of the week, either every week or on given weeks of the month
+     * 
+     */
     @Import(name="weekDayBasedSchedule")
     private @Nullable Output<WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs> weekDayBasedSchedule;
 
+    /**
+     * @return Schedule anchored to a day of the week, either every week or on given weeks of the month
+     * 
+     */
     public Optional<Output<WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs>> weekDayBasedSchedule() {
         return Optional.ofNullable(this.weekDayBasedSchedule);
     }
@@ -46,11 +54,23 @@ public final class WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMai
             $ = new WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param weekDayBasedSchedule Schedule anchored to a day of the week, either every week or on given weeks of the month
+         * 
+         * @return builder
+         * 
+         */
         public Builder weekDayBasedSchedule(@Nullable Output<WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs> weekDayBasedSchedule) {
             $.weekDayBasedSchedule = weekDayBasedSchedule;
             return this;
         }
 
+        /**
+         * @param weekDayBasedSchedule Schedule anchored to a day of the week, either every week or on given weeks of the month
+         * 
+         * @return builder
+         * 
+         */
         public Builder weekDayBasedSchedule(WorkspaceSettingV2EffectiveAutomaticClusterUpdateWorkspaceMaintenanceWindowWeekDayBasedScheduleArgs weekDayBasedSchedule) {
             return weekDayBasedSchedule(Output.of(weekDayBasedSchedule));
         }

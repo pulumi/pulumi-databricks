@@ -26,7 +26,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<double>? AutoscalingLimitMinCu { get; set; }
 
         /// <summary>
-        /// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+        /// (string) - The state the compute endpoint is in now. Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
         /// </summary>
         [Input("currentState")]
         public Input<string>? CurrentState { get; set; }
@@ -41,7 +41,7 @@ namespace Pulumi.Databricks.Inputs
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// The part of the name, chosen by the user when the resource was created
+        /// The endpoint ID chosen when the endpoint was created. It is the final segment of `Name`
         /// </summary>
         [Input("endpointId")]
         public Input<string>? EndpointId { get; set; }
@@ -71,19 +71,20 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? LastActiveTime { get; set; }
 
         /// <summary>
-        /// (string) - Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
+        /// (string) - The state the compute endpoint is transitioning to, if a transition is in progress. Possible values are: `ACTIVE`, `DEGRADED`, `IDLE`, `INIT`
         /// </summary>
         [Input("pendingState")]
         public Input<string>? PendingState { get; set; }
 
         /// <summary>
-        /// (EndpointSettings)
+        /// (EndpointSettings) - The Postgres server parameters currently set on the compute endpoint
         /// </summary>
         [Input("settings")]
         public Input<Inputs.PostgresEndpointStatusSettingsArgs>? Settings { get; set; }
 
         /// <summary>
-        /// (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+        /// (string) - Duration of inactivity after which the compute endpoint is automatically suspended. Absent when
+        /// automatic suspension is disabled
         /// </summary>
         [Input("suspendTimeoutDuration")]
         public Input<string>? SuspendTimeoutDuration { get; set; }

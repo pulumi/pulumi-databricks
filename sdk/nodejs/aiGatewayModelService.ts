@@ -96,11 +96,11 @@ export class AiGatewayModelService extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * (string) - Creator identity
+     * (string) - Username of the user who created the model service
      */
     declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
-     * (string) - Owner of the model service
+     * (string) - Username or group name of the model service owner
      */
     declare public /*out*/ readonly effectiveOwner: pulumi.Output<string>;
     /**
@@ -111,19 +111,22 @@ export class AiGatewayModelService extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly etag: pulumi.Output<string>;
     /**
-     * (string) - Metastore hosting the model service
+     * (string) - Unique identifier of the metastore that contains the model service
      */
     declare public /*out*/ readonly metastoreId: pulumi.Output<string>;
     /**
-     * Name for the model service, e.g. "myModelService"
+     * Name of the model service within the parent schema. The name must not
+     * contain periods, spaces, forward slashes, percent signs, or control characters,
+     * and it is stored in lowercase
      */
     declare public readonly modelServiceId: pulumi.Output<string>;
     /**
      * (string) - Resource name of the model service.
      * Format: `model-services/{catalog}.{schema}.{model_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -148,7 +151,7 @@ export class AiGatewayModelService extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
-     * (string) - Identity of the last updater
+     * (string) - Username of the user who last updated the model service
      */
     declare public /*out*/ readonly updatedBy: pulumi.Output<string>;
 
@@ -226,11 +229,11 @@ export interface AiGatewayModelServiceState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * (string) - Creator identity
+     * (string) - Username of the user who created the model service
      */
     createdBy?: pulumi.Input<string | undefined>;
     /**
-     * (string) - Owner of the model service
+     * (string) - Username or group name of the model service owner
      */
     effectiveOwner?: pulumi.Input<string | undefined>;
     /**
@@ -241,19 +244,22 @@ export interface AiGatewayModelServiceState {
      */
     etag?: pulumi.Input<string | undefined>;
     /**
-     * (string) - Metastore hosting the model service
+     * (string) - Unique identifier of the metastore that contains the model service
      */
     metastoreId?: pulumi.Input<string | undefined>;
     /**
-     * Name for the model service, e.g. "myModelService"
+     * Name of the model service within the parent schema. The name must not
+     * contain periods, spaces, forward slashes, percent signs, or control characters,
+     * and it is stored in lowercase
      */
     modelServiceId?: pulumi.Input<string | undefined>;
     /**
      * (string) - Resource name of the model service.
      * Format: `model-services/{catalog}.{schema}.{model_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelServiceId`; it is required and immutable on Update,
+     * Get, and Delete
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -278,7 +284,7 @@ export interface AiGatewayModelServiceState {
      */
     updateTime?: pulumi.Input<string | undefined>;
     /**
-     * (string) - Identity of the last updater
+     * (string) - Username of the user who last updated the model service
      */
     updatedBy?: pulumi.Input<string | undefined>;
 }
@@ -298,7 +304,9 @@ export interface AiGatewayModelServiceArgs {
      */
     config?: pulumi.Input<inputs.AiGatewayModelServiceConfig | undefined>;
     /**
-     * Name for the model service, e.g. "myModelService"
+     * Name of the model service within the parent schema. The name must not
+     * contain periods, spaces, forward slashes, percent signs, or control characters,
+     * and it is stored in lowercase
      */
     modelServiceId: pulumi.Input<string>;
     /**

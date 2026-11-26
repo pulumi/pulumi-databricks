@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  * 
  * [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
  * 
@@ -66,106 +66,108 @@ import javax.annotation.Nullable;
 @ResourceType(type="databricks:index/workspaceIamServicePrincipalV2:WorkspaceIamServicePrincipalV2")
 public class WorkspaceIamServicePrincipalV2 extends com.pulumi.resources.CustomResource {
     /**
-     * (string) - The parent account ID for the service principal in Databricks
+     * (string) - The ID of the account that contains the service principal
      * 
      */
     @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
-     * @return (string) - The parent account ID for the service principal in Databricks
+     * @return (string) - The ID of the account that contains the service principal
      * 
      */
     public Output<String> accountId() {
         return this.accountId;
     }
     /**
-     * The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     @Export(name="accountSpStatus", refs={String.class}, tree="[0]")
     private Output<String> accountSpStatus;
 
     /**
-     * @return The activity status of a service principal in a Databricks account. Possible values are: `ACTIVE`, `INACTIVE`
+     * @return Whether the service principal is active in the account. Possible values are: `ACTIVE`, `INACTIVE`
      * 
      */
     public Output<String> accountSpStatus() {
         return this.accountSpStatus;
     }
     /**
-     * (string) - Application ID of the service principal. Set at creation time and cannot be changed
-     * afterwards; when omitted, the server generates one
+     * (string) - The service principal&#39;s application ID, a UUID. If you don&#39;t set it when you create the
+     * service principal, Databricks generates one. It must be unique in the account and can&#39;t be
+     * changed
      * 
      */
     @Export(name="applicationId", refs={String.class}, tree="[0]")
     private Output<String> applicationId;
 
     /**
-     * @return (string) - Application ID of the service principal. Set at creation time and cannot be changed
-     * afterwards; when omitted, the server generates one
+     * @return (string) - The service principal&#39;s application ID, a UUID. If you don&#39;t set it when you create the
+     * service principal, Databricks generates one. It must be unique in the account and can&#39;t be
+     * changed
      * 
      */
     public Output<String> applicationId() {
         return this.applicationId;
     }
     /**
-     * Display name of the service principal
+     * The service principal&#39;s display name
      * 
      */
     @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
-     * @return Display name of the service principal
+     * @return The service principal&#39;s display name
      * 
      */
     public Output<String> displayName() {
         return this.displayName;
     }
     /**
-     * ExternalId of the service principal in the customer&#39;s IdP
+     * The ID of the service principal in your identity provider (IdP)
      * 
      */
     @Export(name="externalId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> externalId;
 
     /**
-     * @return ExternalId of the service principal in the customer&#39;s IdP
+     * @return The ID of the service principal in your identity provider (IdP)
      * 
      */
     public Output<Optional<String>> externalId() {
         return Codegen.optional(this.externalId);
     }
     /**
-     * (string) - The resource name of the service principal. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-     * - Workspace-scoped: service-principals/{service_principal_id}
+     * (string) - The resource name of the service principal, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+     * - Workspace APIs: `service-principals/{service_principal_id}`
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return (string) - The resource name of the service principal. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/service-principals/{service_principal_id}
-     * - Workspace-scoped: service-principals/{service_principal_id}
+     * @return (string) - The resource name of the service principal, in one of these formats:
+     * - Account APIs: `accounts/{account_id}/service-principals/{service_principal_id}`
+     * - Workspace APIs: `service-principals/{service_principal_id}`
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * (string) - The resource name of the account that contains the service principal,
-     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     * (string) - The resource name of the account that contains the service principal, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      * 
      */
     @Export(name="parent", refs={String.class}, tree="[0]")
     private Output<String> parent;
 
     /**
-     * @return (string) - The resource name of the account that contains the service principal,
-     * `accounts/{account_id}`. Both the account-scoped and workspace-scoped APIs return it
+     * @return (string) - The resource name of the account that contains the service principal, in the format
+     * `accounts/{account_id}`. Workspace APIs return the same format
      * 
      */
     public Output<String> parent() {
@@ -186,14 +188,14 @@ public class WorkspaceIamServicePrincipalV2 extends com.pulumi.resources.CustomR
         return this.providerConfig;
     }
     /**
-     * (string) - Internal service principal ID of the service principal in Databricks
+     * (string) - The Databricks ID of the service principal
      * 
      */
     @Export(name="servicePrincipalId", refs={String.class}, tree="[0]")
     private Output<String> servicePrincipalId;
 
     /**
-     * @return (string) - Internal service principal ID of the service principal in Databricks
+     * @return (string) - The Databricks ID of the service principal
      * 
      */
     public Output<String> servicePrincipalId() {

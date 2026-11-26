@@ -17,14 +17,20 @@ public final class GetExternalMetadataPlainArgs extends com.pulumi.resources.Inv
     public static final GetExternalMetadataPlainArgs Empty = new GetExternalMetadataPlainArgs();
 
     /**
-     * Name of the external metadata object
+     * Name of the external metadata object. The name is unique within the metastore, must follow the
+     * [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+     * and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+     * refer to the object by this name
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return Name of the external metadata object
+     * @return Name of the external metadata object. The name is unique within the metastore, must follow the
+     * [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+     * and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+     * refer to the object by this name
      * 
      */
     public String name() {
@@ -72,7 +78,10 @@ public final class GetExternalMetadataPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param name Name of the external metadata object
+         * @param name Name of the external metadata object. The name is unique within the metastore, must follow the
+         * [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+         * and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+         * refer to the object by this name
          * 
          * @return builder
          * 

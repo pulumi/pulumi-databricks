@@ -13,13 +13,13 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class JobTriggerSqlCondition
     {
-        public readonly string SqlQueryId;
+        public readonly string? SqlQueryId;
         public readonly string? TriggerMode;
         public readonly string WarehouseId;
 
         [OutputConstructor]
         private JobTriggerSqlCondition(
-            string sqlQueryId,
+            string? sqlQueryId,
 
             string? triggerMode,
 

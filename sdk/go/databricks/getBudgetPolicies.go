@@ -62,7 +62,8 @@ type GetBudgetPoliciesArgs struct {
 	// If unspecified, at most 100 budget policies will be returned.
 	// The maximum value is 1000; values above 1000 will be coerced to 1000
 	PageSize *int `pulumi:"pageSize"`
-	// The sort specification
+	// How to sort the returned policies. If unspecified, policies are sorted by name in ascending
+	// order
 	SortSpec *GetBudgetPoliciesSortSpec `pulumi:"sortSpec"`
 }
 
@@ -87,7 +88,8 @@ type GetBudgetPoliciesOutputArgs struct {
 	// If unspecified, at most 100 budget policies will be returned.
 	// The maximum value is 1000; values above 1000 will be coerced to 1000
 	PageSize pulumi.IntPtrInput `pulumi:"pageSize"`
-	// The sort specification
+	// How to sort the returned policies. If unspecified, policies are sorted by name in ascending
+	// order
 	SortSpec GetBudgetPoliciesSortSpecPtrInput `pulumi:"sortSpec"`
 }
 

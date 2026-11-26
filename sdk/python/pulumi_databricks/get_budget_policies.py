@@ -104,7 +104,8 @@ def get_budget_policies(filter_by: Optional[Union['GetBudgetPoliciesFilterByArgs
     :param _builtins.int page_size: The maximum number of budget policies to return.
            If unspecified, at most 100 budget policies will be returned.
            The maximum value is 1000; values above 1000 will be coerced to 1000
-    :param Union['GetBudgetPoliciesSortSpecArgs', 'GetBudgetPoliciesSortSpecArgsDict', 'outputs.GetBudgetPoliciesSortSpecResult'] sort_spec: The sort specification
+    :param Union['GetBudgetPoliciesSortSpecArgs', 'GetBudgetPoliciesSortSpecArgsDict', 'outputs.GetBudgetPoliciesSortSpecResult'] sort_spec: How to sort the returned policies. If unspecified, policies are sorted by name in ascending
+           order
     """
     __args__ = dict()
     __args__['filterBy'] = filter_by
@@ -147,7 +148,8 @@ def get_budget_policies_output(filter_by: pulumi.Input[Optional[Optional[Union['
     :param _builtins.int page_size: The maximum number of budget policies to return.
            If unspecified, at most 100 budget policies will be returned.
            The maximum value is 1000; values above 1000 will be coerced to 1000
-    :param Union['GetBudgetPoliciesSortSpecArgs', 'GetBudgetPoliciesSortSpecArgsDict', 'outputs.GetBudgetPoliciesSortSpecResult'] sort_spec: The sort specification
+    :param Union['GetBudgetPoliciesSortSpecArgs', 'GetBudgetPoliciesSortSpecArgsDict', 'outputs.GetBudgetPoliciesSortSpecResult'] sort_spec: How to sort the returned policies. If unspecified, policies are sorted by name in ascending
+           order
     """
     __args__ = dict()
     __args__['filterBy'] = filter_by

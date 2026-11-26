@@ -17,20 +17,18 @@ public final class GetAiSearchEndpointPlainArgs extends com.pulumi.resources.Inv
     public static final GetAiSearchEndpointPlainArgs Empty = new GetAiSearchEndpointPlainArgs();
 
     /**
-     * Name of the AI Search endpoint. Server-assigned full resource path
-     * (`workspaces/{workspace}/endpoints/{endpoint}`) on output. On create, the
-     * user-supplied short name is conveyed via `CreateEndpointRequest.endpoint_id`;
-     * the server composes the full `name` and returns it on the response
+     * Full resource name of the endpoint, in the form
+     * `workspaces/{workspace_id}/endpoints/{endpoint_id}`. On create, the server composes it
+     * from `parent` and `endpointId` and ignores any value supplied in the request body
      * 
      */
     @Import(name="name", required=true)
     private String name;
 
     /**
-     * @return Name of the AI Search endpoint. Server-assigned full resource path
-     * (`workspaces/{workspace}/endpoints/{endpoint}`) on output. On create, the
-     * user-supplied short name is conveyed via `CreateEndpointRequest.endpoint_id`;
-     * the server composes the full `name` and returns it on the response
+     * @return Full resource name of the endpoint, in the form
+     * `workspaces/{workspace_id}/endpoints/{endpoint_id}`. On create, the server composes it
+     * from `parent` and `endpointId` and ignores any value supplied in the request body
      * 
      */
     public String name() {
@@ -78,10 +76,9 @@ public final class GetAiSearchEndpointPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param name Name of the AI Search endpoint. Server-assigned full resource path
-         * (`workspaces/{workspace}/endpoints/{endpoint}`) on output. On create, the
-         * user-supplied short name is conveyed via `CreateEndpointRequest.endpoint_id`;
-         * the server composes the full `name` and returns it on the response
+         * @param name Full resource name of the endpoint, in the form
+         * `workspaces/{workspace_id}/endpoints/{endpoint_id}`. On create, the server composes it
+         * from `parent` and `endpointId` and ignores any value supplied in the request body
          * 
          * @return builder
          * 

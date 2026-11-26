@@ -41,7 +41,8 @@ public final class PostgresSyncedTableStatus {
      */
     private @Nullable String message;
     /**
-     * @return (SyncedTablePipelineProgress)
+     * @return (SyncedTablePipelineProgress) - Progress of the sync that is currently running, either the initial data load or an update of a
+     * triggered or snapshot synced table
      * 
      */
     private @Nullable PostgresSyncedTableStatusOngoingSyncProgress ongoingSyncProgress;
@@ -104,7 +105,8 @@ public final class PostgresSyncedTableStatus {
         return Optional.ofNullable(this.message);
     }
     /**
-     * @return (SyncedTablePipelineProgress)
+     * @return (SyncedTablePipelineProgress) - Progress of the sync that is currently running, either the initial data load or an update of a
+     * triggered or snapshot synced table
      * 
      */
     public Optional<PostgresSyncedTableStatusOngoingSyncProgress> ongoingSyncProgress() {

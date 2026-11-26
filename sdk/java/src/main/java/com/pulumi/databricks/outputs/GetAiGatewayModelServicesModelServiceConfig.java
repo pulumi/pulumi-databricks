@@ -15,7 +15,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAiGatewayModelServicesModelServiceConfig {
     /**
-     * @return (InferenceTableConfig) - Inference table configuration for payload logging
+     * @return (InferenceTableConfig) - Configuration for logging request and response payloads to a Unity
+     * Catalog inference table. Omit this field to leave payload logging off
      * 
      */
     private @Nullable GetAiGatewayModelServicesModelServiceConfigInferenceTable inferenceTable;
@@ -25,14 +26,16 @@ public final class GetAiGatewayModelServicesModelServiceConfig {
      */
     private @Nullable List<GetAiGatewayModelServicesModelServiceConfigRateLimit> rateLimits;
     /**
-     * @return (ModelServiceConfigRoutingConfig) - Routing configuration: destinations and fallback
+     * @return (ModelServiceConfigRoutingConfig) - Routing configuration: the primary destinations that receive traffic and
+     * the fallback destinations tried when a primary destination fails
      * 
      */
     private @Nullable GetAiGatewayModelServicesModelServiceConfigRouting routing;
 
     private GetAiGatewayModelServicesModelServiceConfig() {}
     /**
-     * @return (InferenceTableConfig) - Inference table configuration for payload logging
+     * @return (InferenceTableConfig) - Configuration for logging request and response payloads to a Unity
+     * Catalog inference table. Omit this field to leave payload logging off
      * 
      */
     public Optional<GetAiGatewayModelServicesModelServiceConfigInferenceTable> inferenceTable() {
@@ -46,7 +49,8 @@ public final class GetAiGatewayModelServicesModelServiceConfig {
         return this.rateLimits == null ? List.of() : this.rateLimits;
     }
     /**
-     * @return (ModelServiceConfigRoutingConfig) - Routing configuration: destinations and fallback
+     * @return (ModelServiceConfigRoutingConfig) - Routing configuration: the primary destinations that receive traffic and
+     * the fallback destinations tried when a primary destination fails
      * 
      */
     public Optional<GetAiGatewayModelServicesModelServiceConfigRouting> routing() {

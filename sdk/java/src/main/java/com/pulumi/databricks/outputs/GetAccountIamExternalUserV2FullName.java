@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class GetAccountIamExternalUserV2FullName {
     /**
-     * @return (string) - The family (last) name of the user, from the customer&#39;s IdP
+     * @return (string) - The user&#39;s family (last) name
      * 
      */
     private String familyName;
     /**
-     * @return (string) - The given (first) name of the user, from the customer&#39;s IdP
+     * @return (string) - The user&#39;s given (first) name
      * 
      */
     private String givenName;
 
     private GetAccountIamExternalUserV2FullName() {}
     /**
-     * @return (string) - The family (last) name of the user, from the customer&#39;s IdP
+     * @return (string) - The user&#39;s family (last) name
      * 
      */
     public String familyName() {
         return this.familyName;
     }
     /**
-     * @return (string) - The given (first) name of the user, from the customer&#39;s IdP
+     * @return (string) - The user&#39;s given (first) name
      * 
      */
     public String givenName() {

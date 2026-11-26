@@ -96,7 +96,7 @@ class GetAiGatewayModelServiceResult:
     @pulumi.getter(name="createdBy")
     def created_by(self) -> _builtins.str:
         """
-        (string) - Creator identity
+        (string) - Username of the user who created the model service
         """
         return pulumi.get(self, "created_by")
 
@@ -104,7 +104,7 @@ class GetAiGatewayModelServiceResult:
     @pulumi.getter(name="effectiveOwner")
     def effective_owner(self) -> _builtins.str:
         """
-        (string) - Owner of the model service
+        (string) - Username or group name of the model service owner
         """
         return pulumi.get(self, "effective_owner")
 
@@ -123,7 +123,7 @@ class GetAiGatewayModelServiceResult:
     @pulumi.getter(name="metastoreId")
     def metastore_id(self) -> _builtins.str:
         """
-        (string) - Metastore hosting the model service
+        (string) - Unique identifier of the metastore that contains the model service
         """
         return pulumi.get(self, "metastore_id")
 
@@ -131,7 +131,9 @@ class GetAiGatewayModelServiceResult:
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
-        (string) - User-facing label for this destination, used in routing references
+        (string) - Label that identifies this destination. Names are compared
+        case-insensitively and must be unique within the primary destinations and
+        within the fallback destinations
         """
         return pulumi.get(self, "name")
 
@@ -163,7 +165,7 @@ class GetAiGatewayModelServiceResult:
     @pulumi.getter(name="updatedBy")
     def updated_by(self) -> _builtins.str:
         """
-        (string) - Identity of the last updater
+        (string) - Username of the user who last updated the model service
         """
         return pulumi.get(self, "updated_by")
 
@@ -214,8 +216,9 @@ def get_ai_gateway_model_service(name: Optional[_builtins.str] = None,
     :param _builtins.str name: Resource name of the model service.
            Format: `model-services/{catalog}.{schema}.{model_service}`.
            Each `{...}` component is capped at 255 characters individually.
-           Server-derived on Create from `parent` +
-           `model_service_id`; required and immutable on Update/Get/Delete
+           The server derives the name on Create from
+           `parent` and `model_service_id`; it is required and immutable on Update,
+           Get, and Delete
     :param Union['GetAiGatewayModelServiceProviderConfigArgs', 'GetAiGatewayModelServiceProviderConfigArgsDict', 'outputs.GetAiGatewayModelServiceProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()
@@ -263,8 +266,9 @@ def get_ai_gateway_model_service_output(name: pulumi.Input[Optional[_builtins.st
     :param _builtins.str name: Resource name of the model service.
            Format: `model-services/{catalog}.{schema}.{model_service}`.
            Each `{...}` component is capped at 255 characters individually.
-           Server-derived on Create from `parent` +
-           `model_service_id`; required and immutable on Update/Get/Delete
+           The server derives the name on Create from
+           `parent` and `model_service_id`; it is required and immutable on Update,
+           Get, and Delete
     :param Union['GetAiGatewayModelServiceProviderConfigArgs', 'GetAiGatewayModelServiceProviderConfigArgsDict', 'outputs.GetAiGatewayModelServiceProviderConfigResult'] provider_config: Configure the provider for management through account provider.
     """
     __args__ = dict()

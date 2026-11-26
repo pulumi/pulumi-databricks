@@ -314,6 +314,9 @@ namespace Pulumi.Databricks
         [Output("target")]
         public Output<string?> Target { get; private set; } = null!;
 
+        [Output("testing")]
+        public Output<Outputs.PipelineTesting?> Testing { get; private set; } = null!;
+
         [Output("trigger")]
         public Output<Outputs.PipelineTrigger?> Trigger { get; private set; } = null!;
 
@@ -598,6 +601,9 @@ namespace Pulumi.Databricks
         [Input("target")]
         public Input<string>? Target { get; set; }
 
+        [Input("testing")]
+        public Input<Inputs.PipelineTestingArgs>? Testing { get; set; }
+
         [Input("trigger")]
         public Input<Inputs.PipelineTriggerArgs>? Trigger { get; set; }
 
@@ -843,6 +849,9 @@ namespace Pulumi.Databricks
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }
+
+        [Input("testing")]
+        public Input<Inputs.PipelineTestingGetArgs>? Testing { get; set; }
 
         [Input("trigger")]
         public Input<Inputs.PipelineTriggerGetArgs>? Trigger { get; set; }

@@ -14,7 +14,7 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAlertV2ParameterResult
     {
         /// <summary>
-        /// (string)
+        /// (string) - Name of the column in the query result
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -23,7 +23,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// (AlertV2OperandValue)
+        /// (AlertV2OperandValue) - Compare the source against a fixed value
         /// </summary>
         public readonly string? Value;
 

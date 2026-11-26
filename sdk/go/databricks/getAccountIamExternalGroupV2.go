@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 //
 // [API Documentation](https://docs.databricks.com/api/account/iamv2)
 //
@@ -62,27 +62,25 @@ func GetAccountIamExternalGroupV2(ctx *pulumi.Context, args *GetAccountIamExtern
 
 // A collection of arguments for invoking getAccountIamExternalGroupV2.
 type GetAccountIamExternalGroupV2Args struct {
-	// The resource name of the external group. The format depends on the API that
-	// returned it:
-	// - Account-scoped: accounts/{account_id}/external-groups/{external_group_id}
-	// - Workspace-scoped: external-groups/{external_group_id}
+	// The resource name of the external group, in one of these formats:
+	// - Account APIs: `accounts/{account_id}/external-groups/{external_group_id}`
+	// - Workspace APIs: `external-groups/{external_group_id}`
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getAccountIamExternalGroupV2.
 type GetAccountIamExternalGroupV2Result struct {
-	// (string) - The parent account ID, from Databricks
+	// (string) - The ID of the account that contains the group
 	AccountId string `pulumi:"accountId"`
-	// (string) - Display name of the group from the customer's IdP
+	// (string) - The name of the group, from your IdP. It's the same as the group's `groupName`
 	DisplayName string `pulumi:"displayName"`
-	// (string) - The external ID of the group in the customer's IdP
+	// (string) - The ID of the group in your IdP
 	ExternalGroupId string `pulumi:"externalGroupId"`
-	// (string) - Internal groupId of the group in Databricks
+	// (string) - The Databricks ID of the group. Use it as the `groupId` in the group APIs
 	InternalId string `pulumi:"internalId"`
-	// (string) - The resource name of the external group. The format depends on the API that
-	// returned it:
-	// - Account-scoped: accounts/{account_id}/external-groups/{external_group_id}
-	// - Workspace-scoped: external-groups/{external_group_id}
+	// (string) - The resource name of the external group, in one of these formats:
+	// - Account APIs: `accounts/{account_id}/external-groups/{external_group_id}`
+	// - Workspace APIs: `external-groups/{external_group_id}`
 	Name string `pulumi:"name"`
 }
 
@@ -93,10 +91,9 @@ func GetAccountIamExternalGroupV2Output(ctx *pulumi.Context, args GetAccountIamE
 
 // A collection of arguments for invoking getAccountIamExternalGroupV2.
 type GetAccountIamExternalGroupV2OutputArgs struct {
-	// The resource name of the external group. The format depends on the API that
-	// returned it:
-	// - Account-scoped: accounts/{account_id}/external-groups/{external_group_id}
-	// - Workspace-scoped: external-groups/{external_group_id}
+	// The resource name of the external group, in one of these formats:
+	// - Account APIs: `accounts/{account_id}/external-groups/{external_group_id}`
+	// - Workspace APIs: `external-groups/{external_group_id}`
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -119,30 +116,29 @@ func (o GetAccountIamExternalGroupV2ResultOutput) ToGetAccountIamExternalGroupV2
 	return o
 }
 
-// (string) - The parent account ID, from Databricks
+// (string) - The ID of the account that contains the group
 func (o GetAccountIamExternalGroupV2ResultOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountIamExternalGroupV2Result) string { return v.AccountId }).(pulumi.StringOutput)
 }
 
-// (string) - Display name of the group from the customer's IdP
+// (string) - The name of the group, from your IdP. It's the same as the group's `groupName`
 func (o GetAccountIamExternalGroupV2ResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountIamExternalGroupV2Result) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// (string) - The external ID of the group in the customer's IdP
+// (string) - The ID of the group in your IdP
 func (o GetAccountIamExternalGroupV2ResultOutput) ExternalGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountIamExternalGroupV2Result) string { return v.ExternalGroupId }).(pulumi.StringOutput)
 }
 
-// (string) - Internal groupId of the group in Databricks
+// (string) - The Databricks ID of the group. Use it as the `groupId` in the group APIs
 func (o GetAccountIamExternalGroupV2ResultOutput) InternalId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountIamExternalGroupV2Result) string { return v.InternalId }).(pulumi.StringOutput)
 }
 
-// (string) - The resource name of the external group. The format depends on the API that
-// returned it:
-// - Account-scoped: accounts/{account_id}/external-groups/{external_group_id}
-// - Workspace-scoped: external-groups/{external_group_id}
+// (string) - The resource name of the external group, in one of these formats:
+// - Account APIs: `accounts/{account_id}/external-groups/{external_group_id}`
+// - Workspace APIs: `external-groups/{external_group_id}`
 func (o GetAccountIamExternalGroupV2ResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccountIamExternalGroupV2Result) string { return v.Name }).(pulumi.StringOutput)
 }

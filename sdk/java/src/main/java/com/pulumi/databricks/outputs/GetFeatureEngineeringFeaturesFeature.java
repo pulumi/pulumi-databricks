@@ -86,6 +86,11 @@ public final class GetFeatureEngineeringFeaturesFeature {
      */
     private String name;
     /**
+     * @return (string) - Output type in Databricks SQL DDL (e.g., &#34;BIGINT&#34;, &#34;DECIMAL(10,2)&#34;, &#34;ARRAY&lt;STRING&gt;&#34;, &#34;STRUCT&lt;name:STRING&gt;&#34;)
+     * 
+     */
+    private String outputTypeText;
+    /**
      * @return Configure the provider for management through account provider.
      * 
      */
@@ -200,6 +205,13 @@ public final class GetFeatureEngineeringFeaturesFeature {
         return this.name;
     }
     /**
+     * @return (string) - Output type in Databricks SQL DDL (e.g., &#34;BIGINT&#34;, &#34;DECIMAL(10,2)&#34;, &#34;ARRAY&lt;STRING&gt;&#34;, &#34;STRUCT&lt;name:STRING&gt;&#34;)
+     * 
+     */
+    public String outputTypeText() {
+        return this.outputTypeText;
+    }
+    /**
      * @return Configure the provider for management through account provider.
      * 
      */
@@ -255,6 +267,7 @@ public final class GetFeatureEngineeringFeaturesFeature {
         private List<String> inputs;
         private GetFeatureEngineeringFeaturesFeatureLineageContext lineageContext;
         private String name;
+        private String outputTypeText;
         private @Nullable GetFeatureEngineeringFeaturesFeatureProviderConfig providerConfig;
         private String schemaName;
         private GetFeatureEngineeringFeaturesFeatureSource source;
@@ -274,6 +287,7 @@ public final class GetFeatureEngineeringFeaturesFeature {
     	      this.inputs = defaults.inputs;
     	      this.lineageContext = defaults.lineageContext;
     	      this.name = defaults.name;
+    	      this.outputTypeText = defaults.outputTypeText;
     	      this.providerConfig = defaults.providerConfig;
     	      this.schemaName = defaults.schemaName;
     	      this.source = defaults.source;
@@ -376,6 +390,14 @@ public final class GetFeatureEngineeringFeaturesFeature {
             return this;
         }
         @CustomType.Setter
+        public Builder outputTypeText(String outputTypeText) {
+            if (outputTypeText == null) {
+              throw new MissingRequiredPropertyException("GetFeatureEngineeringFeaturesFeature", "outputTypeText");
+            }
+            this.outputTypeText = outputTypeText;
+            return this;
+        }
+        @CustomType.Setter
         public Builder providerConfig(@Nullable GetFeatureEngineeringFeaturesFeatureProviderConfig providerConfig) {
 
             this.providerConfig = providerConfig;
@@ -426,6 +448,7 @@ public final class GetFeatureEngineeringFeaturesFeature {
             _resultValue.inputs = inputs;
             _resultValue.lineageContext = lineageContext;
             _resultValue.name = name;
+            _resultValue.outputTypeText = outputTypeText;
             _resultValue.providerConfig = providerConfig;
             _resultValue.schemaName = schemaName;
             _resultValue.source = source;

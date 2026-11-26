@@ -11,12 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetAppSpaceResourceUcSecurable {
     /**
-     * @return (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * @return (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      * 
      */
     private String permission;
     /**
-     * @return (string)
+     * @return (string) - Full name of the Unity Catalog securable. For volumes, tables and functions this is the
+     * three-level catalog.schema.object name
      * 
      */
     private String securableFullName;
@@ -27,21 +29,23 @@ public final class GetAppSpaceResourceUcSecurable {
      */
     private String securableKind;
     /**
-     * @return (string) - Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
+     * @return (string) - Kind of Unity Catalog securable that `securableFullName` refers to. Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      * 
      */
     private String securableType;
 
     private GetAppSpaceResourceUcSecurable() {}
     /**
-     * @return (string) - Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
+     * @return (string) - Privilege to grant the app on the securable. The privilege must be valid for the securable
+     * type, such as READ_VOLUME for a volume or SELECT for a table. Possible values are: `EXECUTE`, `MODIFY`, `READ_VOLUME`, `SELECT`, `USE_CONNECTION`, `WRITE_VOLUME`
      * 
      */
     public String permission() {
         return this.permission;
     }
     /**
-     * @return (string)
+     * @return (string) - Full name of the Unity Catalog securable. For volumes, tables and functions this is the
+     * three-level catalog.schema.object name
      * 
      */
     public String securableFullName() {
@@ -56,7 +60,7 @@ public final class GetAppSpaceResourceUcSecurable {
         return this.securableKind;
     }
     /**
-     * @return (string) - Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
+     * @return (string) - Kind of Unity Catalog securable that `securableFullName` refers to. Possible values are: `CONNECTION`, `FUNCTION`, `MODEL_SERVICE`, `TABLE`, `VOLUME`
      * 
      */
     public String securableType() {

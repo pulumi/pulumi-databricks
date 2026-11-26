@@ -22,12 +22,14 @@ import com.pulumi.databricks.inputs.AccountSettingV2EffectiveOperationalEmailCus
 import com.pulumi.databricks.inputs.AccountSettingV2EffectivePersonalComputeArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2EffectiveRestrictWorkspaceAdminsArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2EffectiveStringValArgs;
+import com.pulumi.databricks.inputs.AccountSettingV2EffectiveWorkspaceDashboardThemeArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2EffectiveWorkspaceLabelArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2IntegerValArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2OperationalEmailCustomRecipientArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2PersonalComputeArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2RestrictWorkspaceAdminsArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2StringValArgs;
+import com.pulumi.databricks.inputs.AccountSettingV2WorkspaceDashboardThemeArgs;
 import com.pulumi.databricks.inputs.AccountSettingV2WorkspaceLabelArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -295,6 +297,21 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * (DashboardTheme) - Effective setting value for the workspaceDashboardTheme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+     * 
+     */
+    @Import(name="effectiveWorkspaceDashboardTheme")
+    private @Nullable Output<AccountSettingV2EffectiveWorkspaceDashboardThemeArgs> effectiveWorkspaceDashboardTheme;
+
+    /**
+     * @return (DashboardTheme) - Effective setting value for the workspaceDashboardTheme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+     * 
+     */
+    public Optional<Output<AccountSettingV2EffectiveWorkspaceDashboardThemeArgs>> effectiveWorkspaceDashboardTheme() {
+        return Optional.ofNullable(this.effectiveWorkspaceDashboardTheme);
+    }
+
+    /**
      * Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
      * 
      */
@@ -325,14 +342,14 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Name of the setting
+     * Name of the setting. The settings metadata endpoint lists the names available at each scope
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Name of the setting
+     * @return Name of the setting. The settings metadata endpoint lists the names available at each scope
      * 
      */
     public Optional<Output<String>> name() {
@@ -400,6 +417,21 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+     * 
+     */
+    @Import(name="workspaceDashboardTheme")
+    private @Nullable Output<AccountSettingV2WorkspaceDashboardThemeArgs> workspaceDashboardTheme;
+
+    /**
+     * @return Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+     * 
+     */
+    public Optional<Output<AccountSettingV2WorkspaceDashboardThemeArgs>> workspaceDashboardTheme() {
+        return Optional.ofNullable(this.workspaceDashboardTheme);
+    }
+
+    /**
      * Setting value for workspaceLabel setting. This is the setting value set by consumers, check effectiveWorkspaceLabel for final setting value
      * 
      */
@@ -434,6 +466,7 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
         this.effectivePersonalCompute = $.effectivePersonalCompute;
         this.effectiveRestrictWorkspaceAdmins = $.effectiveRestrictWorkspaceAdmins;
         this.effectiveStringVal = $.effectiveStringVal;
+        this.effectiveWorkspaceDashboardTheme = $.effectiveWorkspaceDashboardTheme;
         this.effectiveWorkspaceLabel = $.effectiveWorkspaceLabel;
         this.integerVal = $.integerVal;
         this.name = $.name;
@@ -441,6 +474,7 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
         this.personalCompute = $.personalCompute;
         this.restrictWorkspaceAdmins = $.restrictWorkspaceAdmins;
         this.stringVal = $.stringVal;
+        this.workspaceDashboardTheme = $.workspaceDashboardTheme;
         this.workspaceLabel = $.workspaceLabel;
     }
 
@@ -820,6 +854,27 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param effectiveWorkspaceDashboardTheme (DashboardTheme) - Effective setting value for the workspaceDashboardTheme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveWorkspaceDashboardTheme(@Nullable Output<AccountSettingV2EffectiveWorkspaceDashboardThemeArgs> effectiveWorkspaceDashboardTheme) {
+            $.effectiveWorkspaceDashboardTheme = effectiveWorkspaceDashboardTheme;
+            return this;
+        }
+
+        /**
+         * @param effectiveWorkspaceDashboardTheme (DashboardTheme) - Effective setting value for the workspaceDashboardTheme setting. This is the final effective value of the setting. To set a value, use workspace_dashboard_theme
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveWorkspaceDashboardTheme(AccountSettingV2EffectiveWorkspaceDashboardThemeArgs effectiveWorkspaceDashboardTheme) {
+            return effectiveWorkspaceDashboardTheme(Output.of(effectiveWorkspaceDashboardTheme));
+        }
+
+        /**
          * @param effectiveWorkspaceLabel Effective setting value for workspaceLabel setting. This is the final effective value of setting. To set a value use workspace_label
          * 
          * @return builder
@@ -862,7 +917,7 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Name of the setting
+         * @param name Name of the setting. The settings metadata endpoint lists the names available at each scope
          * 
          * @return builder
          * 
@@ -873,7 +928,7 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Name of the setting
+         * @param name Name of the setting. The settings metadata endpoint lists the names available at each scope
          * 
          * @return builder
          * 
@@ -964,6 +1019,27 @@ public final class AccountSettingV2State extends com.pulumi.resources.ResourceAr
          */
         public Builder stringVal(AccountSettingV2StringValArgs stringVal) {
             return stringVal(Output.of(stringVal));
+        }
+
+        /**
+         * @param workspaceDashboardTheme Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceDashboardTheme(@Nullable Output<AccountSettingV2WorkspaceDashboardThemeArgs> workspaceDashboardTheme) {
+            $.workspaceDashboardTheme = workspaceDashboardTheme;
+            return this;
+        }
+
+        /**
+         * @param workspaceDashboardTheme Setting value for the workspaceDashboardTheme setting. This is the setting value set by consumers. Check effectiveWorkspaceDashboardTheme for the final setting value
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceDashboardTheme(AccountSettingV2WorkspaceDashboardThemeArgs workspaceDashboardTheme) {
+            return workspaceDashboardTheme(Output.of(workspaceDashboardTheme));
         }
 
         /**

@@ -97,7 +97,7 @@ class GetPostgresDatabaseResult:
     @pulumi.getter
     def spec(self) -> 'outputs.GetPostgresDatabaseSpecResult':
         """
-        (DatabaseDatabaseSpec) - The desired state of the Database
+        (DatabaseDatabaseSpec) - The desired state of the Database.
         """
         return pulumi.get(self, "spec")
 
@@ -138,7 +138,7 @@ def get_postgres_database(name: Optional[_builtins.str] = None,
                           provider_config: Optional[Union['GetPostgresDatabaseProviderConfigArgs', 'GetPostgresDatabaseProviderConfigArgsDict', 'outputs.GetPostgresDatabaseProviderConfigResult']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresDatabaseResult:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -181,7 +181,7 @@ def get_postgres_database_output(name: pulumi.Input[Optional[_builtins.str]] = N
                                  provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresDatabaseProviderConfigArgs', 'GetPostgresDatabaseProviderConfigArgsDict', 'outputs.GetPostgresDatabaseProviderConfigResult']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresDatabaseResult]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 

@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  *
@@ -84,7 +84,7 @@ export interface GetPostgresProjectResult {
      */
     readonly name: string;
     /**
-     * (string) - Part of the resource name
+     * (string) - The project ID, which is the final segment of the project's resource name
      */
     readonly projectId: string;
     readonly providerConfig?: outputs.GetPostgresProjectProviderConfig;
@@ -94,15 +94,19 @@ export interface GetPostgresProjectResult {
      */
     readonly purgeTime: string;
     /**
-     * (ProjectSpec) - The spec contains the project configuration, including display_name, pgVersion (Postgres version), history_retention_duration, and default_endpoint_settings
+     * (ProjectSpec) - The desired configuration of the project. The fields under `spec` are the ones that can be
+     * changed after creation, except `pgVersion`, which is fixed when the project is created. See
+     * `status` for the configuration that is currently in effect.
      */
     readonly spec: outputs.GetPostgresProjectSpec;
     /**
-     * (ProjectStatus) - The current status of a Project
+     * (ProjectStatus) - The configuration and state of the project that are currently in effect, as reported by the
+     * system
      */
     readonly status: outputs.GetPostgresProjectStatus;
     /**
-     * (string) - System-generated unique ID for the project
+     * (string) - A system-generated UUID that identifies the project. Unlike `name`, it is not derived from the
+     * user-chosen project ID
      */
     readonly uid: string;
     /**
@@ -111,7 +115,7 @@ export interface GetPostgresProjectResult {
     readonly updateTime: string;
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/postgres)
  *

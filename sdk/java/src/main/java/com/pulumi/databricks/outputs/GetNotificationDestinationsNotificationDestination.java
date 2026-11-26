@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetNotificationDestinationsNotificationDestination {
     /**
-     * @return The type of the notification destination. Possible values are `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
+     * @return The type of the notification destination. Possible values are `DATABRICKS_APP_SLACK`, `DATABRICKS_APP_TEAMS`, `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
      * 
      */
     private @Nullable String destinationType;
@@ -29,7 +29,7 @@ public final class GetNotificationDestinationsNotificationDestination {
 
     private GetNotificationDestinationsNotificationDestination() {}
     /**
-     * @return The type of the notification destination. Possible values are `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
+     * @return The type of the notification destination. Possible values are `DATABRICKS_APP_SLACK`, `DATABRICKS_APP_TEAMS`, `EMAIL`, `MICROSOFT_TEAMS`, `PAGERDUTY`, `SLACK`, or `WEBHOOK`.
      * 
      */
     public Optional<String> destinationType() {

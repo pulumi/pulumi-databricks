@@ -24,14 +24,16 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     public static final DatabaseInstanceState Empty = new DatabaseInstanceState();
 
     /**
-     * The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
+     * The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;. Must be set when
+     * creating an instance
      * 
      */
     @Import(name="capacity")
     private @Nullable Output<String> capacity;
 
     /**
-     * @return The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
+     * @return The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;. Must be set when
+     * creating an instance
      * 
      */
     public Optional<Output<String>> capacity() {
@@ -86,14 +88,16 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Custom tags associated with the instance. This field is only included on create and update responses
+     * Custom tags associated with the instance. This field is only included on create and update responses.
+     * An instance can have at most 10 tags; keys must be unique ignoring case
      * 
      */
     @Import(name="customTags")
     private @Nullable Output<List<DatabaseInstanceCustomTagArgs>> customTags;
 
     /**
-     * @return Custom tags associated with the instance. This field is only included on create and update responses
+     * @return Custom tags associated with the instance. This field is only included on create and update responses.
+     * An instance can have at most 10 tags; keys must be unique ignoring case
      * 
      */
     public Optional<Output<List<DatabaseInstanceCustomTagArgs>>> customTags() {
@@ -101,7 +105,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+     * (string, deprecated) - Deprecated: this field always matches the value of capacity; read capacity instead.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      * 
@@ -110,7 +114,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> effectiveCapacity;
 
     /**
-     * @return (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+     * @return (string, deprecated) - Deprecated: this field always matches the value of capacity; read capacity instead.
      * This is an output only field that contains the value computed from the input field combined with
      * server side defaults. Use the field without the effective_ prefix to set the value
      * 
@@ -272,14 +276,16 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether to enable secondaries to serve read-only traffic. Defaults to false
+     * Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+     * nodeCount greater than 1
      * 
      */
     @Import(name="enableReadableSecondaries")
     private @Nullable Output<Boolean> enableReadableSecondaries;
 
     /**
-     * @return Whether to enable secondaries to serve read-only traffic. Defaults to false
+     * @return Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+     * nodeCount greater than 1
      * 
      */
     public Optional<Output<Boolean>> enableReadableSecondaries() {
@@ -287,14 +293,18 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The name of the instance. This is the unique identifier for the instance
+     * The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+     * characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+     * consecutive hyphens
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the instance. This is the unique identifier for the instance
+     * @return The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+     * characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+     * consecutive hyphens
      * 
      */
     public Optional<Output<String>> name() {
@@ -319,8 +329,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The ref of the parent instance. This is only available if the instance is
-     * child instance.
+     * The ref of the parent instance. This is only available if the instance is a
+     * child instance. A child instance inherits customTags and usagePolicyId from
+     * its parent and cannot set them.
      * Input: For specifying the parent instance to create a child instance. Optional.
      * Output: Only populated if provided as input to create a child instance
      * 
@@ -329,8 +340,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<DatabaseInstanceParentInstanceRefArgs> parentInstanceRef;
 
     /**
-     * @return The ref of the parent instance. This is only available if the instance is
-     * child instance.
+     * @return The ref of the parent instance. This is only available if the instance is a
+     * child instance. A child instance inherits customTags and usagePolicyId from
+     * its parent and cannot set them.
      * Input: For specifying the parent instance to create a child instance. Optional.
      * Output: Only populated if provided as input to create a child instance
      * 
@@ -370,16 +382,16 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
-     * of false will throw a bad request
+     * Deprecated: omitting the field or setting it to true hard deletes the instance. Setting it to
+     * false returns a bad request
      * 
      */
     @Import(name="purgeOnDelete")
     private @Nullable Output<Boolean> purgeOnDelete;
 
     /**
-     * @return Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
-     * of false will throw a bad request
+     * @return Deprecated: omitting the field or setting it to true hard deletes the instance. Setting it to
+     * false returns a bad request
      * 
      */
     public Optional<Output<Boolean>> purgeOnDelete() {
@@ -453,14 +465,18 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether to stop the instance. An input only param, see effectiveStopped for the output
+     * Whether to stop the instance. An input only param, see effectiveStopped for the output. An
+     * instance cannot be created in the stopped state; set this field on update to stop or start
+     * the instance
      * 
      */
     @Import(name="stopped")
     private @Nullable Output<Boolean> stopped;
 
     /**
-     * @return Whether to stop the instance. An input only param, see effectiveStopped for the output
+     * @return Whether to stop the instance. An input only param, see effectiveStopped for the output. An
+     * instance cannot be created in the stopped state; set this field on update to stop or start
+     * the instance
      * 
      */
     public Optional<Output<Boolean>> stopped() {
@@ -549,7 +565,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param capacity The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
+         * @param capacity The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;. Must be set when
+         * creating an instance
          * 
          * @return builder
          * 
@@ -560,7 +577,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param capacity The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;
+         * @param capacity The sku of the instance. Valid values are &#34;CU_1&#34;, &#34;CU_2&#34;, &#34;CU_4&#34;, &#34;CU_8&#34;. Must be set when
+         * creating an instance
          * 
          * @return builder
          * 
@@ -646,7 +664,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param customTags Custom tags associated with the instance. This field is only included on create and update responses
+         * @param customTags Custom tags associated with the instance. This field is only included on create and update responses.
+         * An instance can have at most 10 tags; keys must be unique ignoring case
          * 
          * @return builder
          * 
@@ -657,7 +676,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param customTags Custom tags associated with the instance. This field is only included on create and update responses
+         * @param customTags Custom tags associated with the instance. This field is only included on create and update responses.
+         * An instance can have at most 10 tags; keys must be unique ignoring case
          * 
          * @return builder
          * 
@@ -667,7 +687,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param customTags Custom tags associated with the instance. This field is only included on create and update responses
+         * @param customTags Custom tags associated with the instance. This field is only included on create and update responses.
+         * An instance can have at most 10 tags; keys must be unique ignoring case
          * 
          * @return builder
          * 
@@ -677,7 +698,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveCapacity (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+         * @param effectiveCapacity (string, deprecated) - Deprecated: this field always matches the value of capacity; read capacity instead.
          * This is an output only field that contains the value computed from the input field combined with
          * server side defaults. Use the field without the effective_ prefix to set the value
          * 
@@ -690,7 +711,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param effectiveCapacity (string, deprecated) - Deprecated. The sku of the instance; this field will always match the value of capacity.
+         * @param effectiveCapacity (string, deprecated) - Deprecated: this field always matches the value of capacity; read capacity instead.
          * This is an output only field that contains the value computed from the input field combined with
          * server side defaults. Use the field without the effective_ prefix to set the value
          * 
@@ -914,7 +935,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enableReadableSecondaries Whether to enable secondaries to serve read-only traffic. Defaults to false
+         * @param enableReadableSecondaries Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+         * nodeCount greater than 1
          * 
          * @return builder
          * 
@@ -925,7 +947,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enableReadableSecondaries Whether to enable secondaries to serve read-only traffic. Defaults to false
+         * @param enableReadableSecondaries Whether to enable secondaries to serve read-only traffic. Defaults to false. Requires a
+         * nodeCount greater than 1
          * 
          * @return builder
          * 
@@ -935,7 +958,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The name of the instance. This is the unique identifier for the instance
+         * @param name The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+         * characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+         * consecutive hyphens
          * 
          * @return builder
          * 
@@ -946,7 +971,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The name of the instance. This is the unique identifier for the instance
+         * @param name The name of the instance. This is the unique identifier for the instance. Must be 1 to 63
+         * characters long, contain only letters, digits and hyphens, start with a letter, and not contain
+         * consecutive hyphens
          * 
          * @return builder
          * 
@@ -979,8 +1006,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param parentInstanceRef The ref of the parent instance. This is only available if the instance is
-         * child instance.
+         * @param parentInstanceRef The ref of the parent instance. This is only available if the instance is a
+         * child instance. A child instance inherits customTags and usagePolicyId from
+         * its parent and cannot set them.
          * Input: For specifying the parent instance to create a child instance. Optional.
          * Output: Only populated if provided as input to create a child instance
          * 
@@ -993,8 +1021,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param parentInstanceRef The ref of the parent instance. This is only available if the instance is
-         * child instance.
+         * @param parentInstanceRef The ref of the parent instance. This is only available if the instance is a
+         * child instance. A child instance inherits customTags and usagePolicyId from
+         * its parent and cannot set them.
          * Input: For specifying the parent instance to create a child instance. Optional.
          * Output: Only populated if provided as input to create a child instance
          * 
@@ -1048,8 +1077,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param purgeOnDelete Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
-         * of false will throw a bad request
+         * @param purgeOnDelete Deprecated: omitting the field or setting it to true hard deletes the instance. Setting it to
+         * false returns a bad request
          * 
          * @return builder
          * 
@@ -1060,8 +1089,8 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param purgeOnDelete Deprecated. Omitting the field or setting it to true will result in the field being hard deleted. Setting a value
-         * of false will throw a bad request
+         * @param purgeOnDelete Deprecated: omitting the field or setting it to true hard deletes the instance. Setting it to
+         * false returns a bad request
          * 
          * @return builder
          * 
@@ -1161,7 +1190,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param stopped Whether to stop the instance. An input only param, see effectiveStopped for the output
+         * @param stopped Whether to stop the instance. An input only param, see effectiveStopped for the output. An
+         * instance cannot be created in the stopped state; set this field on update to stop or start
+         * the instance
          * 
          * @return builder
          * 
@@ -1172,7 +1203,9 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param stopped Whether to stop the instance. An input only param, see effectiveStopped for the output
+         * @param stopped Whether to stop the instance. An input only param, see effectiveStopped for the output. An
+         * instance cannot be created in the stopped state; set this field on update to stop or start
+         * the instance
          * 
          * @return builder
          * 

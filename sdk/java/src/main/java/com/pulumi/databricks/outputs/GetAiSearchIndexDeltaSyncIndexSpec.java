@@ -16,24 +16,28 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAiSearchIndexDeltaSyncIndexSpec {
     /**
-     * @return (list of string) - [Optional] Select the columns to sync with the index. If left blank, all columns
-     * from the source table are synced. The primary key column and embedding source or
-     * vector column are always synced
+     * @return (list of string) - Columns of the source table to include in the index. When empty, all columns are synced. The
+     * primary key and the embedding source or vector column are always synced. Only synced columns
+     * can be returned in query results or used in filters
      * 
      */
     private @Nullable List<String> columnsToSyncs;
     /**
-     * @return (list of EmbeddingSourceColumn) - The columns that contain the embedding source
+     * @return (list of EmbeddingSourceColumn) - Columns that contain the text to embed, each with the model endpoint that computes its
+     * embeddings
      * 
      */
     private @Nullable List<GetAiSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn> embeddingSourceColumns;
     /**
-     * @return (list of EmbeddingVectorColumn) - The columns that contain the embedding vectors
+     * @return (list of EmbeddingVectorColumn) - Columns that hold precomputed embedding vectors. A single vector column is supported, and it
+     * cannot be the primary key
      * 
      */
     private @Nullable List<GetAiSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn> embeddingVectorColumns;
     /**
-     * @return (string) - [Optional] Name of the Delta table to sync the index contents and computed embeddings to
+     * @return (string) - Three-level name of a Delta table to write the synced rows and computed embeddings to. It
+     * applies only when embeddings are computed from `embeddingSourceColumns`, and the table must
+     * not already exist
      * 
      */
     private @Nullable String embeddingWritebackTable;
@@ -43,46 +47,48 @@ public final class GetAiSearchIndexDeltaSyncIndexSpec {
      */
     private String pipelineId;
     /**
-     * @return (string) - Pipeline execution mode. Required on create — the backend rejects an unset value.
-     * Storage Optimized endpoints accept only `TRIGGERED`; Standard endpoints accept both.
-     * No explicit `stage` — a REQUIRED field staged below its service would be dropped from
-     * combined specs while remaining in `required`, tripping the OpenAPI required-vs-properties
-     * consistency check. The field inherits the service&#39;s launch stage. Possible values are: `CONTINUOUS`, `TRIGGERED`
+     * @return (string) - Sync mode of the pipeline that keeps the index up to date. `TRIGGERED` syncs at creation and
+     * then each time SyncIndex is called; `CONTINUOUS` processes source changes as they arrive.
+     * Storage Optimized endpoints accept only `TRIGGERED`, and an unset value is rejected. Possible values are: `CONTINUOUS`, `TRIGGERED`
      * 
      */
     private String pipelineType;
     /**
-     * @return (string) - The full name of the source Delta table
+     * @return (string) - Three-level Unity Catalog name of the source Delta table, in the form `catalog.schema.table`
      * 
      */
     private @Nullable String sourceTable;
 
     private GetAiSearchIndexDeltaSyncIndexSpec() {}
     /**
-     * @return (list of string) - [Optional] Select the columns to sync with the index. If left blank, all columns
-     * from the source table are synced. The primary key column and embedding source or
-     * vector column are always synced
+     * @return (list of string) - Columns of the source table to include in the index. When empty, all columns are synced. The
+     * primary key and the embedding source or vector column are always synced. Only synced columns
+     * can be returned in query results or used in filters
      * 
      */
     public List<String> columnsToSyncs() {
         return this.columnsToSyncs == null ? List.of() : this.columnsToSyncs;
     }
     /**
-     * @return (list of EmbeddingSourceColumn) - The columns that contain the embedding source
+     * @return (list of EmbeddingSourceColumn) - Columns that contain the text to embed, each with the model endpoint that computes its
+     * embeddings
      * 
      */
     public List<GetAiSearchIndexDeltaSyncIndexSpecEmbeddingSourceColumn> embeddingSourceColumns() {
         return this.embeddingSourceColumns == null ? List.of() : this.embeddingSourceColumns;
     }
     /**
-     * @return (list of EmbeddingVectorColumn) - The columns that contain the embedding vectors
+     * @return (list of EmbeddingVectorColumn) - Columns that hold precomputed embedding vectors. A single vector column is supported, and it
+     * cannot be the primary key
      * 
      */
     public List<GetAiSearchIndexDeltaSyncIndexSpecEmbeddingVectorColumn> embeddingVectorColumns() {
         return this.embeddingVectorColumns == null ? List.of() : this.embeddingVectorColumns;
     }
     /**
-     * @return (string) - [Optional] Name of the Delta table to sync the index contents and computed embeddings to
+     * @return (string) - Three-level name of a Delta table to write the synced rows and computed embeddings to. It
+     * applies only when embeddings are computed from `embeddingSourceColumns`, and the table must
+     * not already exist
      * 
      */
     public Optional<String> embeddingWritebackTable() {
@@ -96,18 +102,16 @@ public final class GetAiSearchIndexDeltaSyncIndexSpec {
         return this.pipelineId;
     }
     /**
-     * @return (string) - Pipeline execution mode. Required on create — the backend rejects an unset value.
-     * Storage Optimized endpoints accept only `TRIGGERED`; Standard endpoints accept both.
-     * No explicit `stage` — a REQUIRED field staged below its service would be dropped from
-     * combined specs while remaining in `required`, tripping the OpenAPI required-vs-properties
-     * consistency check. The field inherits the service&#39;s launch stage. Possible values are: `CONTINUOUS`, `TRIGGERED`
+     * @return (string) - Sync mode of the pipeline that keeps the index up to date. `TRIGGERED` syncs at creation and
+     * then each time SyncIndex is called; `CONTINUOUS` processes source changes as they arrive.
+     * Storage Optimized endpoints accept only `TRIGGERED`, and an unset value is rejected. Possible values are: `CONTINUOUS`, `TRIGGERED`
      * 
      */
     public String pipelineType() {
         return this.pipelineType;
     }
     /**
-     * @return (string) - The full name of the source Delta table
+     * @return (string) - Three-level Unity Catalog name of the source Delta table, in the form `catalog.schema.table`
      * 
      */
     public Optional<String> sourceTable() {

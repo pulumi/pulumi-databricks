@@ -109,7 +109,7 @@ type GetSqlWarehouseArgs struct {
 	SpotInstancePolicy *string `pulumi:"spotInstancePolicy"`
 	// The current state of the endpoint.
 	State *string `pulumi:"state"`
-	// Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+	// Statement timeout in seconds for a warehouse; `0` means no warehouse override. Returns `0` if the API omits the field.
 	StatementTimeout *int `pulumi:"statementTimeout"`
 	// tags used for SQL warehouse resources.
 	Tags *GetSqlWarehouseTags `pulumi:"tags"`
@@ -162,7 +162,7 @@ type GetSqlWarehouseResult struct {
 	SpotInstancePolicy string `pulumi:"spotInstancePolicy"`
 	// The current state of the endpoint.
 	State string `pulumi:"state"`
-	// Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+	// Statement timeout in seconds for a warehouse; `0` means no warehouse override. Returns `0` if the API omits the field.
 	StatementTimeout int `pulumi:"statementTimeout"`
 	// tags used for SQL warehouse resources.
 	Tags GetSqlWarehouseTags `pulumi:"tags"`
@@ -220,7 +220,7 @@ type GetSqlWarehouseOutputArgs struct {
 	SpotInstancePolicy pulumi.StringPtrInput `pulumi:"spotInstancePolicy"`
 	// The current state of the endpoint.
 	State pulumi.StringPtrInput `pulumi:"state"`
-	// Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+	// Statement timeout in seconds for a warehouse; `0` means no warehouse override. Returns `0` if the API omits the field.
 	StatementTimeout pulumi.IntPtrInput `pulumi:"statementTimeout"`
 	// tags used for SQL warehouse resources.
 	Tags GetSqlWarehouseTagsPtrInput `pulumi:"tags"`
@@ -359,7 +359,7 @@ func (o GetSqlWarehouseResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) string { return v.State }).(pulumi.StringOutput)
 }
 
-// Statement timeout in seconds for a REALTIME warehouse; `0` means no warehouse override. Returns `0` if the API omits the field or for other warehouse types.
+// Statement timeout in seconds for a warehouse; `0` means no warehouse override. Returns `0` if the API omits the field.
 func (o GetSqlWarehouseResultOutput) StatementTimeout() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSqlWarehouseResult) int { return v.StatementTimeout }).(pulumi.IntOutput)
 }

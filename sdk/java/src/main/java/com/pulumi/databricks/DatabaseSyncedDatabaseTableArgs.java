@@ -48,7 +48,7 @@ public final class DatabaseSyncedDatabaseTableArgs extends com.pulumi.resources.
      * 
      * When creating a synced table in a standard catalog, this field is required.
      * In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-     * Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
+     * If this database does not exist yet, it is created when `createDatabaseObjectsIfMissing` in `spec` is true
      * 
      */
     @Import(name="logicalDatabaseName")
@@ -64,7 +64,7 @@ public final class DatabaseSyncedDatabaseTableArgs extends com.pulumi.resources.
      * 
      * When creating a synced table in a standard catalog, this field is required.
      * In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-     * Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
+     * If this database does not exist yet, it is created when `createDatabaseObjectsIfMissing` in `spec` is true
      * 
      */
     public Optional<Output<String>> logicalDatabaseName() {
@@ -101,9 +101,17 @@ public final class DatabaseSyncedDatabaseTableArgs extends com.pulumi.resources.
         return Optional.ofNullable(this.providerConfig);
     }
 
+    /**
+     * Specifies the source table, the key columns and how the data synchronization pipeline runs
+     * 
+     */
     @Import(name="spec")
     private @Nullable Output<DatabaseSyncedDatabaseTableSpecArgs> spec;
 
+    /**
+     * @return Specifies the source table, the key columns and how the data synchronization pipeline runs
+     * 
+     */
     public Optional<Output<DatabaseSyncedDatabaseTableSpecArgs>> spec() {
         return Optional.ofNullable(this.spec);
     }
@@ -173,7 +181,7 @@ public final class DatabaseSyncedDatabaseTableArgs extends com.pulumi.resources.
          * 
          * When creating a synced table in a standard catalog, this field is required.
          * In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-         * Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
+         * If this database does not exist yet, it is created when `createDatabaseObjectsIfMissing` in `spec` is true
          * 
          * @return builder
          * 
@@ -193,7 +201,7 @@ public final class DatabaseSyncedDatabaseTableArgs extends com.pulumi.resources.
          * 
          * When creating a synced table in a standard catalog, this field is required.
          * In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-         * Note that this has implications for the `createDatabaseObjectsIsMissing` field in `spec`
+         * If this database does not exist yet, it is created when `createDatabaseObjectsIfMissing` in `spec` is true
          * 
          * @return builder
          * 
@@ -244,11 +252,23 @@ public final class DatabaseSyncedDatabaseTableArgs extends com.pulumi.resources.
             return providerConfig(Output.of(providerConfig));
         }
 
+        /**
+         * @param spec Specifies the source table, the key columns and how the data synchronization pipeline runs
+         * 
+         * @return builder
+         * 
+         */
         public Builder spec(@Nullable Output<DatabaseSyncedDatabaseTableSpecArgs> spec) {
             $.spec = spec;
             return this;
         }
 
+        /**
+         * @param spec Specifies the source table, the key columns and how the data synchronization pipeline runs
+         * 
+         * @return builder
+         * 
+         */
         public Builder spec(DatabaseSyncedDatabaseTableSpecArgs spec) {
             return spec(Output.of(spec));
         }

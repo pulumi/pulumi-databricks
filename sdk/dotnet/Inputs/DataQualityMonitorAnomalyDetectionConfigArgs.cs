@@ -16,7 +16,7 @@ namespace Pulumi.Databricks.Inputs
         private InputList<string>? _excludedTableFullNames;
 
         /// <summary>
-        /// List of fully qualified table names to exclude from anomaly detection
+        /// List of fully qualified table names to exclude from anomaly detection. Format: `catalog.schema.table_name`
         /// </summary>
         public InputList<string> ExcludedTableFullNames
         {

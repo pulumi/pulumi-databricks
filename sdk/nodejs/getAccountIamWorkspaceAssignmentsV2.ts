@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/account/iamv2)
  *
@@ -26,13 +26,13 @@ export function getAccountIamWorkspaceAssignmentsV2(args: GetAccountIamWorkspace
  */
 export interface GetAccountIamWorkspaceAssignmentsV2Args {
     /**
-     * The maximum number of workspace assignments to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * The maximum number of assignments to return, up to 1000. The default is 1000. A page can
+     * contain fewer assignments
      */
     pageSize?: number;
     /**
-     * The parent resource name of the workspace whose assignments to list.
-     * Format: accounts/{account_id}/workspaces/{workspace_id}
+     * The resource name of the workspace, in the format
+     * `accounts/{account_id}/workspaces/{workspace_id}`
      */
     parent: string;
 }
@@ -43,15 +43,14 @@ export interface GetAccountIamWorkspaceAssignmentsV2Args {
 export interface GetAccountIamWorkspaceAssignmentsV2Result {
     readonly pageSize?: number;
     /**
-     * (string) - The resource name of the workspace that contains the assignment,
-     * `accounts/{account_id}/workspaces/{workspace_id}`. Both the account-scoped and workspace-scoped
-     * APIs return it
+     * (string) - The resource name of the workspace, in the format
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Workspace APIs return the same format
      */
     readonly parent: string;
     readonly workspaceAssignments: outputs.GetAccountIamWorkspaceAssignmentsV2WorkspaceAssignment[];
 }
 /**
- * [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/account/iamv2)
  *
@@ -70,13 +69,13 @@ export function getAccountIamWorkspaceAssignmentsV2Output(args: GetAccountIamWor
  */
 export interface GetAccountIamWorkspaceAssignmentsV2OutputArgs {
     /**
-     * The maximum number of workspace assignments to return. The service may return fewer than this value.
-     * If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+     * The maximum number of assignments to return, up to 1000. The default is 1000. A page can
+     * contain fewer assignments
      */
     pageSize?: pulumi.Input<number | undefined>;
     /**
-     * The parent resource name of the workspace whose assignments to list.
-     * Format: accounts/{account_id}/workspaces/{workspace_id}
+     * The resource name of the workspace, in the format
+     * `accounts/{account_id}/workspaces/{workspace_id}`
      */
     parent: pulumi.Input<string>;
 }

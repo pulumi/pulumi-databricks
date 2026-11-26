@@ -139,14 +139,14 @@ public class RfaAccessRequestDestinations extends com.pulumi.resources.CustomRes
         return Codegen.optional(this.destinations);
     }
     /**
-     * (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     * (string) - The full name of the securable, repeated from **securable**
      * 
      */
     @Export(name="fullName", refs={String.class}, tree="[0]")
     private Output<String> fullName;
 
     /**
-     * @return (string) - The full name of the securable. Redundant with the name in the securable object, but necessary for Pulumi integration
+     * @return (string) - The full name of the securable, repeated from **securable**
      * 
      */
     public Output<String> fullName() {
@@ -181,14 +181,14 @@ public class RfaAccessRequestDestinations extends com.pulumi.resources.CustomRes
         return this.securable;
     }
     /**
-     * (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+     * (string) - The type of the securable, repeated from **securable** as a plain string
      * 
      */
     @Export(name="securableType", refs={String.class}, tree="[0]")
     private Output<String> securableType;
 
     /**
-     * @return (string) - The type of the securable. Redundant with the type in the securable object, but necessary for Pulumi integration
+     * @return (string) - The type of the securable, repeated from **securable** as a plain string
      * 
      */
     public Output<String> securableType() {

@@ -13,21 +13,31 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AlertV2EvaluationSource {
     /**
-     * @return If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * @return Aggregation applied to the column across all rows of the query result: `SUM`, `COUNT`, `COUNT_DISTINCT`, `AVG`, `MEDIAN`, `MIN`, `MAX` or `STDDEV`.
+     * If not set, the value in the first row is used, which is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      * 
      */
     private @Nullable String aggregation;
+    /**
+     * @return Label for the column in notifications. Defaults to `name`
+     * 
+     */
     private @Nullable String display;
     private String name;
 
     private AlertV2EvaluationSource() {}
     /**
-     * @return If not set, the behavior is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
+     * @return Aggregation applied to the column across all rows of the query result: `SUM`, `COUNT`, `COUNT_DISTINCT`, `AVG`, `MEDIAN`, `MIN`, `MAX` or `STDDEV`.
+     * If not set, the value in the first row is used, which is equivalent to using `First row` in the UI. Possible values are: `AVG`, `COUNT`, `COUNT_DISTINCT`, `MAX`, `MEDIAN`, `MIN`, `STDDEV`, `SUM`
      * 
      */
     public Optional<String> aggregation() {
         return Optional.ofNullable(this.aggregation);
     }
+    /**
+     * @return Label for the column in notifications. Defaults to `name`
+     * 
+     */
     public Optional<String> display() {
         return Optional.ofNullable(this.display);
     }

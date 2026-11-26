@@ -43,8 +43,9 @@ export interface GetAiGatewayModelProviderServiceArgs {
      * Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: string;
     /**
@@ -72,11 +73,11 @@ export interface GetAiGatewayModelProviderServiceResult {
      */
     readonly createTime: string;
     /**
-     * (string) - Creator identity
+     * (string) - Username of the user who created the model provider service
      */
     readonly createdBy: string;
     /**
-     * (string) - Owner of the model provider service
+     * (string) - Username or group name of the model provider service owner
      */
     readonly effectiveOwner: string;
     /**
@@ -87,7 +88,7 @@ export interface GetAiGatewayModelProviderServiceResult {
      */
     readonly etag: string;
     /**
-     * (string) - Metastore hosting the provider service
+     * (string) - Unique identifier of the metastore that contains the model provider service
      */
     readonly metastoreId: string;
     /**
@@ -103,7 +104,7 @@ export interface GetAiGatewayModelProviderServiceResult {
      */
     readonly updateTime: string;
     /**
-     * (string) - Identity of the last updater
+     * (string) - Username of the user who last updated the model provider service
      */
     readonly updatedBy: string;
 }
@@ -144,8 +145,9 @@ export interface GetAiGatewayModelProviderServiceOutputArgs {
      * Resource name of the provider service.
      * Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
      * Each `{...}` component is capped at 255 characters individually.
-     * Server-derived on Create from `parent` +
-     * `modelProviderServiceId`; required and immutable on Update/Get/Delete
+     * The server derives the name on Create from
+     * `parent` and `modelProviderServiceId`; it is required and immutable on
+     * Update, Get, and Delete
      */
     name: pulumi.Input<string>;
     /**

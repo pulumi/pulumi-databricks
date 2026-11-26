@@ -12,6 +12,9 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class TagPolicyValueArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The value that can be assigned to the tag key. Values are case-sensitive
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 

@@ -14,11 +14,11 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAlertsV2AlertEvaluationThresholdResult
     {
         /// <summary>
-        /// (AlertV2OperandColumn)
+        /// (AlertV2OperandColumn) - Compare the source against another column of the query result
         /// </summary>
         public readonly Outputs.GetAlertsV2AlertEvaluationThresholdColumnResult? Column;
         /// <summary>
-        /// (AlertV2OperandValue)
+        /// (AlertV2OperandValue) - Compare the source against a fixed value
         /// </summary>
         public readonly Outputs.GetAlertsV2AlertEvaluationThresholdValueResult? Value;
 

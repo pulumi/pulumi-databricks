@@ -16,6 +16,8 @@ namespace Pulumi.Databricks
     /// 
     /// &gt; This resource can only be used with a workspace-level provider!
     /// 
+    /// &gt; **Note** Write-Only argument `PersonalAccessTokenWo` is available to use in place of `PersonalAccessToken`. Write-Only arguments are supported in HashiCorp Pulumi 1.11.0 and later. Learn more.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Git credential that uses personal access token
@@ -35,6 +37,29 @@ namespace Pulumi.Databricks
     ///         GitUsername = "myuser",
     ///         GitProvider = "azureDevOpsServices",
     ///         PersonalAccessToken = "sometoken",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Git credential that uses a write-only personal access token
+    /// 
+    /// Use `PersonalAccessTokenWo` to avoid storing the token in the Pulumi state. The value can come from an ephemeral resource or a variable. Increment `PersonalAccessTokenWoVersion` whenever the token needs to be updated:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Databricks = Pulumi.Databricks;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var ado = new Databricks.GitCredential("ado", new()
+    ///     {
+    ///         GitUsername = "myuser",
+    ///         GitProvider = "azureDevOpsServices",
+    ///         PersonalAccessTokenWo = adoPat,
+    ///         PersonalAccessTokenWoVersion = 1,
     ///     });
     /// 
     /// });
@@ -129,10 +154,23 @@ namespace Pulumi.Databricks
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+        /// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `PersonalAccessTokenWo`.
         /// </summary>
         [Output("personalAccessToken")]
         public Output<string?> PersonalAccessToken { get; private set; } = null!;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only alternative to `PersonalAccessToken`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `PersonalAccessTokenWoVersion`. When set, `PersonalAccessToken` is not sourced from environment variables, and a token previously stored in `PersonalAccessToken` is removed from the state.
+        /// </summary>
+        [Output("personalAccessTokenWo")]
+        public Output<string?> PersonalAccessTokenWo { get; private set; } = null!;
+
+        /// <summary>
+        /// Use together with `PersonalAccessTokenWo` to trigger an update. Increment this value (starting at 1) when an update to `PersonalAccessTokenWo` is required.
+        /// </summary>
+        [Output("personalAccessTokenWoVersion")]
+        public Output<int?> PersonalAccessTokenWoVersion { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
@@ -172,6 +210,7 @@ namespace Pulumi.Databricks
                 AdditionalSecretOutputs =
                 {
                     "personalAccessToken",
+                    "personalAccessTokenWo",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -236,7 +275,7 @@ namespace Pulumi.Databricks
         private Input<string>? _personalAccessToken;
 
         /// <summary>
-        /// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+        /// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `PersonalAccessTokenWo`.
         /// </summary>
         public Input<string>? PersonalAccessToken
         {
@@ -247,6 +286,29 @@ namespace Pulumi.Databricks
                 _personalAccessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("personalAccessTokenWo")]
+        private Input<string>? _personalAccessTokenWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only alternative to `PersonalAccessToken`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `PersonalAccessTokenWoVersion`. When set, `PersonalAccessToken` is not sourced from environment variables, and a token previously stored in `PersonalAccessToken` is removed from the state.
+        /// </summary>
+        public Input<string>? PersonalAccessTokenWo
+        {
+            get => _personalAccessTokenWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _personalAccessTokenWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Use together with `PersonalAccessTokenWo` to trigger an update. Increment this value (starting at 1) when an update to `PersonalAccessTokenWo` is required.
+        /// </summary>
+        [Input("personalAccessTokenWoVersion")]
+        public Input<int>? PersonalAccessTokenWoVersion { get; set; }
 
         /// <summary>
         /// The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.
@@ -308,7 +370,7 @@ namespace Pulumi.Databricks
         private Input<string>? _personalAccessToken;
 
         /// <summary>
-        /// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value.
+        /// The personal access token used to authenticate to the corresponding Git provider. If value is not provided, it's sourced from the first environment variable of `GITHUB_TOKEN`, `GITLAB_TOKEN`, or `AZDO_PERSONAL_ACCESS_TOKEN`, that has a non-empty value. Conflicts with `PersonalAccessTokenWo`.
         /// </summary>
         public Input<string>? PersonalAccessToken
         {
@@ -319,6 +381,29 @@ namespace Pulumi.Databricks
                 _personalAccessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("personalAccessTokenWo")]
+        private Input<string>? _personalAccessTokenWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// Write-only alternative to `PersonalAccessToken`: the token is sent to Databricks but never stored in the Pulumi state. Requires Pulumi 1.11.0 or later and must be used together with `PersonalAccessTokenWoVersion`. When set, `PersonalAccessToken` is not sourced from environment variables, and a token previously stored in `PersonalAccessToken` is removed from the state.
+        /// </summary>
+        public Input<string>? PersonalAccessTokenWo
+        {
+            get => _personalAccessTokenWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _personalAccessTokenWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Use together with `PersonalAccessTokenWo` to trigger an update. Increment this value (starting at 1) when an update to `PersonalAccessTokenWo` is required.
+        /// </summary>
+        [Input("personalAccessTokenWoVersion")]
+        public Input<int>? PersonalAccessTokenWoVersion { get; set; }
 
         /// <summary>
         /// The ID of the service principal whose credentials will be managed. Only service principal managers can use this field. When specified, the git credential is created or updated for the given service principal instead of the calling user.

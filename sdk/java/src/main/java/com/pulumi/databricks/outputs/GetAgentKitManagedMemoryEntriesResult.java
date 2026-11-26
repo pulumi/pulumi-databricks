@@ -27,7 +27,8 @@ public final class GetAgentKitManagedMemoryEntriesResult {
     private @Nullable String pathPrefix;
     private @Nullable GetAgentKitManagedMemoryEntriesProviderConfig providerConfig;
     /**
-     * @return (string) - Optional identifier for the session associated with this memory entry. When omitted, the
+     * @return (string, deprecated) - Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+     * ignore this field on writes and omit it from responses. Until then, an omitted value means the
      * entry applies across the actor&#39;s sessions
      * 
      */
@@ -58,7 +59,8 @@ public final class GetAgentKitManagedMemoryEntriesResult {
         return Optional.ofNullable(this.providerConfig);
     }
     /**
-     * @return (string) - Optional identifier for the session associated with this memory entry. When omitted, the
+     * @return (string, deprecated) - Deprecated: memory entries will be identified by `(actor_id, path)`, and the service will
+     * ignore this field on writes and omit it from responses. Until then, an omitted value means the
      * entry applies across the actor&#39;s sessions
      * 
      */

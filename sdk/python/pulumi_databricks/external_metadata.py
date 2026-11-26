@@ -33,15 +33,23 @@ class ExternalMetadataArgs:
         """
         The set of arguments for constructing a ExternalMetadata resource.
 
-        :param pulumi.Input[_builtins.str] entity_type: Type of entity within the external system
-        :param pulumi.Input[_builtins.str] system_type: Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] columns: List of columns associated with the external metadata object
-        :param pulumi.Input[_builtins.str] description: User-provided free-form text description
-        :param pulumi.Input[_builtins.str] name: Name of the external metadata object
-        :param pulumi.Input[_builtins.str] owner: Owner of the external metadata object
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the external metadata object
+        :param pulumi.Input[_builtins.str] entity_type: Type of the object within the external system, such as a table, a report, or a dashboard. The value is
+               free-form text of at most 255 characters
+        :param pulumi.Input[_builtins.str] system_type: Type of the external system that holds the object. Use `OTHER` for a system that is not in the list. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] columns: Names of the columns of the object, used for column-level mappings in external lineage relationships.
+               Column names must be unique within the list, and the combined size of all column names is limited
+        :param pulumi.Input[_builtins.str] description: User-provided free-form text description of the object. The description must not exceed 5000 characters
+        :param pulumi.Input[_builtins.str] name: Name of the external metadata object. The name is unique within the metastore, must follow the
+               [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+               and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+               refer to the object by this name
+        :param pulumi.Input[_builtins.str] owner: Owner of the external metadata object. Defaults to the creator. To change the owner, send an update whose
+               update mask includes `owner`
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Key-value properties attached to the object. Keys and values must be non-empty, and the combined length
+               of all keys and values must not exceed 5000 characters
         :param pulumi.Input['ExternalMetadataProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] url: URL associated with the external metadata object
+        :param pulumi.Input[_builtins.str] url: URL of the object in the external system. When set, lineage graph viewers can follow it to the external
+               asset. The URL must not exceed 2048 characters
         """
         pulumi.set(__self__, "entity_type", entity_type)
         pulumi.set(__self__, "system_type", system_type)
@@ -64,7 +72,8 @@ class ExternalMetadataArgs:
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Type of entity within the external system
+        Type of the object within the external system, such as a table, a report, or a dashboard. The value is
+        free-form text of at most 255 characters
         """
         return pulumi.get(self, "entity_type")
 
@@ -76,7 +85,7 @@ class ExternalMetadataArgs:
     @pulumi.getter(name="systemType")
     def system_type(self) -> pulumi.Input[_builtins.str]:
         """
-        Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        Type of the external system that holds the object. Use `OTHER` for a system that is not in the list. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         """
         return pulumi.get(self, "system_type")
 
@@ -88,7 +97,8 @@ class ExternalMetadataArgs:
     @pulumi.getter
     def columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of columns associated with the external metadata object
+        Names of the columns of the object, used for column-level mappings in external lineage relationships.
+        Column names must be unique within the list, and the combined size of all column names is limited
         """
         return pulumi.get(self, "columns")
 
@@ -100,7 +110,7 @@ class ExternalMetadataArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        User-provided free-form text description
+        User-provided free-form text description of the object. The description must not exceed 5000 characters
         """
         return pulumi.get(self, "description")
 
@@ -112,7 +122,10 @@ class ExternalMetadataArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the external metadata object
+        Name of the external metadata object. The name is unique within the metastore, must follow the
+        [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+        and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+        refer to the object by this name
         """
         return pulumi.get(self, "name")
 
@@ -124,7 +137,8 @@ class ExternalMetadataArgs:
     @pulumi.getter
     def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Owner of the external metadata object
+        Owner of the external metadata object. Defaults to the creator. To change the owner, send an update whose
+        update mask includes `owner`
         """
         return pulumi.get(self, "owner")
 
@@ -136,7 +150,8 @@ class ExternalMetadataArgs:
     @pulumi.getter
     def properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        A map of key-value properties attached to the external metadata object
+        Key-value properties attached to the object. Keys and values must be non-empty, and the combined length
+        of all keys and values must not exceed 5000 characters
         """
         return pulumi.get(self, "properties")
 
@@ -160,7 +175,8 @@ class ExternalMetadataArgs:
     @pulumi.getter
     def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        URL associated with the external metadata object
+        URL of the object in the external system. When set, lineage graph viewers can follow it to the external
+        asset. The URL must not exceed 2048 characters
         """
         return pulumi.get(self, "url")
 
@@ -189,20 +205,28 @@ class _ExternalMetadataState:
         """
         Input properties used for looking up and filtering ExternalMetadata resources.
 
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] columns: List of columns associated with the external metadata object
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] columns: Names of the columns of the object, used for column-level mappings in external lineage relationships.
+               Column names must be unique within the list, and the combined size of all column names is limited
         :param pulumi.Input[_builtins.str] create_time: (string) - Time at which this external metadata object was created
         :param pulumi.Input[_builtins.str] created_by: (string) - Username of external metadata object creator
-        :param pulumi.Input[_builtins.str] description: User-provided free-form text description
-        :param pulumi.Input[_builtins.str] entity_type: Type of entity within the external system
+        :param pulumi.Input[_builtins.str] description: User-provided free-form text description of the object. The description must not exceed 5000 characters
+        :param pulumi.Input[_builtins.str] entity_type: Type of the object within the external system, such as a table, a report, or a dashboard. The value is
+               free-form text of at most 255 characters
         :param pulumi.Input[_builtins.str] metastore_id: (string) - Unique identifier of parent metastore
-        :param pulumi.Input[_builtins.str] name: Name of the external metadata object
-        :param pulumi.Input[_builtins.str] owner: Owner of the external metadata object
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the external metadata object
+        :param pulumi.Input[_builtins.str] name: Name of the external metadata object. The name is unique within the metastore, must follow the
+               [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+               and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+               refer to the object by this name
+        :param pulumi.Input[_builtins.str] owner: Owner of the external metadata object. Defaults to the creator. To change the owner, send an update whose
+               update mask includes `owner`
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Key-value properties attached to the object. Keys and values must be non-empty, and the combined length
+               of all keys and values must not exceed 5000 characters
         :param pulumi.Input['ExternalMetadataProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] system_type: Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        :param pulumi.Input[_builtins.str] system_type: Type of the external system that holds the object. Use `OTHER` for a system that is not in the list. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         :param pulumi.Input[_builtins.str] update_time: (string) - Time at which this external metadata object was last modified
         :param pulumi.Input[_builtins.str] updated_by: (string) - Username of user who last modified external metadata object
-        :param pulumi.Input[_builtins.str] url: URL associated with the external metadata object
+        :param pulumi.Input[_builtins.str] url: URL of the object in the external system. When set, lineage graph viewers can follow it to the external
+               asset. The URL must not exceed 2048 characters
         """
         if columns is not None:
             pulumi.set(__self__, "columns", columns)
@@ -237,7 +261,8 @@ class _ExternalMetadataState:
     @pulumi.getter
     def columns(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of columns associated with the external metadata object
+        Names of the columns of the object, used for column-level mappings in external lineage relationships.
+        Column names must be unique within the list, and the combined size of all column names is limited
         """
         return pulumi.get(self, "columns")
 
@@ -273,7 +298,7 @@ class _ExternalMetadataState:
     @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        User-provided free-form text description
+        User-provided free-form text description of the object. The description must not exceed 5000 characters
         """
         return pulumi.get(self, "description")
 
@@ -285,7 +310,8 @@ class _ExternalMetadataState:
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Type of entity within the external system
+        Type of the object within the external system, such as a table, a report, or a dashboard. The value is
+        free-form text of at most 255 characters
         """
         return pulumi.get(self, "entity_type")
 
@@ -309,7 +335,10 @@ class _ExternalMetadataState:
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Name of the external metadata object
+        Name of the external metadata object. The name is unique within the metastore, must follow the
+        [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+        and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+        refer to the object by this name
         """
         return pulumi.get(self, "name")
 
@@ -321,7 +350,8 @@ class _ExternalMetadataState:
     @pulumi.getter
     def owner(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Owner of the external metadata object
+        Owner of the external metadata object. Defaults to the creator. To change the owner, send an update whose
+        update mask includes `owner`
         """
         return pulumi.get(self, "owner")
 
@@ -333,7 +363,8 @@ class _ExternalMetadataState:
     @pulumi.getter
     def properties(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        A map of key-value properties attached to the external metadata object
+        Key-value properties attached to the object. Keys and values must be non-empty, and the combined length
+        of all keys and values must not exceed 5000 characters
         """
         return pulumi.get(self, "properties")
 
@@ -357,7 +388,7 @@ class _ExternalMetadataState:
     @pulumi.getter(name="systemType")
     def system_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        Type of the external system that holds the object. Use `OTHER` for a system that is not in the list. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         """
         return pulumi.get(self, "system_type")
 
@@ -393,7 +424,8 @@ class _ExternalMetadataState:
     @pulumi.getter
     def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        URL associated with the external metadata object
+        URL of the object in the external system. When set, lineage graph viewers can follow it to the external
+        asset. The URL must not exceed 2048 characters
         """
         return pulumi.get(self, "url")
 
@@ -458,15 +490,23 @@ class ExternalMetadata(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] columns: List of columns associated with the external metadata object
-        :param pulumi.Input[_builtins.str] description: User-provided free-form text description
-        :param pulumi.Input[_builtins.str] entity_type: Type of entity within the external system
-        :param pulumi.Input[_builtins.str] name: Name of the external metadata object
-        :param pulumi.Input[_builtins.str] owner: Owner of the external metadata object
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the external metadata object
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] columns: Names of the columns of the object, used for column-level mappings in external lineage relationships.
+               Column names must be unique within the list, and the combined size of all column names is limited
+        :param pulumi.Input[_builtins.str] description: User-provided free-form text description of the object. The description must not exceed 5000 characters
+        :param pulumi.Input[_builtins.str] entity_type: Type of the object within the external system, such as a table, a report, or a dashboard. The value is
+               free-form text of at most 255 characters
+        :param pulumi.Input[_builtins.str] name: Name of the external metadata object. The name is unique within the metastore, must follow the
+               [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+               and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+               refer to the object by this name
+        :param pulumi.Input[_builtins.str] owner: Owner of the external metadata object. Defaults to the creator. To change the owner, send an update whose
+               update mask includes `owner`
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Key-value properties attached to the object. Keys and values must be non-empty, and the combined length
+               of all keys and values must not exceed 5000 characters
         :param pulumi.Input[Union['ExternalMetadataProviderConfigArgs', 'ExternalMetadataProviderConfigArgsDict', 'outputs.ExternalMetadataProviderConfig']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] system_type: Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
-        :param pulumi.Input[_builtins.str] url: URL associated with the external metadata object
+        :param pulumi.Input[_builtins.str] system_type: Type of the external system that holds the object. Use `OTHER` for a system that is not in the list. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        :param pulumi.Input[_builtins.str] url: URL of the object in the external system. When set, lineage graph viewers can follow it to the external
+               asset. The URL must not exceed 2048 characters
         """
         ...
     @overload
@@ -594,20 +634,28 @@ class ExternalMetadata(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] columns: List of columns associated with the external metadata object
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] columns: Names of the columns of the object, used for column-level mappings in external lineage relationships.
+               Column names must be unique within the list, and the combined size of all column names is limited
         :param pulumi.Input[_builtins.str] create_time: (string) - Time at which this external metadata object was created
         :param pulumi.Input[_builtins.str] created_by: (string) - Username of external metadata object creator
-        :param pulumi.Input[_builtins.str] description: User-provided free-form text description
-        :param pulumi.Input[_builtins.str] entity_type: Type of entity within the external system
+        :param pulumi.Input[_builtins.str] description: User-provided free-form text description of the object. The description must not exceed 5000 characters
+        :param pulumi.Input[_builtins.str] entity_type: Type of the object within the external system, such as a table, a report, or a dashboard. The value is
+               free-form text of at most 255 characters
         :param pulumi.Input[_builtins.str] metastore_id: (string) - Unique identifier of parent metastore
-        :param pulumi.Input[_builtins.str] name: Name of the external metadata object
-        :param pulumi.Input[_builtins.str] owner: Owner of the external metadata object
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: A map of key-value properties attached to the external metadata object
+        :param pulumi.Input[_builtins.str] name: Name of the external metadata object. The name is unique within the metastore, must follow the
+               [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+               and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+               refer to the object by this name
+        :param pulumi.Input[_builtins.str] owner: Owner of the external metadata object. Defaults to the creator. To change the owner, send an update whose
+               update mask includes `owner`
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] properties: Key-value properties attached to the object. Keys and values must be non-empty, and the combined length
+               of all keys and values must not exceed 5000 characters
         :param pulumi.Input[Union['ExternalMetadataProviderConfigArgs', 'ExternalMetadataProviderConfigArgsDict', 'outputs.ExternalMetadataProviderConfig']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[_builtins.str] system_type: Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        :param pulumi.Input[_builtins.str] system_type: Type of the external system that holds the object. Use `OTHER` for a system that is not in the list. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         :param pulumi.Input[_builtins.str] update_time: (string) - Time at which this external metadata object was last modified
         :param pulumi.Input[_builtins.str] updated_by: (string) - Username of user who last modified external metadata object
-        :param pulumi.Input[_builtins.str] url: URL associated with the external metadata object
+        :param pulumi.Input[_builtins.str] url: URL of the object in the external system. When set, lineage graph viewers can follow it to the external
+               asset. The URL must not exceed 2048 characters
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -667,7 +715,8 @@ class ExternalMetadata(pulumi.CustomResource):
     @pulumi.getter
     def columns(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        List of columns associated with the external metadata object
+        Names of the columns of the object, used for column-level mappings in external lineage relationships.
+        Column names must be unique within the list, and the combined size of all column names is limited
         """
         return pulumi.get(self, "columns")
 
@@ -691,7 +740,7 @@ class ExternalMetadata(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        User-provided free-form text description
+        User-provided free-form text description of the object. The description must not exceed 5000 characters
         """
         return pulumi.get(self, "description")
 
@@ -699,7 +748,8 @@ class ExternalMetadata(pulumi.CustomResource):
     @pulumi.getter(name="entityType")
     def entity_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Type of entity within the external system
+        Type of the object within the external system, such as a table, a report, or a dashboard. The value is
+        free-form text of at most 255 characters
         """
         return pulumi.get(self, "entity_type")
 
@@ -715,7 +765,10 @@ class ExternalMetadata(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        Name of the external metadata object
+        Name of the external metadata object. The name is unique within the metastore, must follow the
+        [Unity Catalog naming requirements](https://docs.databricks.com/aws/en/data-governance/unity-catalog/requirements#naming-requirements),
+        and is stored in lowercase. It cannot be changed after creation, and external lineage relationships
+        refer to the object by this name
         """
         return pulumi.get(self, "name")
 
@@ -723,7 +776,8 @@ class ExternalMetadata(pulumi.CustomResource):
     @pulumi.getter
     def owner(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Owner of the external metadata object
+        Owner of the external metadata object. Defaults to the creator. To change the owner, send an update whose
+        update mask includes `owner`
         """
         return pulumi.get(self, "owner")
 
@@ -731,7 +785,8 @@ class ExternalMetadata(pulumi.CustomResource):
     @pulumi.getter
     def properties(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
         """
-        A map of key-value properties attached to the external metadata object
+        Key-value properties attached to the object. Keys and values must be non-empty, and the combined length
+        of all keys and values must not exceed 5000 characters
         """
         return pulumi.get(self, "properties")
 
@@ -747,7 +802,7 @@ class ExternalMetadata(pulumi.CustomResource):
     @pulumi.getter(name="systemType")
     def system_type(self) -> pulumi.Output[_builtins.str]:
         """
-        Type of external system. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
+        Type of the external system that holds the object. Use `OTHER` for a system that is not in the list. Possible values are: `AMAZON_REDSHIFT`, `AZURE_SYNAPSE`, `CONFLUENT`, `DATABRICKS`, `GOOGLE_BIGQUERY`, `KAFKA`, `LOOKER`, `MICROSOFT_FABRIC`, `MICROSOFT_SQL_SERVER`, `MONGODB`, `MYSQL`, `ORACLE`, `OTHER`, `POSTGRESQL`, `POWER_BI`, `SALESFORCE`, `SAP`, `SERVICENOW`, `SNOWFLAKE`, `STREAM_NATIVE`, `TABLEAU`, `TERADATA`, `WORKDAY`
         """
         return pulumi.get(self, "system_type")
 
@@ -771,7 +826,8 @@ class ExternalMetadata(pulumi.CustomResource):
     @pulumi.getter
     def url(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        URL associated with the external metadata object
+        URL of the object in the external system. When set, lineage graph viewers can follow it to the external
+        asset. The URL must not exceed 2048 characters
         """
         return pulumi.get(self, "url")
 

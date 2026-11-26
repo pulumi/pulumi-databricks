@@ -58,7 +58,7 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly int PgVersion;
         /// <summary>
-        /// (string) - Part of the resource name
+        /// (string) - The project ID, which is the final segment of the project's resource name
         /// </summary>
         public readonly string ProjectId;
         /// <summary>

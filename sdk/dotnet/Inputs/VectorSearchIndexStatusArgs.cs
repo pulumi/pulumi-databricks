@@ -12,6 +12,12 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class VectorSearchIndexStatusArgs : global::Pulumi.ResourceArgs
     {
+        [Input("detailedState")]
+        public Input<string>? DetailedState { get; set; }
+
+        [Input("failedStatus")]
+        public Input<Inputs.VectorSearchIndexStatusFailedStatusArgs>? FailedStatus { get; set; }
+
         /// <summary>
         /// Index API Url to be used to perform operations on the index
         /// </summary>

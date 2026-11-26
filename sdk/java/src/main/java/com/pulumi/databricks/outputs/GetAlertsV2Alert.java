@@ -25,12 +25,13 @@ public final class GetAlertsV2Alert {
      */
     private String createTime;
     /**
-     * @return (string) - Custom description for the alert. Interpreted according to `customTemplateFormat`
+     * @return (string) - Custom description for the alert, used as the notification body. Interpreted according to `customTemplateFormat`.
+     * The available template variables are listed at https://docs.databricks.com/aws/en/sql/user/alerts/create#notification-templates
      * 
      */
     private String customDescription;
     /**
-     * @return (string) - Custom summary for the alert. Interpreted according to `customTemplateFormat`
+     * @return (string) - Custom summary for the alert, used as the notification subject. Interpreted according to `customTemplateFormat`
      * 
      */
     private String customSummary;
@@ -52,7 +53,7 @@ public final class GetAlertsV2Alert {
      */
     private GetAlertsV2AlertEffectiveRunAs effectiveRunAs;
     /**
-     * @return (AlertV2Evaluation)
+     * @return (AlertV2Evaluation) - Condition evaluated against the query result, and who is notified when it is met
      * 
      */
     private GetAlertsV2AlertEvaluation evaluation;
@@ -62,7 +63,7 @@ public final class GetAlertsV2Alert {
      */
     private String id;
     /**
-     * @return (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
+     * @return (string) - Indicates whether the alert is active (`ACTIVE`) or has been moved to the trash (`DELETED`). Possible values are: `ACTIVE`, `DELETED`
      * 
      */
     private String lifecycleState;
@@ -101,14 +102,14 @@ public final class GetAlertsV2Alert {
      */
     private GetAlertsV2AlertRunAs runAs;
     /**
-     * @return (string, deprecated) - The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
+     * @return (string, deprecated) - Deprecated: Use `runAs` field instead. This field will be removed in a future release.
+     * The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
      * 
      */
     private String runAsUserName;
     /**
-     * @return (CronSchedule)
+     * @return (CronSchedule) - Schedule on which the alert runs its query and evaluates the condition
      * 
      */
     private GetAlertsV2AlertSchedule schedule;
@@ -132,14 +133,15 @@ public final class GetAlertsV2Alert {
         return this.createTime;
     }
     /**
-     * @return (string) - Custom description for the alert. Interpreted according to `customTemplateFormat`
+     * @return (string) - Custom description for the alert, used as the notification body. Interpreted according to `customTemplateFormat`.
+     * The available template variables are listed at https://docs.databricks.com/aws/en/sql/user/alerts/create#notification-templates
      * 
      */
     public String customDescription() {
         return this.customDescription;
     }
     /**
-     * @return (string) - Custom summary for the alert. Interpreted according to `customTemplateFormat`
+     * @return (string) - Custom summary for the alert, used as the notification subject. Interpreted according to `customTemplateFormat`
      * 
      */
     public String customSummary() {
@@ -169,7 +171,7 @@ public final class GetAlertsV2Alert {
         return this.effectiveRunAs;
     }
     /**
-     * @return (AlertV2Evaluation)
+     * @return (AlertV2Evaluation) - Condition evaluated against the query result, and who is notified when it is met
      * 
      */
     public GetAlertsV2AlertEvaluation evaluation() {
@@ -183,7 +185,7 @@ public final class GetAlertsV2Alert {
         return this.id;
     }
     /**
-     * @return (string) - Indicates whether the query is trashed. Possible values are: `ACTIVE`, `DELETED`
+     * @return (string) - Indicates whether the alert is active (`ACTIVE`) or has been moved to the trash (`DELETED`). Possible values are: `ACTIVE`, `DELETED`
      * 
      */
     public String lifecycleState() {
@@ -236,16 +238,16 @@ public final class GetAlertsV2Alert {
         return this.runAs;
     }
     /**
-     * @return (string, deprecated) - The run as username or application ID of service principal.
-     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role.
-     * Deprecated: Use `runAs` field instead. This field will be removed in a future release
+     * @return (string, deprecated) - Deprecated: Use `runAs` field instead. This field will be removed in a future release.
+     * The run as username or application ID of service principal.
+     * On Create and Update, this field can be set to application ID of an active service principal. Setting this field requires the servicePrincipal/user role
      * 
      */
     public String runAsUserName() {
         return this.runAsUserName;
     }
     /**
-     * @return (CronSchedule)
+     * @return (CronSchedule) - Schedule on which the alert runs its query and evaluates the condition
      * 
      */
     public GetAlertsV2AlertSchedule schedule() {

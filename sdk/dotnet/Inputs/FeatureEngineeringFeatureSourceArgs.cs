@@ -25,6 +25,12 @@ namespace Pulumi.Databricks.Inputs
         public Input<Inputs.FeatureEngineeringFeatureSourceFeatureViewSourceArgs>? FeatureViewSource { get; set; }
 
         /// <summary>
+        /// A Unity Catalog managed or foreign Iceberg table source
+        /// </summary>
+        [Input("icebergTableSource")]
+        public Input<Inputs.FeatureEngineeringFeatureSourceIcebergTableSourceArgs>? IcebergTableSource { get; set; }
+
+        /// <summary>
         /// A Kafka stream data source
         /// </summary>
         [Input("kafkaSource")]

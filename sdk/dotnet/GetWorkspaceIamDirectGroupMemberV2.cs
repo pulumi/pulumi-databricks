@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetWorkspaceIamDirectGroupMemberV2
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
@@ -45,7 +45,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkspaceIamDirectGroupMemberV2Result>("databricks:index/getWorkspaceIamDirectGroupMemberV2:getWorkspaceIamDirectGroupMemberV2", args ?? new GetWorkspaceIamDirectGroupMemberV2Args(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
@@ -78,7 +78,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkspaceIamDirectGroupMemberV2Result>("databricks:index/getWorkspaceIamDirectGroupMemberV2:getWorkspaceIamDirectGroupMemberV2", args ?? new GetWorkspaceIamDirectGroupMemberV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
@@ -115,9 +115,9 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamDirectGroupMemberV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The resource name of the group membership. The format depends on the API that returned it:
-        /// - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-        /// - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+        /// The resource name of the membership, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+        /// - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -137,9 +137,9 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamDirectGroupMemberV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The resource name of the group membership. The format depends on the API that returned it:
-        /// - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-        /// - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+        /// The resource name of the membership, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+        /// - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -161,40 +161,39 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamDirectGroupMemberV2Result
     {
         /// <summary>
-        /// (string) - Display name of the principal
+        /// (string) - The member's display name
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// (string) - The external ID of the principal in the customer's IdP
+        /// (string) - The ID of the member in your identity provider (IdP)
         /// </summary>
         public readonly string ExternalId;
         /// <summary>
-        /// (integer) - The internal ID of the group this member belongs to
+        /// (integer) - The Databricks ID of the group
         /// </summary>
         public readonly int GroupId;
         /// <summary>
-        /// (string) - The source of group membership (internal or from identity provider). Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
+        /// (string) - Where the membership comes from. Possible values are: `IDENTITY_PROVIDER`, `INTERNAL`
         /// </summary>
         public readonly string MembershipSource;
         /// <summary>
-        /// (string) - The resource name of the group membership. The format depends on the API that returned it:
-        /// - Account-scoped: accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}
-        /// - Workspace-scoped: groups/{group_id}/direct-members/{principal_id}
+        /// (string) - The resource name of the membership, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/groups/{group_id}/direct-members/{principal_id}`
+        /// - Workspace APIs: `groups/{group_id}/direct-members/{principal_id}`
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (string) - The resource name of the group that contains the membership. The format depends on the API
-        /// that returned it:
-        /// - Account-scoped: accounts/{account_id}/groups/{group_id}
-        /// - Workspace-scoped: groups/{group_id}
+        /// (string) - The resource name of the group, in one of these formats:
+        /// - Account APIs: `accounts/{account_id}/groups/{group_id}`
+        /// - Workspace APIs: `groups/{group_id}`
         /// </summary>
         public readonly string Parent;
         /// <summary>
-        /// (integer) - Internal ID of the principal in Databricks
+        /// (integer) - The Databricks ID of the member
         /// </summary>
         public readonly string PrincipalId;
         /// <summary>
-        /// (string) - The type of the principal (user/service principal/group). Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+        /// (string) - Whether the member is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
         /// </summary>
         public readonly string PrincipalType;
         public readonly Outputs.GetWorkspaceIamDirectGroupMemberV2ProviderConfigResult? ProviderConfig;

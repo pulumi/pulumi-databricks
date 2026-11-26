@@ -14,11 +14,11 @@ namespace Pulumi.Databricks.Outputs
     public sealed class GetAiSearchIndexesIndexDirectAccessIndexSpecEmbeddingVectorColumnResult
     {
         /// <summary>
-        /// (integer) - Dimension of the embedding vector
+        /// (integer) - Number of elements in each embedding vector. It must be positive
         /// </summary>
         public readonly int? EmbeddingDimension;
         /// <summary>
-        /// (string) - Name of the column
+        /// (string) - Name of the column that holds the precomputed embedding vectors
         /// </summary>
         public readonly string? Name;
 

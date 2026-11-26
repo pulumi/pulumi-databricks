@@ -13,9 +13,9 @@ namespace Pulumi.Databricks.Inputs
     public sealed class AiGatewayModelServiceConfigRoutingFallbackDestinationProvisionedThroughputConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (string) - UC model FQN of the model served by the backing endpoint (e.g.,
-        /// `system.ai.databricks-claude-opus-4-6`). Resolved from Model Serving at
-        /// Create/Update time
+        /// (string) - Resource name of the Unity Catalog model served by the backing endpoint,
+        /// in the form `models/{catalog}.{schema}.{model}`. Resolved from Model
+        /// Serving when the model service is created or updated
         /// </summary>
         [Input("model")]
         public Input<string>? Model { get; set; }

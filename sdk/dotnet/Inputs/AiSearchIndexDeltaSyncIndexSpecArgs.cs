@@ -16,9 +16,9 @@ namespace Pulumi.Databricks.Inputs
         private InputList<string>? _columnsToSyncs;
 
         /// <summary>
-        /// [Optional] Select the columns to sync with the index. If left blank, all columns
-        /// from the source table are synced. The primary key column and embedding source or
-        /// vector column are always synced
+        /// Columns of the source table to include in the index. When empty, all columns are synced. The
+        /// primary key and the embedding source or vector column are always synced. Only synced columns
+        /// can be returned in query results or used in filters
         /// </summary>
         public InputList<string> ColumnsToSyncs
         {
@@ -43,7 +43,9 @@ namespace Pulumi.Databricks.Inputs
         }
 
         /// <summary>
-        /// [Optional] Name of the Delta table to sync the index contents and computed embeddings to
+        /// Three-level name of a Delta table to write the synced rows and computed embeddings to. It
+        /// applies only when embeddings are computed from `EmbeddingSourceColumns`, and the table must
+        /// not already exist
         /// </summary>
         [Input("embeddingWritebackTable")]
         public Input<string>? EmbeddingWritebackTable { get; set; }
@@ -55,17 +57,15 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? PipelineId { get; set; }
 
         /// <summary>
-        /// Pipeline execution mode. Required on create — the backend rejects an unset value.
-        /// Storage Optimized endpoints accept only `TRIGGERED`; Standard endpoints accept both.
-        /// No explicit `Stage` — a REQUIRED field staged below its service would be dropped from
-        /// combined specs while remaining in `Required`, tripping the OpenAPI required-vs-properties
-        /// consistency check. The field inherits the service's launch stage. Possible values are: `CONTINUOUS`, `TRIGGERED`
+        /// Sync mode of the pipeline that keeps the index up to date. `TRIGGERED` syncs at creation and
+        /// then each time SyncIndex is called; `CONTINUOUS` processes source changes as they arrive.
+        /// Storage Optimized endpoints accept only `TRIGGERED`, and an unset value is rejected. Possible values are: `CONTINUOUS`, `TRIGGERED`
         /// </summary>
         [Input("pipelineType", required: true)]
         public Input<string> PipelineType { get; set; } = null!;
 
         /// <summary>
-        /// The full name of the source Delta table
+        /// Three-level Unity Catalog name of the source Delta table, in the form `catalog.schema.table`
         /// </summary>
         [Input("sourceTable")]
         public Input<string>? SourceTable { get; set; }

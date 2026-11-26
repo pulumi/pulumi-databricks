@@ -42,9 +42,10 @@ class DatabaseSyncedDatabaseTableArgs:
                
                When creating a synced table in a standard catalog, this field is required.
                In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-               Note that this has implications for the `create_database_objects_is_missing` field in `spec`
+               If this database does not exist yet, it is created when `create_database_objects_if_missing` in `spec` is true
         :param pulumi.Input[_builtins.str] name: Full three-part (catalog, schema, table) name of the table
         :param pulumi.Input['DatabaseSyncedDatabaseTableProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input['DatabaseSyncedDatabaseTableSpecArgs'] spec: Specifies the source table, the key columns and how the data synchronization pipeline runs
         """
         if database_instance_name is not None:
             pulumi.set(__self__, "database_instance_name", database_instance_name)
@@ -85,7 +86,7 @@ class DatabaseSyncedDatabaseTableArgs:
 
         When creating a synced table in a standard catalog, this field is required.
         In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-        Note that this has implications for the `create_database_objects_is_missing` field in `spec`
+        If this database does not exist yet, it is created when `create_database_objects_if_missing` in `spec` is true
         """
         return pulumi.get(self, "logical_database_name")
 
@@ -120,6 +121,9 @@ class DatabaseSyncedDatabaseTableArgs:
     @_builtins.property
     @pulumi.getter
     def spec(self) -> pulumi.Input[Optional['DatabaseSyncedDatabaseTableSpecArgs']]:
+        """
+        Specifies the source table, the key columns and how the data synchronization pipeline runs
+        """
         return pulumi.get(self, "spec")
 
     @spec.setter
@@ -142,13 +146,14 @@ class _DatabaseSyncedDatabaseTableState:
         """
         Input properties used for looking up and filtering DatabaseSyncedDatabaseTable resources.
 
-        :param pulumi.Input['DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs'] data_synchronization_status: (SyncedTableStatus) - Synced Table data synchronization status
+        :param pulumi.Input['DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs'] data_synchronization_status: (SyncedTableStatus) - Reports the status of the data synchronization pipeline that keeps this table in sync with its
+               source, including the pipeline ID and the position of the last successful sync
         :param pulumi.Input[_builtins.str] database_instance_name: Name of the target database instance. This is required when creating synced database tables in standard catalogs.
                This is optional when creating synced database tables in registered catalogs. If this field is specified
                when creating synced database tables in registered catalogs, the database instance name MUST
                match that of the registered catalog (or the request will be rejected)
-        :param pulumi.Input[_builtins.str] effective_database_instance_name: (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-               tables inside database catalogs is inferred database instance associated with the catalog.
+        :param pulumi.Input[_builtins.str] effective_database_instance_name: (string) - The name of the database instance that this table is registered to. This field is always returned; for
+               tables inside database catalogs it is the database instance associated with the catalog.
                This is an output only field that contains the value computed from the input field combined with
                server side defaults. Use the field without the effective_ prefix to set the value
         :param pulumi.Input[_builtins.str] effective_logical_database_name: (string) - The name of the logical database that this table is registered to.
@@ -163,9 +168,10 @@ class _DatabaseSyncedDatabaseTableState:
                
                When creating a synced table in a standard catalog, this field is required.
                In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-               Note that this has implications for the `create_database_objects_is_missing` field in `spec`
+               If this database does not exist yet, it is created when `create_database_objects_if_missing` in `spec` is true
         :param pulumi.Input[_builtins.str] name: Full three-part (catalog, schema, table) name of the table
         :param pulumi.Input['DatabaseSyncedDatabaseTableProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input['DatabaseSyncedDatabaseTableSpecArgs'] spec: Specifies the source table, the key columns and how the data synchronization pipeline runs
         :param pulumi.Input[_builtins.str] unity_catalog_provisioning_state: (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
                state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
                may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
@@ -193,7 +199,8 @@ class _DatabaseSyncedDatabaseTableState:
     @pulumi.getter(name="dataSynchronizationStatus")
     def data_synchronization_status(self) -> pulumi.Input[Optional['DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs']]:
         """
-        (SyncedTableStatus) - Synced Table data synchronization status
+        (SyncedTableStatus) - Reports the status of the data synchronization pipeline that keeps this table in sync with its
+        source, including the pipeline ID and the position of the last successful sync
         """
         return pulumi.get(self, "data_synchronization_status")
 
@@ -220,8 +227,8 @@ class _DatabaseSyncedDatabaseTableState:
     @pulumi.getter(name="effectiveDatabaseInstanceName")
     def effective_database_instance_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-        tables inside database catalogs is inferred database instance associated with the catalog.
+        (string) - The name of the database instance that this table is registered to. This field is always returned; for
+        tables inside database catalogs it is the database instance associated with the catalog.
         This is an output only field that contains the value computed from the input field combined with
         server side defaults. Use the field without the effective_ prefix to set the value
         """
@@ -258,7 +265,7 @@ class _DatabaseSyncedDatabaseTableState:
 
         When creating a synced table in a standard catalog, this field is required.
         In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-        Note that this has implications for the `create_database_objects_is_missing` field in `spec`
+        If this database does not exist yet, it is created when `create_database_objects_if_missing` in `spec` is true
         """
         return pulumi.get(self, "logical_database_name")
 
@@ -293,6 +300,9 @@ class _DatabaseSyncedDatabaseTableState:
     @_builtins.property
     @pulumi.getter
     def spec(self) -> pulumi.Input[Optional['DatabaseSyncedDatabaseTableSpecArgs']]:
+        """
+        Specifies the source table, the key columns and how the data synchronization pipeline runs
+        """
         return pulumi.get(self, "spec")
 
     @spec.setter
@@ -485,9 +495,10 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
                
                When creating a synced table in a standard catalog, this field is required.
                In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-               Note that this has implications for the `create_database_objects_is_missing` field in `spec`
+               If this database does not exist yet, it is created when `create_database_objects_if_missing` in `spec` is true
         :param pulumi.Input[_builtins.str] name: Full three-part (catalog, schema, table) name of the table
         :param pulumi.Input[Union['DatabaseSyncedDatabaseTableProviderConfigArgs', 'DatabaseSyncedDatabaseTableProviderConfigArgsDict', 'outputs.DatabaseSyncedDatabaseTableProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['DatabaseSyncedDatabaseTableSpecArgs', 'DatabaseSyncedDatabaseTableSpecArgsDict', 'outputs.DatabaseSyncedDatabaseTableSpec']] spec: Specifies the source table, the key columns and how the data synchronization pipeline runs
         """
         ...
     @overload
@@ -703,13 +714,14 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs', 'DatabaseSyncedDatabaseTableDataSynchronizationStatusArgsDict', 'outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatus']] data_synchronization_status: (SyncedTableStatus) - Synced Table data synchronization status
+        :param pulumi.Input[Union['DatabaseSyncedDatabaseTableDataSynchronizationStatusArgs', 'DatabaseSyncedDatabaseTableDataSynchronizationStatusArgsDict', 'outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatus']] data_synchronization_status: (SyncedTableStatus) - Reports the status of the data synchronization pipeline that keeps this table in sync with its
+               source, including the pipeline ID and the position of the last successful sync
         :param pulumi.Input[_builtins.str] database_instance_name: Name of the target database instance. This is required when creating synced database tables in standard catalogs.
                This is optional when creating synced database tables in registered catalogs. If this field is specified
                when creating synced database tables in registered catalogs, the database instance name MUST
                match that of the registered catalog (or the request will be rejected)
-        :param pulumi.Input[_builtins.str] effective_database_instance_name: (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-               tables inside database catalogs is inferred database instance associated with the catalog.
+        :param pulumi.Input[_builtins.str] effective_database_instance_name: (string) - The name of the database instance that this table is registered to. This field is always returned; for
+               tables inside database catalogs it is the database instance associated with the catalog.
                This is an output only field that contains the value computed from the input field combined with
                server side defaults. Use the field without the effective_ prefix to set the value
         :param pulumi.Input[_builtins.str] effective_logical_database_name: (string) - The name of the logical database that this table is registered to.
@@ -724,9 +736,10 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
                
                When creating a synced table in a standard catalog, this field is required.
                In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-               Note that this has implications for the `create_database_objects_is_missing` field in `spec`
+               If this database does not exist yet, it is created when `create_database_objects_if_missing` in `spec` is true
         :param pulumi.Input[_builtins.str] name: Full three-part (catalog, schema, table) name of the table
         :param pulumi.Input[Union['DatabaseSyncedDatabaseTableProviderConfigArgs', 'DatabaseSyncedDatabaseTableProviderConfigArgsDict', 'outputs.DatabaseSyncedDatabaseTableProviderConfig']] provider_config: Configure the provider for management through account provider.
+        :param pulumi.Input[Union['DatabaseSyncedDatabaseTableSpecArgs', 'DatabaseSyncedDatabaseTableSpecArgsDict', 'outputs.DatabaseSyncedDatabaseTableSpec']] spec: Specifies the source table, the key columns and how the data synchronization pipeline runs
         :param pulumi.Input[_builtins.str] unity_catalog_provisioning_state: (string) - The provisioning state of the synced table entity in Unity Catalog. This is distinct from the
                state of the data synchronization pipeline (i.e. the table may be in "ACTIVE" but the pipeline
                may be in "PROVISIONING" as it runs asynchronously). Possible values are: `ACTIVE`, `DEGRADED`, `DELETING`, `FAILED`, `PROVISIONING`, `UPDATING`
@@ -774,7 +787,8 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
     @pulumi.getter(name="dataSynchronizationStatus")
     def data_synchronization_status(self) -> pulumi.Output['outputs.DatabaseSyncedDatabaseTableDataSynchronizationStatus']:
         """
-        (SyncedTableStatus) - Synced Table data synchronization status
+        (SyncedTableStatus) - Reports the status of the data synchronization pipeline that keeps this table in sync with its
+        source, including the pipeline ID and the position of the last successful sync
         """
         return pulumi.get(self, "data_synchronization_status")
 
@@ -793,8 +807,8 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
     @pulumi.getter(name="effectiveDatabaseInstanceName")
     def effective_database_instance_name(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - The name of the database instance that this table is registered to. This field is always returned, and for
-        tables inside database catalogs is inferred database instance associated with the catalog.
+        (string) - The name of the database instance that this table is registered to. This field is always returned; for
+        tables inside database catalogs it is the database instance associated with the catalog.
         This is an output only field that contains the value computed from the input field combined with
         server side defaults. Use the field without the effective_ prefix to set the value
         """
@@ -823,7 +837,7 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
 
         When creating a synced table in a standard catalog, this field is required.
         In this scenario, specifying this field will allow targeting an arbitrary postgres database.
-        Note that this has implications for the `create_database_objects_is_missing` field in `spec`
+        If this database does not exist yet, it is created when `create_database_objects_if_missing` in `spec` is true
         """
         return pulumi.get(self, "logical_database_name")
 
@@ -846,6 +860,9 @@ class DatabaseSyncedDatabaseTable(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def spec(self) -> pulumi.Output[Optional['outputs.DatabaseSyncedDatabaseTableSpec']]:
+        """
+        Specifies the source table, the key columns and how the data synchronization pipeline runs
+        """
         return pulumi.get(self, "spec")
 
     @_builtins.property

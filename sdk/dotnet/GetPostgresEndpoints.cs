@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetPostgresEndpoints
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -53,7 +53,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresEndpointsResult>("databricks:index/getPostgresEndpoints:getPostgresEndpoints", args ?? new GetPostgresEndpointsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -94,7 +94,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresEndpointsResult>("databricks:index/getPostgresEndpoints:getPostgresEndpoints", args ?? new GetPostgresEndpointsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
         /// 
@@ -139,7 +139,7 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresEndpointsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Upper bound for items returned. Cannot be negative
+        /// Upper bound for the number of endpoints returned. If set, the value must be at least 10
         /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
@@ -166,7 +166,7 @@ namespace Pulumi.Databricks
     public sealed class GetPostgresEndpointsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Upper bound for items returned. Cannot be negative
+        /// Upper bound for the number of endpoints returned. If set, the value must be at least 10
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }

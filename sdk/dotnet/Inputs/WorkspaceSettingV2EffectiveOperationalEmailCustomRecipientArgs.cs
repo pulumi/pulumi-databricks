@@ -12,6 +12,11 @@ namespace Pulumi.Databricks.Inputs
 
     public sealed class WorkspaceSettingV2EffectiveOperationalEmailCustomRecipientArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Email address that receives this workspace's operational emails in addition to the workspace
+        /// admins. Use a distribution list address to reach several people. An empty string clears the
+        /// additional recipient
+        /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 

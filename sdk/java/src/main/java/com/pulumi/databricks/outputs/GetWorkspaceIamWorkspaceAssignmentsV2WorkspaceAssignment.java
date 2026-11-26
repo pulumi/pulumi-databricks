@@ -16,47 +16,46 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignment {
     /**
-     * @return (string) - The account ID parent of the workspace where the principal is assigned
+     * @return (string) - The ID of the account that contains the workspace
      * 
      */
     private String accountId;
     /**
-     * @return (list of string) - Every entitlement the principal holds in this workspace, whether granted directly or through
-     * group membership. Get responses populate this field. List responses leave it empty
+     * @return (list of string) - Every entitlement the principal has in the workspace, granted directly or through a group. List
+     * responses leave it empty
      * 
      */
     private List<String> effectiveEntitlements;
     /**
-     * @return (list of string) - Entitlements granted directly to the principal on this workspace. This is the only
-     * client-settable field. Create and update manage exactly this set, including entitlements the
-     * principal also holds through a group.
-     * List responses leave this field empty. Get a single principal to read its entitlements
+     * @return (list of string) - The entitlements granted directly by this assignment. Create and update set exactly this list,
+     * even if the principal also gets some of these entitlements through a group. List responses
+     * leave it empty
      * 
      */
     private List<String> entitlements;
     /**
-     * @return (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
-     * - Workspace-scoped: workspace-assignments/{principal_id}
+     * @return (string) - The resource name of the assignment, in one of these formats:
+     * - Account APIs:
+     *   `accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}`
+     * - Workspace APIs: `workspace-assignments/{principal_id}`
      * 
      */
     private String name;
     /**
-     * @return The resource name of the workspace to list assignments of,
-     * `accounts/{account_id}/workspaces/{workspace_id}`. Optional: defaults to the calling workspace,
-     * and any other workspace is rejected
+     * @return The resource name of the workspace, in the format
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Defaults to this workspace. Any other
+     * workspace is rejected
      * 
      */
     private String parent;
     /**
-     * @return (integer) - The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
-     * created and cannot be changed afterwards; to assign a different principal, create a new
-     * assignment
+     * @return (integer) - The Databricks ID of the assigned user, service principal, or group. It can&#39;t be changed after
+     * the assignment is created
      * 
      */
     private Integer principalId;
     /**
-     * @return (string) - The type of the principal (user/service principal/group) that is assigned. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * @return (string) - Whether the assigned principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      * 
      */
     private String principalType;
@@ -66,66 +65,65 @@ public final class GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignment {
      */
     private @Nullable GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignmentProviderConfig providerConfig;
     /**
-     * @return (integer) - The workspace ID where the principal is assigned
+     * @return (integer) - The ID of the workspace
      * 
      */
     private Integer workspaceId;
 
     private GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignment() {}
     /**
-     * @return (string) - The account ID parent of the workspace where the principal is assigned
+     * @return (string) - The ID of the account that contains the workspace
      * 
      */
     public String accountId() {
         return this.accountId;
     }
     /**
-     * @return (list of string) - Every entitlement the principal holds in this workspace, whether granted directly or through
-     * group membership. Get responses populate this field. List responses leave it empty
+     * @return (list of string) - Every entitlement the principal has in the workspace, granted directly or through a group. List
+     * responses leave it empty
      * 
      */
     public List<String> effectiveEntitlements() {
         return this.effectiveEntitlements;
     }
     /**
-     * @return (list of string) - Entitlements granted directly to the principal on this workspace. This is the only
-     * client-settable field. Create and update manage exactly this set, including entitlements the
-     * principal also holds through a group.
-     * List responses leave this field empty. Get a single principal to read its entitlements
+     * @return (list of string) - The entitlements granted directly by this assignment. Create and update set exactly this list,
+     * even if the principal also gets some of these entitlements through a group. List responses
+     * leave it empty
      * 
      */
     public List<String> entitlements() {
         return this.entitlements;
     }
     /**
-     * @return (string) - The resource name of the workspace assignment. The format depends on the API that returned it:
-     * - Account-scoped: accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}
-     * - Workspace-scoped: workspace-assignments/{principal_id}
+     * @return (string) - The resource name of the assignment, in one of these formats:
+     * - Account APIs:
+     *   `accounts/{account_id}/workspaces/{workspace_id}/workspace-assignments/{principal_id}`
+     * - Workspace APIs: `workspace-assignments/{principal_id}`
      * 
      */
     public String name() {
         return this.name;
     }
     /**
-     * @return The resource name of the workspace to list assignments of,
-     * `accounts/{account_id}/workspaces/{workspace_id}`. Optional: defaults to the calling workspace,
-     * and any other workspace is rejected
+     * @return The resource name of the workspace, in the format
+     * `accounts/{account_id}/workspaces/{workspace_id}`. Defaults to this workspace. Any other
+     * workspace is rejected
      * 
      */
     public String parent() {
         return this.parent;
     }
     /**
-     * @return (integer) - The internal ID of the principal (user/sp/group) in Databricks. Set when the assignment is
-     * created and cannot be changed afterwards; to assign a different principal, create a new
-     * assignment
+     * @return (integer) - The Databricks ID of the assigned user, service principal, or group. It can&#39;t be changed after
+     * the assignment is created
      * 
      */
     public Integer principalId() {
         return this.principalId;
     }
     /**
-     * @return (string) - The type of the principal (user/service principal/group) that is assigned. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
+     * @return (string) - Whether the assigned principal is a user, service principal, or group. Possible values are: `GROUP`, `SERVICE_PRINCIPAL`, `USER`
      * 
      */
     public String principalType() {
@@ -139,7 +137,7 @@ public final class GetWorkspaceIamWorkspaceAssignmentsV2WorkspaceAssignment {
         return Optional.ofNullable(this.providerConfig);
     }
     /**
-     * @return (integer) - The workspace ID where the principal is assigned
+     * @return (integer) - The ID of the workspace
      * 
      */
     public Integer workspaceId() {

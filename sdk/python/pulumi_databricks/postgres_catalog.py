@@ -27,9 +27,11 @@ class PostgresCatalogArgs:
         """
         The set of arguments for constructing a PostgresCatalog resource.
 
-        :param pulumi.Input[_builtins.str] catalog_id: The part of the name, chosen by the user when the resource was created
+        :param pulumi.Input[_builtins.str] catalog_id: The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+               last segment of the name field
         :param pulumi.Input['PostgresCatalogProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input['PostgresCatalogSpecArgs'] spec: The desired state of the Catalog
+        :param pulumi.Input['PostgresCatalogSpecArgs'] spec: The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+               the catalog is created
         """
         pulumi.set(__self__, "catalog_id", catalog_id)
         if provider_config is not None:
@@ -41,7 +43,8 @@ class PostgresCatalogArgs:
     @pulumi.getter(name="catalogId")
     def catalog_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The part of the name, chosen by the user when the resource was created
+        The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+        last segment of the name field
         """
         return pulumi.get(self, "catalog_id")
 
@@ -65,7 +68,8 @@ class PostgresCatalogArgs:
     @pulumi.getter
     def spec(self) -> pulumi.Input[Optional['PostgresCatalogSpecArgs']]:
         """
-        The desired state of the Catalog
+        The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+        the catalog is created
         """
         return pulumi.get(self, "spec")
 
@@ -88,13 +92,15 @@ class _PostgresCatalogState:
         """
         Input properties used for looking up and filtering PostgresCatalog resources.
 
-        :param pulumi.Input[_builtins.str] catalog_id: The part of the name, chosen by the user when the resource was created
+        :param pulumi.Input[_builtins.str] catalog_id: The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+               last segment of the name field
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the catalog was created
         :param pulumi.Input[_builtins.str] name: (string) - Output only. The full resource path of the catalog.
         :param pulumi.Input['PostgresCatalogProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input['PostgresCatalogSpecArgs'] spec: The desired state of the Catalog
+        :param pulumi.Input['PostgresCatalogSpecArgs'] spec: The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+               the catalog is created
         :param pulumi.Input['PostgresCatalogStatusArgs'] status: (CatalogCatalogStatus) - The observed state of the Catalog
-        :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique identifier for the catalog
+        :param pulumi.Input[_builtins.str] uid: (string) - The immutable UUID that identifies the catalog, assigned when the catalog is created
         :param pulumi.Input[_builtins.str] update_time: (string) - A timestamp indicating when the catalog was last updated
         """
         if catalog_id is not None:
@@ -118,7 +124,8 @@ class _PostgresCatalogState:
     @pulumi.getter(name="catalogId")
     def catalog_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The part of the name, chosen by the user when the resource was created
+        The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+        last segment of the name field
         """
         return pulumi.get(self, "catalog_id")
 
@@ -166,7 +173,8 @@ class _PostgresCatalogState:
     @pulumi.getter
     def spec(self) -> pulumi.Input[Optional['PostgresCatalogSpecArgs']]:
         """
-        The desired state of the Catalog
+        The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+        the catalog is created
         """
         return pulumi.get(self, "spec")
 
@@ -190,7 +198,7 @@ class _PostgresCatalogState:
     @pulumi.getter
     def uid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        (string) - System-generated unique identifier for the catalog
+        (string) - The immutable UUID that identifies the catalog, assigned when the catalog is created
         """
         return pulumi.get(self, "uid")
 
@@ -222,7 +230,7 @@ class PostgresCatalog(pulumi.CustomResource):
                  spec: pulumi.Input[Optional[Union['PostgresCatalogSpecArgs', 'PostgresCatalogSpecArgsDict', 'outputs.PostgresCatalogSpec']]] = None,
                  __props__=None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -274,9 +282,11 @@ class PostgresCatalog(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] catalog_id: The part of the name, chosen by the user when the resource was created
+        :param pulumi.Input[_builtins.str] catalog_id: The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+               last segment of the name field
         :param pulumi.Input[Union['PostgresCatalogProviderConfigArgs', 'PostgresCatalogProviderConfigArgsDict', 'outputs.PostgresCatalogProviderConfig']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Union['PostgresCatalogSpecArgs', 'PostgresCatalogSpecArgsDict', 'outputs.PostgresCatalogSpec']] spec: The desired state of the Catalog
+        :param pulumi.Input[Union['PostgresCatalogSpecArgs', 'PostgresCatalogSpecArgsDict', 'outputs.PostgresCatalogSpec']] spec: The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+               the catalog is created
         """
         ...
     @overload
@@ -285,7 +295,7 @@ class PostgresCatalog(pulumi.CustomResource):
                  args: PostgresCatalogArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -397,13 +407,15 @@ class PostgresCatalog(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] catalog_id: The part of the name, chosen by the user when the resource was created
+        :param pulumi.Input[_builtins.str] catalog_id: The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+               last segment of the name field
         :param pulumi.Input[_builtins.str] create_time: (string) - A timestamp indicating when the catalog was created
         :param pulumi.Input[_builtins.str] name: (string) - Output only. The full resource path of the catalog.
         :param pulumi.Input[Union['PostgresCatalogProviderConfigArgs', 'PostgresCatalogProviderConfigArgsDict', 'outputs.PostgresCatalogProviderConfig']] provider_config: Configure the provider for management through account provider.
-        :param pulumi.Input[Union['PostgresCatalogSpecArgs', 'PostgresCatalogSpecArgsDict', 'outputs.PostgresCatalogSpec']] spec: The desired state of the Catalog
+        :param pulumi.Input[Union['PostgresCatalogSpecArgs', 'PostgresCatalogSpecArgsDict', 'outputs.PostgresCatalogSpec']] spec: The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+               the catalog is created
         :param pulumi.Input[Union['PostgresCatalogStatusArgs', 'PostgresCatalogStatusArgsDict', 'outputs.PostgresCatalogStatus']] status: (CatalogCatalogStatus) - The observed state of the Catalog
-        :param pulumi.Input[_builtins.str] uid: (string) - System-generated unique identifier for the catalog
+        :param pulumi.Input[_builtins.str] uid: (string) - The immutable UUID that identifies the catalog, assigned when the catalog is created
         :param pulumi.Input[_builtins.str] update_time: (string) - A timestamp indicating when the catalog was last updated
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -446,7 +458,8 @@ class PostgresCatalog(pulumi.CustomResource):
     @pulumi.getter(name="catalogId")
     def catalog_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The part of the name, chosen by the user when the resource was created
+        The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+        last segment of the name field
         """
         return pulumi.get(self, "catalog_id")
 
@@ -478,7 +491,8 @@ class PostgresCatalog(pulumi.CustomResource):
     @pulumi.getter
     def spec(self) -> pulumi.Output['outputs.PostgresCatalogSpec']:
         """
-        The desired state of the Catalog
+        The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+        the catalog is created
         """
         return pulumi.get(self, "spec")
 
@@ -494,7 +508,7 @@ class PostgresCatalog(pulumi.CustomResource):
     @pulumi.getter
     def uid(self) -> pulumi.Output[_builtins.str]:
         """
-        (string) - System-generated unique identifier for the catalog
+        (string) - The immutable UUID that identifies the catalog, assigned when the catalog is created
         """
         return pulumi.get(self, "uid")
 

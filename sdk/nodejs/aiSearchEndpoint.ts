@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * [![Public Preview](https://img.shields.io/badge/Release_Stage-Public_Preview-yellowgreen)](https://docs.databricks.com/aws/en/release-notes/release-types)
+ * [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
  *
  * [API Documentation](https://docs.databricks.com/api/workspace/aisearch)
  *
@@ -67,7 +67,10 @@ export class AiSearchEndpoint extends pulumi.CustomResource {
     }
 
     /**
-     * The user-selected budget policy id for the endpoint
+     * ID of the serverless budget policy to apply to the endpoint. The caller must have
+     * permission to use the policy. Set either this field or `usagePolicyId`, not both.
+     * Responses do not echo this field; they report the applied policy in
+     * `effectiveBudgetPolicyId`
      */
     declare public readonly budgetPolicyId: pulumi.Output<string | undefined>;
     /**
@@ -75,26 +78,28 @@ export class AiSearchEndpoint extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createTime: pulumi.Output<string>;
     /**
-     * (string) - Creator of the endpoint
+     * (string) - User name of the principal that created the endpoint. For a user, it is the user's email
+     * address; for any other principal, it is the principal's unique name
      */
     declare public /*out*/ readonly creator: pulumi.Output<string>;
     /**
-     * The custom tags assigned to the endpoint
+     * Custom tags assigned to the endpoint. On update, the list replaces all of the endpoint's
+     * existing tags
      */
     declare public readonly customTags: pulumi.Output<outputs.AiSearchEndpointCustomTag[] | undefined>;
     /**
-     * (string) - The budget policy id applied to the endpoint
+     * (string) - ID of the budget policy that is currently applied to the endpoint
      */
     declare public /*out*/ readonly effectiveBudgetPolicyId: pulumi.Output<string>;
     /**
-     * The user-supplied short name for the Endpoint, per AIP-133. The server composes the
-     * full `Endpoint.name` as `{parent}/endpoints/{endpoint_id}`. AIP-133 does not list
-     * `endpointId` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-     * wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
+     * Short name of the endpoint, which becomes the last segment of `name`. The server rejects
+     * a request without it. The name can have at most 50 characters, can contain only lowercase
+     * letters, digits, hyphens, periods, and underscores, and must start and end with a letter
+     * or digit
      */
     declare public readonly endpointId: pulumi.Output<string>;
     /**
-     * (EndpointStatus) - Current status of the endpoint
+     * (EndpointStatus) - Current lifecycle state of the endpoint, with an optional message that explains it
      */
     declare public /*out*/ readonly endpointStatus: pulumi.Output<outputs.AiSearchEndpointEndpointStatus>;
     /**
@@ -106,14 +111,13 @@ export class AiSearchEndpoint extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly indexCount: pulumi.Output<number>;
     /**
-     * (string) - User who last updated the endpoint
+     * (string) - User name of the principal that last updated the endpoint, in the same format as `creator`
      */
     declare public /*out*/ readonly lastUpdatedUser: pulumi.Output<string>;
     /**
-     * (string) - Name of the AI Search endpoint. Server-assigned full resource path
-     * (`workspaces/{workspace}/endpoints/{endpoint}`) on output. On create, the
-     * user-supplied short name is conveyed via `CreateEndpointRequest.endpoint_id`;
-     * the server composes the full `name` and returns it on the response
+     * (string) - Full resource name of the endpoint, in the form
+     * `workspaces/{workspace_id}/endpoints/{endpoint_id}`. On create, the server composes it
+     * from `parent` and `endpointId` and ignores any value supplied in the request body
      */
     declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
@@ -136,7 +140,8 @@ export class AiSearchEndpoint extends pulumi.CustomResource {
     declare public /*out*/ readonly scalingInfo: pulumi.Output<outputs.AiSearchEndpointScalingInfo>;
     /**
      * Target QPS for the endpoint. Mutually exclusive with `replicaCount`. Best-effort;
-     * the system does not guarantee this QPS will be achieved
+     * the system does not guarantee this QPS will be achieved. Responses report the requested
+     * value in `scaling_info.requested_target_qps`
      */
     declare public readonly targetQps: pulumi.Output<number | undefined>;
     /**
@@ -148,7 +153,8 @@ export class AiSearchEndpoint extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly updateTime: pulumi.Output<string>;
     /**
-     * The usage policy id applied to the endpoint
+     * ID of the usage policy to apply to the endpoint. The server treats it as the same setting
+     * as `budgetPolicyId`, so set only one of the two
      */
     declare public readonly usagePolicyId: pulumi.Output<string | undefined>;
 
@@ -222,7 +228,10 @@ export class AiSearchEndpoint extends pulumi.CustomResource {
  */
 export interface AiSearchEndpointState {
     /**
-     * The user-selected budget policy id for the endpoint
+     * ID of the serverless budget policy to apply to the endpoint. The caller must have
+     * permission to use the policy. Set either this field or `usagePolicyId`, not both.
+     * Responses do not echo this field; they report the applied policy in
+     * `effectiveBudgetPolicyId`
      */
     budgetPolicyId?: pulumi.Input<string | undefined>;
     /**
@@ -230,26 +239,28 @@ export interface AiSearchEndpointState {
      */
     createTime?: pulumi.Input<string | undefined>;
     /**
-     * (string) - Creator of the endpoint
+     * (string) - User name of the principal that created the endpoint. For a user, it is the user's email
+     * address; for any other principal, it is the principal's unique name
      */
     creator?: pulumi.Input<string | undefined>;
     /**
-     * The custom tags assigned to the endpoint
+     * Custom tags assigned to the endpoint. On update, the list replaces all of the endpoint's
+     * existing tags
      */
     customTags?: pulumi.Input<pulumi.Input<inputs.AiSearchEndpointCustomTag>[] | undefined>;
     /**
-     * (string) - The budget policy id applied to the endpoint
+     * (string) - ID of the budget policy that is currently applied to the endpoint
      */
     effectiveBudgetPolicyId?: pulumi.Input<string | undefined>;
     /**
-     * The user-supplied short name for the Endpoint, per AIP-133. The server composes the
-     * full `Endpoint.name` as `{parent}/endpoints/{endpoint_id}`. AIP-133 does not list
-     * `endpointId` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-     * wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
+     * Short name of the endpoint, which becomes the last segment of `name`. The server rejects
+     * a request without it. The name can have at most 50 characters, can contain only lowercase
+     * letters, digits, hyphens, periods, and underscores, and must start and end with a letter
+     * or digit
      */
     endpointId?: pulumi.Input<string | undefined>;
     /**
-     * (EndpointStatus) - Current status of the endpoint
+     * (EndpointStatus) - Current lifecycle state of the endpoint, with an optional message that explains it
      */
     endpointStatus?: pulumi.Input<inputs.AiSearchEndpointEndpointStatus | undefined>;
     /**
@@ -261,14 +272,13 @@ export interface AiSearchEndpointState {
      */
     indexCount?: pulumi.Input<number | undefined>;
     /**
-     * (string) - User who last updated the endpoint
+     * (string) - User name of the principal that last updated the endpoint, in the same format as `creator`
      */
     lastUpdatedUser?: pulumi.Input<string | undefined>;
     /**
-     * (string) - Name of the AI Search endpoint. Server-assigned full resource path
-     * (`workspaces/{workspace}/endpoints/{endpoint}`) on output. On create, the
-     * user-supplied short name is conveyed via `CreateEndpointRequest.endpoint_id`;
-     * the server composes the full `name` and returns it on the response
+     * (string) - Full resource name of the endpoint, in the form
+     * `workspaces/{workspace_id}/endpoints/{endpoint_id}`. On create, the server composes it
+     * from `parent` and `endpointId` and ignores any value supplied in the request body
      */
     name?: pulumi.Input<string | undefined>;
     /**
@@ -291,7 +301,8 @@ export interface AiSearchEndpointState {
     scalingInfo?: pulumi.Input<inputs.AiSearchEndpointScalingInfo | undefined>;
     /**
      * Target QPS for the endpoint. Mutually exclusive with `replicaCount`. Best-effort;
-     * the system does not guarantee this QPS will be achieved
+     * the system does not guarantee this QPS will be achieved. Responses report the requested
+     * value in `scaling_info.requested_target_qps`
      */
     targetQps?: pulumi.Input<number | undefined>;
     /**
@@ -303,7 +314,8 @@ export interface AiSearchEndpointState {
      */
     updateTime?: pulumi.Input<string | undefined>;
     /**
-     * The usage policy id applied to the endpoint
+     * ID of the usage policy to apply to the endpoint. The server treats it as the same setting
+     * as `budgetPolicyId`, so set only one of the two
      */
     usagePolicyId?: pulumi.Input<string | undefined>;
 }
@@ -313,18 +325,22 @@ export interface AiSearchEndpointState {
  */
 export interface AiSearchEndpointArgs {
     /**
-     * The user-selected budget policy id for the endpoint
+     * ID of the serverless budget policy to apply to the endpoint. The caller must have
+     * permission to use the policy. Set either this field or `usagePolicyId`, not both.
+     * Responses do not echo this field; they report the applied policy in
+     * `effectiveBudgetPolicyId`
      */
     budgetPolicyId?: pulumi.Input<string | undefined>;
     /**
-     * The custom tags assigned to the endpoint
+     * Custom tags assigned to the endpoint. On update, the list replaces all of the endpoint's
+     * existing tags
      */
     customTags?: pulumi.Input<pulumi.Input<inputs.AiSearchEndpointCustomTag>[] | undefined>;
     /**
-     * The user-supplied short name for the Endpoint, per AIP-133. The server composes the
-     * full `Endpoint.name` as `{parent}/endpoints/{endpoint_id}`. AIP-133 does not list
-     * `endpointId` as a fields-may-be-required entry, so we annotate it OPTIONAL on the
-     * wire; the server still rejects empty values with INVALID_PARAMETER_VALUE
+     * Short name of the endpoint, which becomes the last segment of `name`. The server rejects
+     * a request without it. The name can have at most 50 characters, can contain only lowercase
+     * letters, digits, hyphens, periods, and underscores, and must start and end with a letter
+     * or digit
      */
     endpointId?: pulumi.Input<string | undefined>;
     /**
@@ -347,11 +363,13 @@ export interface AiSearchEndpointArgs {
     replicaCount?: pulumi.Input<number | undefined>;
     /**
      * Target QPS for the endpoint. Mutually exclusive with `replicaCount`. Best-effort;
-     * the system does not guarantee this QPS will be achieved
+     * the system does not guarantee this QPS will be achieved. Responses report the requested
+     * value in `scaling_info.requested_target_qps`
      */
     targetQps?: pulumi.Input<number | undefined>;
     /**
-     * The usage policy id applied to the endpoint
+     * ID of the usage policy to apply to the endpoint. The server treats it as the same setting
+     * as `budgetPolicyId`, so set only one of the two
      */
     usagePolicyId?: pulumi.Input<string | undefined>;
 }

@@ -19,9 +19,8 @@ public final class DataQualityMonitorDataProfilingConfigSchedule {
      */
     private String quartzCronExpression;
     /**
-     * @return A Java timezone id. The schedule for a job will be resolved with respect to this timezone.
-     * See `Java TimeZone &lt;http://docs.oracle.com/javase/7/docs/api/java/util/TimeZone.html&gt;`_ for details.
-     * The timezone id (e.g., ``America/Los_Angeles``) in which to evaluate the quartz expression
+     * @return The Java timezone ID in which the cron expression is evaluated. See
+     * [Java TimeZone](https://docs.oracle.com/javase/8/docs/api/java/util/TimeZone.html) for the supported IDs
      * 
      */
     private String timezoneId;
@@ -38,9 +37,8 @@ public final class DataQualityMonitorDataProfilingConfigSchedule {
         return this.quartzCronExpression;
     }
     /**
-     * @return A Java timezone id. The schedule for a job will be resolved with respect to this timezone.
-     * See `Java TimeZone &lt;http://docs.oracle.com/javase/7/docs/api/java/util/TimeZone.html&gt;`_ for details.
-     * The timezone id (e.g., ``America/Los_Angeles``) in which to evaluate the quartz expression
+     * @return The Java timezone ID in which the cron expression is evaluated. See
+     * [Java TimeZone](https://docs.oracle.com/javase/8/docs/api/java/util/TimeZone.html) for the supported IDs
      * 
      */
     public String timezoneId() {

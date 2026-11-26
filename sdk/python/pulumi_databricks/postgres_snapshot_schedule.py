@@ -172,7 +172,7 @@ class PostgresSnapshotSchedule(pulumi.CustomResource):
                  schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['PostgresSnapshotScheduleScheduleArgs', 'PostgresSnapshotScheduleScheduleArgsDict', 'outputs.PostgresSnapshotScheduleSchedule']]]]] = None,
                  __props__=None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -229,7 +229,7 @@ class PostgresSnapshotSchedule(pulumi.CustomResource):
                  args: PostgresSnapshotScheduleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
         [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 

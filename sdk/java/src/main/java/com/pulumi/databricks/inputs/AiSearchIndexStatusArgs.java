@@ -18,6 +18,21 @@ public final class AiSearchIndexStatusArgs extends com.pulumi.resources.Resource
     public static final AiSearchIndexStatusArgs Empty = new AiSearchIndexStatusArgs();
 
     /**
+     * (string) - Lifecycle and ingestion state. An online index can still have a failed update. Possible values are: `DOWNLOADING`, `OFFLINE`, `OFFLINE_FAILED`, `ONLINE`, `ONLINE_CONTINUOUS_UPDATE`, `ONLINE_DIRECT_ACCESS`, `ONLINE_NO_PENDING_UPDATE`, `ONLINE_PIPELINE_FAILED`, `ONLINE_TRIGGERED_UPDATE`, `ONLINE_UPDATING_PIPELINE_RESOURCES`, `PROVISIONING`, `PROVISIONING_ENDPOINT`, `PROVISIONING_INDEX`, `PROVISIONING_INITIAL_SNAPSHOT`, `PROVISIONING_PIPELINE_RESOURCES`
+     * 
+     */
+    @Import(name="detailedState")
+    private @Nullable Output<String> detailedState;
+
+    /**
+     * @return (string) - Lifecycle and ingestion state. An online index can still have a failed update. Possible values are: `DOWNLOADING`, `OFFLINE`, `OFFLINE_FAILED`, `ONLINE`, `ONLINE_CONTINUOUS_UPDATE`, `ONLINE_DIRECT_ACCESS`, `ONLINE_NO_PENDING_UPDATE`, `ONLINE_PIPELINE_FAILED`, `ONLINE_TRIGGERED_UPDATE`, `ONLINE_UPDATING_PIPELINE_RESOURCES`, `PROVISIONING`, `PROVISIONING_ENDPOINT`, `PROVISIONING_INDEX`, `PROVISIONING_INITIAL_SNAPSHOT`, `PROVISIONING_PIPELINE_RESOURCES`
+     * 
+     */
+    public Optional<Output<String>> detailedState() {
+        return Optional.ofNullable(this.detailedState);
+    }
+
+    /**
      * (string) - Index API URL used to perform operations on the index
      * 
      */
@@ -63,14 +78,16 @@ public final class AiSearchIndexStatusArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * (boolean) - Whether the index is ready for search
+     * (boolean) - Whether the index can serve queries. After CreateIndex, poll GetIndex until true; message describes progress.
+     * This does not guarantee freshness or update success; check detailedState for update failures
      * 
      */
     @Import(name="ready")
     private @Nullable Output<Boolean> ready;
 
     /**
-     * @return (boolean) - Whether the index is ready for search
+     * @return (boolean) - Whether the index can serve queries. After CreateIndex, poll GetIndex until true; message describes progress.
+     * This does not guarantee freshness or update success; check detailedState for update failures
      * 
      */
     public Optional<Output<Boolean>> ready() {
@@ -80,6 +97,7 @@ public final class AiSearchIndexStatusArgs extends com.pulumi.resources.Resource
     private AiSearchIndexStatusArgs() {}
 
     private AiSearchIndexStatusArgs(AiSearchIndexStatusArgs $) {
+        this.detailedState = $.detailedState;
         this.indexUrl = $.indexUrl;
         this.indexedRowCount = $.indexedRowCount;
         this.message = $.message;
@@ -102,6 +120,27 @@ public final class AiSearchIndexStatusArgs extends com.pulumi.resources.Resource
 
         public Builder(AiSearchIndexStatusArgs defaults) {
             $ = new AiSearchIndexStatusArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param detailedState (string) - Lifecycle and ingestion state. An online index can still have a failed update. Possible values are: `DOWNLOADING`, `OFFLINE`, `OFFLINE_FAILED`, `ONLINE`, `ONLINE_CONTINUOUS_UPDATE`, `ONLINE_DIRECT_ACCESS`, `ONLINE_NO_PENDING_UPDATE`, `ONLINE_PIPELINE_FAILED`, `ONLINE_TRIGGERED_UPDATE`, `ONLINE_UPDATING_PIPELINE_RESOURCES`, `PROVISIONING`, `PROVISIONING_ENDPOINT`, `PROVISIONING_INDEX`, `PROVISIONING_INITIAL_SNAPSHOT`, `PROVISIONING_PIPELINE_RESOURCES`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder detailedState(@Nullable Output<String> detailedState) {
+            $.detailedState = detailedState;
+            return this;
+        }
+
+        /**
+         * @param detailedState (string) - Lifecycle and ingestion state. An online index can still have a failed update. Possible values are: `DOWNLOADING`, `OFFLINE`, `OFFLINE_FAILED`, `ONLINE`, `ONLINE_CONTINUOUS_UPDATE`, `ONLINE_DIRECT_ACCESS`, `ONLINE_NO_PENDING_UPDATE`, `ONLINE_PIPELINE_FAILED`, `ONLINE_TRIGGERED_UPDATE`, `ONLINE_UPDATING_PIPELINE_RESOURCES`, `PROVISIONING`, `PROVISIONING_ENDPOINT`, `PROVISIONING_INDEX`, `PROVISIONING_INITIAL_SNAPSHOT`, `PROVISIONING_PIPELINE_RESOURCES`
+         * 
+         * @return builder
+         * 
+         */
+        public Builder detailedState(String detailedState) {
+            return detailedState(Output.of(detailedState));
         }
 
         /**
@@ -168,7 +207,8 @@ public final class AiSearchIndexStatusArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ready (boolean) - Whether the index is ready for search
+         * @param ready (boolean) - Whether the index can serve queries. After CreateIndex, poll GetIndex until true; message describes progress.
+         * This does not guarantee freshness or update success; check detailedState for update failures
          * 
          * @return builder
          * 
@@ -179,7 +219,8 @@ public final class AiSearchIndexStatusArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param ready (boolean) - Whether the index is ready for search
+         * @param ready (boolean) - Whether the index can serve queries. After CreateIndex, poll GetIndex until true; message describes progress.
+         * This does not guarantee freshness or update success; check detailedState for update failures
          * 
          * @return builder
          * 

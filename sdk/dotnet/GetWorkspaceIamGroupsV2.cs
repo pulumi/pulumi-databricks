@@ -12,7 +12,7 @@ namespace Pulumi.Databricks
     public static class GetWorkspaceIamGroupsV2
     {
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
@@ -41,7 +41,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkspaceIamGroupsV2Result>("databricks:index/getWorkspaceIamGroupsV2:getWorkspaceIamGroupsV2", args ?? new GetWorkspaceIamGroupsV2Args(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
@@ -70,7 +70,7 @@ namespace Pulumi.Databricks
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkspaceIamGroupsV2Result>("databricks:index/getWorkspaceIamGroupsV2:getWorkspaceIamGroupsV2", args ?? new GetWorkspaceIamGroupsV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+        /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
         /// 
         /// [API Documentation](https://docs.databricks.com/api/workspace/iamv2)
         /// 
@@ -103,21 +103,22 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamGroupsV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Optional. Allows filtering groups by group name or external id
+        /// Filters groups by `GroupName` or `ExternalId`, for example `GroupName eq "Data engineers"`.
+        /// Put the value in quotes
         /// </summary>
         [Input("filter")]
         public string? Filter { get; set; }
 
         /// <summary>
-        /// The maximum number of groups to return. The service may return fewer than this value.
-        /// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+        /// The maximum number of groups to return, up to 1000. The default is 1000. A page can contain
+        /// fewer groups
         /// </summary>
         [Input("pageSize")]
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The resource name of the account to list groups in, `accounts/{account_id}`. Optional:
-        /// defaults to the account of the calling workspace, and any other account is rejected
+        /// The resource name of the account to list groups in, in the format `accounts/{account_id}`.
+        /// Defaults to the account that contains this workspace. Any other account is rejected
         /// </summary>
         [Input("parent")]
         public string? Parent { get; set; }
@@ -137,21 +138,22 @@ namespace Pulumi.Databricks
     public sealed class GetWorkspaceIamGroupsV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Optional. Allows filtering groups by group name or external id
+        /// Filters groups by `GroupName` or `ExternalId`, for example `GroupName eq "Data engineers"`.
+        /// Put the value in quotes
         /// </summary>
         [Input("filter")]
         public Input<string>? Filter { get; set; }
 
         /// <summary>
-        /// The maximum number of groups to return. The service may return fewer than this value.
-        /// If not provided, defaults to 1000, which is also the maximum allowed. Requests for more than the maximum are clamped to 1000
+        /// The maximum number of groups to return, up to 1000. The default is 1000. A page can contain
+        /// fewer groups
         /// </summary>
         [Input("pageSize")]
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// The resource name of the account to list groups in, `accounts/{account_id}`. Optional:
-        /// defaults to the account of the calling workspace, and any other account is rejected
+        /// The resource name of the account to list groups in, in the format `accounts/{account_id}`.
+        /// Defaults to the account that contains this workspace. Any other account is rejected
         /// </summary>
         [Input("parent")]
         public Input<string>? Parent { get; set; }
@@ -176,8 +178,8 @@ namespace Pulumi.Databricks
         public readonly ImmutableArray<Outputs.GetWorkspaceIamGroupsV2GroupResult> Groups;
         public readonly int? PageSize;
         /// <summary>
-        /// (string) - The resource name of the account that contains the group, `accounts/{account_id}`. Both the
-        /// account-scoped and workspace-scoped APIs return it
+        /// (string) - The resource name of the account that contains the group, in the format
+        /// `accounts/{account_id}`. Workspace APIs return the same format
         /// </summary>
         public readonly string? Parent;
         public readonly Outputs.GetWorkspaceIamGroupsV2ProviderConfigResult? ProviderConfig;

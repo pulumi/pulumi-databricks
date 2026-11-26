@@ -216,6 +216,7 @@ class _FeatureEngineeringFeatureState:
                  inputs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  lineage_context: pulumi.Input[Optional['FeatureEngineeringFeatureLineageContextArgs']] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 output_type_text: pulumi.Input[Optional[_builtins.str]] = None,
                  provider_config: pulumi.Input[Optional['FeatureEngineeringFeatureProviderConfigArgs']] = None,
                  schema_name: pulumi.Input[Optional[_builtins.str]] = None,
                  source: pulumi.Input[Optional['FeatureEngineeringFeatureSourceArgs']] = None,
@@ -238,6 +239,7 @@ class _FeatureEngineeringFeatureState:
                Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
                This field will be set by feature-engineering client and should be left unset by SDK and terraform users
         :param pulumi.Input[_builtins.str] name: (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+        :param pulumi.Input[_builtins.str] output_type_text: (string) - Output type in Databricks SQL DDL (e.g., "BIGINT", "DECIMAL(10,2)", "ARRAY<STRING>", "STRUCT<name:STRING>")
         :param pulumi.Input['FeatureEngineeringFeatureProviderConfigArgs'] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] schema_name: (string) - Name of parent schema relative to its parent catalog
         :param pulumi.Input['FeatureEngineeringFeatureSourceArgs'] source: The data source of the feature
@@ -267,6 +269,8 @@ class _FeatureEngineeringFeatureState:
             pulumi.set(__self__, "lineage_context", lineage_context)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if output_type_text is not None:
+            pulumi.set(__self__, "output_type_text", output_type_text)
         if provider_config is not None:
             pulumi.set(__self__, "provider_config", provider_config)
         if schema_name is not None:
@@ -408,6 +412,18 @@ class _FeatureEngineeringFeatureState:
     @name.setter
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="outputTypeText")
+    def output_type_text(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        (string) - Output type in Databricks SQL DDL (e.g., "BIGINT", "DECIMAL(10,2)", "ARRAY<STRING>", "STRUCT<name:STRING>")
+        """
+        return pulumi.get(self, "output_type_text")
+
+    @output_type_text.setter
+    def output_type_text(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "output_type_text", value)
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")
@@ -735,6 +751,7 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
             __props__.__dict__["created_at"] = None
             __props__.__dict__["created_by"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["output_type_text"] = None
             __props__.__dict__["schema_name"] = None
         super(FeatureEngineeringFeature, __self__).__init__(
             'databricks:index/featureEngineeringFeature:FeatureEngineeringFeature',
@@ -757,6 +774,7 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
             inputs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             lineage_context: pulumi.Input[Optional[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict', 'outputs.FeatureEngineeringFeatureLineageContext']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            output_type_text: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict', 'outputs.FeatureEngineeringFeatureProviderConfig']]] = None,
             schema_name: pulumi.Input[Optional[_builtins.str]] = None,
             source: pulumi.Input[Optional[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict', 'outputs.FeatureEngineeringFeatureSource']]] = None,
@@ -783,6 +801,7 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
                Users should not manually set this field as incorrect values may lead to inaccurate lineage tracking or unexpected behavior.
                This field will be set by feature-engineering client and should be left unset by SDK and terraform users
         :param pulumi.Input[_builtins.str] name: (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
+        :param pulumi.Input[_builtins.str] output_type_text: (string) - Output type in Databricks SQL DDL (e.g., "BIGINT", "DECIMAL(10,2)", "ARRAY<STRING>", "STRUCT<name:STRING>")
         :param pulumi.Input[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict', 'outputs.FeatureEngineeringFeatureProviderConfig']] provider_config: Configure the provider for management through account provider.
         :param pulumi.Input[_builtins.str] schema_name: (string) - Name of parent schema relative to its parent catalog
         :param pulumi.Input[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict', 'outputs.FeatureEngineeringFeatureSource']] source: The data source of the feature
@@ -805,6 +824,7 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
         __props__.__dict__["inputs"] = inputs
         __props__.__dict__["lineage_context"] = lineage_context
         __props__.__dict__["name"] = name
+        __props__.__dict__["output_type_text"] = output_type_text
         __props__.__dict__["provider_config"] = provider_config
         __props__.__dict__["schema_name"] = schema_name
         __props__.__dict__["source"] = source
@@ -826,6 +846,7 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
             inputs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             lineage_context: pulumi.Input[Optional[Union['FeatureEngineeringFeatureLineageContextArgs', 'FeatureEngineeringFeatureLineageContextArgsDict', 'outputs.FeatureEngineeringFeatureLineageContext']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            output_type_text: pulumi.Input[Optional[_builtins.str]] = None,
             provider_config: pulumi.Input[Optional[Union['FeatureEngineeringFeatureProviderConfigArgs', 'FeatureEngineeringFeatureProviderConfigArgsDict', 'outputs.FeatureEngineeringFeatureProviderConfig']]] = None,
             schema_name: pulumi.Input[Optional[_builtins.str]] = None,
             source: pulumi.Input[Optional[Union['FeatureEngineeringFeatureSourceArgs', 'FeatureEngineeringFeatureSourceArgsDict', 'outputs.FeatureEngineeringFeatureSource']]] = None,
@@ -843,6 +864,7 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
         __props__["inputs"] = inputs
         __props__["lineageContext"] = lineage_context
         __props__["name"] = name
+        __props__["outputTypeText"] = output_type_text
         __props__["providerConfig"] = provider_config
         __props__["schemaName"] = schema_name
         __props__["source"] = source
@@ -936,6 +958,14 @@ class FeatureEngineeringFeature(pulumi.CustomResource):
         (string) - Name of the feature, extracted from the full three-part name (catalog.schema.name)
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="outputTypeText")
+    def output_type_text(self) -> pulumi.Output[_builtins.str]:
+        """
+        (string) - Output type in Databricks SQL DDL (e.g., "BIGINT", "DECIMAL(10,2)", "ARRAY<STRING>", "STRUCT<name:STRING>")
+        """
+        return pulumi.get(self, "output_type_text")
 
     @_builtins.property
     @pulumi.getter(name="providerConfig")

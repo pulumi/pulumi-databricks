@@ -105,7 +105,7 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
 
     /**
      * When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided.
+     * The value must be true when provided.
      * Mutually exclusive with `suspendTimeoutDuration`
      * 
      */
@@ -114,7 +114,7 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
 
     /**
      * @return When set to true, explicitly disables automatic suspension (never suspend).
-     * Should be set to true when provided.
+     * The value must be true when provided.
      * Mutually exclusive with `suspendTimeoutDuration`
      * 
      */
@@ -123,14 +123,14 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (EndpointSettings)
+     * (EndpointSettings) - The Postgres server parameters currently set on the compute endpoint
      * 
      */
     @Import(name="settings")
     private @Nullable Output<PostgresEndpointSpecSettingsArgs> settings;
 
     /**
-     * @return (EndpointSettings)
+     * @return (EndpointSettings) - The Postgres server parameters currently set on the compute endpoint
      * 
      */
     public Optional<Output<PostgresEndpointSpecSettingsArgs>> settings() {
@@ -138,14 +138,16 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     * (string) - Duration of inactivity after which the compute endpoint is automatically suspended. Absent when
+     * automatic suspension is disabled
      * 
      */
     @Import(name="suspendTimeoutDuration")
     private @Nullable Output<String> suspendTimeoutDuration;
 
     /**
-     * @return (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+     * @return (string) - Duration of inactivity after which the compute endpoint is automatically suspended. Absent when
+     * automatic suspension is disabled
      * 
      */
     public Optional<Output<String>> suspendTimeoutDuration() {
@@ -298,7 +300,7 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param noSuspension When set to true, explicitly disables automatic suspension (never suspend).
-         * Should be set to true when provided.
+         * The value must be true when provided.
          * Mutually exclusive with `suspendTimeoutDuration`
          * 
          * @return builder
@@ -311,7 +313,7 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
 
         /**
          * @param noSuspension When set to true, explicitly disables automatic suspension (never suspend).
-         * Should be set to true when provided.
+         * The value must be true when provided.
          * Mutually exclusive with `suspendTimeoutDuration`
          * 
          * @return builder
@@ -322,7 +324,7 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param settings (EndpointSettings)
+         * @param settings (EndpointSettings) - The Postgres server parameters currently set on the compute endpoint
          * 
          * @return builder
          * 
@@ -333,7 +335,7 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param settings (EndpointSettings)
+         * @param settings (EndpointSettings) - The Postgres server parameters currently set on the compute endpoint
          * 
          * @return builder
          * 
@@ -343,7 +345,8 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param suspendTimeoutDuration (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+         * @param suspendTimeoutDuration (string) - Duration of inactivity after which the compute endpoint is automatically suspended. Absent when
+         * automatic suspension is disabled
          * 
          * @return builder
          * 
@@ -354,7 +357,8 @@ public final class PostgresEndpointSpecArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param suspendTimeoutDuration (string) - Duration of inactivity after which the compute endpoint is automatically suspended
+         * @param suspendTimeoutDuration (string) - Duration of inactivity after which the compute endpoint is automatically suspended. Absent when
+         * automatic suspension is disabled
          * 
          * @return builder
          * 

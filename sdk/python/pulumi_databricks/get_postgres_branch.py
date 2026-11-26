@@ -100,7 +100,7 @@ class GetPostgresBranchResult:
     @pulumi.getter
     def spec(self) -> 'outputs.GetPostgresBranchSpecResult':
         """
-        (BranchSpec) - The spec contains the branch configuration
+        (BranchSpec) - The spec contains the branch configuration.
         """
         return pulumi.get(self, "spec")
 
@@ -150,7 +150,7 @@ def get_postgres_branch(name: Optional[_builtins.str] = None,
                         provider_config: Optional[Union['GetPostgresBranchProviderConfigArgs', 'GetPostgresBranchProviderConfigArgsDict', 'outputs.GetPostgresBranchProviderConfigResult']] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresBranchResult:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -193,7 +193,7 @@ def get_postgres_branch_output(name: pulumi.Input[Optional[_builtins.str]] = Non
                                provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresBranchProviderConfigArgs', 'GetPostgresBranchProviderConfigArgsDict', 'outputs.GetPostgresBranchProviderConfigResult']]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresBranchResult]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 

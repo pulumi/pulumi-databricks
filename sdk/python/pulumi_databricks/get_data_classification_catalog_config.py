@@ -49,8 +49,9 @@ class GetDataClassificationCatalogConfigResult:
     @pulumi.getter(name="autoTagConfigs")
     def auto_tag_configs(self) -> Sequence['outputs.GetDataClassificationCatalogConfigAutoTagConfigResult']:
         """
-        (list of AutoTaggingConfig) - List of auto-tagging configurations for this catalog.
-        Empty list means no auto-tagging is enabled
+        (list of AutoTaggingConfig) - Auto-tagging configurations that apply to this catalog. Each entry overrides the
+        metastore-level auto-tagging setting for its classification tag; tags without an entry
+        inherit the metastore-level setting
         """
         return pulumi.get(self, "auto_tag_configs")
 
@@ -59,7 +60,8 @@ class GetDataClassificationCatalogConfigResult:
     def excluded_schemas(self) -> 'outputs.GetDataClassificationCatalogConfigExcludedSchemasResult':
         """
         (CatalogConfigSchemaNames) - Schemas to exclude from the scan, each named relative to the parent catalog.
-        If specified, all schemas except the specified ones will be scanned.
+        If specified, all schemas except the specified ones will be scanned, including schemas
+        created later.
         Mutually exclusive with `included_schemas`: only one may be set per request.
         If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
         """
@@ -70,7 +72,8 @@ class GetDataClassificationCatalogConfigResult:
     def included_schemas(self) -> 'outputs.GetDataClassificationCatalogConfigIncludedSchemasResult':
         """
         (CatalogConfigSchemaNames) - Schemas to include in the scan, each named relative to the parent catalog.
-        If specified, only listed schemas will be scanned.
+        If specified, only listed schemas will be scanned. Schemas created later are not scanned
+        until you add them to the list.
         Mutually exclusive with `excluded_schemas`: only one may be set per request.
         If neither `included_schemas` nor `excluded_schemas` is set, all schemas are scanned
         """

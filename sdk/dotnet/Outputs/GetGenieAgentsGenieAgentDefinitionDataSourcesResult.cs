@@ -18,11 +18,11 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGenieAgentsGenieAgentDefinitionDataSourcesMcpConnectionResult> McpConnections;
         /// <summary>
-        /// (list of GenieAgentTable) - Unity Catalog tables, views, and metric views, in the order they were added
+        /// (list of GenieAgentTable) - Unity Catalog tables, views, and metric views, sorted by `Identifier`
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGenieAgentsGenieAgentDefinitionDataSourcesTableResult> Tables;
         /// <summary>
-        /// (list of GenieAgentVolume) - Unity Catalog volumes, in the order they were added
+        /// (list of GenieAgentVolume) - Unity Catalog volumes, sorted by `Path`
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGenieAgentsGenieAgentDefinitionDataSourcesVolumeResult> Volumes;
 

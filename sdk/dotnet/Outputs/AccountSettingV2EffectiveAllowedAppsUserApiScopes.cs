@@ -13,6 +13,11 @@ namespace Pulumi.Databricks.Outputs
     [OutputType]
     public sealed class AccountSettingV2EffectiveAllowedAppsUserApiScopes
     {
+        /// <summary>
+        /// OAuth scopes that app developers can request when an app acts on behalf of a user. A list with
+        /// the single entry * allows every supported scope and cannot be combined with other scopes. An
+        /// empty list disables user authorization for apps
+        /// </summary>
         public readonly ImmutableArray<string> AllowedScopes;
 
         [OutputConstructor]

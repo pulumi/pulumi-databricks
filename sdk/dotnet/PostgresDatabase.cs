@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Databricks
 {
     /// <summary>
-    /// [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    /// [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
     /// 
     /// [API Documentation](https://docs.databricks.com/api/workspace/postgres)
     /// 
@@ -20,9 +20,9 @@ namespace Pulumi.Databricks
     /// 
     /// A database named `databricks-postgres` (Postgres name `DatabricksPostgres`) is implicitly created on every branch. Since Pulumi is declarative, managing an already-existing resource requires `ReplaceExisting = true`: it lets Pulumi represent the implicitly created database in Pulumi state and immediately apply the provided configuration to it.
     /// 
-    /// `ReplaceExisting = true` only affects the initial adoption. Once the database is in Pulumi state, it is managed like any other resource: removing it from your configuration and applying **deletes the actual database** (and its data), not just the state entry. This is unlike `databricks.PostgresBranch`, whose deletion is instead controlled by its parent project. To stop managing the database without deleting it, remove it from state with `terraform state rm` before removing it from your configuration.
+    /// `ReplaceExisting = true` only affects the initial adoption. After the database is in Pulumi state, it is managed like any other resource: removing it from your configuration and running `pulumi up` **deletes the actual database** (and its data), not just the state entry. This is unlike the implicitly created root Branch, whose deletion is controlled by its parent Project. To stop managing the database without deleting it, remove it from state with `terraform state rm` before removing it from your configuration.
     /// 
-    /// `spec.role` is optional: omit it to keep the database's existing owner (as shown below). When you do set it — to change ownership — it must reference a role in the same branch, written as `&lt;branch-name&gt;/roles/&lt;role_id&gt;`.
+    /// Include `spec.role` in a non-null Pulumi spec. To preserve ownership, use the current owner's full Role resource name from the same branch, written as `&lt;branch-name&gt;/roles/&lt;role_id&gt;`.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -60,6 +60,7 @@ namespace Pulumi.Databricks
     ///         Spec = new Databricks.Inputs.PostgresDatabaseSpecArgs
     ///         {
     ///             PostgresDatabase = "databricks_postgres",
+    ///             Role = "projects/my-project/branches/production/roles/jane-doe",
     ///         },
     ///         ReplaceExisting = true,
     ///     });
@@ -99,6 +100,7 @@ namespace Pulumi.Databricks
     ///         Spec = new Databricks.Inputs.PostgresDatabaseSpecArgs
     ///         {
     ///             PostgresDatabase = "databricks_postgres",
+    ///             Role = child.Name.Apply(name =&gt; $"{name}/roles/jane-doe"),
     ///         },
     ///         ReplaceExisting = true,
     ///     });
@@ -108,7 +110,7 @@ namespace Pulumi.Databricks
     /// 
     /// ### Database Owned by a Specific Role
     /// 
-    /// Assign ownership to a role you manage alongside the database. The Postgres database will be created with the specified role as its owner.
+    /// `spec.role` is required when creating a database and must reference a role in the same branch.
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -161,6 +163,7 @@ namespace Pulumi.Databricks
     ///         Spec = new Databricks.Inputs.PostgresDatabaseSpecArgs
     ///         {
     ///             PostgresDatabase = "analytics_v2",
+    ///             Role = "projects/my-project/branches/main/roles/app-owner",
     ///         },
     ///     });
     /// 
@@ -278,16 +281,21 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// If true, update the database if it already exists instead of returning an
-        /// error
+        /// error. This requires `DatabaseId` to be set. Without `DatabaseId`, the request
+        /// follows the normal create path and fails if the database name already exists
         /// </summary>
         [Output("replaceExisting")]
         public Output<bool?> ReplaceExisting { get; private set; } = null!;
 
         /// <summary>
-        /// The desired state of the Database
+        /// The desired state of the Database.
+        /// 
+        /// Read the resource's current values from `Status`, rather than `Spec`.
+        /// `Spec` tracks field ownership for infrastructure-as-code tools and may omit
+        /// unmanaged fields
         /// </summary>
         [Output("spec")]
-        public Output<Outputs.PostgresDatabaseSpec> Spec { get; private set; } = null!;
+        public Output<Outputs.PostgresDatabaseSpec?> Spec { get; private set; } = null!;
 
         /// <summary>
         /// (DatabaseDatabaseStatus) - The observed state of the Database
@@ -368,13 +376,18 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// If true, update the database if it already exists instead of returning an
-        /// error
+        /// error. This requires `DatabaseId` to be set. Without `DatabaseId`, the request
+        /// follows the normal create path and fails if the database name already exists
         /// </summary>
         [Input("replaceExisting")]
         public Input<bool>? ReplaceExisting { get; set; }
 
         /// <summary>
-        /// The desired state of the Database
+        /// The desired state of the Database.
+        /// 
+        /// Read the resource's current values from `Status`, rather than `Spec`.
+        /// `Spec` tracks field ownership for infrastructure-as-code tools and may omit
+        /// unmanaged fields
         /// </summary>
         [Input("spec")]
         public Input<Inputs.PostgresDatabaseSpecArgs>? Spec { get; set; }
@@ -421,13 +434,18 @@ namespace Pulumi.Databricks
 
         /// <summary>
         /// If true, update the database if it already exists instead of returning an
-        /// error
+        /// error. This requires `DatabaseId` to be set. Without `DatabaseId`, the request
+        /// follows the normal create path and fails if the database name already exists
         /// </summary>
         [Input("replaceExisting")]
         public Input<bool>? ReplaceExisting { get; set; }
 
         /// <summary>
-        /// The desired state of the Database
+        /// The desired state of the Database.
+        /// 
+        /// Read the resource's current values from `Status`, rather than `Spec`.
+        /// `Spec` tracks field ownership for infrastructure-as-code tools and may omit
+        /// unmanaged fields
         /// </summary>
         [Input("spec")]
         public Input<Inputs.PostgresDatabaseSpecGetArgs>? Spec { get; set; }

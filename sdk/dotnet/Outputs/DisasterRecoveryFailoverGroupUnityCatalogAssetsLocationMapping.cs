@@ -19,7 +19,8 @@ namespace Pulumi.Databricks.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// URI for each region. Each entry maps a region name to a storage URI
+        /// The storage URI of this location in each region, with exactly one entry per region of the
+        /// failover group
         /// </summary>
         public readonly ImmutableArray<Outputs.DisasterRecoveryFailoverGroupUnityCatalogAssetsLocationMappingUriByRegion> UriByRegions;
 

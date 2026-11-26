@@ -49,7 +49,8 @@ class GetDataQualityMonitorResult:
     @pulumi.getter(name="anomalyDetectionConfig")
     def anomaly_detection_config(self) -> 'outputs.GetDataQualityMonitorAnomalyDetectionConfigResult':
         """
-        (AnomalyDetectionConfig) - Anomaly Detection Configuration, applicable to `schema` object types
+        (AnomalyDetectionConfig) - Anomaly detection settings. Required when `object_type` is `schema`. When reading a `table` monitor, this holds
+        the settings of the parent schema's monitor if the schema has one
         """
         return pulumi.get(self, "anomaly_detection_config")
 
@@ -57,8 +58,8 @@ class GetDataQualityMonitorResult:
     @pulumi.getter(name="dataProfilingConfig")
     def data_profiling_config(self) -> 'outputs.GetDataQualityMonitorDataProfilingConfigResult':
         """
-        (DataProfilingConfig) - Data Profiling Configuration, applicable to `table` object types. Exactly one `Analysis Configuration`
-        must be present
+        (DataProfilingConfig) - Data profiling settings. Required when `object_type` is `table`. Exactly one of `inference_log`, `time_series`
+        or `snapshot` must be set
         """
         return pulumi.get(self, "data_profiling_config")
 

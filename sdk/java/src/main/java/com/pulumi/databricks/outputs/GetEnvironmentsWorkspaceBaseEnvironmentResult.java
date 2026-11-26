@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetEnvironmentsWorkspaceBaseEnvironmentResult {
     /**
-     * @return (string) - The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+     * @return (string) - The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
      * 
      */
     private String baseEnvironmentType;
@@ -37,7 +37,8 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentResult {
     private String displayName;
     private String effectiveBaseEnvironmentType;
     /**
-     * @return (string) - The WSFS or UC Volumes path to the environment YAML file
+     * @return (string) - The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+     * dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
      * 
      */
     private String filepath;
@@ -52,24 +53,28 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentResult {
      */
     private String lastUpdatedUserId;
     /**
-     * @return (string) - Status message providing additional details about the environment status
+     * @return (string) - Status message providing additional details about the environment status.
+     * When the status is `FAILED`, the message contains the build error
      * 
      */
     private String message;
     /**
      * @return (string) - The resource name of the workspace base environment.
      * Format: workspace-base-environments/{workspace-base-environment}
+     * The server ignores this field on create and builds the name from `workspaceBaseEnvironmentId`, or from
+     * `displayName` plus a random suffix when no ID is given
      * 
      */
     private String name;
     private @Nullable GetEnvironmentsWorkspaceBaseEnvironmentProviderConfig providerConfig;
     /**
-     * @return (EnvironmentSpec) - The environment specification containing version and dependencies
+     * @return (EnvironmentSpec) - The environment specification containing version and dependencies, read from the YAML file at `filepath`
      * 
      */
     private GetEnvironmentsWorkspaceBaseEnvironmentSpec spec;
     /**
-     * @return (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
+     * @return (string) - The status of the materialized workspace base environment, which the server builds from the YAML file.
+     * The status is `CREATED` once the build has succeeded. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
      * 
      */
     private String status;
@@ -81,7 +86,7 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentResult {
 
     private GetEnvironmentsWorkspaceBaseEnvironmentResult() {}
     /**
-     * @return (string) - The type of base environment (CPU or GPU). Possible values are: `CPU`, `GPU`
+     * @return (string) - The type of base environment (CPU or GPU). The default is `CPU`. Possible values are: `CPU`, `GPU`
      * 
      */
     public String baseEnvironmentType() {
@@ -112,7 +117,8 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentResult {
         return this.effectiveBaseEnvironmentType;
     }
     /**
-     * @return (string) - The WSFS or UC Volumes path to the environment YAML file
+     * @return (string) - The workspace file or Unity Catalog volume path to the YAML file that defines the environment version and
+     * dependencies. The file name must end in `.yaml` or `.yml`. Create and update requests must set this field
      * 
      */
     public String filepath() {
@@ -133,7 +139,8 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentResult {
         return this.lastUpdatedUserId;
     }
     /**
-     * @return (string) - Status message providing additional details about the environment status
+     * @return (string) - Status message providing additional details about the environment status.
+     * When the status is `FAILED`, the message contains the build error
      * 
      */
     public String message() {
@@ -142,6 +149,8 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentResult {
     /**
      * @return (string) - The resource name of the workspace base environment.
      * Format: workspace-base-environments/{workspace-base-environment}
+     * The server ignores this field on create and builds the name from `workspaceBaseEnvironmentId`, or from
+     * `displayName` plus a random suffix when no ID is given
      * 
      */
     public String name() {
@@ -151,14 +160,15 @@ public final class GetEnvironmentsWorkspaceBaseEnvironmentResult {
         return Optional.ofNullable(this.providerConfig);
     }
     /**
-     * @return (EnvironmentSpec) - The environment specification containing version and dependencies
+     * @return (EnvironmentSpec) - The environment specification containing version and dependencies, read from the YAML file at `filepath`
      * 
      */
     public GetEnvironmentsWorkspaceBaseEnvironmentSpec spec() {
         return this.spec;
     }
     /**
-     * @return (string) - The status of the materialized workspace base environment. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
+     * @return (string) - The status of the materialized workspace base environment, which the server builds from the YAML file.
+     * The status is `CREATED` once the build has succeeded. Possible values are: `CREATED`, `EXPIRED`, `FAILED`, `INVALID`, `PENDING`, `REFRESHING`
      * 
      */
     public String status() {

@@ -92,13 +92,13 @@ namespace Pulumi.Databricks
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - Creator identity
+        /// (string) - Username of the user who created the model provider service
         /// </summary>
         [Output("createdBy")]
         public Output<string> CreatedBy { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - Owner of the model provider service
+        /// (string) - Username or group name of the model provider service owner
         /// </summary>
         [Output("effectiveOwner")]
         public Output<string> EffectiveOwner { get; private set; } = null!;
@@ -113,13 +113,16 @@ namespace Pulumi.Databricks
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - Metastore hosting the provider service
+        /// (string) - Unique identifier of the metastore that contains the model provider service
         /// </summary>
         [Output("metastoreId")]
         public Output<string> MetastoreId { get; private set; } = null!;
 
         /// <summary>
-        /// Name for the model provider service, e.g. "OpenaiProd"
+        /// Name of the model provider service within the parent schema. The name must
+        /// not contain periods, spaces, forward slashes, percent signs, or control
+        /// characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+        /// characters. It is stored in lowercase
         /// </summary>
         [Output("modelProviderServiceId")]
         public Output<string> ModelProviderServiceId { get; private set; } = null!;
@@ -128,8 +131,9 @@ namespace Pulumi.Databricks
         /// (string) - Resource name of the provider service.
         /// Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
         /// Each `{...}` component is capped at 255 characters individually.
-        /// Server-derived on Create from `Parent` +
-        /// `ModelProviderServiceId`; required and immutable on Update/Get/Delete
+        /// The server derives the name on Create from
+        /// `Parent` and `ModelProviderServiceId`; it is required and immutable on
+        /// Update, Get, and Delete
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -155,7 +159,7 @@ namespace Pulumi.Databricks
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// (string) - Identity of the last updater
+        /// (string) - Username of the user who last updated the model provider service
         /// </summary>
         [Output("updatedBy")]
         public Output<string> UpdatedBy { get; private set; } = null!;
@@ -221,7 +225,10 @@ namespace Pulumi.Databricks
         public Input<Inputs.AiGatewayModelProviderServiceConfigArgs>? Config { get; set; }
 
         /// <summary>
-        /// Name for the model provider service, e.g. "OpenaiProd"
+        /// Name of the model provider service within the parent schema. The name must
+        /// not contain periods, spaces, forward slashes, percent signs, or control
+        /// characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+        /// characters. It is stored in lowercase
         /// </summary>
         [Input("modelProviderServiceId", required: true)]
         public Input<string> ModelProviderServiceId { get; set; } = null!;
@@ -269,13 +276,13 @@ namespace Pulumi.Databricks
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// (string) - Creator identity
+        /// (string) - Username of the user who created the model provider service
         /// </summary>
         [Input("createdBy")]
         public Input<string>? CreatedBy { get; set; }
 
         /// <summary>
-        /// (string) - Owner of the model provider service
+        /// (string) - Username or group name of the model provider service owner
         /// </summary>
         [Input("effectiveOwner")]
         public Input<string>? EffectiveOwner { get; set; }
@@ -290,13 +297,16 @@ namespace Pulumi.Databricks
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// (string) - Metastore hosting the provider service
+        /// (string) - Unique identifier of the metastore that contains the model provider service
         /// </summary>
         [Input("metastoreId")]
         public Input<string>? MetastoreId { get; set; }
 
         /// <summary>
-        /// Name for the model provider service, e.g. "OpenaiProd"
+        /// Name of the model provider service within the parent schema. The name must
+        /// not contain periods, spaces, forward slashes, percent signs, or control
+        /// characters, must not end in `_DO_NOT_MODIFY`, and must not exceed 241
+        /// characters. It is stored in lowercase
         /// </summary>
         [Input("modelProviderServiceId")]
         public Input<string>? ModelProviderServiceId { get; set; }
@@ -305,8 +315,9 @@ namespace Pulumi.Databricks
         /// (string) - Resource name of the provider service.
         /// Format: `model-provider-services/{catalog}.{schema}.{model_provider_service}`.
         /// Each `{...}` component is capped at 255 characters individually.
-        /// Server-derived on Create from `Parent` +
-        /// `ModelProviderServiceId`; required and immutable on Update/Get/Delete
+        /// The server derives the name on Create from
+        /// `Parent` and `ModelProviderServiceId`; it is required and immutable on
+        /// Update, Get, and Delete
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -332,7 +343,7 @@ namespace Pulumi.Databricks
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
-        /// (string) - Identity of the last updater
+        /// (string) - Username of the user who last updated the model provider service
         /// </summary>
         [Input("updatedBy")]
         public Input<string>? UpdatedBy { get; set; }

@@ -58,7 +58,8 @@ class GetPostgresCatalogResult:
     @pulumi.getter(name="catalogId")
     def catalog_id(self) -> _builtins.str:
         """
-        (string) - The part of the name, chosen by the user when the resource was created
+        (string) - The ID chosen when the catalog was created, which is also its name in Unity Catalog. It is the
+        last segment of the name field
         """
         return pulumi.get(self, "catalog_id")
 
@@ -87,7 +88,8 @@ class GetPostgresCatalogResult:
     @pulumi.getter
     def spec(self) -> 'outputs.GetPostgresCatalogSpecResult':
         """
-        (CatalogCatalogSpec) - The desired state of the Catalog
+        (CatalogCatalogSpec) - The desired state of the Catalog. The catalog has no update method, so the spec is fixed when
+        the catalog is created
         """
         return pulumi.get(self, "spec")
 
@@ -103,7 +105,7 @@ class GetPostgresCatalogResult:
     @pulumi.getter
     def uid(self) -> _builtins.str:
         """
-        (string) - System-generated unique identifier for the catalog
+        (string) - The immutable UUID that identifies the catalog, assigned when the catalog is created
         """
         return pulumi.get(self, "uid")
 
@@ -136,7 +138,7 @@ def get_postgres_catalog(name: Optional[_builtins.str] = None,
                          provider_config: Optional[Union['GetPostgresCatalogProviderConfigArgs', 'GetPostgresCatalogProviderConfigArgsDict', 'outputs.GetPostgresCatalogProviderConfigResult']] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresCatalogResult:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
@@ -179,7 +181,7 @@ def get_postgres_catalog_output(name: pulumi.Input[Optional[_builtins.str]] = No
                                 provider_config: pulumi.Input[Optional[Optional[Union['GetPostgresCatalogProviderConfigArgs', 'GetPostgresCatalogProviderConfigArgsDict', 'outputs.GetPostgresCatalogProviderConfigResult']]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresCatalogResult]:
     """
-    [![Public Beta](https://img.shields.io/badge/Release_Stage-Public_Beta-orange)](https://docs.databricks.com/aws/en/release-notes/release-types)
+    [![GA](https://img.shields.io/badge/Release_Stage-GA-green)](https://docs.databricks.com/aws/en/release-notes/release-types)
 
     [API Documentation](https://docs.databricks.com/api/workspace/postgres)
 
