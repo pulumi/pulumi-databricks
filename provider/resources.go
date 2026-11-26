@@ -52,6 +52,8 @@ const (
 	mainPkg = "databricks"
 	// modules:
 	mainMod = "index" // the databricks module
+	// types:
+	stringType = "string"
 )
 
 // Remove a preceding v from a version string to pass the regex checks on WithUserAgentExtra
@@ -68,17 +70,45 @@ func userAgentValue(version string) string {
 // The bridge converts it back to an int at runtime.
 func setWorkspaceIDToString(p tfbridge.PropertyVisitInfo) (tfbridge.PropertyVisitResult, error) {
 	path := p.SchemaPath()
+	if len(path) == 0 {
+		return tfbridge.PropertyVisitResult{}, nil
+	}
+
+	if isWorkspaceIDValues(path) {
+		// Handles e.g. databricks_budget filter.workspace_id.values, a list of workspace IDs.
+		info := p.SchemaInfo()
+		if info.Elem != nil && info.Elem.Type == stringType {
+			return tfbridge.PropertyVisitResult{}, nil
+		}
+		if info.Elem == nil {
+			info.Elem = &tfbridge.SchemaInfo{}
+		}
+		info.Elem.Type = stringType
+		return tfbridge.PropertyVisitResult{HasEffect: true}, nil
+	}
+
 	attr, ok := path[len(path)-1].(walk.GetAttrStep)
 	if !ok || attr.Name != "workspace_id" {
 		return tfbridge.PropertyVisitResult{}, nil
 	}
 
-	p.SchemaInfo().Type = "string"
+	p.SchemaInfo().Type = stringType
 
 	return tfbridge.PropertyVisitResult{HasEffect: true}, nil
 }
 
 func init() { disablelogs.Undo() }
+
+// isWorkspaceIDValues reports whether path ends in workspace_id -> <element> -> values,
+// i.e. the "values" attribute of a nested workspace_id block.
+func isWorkspaceIDValues(path walk.SchemaPath) bool {
+	if len(path) < 3 {
+		return false
+	}
+	last, lastOK := path[len(path)-1].(walk.GetAttrStep)
+	parent, parentOK := path[len(path)-3].(walk.GetAttrStep)
+	return lastOK && parentOK && last.Name == "values" && parent.Name == "workspace_id"
+}
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
@@ -428,7 +458,7 @@ func Provider() tfbridge.ProviderInfo {
 			p := info.SchemaPath()
 
 			if s, ok := p[len(p)-1].(walk.GetAttrStep); ok && s.Name == "principal_id" {
-				info.SchemaInfo().Type = "string"
+				info.SchemaInfo().Type = stringType
 				return tfbridge.PropertyVisitResult{HasEffect: true}, nil
 			}
 			return tfbridge.PropertyVisitResult{}, nil
