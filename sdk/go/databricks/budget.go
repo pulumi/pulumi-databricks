@@ -52,8 +52,8 @@ import (
 //				Filter: &databricks.BudgetFilterArgs{
 //					WorkspaceId: &databricks.BudgetFilterWorkspaceIdArgs{
 //						Operator: pulumi.String("IN"),
-//						Values: pulumi.IntArray{
-//							pulumi.Int(1234567890098765),
+//						Values: pulumi.StringArray{
+//							pulumi.String("1234567890098765"),
 //						},
 //					},
 //					Tags: databricks.BudgetFilterTagArray{

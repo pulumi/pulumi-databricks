@@ -17626,7 +17626,8 @@
                 "provider_config.$.workspace_id"
             ],
             "databricks_budget": [
-                "filter.$.workspace_id"
+                "filter.$.workspace_id",
+                "filter.$.workspace_id.$.values"
             ],
             "databricks_catalog": [
                 "provider_config.$.workspace_id"

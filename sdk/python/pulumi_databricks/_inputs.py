@@ -25427,7 +25427,7 @@ class BudgetFilterWorkspaceIdArgsDict(TypedDict):
     """
     The operator to use for the filter. (Enum: `IN`)
     """
-    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]]
+    values: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     The values to filter by.
     """
@@ -25436,10 +25436,10 @@ class BudgetFilterWorkspaceIdArgsDict(TypedDict):
 class BudgetFilterWorkspaceIdArgs:
     def __init__(__self__, *,
                  operator: pulumi.Input[Optional[_builtins.str]] = None,
-                 values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None):
+                 values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] operator: The operator to use for the filter. (Enum: `IN`)
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] values: The values to filter by.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] values: The values to filter by.
         """
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
@@ -25460,14 +25460,14 @@ class BudgetFilterWorkspaceIdArgs:
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
+    def values(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The values to filter by.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
+    def values(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "values", value)
 
 

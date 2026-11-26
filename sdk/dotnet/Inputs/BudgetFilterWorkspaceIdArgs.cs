@@ -19,14 +19,14 @@ namespace Pulumi.Databricks.Inputs
         public Input<string>? Operator { get; set; }
 
         [Input("values")]
-        private InputList<int>? _values;
+        private InputList<string>? _values;
 
         /// <summary>
         /// The values to filter by.
         /// </summary>
-        public InputList<int> Values
+        public InputList<string> Values
         {
-            get => _values ?? (_values = new InputList<int>());
+            get => _values ?? (_values = new InputList<string>());
             set => _values = value;
         }
 

@@ -20,13 +20,13 @@ namespace Pulumi.Databricks.Outputs
         /// <summary>
         /// The values to filter by.
         /// </summary>
-        public readonly ImmutableArray<int> Values;
+        public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]
         private BudgetFilterWorkspaceId(
             string? @operator,
 
-            ImmutableArray<int> values)
+            ImmutableArray<string> values)
         {
             Operator = @operator;
             Values = values;

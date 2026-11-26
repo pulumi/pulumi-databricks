@@ -24,7 +24,20 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/pulumi/providertest/pulumitest"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/walk"
 )
+
+func TestIsWorkspaceIDValues(t *testing.T) {
+	t.Parallel()
+	attr := func(n string) walk.SchemaPathStep { return walk.GetAttrStep{Name: n} }
+	elem := walk.ElementStep{}
+
+	assert.True(t, isWorkspaceIDValues(walk.SchemaPath{attr("filter"), elem, attr("workspace_id"), elem, attr("values")}))
+	assert.False(t, isWorkspaceIDValues(walk.SchemaPath{attr("filter"), elem, attr("other"), elem, attr("values")}))
+	assert.False(t, isWorkspaceIDValues(walk.SchemaPath{attr("workspace_id"), elem, attr("operator")}))
+	assert.False(t, isWorkspaceIDValues(walk.SchemaPath{attr("values")}))
+	assert.False(t, isWorkspaceIDValues(nil))
+}
 
 func TestWithUserAgent(t *testing.T) {
 	type testCase struct {

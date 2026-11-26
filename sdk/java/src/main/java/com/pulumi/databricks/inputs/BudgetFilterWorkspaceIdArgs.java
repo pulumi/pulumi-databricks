@@ -5,7 +5,6 @@ package com.pulumi.databricks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -37,13 +36,13 @@ public final class BudgetFilterWorkspaceIdArgs extends com.pulumi.resources.Reso
      * 
      */
     @Import(name="values")
-    private @Nullable Output<List<Integer>> values;
+    private @Nullable Output<List<String>> values;
 
     /**
      * @return The values to filter by.
      * 
      */
-    public Optional<Output<List<Integer>>> values() {
+    public Optional<Output<List<String>>> values() {
         return Optional.ofNullable(this.values);
     }
 
@@ -99,7 +98,7 @@ public final class BudgetFilterWorkspaceIdArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder values(@Nullable Output<List<Integer>> values) {
+        public Builder values(@Nullable Output<List<String>> values) {
             $.values = values;
             return this;
         }
@@ -110,7 +109,7 @@ public final class BudgetFilterWorkspaceIdArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder values(List<Integer> values) {
+        public Builder values(List<String> values) {
             return values(Output.of(values));
         }
 
@@ -120,7 +119,7 @@ public final class BudgetFilterWorkspaceIdArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder values(Integer... values) {
+        public Builder values(String... values) {
             return values(List.of(values));
         }
 

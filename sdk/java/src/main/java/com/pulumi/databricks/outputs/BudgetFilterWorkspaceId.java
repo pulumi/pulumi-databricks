@@ -4,7 +4,6 @@
 package com.pulumi.databricks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -22,7 +21,7 @@ public final class BudgetFilterWorkspaceId {
      * @return The values to filter by.
      * 
      */
-    private @Nullable List<Integer> values;
+    private @Nullable List<String> values;
 
     private BudgetFilterWorkspaceId() {}
     /**
@@ -36,7 +35,7 @@ public final class BudgetFilterWorkspaceId {
      * @return The values to filter by.
      * 
      */
-    public List<Integer> values() {
+    public List<String> values() {
         return this.values == null ? List.of() : this.values;
     }
 
@@ -50,7 +49,7 @@ public final class BudgetFilterWorkspaceId {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String operator;
-        private @Nullable List<Integer> values;
+        private @Nullable List<String> values;
         public Builder() {}
         public Builder(BudgetFilterWorkspaceId defaults) {
     	      Objects.requireNonNull(defaults);
@@ -65,12 +64,12 @@ public final class BudgetFilterWorkspaceId {
             return this;
         }
         @CustomType.Setter
-        public Builder values(@Nullable List<Integer> values) {
+        public Builder values(@Nullable List<String> values) {
 
             this.values = values;
             return this;
         }
-        public Builder values(Integer... values) {
+        public Builder values(String... values) {
             return values(List.of(values));
         }
         public BudgetFilterWorkspaceId build() {
