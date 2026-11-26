@@ -22527,10 +22527,10 @@ class BudgetFilterTagValue(dict):
 class BudgetFilterWorkspaceId(dict):
     def __init__(__self__, *,
                  operator: Optional[_builtins.str] = None,
-                 values: Optional[Sequence[_builtins.int]] = None):
+                 values: Optional[Sequence[_builtins.str]] = None):
         """
         :param _builtins.str operator: The operator to use for the filter. (Enum: `IN`)
-        :param Sequence[_builtins.int] values: The values to filter by.
+        :param Sequence[_builtins.str] values: The values to filter by.
         """
         if operator is not None:
             pulumi.set(__self__, "operator", operator)
@@ -22547,7 +22547,7 @@ class BudgetFilterWorkspaceId(dict):
 
     @_builtins.property
     @pulumi.getter
-    def values(self) -> Optional[Sequence[_builtins.int]]:
+    def values(self) -> Optional[Sequence[_builtins.str]]:
         """
         The values to filter by.
         """

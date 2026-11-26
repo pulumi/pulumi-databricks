@@ -63686,7 +63686,7 @@ type BudgetFilterWorkspaceId struct {
 	// The operator to use for the filter. (Enum: `IN`)
 	Operator *string `pulumi:"operator"`
 	// The values to filter by.
-	Values []int `pulumi:"values"`
+	Values []string `pulumi:"values"`
 }
 
 // BudgetFilterWorkspaceIdInput is an input type that accepts BudgetFilterWorkspaceIdArgs and BudgetFilterWorkspaceIdOutput values.
@@ -63704,7 +63704,7 @@ type BudgetFilterWorkspaceIdArgs struct {
 	// The operator to use for the filter. (Enum: `IN`)
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
 	// The values to filter by.
-	Values pulumi.IntArrayInput `pulumi:"values"`
+	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
 func (BudgetFilterWorkspaceIdArgs) ElementType() reflect.Type {
@@ -63790,8 +63790,8 @@ func (o BudgetFilterWorkspaceIdOutput) Operator() pulumi.StringPtrOutput {
 }
 
 // The values to filter by.
-func (o BudgetFilterWorkspaceIdOutput) Values() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v BudgetFilterWorkspaceId) []int { return v.Values }).(pulumi.IntArrayOutput)
+func (o BudgetFilterWorkspaceIdOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BudgetFilterWorkspaceId) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
 
 type BudgetFilterWorkspaceIdPtrOutput struct{ *pulumi.OutputState }
@@ -63829,13 +63829,13 @@ func (o BudgetFilterWorkspaceIdPtrOutput) Operator() pulumi.StringPtrOutput {
 }
 
 // The values to filter by.
-func (o BudgetFilterWorkspaceIdPtrOutput) Values() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *BudgetFilterWorkspaceId) []int {
+func (o BudgetFilterWorkspaceIdPtrOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BudgetFilterWorkspaceId) []string {
 		if v == nil {
 			return nil
 		}
 		return v.Values
-	}).(pulumi.IntArrayOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 type BudgetPolicyCustomTag struct {

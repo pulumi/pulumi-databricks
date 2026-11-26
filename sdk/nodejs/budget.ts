@@ -36,7 +36,7 @@ import * as utilities from "./utilities";
  *     filter: {
  *         workspaceId: {
  *             operator: "IN",
- *             values: [1234567890098765],
+ *             values: ["1234567890098765"],
  *         },
  *         tags: [
  *             {

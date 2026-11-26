@@ -4306,7 +4306,7 @@ export interface BudgetFilterWorkspaceId {
     /**
      * The values to filter by.
      */
-    values?: number[];
+    values?: string[];
 }
 
 export interface BudgetPolicyCustomTag {

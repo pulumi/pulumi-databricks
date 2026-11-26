@@ -4306,7 +4306,7 @@ export interface BudgetFilterWorkspaceId {
     /**
      * The values to filter by.
      */
-    values?: pulumi.Input<pulumi.Input<number>[] | undefined>;
+    values?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface BudgetPolicyCustomTag {

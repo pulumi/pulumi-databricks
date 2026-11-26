@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *             .filter(BudgetFilterArgs.builder()
  *                 .workspaceId(BudgetFilterWorkspaceIdArgs.builder()
  *                     .operator("IN")
- *                     .values(1234567890098765)
+ *                     .values("1234567890098765")
  *                     .build())
  *                 .tags(                
  *                     BudgetFilterTagArgs.builder()
